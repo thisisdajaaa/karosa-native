@@ -3,8 +3,8 @@ import React from "react";
 import { Text } from "../atoms";
 
 interface ErrorMessageProps {
-  error: string;
-  visible: boolean;
+  error?: string;
+  visible?: boolean;
 }
 
 const ErrorMessage: React.FC<ErrorMessageProps> = ({ error, visible }) => {

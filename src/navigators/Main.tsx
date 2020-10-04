@@ -3,12 +3,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import { Onboarding } from "../screens";
 
-const AuthStack = createStackNavigator();
+const MainStack = createStackNavigator();
 
 export default function MainNavigator() {
   return (
-    <AuthStack.Navigator headerMode="none">
-      <AuthStack.Screen name="Onboarding" component={Onboarding} />
-    </AuthStack.Navigator>
+    <MainStack.Navigator headerMode="none">
+      <MainStack.Screen name="Onboarding" component={Onboarding} />
+    </MainStack.Navigator>
   );
 }

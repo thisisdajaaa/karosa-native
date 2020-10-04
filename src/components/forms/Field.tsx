@@ -13,8 +13,14 @@ interface FieldProps {
   };
 }
 
+interface FormkitContextValue {
+  [key: string]: string;
+}
+
 function Field({ name, width, ...otherProps }: FieldProps) {
-  const { setFieldTouched, handleChange, errors, touched } = useFormikContext();
+  const { setFieldTouched, handleChange, errors, touched } = useFormikContext<
+    FormkitContextValue
+  >();
 
   return (
     <>
