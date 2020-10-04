@@ -1,0 +1,12 @@
+{
+  "extends": "react-native-wcandillon",
+  "rules": {
+    "linebreak-style": ["error", "windows"],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
+}
