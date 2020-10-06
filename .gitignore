@@ -1,4 +1,6 @@
 node_modules/**/*
+—-localhost/**/*
+.vscode/*
 .expo/*
 npm-debug.*
 *.jks

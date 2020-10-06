@@ -1,10 +1,9 @@
-import "react-native-gesture-handler";
-import React, { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-community/async-storage";
+import React from "react";
+import { Provider } from "react-redux";
 
-import { LoadAssets } from "./src/components";
-import MainNavigator from "./src/navigators/Main";
-import { User } from "./src/models";
+import LoadAssets from "./src/components/load-assets";
+import configureStore from "./src/redux/store";
+import AuthNavigator from "./src/navigators/auth";
 
 const fonts = {
   "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
@@ -12,33 +11,14 @@ const fonts = {
   "SFProText-Regular": require("./assets/fonts/SF-Pro-Text-Regular.otf"),
 };
 
+export const store = configureStore({});
+
 export default function App() {
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    getUser();
-  }, [user]);
-
-  async function getUser() {
-    const storedUser = await AsyncStorage.getItem("user");
-
-    if (storedUser) {
-      const currentUser: User = JSON.parse(storedUser);
-      setUser(currentUser);
-    } else {
-      // NOTE: mocking here.
-      setUser({
-        username: "a.pappas",
-        firstName: "Alexandros",
-        lastName: "Pappas",
-        email: "a.pappas@karosa.com",
-      });
-    }
-  }
-
   return (
     <LoadAssets {...{ fonts }}>
-      {user ? <MainNavigator /> : <MainNavigator />}
+      <Provider store={store}>
+        <AuthNavigator />
+      </Provider>
     </LoadAssets>
   );
 }
