@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { BaseText } from "../../base-text";
@@ -12,6 +12,7 @@ export const ListChevron: React.FC<Props> = ({
   style,
   rightLabel,
   listColor,
+  onPress,
 }) => {
   return (
     <View style={[styles.container, style?.containerStyle]}>
@@ -36,12 +37,13 @@ export const ListChevron: React.FC<Props> = ({
       {rightLabel && (
         <BaseText style={styles.rightLabel}>{rightLabel}</BaseText>
       )}
-
-      <MaterialCommunityIcons
-        color={"#6e6969"}
-        name="chevron-right"
-        size={25}
-      />
+      <TouchableOpacity onPress={onPress}>
+        <MaterialCommunityIcons
+          color={"#6e6969"}
+          name="chevron-right"
+          size={25}
+        />
+      </TouchableOpacity>
     </View>
   );
 };

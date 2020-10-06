@@ -22,7 +22,7 @@ const AuthMain: React.FC = () => {
         right: "Help",
       },
       press: {
-        right: () => navigate(routes.HELP),
+        right: () => navigate(routes.AUTH_HELP),
       },
     },
     customStyles: styles.container,
@@ -57,7 +57,7 @@ const AuthMain: React.FC = () => {
       backgroundColor: "#0AA351",
       marginVertical: 17,
     },
-    onPress: () => navigate(routes.LOGIN),
+    onPress: () => navigate(routes.AUTH_LOGIN),
   };
 
   return (

@@ -8,11 +8,12 @@ import { AppButton } from "../../atoms/button";
 import { Props as ButtonProps } from "../../atoms/button/types";
 import { Props as MultiListProps } from "../../atoms/multi-list/types";
 import { Props as ScreenProps } from "../../atoms/base-screen/types";
+import routes from "../../../navigators/routes";
 
 import { styles } from "./styles";
 
 const AccountSettings: React.FC = () => {
-  const { goBack } = useNavigation();
+  const { goBack, navigate } = useNavigation();
 
   const screenProps: ScreenProps = {
     header: {
@@ -26,32 +27,37 @@ const AccountSettings: React.FC = () => {
   };
 
   const multiListProps: MultiListProps = {
-    listItem: [
+    multiChev: [
       {
         title: "My Profile",
         hasSeparator: true,
+        onPress: () => navigate(routes.ACCOUNTS_EDT_PRFL),
       },
       {
         title: "Help Centre",
         hasSeparator: true,
+        onPress: () => console.log("help centre"),
       },
       {
         title: "Request for Account Deletion",
         hasSeparator: true,
+        onPress: () => console.log("Request for Account Deletion"),
       },
       {
         title: "FAQ",
         hasSeparator: true,
+        onPress: () => console.log("FAQ"),
       },
       {
         title: "Privacy Policy",
         hasSeparator: true,
+        onPress: () => console.log("Privacy Policy"),
       },
       {
         title: "About",
+        onPress: () => console.log("About"),
       },
     ],
-    hasChevron: true,
   };
 
   const logoutButtonProps: ButtonProps = {

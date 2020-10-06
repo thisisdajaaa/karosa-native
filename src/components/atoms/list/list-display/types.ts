@@ -5,10 +5,12 @@ type Style = {
   textStyle?: StyleProp<TextStyle>;
 };
 
+type Text = {
+  left: string;
+  right: string;
+};
+
 export type Props = {
   style?: Style;
-  title: string;
-  listColor?: string;
-  rightLabel?: string;
-  onPress: () => void;
+  text: Text;
 };
