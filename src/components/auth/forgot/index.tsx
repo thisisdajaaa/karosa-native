@@ -54,7 +54,7 @@ const Forgot: React.FC = () => {
       },
       press: {
         left: () => goBack(),
-        right: () => navigate(routes.HELP),
+        right: () => navigate(routes.AUTH_HELP),
       },
     },
     customStyles: styles.container,

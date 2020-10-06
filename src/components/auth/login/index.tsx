@@ -52,7 +52,7 @@ const Login: React.FC = () => {
       iconName: "arrow-back",
       title: "Login",
       press: {
-        left: () => navigate(routes.MAIN_AUTH),
+        left: () => navigate(routes.AUTH_MAIN),
       },
     },
     customStyles: styles.container,
