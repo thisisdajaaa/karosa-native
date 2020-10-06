@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   },
   logoContainer: {
     position: "absolute",
-    top: 80,
+    top: 40,
     alignSelf: "center",
   },
   txtForgotPass: {

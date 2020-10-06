@@ -1,6 +1,7 @@
 import React from "react";
 import { AntDesign, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
-import { View } from "react-native";
+import { View, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { AppButton } from "../../atoms/button";
 import { ListAvatar } from "../../atoms/list/list-avatar";
@@ -8,10 +9,13 @@ import { Separator } from "../../atoms/separator";
 import { Props as ButtonProps } from "../../atoms/button/types";
 import { Props as ListAvatarProps } from "../../atoms/list/list-avatar/types";
 import { BaseText } from "../../atoms/base-text";
+import routes from "../../../navigators/routes";
 
 import { styles } from "./styles";
 
 const ProfileHeader: React.FC = () => {
+  const { navigate } = useNavigation();
+
   const myShopProps: ButtonProps = {
     onPress: () => console.log("redirect to shop"),
     title: "My Shop",
@@ -46,18 +50,20 @@ const ProfileHeader: React.FC = () => {
   };
   return (
     <View style={styles.headerContainer}>
-      <MaterialIcons
-        name="settings"
+      <TouchableOpacity
         style={styles.settingsIcon}
-        size={24}
-        color="#0AA351"
-      />
-      <MaterialIcons
-        name="chat"
+        onPress={() => navigate(routes.ACCOUNTS_SETTINGS)}
+      >
+        <MaterialIcons name="settings" size={24} color="#0AA351" />
+      </TouchableOpacity>
+
+      <TouchableOpacity
         style={styles.messageIcon}
-        size={24}
-        color="#0AA351"
-      />
+        onPress={() => console.log("gg2")}
+      >
+        <MaterialIcons name="chat" size={24} color="#0AA351" />
+      </TouchableOpacity>
+
       <ListAvatar {...listAvatarProps} />
 
       <Separator />

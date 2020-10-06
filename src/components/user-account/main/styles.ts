@@ -39,11 +39,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignContent: "center",
   },
-  mainContainer: { backgroundColor: "#E5E5E5", flex: 1 },
-  settingsIcon: { position: "absolute", right: 54, top: 7 },
-  messageIcon: { position: "absolute", right: 17, top: 7 },
-  peopleIcon: { position: "absolute", top: 6.8, left: 26 },
-  coinsIcon: { position: "absolute", top: 6.8, left: 11 },
   logo: {
     width: 80,
     height: 80,
@@ -67,4 +62,9 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     marginLeft: 6,
   },
+  mainContainer: { backgroundColor: "#F5F5F5", flex: 1 },
+  settingsIcon: { position: "absolute", right: 54, top: 7 },
+  messageIcon: { position: "absolute", right: 17, top: 7 },
+  peopleIcon: { position: "absolute", top: 6.8, left: 26 },
+  coinsIcon: { position: "absolute", top: 6.8, left: 11 },
 });
