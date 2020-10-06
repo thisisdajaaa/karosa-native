@@ -4,9 +4,9 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    alignContent: "flex-end",
+    alignItems: "center",
     justifyContent: "center",
-    padding: 40,
+    padding: 53,
   },
   footer: {
     position: "absolute",
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   logoContainer: {
     position: "absolute",
-    top: 100,
+    top: 150,
     alignSelf: "center",
   },
 });

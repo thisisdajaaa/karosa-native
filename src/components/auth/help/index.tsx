@@ -1,19 +1,36 @@
 import React from "react";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { View, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-import { ListItem } from "../../atoms/list";
 import { BaseText } from "../../atoms/base-text";
-import { Props as ListItemProps } from "../../atoms/list/types";
+import { Screen } from "../../atoms/base-screen";
+import { ListAvatar } from "../../atoms/list/list-avatar";
 import { Header } from "../../header";
+import { Props as ListAvatarProps } from "../../atoms/list/list-avatar/types";
+import { Props as HeaderProps } from "../../header/types";
 
 import { styles } from "./styles";
 
 const Help: React.FC = () => {
-  const emailProps: ListItemProps = {
+  const { goBack } = useNavigation();
+
+  const headerProps: HeaderProps = {
+    iconName: "close",
+    title: "Help Centre",
+    press: {
+      left: () => goBack(),
+    },
+  };
+
+  const emailProps: ListAvatarProps = {
     title: "karosasupport@gmail.com",
-    subTitle: "Responsds within 1-2 days",
-    customStyles: { marginLeft: 3 },
+    subTitle: "Responds within 1-2 days",
+    style: {
+      containerStyle: {
+        marginLeft: 2,
+      },
+    },
     IconComponent: (
       <Ionicons
         name="md-mail"
@@ -24,10 +41,9 @@ const Help: React.FC = () => {
     ),
   };
 
-  const phoneProps: ListItemProps = {
+  const phoneProps: ListAvatarProps = {
     title: "032 456 3478",
     subTitle: "(Monday - Sunday, 9AM - 6PM)",
-    customStyles: { marginRight: 2 },
     IconComponent: (
       <MaterialCommunityIcons
         name="phone"
@@ -39,24 +55,22 @@ const Help: React.FC = () => {
   };
 
   return (
-    <>
-      <Header iconName={"close"} title={"Help Centre"} />
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image
-            style={styles.logo}
-            source={require("../../../../assets/logo-red.png")}
-          />
-        </View>
-
-        <ListItem {...emailProps} />
-        <ListItem {...phoneProps} />
-
-        <BaseText style={styles.footer}>
-          2020 Karosa. All rights reserved.
-        </BaseText>
+    <Screen customStyles={styles.container}>
+      <Header {...headerProps} />
+      <View style={styles.logoContainer}>
+        <Image
+          style={styles.logo}
+          source={require("../../../../assets/logo-red.png")}
+        />
       </View>
-    </>
+
+      <ListAvatar {...emailProps} />
+      <ListAvatar {...phoneProps} />
+
+      <BaseText style={styles.footer}>
+        2020 Karosa. All rights reserved.
+      </BaseText>
+    </Screen>
   );
 };
 
