@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     padding: 15,
     width: "100%",
     height: 48,
+    marginTop: 12,
   },
   text: {
     color: "#fff",
@@ -19,9 +20,14 @@ export const styles = StyleSheet.create({
     fontStyle: "normal",
     textAlign: "center",
   },
-  icon: {
+  iconLeft: {
     position: "absolute",
     left: "10.86%",
-    top: 13,
+    top: 11,
+  },
+  iconRight: {
+    position: "absolute",
+    right: "10.86%",
+    top: 7,
   },
 });

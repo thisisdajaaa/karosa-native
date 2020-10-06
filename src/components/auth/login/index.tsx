@@ -7,12 +7,14 @@ import { useNavigation } from "@react-navigation/native";
 import { FormInput } from "../../atoms/formik/form-input";
 import { SubmitButton } from "../../atoms/formik/submit-button";
 import { BaseText } from "../../atoms/base-text";
+import { Screen } from "../../atoms/base-screen";
+import { Header } from "../../header";
 import { actions } from "../../../redux/auth";
 import { LoginRequest } from "../../../redux/auth/models";
 import { Props as SubmitButtonProps } from "../../atoms/formik/submit-button/types";
 import { Props as FormInputProps } from "../../atoms/formik/form-input/types";
+import { Props as HeaderProps } from "../../header/types";
 import routes from "../../../navigators/routes";
-import { Header } from "../../header";
 
 import { styles } from "./styles";
 import { validationSchema } from "./validation";
@@ -46,6 +48,14 @@ const Login: React.FC = () => {
     validationSchema,
   });
 
+  const headerProps: HeaderProps = {
+    iconName: "arrow-back",
+    title: "Login",
+    press: {
+      left: () => navigate(routes.MAIN_AUTH),
+    },
+  };
+
   const identifierProps: FormInputProps = {
     name: "identifier",
     placeholder: "Phone number / Username / Email",
@@ -63,8 +73,8 @@ const Login: React.FC = () => {
 
   return (
     <FormikContext.Provider value={formikBag}>
-      <Header iconName={"arrow-back"} title={"Login"} />
-      <View style={styles.container}>
+      <Screen customStyles={styles.container}>
+        <Header {...headerProps} />
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}
@@ -81,7 +91,7 @@ const Login: React.FC = () => {
             I forgot my password
           </BaseText>
         </TouchableOpacity>
-      </View>
+      </Screen>
     </FormikContext.Provider>
   );
 };
