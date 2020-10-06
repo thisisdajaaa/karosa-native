@@ -8,12 +8,11 @@ import { FormInput } from "../../atoms/formik/form-input";
 import { SubmitButton } from "../../atoms/formik/submit-button";
 import { BaseText } from "../../atoms/base-text";
 import { Screen } from "../../atoms/base-screen";
-import { Header } from "../../header";
 import { actions } from "../../../redux/auth";
 import { LoginRequest } from "../../../redux/auth/models";
 import { Props as SubmitButtonProps } from "../../atoms/formik/submit-button/types";
 import { Props as FormInputProps } from "../../atoms/formik/form-input/types";
-import { Props as HeaderProps } from "../../header/types";
+import { Props as ScreenProps } from "../../atoms/base-screen/types";
 import routes from "../../../navigators/routes";
 
 import { styles } from "./styles";
@@ -48,12 +47,15 @@ const Login: React.FC = () => {
     validationSchema,
   });
 
-  const headerProps: HeaderProps = {
-    iconName: "arrow-back",
-    title: "Login",
-    press: {
-      left: () => navigate(routes.MAIN_AUTH),
+  const screenProps: ScreenProps = {
+    header: {
+      iconName: "arrow-back",
+      title: "Login",
+      press: {
+        left: () => navigate(routes.MAIN_AUTH),
+      },
     },
+    customStyles: styles.container,
   };
 
   const identifierProps: FormInputProps = {
@@ -73,8 +75,7 @@ const Login: React.FC = () => {
 
   return (
     <FormikContext.Provider value={formikBag}>
-      <Screen customStyles={styles.container}>
-        <Header {...headerProps} />
+      <Screen {...screenProps}>
         <View style={styles.logoContainer}>
           <Image
             style={styles.logo}

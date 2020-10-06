@@ -3,10 +3,9 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
-    alignItems: "center",
     justifyContent: "center",
-    padding: 53,
+    padding: 20,
+    backgroundColor: "white",
   },
   footer: {
     position: "absolute",
@@ -21,7 +20,7 @@ export const styles = StyleSheet.create({
   },
   logoContainer: {
     position: "absolute",
-    top: 150,
+    top: 110,
     alignSelf: "center",
   },
 });

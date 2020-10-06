@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  mainContainer: { height: 64, backgroundColor: "white" },
   leftContainer: {
     position: "absolute",
     top: 25,

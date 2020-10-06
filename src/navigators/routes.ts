@@ -4,4 +4,5 @@ export default Object.freeze({
   HELP: "Help",
   FORGOT: "Forgot Password",
   ACCOUNTS_MAIN: "User Account Main",
+  ACCOUNTS_SETTINGS: "Account Settings",
 });

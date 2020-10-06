@@ -6,21 +6,23 @@ import { useNavigation } from "@react-navigation/native";
 import { BaseText } from "../../atoms/base-text";
 import { Screen } from "../../atoms/base-screen";
 import { ListAvatar } from "../../atoms/list/list-avatar";
-import { Header } from "../../header";
 import { Props as ListAvatarProps } from "../../atoms/list/list-avatar/types";
-import { Props as HeaderProps } from "../../header/types";
+import { Props as ScreenProps } from "../../atoms/base-screen/types";
 
 import { styles } from "./styles";
 
 const Help: React.FC = () => {
   const { goBack } = useNavigation();
 
-  const headerProps: HeaderProps = {
-    iconName: "close",
-    title: "Help Centre",
-    press: {
-      left: () => goBack(),
+  const screenProps: ScreenProps = {
+    header: {
+      iconName: "close",
+      title: "Help Centre",
+      press: {
+        left: () => goBack(),
+      },
     },
+    customStyles: styles.container,
   };
 
   const emailProps: ListAvatarProps = {
@@ -55,8 +57,7 @@ const Help: React.FC = () => {
   };
 
   return (
-    <Screen customStyles={styles.container}>
-      <Header {...headerProps} />
+    <Screen {...screenProps}>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
@@ -64,8 +65,10 @@ const Help: React.FC = () => {
         />
       </View>
 
-      <ListAvatar {...emailProps} />
-      <ListAvatar {...phoneProps} />
+      <View style={{ alignSelf: "center" }}>
+        <ListAvatar {...emailProps} />
+        <ListAvatar {...phoneProps} />
+      </View>
 
       <BaseText style={styles.footer}>
         2020 Karosa. All rights reserved.

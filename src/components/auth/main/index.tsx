@@ -6,9 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 import { AppButton } from "../../atoms/button";
 import { BaseText } from "../../atoms/base-text";
 import { Screen } from "../../atoms/base-screen";
-import { Header } from "../../header";
 import { Props as ButtonProps } from "../../atoms/button/types";
-import { Props as HeaderProps } from "../../header/types";
+import { Props as ScreenProps } from "../../atoms/base-screen/types";
 import routes from "../../../navigators/routes";
 
 import { styles } from "./styles";
@@ -16,18 +15,20 @@ import { styles } from "./styles";
 const AuthMain: React.FC = () => {
   const { navigate } = useNavigation();
 
-  const headerProps: HeaderProps = {
-    text: {
-      left: "Login",
-      right: "Help",
+  const screenProps: ScreenProps = {
+    header: {
+      text: {
+        left: "Login",
+        right: "Help",
+      },
+      press: {
+        right: () => navigate(routes.HELP),
+      },
     },
-    press: {
-      right: () => navigate(routes.HELP),
-    },
+    customStyles: styles.container,
   };
 
   const fbButtonProps: ButtonProps = {
-    onPress: () => console.log("FB login"),
     title: "Continue with Facebook",
     icon: {
       left: <FontAwesome name="facebook-official" size={24} color="white" />,
@@ -35,10 +36,10 @@ const AuthMain: React.FC = () => {
     containerStyle: {
       backgroundColor: "#3C579B",
     },
+    onPress: () => console.log("FB login"),
   };
 
   const gmailButtonProps: ButtonProps = {
-    onPress: () => console.log("Gmail login"),
     title: "Continue with Google",
     icon: {
       left: <AntDesign name="google" size={24} color="white" />,
@@ -47,20 +48,20 @@ const AuthMain: React.FC = () => {
       backgroundColor: "#DD4C37",
       marginVertical: 17,
     },
+    onPress: () => console.log("Gmail login"),
   };
 
   const signInButtonProps: ButtonProps = {
-    onPress: () => navigate(routes.LOGIN),
     title: "Phone number / Username / Email",
     containerStyle: {
       backgroundColor: "#0AA351",
       marginVertical: 17,
     },
+    onPress: () => navigate(routes.LOGIN),
   };
 
   return (
-    <Screen customStyles={styles.container}>
-      <Header {...headerProps} />
+    <Screen {...screenProps}>
       <View style={styles.logoContainer}>
         <Image
           style={styles.logo}
