@@ -65,7 +65,7 @@ const Help: React.FC = () => {
         />
       </View>
 
-      <View style={{ alignSelf: "center" }}>
+      <View style={styles.avatarContainer}>
         <ListAvatar {...emailProps} />
         <ListAvatar {...phoneProps} />
       </View>

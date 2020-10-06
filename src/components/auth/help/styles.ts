@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "white",
   },
+  avatarContainer: { alignSelf: "center" },
   footer: {
     position: "absolute",
     bottom: 12,
