@@ -18,8 +18,9 @@ export const AppButton: React.FC<Props> = ({
       onPress={onPress}
       disabled={disabled}
     >
-      {icon && <View style={styles.icon}>{icon}</View>}
+      {icon?.left && <View style={styles.iconLeft}>{icon.left}</View>}
       <Text style={[styles.text, textStyle]}>{title}</Text>
+      {icon?.right && <View style={styles.iconRight}>{icon.right}</View>}
     </TouchableOpacity>
   );
 };

@@ -1,9 +1,21 @@
-import { ImageSourcePropType, StyleProp, ViewStyle } from "react-native";
+import {
+  ImageSourcePropType,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from "react-native";
+
+type Style = {
+  containerStyle?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
+};
 
 export type Props = {
   title: string;
-  subTitle?: string;
+  subTitle?: React.ReactElement | string;
   image?: ImageSourcePropType;
   IconComponent?: React.ReactElement;
-  customStyles?: StyleProp<ViewStyle>;
+  style?: Style;
+  chevron?: boolean;
+  rightLabel?: string;
 };

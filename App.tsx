@@ -3,7 +3,8 @@ import { Provider } from "react-redux";
 
 import LoadAssets from "./src/components/load-assets";
 import configureStore from "./src/redux/store";
-import AuthNavigator from "./src/navigators/auth";
+// import AuthNavigator from "./src/navigators/auth";
+import UserAccountMainScreen from "./src/screens/user-account";
 
 const fonts = {
   "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
@@ -17,7 +18,8 @@ export default function App() {
   return (
     <LoadAssets {...{ fonts }}>
       <Provider store={store}>
-        <AuthNavigator />
+        {/* <AuthNavigator /> */}
+        <UserAccountMainScreen />
       </Provider>
     </LoadAssets>
   );

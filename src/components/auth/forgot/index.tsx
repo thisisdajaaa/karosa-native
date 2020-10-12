@@ -2,20 +2,24 @@ import React, { useCallback } from "react";
 import { View } from "react-native";
 import { useDispatch } from "react-redux";
 import { FormikContext, useFormik } from "formik";
+import { useNavigation } from "@react-navigation/native";
 
 import { FormInput } from "../../atoms/formik/form-input";
 import { SubmitButton } from "../../atoms/formik/submit-button";
 import { BaseText } from "../../atoms/base-text";
+import { Header } from "../../header";
 import { actions } from "../../../redux/auth";
 import { ForgotRequest } from "../../../redux/auth/models";
 import { Props as SubmitButtonProps } from "../../atoms/formik/submit-button/types";
 import { Props as FormInputProps } from "../../atoms/formik/form-input/types";
-import { Header } from "../../header";
+import { Props as HeaderProps } from "../../header/types";
+import routes from "../../../navigators/routes";
 
 import { styles } from "./styles";
 import { validationSchema } from "./validation";
 
 const Forgot: React.FC = () => {
+  const { goBack, navigate } = useNavigation();
   const dispatch = useDispatch();
 
   const callForgotApi = useCallback(
@@ -43,6 +47,17 @@ const Forgot: React.FC = () => {
     validationSchema,
   });
 
+  const headerProps: HeaderProps = {
+    iconName: "arrow-back",
+    text: {
+      right: "Help",
+    },
+    press: {
+      left: () => goBack(),
+      right: () => navigate(routes.HELP),
+    },
+  };
+
   const identifierProps: FormInputProps = {
     name: "identifier",
     placeholder: "Email / Phone",
@@ -55,7 +70,7 @@ const Forgot: React.FC = () => {
 
   return (
     <FormikContext.Provider value={formikBag}>
-      <Header iconName={"arrow-back"} txtRight={"Help"} route={"Help"} />
+      <Header {...headerProps} />
       <View style={styles.container}>
         <BaseText customStyles={styles.txtForgotPass}>
           Forgot Password ?

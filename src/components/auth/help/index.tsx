@@ -1,19 +1,35 @@
 import React from "react";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { View, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { ListItem } from "../../atoms/list";
 import { BaseText } from "../../atoms/base-text";
-import { Props as ListItemProps } from "../../atoms/list/types";
 import { Header } from "../../header";
+import { Props as ListItemProps } from "../../atoms/list/types";
+import { Props as HeaderProps } from "../../header/types";
 
 import { styles } from "./styles";
 
 const Help: React.FC = () => {
+  const { goBack } = useNavigation();
+
+  const headerProps: HeaderProps = {
+    iconName: "close",
+    title: "Help Centre",
+    press: {
+      left: () => goBack(),
+    },
+  };
+
   const emailProps: ListItemProps = {
     title: "karosasupport@gmail.com",
     subTitle: "Responsds within 1-2 days",
-    customStyles: { marginLeft: 3 },
+    style: {
+      containerStyle: {
+        marginLeft: 2,
+      },
+    },
     IconComponent: (
       <Ionicons
         name="md-mail"
@@ -27,7 +43,6 @@ const Help: React.FC = () => {
   const phoneProps: ListItemProps = {
     title: "032 456 3478",
     subTitle: "(Monday - Sunday, 9AM - 6PM)",
-    customStyles: { marginRight: 2 },
     IconComponent: (
       <MaterialCommunityIcons
         name="phone"
@@ -39,8 +54,8 @@ const Help: React.FC = () => {
   };
 
   return (
-    <>
-      <Header iconName={"close"} title={"Help Centre"} />
+    <React.Fragment>
+      <Header {...headerProps} />
       <View style={styles.container}>
         <View style={styles.logoContainer}>
           <Image
@@ -56,7 +71,7 @@ const Help: React.FC = () => {
           2020 Karosa. All rights reserved.
         </BaseText>
       </View>
-    </>
+    </React.Fragment>
   );
 };
 

@@ -10,13 +10,21 @@ export const styles = StyleSheet.create({
   },
   detailsContainer: {
     flex: 1,
-    marginLeft: 10,
+    marginLeft: 15,
     justifyContent: "center",
   },
+  imageContaienr: {
+    shadowColor: "rgba(0, 0, 0, 0.25)",
+    shadowOffset: { height: 5, width: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
+    borderRadius: 100,
+    marginBottom: 9,
+  },
   image: {
-    width: 70,
-    height: 70,
-    borderRadius: 35,
+    width: 80,
+    height: 80,
+    borderRadius: 100,
   },
   subTitle: {
     fontWeight: "300",
@@ -24,9 +32,16 @@ export const styles = StyleSheet.create({
     lineHeight: 19,
   },
   title: {
-    fontWeight: "400",
+    fontWeight: "500",
     fontSize: 16,
     lineHeight: 19,
     fontFamily: "SFProText-Regular",
+  },
+  rightLabel: {
+    fontWeight: "300",
+    fontSize: 12,
+    lineHeight: 14,
+    textAlign: "right",
+    color: "#4F4F4F",
   },
 });

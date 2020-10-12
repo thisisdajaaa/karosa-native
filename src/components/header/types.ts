@@ -1,7 +1,16 @@
+type Press = {
+  left?: VoidFunction;
+  right?: VoidFunction;
+};
+
+type Text = {
+  left?: string;
+  right?: string;
+};
+
 export type Props = {
   title?: string;
   iconName?: string;
-  route?: string;
-  txtLeft?: string;
-  txtRight?: string;
+  text?: Text;
+  press?: Press;
 };
