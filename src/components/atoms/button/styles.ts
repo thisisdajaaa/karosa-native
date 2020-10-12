@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 3,
     alignItems: "center",
+    flexDirection: "row",
     padding: 15,
     width: "100%",
     height: 48,
@@ -21,6 +22,6 @@ export const styles = StyleSheet.create({
   icon: {
     position: "absolute",
     left: "10.86%",
-    top: "56.67%",
+    top: 13,
   },
 });

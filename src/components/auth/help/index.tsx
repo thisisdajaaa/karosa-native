@@ -13,9 +13,7 @@ const Help: React.FC = () => {
   const emailProps: ListItemProps = {
     title: "karosasupport@gmail.com",
     subTitle: "Responsds within 1-2 days",
-    customStyles: {
-      alignSelf: "center",
-    },
+    customStyles: { marginLeft: 3 },
     IconComponent: (
       <Ionicons
         name="md-mail"
@@ -29,6 +27,7 @@ const Help: React.FC = () => {
   const phoneProps: ListItemProps = {
     title: "032 456 3478",
     subTitle: "(Monday - Sunday, 9AM - 6PM)",
+    customStyles: { marginRight: 2 },
     IconComponent: (
       <MaterialCommunityIcons
         name="phone"
