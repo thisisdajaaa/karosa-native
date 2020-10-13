@@ -1,5 +1,4 @@
 import React, { useCallback } from "react";
-import { View } from "react-native";
 import { useDispatch } from "react-redux";
 import { FormikContext, useFormik } from "formik";
 import { useNavigation } from "@react-navigation/native";
@@ -7,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { FormInput } from "../../atoms/formik/form-input";
 import { SubmitButton } from "../../atoms/formik/submit-button";
 import { BaseText } from "../../atoms/base-text";
+import { Screen } from "../../atoms/base-screen";
 import { Header } from "../../header";
 import { actions } from "../../../redux/auth";
 import { ForgotRequest } from "../../../redux/auth/models";
@@ -70,8 +70,8 @@ const Forgot: React.FC = () => {
 
   return (
     <FormikContext.Provider value={formikBag}>
-      <Header {...headerProps} />
-      <View style={styles.container}>
+      <Screen customStyles={styles.container}>
+        <Header {...headerProps} />
         <BaseText customStyles={styles.txtForgotPass}>
           Forgot Password ?
         </BaseText>
@@ -81,7 +81,7 @@ const Forgot: React.FC = () => {
 
         <FormInput {...identifierProps} />
         <SubmitButton {...submitButtonProps} />
-      </View>
+      </Screen>
     </FormikContext.Provider>
   );
 };

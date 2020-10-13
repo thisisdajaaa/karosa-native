@@ -12,21 +12,32 @@ export const ListItem: React.FC<Props> = ({
   subTitle,
   image,
   IconComponent,
+  ButtonComponent,
   style,
   chevron,
   rightLabel,
+  listColor,
 }) => {
   return (
     <View style={[styles.container, style?.containerStyle]}>
       {IconComponent}
       {image && (
-        <View style={styles.imageContaienr}>
+        <View style={styles.imageContainer}>
           <Image style={styles.image} source={image} />
         </View>
       )}
+      {listColor && (
+        <MaterialCommunityIcons
+          style={styles.listColor}
+          name="checkbox-blank"
+          color={listColor}
+        />
+      )}
       <View style={styles.detailsContainer}>
         <BaseText
-          customStyles={[styles.title, style?.textStyle]}
+          customStyles={
+            listColor ? styles.hasListColor : [styles.title, style?.textStyle]
+          }
           numberOfLines={1}
         >
           {title}
@@ -36,6 +47,7 @@ export const ListItem: React.FC<Props> = ({
             {subTitle}
           </BaseText>
         )}
+        {ButtonComponent && <View>{ButtonComponent}</View>}
       </View>
 
       <React.Fragment>

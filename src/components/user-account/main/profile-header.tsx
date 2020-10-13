@@ -4,6 +4,7 @@ import { View } from "react-native";
 
 import { AppButton } from "../../atoms/button";
 import { ListItem } from "../../atoms/list";
+import { Separator } from "../../atoms/separator";
 import { Props as ButtonProps } from "../../atoms/button/types";
 import { Props as ListItemProps } from "../../atoms/list/types";
 import { BaseText } from "../../atoms/base-text";
@@ -23,16 +24,23 @@ const ProfileHeader: React.FC = () => {
       height: 10,
       width: 88,
     },
-    textStyle: { fontSize: 11, lineHeight: 14, marginRight: 23 },
+    textStyle: {
+      fontSize: 11,
+      lineHeight: 14,
+      alignSelf: "center",
+      position: "absolute",
+      left: 10,
+    },
   };
 
   const listItemProps: ListItemProps = {
     image: require("../../../../assets/hinata.png"),
     title: "Hinata Shoyo",
-    subTitle: <AppButton {...myShopProps} />,
+    ButtonComponent: <AppButton {...myShopProps} />,
     style: {
       containerStyle: {
-        marginLeft: 13,
+        marginLeft: 33,
+        marginBottom: 7,
       },
     },
   };
@@ -51,10 +59,13 @@ const ProfileHeader: React.FC = () => {
         color="#0AA351"
       />
       <ListItem {...listItemProps} />
+
+      <Separator />
+
       <View style={styles.infoContainer}>
         <View style={styles.firstInfoContainer}>
           <MaterialIcons
-            style={{ alignSelf: "center" }}
+            style={styles.peopleIcon}
             name="people"
             size={21}
             color="#0AA351"
@@ -66,7 +77,7 @@ const ProfileHeader: React.FC = () => {
           <FontAwesome5
             name="coins"
             size={21}
-            style={{ alignSelf: "center" }}
+            style={styles.coinsIcon}
             color="#0AA351"
           />
           <BaseText customStyles={styles.txtInfo}>Karosa Coins</BaseText>

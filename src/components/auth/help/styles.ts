@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   logoContainer: {
     position: "absolute",
-    top: 100,
+    top: 150,
     alignSelf: "center",
   },
 });

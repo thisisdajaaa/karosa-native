@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import { AppButton } from "../../atoms/button";
 import { BaseText } from "../../atoms/base-text";
+import { Screen } from "../../atoms/base-screen";
 import { Header } from "../../header";
 import { Props as ButtonProps } from "../../atoms/button/types";
 import { Props as HeaderProps } from "../../header/types";
@@ -58,35 +59,33 @@ const AuthMain: React.FC = () => {
   };
 
   return (
-    <>
+    <Screen customStyles={styles.container}>
       <Header {...headerProps} />
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image
-            style={styles.logo}
-            source={require("../../../../assets/logo-red.png")}
-          />
-        </View>
-
-        <AppButton {...fbButtonProps} />
-        <AppButton {...gmailButtonProps} />
-
-        <View style={styles.hrContainer}>
-          <View style={styles.hrLine} />
-          <View>
-            <BaseText customStyles={styles.txtOr}>or</BaseText>
-          </View>
-          <View style={styles.hrLine} />
-        </View>
-
-        <AppButton {...signInButtonProps} />
-
-        <BaseText customStyles={styles.noAccContainer}>
-          Don't have an account?
-          <BaseText customStyles={styles.txtSignUp}> Sign up</BaseText>
-        </BaseText>
+      <View style={styles.logoContainer}>
+        <Image
+          style={styles.logo}
+          source={require("../../../../assets/logo-red.png")}
+        />
       </View>
-    </>
+
+      <AppButton {...fbButtonProps} />
+      <AppButton {...gmailButtonProps} />
+
+      <View style={styles.hrContainer}>
+        <View style={styles.hrLine} />
+        <View>
+          <BaseText customStyles={styles.txtOr}>or</BaseText>
+        </View>
+        <View style={styles.hrLine} />
+      </View>
+
+      <AppButton {...signInButtonProps} />
+
+      <BaseText customStyles={styles.noAccContainer}>
+        Don't have an account?
+        <BaseText customStyles={styles.txtSignUp}> Sign up</BaseText>
+      </BaseText>
+    </Screen>
   );
 };
 

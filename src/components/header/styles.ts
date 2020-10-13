@@ -6,13 +6,6 @@ export const styles = StyleSheet.create({
     top: 25,
     left: 16,
   },
-  mainContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "white",
-    padding: 25,
-  },
   rightContainer: {
     width: 50,
     height: 50,
@@ -25,8 +18,10 @@ export const styles = StyleSheet.create({
     fontFamily: "SFProText-Regular",
     fontSize: 16,
     lineHeight: 19,
-    justifyContent: "center",
-    alignItems: "center",
+    alignSelf: "center",
+    position: "absolute",
+    top: 27,
+    marginRight: 13,
   },
   txtRight: {
     color: "#0AA351",

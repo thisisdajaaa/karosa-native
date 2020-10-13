@@ -1,6 +1,6 @@
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
-import { TouchableOpacity, View } from "react-native";
+import { TouchableOpacity } from "react-native";
 
 import { BaseText } from "../atoms/base-text";
 
@@ -9,7 +9,7 @@ import { Props } from "./types";
 
 export const Header: React.FC<Props> = ({ title, iconName, text, press }) => {
   return (
-    <View style={styles.mainContainer}>
+    <React.Fragment>
       {text?.left && (
         <BaseText customStyles={styles.txtLeft}>{text.left}</BaseText>
       )}
@@ -24,6 +24,6 @@ export const Header: React.FC<Props> = ({ title, iconName, text, press }) => {
           <BaseText customStyles={styles.txtRight}>{text.right}</BaseText>
         </TouchableOpacity>
       )}
-    </View>
+    </React.Fragment>
   );
 };

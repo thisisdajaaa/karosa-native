@@ -5,7 +5,10 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    padding: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 1,
+    paddingRight: 10,
     backgroundColor: "#fff",
   },
   detailsContainer: {
@@ -13,7 +16,20 @@ export const styles = StyleSheet.create({
     marginLeft: 15,
     justifyContent: "center",
   },
-  imageContaienr: {
+  hasListColor: {
+    position: "absolute",
+    left: 30,
+    fontWeight: "500",
+    fontSize: 16,
+    lineHeight: 19,
+    fontFamily: "SFProText-Regular",
+  },
+  listColor: {
+    position: "absolute",
+    left: 12,
+    fontSize: 30,
+  },
+  imageContainer: {
     shadowColor: "rgba(0, 0, 0, 0.25)",
     shadowOffset: { height: 5, width: 1 },
     shadowOpacity: 0.8,
@@ -26,11 +42,7 @@ export const styles = StyleSheet.create({
     height: 80,
     borderRadius: 100,
   },
-  subTitle: {
-    fontWeight: "300",
-    fontSize: 16,
-    lineHeight: 19,
-  },
+  subTitle: {},
   title: {
     fontWeight: "500",
     fontSize: 16,

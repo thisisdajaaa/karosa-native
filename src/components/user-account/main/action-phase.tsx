@@ -9,6 +9,7 @@ import {
 
 import { AccountActions } from "../../atoms/account-actions";
 import { ListItem } from "../../atoms/list";
+import { Separator } from "../../atoms/separator";
 import { Props as ListItemProps } from "../../atoms/list/types";
 import { Props as AccountActionProps } from "../../atoms/account-actions/types";
 
@@ -26,14 +27,6 @@ const ActionPhase: React.FC = () => {
         lineHeight: 28,
         fontFamily: "SFProText-Bold",
       },
-      containerStyle: {
-        paddingTop: 10,
-        paddingLeft: 3,
-        paddingRight: 12,
-        borderBottomWidth: 1,
-        borderStyle: "solid",
-        borderColor: "#ECECEC",
-      },
     },
   };
 
@@ -43,7 +36,13 @@ const ActionPhase: React.FC = () => {
         icon: (
           <EvilIcons
             name="credit-card"
-            style={{ fontSize: 77, fontWeight: "100" }}
+            style={{
+              fontSize: 80,
+              fontWeight: "100",
+              alignSelf: "center",
+              position: "absolute",
+              top: 9,
+            }}
             color="#C4C4C4"
           />
         ),
@@ -94,6 +93,7 @@ const ActionPhase: React.FC = () => {
   return (
     <View style={styles.actionPhaseContainer}>
       <ListItem {...phaseProps} />
+      <Separator />
 
       <AccountActions {...accountActionsProps} />
     </View>

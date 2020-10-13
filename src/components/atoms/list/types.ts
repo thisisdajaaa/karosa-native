@@ -12,10 +12,12 @@ type Style = {
 
 export type Props = {
   title: string;
-  subTitle?: React.ReactElement | string;
+  subTitle?: string;
   image?: ImageSourcePropType;
+  ButtonComponent?: React.ReactElement;
   IconComponent?: React.ReactElement;
   style?: Style;
+  listColor?: string;
   chevron?: boolean;
   rightLabel?: string;
 };

@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import { ListItem } from "../../atoms/list";
 import { BaseText } from "../../atoms/base-text";
+import { Screen } from "../../atoms/base-screen";
 import { Header } from "../../header";
 import { Props as ListItemProps } from "../../atoms/list/types";
 import { Props as HeaderProps } from "../../header/types";
@@ -54,24 +55,22 @@ const Help: React.FC = () => {
   };
 
   return (
-    <React.Fragment>
+    <Screen customStyles={styles.container}>
       <Header {...headerProps} />
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image
-            style={styles.logo}
-            source={require("../../../../assets/logo-red.png")}
-          />
-        </View>
-
-        <ListItem {...emailProps} />
-        <ListItem {...phoneProps} />
-
-        <BaseText style={styles.footer}>
-          2020 Karosa. All rights reserved.
-        </BaseText>
+      <View style={styles.logoContainer}>
+        <Image
+          style={styles.logo}
+          source={require("../../../../assets/logo-red.png")}
+        />
       </View>
-    </React.Fragment>
+
+      <ListItem {...emailProps} />
+      <ListItem {...phoneProps} />
+
+      <BaseText style={styles.footer}>
+        2020 Karosa. All rights reserved.
+      </BaseText>
+    </Screen>
   );
 };
 

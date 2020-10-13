@@ -13,11 +13,13 @@ export const styles = StyleSheet.create({
   },
   infoContainer: {
     height: 40,
-    borderTopWidth: 1,
-    borderStyle: "solid",
-    borderTopColor: "#ECECEC",
+
     flexDirection: "row",
     justifyContent: "center",
+  },
+  choicesContainer: {
+    height: 180,
+    backgroundColor: "white",
   },
   firstInfoContainer: {
     width: 50,
@@ -39,9 +41,10 @@ export const styles = StyleSheet.create({
     alignContent: "center",
   },
   mainContainer: { backgroundColor: "#E5E5E5", flex: 1 },
-  settingsIcon: { position: "absolute", right: 64, top: 15 },
-  messageIcon: { position: "absolute", right: 24, top: 15 },
-
+  settingsIcon: { position: "absolute", right: 64, top: 7 },
+  messageIcon: { position: "absolute", right: 24, top: 7 },
+  peopleIcon: { position: "absolute", top: 6.8, left: 26 },
+  coinsIcon: { position: "absolute", top: 6.8, left: 11 },
   logo: {
     width: 80,
     height: 80,
