@@ -1,7 +1,7 @@
 import React from "react";
 import { SafeAreaView, View } from "react-native";
 
-import { Header } from "../../header";
+import { Header } from "../header";
 
 import { Props } from "./types";
 import { styles } from "./styles";
