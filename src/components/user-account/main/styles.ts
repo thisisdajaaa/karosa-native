@@ -13,7 +13,6 @@ export const styles = StyleSheet.create({
   },
   infoContainer: {
     height: 40,
-
     flexDirection: "row",
     justifyContent: "center",
   },
