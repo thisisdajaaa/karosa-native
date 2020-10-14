@@ -59,7 +59,7 @@ const AccountSettings: React.FC = () => {
     title: "Logout",
     containerStyle: {
       backgroundColor: "#ECECEC",
-      minWidth: 288,
+      minWidth: 330,
       width: "100%",
     },
     textStyle: {
