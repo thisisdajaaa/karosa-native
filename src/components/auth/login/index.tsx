@@ -87,7 +87,7 @@ const Login: React.FC = () => {
         <FormInput {...passwordProps} />
         <SubmitButton {...loginButtonProps} />
 
-        <TouchableOpacity onPress={() => navigate(routes.FORGOT)}>
+        <TouchableOpacity onPress={() => navigate(routes.AUTH_FORGOT)}>
           <BaseText customStyles={styles.txtForgotPass}>
             I forgot my password
           </BaseText>
