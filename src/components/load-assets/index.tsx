@@ -3,8 +3,7 @@ import { AppLoading } from "expo";
 import { InitialState, NavigationContainer } from "@react-navigation/native";
 import AsyncStorage from "@react-native-community/async-storage";
 import Constants from "expo-constants";
-
-import { useLoadAssets } from "../../hooks/use-load-assets";
+import { useLoadAssets } from "@app/hooks";
 
 import { Props } from "./types";
 

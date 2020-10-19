@@ -1,10 +1,10 @@
 import React from "react";
 import { Provider } from "react-redux";
 
-import LoadAssets from "./src/components/load-assets";
-import MainNavigator from "./src/navigators/main-tabs";
-// import AuthNavigator from "./src/navigators/auth";
-import configureStore from "./src/redux/store";
+import LoadAssets from "@app/components/load-assets";
+import BaseNavigator from "@app/navigators/index";
+// import AuthNavigator from "@app/navigators/stack-navigator/auth";
+import configureStore from "@app/redux/store";
 
 const fonts = {
   "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
@@ -16,11 +16,11 @@ export const store = configureStore({});
 
 export default function App() {
   return (
-    <LoadAssets {...{ fonts }}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <LoadAssets {...{ fonts }}>
         {/* <AuthNavigator /> */}
-        <MainNavigator />
-      </Provider>
-    </LoadAssets>
+        <BaseNavigator />
+      </LoadAssets>
+    </Provider>
   );
 }

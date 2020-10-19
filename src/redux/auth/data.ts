@@ -6,7 +6,6 @@ export const initAuthState: AuthState = {
   loginResponse: {
     response: {
       id: "",
-      token: "",
       email: "",
       fullName: "",
       phoneNo: "",

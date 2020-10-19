@@ -1,17 +1,19 @@
 import { combineReducers } from "redux";
 import produce, { Draft } from "immer";
-import { ActionType, getType } from "typesafe-actions";
+import { getType } from "typesafe-actions";
+import { ActionType } from "typesafe-actions/dist/type-helpers";
 
-import { ResponseState } from "../models";
+import { ResponseState } from "../api-models/common";
 
 import * as actions from "./actions";
 import * as models from "./models";
 import * as data from "./data";
 
-type Actions = ActionType<typeof actions>;
-
 export const loginResponse = produce(
-  (draft: Draft<ResponseState<models.LoginResponse>>, action: Actions) => {
+  (
+    draft: Draft<ResponseState<models.LoginResponse>>,
+    action: ActionType<typeof actions>
+  ) => {
     switch (action.type) {
       case getType(actions.callLoginApi.request):
         draft.response = data.initAuthState.loginResponse.response;
@@ -33,7 +35,10 @@ export const loginResponse = produce(
 );
 
 export const forgotResponse = produce(
-  (draft: Draft<ResponseState<models.ForgotResponse>>, action: Actions) => {
+  (
+    draft: Draft<ResponseState<models.ForgotResponse>>,
+    action: ActionType<typeof actions>
+  ) => {
     switch (action.type) {
       case getType(actions.callForgotApi.request):
         draft.response = data.initAuthState.forgotResponse.response;
@@ -54,7 +59,9 @@ export const forgotResponse = produce(
   data.initAuthState.forgotResponse
 );
 
-export default combineReducers({
-  login: loginResponse,
-  forgotPassword: forgotResponse,
+const reducer = combineReducers({
+  loginResponse,
+  forgotResponse,
 });
+
+export default reducer;

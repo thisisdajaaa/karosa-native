@@ -18,6 +18,17 @@
     "noUnusedParameters": true,
     "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"],
+      "@app/components/*": ["src/components/*"],
+      "@app/config/*": ["src/config/*"],
+      "@app/hooks": ["src/hooks"],
+      "@app/navigators/*": ["src/navigators/*"],
+      "@app/redux/*": ["src/redux/*"],
+      "@app/screens/*": ["src/screens/*"],
+      "@app/styles": ["src/styles"]
+    }
   }
 }

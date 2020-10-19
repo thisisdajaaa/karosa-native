@@ -1,25 +1,25 @@
 import { SagaIterator } from "@redux-saga/core";
+import { AxiosResponse } from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { getType } from "typesafe-actions";
 
-import { Gender } from "../api-models/login";
+import { baseAxios } from "../../config/axios/instance";
+import apiEndpoints from "../api-endpoints.json";
 
 import * as actions from "./actions";
+import * as models from "./models";
 
-export function* callLoginApi(): SagaIterator {
+export function* callLoginApi(
+  action: ReturnType<typeof actions.callLoginApi.request>
+): SagaIterator {
   try {
-    const mockRes = {
-      id: "1",
-      token: "1231231231",
-      email: "adannanthony@gmail.com",
-      fullName: "Dann Anthony J. Astillero",
-      phoneNo: "12321312",
-      username: "daja",
-      gender: Gender.Male,
-      avatar: {},
-    };
+    const response: AxiosResponse<models.LoginResponse> = yield call(
+      baseAxios.post,
+      apiEndpoints.login,
+      action.payload
+    );
 
-    yield put(actions.callLoginApi.success(mockRes));
+    yield put(actions.callLoginApi.success(response.data));
   } catch (error) {
     yield put(actions.callLoginApi.failure(error));
   }

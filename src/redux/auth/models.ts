@@ -1,6 +1,6 @@
 import * as login from "../api-models/login";
 import * as forgot from "../api-models/forgot";
-import { ResponseState } from "../models";
+import { ResponseState } from "../api-models/common";
 
 export type LoginRequest = login.Request;
 export type LoginResponse = login.Response;

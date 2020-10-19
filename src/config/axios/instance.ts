@@ -1,9 +1,7 @@
-import { AxiosInstance } from "axios";
+import axios, { AxiosInstance } from "axios";
 
-import AxiosWrapper from "./wrapper";
+const baseAxios: AxiosInstance = axios.create({
+  baseURL: "http://localhost:4040",
+});
 
-const AxiosWrapperInstance = new AxiosWrapper("url");
-
-const axios: AxiosInstance = AxiosWrapperInstance.client;
-
-export { axios };
+export { baseAxios };

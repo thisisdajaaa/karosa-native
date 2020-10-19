@@ -20,7 +20,7 @@ export type Response = {
   fullName?: string;
   phoneNo?: string;
   email?: string;
-  token?: string;
-  gender: Gender;
-  avatar: Avatar;
+  gender?: Gender;
+  avatar?: Avatar;
+  shop?: any;
 };

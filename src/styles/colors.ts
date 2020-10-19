@@ -1,0 +1,26 @@
+const palette = {
+  primary: "#0AA351",
+  black: "#000",
+  white: "#fff",
+  green5: "#64C465",
+  green10: "#31A14C",
+  orange: "#F09A36",
+  gold: "#F4C725",
+  purple: "#5756CE",
+  blue5: "#3478F6",
+  blue10: "#3C579B",
+  blue15: "#1DA1F2",
+  red5: "#EB4837",
+  red10: "#DD4C37",
+  red15: "#E81F1F",
+  dark5: "#C4C4C4",
+  dark10: "#BDBDBD",
+  dark15: "#6e6969",
+  dark20: "#1C1C1C",
+  dark30: "#4F4F4F",
+  dark25: "#0c0c0c",
+  light5: "#F5F5F5",
+  light10: "#ECECEC",
+};
+
+export default palette;
