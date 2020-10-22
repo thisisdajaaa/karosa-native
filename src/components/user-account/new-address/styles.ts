@@ -15,9 +15,9 @@ export const newAddressStyle = StyleSheet.create({
   },
   TextStyle: {
     flexDirection: "column",
-    paddingTop: 10,
+    paddingTop: 5,
     position: "absolute",
-    left: 18,
+    left: 17,
     alignSelf: "center",
     fontSize: 17,
     fontWeight: 400,
@@ -27,10 +27,23 @@ export const newAddressStyle = StyleSheet.create({
     justifyContent: "flex-start",
     padding: 15,
   },
-  checkbox: {
-    alignSelf: "center",
+  textContainer: {
+    flexWrap: "wrap",
+    paddingLeft: 16,
   },
-  ButtonParent: {
+  longText: {
+    paddingTop: 30,
+    flexDirection: "column",
+    alignContent: "center",
+    color: "#BDBDBD",
+    fontSize: 14,
+  },
+  buttonParent: {
     margin: 16,
+  },
+  setDetailStyle: {
+    flexDirection: "column-reverse",
+    color: "#0AA351",
+    fontSize: 16,
   },
 });

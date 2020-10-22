@@ -8,13 +8,34 @@ import { useNavigation } from "@react-navigation/native";
 import { Props as MultiListProps } from "../../atoms/multi-list/types";
 import { View, CheckBox } from "react-native";
 import { MultiList } from "../../atoms/multi-list";
-
+import { FormInput2, FormInput } from "../../atoms/formik/form-input";
+import { Props as FormInputProps } from "../../atoms/formik/form-input/types";
 import { newAddressStyle } from "./styles";
 import { BaseText } from "../../atoms/base-text";
 
 const NewAddress: React.FC = () => {
   const { goBack } = useNavigation();
   const [isSelected, setSelection] = useState(false);
+  const fullNameProps: FormInputProps = {
+    name: "Full Name",
+    placeholder: "Set Full Name",
+  };
+  const phoneProps: FormInputProps = {
+    name: "Phone Number",
+    placeholder: "Set Phone Number",
+  };
+  const regionProps: FormInputProps = {
+    name: "Region",
+    placeholder: "Choose Region",
+  };
+  const provinceProps: FormInputProps = {
+    name: "Province",
+    placeholder: "Choose Province",
+  };
+  const brgyProps: FormInputProps = {
+    name: "Barangay",
+    placeholder: "Choose Barangay",
+  };
 
   const logoutButtonProps: ButtonProps = {
     onPress: () => console.log("Submit"),
@@ -37,174 +58,37 @@ const NewAddress: React.FC = () => {
     },
   };
 
-  const newAddressList: MultiListProps = {
-    multiAction: [
-      {
-        text: {
-          left: "Full Name",
-          right: "Set Full Name",
-        },
-        action: () => console.log("set full name"),
-        style: {
-          textStyle: {
-            right: {
-              color: "#BDBDBD",
-              fontSize: 16,
-            },
-            left: {
-              color: "#1C1C1C",
-              position: "absolute",
-              left: 5,
-              fontSize: 16,
-            },
-          },
-        },
-        hasSeparator: true,
-      },
-      {
-        text: {
-          left: "Phone Number",
-          right: "Set Phone Number",
-        },
-        action: () => console.log("set phone number"),
-        style: {
-          textStyle: {
-            right: {
-              color: "#BDBDBD",
-              fontSize: 16,
-            },
-            left: {
-              color: "#1C1C1C",
-              position: "absolute",
-              left: 5,
-              fontSize: 16,
-            },
-          },
-        },
-        hasSeparator: true,
-      },
-      {
-        text: {
-          left: "Region",
-          right: "Choose Region",
-        },
-        action: () => console.log("choose region"),
-        style: {
-          textStyle: {
-            right: {
-              color: "#BDBDBD",
-              fontSize: 16,
-            },
-            left: {
-              color: "#1C1C1C",
-              position: "absolute",
-              left: 5,
-              fontSize: 16,
-            },
-          },
-        },
-        hasSeparator: true,
-      },
-      {
-        text: {
-          left: "Province",
-          right: "Choose Province",
-        },
-        action: () => console.log("choose province"),
-        style: {
-          textStyle: {
-            right: {
-              color: "#BDBDBD",
-              fontSize: 16,
-            },
-            left: {
-              color: "#1C1C1C",
-              position: "absolute",
-              left: 5,
-              fontSize: 16,
-            },
-          },
-        },
-        hasSeparator: true,
-      },
-      {
-        text: {
-          left: "Barangay",
-          right: "Choose Barangay",
-        },
-        action: () => console.log("Choose Barangay"),
-        style: {
-          textStyle: {
-            right: {
-              color: "#BDBDBD",
-              fontSize: 16,
-            },
-            left: {
-              color: "#1C1C1C",
-              position: "absolute",
-              left: 5,
-              fontSize: 16,
-            },
-          },
-        },
-        hasSeparator: true,
-      },
-      {
-        text: {
-          left: "Detailed Address",
-          right: "Unit Number, House Number, Building,Street Name",
-        },
-        style: {
-          containerStyle: {
-            paddingBottom: 40,
-          },
-          textStyle: {
-            right: {
-              color: "#BDBDBD",
-              position: "absolute",
-              paddingTop: 55,
-              paddingLeft: 20,
-              fontSize: 14,
-              textAlign: "left",
-              justifyContent: "flex-end",
-              paddingRight: 70,
-            },
-            left: {
-              flexWrap: "wrap",
-              color: "#1C1C1C",
-              left: 20,
-              marginLeft: 4,
-            },
-          },
-        },
-      },
-      {
-        text: {
-          left: "",
-          right: "Set Detailed Address",
-        },
-        action: () => console.log("set detailed address"),
-        style: {
-          containerStyle: {
-            height: 25,
-          },
-          textStyle: {
-            right: {
-              color: "#0AA351",
-              fontSize: 16,
-              paddingBottom: 15,
-            },
-          },
-        },
-        hasSeparator: true,
-      },
-    ],
-  };
-
   return (
     <Screen {...headerProps}>
-      <View style={{ marginTop: 16 }}>
-        <MultiList {...newAddressList} />
+      <View style={{ marginTop: 10 }}>
+        <FormInput2 {...fullNameProps} />
+        <FormInput2 {...phoneProps} />
+        <FormInput2 {...regionProps} />
+        <FormInput2 {...provinceProps} />
+        <FormInput2 {...brgyProps} />
+
+        <View
+          style={[
+            newAddressStyle.newContainer,
+            { height: 95, paddingRight: 10, paddingBottom: 10 },
+          ]}
+        >
+          <BaseText style={newAddressStyle.TextStyle}>
+            Detailed Address
+          </BaseText>
+
+          <View style={newAddressStyle.textContainer}>
+            <BaseText style={newAddressStyle.longText}>
+              Unit Number, House Number{"\n"}Building, Street Name
+            </BaseText>
+          </View>
+          <View style={{ alignSelf: "flex-end" }}>
+            <BaseText style={newAddressStyle.setDetailStyle}>
+              Set Detailed Address
+            </BaseText>
+          </View>
+        </View>
+
         <View style={newAddressStyle.newContainer}>
           <BaseText style={newAddressStyle.TextStyle}>
             Set as default address
@@ -216,7 +100,7 @@ const NewAddress: React.FC = () => {
               style={newAddressStyle.checkbox}
             />
           </View>
-          <View style={newAddressStyle.ButtonParent}>
+          <View style={newAddressStyle.buttonParent}>
             <AppButton {...logoutButtonProps} />
           </View>
         </View>
