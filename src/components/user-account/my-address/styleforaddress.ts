@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const styleforaddress = StyleSheet.create({
   adressContainer: {
-    backgroundColor: "yellow",
+    backgroundColor: "white",
     marginTop: 16,
     width: "100%",
     flexDirection: "column",
@@ -35,11 +35,15 @@ export const styleforaddress = StyleSheet.create({
     backgroundColor: "white",
     padding: 16,
     flexDirection: "row",
-    alignContent: "space-between",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   NewAddStyle: {
     fontWeight: "400",
     fontSize: 16,
     color: "#0AA351",
+  },
+  forIcon: {
+    marginVertical: 5,
   },
 });

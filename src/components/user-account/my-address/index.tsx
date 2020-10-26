@@ -7,10 +7,12 @@ import { Image, Text, View } from "react-native";
 import { styleforaddress } from "./styleforaddress";
 import { AddressProps } from "../../atoms/list/list-display/types";
 import { AddressList } from "../../atoms/list/list-display";
+import { BaseText } from "../../atoms/base-text";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const MyAddress: React.FC = () => {
   const { goBack } = useNavigation();
-  const defautAddress: AddressProps = {
+  const defaultAddress: AddressProps = {
     address: {
       name: "Bryan Alipar",
       default: true,
@@ -35,7 +37,19 @@ const MyAddress: React.FC = () => {
   return (
     <Screen {...headerProps}>
       <View style={styleforaddress.adressContainer}>
-        <AddressList {...defautAddress} />
+        <AddressList {...defaultAddress} />
+      </View>
+      <View style={styleforaddress.touchable}>
+        <BaseText style={styleforaddress.NewAddStyle}>Add New Address</BaseText>
+        <View style={styleforaddress.forIcon}>
+          <MaterialIcons
+            name="add"
+            size={25}
+            style={{
+              color: "#BDBDBD",
+            }}
+          />
+        </View>
       </View>
     </Screen>
   );
