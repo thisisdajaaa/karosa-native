@@ -5,11 +5,22 @@ import { Screen } from "../../atoms/base-screen";
 import { useNavigation } from "@react-navigation/native";
 import { Image, Text, View } from "react-native";
 import { styleforaddress } from "./styleforaddress";
-import { color } from "@shopify/restyle";
-import { MaterialIcons } from "@expo/vector-icons";
+import { AddressProps } from "../../atoms/list/list-display/types";
+import { AddressList } from "../../atoms/list/list-display";
 
 const MyAddress: React.FC = () => {
   const { goBack } = useNavigation();
+  const defautAddress: AddressProps = {
+    address: {
+      name: "Bryan Alipar",
+      default: true,
+      address:
+        "(+63) 998 345 6432 \n St. Michael Drive V. Rama \n Guadalupe, Cebu City \n Visayas, Cebu, 6000",
+    },
+    style: {
+      textStyle: {},
+    },
+  };
 
   const headerProps: HeaderProps = {
     header: {
@@ -20,21 +31,11 @@ const MyAddress: React.FC = () => {
       },
     },
   };
+
   return (
     <Screen {...headerProps}>
       <View style={styleforaddress.adressContainer}>
-        <Text style={styleforaddress.Default}>Default</Text>
-        <Text style={styleforaddress.NameStyle}>Bryan Alipar {"\n"}</Text>
-        <Text style={styleforaddress.DetailText}>
-          (+63) 998 345 6432 {"\n"}
-          St. Michael Drive V. Rama {"\n"}
-          Guadalupe, Cebu City {"\n"}
-          Visayas, Cebu, 6000 {"\n"}
-        </Text>
-      </View>
-      <View style={styleforaddress.touchable}>
-        <Text style={styleforaddress.NewAddStyle}>Add New Address</Text>
-        <MaterialIcons name={"add"} size={24} color="#0AA351" />
+        <AddressList {...defautAddress} />
       </View>
     </Screen>
   );

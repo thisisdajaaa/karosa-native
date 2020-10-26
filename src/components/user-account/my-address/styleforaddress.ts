@@ -2,11 +2,10 @@ import { StyleSheet } from "react-native";
 
 export const styleforaddress = StyleSheet.create({
   adressContainer: {
-    backgroundColor: "white",
+    backgroundColor: "yellow",
     marginTop: 16,
     width: "100%",
     flexDirection: "column",
-    padding: 16,
   },
   NameStyle: {
     fontWeight: "400",
@@ -42,6 +41,5 @@ export const styleforaddress = StyleSheet.create({
     fontWeight: "400",
     fontSize: 16,
     color: "#0AA351",
-    alignContent: "space-between",
   },
 });
