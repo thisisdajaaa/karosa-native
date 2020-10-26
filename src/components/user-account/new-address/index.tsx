@@ -6,14 +6,30 @@ import { Props as HeaderProps } from "../../atoms/base-screen/types";
 import { Screen } from "../../atoms/base-screen";
 import { useNavigation } from "@react-navigation/native";
 import { View, CheckBox } from "react-native";
-import { FormInput2, FormInput } from "../../atoms/formik/form-input";
-import { Props as FormInputProps } from "../../atoms/formik/form-input/types";
+import { FormInput2, FormInput, FormInputSelection } from "../../atoms/formik/form-input";
+import { IonSelectionProps, Props as FormInputProps } from "../../atoms/formik/form-input/types";
 import { newAddressStyle } from "./styles";
 import { BaseText } from "../../atoms/base-text";
+
+const regionData = [
+  {
+    id: 1,
+    value: 'Region1',
+  },
+  {
+    id: 2,
+    value: 'Region2',
+  },
+  {
+    id: 3,
+    value: 'Region3',
+  }
+];
 
 const NewAddress: React.FC = () => {
   const { goBack } = useNavigation();
   const [isSelected, setSelection] = useState(false);
+
   const fullNameProps: FormInputProps = {
     name: "Full Name",
     placeholder: "Set Full Name",
@@ -22,9 +38,10 @@ const NewAddress: React.FC = () => {
     name: "Phone Number",
     placeholder: "Set Phone Number",
   };
-  const regionProps: FormInputProps = {
+  const regionProps: IonSelectionProps = {
     name: "Region",
     placeholder: "Choose Region",
+    data : regionData,
   };
   const provinceProps: FormInputProps = {
     name: "Province",
@@ -61,7 +78,7 @@ const NewAddress: React.FC = () => {
       <View style={{ marginTop: 10 }}>
         <FormInput2 {...fullNameProps} />
         <FormInput2 {...phoneProps} />
-        <FormInput2 {...regionProps} />
+        <FormInputSelection {...regionProps} />
         <FormInput2 {...provinceProps} />
         <FormInput2 {...brgyProps} />
 
