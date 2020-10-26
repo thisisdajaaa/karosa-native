@@ -29,4 +29,11 @@ export const styles = StyleSheet.create({
     textAlign: "right",
     color: "#4F4F4F",
   },
+  default: {
+    fontWeight: "400",
+    fontSize: 16,
+    lineHeight: 18.75,
+    color: "#4F4F4F",
+    alignSelf: "flex-startw",
+  },
 });
