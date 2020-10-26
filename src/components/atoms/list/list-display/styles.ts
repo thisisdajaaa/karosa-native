@@ -34,6 +34,6 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 18.75,
     color: "#4F4F4F",
-    alignSelf: "flex-startw",
+    alignSelf: "flex-start",
   },
 });
