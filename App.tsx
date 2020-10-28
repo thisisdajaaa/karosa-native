@@ -1,6 +1,5 @@
 import React from "react";
 import { Provider } from "react-redux";
-
 import LoadAssets from "@app/components/load-assets";
 import BaseNavigator from "@app/navigators/index";
 // import AuthNavigator from "@app/navigators/stack-navigator/auth";
