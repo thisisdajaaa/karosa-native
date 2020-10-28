@@ -4,8 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { theme } from "@app/styles";
 import { MultiList } from "@app/components/multi-list";
 import { Props as MultiListProps } from "@app/components/multi-list/types";
-
-import routes from "../../../navigators/routes";
+import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
 

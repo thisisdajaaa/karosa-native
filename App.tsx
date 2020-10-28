@@ -16,20 +16,11 @@ export const store = configureStore({});
 
 export default function App() {
   return (
-<<<<<<< HEAD
     <Provider store={store}>
       <LoadAssets {...{ fonts }}>
         {/* <AuthNavigator /> */}
         <BaseNavigator />
       </LoadAssets>
     </Provider>
-=======
-    <LoadAssets {...{ fonts }}>
-      <Provider store={store}>
-        {/* <AuthNavigator /> */}
-        <MainNavigator />
-      </Provider>
-    </LoadAssets>
->>>>>>> b093ca7... chore: merging User Account Main and common list atom
   );
 }
