@@ -18,6 +18,11 @@ const theme = {
     lineHeight: 19,
     fontFamily: "SFProText-Regular",
   },
+  textBold: {
+    fontSize: 16,
+    lineHeight: 19,
+    fontFamily: "SFProText-Bold",
+  },
   link1: {
     color: palette.primary,
     fontSize: 16,

@@ -99,13 +99,13 @@ export const styles = StyleSheet.create({
     color: theme.colors.white,
     fontWeight: "bold",
     position: "absolute",
-    left: 53,
+    left: 56,
   },
   followingValue: {
     ...theme.textLight,
     color: theme.colors.white,
     fontWeight: "bold",
     position: "absolute",
-    left: 140,
+    left: 143,
   },
 });
