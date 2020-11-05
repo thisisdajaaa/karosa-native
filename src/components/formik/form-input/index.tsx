@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useFormikContext, useField } from "formik";
-import { NativeSyntheticEvent, TextInputFocusEventData } from "react-native";
+import {
+  NativeSyntheticEvent,
+  TextInputFocusEventData,
+  View,
+} from "react-native";
 import { theme } from "@app/styles";
+import { IonSelectionProps, Props } from "./types";
 
 import { ErrorMessage } from "../error-message";
 import { TextInput } from "../../input";
 
-import { Props } from "./types";
+import { formInputStyle } from "../form-input/style";
 
 export const FormInput: React.FC<Props> = React.memo(({ name, ...props }) => {
   const [, meta, helpers] = useField(name);
@@ -31,7 +36,7 @@ export const FormInput: React.FC<Props> = React.memo(({ name, ...props }) => {
     },
     [helpers, validateOnChange]
   );
-
+  z;
   const handleBlur = useCallback(
     async (event: NativeSyntheticEvent<TextInputFocusEventData>) => {
       const { text } = event.nativeEvent;

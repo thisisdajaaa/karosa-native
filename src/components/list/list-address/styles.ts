@@ -1,47 +1,47 @@
 import { StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({
+export const AddressInputStyle = StyleSheet.create({
   container: {
-    alignItems: "center",
-    justifyContent: "center",
     flexDirection: "row",
-    paddingRight: 13,
-    paddingLeft: 1,
-    paddingTop: 13,
-    paddingBottom: 13,
-    backgroundColor: "#fff",
-  },
-  detailsContainer: {
+    justifyContent: "space-between",
+    backgroundColor: "white",
     flex: 1,
-    marginLeft: 15,
-    justifyContent: "center",
+    paddingHorizontal: 16,
+    alignItems: "center",
   },
-  hasImage: {
-    position: "absolute",
-    left: 34,
-    fontWeight: "500",
-    fontSize: 16,
-    lineHeight: 19,
-    fontFamily: "SFProText-Regular",
-  },
-  image: {
-    height: 25,
-    width: 25,
-    position: "absolute",
-    left: 13,
-    alignSelf: "center",
-  },
-  left: {
-    fontWeight: "500",
-    fontSize: 16,
-    lineHeight: 19,
-    fontFamily: "SFProText-Regular",
-  },
-  right: {
-    fontWeight: "400",
-    fontSize: 16,
-    lineHeight: 18.75,
+  inputStyle: {
+    alignSelf: "flex-end",
     textAlign: "right",
-    color: "#4F4F4F",
+    backgroundColor: "yellow",
+    position: "absolute",
+  },
+  labelContainer: {
+    flexDirection: "row",
+    backgroundColor: "white",
+    marginTop: 1,
+    justifyContent: "space-between",
+    height: 45,
+    alignItems: "center",
+  },
+  inputText: {
+    flex: 1,
+    fontSize: 16,
+    padding: 16,
+  },
+  inputLabel: {
+    fontSize: 16,
+    marginHorizontal: 16,
+  },
+  textStyle: {
+    alignItems: "center",
+    fontSize: 17,
+    fontWeight: "400",
+  },
+  picker: {
+    width: 150,
+    height: 50,
+    textAlign: "right",
+    alignItems: "flex-end",
+    alignContent: "flex-end",
   },
 });
