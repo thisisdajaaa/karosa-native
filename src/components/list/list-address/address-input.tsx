@@ -14,7 +14,7 @@ export const AddressInput: React.FC<AddressInputProps> = ({ addressInput }) => {
       <BaseText style={AddressInputStyle.inputLabel}>
         {addressInput.label}
       </BaseText>
-      <View style={{ width: "50%", backgroundColor: "red" }}>
+      <View style={AddressInputStyle.inputContainer}>
         <TextInput
           placeholder={addressInput.placeholder}
           value={value}
@@ -23,9 +23,9 @@ export const AddressInput: React.FC<AddressInputProps> = ({ addressInput }) => {
           }}
           style={AddressInputStyle.inputStyle}
           customStyles={{
+            flexDirection: "column",
             borderWidth: 0,
-            alignSelf: "flex-end",
-            paddingHorizontal: 5,
+            padding: 0,
           }}
         />
       </View>

@@ -12,8 +12,6 @@ export const AddressInputStyle = StyleSheet.create({
   inputStyle: {
     alignSelf: "flex-end",
     textAlign: "right",
-    backgroundColor: "yellow",
-    position: "absolute",
   },
   labelContainer: {
     flexDirection: "row",
@@ -44,4 +42,9 @@ export const AddressInputStyle = StyleSheet.create({
     alignItems: "flex-end",
     alignContent: "flex-end",
   },
+  inputContainer: {
+    width: "50%",
+    height: "100%",
+    marginRight: 16
+  }
 });
