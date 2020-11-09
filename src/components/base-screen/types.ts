@@ -6,4 +6,6 @@ export type Props = {
   customStyles?: StyleProp<ViewStyle>;
   header?: HeaderProps;
   isLoading?: boolean;
+  
 };
+

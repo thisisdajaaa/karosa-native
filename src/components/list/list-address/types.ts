@@ -1,9 +1,11 @@
 import {
-  ImageSourcePropType,
   StyleProp,
   TextStyle as BaseTextStyle,
   ViewStyle,
+  TextInputProps,
 } from "react-native";
+
+import { Props as InputProps } from "../../input/types";
 
 type TextStyle = {
   left?: StyleProp<BaseTextStyle>;
@@ -15,15 +17,24 @@ type Style = {
   textStyle?: TextStyle;
 };
 
-type Text = {
-  left: string;
-  right: string;
+type AddressInput = {
+  label: string;
+  placeholder: string;
+  value: string;
 };
 
-export type Props = {
-  style?: Style;
-  text: Text;
-  action?: () => void;
-  image?: ImageSourcePropType;
-  IconComponent?: React.ReactElement;
+type SelectionData = {
+  id: number;
+  value: string;
 };
+
+export type AddressInputProps = {
+  addressInput: AddressInput;
+  style?: Style;
+};
+
+export type AddressSelectionProps = {
+  name: string;
+  data: Array<SelectionData>;
+} & TextInputProps &
+  InputProps;
