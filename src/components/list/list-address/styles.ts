@@ -39,8 +39,11 @@ export const AddressInputStyle = StyleSheet.create({
     width: 150,
     height: 50,
     textAlign: "right",
-    alignItems: "flex-end",
-    alignContent: "flex-end",
+    borderWidth: 0,
+    opacity : 0,
+    position: "absolute",
+    alignSelf: "flex-end",
+    
   },
   inputContainer: {
     width: "50%",

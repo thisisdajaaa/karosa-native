@@ -5,12 +5,14 @@ import EditProfileScreen from "@app/screens/user-account/edit-profile";
 import AccountSettingsScreen from "@app/screens/user-account/account-settings";
 import SocialMediaScreen from "@app/screens/user-account/social-media";
 import ShopMainScreen from "@app/screens/shop/main";
+import MyAddressScreen from "@app/screens/user-account/my-address";
+import NewAddressScreen from "@app/screens/user-account/new-address";
 
 const Stack = createStackNavigator();
 
 const MeBottomNavigator = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="User Account Main" component={UserAccountMainScreen} />
+    <Stack.Screen name="User Account Main" component={NewAddressScreen} />
     <Stack.Screen name="Edit Profile" component={EditProfileScreen} />
     <Stack.Screen name="Account Settings" component={AccountSettingsScreen} />
     <Stack.Screen name="Social Media Accounts" component={SocialMediaScreen} />
