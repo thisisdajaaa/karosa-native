@@ -38,6 +38,19 @@ export function* callForgotApi(): SagaIterator {
   }
 }
 
+export function* callMyAddressApi(): SagaIterator {
+  try {
+    const response: AxiosResponse<models.MyAddressResponse> = yield call(
+      baseAxios.get,
+      apiEndpoints.myAddress
+    );
+
+    yield put(actions.callMyAddressApi.success(response.data));
+  } catch (error) {
+    yield put(actions.callMyAddressApi.failure(error));
+  }
+}
+
 export function* onLoginSaga() {
   yield takeLatest(getType(actions.callLoginApi.request), callLoginApi);
 }
@@ -46,6 +59,10 @@ export function* onForgotSaga() {
   yield takeLatest(getType(actions.callForgotApi.request), callForgotApi);
 }
 
+export function* onMyAddressSaga() {
+  yield takeLatest(getType(actions.callMyAddressApi.request), callMyAddressApi);
+}
+
 export default function* () {
-  yield all([call(onLoginSaga), call(onForgotSaga)]);
+  yield all([call(onLoginSaga), call(onForgotSaga), call(onMyAddressSaga)]);
 }

@@ -6,6 +6,7 @@ import {
   LoginResponse,
   ForgotRequest,
   ForgotResponse,
+  MyAddressResponse,
 } from "./models";
 
 export const callLoginApi = createAsyncAction(
@@ -20,8 +21,15 @@ export const callForgotApi = createAsyncAction(
   types.ACT_FORGOT_PASS_FAILURE
 )<ForgotRequest, ForgotResponse, Error>();
 
+export const callMyAddressApi = createAsyncAction(
+  types.ACT_MY_ADDRESS_REQUEST,
+  types.ACT_MY_ADDRESS_SUCCESS,
+  types.ACT_MY_ADDRESS_FAILURE
+)<undefined, MyAddressResponse, Error>();
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   callLoginApi,
   callForgotApi,
+  callMyAddressApi,
 };

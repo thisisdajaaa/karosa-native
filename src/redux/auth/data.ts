@@ -21,4 +21,16 @@ export const initAuthState: AuthState = {
     },
     isLoading: false,
   },
+  myAddressResponse: {
+    response: [
+      {
+        type: "",
+        name: "",
+        postalCode: "",
+        address_line_1: "",
+        barangayId: 0,
+      },
+    ],
+    isLoading: false,
+  },
 };

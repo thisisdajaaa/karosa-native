@@ -59,9 +59,34 @@ export const forgotResponse = produce(
   data.initAuthState.forgotResponse
 );
 
+export const myAddressResponse = produce(
+  (
+    draft: Draft<ResponseState<models.MyAddressResponse>>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.callMyAddressApi.request):
+        draft.isLoading = true;
+        return draft;
+      case getType(actions.callMyAddressApi.success):
+        draft.response = action.payload;
+        draft.isLoading = false;
+        return draft;
+      case getType(actions.callMyAddressApi.failure):
+        draft.error = action.payload;
+        draft.isLoading = false;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initAuthState.myAddressResponse
+);
+
 const reducer = combineReducers({
   loginResponse,
   forgotResponse,
+  myAddressResponse,
 });
 
 export default reducer;

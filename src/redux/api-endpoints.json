@@ -1,3 +1,4 @@
 {
-  "login": "/v1/auth/login"
+  "login": "/v1/auth/login",
+  "myAddress": "/v1/auth/users/addresses"
 }

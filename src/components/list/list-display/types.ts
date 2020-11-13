@@ -10,8 +10,8 @@ type Text = {
   right: string;
 };
 type Address = {
-  name: String;
-  address: String;
+  name: string;
+  address: string;
   default: boolean;
 };
 
