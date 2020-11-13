@@ -8,12 +8,11 @@ import { TextInput } from "../../../components/input";
 
 export const AddressInputPicker: React.FC<AddressSelectionProps> = React.memo(
   ({ name, value, data, placeholder }) => {
-    const [targetValue, setValue] = useState(value);
+    const [targetValue, setValue] = useState(value ? value : data[0].value);
     return (
       <React.Fragment>
-        <View style={AddressInputStyle.container}>
+        <View style={AddressInputStyle.pickerContainer}>
           <BaseText style={AddressInputStyle.textStyle}>{name}</BaseText>
-
           <View style={AddressInputStyle.inputContainer}>
             <TextInput
               placeholder={placeholder}
@@ -23,7 +22,7 @@ export const AddressInputPicker: React.FC<AddressSelectionProps> = React.memo(
               }}
               style={AddressInputStyle.inputStyle}
               customStyles={{
-                flexDirection: "column",
+                alignSelf: "flex-end",
                 borderWidth: 0,
                 padding: 0,
               }}
@@ -32,6 +31,7 @@ export const AddressInputPicker: React.FC<AddressSelectionProps> = React.memo(
             <Picker
               mode="dialog"
               prompt={placeholder}
+              selectedValue={targetValue}
               onValueChange={(itemValue) => {
                 setValue(itemValue);
               }}
