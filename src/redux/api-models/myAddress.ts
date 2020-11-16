@@ -1,9 +1,13 @@
 export type Response = [
   {
-    type: string;
+    id: string;
+    type: string | null;
     name: string;
+    phoneNo: string;
     postalCode: string;
     address_line_1: string;
-    barangayId?: number;
+    address_line_2: string | null;
+    barangayId: number;
+    userId: string;
   }
 ];
