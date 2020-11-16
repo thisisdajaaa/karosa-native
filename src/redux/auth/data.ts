@@ -21,4 +21,34 @@ export const initAuthState: AuthState = {
     },
     isLoading: false,
   },
+  myAddressResponse: {
+    response: [
+      {
+        id: "",
+        type: "",
+        name: "",
+        phoneNo: "",
+        postalCode: "",
+        address_line_1: "",
+        address_line_2: "",
+        barangayId: 0,
+        userId: "",
+      },
+    ],
+    isLoading: false,
+  },
+  newAddressResponse: {
+    response: {
+      id: "",
+      type: "",
+      name: "",
+      phoneNo: "",
+      postalCode: "",
+      address_line_1: "",
+      address_line_2: "",
+      barangayId: 0,
+      userId: "",
+    },
+    isLoading: false,
+  },
 };

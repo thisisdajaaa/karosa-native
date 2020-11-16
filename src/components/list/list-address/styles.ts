@@ -9,8 +9,15 @@ export const AddressInputStyle = StyleSheet.create({
     paddingHorizontal: 16,
     alignItems: "center",
   },
+  pickerContainer: {
+    paddingLeft: 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor: "white",
+    flex: 1,
+    alignItems: "center",
+  },
   inputStyle: {
-    alignSelf: "flex-end",
     textAlign: "right",
   },
   labelContainer: {
@@ -36,15 +43,18 @@ export const AddressInputStyle = StyleSheet.create({
     fontWeight: "400",
   },
   picker: {
-    width: 150,
+    width: "100%",
     height: 50,
     textAlign: "right",
-    alignItems: "flex-end",
-    alignContent: "flex-end",
+    borderWidth: 0,
+    opacity: 0,
+    position: "absolute",
+    alignSelf: "flex-end",
   },
   inputContainer: {
+    alignContent: "flex-end",
     width: "50%",
     height: "100%",
-    marginRight: 16
-  }
+    paddingRight: 16,
+  },
 });
