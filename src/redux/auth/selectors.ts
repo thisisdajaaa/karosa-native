@@ -26,9 +26,17 @@ export const getMyAddressResponse = () =>
     );
   });
 
+export const getNewAddressResponse = () =>
+  createSelector(rootSelector, (state: AuthState) => {
+    return (
+      state.newAddressResponse.response ||
+      initAuthState.newAddressResponse.response
+    );
+  });
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getLoginResponse,
   getForgotResponse,
   getMyAddressResponse,
+  getNewAddressResponse,
 };

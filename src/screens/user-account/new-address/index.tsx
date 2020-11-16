@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import { Props as HeaderProps } from "../../../components/base-screen/types";
 import { Screen } from "../../../components/base-screen";
@@ -6,6 +6,9 @@ import { useNavigation } from "@react-navigation/native";
 import { View, CheckBox } from "react-native";
 import { AppButton } from "@app/components/button";
 import { Props as ButtonProps } from "@app/components/button/types";
+import routes from "@app/navigators/routes";
+import { useDispatch } from "react-redux";
+import { actions, selectors } from "@app/redux/auth";
 
 import { newAddressStyle } from "./styles";
 import { BaseText } from "../../../components/base-text";
@@ -17,6 +20,7 @@ import {
   AddressInputProps,
   AddressSelectionProps,
 } from "components/list/list-address/types";
+import { NewAddressRequest } from "redux/auth/models";
 
 const regionData = [
   {
@@ -64,6 +68,13 @@ const barangayData = [
 const NewAddressScreen: React.FC = () => {
   const { goBack } = useNavigation();
   const [isSelected, setSelection] = useState(false);
+  const dispatch = useDispatch();
+
+  const callNewAddressApi = useCallback(
+    (request: NewAddressRequest) =>
+      dispatch(actions.callNewAddressApi.request(request)),
+    [dispatch]
+  );
 
   const regionProps: AddressSelectionProps = {
     name: "Region",
@@ -90,7 +101,6 @@ const NewAddressScreen: React.FC = () => {
       },
     },
   };
-
   const fullNameProps: AddressInputProps = {
     addressInput: {
       label: "Full Name",
@@ -104,6 +114,18 @@ const NewAddressScreen: React.FC = () => {
     },
   };
   const SubmitButtonProps: ButtonProps = {
+    onPress: () => {
+      const request: NewAddressRequest = {
+        type: "home",
+        name: "xchan",
+        phoneNo: "123345",
+        postalCode: "3843",
+        address_line_1: "san isidro",
+        address_line_2: "talisay",
+        barangayId: 678,
+      };
+      callNewAddressApi(request);
+    },
     title: "Submit",
     containerStyle: newAddressStyle.btnSubmtContainer,
     textStyle: newAddressStyle.txtBtnSubmit,
