@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { View, Image, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
 import { FormikContext, useFormik } from "formik";
@@ -8,7 +8,7 @@ import { SubmitButton } from "@app/components/formik/submit-button";
 import { BaseText } from "@app/components/base-text";
 import { Screen } from "@app/components/base-screen";
 import { actions, selectors } from "@app/redux/auth";
-import { useMemoizedSelector } from "@app/hooks";
+import { useAuth, useMemoizedSelector } from "@app/hooks";
 import { LoginRequest } from "@app/redux/auth/models";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
@@ -20,12 +20,18 @@ import { validationSchema } from "./validation";
 
 const LoginScreen: React.FC = () => {
   const { navigate } = useNavigation();
+  const { isLoggedIn } = useAuth();
   const dispatch = useDispatch();
 
   const callLoginApi = useCallback(
     (request: LoginRequest) => dispatch(actions.callLoginApi.request(request)),
     [dispatch]
   );
+
+  useEffect(() => {
+    if (isLoggedIn) navigate("Home", { screen: routes.ACCOUNTS_MAIN });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoggedIn]);
 
   const loginResponse = useMemoizedSelector(selectors.getLoginResponse);
 
@@ -48,6 +54,7 @@ const LoginScreen: React.FC = () => {
     header: {
       iconName: "arrow-back",
       title: "Login",
+      borderBottom: false,
       press: {
         left: () => navigate(routes.AUTH_MAIN),
       },

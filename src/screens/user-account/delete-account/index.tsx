@@ -5,9 +5,9 @@ import { View } from "react-native";
 import { BaseText } from "@app/components/base-text";
 import { AppButton } from "@app/components/button";
 import { SubmitButton } from "@app/components/formik/submit-button";
+import { FormCheckbox } from "@app/components/formik/form-checkbox";
 import { Props as ButtonProps } from "@app/components/button/types";
 import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
-import { FormCheckbox } from "@app/components/formik/form-checkbox";
 
 import { Props } from "./types";
 import { styles } from "./styles";
@@ -53,7 +53,12 @@ const DeleteAccountModal: React.FC<Props> = ({ sheetRef }) => {
         closeOnPressMask={false}
         height={475}
         customStyles={{
-          container: customStyles.container,
+          container: {
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            padding: 5,
+            alignItems: "center",
+          },
         }}
       >
         <BaseText style={customStyles.txtDeleteAcc}>Delete Account</BaseText>

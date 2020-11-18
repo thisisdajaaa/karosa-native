@@ -84,7 +84,7 @@ const EditProfileScreen: React.FC = () => {
 
   const addressProps: ListChevronProps = {
     title: "Addresses",
-    onPress: () => navigate("Main Stack", { screen: routes.ACCOUNTS_ADDRESS }),
+    onPress: () => console.log("Address"),
   };
 
   const socialMediaProps: ListChevronProps = {

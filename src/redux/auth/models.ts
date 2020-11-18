@@ -2,7 +2,6 @@ import * as login from "../api-models/login";
 import * as forgot from "../api-models/forgot";
 import * as myAddress from "../api-models/myAddress";
 import * as newAddress from "../api-models/newAddress";
-
 import { ResponseState } from "../api-models/common";
 
 export type LoginRequest = login.Request;

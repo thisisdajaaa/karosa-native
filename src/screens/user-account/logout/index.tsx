@@ -29,7 +29,12 @@ const LogoutModal: React.FC<Props> = ({ sheetRef }) => {
       closeOnPressMask={false}
       height={407}
       customStyles={{
-        container: styles.container,
+        container: {
+          borderTopLeftRadius: 10,
+          borderTopRightRadius: 10,
+          padding: 5,
+          alignItems: "center",
+        },
       }}
     >
       <BaseText style={styles.txtLogout}>Logging out</BaseText>

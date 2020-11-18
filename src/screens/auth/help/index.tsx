@@ -17,6 +17,7 @@ const HelpScreen: React.FC = () => {
     header: {
       iconName: "close",
       title: "Help Centre",
+      borderBottom: false,
       press: {
         left: () => goBack(),
       },

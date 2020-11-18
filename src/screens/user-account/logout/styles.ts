@@ -2,12 +2,6 @@ import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
 export const styles = StyleSheet.create({
-  container: {
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    padding: 5,
-    alignItems: "center",
-  },
   btnCancelContainer: {
     marginTop: 12,
     backgroundColor: theme.colors.light10,

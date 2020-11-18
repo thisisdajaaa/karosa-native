@@ -42,8 +42,7 @@ const AccountSettingsScreen: React.FC = () => {
       {
         title: "Help Centre",
         hasSeparator: true,
-        onPress: () =>
-          navigate("Main Stack", { screen: routes.DUMMY_HELP_CENTRE }),
+        onPress: () => console.log("Help Centre"),
       },
       {
         title: "Request for Account Deletion",
@@ -53,17 +52,16 @@ const AccountSettingsScreen: React.FC = () => {
       {
         title: "FAQ",
         hasSeparator: true,
-        onPress: () => navigate("Main Stack", { screen: routes.DUMMY_FAQ }),
+        onPress: () => console.log("FAQ"),
       },
       {
         title: "Privacy Policy",
         hasSeparator: true,
-        onPress: () =>
-          navigate("Main Stack", { screen: routes.DUMMY_PRIVACY_POLICY }),
+        onPress: () => console.log("Privacy Policy"),
       },
       {
         title: "About",
-        onPress: () => navigate("Main Stack", { screen: routes.DUMMY_ABOUT }),
+        onPress: () => console.log("About"),
       },
     ],
   };

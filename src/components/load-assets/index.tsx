@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { AppLoading } from "expo";
 import { InitialState, NavigationContainer } from "@react-navigation/native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import AsyncStorage from "@react-native-community/async-storage";
 import Constants from "expo-constants";
 import { useLoadAssets } from "@app/hooks";
@@ -50,9 +51,11 @@ const LoadAssets: React.FC<Props> = ({ assets, fonts, children }) => {
   }
 
   return (
-    <NavigationContainer {...{ onStateChange, initialState }}>
-      {children}
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer {...{ onStateChange, initialState }}>
+        {children}
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 

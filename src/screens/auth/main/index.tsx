@@ -16,12 +16,13 @@ const AuthMainScreen: React.FC = () => {
 
   const screenProps: ScreenProps = {
     header: {
+      borderBottom: false,
       text: {
         left: "Login",
         right: "Help",
       },
       press: {
-        right: () => navigate(routes.AUTH_HELP),
+        right: () => navigate("Stack", { screen: routes.AUTH_HELP }),
       },
     },
     customStyles: styles.container,
@@ -48,7 +49,7 @@ const AuthMainScreen: React.FC = () => {
   const signInButtonProps: ButtonProps = {
     title: "Phone number / Username / Email",
     containerStyle: styles.signInButtonContainer,
-    onPress: () => navigate(routes.AUTH_LOGIN),
+    onPress: () => navigate("Stack", { screen: routes.AUTH_LOGIN }),
   };
 
   return (
