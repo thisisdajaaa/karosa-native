@@ -3,12 +3,6 @@ import { theme } from "@app/styles";
 
 export const styles = (hasFormikVal: boolean) => {
   return StyleSheet.create({
-    container: {
-      borderTopLeftRadius: 10,
-      borderTopRightRadius: 10,
-      padding: 5,
-      alignItems: "center",
-    },
     btnDeleteContainer: {
       backgroundColor: theme.colors.light10,
       minWidth: 330,

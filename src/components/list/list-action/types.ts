@@ -16,8 +16,8 @@ type Style = {
 };
 
 type Text = {
-  left: string;
-  right: string;
+  left?: string;
+  right?: string;
 };
 
 type Icon = {
@@ -31,4 +31,5 @@ export type Props = {
   image?: ImageSourcePropType;
   icon?: Icon;
   action?: () => void;
+  RightComponent?: React.ReactElement;
 };

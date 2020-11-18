@@ -48,6 +48,7 @@ const ForgotScreen: React.FC = () => {
   const screenProps: ScreenProps = {
     header: {
       iconName: "arrow-back",
+      borderBottom: false,
       text: {
         right: "Help",
       },

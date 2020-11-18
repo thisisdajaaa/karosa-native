@@ -19,6 +19,7 @@ type Style = {
 export type Props = {
   title?: string;
   iconName?: string;
+  borderBottom?: boolean;
   text?: Text;
   press?: Press;
   customStyles?: Style;

@@ -12,6 +12,7 @@ export const ListAction: React.FC<Props> = ({
   icon,
   style,
   action,
+  RightComponent,
 }) => {
   return (
     <View style={[styles.container, style?.containerStyle]}>
@@ -38,6 +39,8 @@ export const ListAction: React.FC<Props> = ({
           {icon?.right}
         </TouchableOpacity>
       )}
+
+      {RightComponent}
     </View>
   );
 };

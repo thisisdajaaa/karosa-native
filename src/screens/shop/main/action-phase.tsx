@@ -1,6 +1,5 @@
 import React from "react";
 import { View } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import {
   AntDesign,
   MaterialCommunityIcons,
@@ -11,17 +10,14 @@ import { ListChevron } from "@app/components/list/list-chevron";
 import { Separator } from "@app/components/separator";
 import { Props as ListChevronProps } from "@app/components/list/list-chevron/types";
 import { Props as AccountActionProps } from "@app/components/account-actions/types";
-import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
 
 const ActionPhase: React.FC = () => {
-  const { navigate } = useNavigation();
-
   const listChevronProps: ListChevronProps = {
     title: "My Sales",
     rightLabel: "All sales",
-    onPress: () => navigate("Main Stack", { screen: routes.DUMMY_SALES }),
+    onPress: () => console.log("My Sales"),
     style: {
       textStyle: styles.txtSales,
     },
@@ -32,20 +28,19 @@ const ActionPhase: React.FC = () => {
       {
         icon: <MaterialIcons name="local-shipping" style={styles.commonIcon} />,
         label: "To Ship",
-        onPress: () => navigate("Main Stack", { screen: routes.DUMMY_TO_SHIP }),
+        onPress: () => console.log("To Ship"),
       },
       {
         icon: (
           <MaterialCommunityIcons name="cancel" style={styles.commonIcon} />
         ),
         label: "Cancelled",
-        onPress: () =>
-          navigate("Main Stack", { screen: routes.DUMMY_CANCELLED }),
+        onPress: () => console.log("Cancelled"),
       },
       {
         icon: <AntDesign name="inbox" style={styles.inboxIcon} />,
         label: "Returns",
-        onPress: () => navigate("Main Stack", { screen: routes.DUMMY_RETURNS }),
+        onPress: () => console.log("Returns"),
       },
     ],
   };
