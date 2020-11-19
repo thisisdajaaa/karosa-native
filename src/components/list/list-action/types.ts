@@ -10,6 +10,11 @@ type TextStyle = {
   right?: StyleProp<BaseTextStyle>;
 };
 
+type Component = {
+  LeftComponent?: React.ReactElement;
+  RightComponent?: React.ReactElement;
+};
+
 type Style = {
   containerStyle?: StyleProp<ViewStyle>;
   textStyle?: TextStyle;
@@ -27,9 +32,10 @@ type Icon = {
 
 export type Props = {
   style?: Style;
-  text: Text;
+  text?: Text;
   image?: ImageSourcePropType;
   icon?: Icon;
+  structure?: Component;
   action?: () => void;
-  RightComponent?: React.ReactElement;
+  onClick?: () => void;
 };
