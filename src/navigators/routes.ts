@@ -16,6 +16,7 @@ export default Object.freeze({
   ACCOUNTS_LOGOUT: "Logout",
 
   SHOP_MAIN: "Shop Main",
+  SHOP_SETTINGS: "Shop Settings",
 
   PRODUCT_MAIN: "My Products",
   SEARCH_PRODUCT: "Search Product",

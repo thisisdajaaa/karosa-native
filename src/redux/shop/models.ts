@@ -23,6 +23,12 @@ export type ShopState = {
   productResponse: ResponseState<ProductResponse>;
 };
 
+
+export type takeOverData = {
+
+    isActive: boolean;
+}
+
 declare module "../types" {
   export interface StateAll {
     shop: ShopState;

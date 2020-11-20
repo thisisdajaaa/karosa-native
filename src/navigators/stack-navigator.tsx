@@ -9,6 +9,7 @@ import EditProfileScreen from "@app/screens/user-account/edit-profile";
 import SocialMediaScreen from "@app/screens/user-account/social-media";
 import MyProducts from "@app/screens/products/my-products";
 import SearchProduct from "@app/screens/products/search-product";
+import ShopSettingScreen from "@app/screens/shop/shop-settings";
 
 import { TabNavigator } from "./tab-navigator";
 
@@ -25,6 +26,7 @@ const StackNavigator: React.FC = () => (
     <Stack.Screen name="Help" component={HelpScreen} />
     <Stack.Screen name="Forgot Password" component={ForgotScreen} />
     <Stack.Screen name="Account Settings" component={AccountSettingsScreen} />
+    <Stack.Screen name="Shop Settings" component={ShopSettingScreen} />
     <Stack.Screen name="Edit Profile" component={EditProfileScreen} />
     <Stack.Screen name="Social Media Accounts" component={SocialMediaScreen} />
     <Stack.Screen name="My Products" component={MyProducts} />

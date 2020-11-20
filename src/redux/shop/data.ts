@@ -1,4 +1,5 @@
-import { ShopState, ShopStatus } from "./models";
+import { ShopState, ShopStatus , takeOverData} from "./models";
+
 
 export const initShopStatus: ShopStatus = {
   available: false,
@@ -12,9 +13,15 @@ export const initShopState: ShopState = {
   },
   shopResponse: {
     response: {
-      shopName: "",
-      shopStatus: "",
-      shopAddress: "",
+      username: "cxoge6",
+      email: "test2@gmail.com",
+      shop: {
+        id: 8,
+        name: "",
+        isActive: true,
+        createdAt: "2020-11-13T13:01:16.625Z",
+        updatedAt: "2020-11-13T13:01:16.625Z",
+      },
     },
     isLoading: false,
   },
@@ -22,4 +29,8 @@ export const initShopState: ShopState = {
     response: [],
     isLoading: false,
   },
+};
+
+export const initTakeOverData: takeOverData = {
+  isActive: true,
 };

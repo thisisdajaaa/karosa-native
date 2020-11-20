@@ -9,6 +9,7 @@ import { FormCheckbox } from "@app/components/formik/form-checkbox";
 import { Props as ButtonProps } from "@app/components/button/types";
 import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
 
+
 import { Props } from "./types";
 import { styles } from "./styles";
 
@@ -18,6 +19,7 @@ const DeleteShopModal: React.FC<Props> = ({ sheetRef }) => {
       firstReason: false,
       secondReason: false,
       thirdReason: false,
+      fourthReason: false,
     },
     onSubmit: () => console.log("submit form"),
   });

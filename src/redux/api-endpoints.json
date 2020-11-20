@@ -1,5 +1,6 @@
 {
   "login": "/v1/auth/login",
   "addresses": "/t/3ku0e-1605248007",
-  "products": "/v1/shops/products"
+  "products": "/v1/shops/products",
+  "shop": "v1/users/shop"
 }
