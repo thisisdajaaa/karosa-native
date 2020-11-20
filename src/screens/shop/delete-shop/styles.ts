@@ -32,13 +32,13 @@ export const styles = (hasFormikVal: boolean) => {
     txtBtnCancel: {
       color: theme.colors.dark20,
     },
-    txtDeleteAcc: {
+    txtDeleteShop: {
       ...theme.textBold,
       marginVertical: 12,
       textAlign: "center",
       fontWeight: "500",
     },
-    txtDeleteAccPar: {
+    txtDeleteShopPar: {
       ...theme.textRegular,
       paddingHorizontal: 4,
       textAlign: "center",

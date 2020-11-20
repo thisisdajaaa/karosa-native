@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
     left: 57,
     top: 2,
     fontSize: 10,
-    color: theme.colors.gold,
+    color: theme.colors.gold10,
   },
   txtActive: {
     ...theme.textLight,
