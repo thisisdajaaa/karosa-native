@@ -10,8 +10,9 @@ import { Props as ScreenProps } from "@app/components/base-screen/types";
 import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
+import { Props } from "./types";
 
-const AuthMainScreen: React.FC = () => {
+const AuthMainScreen: React.FC<Props> = (props) => {
   const { navigate } = useNavigation();
 
   const screenProps: ScreenProps = {
@@ -49,7 +50,10 @@ const AuthMainScreen: React.FC = () => {
   const signInButtonProps: ButtonProps = {
     title: "Phone number / Username / Email",
     containerStyle: styles.signInButtonContainer,
-    onPress: () => navigate("Stack", { screen: routes.AUTH_LOGIN }),
+    onPress: () => {
+      navigate("Stack", { screen: routes.AUTH_LOGIN });
+      props.onLogin && props.onLogin();
+    },
   };
 
   return (
