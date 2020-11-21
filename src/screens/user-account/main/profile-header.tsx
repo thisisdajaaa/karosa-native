@@ -38,7 +38,7 @@ const ProfileHeader: React.FC = () => {
     <View style={styles.headerContainer}>
       <TouchableOpacity
         style={styles.settingsIconContainer}
-        onPress={() => navigate(routes.SHOP_SETTINGS)}
+        onPress={() => navigate(routes.ACCOUNTS_SETTINGS)}
       >
         <MaterialIcons name="settings" style={styles.commonIconHeader} />
       </TouchableOpacity>

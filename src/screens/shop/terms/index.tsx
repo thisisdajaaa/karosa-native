@@ -8,8 +8,13 @@ import { BaseText } from "@app/components/base-text";
 import { Separator } from "@app/components/separator";
 
 import { styles } from "./styles";
+import { useNavigation } from "@react-navigation/native";
+import routes from "@app/navigators/routes";
 
 const TermsAndCondScreen: React.FC = () => {
+
+  const { navigate } = useNavigation();
+
   const screenProps: ScreenProps = {
     header: {
       title: "Terms and Conditions",
@@ -18,7 +23,7 @@ const TermsAndCondScreen: React.FC = () => {
   };
 
   const agreeButtonProps: ButtonProps = {
-    onPress: () => console.log("I agree"),
+    onPress: () => navigate(routes.SHOP_SETTINGS),
     title: "I Agree",
     containerStyle: styles.agreeButtonContainer,
     textStyle: styles.txtAgreeButton,

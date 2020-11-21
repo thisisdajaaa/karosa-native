@@ -17,6 +17,8 @@ export default Object.freeze({
 
   SHOP_MAIN: "Shop Main",
   SHOP_SETTINGS: "Shop Settings",
+  PAYMENT_OPTIONS: "Payment Options",
+  SHOP_TERMS_AND_CONDITIONS: "Shop Terms and Conditions",
 
   PRODUCT_MAIN: "My Products",
   SEARCH_PRODUCT: "Search Product",

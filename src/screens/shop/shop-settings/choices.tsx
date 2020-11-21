@@ -47,7 +47,7 @@ const Choices = () => {
       {
         title: "Payment Option",
         listColor: theme.colors.red5,
-        onPress: () => navigate("Main Stack", { screen: routes.DUMMY_REPORTS }),
+        onPress: () => navigate(routes.PAYMENT_OPTIONS),
       },
       {
         title: "Delete Shop",

@@ -1,4 +1,4 @@
-import React, { useCallback,useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Screen } from "@app/components/base-screen";
@@ -9,18 +9,20 @@ import { useDispatch } from "react-redux";
 
 // import axios from "axios";
 
+import routes from "@app/navigators/routes";
+
 import Choices from "./choices";
 import { styles } from "./styles";
 
 const ShopSettingScreen: React.FC = () => {
-  const { goBack } = useNavigation();
+  const { navigate } = useNavigation();
   const dispatch = useDispatch();
   const screenProps: ScreenProps = {
     header: {
       iconName: "arrow-back",
       title: "Shop Settings",
       press: {
-        left: () => goBack(),
+        left: () => navigate(routes.SHOP_MAIN),
       },
     },
     customStyles: styles.container,
@@ -30,31 +32,8 @@ const ShopSettingScreen: React.FC = () => {
     (request: ShopRequest) => dispatch(actions.callShopApi.request(request)),
     [dispatch]
   );
-  
-  useEffect(() => {
-    // const user = {
-    //   identifier: "test666@gmail.com",
-    //   password: "Passw0rd!",
-    // };
-    
-    // // const payload = JSON.stringify(user);
-    // console.log(user);
-    // axios
-    //   .post(
-    //     "http://localhost:4040/v1/auth/register",
-    //     { user },
-    //     {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     }
-    //   )
 
-    //   .then((res) => {
-    //     console.log(res);
-    //     console.log(res.data);
-    //   });
-      
+  useEffect(() => {
     const request: ShopRequest = {
       isActive: true,
     };
