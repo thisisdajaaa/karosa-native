@@ -20,8 +20,14 @@ export const getShopResponse = () =>
     return state.shopResponse || initShopState.shopResponse;
   });
 
+export const getProductResponse = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return state.productResponse || initShopState.productResponse;
+  });
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getShopStatus,
   getShopResponse,
+  getProductResponse,
 };

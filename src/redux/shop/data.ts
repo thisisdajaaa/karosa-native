@@ -18,4 +18,8 @@ export const initShopState: ShopState = {
     },
     isLoading: false,
   },
+  productResponse: {
+    response: [],
+    isLoading: false,
+  },
 };

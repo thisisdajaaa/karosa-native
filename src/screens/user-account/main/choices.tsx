@@ -12,7 +12,7 @@ const Choices = () => {
       {
         title: "My Wishlist",
         rightLabel: "140 Items",
-        listColor: theme.colors.orange,
+        listColor: theme.colors.orange5,
         hasSeparator: true,
         onPress: () => console.log("My Wishlist"),
       },
