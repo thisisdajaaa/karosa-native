@@ -1,20 +1,29 @@
 import React, { useRef } from "react";
 import { Dimensions } from "react-native";
 import RBSheet from "react-native-raw-bottom-sheet";
-import { EventArg, useNavigation } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { EventArg } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useAuth } from "@app/hooks";
 import { theme } from "@app/styles";
 import UserAccountMainScreen from "@app/screens/user-account/main";
 import HomeScreen from "@app/screens/home";
 import ShopMainScreen from "@app/screens/shop/main";
-import routes from "@app/navigators/routes";
 import AuthMainScreen from "@app/screens/auth/main";
+import Content from "@app/screens/products/my-products/content";
 
-const Tab = createBottomTabNavigator();
+const TopTab = createMaterialTopTabNavigator();
+const BottomTab = createBottomTabNavigator();
 const MeStack = createStackNavigator();
+
+const mockTopTab = [
+  "Recent (1)",
+  "Sold Out (2)",
+  "Suspended (3)",
+  "Discontinued (4)",
+];
 
 const MeNavigator: React.FC = () => {
   return (
@@ -25,11 +34,30 @@ const MeNavigator: React.FC = () => {
   );
 };
 
-const BottomTabNavigator: React.FC = () => {
-  const { isLoggedIn } = useAuth();
-  const { navigate } = useNavigation();
+const ProductTabs: React.FC = () => {
+  return (
+    <TopTab.Navigator
+      lazy
+      tabBarOptions={{
+        activeTintColor: theme.colors.primary,
+        inactiveTintColor: theme.colors.dark20,
+        pressColor: theme.colors.primary,
+        indicatorStyle: { backgroundColor: theme.colors.primary },
+        scrollEnabled: true,
+      }}
+    >
+      {mockTopTab.map((tabName, index) => (
+        <React.Fragment key={index}>
+          <TopTab.Screen name={tabName} component={Content} />
+        </React.Fragment>
+      ))}
+    </TopTab.Navigator>
+  );
+};
 
-  const showLoginPrompt = () => navigate(routes.AUTH_MAIN);
+const TabNavigator: React.FC = () => {
+  const { isLoggedIn } = useAuth();
+
   const sheetRef = useRef<RBSheet>(null);
 
   const hide = function () {
@@ -38,14 +66,14 @@ const BottomTabNavigator: React.FC = () => {
 
   return (
     <>
-      <Tab.Navigator
+      <BottomTab.Navigator
         lazy
         tabBarOptions={{
           activeTintColor: theme.colors.primary,
           labelStyle: { position: "relative", bottom: 4 },
         }}
       >
-        <Tab.Screen
+        <BottomTab.Screen
           name="Home"
           component={HomeScreen}
           options={{
@@ -54,7 +82,7 @@ const BottomTabNavigator: React.FC = () => {
             ),
           }}
         />
-        <Tab.Screen
+        <BottomTab.Screen
           name="My Basket"
           component={UserAccountMainScreen}
           options={{
@@ -62,17 +90,8 @@ const BottomTabNavigator: React.FC = () => {
               <Ionicons name="md-basket" size={size} color={color} />
             ),
           }}
-          listeners={{
-            tabPress: (e: EventArg<"tabPress", true, undefined>) => {
-              if (!isLoggedIn) {
-                // Prevent default action
-                e.preventDefault();
-                showLoginPrompt();
-              }
-            },
-          }}
         />
-        <Tab.Screen
+        <BottomTab.Screen
           name="Notifications"
           component={UserAccountMainScreen}
           options={{
@@ -80,17 +99,8 @@ const BottomTabNavigator: React.FC = () => {
               <Ionicons name="ios-notifications" size={size} color={color} />
             ),
           }}
-          listeners={{
-            tabPress: (e: EventArg<"tabPress", true, undefined>) => {
-              if (!isLoggedIn) {
-                // Prevent default action
-                e.preventDefault();
-                showLoginPrompt();
-              }
-            },
-          }}
         />
-        <Tab.Screen
+        <BottomTab.Screen
           name="Me"
           component={MeNavigator}
           options={{
@@ -103,13 +113,12 @@ const BottomTabNavigator: React.FC = () => {
               if (!isLoggedIn) {
                 // Prevent default action
                 e.preventDefault();
-                // showLoginPrompt();
                 sheetRef.current?.open();
               }
             },
           }}
         />
-      </Tab.Navigator>
+      </BottomTab.Navigator>
       <RBSheet
         ref={sheetRef}
         closeOnDragDown={true}
@@ -129,4 +138,4 @@ const BottomTabNavigator: React.FC = () => {
   );
 };
 
-export default BottomTabNavigator;
+export { ProductTabs, TabNavigator };

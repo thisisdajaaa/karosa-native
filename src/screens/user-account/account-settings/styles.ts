@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     width: "100%",
   },
   txtLogout: {
+    ...theme.textRegular,
     color: theme.colors.dark20,
   },
   buttonContainer: { position: "absolute", bottom: 20, alignSelf: "center" },
