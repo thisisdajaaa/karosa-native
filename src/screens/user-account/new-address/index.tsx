@@ -9,7 +9,7 @@ import { Props as ButtonProps } from "@app/components/button/types";
 import routes from "@app/navigators/routes";
 import { useDispatch } from "react-redux";
 import { actions, selectors } from "@app/redux/auth";
-
+import { FormikContext, useFormik } from "formik";
 import { newAddressStyle } from "./styles";
 import { BaseText } from "../../../components/base-text";
 import {
@@ -20,8 +20,10 @@ import {
   AddressInputProps,
   AddressSelectionProps,
 } from "components/list/list-address/types";
-import { NewAddressRequest } from "redux/auth/models";
+import { SubmitButton } from "@app/components/formik/submit-button";
 
+import { NewAddressRequest } from "redux/auth/models";
+import { validationSchema } from "./validation"
 const regionData = [
   {
     id: 1,
@@ -65,6 +67,8 @@ const barangayData = [
   },
 ];
 
+
+
 const NewAddressScreen: React.FC = () => {
   const { goBack } = useNavigation();
   const [isSelected, setSelection] = useState(false);
@@ -75,6 +79,14 @@ const NewAddressScreen: React.FC = () => {
       dispatch(actions.callNewAddressApi.request(request)),
     [dispatch]
   );
+
+  const formikBag = useFormik({
+    initialValues: { fullName: "", phoneNumber: "" },
+    onSubmit: (values) => {
+      console.log(values)
+    },
+    validationSchema,
+  });
 
   const regionProps: AddressSelectionProps = {
     name: "Region",
@@ -102,78 +114,70 @@ const NewAddressScreen: React.FC = () => {
     },
   };
   const fullNameProps: AddressInputProps = {
+    name: "fullName",
     addressInput: {
       label: "Full Name",
       placeholder: "Set Full Name",
     },
   };
   const phoneNumberProps: AddressInputProps = {
+    name: "phoneNumber",
     addressInput: {
       label: "Phone Number",
       placeholder: "Set Phone Number",
     },
   };
   const SubmitButtonProps: ButtonProps = {
-    onPress: () => {
-      const request: NewAddressRequest = {
-        type: "home",
-        name: "xchan",
-        phoneNo: "123345",
-        postalCode: "3843",
-        address_line_1: "san isidro",
-        address_line_2: "talisay",
-        barangayId: 678,
-      };
-      callNewAddressApi(request);
-    },
     title: "Submit",
     containerStyle: newAddressStyle.btnSubmtContainer,
     textStyle: newAddressStyle.txtBtnSubmit,
   };
 
   return (
-    <Screen {...headerProps}>
-      <View style={{ marginTop: 10 }}>
-        <AddressInput {...fullNameProps} />
-        <AddressInput {...phoneNumberProps} />
-        <AddressInputPicker {...regionProps} />
-        <AddressInputPicker {...provinceProps} />
-        <AddressInputPicker {...brgyProps} />
-        <View
-          style={[
-            newAddressStyle.newContainer,
-            { height: 95, paddingRight: 10, paddingBottom: 10 },
-          ]}
-        >
-          <BaseText style={newAddressStyle.TextStyle}>
-            Detailed Address
+    <FormikContext.Provider value={formikBag}>
+      <Screen {...headerProps}>
+        <View style={{ marginTop: 10 }}>
+          <AddressInput {...fullNameProps} />
+          <AddressInput {...phoneNumberProps} />
+          <AddressInputPicker {...regionProps} />
+          <AddressInputPicker {...provinceProps} />
+          <AddressInputPicker {...brgyProps} />
+          <View
+            style={[
+              newAddressStyle.newContainer,
+              { height: 95, paddingRight: 10, paddingBottom: 10 },
+            ]}
+          >
+            <BaseText style={newAddressStyle.TextStyle}>
+              Detailed Address
           </BaseText>
 
-          <View style={newAddressStyle.textContainer}>
-            <BaseText style={newAddressStyle.longText}>
-              Unit Number, House Number{"\n"}Building, Street Name
+            <View style={newAddressStyle.textContainer}>
+              <BaseText style={newAddressStyle.longText}>
+                Unit Number, House Number{"\n"}Building, Street Name
             </BaseText>
-          </View>
-          <View style={{ alignSelf: "flex-end" }}>
-            <BaseText style={newAddressStyle.setDetailStyle}>
-              Set Detailed Address
+            </View>
+            <View style={{ alignSelf: "flex-end" }}>
+              <BaseText style={newAddressStyle.setDetailStyle}>
+                Set Detailed Address
             </BaseText>
+            </View>
           </View>
-        </View>
 
-        <View style={newAddressStyle.newContainer}>
-          <BaseText style={newAddressStyle.TextStyle}>
-            Set as default address
+          <View style={newAddressStyle.newContainer}>
+            <BaseText style={newAddressStyle.TextStyle}>
+              Set as default address
           </BaseText>
-          <View style={newAddressStyle.checkboxContainer}>
-            <CheckBox value={isSelected} onValueChange={setSelection} />
-          </View>
-          <View style={newAddressStyle.submitbuttonParent}>
-            <AppButton {...SubmitButtonProps} />
+            <View style={newAddressStyle.checkboxContainer}>
+              <CheckBox value={isSelected} onValueChange={setSelection} />
+            </View>
+            <View style={newAddressStyle.submitbuttonParent}>
+              <SubmitButton {...SubmitButtonProps}/>
+            </View>
           </View>
         </View>
-      </View>
-    </Screen>
+      </Screen>
+    </FormikContext.Provider>
   );
 };
 export default NewAddressScreen;

@@ -20,7 +20,6 @@ type Style = {
 type AddressInput = {
   label: string;
   placeholder: string;
-  value: string;
 };
 
 type SelectionData = {
@@ -29,6 +28,7 @@ type SelectionData = {
 };
 
 export type AddressInputProps = {
+  name: string;
   addressInput: AddressInput;
   style?: Style;
 };
