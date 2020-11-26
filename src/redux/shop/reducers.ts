@@ -47,9 +47,34 @@ export const shopResponse = produce(
   data.initShopState.shopResponse
 );
 
+export const productResponse = produce(
+  (
+    draft: Draft<ResponseState<models.ProductResponse>>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.callProductsApi.request):
+        draft.isLoading = true;
+        return draft;
+      case getType(actions.callProductsApi.success):
+        draft.response = action.payload;
+        draft.isLoading = false;
+        return draft;
+      case getType(actions.callProductsApi.failure):
+        draft.error = action.payload;
+        draft.isLoading = false;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initShopState.productResponse
+);
+
 const reducer = combineReducers({
   entryContext,
   shopResponse,
+  productResponse,
 });
 
 export default reducer;

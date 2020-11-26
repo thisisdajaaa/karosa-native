@@ -16,28 +16,26 @@ const Choices = () => {
       {
         title: "My Products",
         rightLabel: "80 Products",
-        listColor: theme.colors.orange,
+        listColor: theme.colors.orange5,
         hasSeparator: true,
-        onPress: () =>
-          navigate("Main Stack", { screen: routes.DUMMY_PRODUCTS }),
+        onPress: () => navigate(routes.PRODUCT_MAIN),
       },
       {
         title: "Marketing",
         listColor: theme.colors.blue5,
         hasSeparator: true,
-        onPress: () =>
-          navigate("Main Stack", { screen: routes.DUMMY_MARKETING }),
+        onPress: () => console.log("Marketing"),
       },
       {
         title: "Finance",
         listColor: theme.colors.red5,
         hasSeparator: true,
-        onPress: () => navigate("Main Stack", { screen: routes.DUMMY_FINANCE }),
+        onPress: () => console.log("Finance"),
       },
       {
         title: "Reports",
         listColor: theme.colors.purple,
-        onPress: () => navigate("Main Stack", { screen: routes.DUMMY_REPORTS }),
+        onPress: () => console.log("Reports"),
       },
     ],
   };

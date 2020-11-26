@@ -19,17 +19,18 @@ const PaymentOptionsScreen: React.FC = () => {
     multiAction: [
       {
         text: { left: "Cash on Delivery" },
-        RightComponent: <FormSwitch name={"cod"} />,
+        structure: { RightComponent: <FormSwitch name={"cod"} /> },
         hasSeparator: true,
       },
       {
         text: { left: "GCash" },
-        RightComponent: <FormSwitch name={"gcash"} />,
+        structure: { RightComponent: <FormSwitch name={"gcash"} /> },
         hasSeparator: true,
       },
       {
         text: { left: "Credit Card" },
-        RightComponent: <FormSwitch name={"cc"} />,
+        structure: { RightComponent: <FormSwitch name={"cc"} /> },
+        hasSeparator: true,
       },
     ],
   };

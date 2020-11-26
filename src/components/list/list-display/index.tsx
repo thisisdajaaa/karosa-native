@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "react-native";
 
 import { BaseText } from "../../base-text";
+
 import { Props, AddressProps } from "./types";
 import { styles } from "./styles";
 
