@@ -81,7 +81,7 @@ const NewAddressScreen: React.FC = () => {
   );
 
   const formikBag = useFormik({
-    initialValues: { fullName: "", phoneNumber: "" },
+    initialValues: { fullName: "", phoneNumber: "", region: "", province: "" , barangay: ""  },
     onSubmit: (values) => {
       console.log(values)
     },
@@ -89,17 +89,20 @@ const NewAddressScreen: React.FC = () => {
   });
 
   const regionProps: AddressSelectionProps = {
-    name: "Region",
+    name: "region",
+    label: "Region",
     placeholder: "Choose Region",
     data: regionData,
   };
   const provinceProps: AddressSelectionProps = {
-    name: "Province",
+    name: "province",
+    label: "Province",
     placeholder: "Choose Province",
     data: provinceData,
   };
   const brgyProps: AddressSelectionProps = {
-    name: "Barangay",
+    name: "barangay",
+    label: "Barangay",
     placeholder: "Choose Barangay",
     data: barangayData,
   };
@@ -171,6 +174,7 @@ const NewAddressScreen: React.FC = () => {
             <View style={newAddressStyle.checkboxContainer}>
               <CheckBox value={isSelected} onValueChange={setSelection} />
             </View>
+            <BaseText style={{color: "red"}}>{formikBag.errors && Object.values(formikBag.errors)[0]}</BaseText>
             <View style={newAddressStyle.submitbuttonParent}>
               <SubmitButton {...SubmitButtonProps}/>
             </View>

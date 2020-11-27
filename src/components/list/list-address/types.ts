@@ -35,6 +35,7 @@ export type AddressInputProps = {
 
 export type AddressSelectionProps = {
   name: string;
+  label: string;
   data: Array<SelectionData>;
 } & TextInputProps &
   InputProps;
