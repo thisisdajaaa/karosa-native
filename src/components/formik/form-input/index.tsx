@@ -3,7 +3,6 @@ import { useFormikContext, useField } from "formik";
 import { NativeSyntheticEvent, TextInputFocusEventData } from "react-native";
 import { theme } from "@app/styles";
 
-import { ErrorMessage } from "../error-message";
 import { TextInput } from "../../input";
 
 import { Props } from "./types";
@@ -59,7 +58,6 @@ export const FormInput: React.FC<Props> = React.memo(({ name, ...props }) => {
         }}
         {...props}
       />
-      <ErrorMessage name={name} />
     </React.Fragment>
   );
 });

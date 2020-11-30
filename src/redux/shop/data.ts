@@ -1,14 +1,32 @@
-import { ShopState, ShopStatus } from "./models";
+import { CommonStatus, ProductForm, ShopState, ShopStatus } from "./models";
 
-export const initShopStatus: ShopStatus = {
-  available: false,
+export const initCommonStatus: ShopStatus = {
+  available: true,
   harvesting: false,
   planting: false,
 };
 
+export const initProductForm: ProductForm = {
+  productImg: null,
+  productNm: "",
+  description: "",
+  price: "",
+  weight: "",
+  stocks: "",
+  shelfLife: "",
+  preOrder: false,
+};
+
+export const initShopStatus: CommonStatus = initCommonStatus;
+export const initProductStatus: CommonStatus = initCommonStatus;
+
 export const initShopState: ShopState = {
-  entryContext: {
+  shopEntryContext: {
     shopStatus: initShopStatus,
+  },
+  productEntryContext: {
+    productForm: initProductForm,
+    productStatus: initProductStatus,
   },
   shopResponse: {
     response: {

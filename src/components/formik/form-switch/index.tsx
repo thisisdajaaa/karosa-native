@@ -3,8 +3,6 @@ import { Switch } from "react-native";
 import { useField } from "formik";
 import { theme } from "@app/styles";
 
-import { ErrorMessage } from "../error-message";
-
 import { Props } from "./types";
 
 export const FormSwitch: React.FC<Props> = ({ name }) => {
@@ -30,7 +28,6 @@ export const FormSwitch: React.FC<Props> = ({ name }) => {
         onValueChange={handleSwitch}
         value={currentValue}
       />
-      <ErrorMessage name={name} />
     </React.Fragment>
   );
 };

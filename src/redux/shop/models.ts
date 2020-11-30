@@ -7,18 +7,38 @@ export type ShopResponse = shop.Response;
 export type ShopRequest = shop.Request;
 export type ProductResponse = products.Response;
 
-export type ShopStatus = {
+export type ProductForm = {
+  productImg: null;
+  productNm: string;
+  description: string;
+  price: string;
+  weight: string;
+  stocks: string;
+  shelfLife: string;
+  preOrder: boolean;
+};
+
+export type CommonStatus = {
   available: boolean;
   planting: boolean;
   harvesting: boolean;
 };
 
-export type EntryContext = {
+export type ShopStatus = CommonStatus;
+export type ProductStatus = CommonStatus;
+
+export type ShopEntryContext = {
   shopStatus: ShopStatus;
 };
 
+export type ProductEntryContext = {
+  productStatus: ShopStatus;
+  productForm: ProductForm;
+};
+
 export type ShopState = {
-  entryContext: EntryContext;
+  shopEntryContext: ShopEntryContext;
+  productEntryContext: ProductEntryContext;
   shopResponse: ResponseState<ShopResponse>;
   productResponse: ResponseState<ProductResponse>;
 };

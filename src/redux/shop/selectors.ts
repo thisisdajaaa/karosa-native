@@ -11,7 +11,24 @@ export const rootSelector: Selector<StateAll, ShopState> = (state: StateAll) =>
 export const getShopStatus = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return (
-      state.entryContext.shopStatus || initShopState.entryContext.shopStatus
+      state.shopEntryContext.shopStatus ||
+      initShopState.shopEntryContext.shopStatus
+    );
+  });
+
+export const getProductForm = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return (
+      state.productEntryContext.productForm ||
+      initShopState.productEntryContext.productForm
+    );
+  });
+
+export const getProductStatus = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return (
+      state.productEntryContext.productStatus ||
+      initShopState.productEntryContext.productStatus
     );
   });
 
@@ -28,6 +45,8 @@ export const getProductResponse = () =>
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getShopStatus,
+  getProductForm,
+  getProductStatus,
   getShopResponse,
   getProductResponse,
 };

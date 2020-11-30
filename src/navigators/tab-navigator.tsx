@@ -8,11 +8,13 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useAuth } from "@app/hooks";
 import { theme } from "@app/styles";
+import Content from "@app/screens/products/my-products/content";
 import UserAccountMainScreen from "@app/screens/user-account/main";
 import HomeScreen from "@app/screens/home";
 import ShopMainScreen from "@app/screens/shop/main";
 import AuthMainScreen from "@app/screens/auth/main";
-import Content from "@app/screens/products/my-products/content";
+import BasketScreen from "@app/screens/basket";
+import NotificationScreen from "@app/screens/notifications";
 
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -84,7 +86,7 @@ const TabNavigator: React.FC = () => {
         />
         <BottomTab.Screen
           name="My Basket"
-          component={UserAccountMainScreen}
+          component={BasketScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="md-basket" size={size} color={color} />
@@ -93,7 +95,7 @@ const TabNavigator: React.FC = () => {
         />
         <BottomTab.Screen
           name="Notifications"
-          component={UserAccountMainScreen}
+          component={NotificationScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="ios-notifications" size={size} color={color} />

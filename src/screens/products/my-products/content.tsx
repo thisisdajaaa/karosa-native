@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { FlatList, TouchableOpacity, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { ListItem } from "react-native-elements";
 import { theme } from "@app/styles";
 import { AppButton } from "@app/components/button";
@@ -11,11 +12,13 @@ import { ListProduct } from "@app/components/list/list-product";
 import { ProductCard } from "@app/components/cards/product";
 import { Products } from "@app/redux/api-models/products";
 import { Props as ButtonProps } from "@app/components/button/types";
+import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
 
 const Content: React.FC = () => {
   const dispatch = useDispatch();
+  const { navigate } = useNavigation();
 
   const [view, setView] = useState({
     list: true,
@@ -42,7 +45,7 @@ const Content: React.FC = () => {
   };
 
   const addProdButtonProps: ButtonProps = {
-    onPress: () => console.log("add product"),
+    onPress: () => navigate(routes.ADD_PRODUCT),
     title: "Add Product",
     containerStyle: styles.addProdButton,
   };

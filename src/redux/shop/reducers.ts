@@ -9,8 +9,11 @@ import * as actions from "./actions";
 import * as models from "./models";
 import * as data from "./data";
 
-export const entryContext = produce(
-  (draft: Draft<models.EntryContext>, action: ActionType<typeof actions>) => {
+export const shopEntryContext = produce(
+  (
+    draft: Draft<models.ShopEntryContext>,
+    action: ActionType<typeof actions>
+  ) => {
     switch (action.type) {
       case getType(actions.setShopStatus):
         draft.shopStatus = action.payload;
@@ -19,7 +22,29 @@ export const entryContext = produce(
         return draft;
     }
   },
-  data.initShopState.entryContext
+  data.initShopState.shopEntryContext
+);
+
+export const productEntryContext = produce(
+  (
+    draft: Draft<models.ProductEntryContext>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.setProductForm):
+        draft.productForm = action.payload;
+        return draft;
+      case getType(actions.setProductStatus):
+        draft.productStatus = action.payload;
+        return draft;
+      case getType(actions.clearProductEntry):
+        draft = data.initShopState.productEntryContext;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initShopState.productEntryContext
 );
 
 export const shopResponse = produce(
@@ -72,7 +97,8 @@ export const productResponse = produce(
 );
 
 const reducer = combineReducers({
-  entryContext,
+  shopEntryContext,
+  productEntryContext,
   shopResponse,
   productResponse,
 });

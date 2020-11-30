@@ -10,7 +10,7 @@ import { Props as ScreenProps } from "@app/components/base-screen/types";
 
 import { styles } from "./styles";
 
-const SearchProduct: React.FC = () => {
+const SearchProductScreen: React.FC = () => {
   const { goBack } = useNavigation();
 
   const [search, setSearch] = useState("");
@@ -110,4 +110,4 @@ const SearchProduct: React.FC = () => {
   );
 };
 
-export default SearchProduct;
+export default SearchProductScreen;
