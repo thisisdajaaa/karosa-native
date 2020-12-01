@@ -11,6 +11,9 @@ import MyProducts from "@app/screens/products/my-products";
 import SearchProduct from "@app/screens/products/search-product";
 
 import { TabNavigator } from "./tab-navigator";
+import NewAddressScreen from "@app/screens/user-account/new-address";
+import routes from "./routes";
+import MyAddressScreen from "@app/screens/user-account/my-address";
 
 const Stack = createStackNavigator();
 
@@ -29,6 +32,8 @@ const StackNavigator: React.FC = () => (
     <Stack.Screen name="Social Media Accounts" component={SocialMediaScreen} />
     <Stack.Screen name="My Products" component={MyProducts} />
     <Stack.Screen name="Search Product" component={SearchProduct} />
+    <Stack.Screen name="New Address" component={NewAddressScreen} />
+    <Stack.Screen name="My Address" component={MyAddressScreen} />
   </Stack.Navigator>
 );
 

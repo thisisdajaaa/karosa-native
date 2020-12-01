@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/auth";
 import { Props as HeaderProps } from "../../../components/base-screen/types";
@@ -28,6 +28,9 @@ const MyAddressScreen: React.FC = () => {
     () => dispatch(actions.callMyAddressApi.request()),
     [dispatch]
   );
+  useEffect(() => {
+    getAddress()
+  }, []);
 
   const addressResponse = useMemoizedSelector(selectors.getMyAddressResponse);
   const headerProps: HeaderProps = {
@@ -57,12 +60,7 @@ const MyAddressScreen: React.FC = () => {
       </View>
       <TouchableWithoutFeedback
         onPress={() =>
-          // navigate(routes.ACCOUNTS_NEW_ADDRESS)
-          {
-            getAddress();
-            console.log(addressResponse);
-            console.log("addressResponse");
-          }
+          navigate(routes.ACCOUNTS_NEW_ADDRESS)
         }
       >
         <View style={styleforaddress.touchable}>

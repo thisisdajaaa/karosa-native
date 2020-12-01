@@ -84,6 +84,17 @@ const NewAddressScreen: React.FC = () => {
     initialValues: { fullName: "", phoneNumber: "", region: "", province: "" , barangay: ""  },
     onSubmit: (values) => {
       console.log(values)
+      const request: NewAddressRequest = {
+        type: "home",
+        name: values.fullName,
+        phoneNo: values.phoneNumber,
+        postalCode: "123",
+        address_line_1: values.region + values.barangay + values.province,
+        address_line_2: values.province,
+        barangayId: 1,
+      };
+
+      callNewAddressApi(request)
     },
     validationSchema,
   });
