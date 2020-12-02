@@ -20,7 +20,6 @@ export const styles = StyleSheet.create({
   valueContainer: { flexDirection: "row", justifyContent: "flex-end" },
   statusIcon: {
     fontSize: 18,
-    color: theme.colors.primary,
     marginRight: 8,
   },
   txtValue: {

@@ -8,7 +8,7 @@ import { Props } from "./types";
 import { styles } from "./styles";
 
 export const ListStatus: React.FC<Props> = React.memo(
-  ({ title, hasBottomDivider, required, onPress, value }) => {
+  ({ title, hasBottomDivider, required, onPress, value, color }) => {
     return (
       <ListItem bottomDivider={hasBottomDivider}>
         <ListItem.Content style={styles.container}>
@@ -16,7 +16,7 @@ export const ListStatus: React.FC<Props> = React.memo(
           {required && <BaseText style={styles.required}>*</BaseText>}
         </ListItem.Content>
         <TouchableOpacity onPress={onPress} style={styles.valueContainer}>
-          <FontAwesome name="circle" style={styles.statusIcon} />
+          <FontAwesome name="circle" color={color} style={styles.statusIcon} />
           <BaseText style={styles.txtValue}>{value}</BaseText>
         </TouchableOpacity>
       </ListItem>

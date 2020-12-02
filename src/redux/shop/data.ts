@@ -1,4 +1,12 @@
-import { CommonStatus, ProductForm, ShopState, ShopStatus } from "./models";
+import {
+  AvailabilityForm,
+  CommonStatus,
+  ProductForm,
+  ShopState,
+  ShopStatus,
+  VariationForm,
+  WholesaleForm,
+} from "./models";
 
 export const initCommonStatus: ShopStatus = {
   available: true,
@@ -15,6 +23,31 @@ export const initProductForm: ProductForm = {
   stocks: "",
   shelfLife: "",
   preOrder: false,
+  status: initCommonStatus,
+};
+
+export const initVariationForm: VariationForm = {
+  variationImg: null,
+  productNm: "",
+  price: "",
+  weight: "",
+  stocks: "",
+};
+
+export const initAvailabilityForm: AvailabilityForm = {
+  monday: false,
+  tuesday: false,
+  wednesday: false,
+  thursday: false,
+  friday: false,
+  saturday: false,
+  sunday: false,
+};
+
+export const initWholesaleForm: WholesaleForm = {
+  min: "",
+  max: "",
+  unit: "",
 };
 
 export const initShopStatus: CommonStatus = initCommonStatus;
@@ -26,7 +59,9 @@ export const initShopState: ShopState = {
   },
   productEntryContext: {
     productForm: initProductForm,
-    productStatus: initProductStatus,
+    variationForm: initVariationForm,
+    availabilityForm: initAvailabilityForm,
+    wholesaleForm: initWholesaleForm,
   },
   shopResponse: {
     response: {

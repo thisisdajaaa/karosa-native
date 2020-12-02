@@ -2,13 +2,6 @@ import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
 export const styles = StyleSheet.create({
-  itemContainer: {
-    flexDirection: "row",
-  },
-  actionContainer: {
-    paddingTop: 0,
-  },
-  txtLabel: { ...theme.textRegular, fontWeight: "400" },
   txtProductStatus: {
     ...theme.textBold,
     marginVertical: 12,
@@ -21,13 +14,8 @@ export const styles = StyleSheet.create({
   spacer: {
     marginTop: 24,
   },
-  doneButtonContainer: {
-    backgroundColor: theme.colors.light10,
-    minWidth: 330,
-    width: "100%",
-  },
-  txtDone: {
-    ...theme.textRegular,
-    color: theme.colors.dark10,
+  buttonContainer: {
+    marginTop: 12,
+    alignSelf: "center",
   },
 });

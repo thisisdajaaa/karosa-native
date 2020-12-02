@@ -15,7 +15,7 @@ const theme = {
   },
   textRegular: {
     fontSize: 16,
-    lineHeight: 19,
+    lineHeight: 18.75,
     fontFamily: "SFProText-Regular",
   },
   textBold: {

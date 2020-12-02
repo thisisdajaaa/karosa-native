@@ -24,11 +24,35 @@ export const getProductForm = () =>
     );
   });
 
+export const getVariationForm = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return (
+      state.productEntryContext.variationForm ||
+      initShopState.productEntryContext.variationForm
+    );
+  });
+
+export const getAvailabilityForm = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return (
+      state.productEntryContext.availabilityForm ||
+      initShopState.productEntryContext.availabilityForm
+    );
+  });
+
+export const getWholesaleForm = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return (
+      state.productEntryContext.wholesaleForm ||
+      initShopState.productEntryContext.wholesaleForm
+    );
+  });
+
 export const getProductStatus = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return (
-      state.productEntryContext.productStatus ||
-      initShopState.productEntryContext.productStatus
+      state.productEntryContext.productForm.status ||
+      initShopState.productEntryContext.productForm.status
     );
   });
 
@@ -45,7 +69,10 @@ export const getProductResponse = () =>
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getShopStatus,
+  getAvailabilityForm,
   getProductForm,
+  getVariationForm,
+  getWholesaleForm,
   getProductStatus,
   getShopResponse,
   getProductResponse,

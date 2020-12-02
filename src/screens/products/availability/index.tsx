@@ -1,129 +1,109 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { View } from "react-native";
+import { useDispatch } from "react-redux";
+import { FormikContext, useFormik } from "formik";
 import RBSheet from "react-native-raw-bottom-sheet";
-import { CheckBox } from "react-native-elements";
-import { theme } from "@app/styles";
 import { BaseText } from "@app/components/base-text";
 import { Separator } from "@app/components/separator";
-import { AppButton } from "@app/components/button";
-import { Props as ButtonProps } from "@app/components/button/types";
+import { SubmitButton } from "@app/components/formik/submit-button";
+import { FormCheckbox } from "@app/components/formik/form-checkbox";
+import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
+import { useMemoizedSelector } from "@app/hooks";
+import { actions, selectors } from "@app/redux/shop";
+import { AvailabilityForm } from "@app/redux/shop/models";
 
 import { Props } from "./types";
 import { styles } from "./styles";
 
 const AvailabilityModal: React.FC<Props> = ({ sheetRef }) => {
-  const doneButtonProps: ButtonProps = {
-    onPress: () => sheetRef.current?.close(),
+  const dispatch = useDispatch();
+
+  const setAvailabilityForm = useCallback(
+    (values: AvailabilityForm) => dispatch(actions.setAvailabilityForm(values)),
+    [dispatch]
+  );
+
+  const availabilityForm = useMemoizedSelector(selectors.getAvailabilityForm);
+
+  const formikBag = useFormik({
+    initialValues: availabilityForm,
+    onSubmit: (values) => {
+      setAvailabilityForm(values);
+      sheetRef.current?.close();
+    },
+  });
+
+  const checkbox = (label: string, name: string) => (
+    <FormCheckbox label={label} name={name} />
+  );
+
+  const separator = <Separator containerStyle={styles.separator} />;
+
+  const elementIterator = (items: React.ReactElement[]) => {
+    return items.map((item, key) => (
+      <React.Fragment key={key}>{item}</React.Fragment>
+    ));
+  };
+
+  const elements = (): React.ReactElement[] => {
+    const items: React.ReactElement[] = [];
+
+    const mon = checkbox("Monday", "monday");
+    const tues = checkbox("Tuesday", "tuesday");
+    const wed = checkbox("Wednesday", "wednesday");
+    const thurs = checkbox("Thursday", "thursday");
+    const fri = checkbox("Friday", "friday");
+    const sat = checkbox("Saturday", "saturday");
+    const sun = checkbox("Sunday", "sunday");
+
+    items.push(
+      mon,
+      separator,
+      tues,
+      separator,
+      wed,
+      separator,
+      thurs,
+      separator,
+      fri,
+      separator,
+      sat,
+      separator,
+      sun,
+      separator
+    );
+
+    return elementIterator(items);
+  };
+
+  const doneButtonProps: SubmitButtonProps = {
     title: "Done",
-    containerStyle: styles.doneButtonContainer,
-    textStyle: styles.txtDone,
   };
 
   return (
-    <RBSheet
-      ref={sheetRef}
-      closeOnDragDown={true}
-      closeOnPressMask={false}
-      height={527}
-      customStyles={{
-        container: {
-          borderTopLeftRadius: 10,
-          borderTopRightRadius: 10,
-          padding: 5,
-        },
-      }}
-    >
-      <BaseText style={styles.txtProductStatus}>Available every</BaseText>
-      <View style={styles.spacer} />
-      <CheckBox
-        checked={true}
-        title={"Monday"}
-        onPress={() => console.log("pressed")}
-        checkedColor={theme.colors.primary}
-        containerStyle={{
-          backgroundColor: "transparent",
-          borderWidth: 0,
-          margin: 0,
+    <FormikContext.Provider value={formikBag}>
+      <RBSheet
+        ref={sheetRef}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        height={527}
+        customStyles={{
+          container: {
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            padding: 5,
+          },
         }}
-      />
-      <Separator containerStyle={styles.separator} />
-      <CheckBox
-        checked={true}
-        title={"Tuesday"}
-        onPress={() => console.log("pressed")}
-        checkedColor={theme.colors.primary}
-        containerStyle={{
-          backgroundColor: "transparent",
-          borderWidth: 0,
-          margin: 0,
-        }}
-      />
-      <Separator containerStyle={styles.separator} />
-      <CheckBox
-        checked={true}
-        title={"Wednesday"}
-        onPress={() => console.log("pressed")}
-        checkedColor={theme.colors.primary}
-        containerStyle={{
-          backgroundColor: "transparent",
-          borderWidth: 0,
-          margin: 0,
-        }}
-      />
-      <Separator containerStyle={styles.separator} />
-      <CheckBox
-        checked={true}
-        title={"Thursday"}
-        onPress={() => console.log("pressed")}
-        checkedColor={theme.colors.primary}
-        containerStyle={{
-          backgroundColor: "transparent",
-          borderWidth: 0,
-          margin: 0,
-        }}
-      />
-      <Separator containerStyle={styles.separator} />
-      <CheckBox
-        checked={true}
-        title={"Friday"}
-        onPress={() => console.log("pressed")}
-        checkedColor={theme.colors.primary}
-        containerStyle={{
-          backgroundColor: "transparent",
-          borderWidth: 0,
-          margin: 0,
-        }}
-      />
-      <Separator containerStyle={styles.separator} />
-      <CheckBox
-        checked={true}
-        title={"Saturday"}
-        onPress={() => console.log("pressed")}
-        checkedColor={theme.colors.primary}
-        containerStyle={{
-          backgroundColor: "transparent",
-          borderWidth: 0,
-          margin: 0,
-        }}
-      />
-      <Separator containerStyle={styles.separator} />
-      <CheckBox
-        checked={true}
-        title={"Sunday"}
-        onPress={() => console.log("pressed")}
-        checkedColor={theme.colors.primary}
-        containerStyle={{
-          backgroundColor: "transparent",
-          borderWidth: 0,
-          margin: 0,
-        }}
-      />
-      <Separator containerStyle={styles.separator} />
+      >
+        <BaseText style={styles.txtProductStatus}>Available every</BaseText>
+        <View style={styles.spacer} />
+        <React.Fragment>{elements()}</React.Fragment>
 
-      <View style={{ marginTop: 12, alignSelf: "center" }}>
-        <AppButton {...doneButtonProps} />
-      </View>
-    </RBSheet>
+        <View style={styles.buttonContainer}>
+          <SubmitButton {...doneButtonProps} />
+        </View>
+      </RBSheet>
+    </FormikContext.Provider>
   );
 };
 

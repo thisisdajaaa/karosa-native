@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { FormikContext, useFormik } from "formik";
 import { View } from "react-native";
@@ -23,26 +23,15 @@ const DeleteAccountModal: React.FC<Props> = ({ sheetRef }) => {
     onSubmit: () => console.log("submit form"),
   });
 
-  const hasFormikVal = useMemo(() => {
-    return Object.values(formikBag.values).some(
-      (val: boolean) => val !== false
-    );
-  }, [formikBag.values]);
-
-  const customStyles = styles(hasFormikVal);
-
   const deleteButtonProps: SubmitButtonProps = {
     title: "Delete",
-    disabled: hasFormikVal ? false : true,
-    containerStyle: customStyles.btnDeleteContainer,
-    textStyle: customStyles.txtBtnDelete,
   };
 
   const cancelButtonProps: ButtonProps = {
     onPress: () => sheetRef.current?.close(),
     title: "Cancel",
-    containerStyle: customStyles.btnCancelContainer,
-    textStyle: customStyles.txtBtnCancel,
+    containerStyle: styles.btnCancelContainer,
+    textStyle: styles.txtBtnCancel,
   };
 
   return (
@@ -61,13 +50,13 @@ const DeleteAccountModal: React.FC<Props> = ({ sheetRef }) => {
           },
         }}
       >
-        <BaseText style={customStyles.txtDeleteAcc}>Delete Account</BaseText>
-        <BaseText style={customStyles.txtDeleteAccPar}>
+        <BaseText style={styles.txtDeleteAcc}>Delete Account</BaseText>
+        <BaseText style={styles.txtDeleteAccPar}>
           We are sad that you want to leave us, but please note that account
           deletion is not irreversable. Please tell us your reason for leaving.
         </BaseText>
 
-        <View style={customStyles.checkBoxContainer}>
+        <View style={styles.checkBoxContainer}>
           <FormCheckbox
             label="I have this reason to delete"
             name="firstReason"
@@ -85,7 +74,7 @@ const DeleteAccountModal: React.FC<Props> = ({ sheetRef }) => {
             name="fourthReason"
           />
         </View>
-        <View style={customStyles.buttonContainer}>
+        <View style={styles.buttonContainer}>
           <SubmitButton {...deleteButtonProps} />
           <AppButton {...cancelButtonProps} />
         </View>

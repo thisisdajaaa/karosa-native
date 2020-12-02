@@ -1,5 +1,5 @@
-import React, { useCallback, useRef } from "react";
-import { useDispatch } from "react-redux";
+import React, { useCallback, useMemo, useRef } from "react";
+import { batch, useDispatch } from "react-redux";
 import { ScrollView, View } from "react-native";
 import { Header } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
@@ -21,9 +21,10 @@ import routes from "@app/navigators/routes";
 import ProductStatusModal from "../product-status";
 import AvailabilityModal from "../availability";
 
+import { validationSchema } from "./validation";
 import { styles } from "./styles";
 
-const AddProductsScreen: React.FC = () => {
+const AddProductScreen: React.FC = () => {
   const dispatch = useDispatch();
 
   const productStatusRef = useRef<RBSheet>(null);
@@ -41,13 +42,32 @@ const AddProductsScreen: React.FC = () => {
   );
 
   const productForm = useMemoizedSelector(selectors.getProductForm);
+  const productStatus = useMemoizedSelector(selectors.getProductStatus);
 
   const formikBag = useFormik({
     initialValues: productForm,
+    validateOnBlur: true,
+    validateOnChange: true,
+    validationSchema,
     onSubmit: (values) => {
-      setProductForm(values);
+      batch(() => {
+        setProductForm(values);
+        clearProductEntry();
+      });
+
+      goBack();
     },
   });
+
+  const status = useMemo(() => {
+    if (productStatus.harvesting)
+      return { value: "Harvesting", color: theme.colors.gold5 };
+
+    if (productStatus.planting)
+      return { value: "Planting", color: theme.colors.dark5 };
+
+    return { value: "Available", color: theme.colors.primary };
+  }, [productStatus]);
 
   const screenProps: ScreenProps = {
     customHeader: (
@@ -71,13 +91,12 @@ const AddProductsScreen: React.FC = () => {
         }}
         rightComponent={{
           text: "Save",
-          style: {
-            fontSize: 16,
-            lineHeight: 19,
-            fontWeight: "400",
-            color: "#BDBDBD",
-          },
           onPress: formikBag.submitForm,
+          style: {
+            ...theme.textRegular,
+            fontWeight: "400",
+            color: theme.colors.dark10,
+          },
         }}
       />
     ),
@@ -125,7 +144,8 @@ const AddProductsScreen: React.FC = () => {
         title={"Status"}
         required
         onPress={statusCb}
-        value={"Available"}
+        color={status.color}
+        value={status.value}
       />
     );
   };
@@ -177,13 +197,15 @@ const AddProductsScreen: React.FC = () => {
       "Set Weight"
     );
 
-    const categories = listChevron("Categories", true, () => alert("MIKAY"));
-    const unit = listChevron("Unit of Measurement", true, () => alert("MIKAY"));
+    const categories = listChevron("Categories", true, () =>
+      alert("categories")
+    );
+    const unit = listChevron("Unit of Measurement", true, () => alert("unit"));
     const availability = listChevron("Availability", false, availabilityCb);
     const variation = listChevron("Variation", false, variationCb);
     const wholesale = listChevron("Wholesale", false, wholesaleCb);
     const shippingDetails = listChevron("Shipping Details", false, () =>
-      alert("MIKAY")
+      alert("shipping details")
     );
 
     elements.push(
@@ -222,4 +244,4 @@ const AddProductsScreen: React.FC = () => {
   );
 };
 
-export default AddProductsScreen;
+export default AddProductScreen;

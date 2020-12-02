@@ -1,20 +1,27 @@
-import React, { useState } from "react";
-import { Header, ListItem } from "react-native-elements";
+import React, { useCallback } from "react";
+import { Header } from "react-native-elements";
 import { View } from "react-native";
+import { FormikContext, useFormik } from "formik";
+import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { theme } from "@app/styles";
 import { Screen } from "@app/components/base-screen";
-import { ImagePicker } from "@app/components/image-picker";
 import { ListInput } from "@app/components/list/list-input";
-import { AppButton } from "@app/components/button";
-import { Props as ButtonProps } from "@app/components/button/types";
+import { ListImage } from "@app/components/list/list-image";
+import { SubmitButton } from "@app/components/formik/submit-button";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
+import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
+import { useMemoizedSelector } from "@app/hooks";
+import { actions, selectors } from "@app/redux/shop";
+import { VariationForm } from "@app/redux/shop/models";
 
+import { validationSchema } from "./validation";
 import { styles } from "./styles";
 
 const AddVariationScreen: React.FC = () => {
+  const dispatch = useDispatch();
+
   const { goBack } = useNavigation();
-  const [image, setImage] = useState<string | null>(null);
 
   const screenProps: ScreenProps = {
     customHeader: (
@@ -38,53 +45,88 @@ const AddVariationScreen: React.FC = () => {
     customStyles: styles.container,
   };
 
-  const saveButtonProps: ButtonProps = {
-    onPress: () => goBack(),
+  const setVariationForm = useCallback(
+    (values: VariationForm) => dispatch(actions.setVariationForm(values)),
+    [dispatch]
+  );
+
+  const variationForm = useMemoizedSelector(selectors.getVariationForm);
+
+  const formikBag = useFormik({
+    initialValues: variationForm,
+    validateOnBlur: true,
+    validateOnChange: true,
+    validationSchema,
+    onSubmit: (values) => {
+      setVariationForm(values);
+      goBack();
+    },
+  });
+
+  const listInput = (
+    name: string,
+    orientation: string,
+    label: string,
+    placeholder: string
+  ): JSX.Element => {
+    return (
+      <ListInput
+        isColumn={orientation === "column" ? true : false}
+        isRow={orientation === "row" ? true : false}
+        hasBottomDivider
+        required
+        name={name}
+        label={label}
+        placeholder={placeholder}
+      />
+    );
+  };
+
+  const listImage = () => <ListImage name={"variationImg"} hasBottomDivider />;
+
+  const listIterator = (listItems: React.ReactElement[]) => {
+    return listItems.map((item, key) => (
+      <React.Fragment key={key}>{item}</React.Fragment>
+    ));
+  };
+
+  const listDisplay = (): React.ReactElement[] => {
+    const elements: React.ReactElement[] = [];
+
+    const price = listInput("price", "row", "Price", "Set price per product");
+    const stocks = listInput("stocks", "row", "Stocks", "Set Stock");
+    const productNm = listInput(
+      "productNm",
+      "column",
+      "Product Name",
+      "Enter Product Name"
+    );
+    const weight = listInput(
+      "weight",
+      "row",
+      "Weight per product",
+      "Set Weight"
+    );
+
+    elements.push(listImage(), productNm, price, weight, stocks);
+
+    return listIterator(elements);
+  };
+
+  const saveButtonProps: SubmitButtonProps = {
     title: "Save",
-    containerStyle: styles.saveButtonContainer,
-    textStyle: styles.txtSave,
   };
 
   return (
-    <Screen {...screenProps}>
-      <ListItem bottomDivider>
-        <ImagePicker
-          imageUri={image}
-          onChangeImage={(img: string) => setImage(img)}
-        />
-      </ListItem>
-      <ListItem bottomDivider>
-        <ListInput
-          isColumn
-          required
-          label={"Product Name"}
-          placeholder={"Enter Product Name"}
-        />
-      </ListItem>
-      <ListItem bottomDivider>
-        <ListInput
-          isRow
-          required
-          label={"Price"}
-          placeholder={"Set price per product"}
-        />
-      </ListItem>
-      <ListItem bottomDivider>
-        <ListInput
-          isRow
-          required
-          label={"Weight per product"}
-          placeholder={"Set Weight"}
-        />
-      </ListItem>
-      <ListItem bottomDivider>
-        <ListInput isRow required label={"Stocks"} placeholder={"Set stocks"} />
-      </ListItem>
+    <FormikContext.Provider value={formikBag}>
+      <Screen {...screenProps}>
+        <React.Fragment>{listDisplay()}</React.Fragment>
 
-      <View style={styles.buttonContainer}>
-        <AppButton {...saveButtonProps} />
-      </View>
-    </Screen>
+        <View style={styles.buttonContainer}>
+          <SubmitButton {...saveButtonProps} />
+        </View>
+      </Screen>
+    </FormikContext.Provider>
   );
 };
 

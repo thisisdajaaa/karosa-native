@@ -19,6 +19,7 @@ export const FormSwitch: React.FC<Props> = ({ name }) => {
 
   const handleSwitch = (value: boolean) => {
     setCurrentValue(value);
+    helpers.setTouched(true);
   };
 
   return (

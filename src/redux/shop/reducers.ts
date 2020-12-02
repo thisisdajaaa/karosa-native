@@ -34,8 +34,17 @@ export const productEntryContext = produce(
       case getType(actions.setProductForm):
         draft.productForm = action.payload;
         return draft;
+      case getType(actions.setVariationForm):
+        draft.variationForm = action.payload;
+        return draft;
+      case getType(actions.setAvailabilityForm):
+        draft.availabilityForm = action.payload;
+        return draft;
+      case getType(actions.setWholesaleForm):
+        draft.wholesaleForm = action.payload;
+        return draft;
       case getType(actions.setProductStatus):
-        draft.productStatus = action.payload;
+        draft.productForm.status = action.payload;
         return draft;
       case getType(actions.clearProductEntry):
         draft = data.initShopState.productEntryContext;

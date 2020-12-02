@@ -8,19 +8,34 @@ export const setShopStatus = createAction(
   (resolve) => (values: models.ShopStatus) => resolve(values)
 );
 
+export const setProductStatus = createAction(
+  types.SET_PRODUCT_STATUS,
+  (resolve) => (values: models.CommonStatus) => resolve(values)
+);
+
 export const setProductForm = createAction(
   types.SET_PRODUCT_FORM,
   (resolve) => (values: models.ProductForm) => resolve(values)
 );
 
+export const setVariationForm = createAction(
+  types.SET_VARIATION_FORM,
+  (resolve) => (values: models.VariationForm) => resolve(values)
+);
+
+export const setAvailabilityForm = createAction(
+  types.SET_AVAILABILITY_FORM,
+  (resolve) => (values: models.AvailabilityForm) => resolve(values)
+);
+
+export const setWholesaleForm = createAction(
+  types.SET_WHOLESALE_FORM,
+  (resolve) => (values: models.WholesaleForm) => resolve(values)
+);
+
 export const clearProductEntry = createAction(
   types.CLEAR_PRODUCT_ENTRY,
   (resolve) => () => resolve()
-);
-
-export const setProductStatus = createAction(
-  types.SET_PRODUCT_STATUS,
-  (resolve) => (values: models.ProductStatus) => resolve(values)
 );
 
 export const callShopApi = createAsyncAction(
@@ -38,8 +53,11 @@ export const callProductsApi = createAsyncAction(
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   setShopStatus,
-  setProductForm,
   setProductStatus,
+  setProductForm,
+  setVariationForm,
+  setAvailabilityForm,
+  setWholesaleForm,
   callShopApi,
   callProductsApi,
   clearProductEntry,

@@ -21,6 +21,7 @@ export const FormCheckbox: React.FC<Props> = ({ label, name }) => {
 
   const handlePress = () => {
     setCurrentValue((prev: boolean) => !prev);
+    helpers.setTouched(true);
   };
 
   return (
@@ -30,6 +31,9 @@ export const FormCheckbox: React.FC<Props> = ({ label, name }) => {
         title={label}
         onPress={handlePress}
         checkedColor={theme.colors.primary}
+        titleProps={{
+          style: { ...theme.textRegular, fontWeight: "400", marginLeft: 8 },
+        }}
         containerStyle={{
           backgroundColor: "transparent",
           borderWidth: 0,
