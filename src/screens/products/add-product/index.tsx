@@ -20,6 +20,7 @@ import routes from "@app/navigators/routes";
 
 import ProductStatusModal from "../product-status";
 import AvailabilityModal from "../availability";
+import MeasurementModal from "../measurement";
 
 import { validationSchema } from "./validation";
 import { styles } from "./styles";
@@ -29,6 +30,7 @@ const AddProductScreen: React.FC = () => {
 
   const productStatusRef = useRef<RBSheet>(null);
   const availabilityRef = useRef<RBSheet>(null);
+  const measurementRef = useRef<RBSheet>(null);
   const { goBack, navigate } = useNavigation();
 
   const setProductForm = useCallback(
@@ -114,6 +116,7 @@ const AddProductScreen: React.FC = () => {
         isColumn={orientation === "column" ? true : false}
         isRow={orientation === "row" ? true : false}
         hasBottomDivider
+        maxLength={name === "productNm" ? 100 : 1000}
         required
         name={name}
         label={label}
@@ -165,10 +168,13 @@ const AddProductScreen: React.FC = () => {
   const listDisplay = (): React.ReactElement[] => {
     const elements: React.ReactElement[] = [];
 
-    const availabilityCb = () => availabilityRef.current?.open();
     const statusCb = () => productStatusRef.current?.open();
+    const availabilityCb = () => availabilityRef.current?.open();
+    const measurementCb = () => measurementRef.current?.open();
     const variationCb = () => navigate(routes.ADD_VARIATION);
     const wholesaleCb = () => navigate(routes.ADD_WHOLESALE);
+    const shippingDetCb = () => navigate(routes.SHIPPING_DETAILS);
+    const categoryCb = () => navigate(routes.CHOOSE_CATEGORY);
 
     const price = listInput("price", "row", "Price", "Set price per product");
     const stocks = listInput("stocks", "row", "Stocks", "Set Stock");
@@ -197,15 +203,15 @@ const AddProductScreen: React.FC = () => {
       "Set Weight"
     );
 
-    const categories = listChevron("Categories", true, () =>
-      alert("categories")
-    );
-    const unit = listChevron("Unit of Measurement", true, () => alert("unit"));
+    const categories = listChevron("Categories", true, categoryCb);
+    const unit = listChevron("Unit of Measurement", true, measurementCb);
     const availability = listChevron("Availability", false, availabilityCb);
     const variation = listChevron("Variation", false, variationCb);
     const wholesale = listChevron("Wholesale", false, wholesaleCb);
-    const shippingDetails = listChevron("Shipping Details", false, () =>
-      alert("shipping details")
+    const shippingDetails = listChevron(
+      "Shipping Details",
+      false,
+      shippingDetCb
     );
 
     elements.push(
@@ -239,6 +245,7 @@ const AddProductScreen: React.FC = () => {
 
         <ProductStatusModal sheetRef={productStatusRef} />
         <AvailabilityModal sheetRef={availabilityRef} />
+        <MeasurementModal sheetRef={measurementRef} />
       </Screen>
     </FormikContext.Provider>
   );

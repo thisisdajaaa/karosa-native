@@ -2,6 +2,7 @@ import {
   AvailabilityForm,
   CommonStatus,
   ProductForm,
+  ShippingDetailsForm,
   ShopState,
   ShopStatus,
   VariationForm,
@@ -23,6 +24,8 @@ export const initProductForm: ProductForm = {
   stocks: "",
   shelfLife: "",
   preOrder: false,
+  measurement: "1",
+  categoryId: 1,
   status: initCommonStatus,
 };
 
@@ -50,6 +53,17 @@ export const initWholesaleForm: WholesaleForm = {
   unit: "",
 };
 
+export const initShippingDetailsForm: ShippingDetailsForm = {
+  weight: "",
+  width: "",
+  length: "",
+  height: "",
+  expressDelivery: false,
+  karosaDelivery: false,
+  pickUpBuyer: false,
+  sellerCourier: false,
+};
+
 export const initShopStatus: CommonStatus = initCommonStatus;
 export const initProductStatus: CommonStatus = initCommonStatus;
 
@@ -62,6 +76,7 @@ export const initShopState: ShopState = {
     variationForm: initVariationForm,
     availabilityForm: initAvailabilityForm,
     wholesaleForm: initWholesaleForm,
+    shippingDetailsForm: initShippingDetailsForm,
   },
   shopResponse: {
     response: {

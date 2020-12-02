@@ -74,6 +74,7 @@ const AddVariationScreen: React.FC = () => {
         isColumn={orientation === "column" ? true : false}
         isRow={orientation === "row" ? true : false}
         hasBottomDivider
+        maxLength={name === "productNm" ? 100 : 1000}
         required
         name={name}
         label={label}

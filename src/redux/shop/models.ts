@@ -22,6 +22,8 @@ export type ProductForm = {
   stocks: string;
   shelfLife: string;
   preOrder: boolean;
+  measurement: string;
+  categoryId: number;
   status: CommonStatus;
 };
 
@@ -49,6 +51,17 @@ export type WholesaleForm = {
   unit: string;
 };
 
+export type ShippingDetailsForm = {
+  weight: string;
+  width: string;
+  length: string;
+  height: string;
+  expressDelivery: boolean;
+  karosaDelivery: boolean;
+  pickUpBuyer: boolean;
+  sellerCourier: boolean;
+};
+
 export type ShopStatus = CommonStatus;
 
 export type ShopEntryContext = {
@@ -60,6 +73,7 @@ export type ProductEntryContext = {
   variationForm: VariationForm;
   availabilityForm: AvailabilityForm;
   wholesaleForm: WholesaleForm;
+  shippingDetailsForm: ShippingDetailsForm;
 };
 
 export type ShopState = {

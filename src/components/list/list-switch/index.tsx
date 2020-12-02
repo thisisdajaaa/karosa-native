@@ -7,14 +7,19 @@ import { Props } from "./types";
 import { styles } from "./styles";
 
 export const ListSwitch: React.FC<Props> = React.memo(
-  ({ title, name, hasBottomDivider }) => {
+  ({ title, boldTitle, name, hasBottomDivider, disabled, extraInfo }) => {
     return (
       <ListItem bottomDivider={hasBottomDivider}>
-        <ListItem.Content style={styles.container}>
-          <BaseText style={styles.txtTitle}>{title}</BaseText>
-        </ListItem.Content>
+        {boldTitle && (
+          <BaseText style={styles.txtBoldTitle}>{boldTitle}</BaseText>
+        )}
+        {title && <BaseText style={styles.txtTitle}>{title}</BaseText>}
+        {extraInfo && (
+          <BaseText style={styles.txtExtraInfo}>{extraInfo}</BaseText>
+        )}
+
         <ListItem.Content style={styles.switchContainer}>
-          <FormSwitch name={name} />
+          <FormSwitch name={name} disabled={disabled} />
         </ListItem.Content>
       </ListItem>
     );

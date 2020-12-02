@@ -8,14 +8,6 @@ import { initShopState } from "./data";
 export const rootSelector: Selector<StateAll, ShopState> = (state: StateAll) =>
   state.shop || initShopState;
 
-export const getShopStatus = () =>
-  createSelector([rootSelector], (state: ShopState) => {
-    return (
-      state.shopEntryContext.shopStatus ||
-      initShopState.shopEntryContext.shopStatus
-    );
-  });
-
 export const getProductForm = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return (
@@ -48,11 +40,35 @@ export const getWholesaleForm = () =>
     );
   });
 
+export const getShippingDetailsForm = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return (
+      state.productEntryContext.shippingDetailsForm ||
+      initShopState.productEntryContext.shippingDetailsForm
+    );
+  });
+
+export const getShopStatus = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return (
+      state.shopEntryContext.shopStatus ||
+      initShopState.shopEntryContext.shopStatus
+    );
+  });
+
 export const getProductStatus = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return (
       state.productEntryContext.productForm.status ||
       initShopState.productEntryContext.productForm.status
+    );
+  });
+
+export const getProductMeasurement = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return (
+      state.productEntryContext.productForm.measurement ||
+      initShopState.productEntryContext.productForm.measurement
     );
   });
 
@@ -68,12 +84,14 @@ export const getProductResponse = () =>
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  getShopStatus,
   getAvailabilityForm,
   getProductForm,
   getVariationForm,
   getWholesaleForm,
+  getShippingDetailsForm,
+  getShopStatus,
   getProductStatus,
+  getProductMeasurement,
   getShopResponse,
   getProductResponse,
 };

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { ListItem } from "react-native-elements";
+import { useFormikContext } from "formik";
 import { BaseText } from "@app/components/base-text";
 import { FormInput } from "@app/components/formik/form-input";
 import { theme } from "@app/styles";
@@ -15,15 +16,24 @@ export const ListInput: React.FC<Props> = React.memo(
     placeholder,
     required,
     name,
+    maxLength,
     hasBottomDivider,
   }) => {
+    const { values } = useFormikContext<any>();
+
+    const currentLength = useMemo(() => {
+      return values[name].length;
+    }, [name, values]);
+
     return (
       <ListItem bottomDivider={hasBottomDivider}>
         {isColumn && (
           <ListItem.Content style={styles.columnContainer}>
             <ListItem.Content style={styles.columnLabelContainer}>
               <BaseText style={styles.txtLabel}>{label}</BaseText>
-              <BaseText style={styles.totalDigits}>(0/1000)</BaseText>
+              <BaseText style={styles.totalDigits}>
+                ({currentLength}/{maxLength})
+              </BaseText>
               {required && <BaseText style={styles.required}>*</BaseText>}
             </ListItem.Content>
             <ListItem.Content style={styles.columnInputContainer}>

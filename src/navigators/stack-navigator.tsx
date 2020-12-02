@@ -12,6 +12,8 @@ import SearchProductScreen from "@app/screens/products/search-product";
 import AddProductScreen from "@app/screens/products/add-product";
 import AddVariationScreen from "@app/screens/products/add-variation";
 import AddWholesaleScreen from "@app/screens/products/add-wholesale";
+import ChooseCategoryScreen from "@app/screens/products/choose-category";
+import ShippingDetailsScreen from "@app/screens/products/shipping-details";
 
 import { TabNavigator } from "./tab-navigator";
 
@@ -35,6 +37,8 @@ const StackNavigator: React.FC = () => (
     <Stack.Screen name="Add Product" component={AddProductScreen} />
     <Stack.Screen name="Add Variation" component={AddVariationScreen} />
     <Stack.Screen name="Add Wholesale" component={AddWholesaleScreen} />
+    <Stack.Screen name="Shipping Details" component={ShippingDetailsScreen} />
+    <Stack.Screen name="Choose Category" component={ChooseCategoryScreen} />
   </Stack.Navigator>
 );
 

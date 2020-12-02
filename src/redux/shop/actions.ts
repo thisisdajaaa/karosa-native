@@ -13,6 +13,16 @@ export const setProductStatus = createAction(
   (resolve) => (values: models.CommonStatus) => resolve(values)
 );
 
+export const setProductMeasurement = createAction(
+  types.SET_PRODUCT_MEASUREMENT,
+  (resolve) => (value: string) => resolve(value)
+);
+
+export const setCategory = createAction(
+  types.SET_CATEGORY,
+  (resolve) => (value: number) => resolve(value)
+);
+
 export const setProductForm = createAction(
   types.SET_PRODUCT_FORM,
   (resolve) => (values: models.ProductForm) => resolve(values)
@@ -31,6 +41,11 @@ export const setAvailabilityForm = createAction(
 export const setWholesaleForm = createAction(
   types.SET_WHOLESALE_FORM,
   (resolve) => (values: models.WholesaleForm) => resolve(values)
+);
+
+export const setShippingDetailsForm = createAction(
+  types.SET_SHIPPING_DETAILS_FORM,
+  (resolve) => (values: models.ShippingDetailsForm) => resolve(values)
 );
 
 export const clearProductEntry = createAction(
@@ -54,10 +69,13 @@ export const callProductsApi = createAsyncAction(
 export default {
   setShopStatus,
   setProductStatus,
+  setProductMeasurement,
+  setCategory,
   setProductForm,
   setVariationForm,
   setAvailabilityForm,
   setWholesaleForm,
+  setShippingDetailsForm,
   callShopApi,
   callProductsApi,
   clearProductEntry,
