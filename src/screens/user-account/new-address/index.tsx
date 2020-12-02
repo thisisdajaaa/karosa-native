@@ -23,7 +23,7 @@ import {
 import { SubmitButton } from "@app/components/formik/submit-button";
 
 import { NewAddressRequest } from "redux/auth/models";
-import { validationSchema } from "./validation"
+import { validationSchema } from "./validation";
 const regionData = [
   {
     id: 1,
@@ -67,8 +67,6 @@ const barangayData = [
   },
 ];
 
-
-
 const NewAddressScreen: React.FC = () => {
   const { goBack } = useNavigation();
   const [isSelected, setSelection] = useState(false);
@@ -81,20 +79,24 @@ const NewAddressScreen: React.FC = () => {
   );
 
   const formikBag = useFormik({
-    initialValues: { fullName: "", phoneNumber: "", region: "", province: "" , barangay: ""  },
+    initialValues: {
+      fullName: "",
+      phoneNumber: "",
+      region: "",
+      province: "",
+      barangay: "",
+    },
     onSubmit: (values) => {
-      console.log(values)
+      console.log(values);
       const request: NewAddressRequest = {
-        type: "home",
         name: values.fullName,
         phoneNo: values.phoneNumber,
-        postalCode: "123",
-        address_line_1: values.region + values.barangay + values.province,
-        address_line_2: values.province,
-        barangayId: 1,
+        detailed_address: values.region + values.province + values.barangay,
+        isDefaultAddress: true,
+        barangayId: 0,
       };
 
-      callNewAddressApi(request)
+      callNewAddressApi(request);
     },
     validationSchema,
   });
@@ -164,30 +166,32 @@ const NewAddressScreen: React.FC = () => {
           >
             <BaseText style={newAddressStyle.TextStyle}>
               Detailed Address
-          </BaseText>
+            </BaseText>
 
             <View style={newAddressStyle.textContainer}>
               <BaseText style={newAddressStyle.longText}>
                 Unit Number, House Number{"\n"}Building, Street Name
-            </BaseText>
+              </BaseText>
             </View>
             <View style={{ alignSelf: "flex-end" }}>
               <BaseText style={newAddressStyle.setDetailStyle}>
                 Set Detailed Address
-            </BaseText>
+              </BaseText>
             </View>
           </View>
 
           <View style={newAddressStyle.newContainer}>
             <BaseText style={newAddressStyle.TextStyle}>
               Set as default address
-          </BaseText>
+            </BaseText>
             <View style={newAddressStyle.checkboxContainer}>
               <CheckBox value={isSelected} onValueChange={setSelection} />
             </View>
-            <BaseText style={{color: "red"}}>{formikBag.errors && Object.values(formikBag.errors)[0]}</BaseText>
+            <BaseText style={{ color: "red" }}>
+              {formikBag.errors && Object.values(formikBag.errors)[0]}
+            </BaseText>
             <View style={newAddressStyle.submitbuttonParent}>
-              <SubmitButton {...SubmitButtonProps}/>
+              <SubmitButton {...SubmitButtonProps} />
             </View>
           </View>
         </View>

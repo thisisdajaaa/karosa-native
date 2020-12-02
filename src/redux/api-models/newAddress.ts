@@ -1,21 +1,17 @@
 export type Request = {
-  type: string;
   name: string;
   phoneNo: string;
-  postalCode: string;
-  address_line_1: string;
-  address_line_2: string;
+  detailed_address: string;
+  isDefaultAddress: boolean;
   barangayId: number;
 };
 
 export type Response = {
   id: string;
-  type: string | null;
   name: string;
   phoneNo: string;
-  postalCode: string;
-  address_line_1: string;
-  address_line_2: string | null;
+  detailed_address: string;
+  isDefaultAddress: string;
   barangayId: number;
-  userId: string;
+  userId: number;
 };
