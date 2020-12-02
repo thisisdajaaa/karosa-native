@@ -9,7 +9,6 @@ import EditProfileScreen from "@app/screens/user-account/edit-profile";
 import SocialMediaScreen from "@app/screens/user-account/social-media";
 import MyProducts from "@app/screens/products/my-products";
 import SearchProduct from "@app/screens/products/search-product";
-import MeasurementScreen from "@app/screens/products/my-products/measurement";
 
 import { TabNavigator } from "./tab-navigator";
 import NewAddressScreen from "@app/screens/user-account/new-address";
@@ -24,7 +23,7 @@ const StackNavigator: React.FC = () => (
     screenOptions={{ headerShown: false }}
   >
     <Stack.Screen name="Splash" component={SplashScreen} />
-    <Stack.Screen name="Home" component={MeasurementScreen} />
+    <Stack.Screen name="Home" component={TabNavigator} />
     <Stack.Screen name="Login" component={LoginScreen} />
     <Stack.Screen name="Help" component={HelpScreen} />
     <Stack.Screen name="Forgot Password" component={ForgotScreen} />
