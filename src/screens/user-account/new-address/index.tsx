@@ -4,21 +4,21 @@ import { Props as HeaderProps } from "../../../components/base-screen/types";
 import { Screen } from "../../../components/base-screen";
 import { useNavigation } from "@react-navigation/native";
 import { View, CheckBox } from "react-native";
-import { AppButton } from "@app/components/button";
 import { Props as ButtonProps } from "@app/components/button/types";
-import routes from "@app/navigators/routes";
 import { useDispatch } from "react-redux";
-import { actions, selectors } from "@app/redux/auth";
+import { actions } from "@app/redux/auth";
 import { FormikContext, useFormik } from "formik";
 import { newAddressStyle } from "./styles";
 import { BaseText } from "../../../components/base-text";
+import { DetailedAddress } from "../../../components/list/list-address/detailed-address-input";
 import {
   AddressInput,
   AddressInputPicker,
-} from "../../../components/list/list-address";
+} from "../../../components/list/list-address/";
 import {
   AddressInputProps,
   AddressSelectionProps,
+  DetailedAddressProps,
 } from "components/list/list-address/types";
 import { SubmitButton } from "@app/components/formik/submit-button";
 
@@ -85,6 +85,7 @@ const NewAddressScreen: React.FC = () => {
       region: "",
       province: "",
       barangay: "",
+      detailed_address: "",
     },
     onSubmit: (values) => {
       console.log(values);
@@ -143,6 +144,13 @@ const NewAddressScreen: React.FC = () => {
       placeholder: "Set Phone Number",
     },
   };
+  const DetailedAddressProps: DetailedAddressProps = {
+    name: "detailedAddress",
+    detailedInput: {
+      placeholder: "Set Detailed Address",
+    },
+  };
+
   const SubmitButtonProps: ButtonProps = {
     title: "Submit",
     containerStyle: newAddressStyle.btnSubmtContainer,
@@ -167,17 +175,7 @@ const NewAddressScreen: React.FC = () => {
             <BaseText style={newAddressStyle.TextStyle}>
               Detailed Address
             </BaseText>
-
-            <View style={newAddressStyle.textContainer}>
-              <BaseText style={newAddressStyle.longText}>
-                Unit Number, House Number{"\n"}Building, Street Name
-              </BaseText>
-            </View>
-            <View style={{ alignSelf: "flex-end" }}>
-              <BaseText style={newAddressStyle.setDetailStyle}>
-                Set Detailed Address
-              </BaseText>
-            </View>
+            <DetailedAddress {...DetailedAddressProps} />
           </View>
 
           <View style={newAddressStyle.newContainer}>
@@ -187,7 +185,7 @@ const NewAddressScreen: React.FC = () => {
             <View style={newAddressStyle.checkboxContainer}>
               <CheckBox value={isSelected} onValueChange={setSelection} />
             </View>
-            <BaseText style={{ color: "red" }}>
+            <BaseText style={{ color: "red", paddingLeft: 16 }}>
               {formikBag.errors && Object.values(formikBag.errors)[0]}
             </BaseText>
             <View style={newAddressStyle.submitbuttonParent}>

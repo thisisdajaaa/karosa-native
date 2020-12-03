@@ -29,7 +29,7 @@ const MyAddressScreen: React.FC = () => {
     [dispatch]
   );
   useEffect(() => {
-    getAddress()
+    getAddress();
   }, []);
 
   const addressResponse = useMemoizedSelector(selectors.getMyAddressResponse);
@@ -52,16 +52,16 @@ const MyAddressScreen: React.FC = () => {
               key={index}
               address={{
                 name: value.name,
-                address: value.address_line_1 + "\n" + value.postalCode,
-                default: value.type === "home",
+                phoneNumber: value.phoneNo,
+                barangayId: value.barangayId,
+                detailed_Address: value.detailed_address,
+                default: value.isDefaultAddress,
               }}
             />
           ))}
       </View>
       <TouchableWithoutFeedback
-        onPress={() =>
-          navigate(routes.ACCOUNTS_NEW_ADDRESS)
-        }
+        onPress={() => navigate(routes.ACCOUNTS_NEW_ADDRESS)}
       >
         <View style={styleforaddress.touchable}>
           <BaseText style={styleforaddress.NewAddStyle}>

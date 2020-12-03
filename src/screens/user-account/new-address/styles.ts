@@ -24,17 +24,7 @@ export const newAddressStyle = StyleSheet.create({
     justifyContent: "flex-start",
     padding: 15,
   },
-  textContainer: {
-    flexWrap: "wrap",
-    paddingLeft: 16,
-  },
-  longText: {
-    paddingTop: 30,
-    flexDirection: "column",
-    alignContent: "center",
-    color: "#BDBDBD",
-    fontSize: 14,
-  },
+
   submitbuttonParent: {
     margin: 16,
     alignSelf: "center",

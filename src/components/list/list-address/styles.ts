@@ -20,6 +20,7 @@ export const AddressInputStyle = StyleSheet.create({
   inputStyle: {
     textAlign: "right",
   },
+
   labelContainer: {
     flexDirection: "row",
     backgroundColor: "white",

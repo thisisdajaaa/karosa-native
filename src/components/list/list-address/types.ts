@@ -22,6 +22,10 @@ type AddressInput = {
   placeholder: string;
 };
 
+type DetailedAddressInput = {
+  placeholder: string;
+};
+
 type SelectionData = {
   id: number;
   value: string;
@@ -30,6 +34,12 @@ type SelectionData = {
 export type AddressInputProps = {
   name: string;
   addressInput: AddressInput;
+  style?: Style;
+};
+
+export type DetailedAddressProps = {
+  name: string;
+  detailedInput: DetailedAddressInput;
   style?: Style;
 };
 
