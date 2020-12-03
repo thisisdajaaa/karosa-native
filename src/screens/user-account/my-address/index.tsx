@@ -4,21 +4,13 @@ import { actions, selectors } from "@app/redux/auth";
 import { Props as HeaderProps } from "../../../components/base-screen/types";
 import { Screen } from "../../../components/base-screen";
 import { useNavigation } from "@react-navigation/native";
-import {
-  Button,
-  Image,
-  Text,
-  View,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { View, TouchableWithoutFeedback } from "react-native";
 import { styleforaddress } from "./styleforaddress";
-import { AddressProps } from "../../../components/list/list-display/types";
 import { AddressList } from "../../../components/list/list-display";
 import { BaseText } from "../../../components/base-text";
 import { MaterialIcons } from "@expo/vector-icons";
 import routes from "@app/navigators/routes";
 import { useDispatch } from "react-redux";
-import { date } from "yup";
 
 const MyAddressScreen: React.FC = () => {
   const { goBack, navigate } = useNavigation();

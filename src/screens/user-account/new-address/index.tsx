@@ -4,9 +4,12 @@ import { Props as HeaderProps } from "../../../components/base-screen/types";
 import { Screen } from "../../../components/base-screen";
 import { useNavigation } from "@react-navigation/native";
 import { View, CheckBox } from "react-native";
+import { useMemoizedSelector } from "@app/hooks";
 import { Props as ButtonProps } from "@app/components/button/types";
 import { useDispatch } from "react-redux";
-import { actions } from "@app/redux/auth";
+import { actions, selectors } from "@app/redux/auth";
+import { actions as regionActions } from "@app/redux/location";
+import { selectors as locationSelector } from "@app/redux/location";
 import { FormikContext, useFormik } from "formik";
 import { newAddressStyle } from "./styles";
 import { BaseText } from "../../../components/base-text";
@@ -24,6 +27,7 @@ import { SubmitButton } from "@app/components/formik/submit-button";
 
 import { NewAddressRequest } from "redux/auth/models";
 import { validationSchema } from "./validation";
+import { useEffect } from "react";
 const regionData = [
   {
     id: 1,
@@ -78,6 +82,14 @@ const NewAddressScreen: React.FC = () => {
     [dispatch]
   );
 
+  const getRegionResponse = useCallback(
+    () => dispatch(regionActions.callRegionApi.request()),
+    [dispatch]
+  );
+  useEffect(() => {
+    getRegionResponse();
+  }, []);
+
   const formikBag = useFormik({
     initialValues: {
       fullName: "",
@@ -97,7 +109,8 @@ const NewAddressScreen: React.FC = () => {
         barangayId: 0,
       };
 
-      callNewAddressApi(request);
+      // callNewAddressApi(request);
+      console.log(regionResponse);
     },
     validationSchema,
   });
@@ -120,6 +133,10 @@ const NewAddressScreen: React.FC = () => {
     placeholder: "Choose Barangay",
     data: barangayData,
   };
+
+  const regionResponse = useMemoizedSelector(
+    locationSelector.getRegionResponse
+  );
 
   const headerProps: HeaderProps = {
     header: {

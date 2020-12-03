@@ -1,5 +1,6 @@
 {
   "login": "/v1/auth/login",
   "addresses": "/v1/users/addresses",
-  "products": "/v1/shops/products"
+  "products": "/v1/shops/products",
+  "regions": "/v1/regions"
 }
