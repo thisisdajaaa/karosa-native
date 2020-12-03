@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { View } from "react-native";
-import RBSheet from "react-native-raw-bottom-sheet";
+import { BottomSheet } from "@app/components/bottom-sheet";
 import { actions } from "@app/redux/shop";
 import { theme } from "@app/styles";
-import { ProductStatus } from "@app/redux/shop/models";
+import { CommonStatus } from "@app/redux/shop/models";
 import { BaseText } from "@app/components/base-text";
 import { MultiList } from "@app/components/multi-list";
 import { Separator } from "@app/components/separator";
@@ -17,7 +17,7 @@ const ProductStatusModal: React.FC<Props> = ({ sheetRef }) => {
   const dispatch = useDispatch();
 
   const setProductStatus = useCallback(
-    (values: ProductStatus) => dispatch(actions.setProductStatus(values)),
+    (values: CommonStatus) => dispatch(actions.setProductStatus(values)),
     [dispatch]
   );
 
@@ -85,23 +85,11 @@ const ProductStatusModal: React.FC<Props> = ({ sheetRef }) => {
   };
 
   return (
-    <RBSheet
-      ref={sheetRef}
-      closeOnDragDown={true}
-      closeOnPressMask={false}
-      height={251}
-      customStyles={{
-        container: {
-          borderTopLeftRadius: 10,
-          borderTopRightRadius: 10,
-          padding: 5,
-        },
-      }}
-    >
+    <BottomSheet height={251} ref={sheetRef}>
       <BaseText style={styles.txtProductStatus}>Product Status</BaseText>
       <View style={styles.spacer} />
       <MultiList {...multiListProps} />
-    </RBSheet>
+    </BottomSheet>
   );
 };
 

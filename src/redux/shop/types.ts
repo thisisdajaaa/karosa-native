@@ -10,13 +10,17 @@ export const SET_SHIPPING_DETAILS_FORM = "shop/setShippingDetailsForm" as const;
 
 export const CLEAR_PRODUCT_ENTRY = "shop/clearProductEntry" as const;
 
-export const ACT_SHOP_SETTING_REQUEST = "shop/actShopRequest" as const;
-export const ACT_SHOP_SETTING_SUCCESS = "shop/actShopSuccess" as const;
-export const ACT_SHOP_SETTING_FAILURE = "shop/actShopFailure" as const;
+export const ACT_SHOP_INFO_REQUEST = "shop/actShopInfoRequest" as const;
+export const ACT_SHOP_INFO_SUCCESS = "shop/actShopInfoSuccess" as const;
+export const ACT_SHOP_INFO_FAILURE = "shop/actShopInfoFailure" as const;
 
-export const ACT_MY_PRODUCTS_REQUEST = "shop/actMyProductsRequest" as const;
-export const ACT_MY_PRODUCTS_SUCCESS = "shop/actMyProductsSuccess" as const;
-export const ACT_MY_PRODUCTS_FAILURE = "shop/actMyProductsFailure" as const;
+export const ACT_ADD_PRODUCT_REQUEST = "shop/actAddProductRequest" as const;
+export const ACT_ADD_PRODUCT_SUCCESS = "shop/actAddProductSuccess" as const;
+export const ACT_ADD_PRODUCT_FAILURE = "shop/actAddProductFailure" as const;
+
+export const ACT_PRODUCT_LIST_REQUEST = "shop/actProductListRequest" as const;
+export const ACT_PRODUCT_LIST_SUCCESS = "shop/actProductListSuccess" as const;
+export const ACT_PRODUCT_LIST_FAILURE = "shop/actProductListFailure" as const;
 
 export type Types =
   | typeof SET_SHOP_STATUS
@@ -29,9 +33,12 @@ export type Types =
   | typeof SET_WHOLESALE_FORM
   | typeof SET_SHIPPING_DETAILS_FORM
   | typeof CLEAR_PRODUCT_ENTRY
-  | typeof ACT_SHOP_SETTING_REQUEST
-  | typeof ACT_SHOP_SETTING_SUCCESS
-  | typeof ACT_SHOP_SETTING_FAILURE
-  | typeof ACT_MY_PRODUCTS_REQUEST
-  | typeof ACT_MY_PRODUCTS_SUCCESS
-  | typeof ACT_MY_PRODUCTS_FAILURE;
+  | typeof ACT_SHOP_INFO_REQUEST
+  | typeof ACT_SHOP_INFO_SUCCESS
+  | typeof ACT_SHOP_INFO_FAILURE
+  | typeof ACT_ADD_PRODUCT_REQUEST
+  | typeof ACT_ADD_PRODUCT_SUCCESS
+  | typeof ACT_ADD_PRODUCT_FAILURE
+  | typeof ACT_PRODUCT_LIST_REQUEST
+  | typeof ACT_PRODUCT_LIST_SUCCESS
+  | typeof ACT_PRODUCT_LIST_FAILURE;

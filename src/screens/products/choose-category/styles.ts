@@ -1,23 +1,19 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.white,
     padding: 20,
-  },
-  content: {
-    overflow: "hidden",
-    alignItems: "center",
     justifyContent: "center",
-    borderWidth: 0,
+    alignItems: "center",
   },
   categoryContainer: {
-    flexDirection: "column",
+    paddingHorizontal: 16,
+    paddingVertical: 3,
     alignItems: "center",
-    marginLeft: 16,
-    marginRight: 16,
-    marginBottom: 24,
+    width: Dimensions.get("window").width / 3,
+    marginBottom: 12,
   },
   categoryCircle: {
     height: 72,
@@ -25,10 +21,10 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.dark10,
     borderRadius: 100,
   },
-  labelContainer: {
+  nameContainer: {
     marginTop: 8,
   },
-  txtLabel: {
+  txtName: {
     width: 83,
     textAlign: "center",
     fontWeight: "300",

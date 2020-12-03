@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Header } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
@@ -7,7 +7,10 @@ import { Screen } from "@app/components/base-screen";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 import { FlatList, TouchableOpacity, View } from "react-native";
 import { BaseText } from "@app/components/base-text";
-import { actions } from "@app/redux/shop";
+import { useMemoizedSelector } from "@app/hooks";
+import { actions as productActions } from "@app/redux/shop";
+import { actions as categoryActions, selectors } from "@app/redux/category";
+import { Categories } from "@app/redux/api-models/category-list";
 
 import { styles } from "./styles";
 
@@ -16,10 +19,23 @@ const ChooseCategoryScreen: React.FC = () => {
 
   const { goBack } = useNavigation();
 
-  const setCategory = useCallback(
-    (values: number) => dispatch(actions.setCategory(values)),
+  const callCategoryListApi = useCallback(
+    () => dispatch(categoryActions.callCategoryListApi.request()),
     [dispatch]
   );
+
+  const setCategory = useCallback(
+    (values: number) => dispatch(productActions.setCategory(values)),
+    [dispatch]
+  );
+
+  const categories = useMemoizedSelector(selectors.getCategoryListResponse)
+    .response;
+
+  useEffect(() => {
+    callCategoryListApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const screenProps: ScreenProps = {
     customHeader: (
@@ -43,58 +59,7 @@ const ChooseCategoryScreen: React.FC = () => {
     customStyles: styles.container,
   };
 
-  const categoryData = [
-    {
-      id: 1,
-      label: "Region's Best",
-    },
-    {
-      id: 2,
-      label: "Upcoming Harvest",
-    },
-    {
-      id: 3,
-      label: "Coffee and Cacao",
-    },
-    {
-      id: 4,
-      label: "Fruits",
-    },
-    {
-      id: 5,
-      label: "Vegetables",
-    },
-    {
-      id: 6,
-      label: "Grains and Cerials",
-    },
-    {
-      id: 7,
-      label: "Beverages",
-    },
-    {
-      id: 8,
-      label: "Herbs and Spices",
-    },
-    {
-      id: 9,
-      label: "Dairy",
-    },
-    {
-      id: 10,
-      label: "Fish and Meat",
-    },
-    {
-      id: 11,
-      label: "Root Crops",
-    },
-    {
-      id: 12,
-      label: "Seeding",
-    },
-  ];
-
-  const categoryItem = ({ item }: any) => {
+  const categoryItem = ({ item }: { item: Categories }) => {
     return (
       <View style={styles.categoryContainer}>
         <TouchableOpacity
@@ -104,8 +69,8 @@ const ChooseCategoryScreen: React.FC = () => {
           }}
           style={styles.categoryCircle}
         />
-        <View style={styles.labelContainer}>
-          <BaseText style={styles.txtLabel}>{item.label}</BaseText>
+        <View style={styles.nameContainer}>
+          <BaseText style={styles.txtName}>{item.name}</BaseText>
         </View>
       </View>
     );
@@ -115,9 +80,8 @@ const ChooseCategoryScreen: React.FC = () => {
     <Screen {...screenProps}>
       <FlatList
         numColumns={3}
-        data={categoryData}
-        keyExtractor={(item: any) => String(item.id)}
-        contentContainerStyle={styles.content}
+        data={categories}
+        keyExtractor={(item) => String(item.id)}
         renderItem={categoryItem}
       />
     </Screen>

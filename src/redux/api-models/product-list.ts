@@ -1,11 +1,11 @@
+import { Audit } from "./common";
+
 export type Products = {
   id: number;
   name: string;
   categoryId: number;
   description: string;
   shopId: number;
-  createdAt: string;
-  updatedAt: string;
-};
+} & Audit;
 
 export type Response = Products[];

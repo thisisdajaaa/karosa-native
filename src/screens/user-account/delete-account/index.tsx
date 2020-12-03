@@ -1,10 +1,10 @@
 import React from "react";
-import RBSheet from "react-native-raw-bottom-sheet";
 import { FormikContext, useFormik } from "formik";
 import { View } from "react-native";
 import { BaseText } from "@app/components/base-text";
 import { AppButton } from "@app/components/button";
 import { SubmitButton } from "@app/components/formik/submit-button";
+import { BottomSheet } from "@app/components/bottom-sheet";
 import { FormCheckbox } from "@app/components/formik/form-checkbox";
 import { Props as ButtonProps } from "@app/components/button/types";
 import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
@@ -36,20 +36,7 @@ const DeleteAccountModal: React.FC<Props> = ({ sheetRef }) => {
 
   return (
     <FormikContext.Provider value={formikBag}>
-      <RBSheet
-        ref={sheetRef}
-        closeOnDragDown={true}
-        closeOnPressMask={false}
-        height={475}
-        customStyles={{
-          container: {
-            borderTopLeftRadius: 10,
-            borderTopRightRadius: 10,
-            padding: 5,
-            alignItems: "center",
-          },
-        }}
-      >
+      <BottomSheet height={475} ref={sheetRef}>
         <BaseText style={styles.txtDeleteAcc}>Delete Account</BaseText>
         <BaseText style={styles.txtDeleteAccPar}>
           We are sad that you want to leave us, but please note that account
@@ -78,7 +65,7 @@ const DeleteAccountModal: React.FC<Props> = ({ sheetRef }) => {
           <SubmitButton {...deleteButtonProps} />
           <AppButton {...cancelButtonProps} />
         </View>
-      </RBSheet>
+      </BottomSheet>
     </FormikContext.Provider>
   );
 };

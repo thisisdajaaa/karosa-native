@@ -1,8 +1,4 @@
-export enum Gender {
-  Male = "male",
-  Female = "female",
-  Other = "other",
-}
+import { RES_GENDER } from "@app/constants";
 
 export type Avatar = {
   photoUrl?: string;
@@ -20,7 +16,7 @@ export type Response = {
   fullName?: string;
   phoneNo?: string;
   email?: string;
-  gender?: Gender;
+  gender?: RES_GENDER;
   avatar?: Avatar;
   shop?: any;
 };

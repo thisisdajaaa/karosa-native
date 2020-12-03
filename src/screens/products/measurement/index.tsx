@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { View } from "react-native";
 import { useDispatch } from "react-redux";
 import { FormikContext, useFormik } from "formik";
-import RBSheet from "react-native-raw-bottom-sheet";
+import { BottomSheet } from "@app/components/bottom-sheet";
 import { BaseText } from "@app/components/base-text";
 import { SubmitButton } from "@app/components/formik/submit-button";
 import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
@@ -54,19 +54,7 @@ const MeasurementModal: React.FC<Props> = ({ sheetRef }) => {
 
   return (
     <FormikContext.Provider value={formikBag}>
-      <RBSheet
-        ref={sheetRef}
-        closeOnDragDown={true}
-        closeOnPressMask={false}
-        height={328}
-        customStyles={{
-          container: {
-            borderTopLeftRadius: 10,
-            borderTopRightRadius: 10,
-            padding: 5,
-          },
-        }}
-      >
+      <BottomSheet height={328} ref={sheetRef}>
         <BaseText style={styles.txtProductStatus}>Unit of Measurement</BaseText>
         <View style={styles.spacer} />
 
@@ -79,7 +67,7 @@ const MeasurementModal: React.FC<Props> = ({ sheetRef }) => {
         <View style={styles.buttonContainer}>
           <SubmitButton {...doneButtonProps} />
         </View>
-      </RBSheet>
+      </BottomSheet>
     </FormikContext.Provider>
   );
 };

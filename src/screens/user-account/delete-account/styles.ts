@@ -14,6 +14,7 @@ export const styles = StyleSheet.create({
   },
   buttonContainer: {
     position: "absolute",
+    alignSelf: "center",
     bottom: 17,
   },
   txtBtnCancel: {

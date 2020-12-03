@@ -2,11 +2,11 @@ import React, { useCallback } from "react";
 import { View } from "react-native";
 import { useDispatch } from "react-redux";
 import { FormikContext, useFormik } from "formik";
-import RBSheet from "react-native-raw-bottom-sheet";
 import { BaseText } from "@app/components/base-text";
 import { Separator } from "@app/components/separator";
 import { SubmitButton } from "@app/components/formik/submit-button";
 import { FormCheckbox } from "@app/components/formik/form-checkbox";
+import { BottomSheet } from "@app/components/bottom-sheet";
 import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
 import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
@@ -82,19 +82,7 @@ const AvailabilityModal: React.FC<Props> = ({ sheetRef }) => {
 
   return (
     <FormikContext.Provider value={formikBag}>
-      <RBSheet
-        ref={sheetRef}
-        closeOnDragDown={true}
-        closeOnPressMask={false}
-        height={527}
-        customStyles={{
-          container: {
-            borderTopLeftRadius: 10,
-            borderTopRightRadius: 10,
-            padding: 5,
-          },
-        }}
-      >
+      <BottomSheet height={527} ref={sheetRef}>
         <BaseText style={styles.txtProductStatus}>Available every</BaseText>
         <View style={styles.spacer} />
         <React.Fragment>{elements()}</React.Fragment>
@@ -102,7 +90,7 @@ const AvailabilityModal: React.FC<Props> = ({ sheetRef }) => {
         <View style={styles.buttonContainer}>
           <SubmitButton {...doneButtonProps} />
         </View>
-      </RBSheet>
+      </BottomSheet>
     </FormikContext.Provider>
   );
 };

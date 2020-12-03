@@ -1,4 +1,11 @@
-import React, { useCallback, useMemo, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  useRef,
+} from "react";
+import { equals } from "ramda";
 import { batch, useDispatch } from "react-redux";
 import { ScrollView, View } from "react-native";
 import { Header } from "react-native-elements";
@@ -15,7 +22,8 @@ import { ListStatus } from "@app/components/list/list-status";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
-import { ProductForm } from "@app/redux/shop/models";
+import { initShopState } from "@app/redux/shop/data";
+import { AddProductRequest, ProductForm } from "@app/redux/shop/models";
 import routes from "@app/navigators/routes";
 
 import ProductStatusModal from "../product-status";
@@ -31,10 +39,14 @@ const AddProductScreen: React.FC = () => {
   const productStatusRef = useRef<RBSheet>(null);
   const availabilityRef = useRef<RBSheet>(null);
   const measurementRef = useRef<RBSheet>(null);
+
   const { goBack, navigate } = useNavigation();
 
-  const setProductForm = useCallback(
-    (values: ProductForm) => dispatch(actions.setProductForm(values)),
+  const [submitted, setSubmitted] = useState(false);
+
+  const callAddProductApi = useCallback(
+    (request: AddProductRequest) =>
+      dispatch(actions.callAddProductApi.request(request)),
     [dispatch]
   );
 
@@ -43,8 +55,35 @@ const AddProductScreen: React.FC = () => {
     [dispatch]
   );
 
+  const setProductForm = useCallback(
+    (values: ProductForm) => dispatch(actions.setProductForm(values)),
+    [dispatch]
+  );
+
   const productForm = useMemoizedSelector(selectors.getProductForm);
   const productStatus = useMemoizedSelector(selectors.getProductStatus);
+
+  const addProductResponse = useMemoizedSelector(
+    selectors.getAddProductResponse
+  );
+
+  const successResponse = useMemo(() => {
+    return (
+      !addProductResponse.isLoading &&
+      !equals(
+        addProductResponse.response,
+        initShopState.addProductResponse.response
+      )
+    );
+  }, [addProductResponse.isLoading, addProductResponse.response]);
+
+  useEffect(() => {
+    if (successResponse)
+      if (submitted) {
+        goBack();
+      }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [successResponse]);
 
   const formikBag = useFormik({
     initialValues: productForm,
@@ -53,11 +92,16 @@ const AddProductScreen: React.FC = () => {
     validationSchema,
     onSubmit: (values) => {
       batch(() => {
+        callAddProductApi({
+          name: values.productNm,
+          categoryId: productForm.categoryId,
+          description: values.description,
+        });
         setProductForm(values);
         clearProductEntry();
       });
 
-      goBack();
+      setSubmitted(true);
     },
   });
 

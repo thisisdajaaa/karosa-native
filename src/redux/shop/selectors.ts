@@ -72,14 +72,19 @@ export const getProductMeasurement = () =>
     );
   });
 
-export const getShopResponse = () =>
+export const getShopInfoResponse = () =>
   createSelector([rootSelector], (state: ShopState) => {
-    return state.shopResponse || initShopState.shopResponse;
+    return state.shopInfoResponse || initShopState.shopInfoResponse;
   });
 
-export const getProductResponse = () =>
+export const getAddProductResponse = () =>
   createSelector([rootSelector], (state: ShopState) => {
-    return state.productResponse || initShopState.productResponse;
+    return state.addProductResponse || initShopState.addProductResponse;
+  });
+
+export const getProductListResponse = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return state.productListResponse || initShopState.productListResponse;
   });
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -92,6 +97,7 @@ export default {
   getShopStatus,
   getProductStatus,
   getProductMeasurement,
-  getShopResponse,
-  getProductResponse,
+  getShopInfoResponse,
+  getAddProductResponse,
+  getProductListResponse,
 };

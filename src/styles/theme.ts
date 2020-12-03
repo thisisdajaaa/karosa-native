@@ -11,7 +11,7 @@ const theme = {
   },
   textLight: {
     fontSize: 12,
-    lineHeight: 14,
+    lineHeight: 14.06,
   },
   textRegular: {
     fontSize: 16,

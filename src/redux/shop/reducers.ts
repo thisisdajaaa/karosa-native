@@ -65,21 +65,20 @@ export const productEntryContext = produce(
   data.initShopState.productEntryContext
 );
 
-export const shopResponse = produce(
+export const shopInfoResponse = produce(
   (
-    draft: Draft<ResponseState<models.ShopResponse>>,
+    draft: Draft<ResponseState<models.ShopInfoResponse>>,
     action: ActionType<typeof actions>
   ) => {
     switch (action.type) {
-      case getType(actions.callShopApi.request):
-        draft.response = data.initShopState.shopResponse.response;
+      case getType(actions.callShopInfoApi.request):
         draft.isLoading = true;
         return draft;
-      case getType(actions.callShopApi.success):
+      case getType(actions.callShopInfoApi.success):
         draft.response = action.payload;
         draft.isLoading = false;
         return draft;
-      case getType(actions.callShopApi.failure):
+      case getType(actions.callShopInfoApi.failure):
         draft.error = action.payload;
         draft.isLoading = false;
         return draft;
@@ -87,23 +86,24 @@ export const shopResponse = produce(
         return draft;
     }
   },
-  data.initShopState.shopResponse
+  data.initShopState.shopInfoResponse
 );
 
-export const productResponse = produce(
+export const addProductResponse = produce(
   (
-    draft: Draft<ResponseState<models.ProductResponse>>,
+    draft: Draft<ResponseState<models.AddProductResponse>>,
     action: ActionType<typeof actions>
   ) => {
     switch (action.type) {
-      case getType(actions.callProductsApi.request):
+      case getType(actions.callAddProductApi.request):
+        draft.response = data.initShopState.addProductResponse.response;
         draft.isLoading = true;
         return draft;
-      case getType(actions.callProductsApi.success):
+      case getType(actions.callAddProductApi.success):
         draft.response = action.payload;
         draft.isLoading = false;
         return draft;
-      case getType(actions.callProductsApi.failure):
+      case getType(actions.callAddProductApi.failure):
         draft.error = action.payload;
         draft.isLoading = false;
         return draft;
@@ -111,14 +111,39 @@ export const productResponse = produce(
         return draft;
     }
   },
-  data.initShopState.productResponse
+  data.initShopState.addProductResponse
+);
+
+export const productListResponse = produce(
+  (
+    draft: Draft<ResponseState<models.ProductListResponse>>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.callProductListApi.request):
+        draft.isLoading = true;
+        return draft;
+      case getType(actions.callProductListApi.success):
+        draft.response = action.payload;
+        draft.isLoading = false;
+        return draft;
+      case getType(actions.callProductListApi.failure):
+        draft.error = action.payload;
+        draft.isLoading = false;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initShopState.productListResponse
 );
 
 const reducer = combineReducers({
   shopEntryContext,
   productEntryContext,
-  shopResponse,
-  productResponse,
+  shopInfoResponse,
+  addProductResponse,
+  productListResponse,
 });
 
 export default reducer;

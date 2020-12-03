@@ -53,17 +53,23 @@ export const clearProductEntry = createAction(
   (resolve) => () => resolve()
 );
 
-export const callShopApi = createAsyncAction(
-  types.ACT_SHOP_SETTING_REQUEST,
-  types.ACT_SHOP_SETTING_SUCCESS,
-  types.ACT_SHOP_SETTING_FAILURE
-)<models.ShopRequest, models.ShopResponse, Error>();
+export const callShopInfoApi = createAsyncAction(
+  types.ACT_SHOP_INFO_REQUEST,
+  types.ACT_SHOP_INFO_SUCCESS,
+  types.ACT_SHOP_INFO_FAILURE
+)<undefined, models.ShopInfoResponse, Error>();
 
-export const callProductsApi = createAsyncAction(
-  types.ACT_MY_PRODUCTS_REQUEST,
-  types.ACT_MY_PRODUCTS_SUCCESS,
-  types.ACT_MY_PRODUCTS_FAILURE
-)<undefined, models.ProductResponse, Error>();
+export const callAddProductApi = createAsyncAction(
+  types.ACT_ADD_PRODUCT_REQUEST,
+  types.ACT_ADD_PRODUCT_SUCCESS,
+  types.ACT_ADD_PRODUCT_FAILURE
+)<models.AddProductRequest, models.AddProductResponse, Error>();
+
+export const callProductListApi = createAsyncAction(
+  types.ACT_PRODUCT_LIST_REQUEST,
+  types.ACT_PRODUCT_LIST_SUCCESS,
+  types.ACT_PRODUCT_LIST_FAILURE
+)<undefined, models.ProductListResponse, Error>();
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -76,7 +82,8 @@ export default {
   setAvailabilityForm,
   setWholesaleForm,
   setShippingDetailsForm,
-  callShopApi,
-  callProductsApi,
+  callShopInfoApi,
+  callAddProductApi,
+  callProductListApi,
   clearProductEntry,
 };

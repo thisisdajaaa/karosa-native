@@ -1,8 +1,8 @@
 import React from "react";
-import RBSheet from "react-native-raw-bottom-sheet";
 import { View } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { BaseText } from "@app/components/base-text";
+import { BottomSheet } from "@app/components/bottom-sheet";
 import { AppButton } from "@app/components/button";
 import { Props as ButtonProps } from "@app/components/button/types";
 
@@ -23,20 +23,7 @@ const LogoutModal: React.FC<Props> = ({ sheetRef }) => {
   };
 
   return (
-    <RBSheet
-      ref={sheetRef}
-      closeOnDragDown={true}
-      closeOnPressMask={false}
-      height={407}
-      customStyles={{
-        container: {
-          borderTopLeftRadius: 10,
-          borderTopRightRadius: 10,
-          padding: 5,
-          alignItems: "center",
-        },
-      }}
-    >
+    <BottomSheet height={407} ref={sheetRef}>
       <BaseText style={styles.txtLogout}>Logging out</BaseText>
 
       <View style={styles.subContainer}>
@@ -50,7 +37,7 @@ const LogoutModal: React.FC<Props> = ({ sheetRef }) => {
         <AppButton {...logoutButtonProps} />
         <AppButton {...cancelButtonProps} />
       </View>
-    </RBSheet>
+    </BottomSheet>
   );
 };
 

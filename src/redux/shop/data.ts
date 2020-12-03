@@ -1,3 +1,5 @@
+import { RES_SHOP_STATUS } from "@app/constants";
+
 import {
   AvailabilityForm,
   CommonStatus,
@@ -78,15 +80,32 @@ export const initShopState: ShopState = {
     wholesaleForm: initWholesaleForm,
     shippingDetailsForm: initShippingDetailsForm,
   },
-  shopResponse: {
+  shopInfoResponse: {
     response: {
-      shopName: "",
-      shopStatus: "",
-      shopAddress: "",
+      username: "",
+      email: "",
+      shop: {
+        id: 0,
+        name: "",
+        isActive: false,
+        status: RES_SHOP_STATUS.Active,
+        createdAt: "",
+        updatedAt: "",
+      },
     },
     isLoading: false,
   },
-  productResponse: {
+  addProductResponse: {
+    response: {
+      id: 0,
+      shopId: 0,
+      categoryId: 0,
+      name: "",
+      description: "",
+    },
+    isLoading: false,
+  },
+  productListResponse: {
     response: [],
     isLoading: false,
   },

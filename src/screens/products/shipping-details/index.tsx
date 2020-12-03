@@ -15,6 +15,7 @@ import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
 import { ShippingDetailsForm } from "@app/redux/shop/models";
 
+import { validationSchema } from "./validation";
 import { styles } from "./styles";
 
 const ShippingDetailsScreen: React.FC = () => {
@@ -58,6 +59,7 @@ const ShippingDetailsScreen: React.FC = () => {
     initialValues: shippingDetailsForm,
     validateOnBlur: true,
     validateOnChange: true,
+    validationSchema,
     onSubmit: (values) => {
       setShippingDetailsForm(values);
       goBack();

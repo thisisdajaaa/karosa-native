@@ -1,11 +1,13 @@
 import { ResponseState } from "redux/api-models/common";
 
-import * as shop from "../api-models/shop";
-import * as products from "../api-models/products";
+import * as shopInfo from "../api-models/shop-info";
+import * as addProduct from "../api-models/add-product";
+import * as productList from "../api-models/product-list";
 
-export type ShopResponse = shop.Response;
-export type ShopRequest = shop.Request;
-export type ProductResponse = products.Response;
+export type ShopInfoResponse = shopInfo.Response;
+export type AddProductRequest = addProduct.Request;
+export type AddProductResponse = addProduct.Response;
+export type ProductListResponse = productList.Response;
 
 export type CommonStatus = {
   available: boolean;
@@ -79,8 +81,9 @@ export type ProductEntryContext = {
 export type ShopState = {
   shopEntryContext: ShopEntryContext;
   productEntryContext: ProductEntryContext;
-  shopResponse: ResponseState<ShopResponse>;
-  productResponse: ResponseState<ProductResponse>;
+  shopInfoResponse: ResponseState<ShopInfoResponse>;
+  addProductResponse: ResponseState<AddProductResponse>;
+  productListResponse: ResponseState<ProductListResponse>;
 };
 
 declare module "../types" {
