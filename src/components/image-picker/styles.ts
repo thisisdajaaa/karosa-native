@@ -4,10 +4,10 @@ import { theme } from "@app/styles";
 export const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    backgroundColor: "rgba(196, 196, 196, 0.3)",
+    backgroundColor: theme.colors.dark5,
     borderWidth: 1,
     borderStyle: "dashed",
-    borderColor: "#BDBDBD",
+    borderColor: theme.colors.dark10,
     height: 82,
     justifyContent: "center",
     overflow: "hidden",

@@ -25,10 +25,9 @@ export const styles = StyleSheet.create({
     marginTop: 8,
   },
   txtName: {
+    ...theme.textLight,
     width: 83,
     textAlign: "center",
     fontWeight: "300",
-    fontSize: 12,
-    lineHeight: 14,
   },
 });
