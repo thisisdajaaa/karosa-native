@@ -4,7 +4,7 @@ import { theme } from "@app/styles";
 export const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    backgroundColor: theme.colors.dark5,
+    backgroundColor: "rgba(196, 196, 196, 0.3)",
     borderWidth: 1,
     borderStyle: "dashed",
     borderColor: theme.colors.dark10,

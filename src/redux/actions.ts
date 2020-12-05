@@ -9,5 +9,5 @@ export const resetState = createAction(
 
 export const resetAllState = createAction(
   types.RESET_ALL_STATE,
-  (resolve) => (key: string) => resolve(key)
+  (resolve) => () => resolve()
 );
