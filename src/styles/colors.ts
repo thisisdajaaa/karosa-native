@@ -8,6 +8,7 @@ const palette = {
   orange10: "#F2994A",
   gold5: "#FFBA00",
   gold10: "#F4C725",
+  gold15: "#FFFACD",
   purple: "#5756CE",
   blue5: "#3478F6",
   blue10: "#3C579B",

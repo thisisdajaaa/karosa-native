@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
   default: {
     fontWeight: "400",
     fontSize: 16,
-    lineHeight: 18.75,
+    lineHeight: 19,
     color: "#4F4F4F",
     alignSelf: "flex-start",
   },

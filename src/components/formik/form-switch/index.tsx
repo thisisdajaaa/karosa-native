@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Switch } from "react-native";
 import { useField } from "formik";
 import { theme } from "@app/styles";
 
-import { ErrorMessage } from "../error-message";
-
 import { Props } from "./types";
 
-export const FormSwitch: React.FC<Props> = ({ name }) => {
+export const FormSwitch: React.FC<Props> = ({ name, disabled }) => {
   const [, meta, helpers] = useField(name);
 
   const [currentValue, setCurrentValue] = useState<boolean>(
@@ -19,9 +17,13 @@ export const FormSwitch: React.FC<Props> = ({ name }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentValue]);
 
-  const handleSwitch = (value: boolean) => {
-    setCurrentValue(value);
-  };
+  const handleSwitch = useCallback(
+    async (value: boolean) => {
+      setCurrentValue(value);
+      await helpers.setTouched(true);
+    },
+    [helpers]
+  );
 
   return (
     <React.Fragment>
@@ -29,8 +31,8 @@ export const FormSwitch: React.FC<Props> = ({ name }) => {
         trackColor={{ false: theme.colors.dark10, true: theme.colors.primary }}
         onValueChange={handleSwitch}
         value={currentValue}
+        disabled={disabled}
       />
-      <ErrorMessage name={name} />
     </React.Fragment>
   );
 };

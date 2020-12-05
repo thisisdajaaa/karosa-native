@@ -11,21 +11,21 @@ const Choices = () => {
     multiChev: [
       {
         title: "My Wishlist",
-        rightLabel: "140 Items",
+        txtInfo: "140 Items",
         listColor: theme.colors.orange5,
-        hasSeparator: true,
+        hasBottomDivider: true,
         onPress: () => console.log("My Wishlist"),
       },
       {
         title: "Karosa Wallet",
         listColor: theme.colors.purple,
-        hasSeparator: true,
+        hasBottomDivider: true,
         onPress: () => console.log("Karosa Wallet"),
       },
       {
         title: "Vouchers",
         listColor: theme.colors.green5,
-        hasSeparator: true,
+        hasBottomDivider: true,
         onPress: () => console.log("Vouchers"),
       },
       {

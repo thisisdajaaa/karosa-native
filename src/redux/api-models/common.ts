@@ -3,3 +3,8 @@ export type ResponseState<T> = {
   isLoading: boolean;
   error?: Error;
 };
+
+export type Audit = {
+  createdAt: string;
+  updatedAt: string;
+};

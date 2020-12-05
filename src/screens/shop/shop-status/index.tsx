@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { View } from "react-native";
-import RBSheet from "react-native-raw-bottom-sheet";
+import { BottomSheet } from "@app/components/bottom-sheet";
 import { actions } from "@app/redux/shop";
 import { theme } from "@app/styles";
 import { ShopStatus } from "@app/redux/shop/models";
@@ -85,23 +85,11 @@ const ShopStatusModal: React.FC<Props> = ({ sheetRef }) => {
   };
 
   return (
-    <RBSheet
-      ref={sheetRef}
-      closeOnDragDown={true}
-      closeOnPressMask={false}
-      height={251}
-      customStyles={{
-        container: {
-          borderTopLeftRadius: 10,
-          borderTopRightRadius: 10,
-          padding: 5,
-        },
-      }}
-    >
+    <BottomSheet height={251} ref={sheetRef}>
       <BaseText style={styles.txtShopStatus}>Shop Status</BaseText>
       <View style={styles.spacer} />
       <MultiList {...multiListProps} />
-    </RBSheet>
+    </BottomSheet>
   );
 };
 

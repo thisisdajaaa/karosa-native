@@ -36,27 +36,27 @@ const AccountSettingsScreen: React.FC = () => {
     multiChev: [
       {
         title: "My Profile",
-        hasSeparator: true,
+        hasBottomDivider: true,
         onPress: () => navigate(routes.ACCOUNTS_EDT_PRFL),
       },
       {
         title: "Help Centre",
-        hasSeparator: true,
+        hasBottomDivider: true,
         onPress: () => console.log("Help Centre"),
       },
       {
         title: "Request for Account Deletion",
-        hasSeparator: true,
+        hasBottomDivider: true,
         onPress: () => deleteAccRef.current?.open(),
       },
       {
         title: "FAQ",
-        hasSeparator: true,
+        hasBottomDivider: true,
         onPress: () => console.log("FAQ"),
       },
       {
         title: "Privacy Policy",
-        hasSeparator: true,
+        hasBottomDivider: true,
         onPress: () => console.log("Privacy Policy"),
       },
       {
