@@ -4,16 +4,13 @@ import { theme } from "@app/styles";
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.white,
-    padding: 20,
+    padding: 25,
     justifyContent: "center",
     alignItems: "center",
   },
   categoryContainer: {
-    paddingHorizontal: 16,
-    paddingVertical: 3,
-    alignItems: "center",
     width: Dimensions.get("window").width / 3,
-    marginBottom: 12,
+    marginBottom: 16,
   },
   categoryCircle: {
     height: 72,
@@ -22,7 +19,9 @@ export const styles = StyleSheet.create({
     borderRadius: 100,
   },
   nameContainer: {
-    marginTop: 8,
+    marginTop: 4,
+    position: "relative",
+    right: 3.4,
   },
   txtName: {
     ...theme.textLight,
