@@ -34,8 +34,7 @@ const StackNavigator: React.FC = () => (
     <Stack.Screen name="Account Settings" component={AccountSettingsScreen} />
     <Stack.Screen name="Edit Profile" component={EditProfileScreen} />
     <Stack.Screen name="Social Media Accounts" component={SocialMediaScreen} />
-
-<Stack.Screen name="New Address" component={NewAddressScreen} />
+    <Stack.Screen name="New Address" component={NewAddressScreen} />
     <Stack.Screen name="My Address" component={MyAddressScreen} />
     <Stack.Screen name="My Products" component={MyProductsScreen} />
     <Stack.Screen name="Search Product" component={SearchProductScreen} />
@@ -44,7 +43,7 @@ const StackNavigator: React.FC = () => (
     <Stack.Screen name="Add Wholesale" component={AddWholesaleScreen} />
     <Stack.Screen name="Shipping Details" component={ShippingDetailsScreen} />
     <Stack.Screen name="Choose Category" component={ChooseCategoryScreen} />
->>>>>>> 469fb1706b3f26d00802451dc0c6d7232016f67a
+
   </Stack.Navigator>
 );
 
