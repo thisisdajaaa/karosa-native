@@ -11,11 +11,11 @@ const theme = {
   },
   textLight: {
     fontSize: 12,
-    lineHeight: 14,
+    lineHeight: 14.06,
   },
   textRegular: {
     fontSize: 16,
-    lineHeight: 19,
+    lineHeight: 18.75,
     fontFamily: "SFProText-Regular",
   },
   textBold: {

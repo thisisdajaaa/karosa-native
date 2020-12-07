@@ -11,7 +11,7 @@ import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
 
-const MyProducts: React.FC = () => {
+const MyProductsScreen: React.FC = () => {
   const { goBack, navigate } = useNavigation();
 
   const screenProps: ScreenProps = {
@@ -23,7 +23,14 @@ const MyProducts: React.FC = () => {
           color: theme.colors.primary,
           onPress: goBack,
         }}
-        centerComponent={{ text: "My Products" }}
+        centerComponent={{
+          text: "My Products",
+          style: {
+            ...theme.textRegular,
+            fontWeight: "700",
+            alignSelf: "center",
+          },
+        }}
         rightComponent={
           <View style={styles.flexRow}>
             <TouchableOpacity
@@ -58,4 +65,4 @@ const MyProducts: React.FC = () => {
   );
 };
 
-export default MyProducts;
+export default MyProductsScreen;

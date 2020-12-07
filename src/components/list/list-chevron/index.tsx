@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TouchableOpacity } from "react-native";
+import { ListItem } from "react-native-elements";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { BaseText } from "../../base-text";
@@ -9,40 +9,29 @@ import { styles } from "./styles";
 
 export const ListChevron: React.FC<Props> = ({
   title,
-  style,
-  rightLabel,
+  txtInfo,
   listColor,
+  required,
   onPress,
+  hasBottomDivider,
 }) => {
   return (
-    <View style={[styles.container, style?.containerStyle]}>
-      {listColor && (
-        <MaterialCommunityIcons
-          style={styles.listColor}
-          name="checkbox-blank"
-          color={listColor}
-        />
-      )}
-      <View style={styles.detailsContainer}>
-        <BaseText
-          customStyles={
-            listColor ? styles.hasListColor : [styles.title, style?.textStyle]
-          }
-          numberOfLines={1}
-        >
+    <ListItem bottomDivider={hasBottomDivider}>
+      <ListItem.Content style={styles.container}>
+        {listColor && (
+          <MaterialCommunityIcons
+            style={styles.listColor}
+            name="checkbox-blank"
+            color={listColor}
+          />
+        )}
+        <BaseText style={[listColor ? styles.hasListColor : styles.title]}>
           {title}
         </BaseText>
-      </View>
-
-      {rightLabel && (
-        <BaseText style={styles.rightLabel}>{rightLabel}</BaseText>
-      )}
-      <TouchableOpacity onPress={onPress}>
-        <MaterialCommunityIcons
-          name="chevron-right"
-          style={styles.chevronIcon}
-        />
-      </TouchableOpacity>
-    </View>
+        {required && <BaseText style={styles.required}>*</BaseText>}
+      </ListItem.Content>
+      {txtInfo && <BaseText style={styles.txtInfo}>{txtInfo}</BaseText>}
+      <ListItem.Chevron onPress={onPress} />
+    </ListItem>
   );
 };

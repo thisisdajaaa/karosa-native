@@ -1,26 +1,89 @@
 import { ResponseState } from "redux/api-models/common";
 
-import * as shop from "../api-models/shop";
-import * as products from "../api-models/products";
+import * as shopInfo from "../api-models/shop-info";
+import * as addProduct from "../api-models/add-product";
+import * as productList from "../api-models/product-list";
 
-export type ShopResponse = shop.Response;
-export type ShopRequest = shop.Request;
-export type ProductResponse = products.Response;
+export type ShopInfoResponse = shopInfo.Response;
+export type AddProductRequest = addProduct.Request;
+export type AddProductResponse = addProduct.Response;
+export type ProductListResponse = productList.Response;
 
-export type ShopStatus = {
+export type CommonStatus = {
   available: boolean;
   planting: boolean;
   harvesting: boolean;
 };
 
-export type EntryContext = {
+export type ProductForm = {
+  productImg: null;
+  productNm: string;
+  description: string;
+  price: string;
+  weight: string;
+  stocks: string;
+  shelfLife: string;
+  preOrder: boolean;
+  measurement: string;
+  categoryId: number;
+  status: CommonStatus;
+};
+
+export type VariationForm = {
+  variationImg: null;
+  productNm: string;
+  price: string;
+  weight: string;
+  stocks: string;
+};
+
+export type AvailabilityForm = {
+  monday: boolean;
+  tuesday: boolean;
+  wednesday: boolean;
+  thursday: boolean;
+  friday: boolean;
+  saturday: boolean;
+  sunday: boolean;
+};
+
+export type WholesaleForm = {
+  min: string;
+  max: string;
+  unit: string;
+};
+
+export type ShippingDetailsForm = {
+  weight: string;
+  width: string;
+  length: string;
+  height: string;
+  expressDelivery: boolean;
+  karosaDelivery: boolean;
+  pickUpBuyer: boolean;
+  sellerCourier: boolean;
+};
+
+export type ShopStatus = CommonStatus;
+
+export type ShopEntryContext = {
   shopStatus: ShopStatus;
 };
 
+export type ProductEntryContext = {
+  productForm: ProductForm;
+  variationForm: VariationForm;
+  availabilityForm: AvailabilityForm;
+  wholesaleForm: WholesaleForm;
+  shippingDetailsForm: ShippingDetailsForm;
+};
+
 export type ShopState = {
-  entryContext: EntryContext;
-  shopResponse: ResponseState<ShopResponse>;
-  productResponse: ResponseState<ProductResponse>;
+  shopEntryContext: ShopEntryContext;
+  productEntryContext: ProductEntryContext;
+  shopInfoResponse: ResponseState<ShopInfoResponse>;
+  addProductResponse: ResponseState<AddProductResponse>;
+  productListResponse: ResponseState<ProductListResponse>;
 };
 
 declare module "../types" {

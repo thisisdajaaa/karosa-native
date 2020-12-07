@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { FormikContext, useFormik } from "formik";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -40,18 +40,8 @@ const PaymentOptionsScreen: React.FC = () => {
     onSubmit: () => console.log("submit form"),
   });
 
-  const hasFormikVal = useMemo(() => {
-    return Object.values(formikBag.values).some(
-      (val: boolean) => val !== false
-    );
-  }, [formikBag.values]);
-
-  const customStyles = styles(hasFormikVal);
-
   const saveButtonProps: SubmitButtonProps = {
     title: "Save",
-    containerStyle: customStyles.btnSaveContainer,
-    textStyle: customStyles.txtBtnSave,
   };
 
   const screenProps: ScreenProps = {
@@ -62,7 +52,7 @@ const PaymentOptionsScreen: React.FC = () => {
         left: () => goBack(),
       },
     },
-    customStyles: customStyles.container,
+    customStyles: styles.container,
   };
 
   return (
@@ -70,7 +60,7 @@ const PaymentOptionsScreen: React.FC = () => {
       <FormikContext.Provider value={formikBag}>
         <MultiList {...multiListProps} />
 
-        <View style={customStyles.buttonContainer}>
+        <View style={styles.buttonContainer}>
           <SubmitButton {...saveButtonProps} />
         </View>
       </FormikContext.Provider>

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { FlatList, TouchableOpacity, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { ListItem } from "react-native-elements";
 import { theme } from "@app/styles";
 import { AppButton } from "@app/components/button";
@@ -9,28 +10,35 @@ import { useMemoizedSelector } from "@app/hooks";
 import { selectors, actions } from "@app/redux/shop";
 import { ListProduct } from "@app/components/list/list-product";
 import { ProductCard } from "@app/components/cards/product";
-import { Products } from "@app/redux/api-models/products";
+import { Products } from "redux/api-models/product-list";
 import { Props as ButtonProps } from "@app/components/button/types";
+import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
 
 const Content: React.FC = () => {
   const dispatch = useDispatch();
+  const { navigate, addListener } = useNavigation();
 
   const [view, setView] = useState({
     list: true,
     grid: false,
   });
 
-  const callProductApi = useCallback(
-    () => dispatch(actions.callProductsApi.request()),
+  const callProductListApi = useCallback(
+    () => dispatch(actions.callProductListApi.request()),
     [dispatch]
   );
 
-  const products = useMemoizedSelector(selectors.getProductResponse).response;
+  const products = useMemoizedSelector(selectors.getProductListResponse)
+    .response;
 
   useEffect(() => {
-    callProductApi();
+    const unsubscribe = addListener("focus", () => {
+      callProductListApi();
+    });
+
+    return unsubscribe;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -42,7 +50,7 @@ const Content: React.FC = () => {
   };
 
   const addProdButtonProps: ButtonProps = {
-    onPress: () => console.log("add product"),
+    onPress: () => navigate(routes.ADD_PRODUCT),
     title: "Add Product",
     containerStyle: styles.addProdButton,
   };

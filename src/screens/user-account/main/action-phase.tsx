@@ -17,11 +17,8 @@ import { styles } from "./styles";
 const ActionPhase: React.FC = () => {
   const listChevronProps: ListChevronProps = {
     title: "My Purchases",
-    rightLabel: "All purchases",
+    txtInfo: "All purchases",
     onPress: () => console.log("My Purchases"),
-    style: {
-      textStyle: styles.txtMyPurchases,
-    },
   };
 
   const accountActionsProps: AccountActionProps = {

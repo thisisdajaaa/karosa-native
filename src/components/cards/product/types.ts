@@ -1,4 +1,4 @@
-import { Products } from "@app/redux/api-models/products";
+import { Products } from "redux/api-models/product-list";
 
 export type Props = {
   item: Products;

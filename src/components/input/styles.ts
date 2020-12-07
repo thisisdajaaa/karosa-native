@@ -13,10 +13,6 @@ export const styles = StyleSheet.create({
     width: "100%",
     borderColor: theme.colors.dark30,
   },
-  icon: {
-    marginRight: 10,
-  },
-  //temp
   text: {
     ...theme.textRegular,
     color: theme.colors.dark25,

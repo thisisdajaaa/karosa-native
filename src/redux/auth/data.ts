@@ -1,4 +1,4 @@
-import { Gender } from "../api-models/login";
+import { RES_GENDER } from "@app/constants";
 
 import { AuthState } from "./models";
 
@@ -10,7 +10,7 @@ export const initAuthState: AuthState = {
       fullName: "",
       phoneNo: "",
       username: "",
-      gender: Gender.Other,
+      gender: RES_GENDER.Other,
       avatar: {},
     },
     isLoading: false,
