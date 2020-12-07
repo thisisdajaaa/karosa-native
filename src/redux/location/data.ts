@@ -10,4 +10,24 @@ export const initLocationState: LocationState = {
     ],
     isLoading: false,
   },
+  provinceResponse: {
+    response: [
+      {
+        id: 0,
+        name: "",
+        regionId: 0,
+      },
+    ],
+    isLoading: false,
+  },
+  barangayResponse: {
+    response: [
+      {
+        id: 0,
+        name: "",
+        provinceId: 0,
+      },
+    ],
+    isLoading: false,
+  },
 };

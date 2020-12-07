@@ -9,6 +9,7 @@ import { Props as ButtonProps } from "@app/components/button/types";
 import { useDispatch } from "react-redux";
 import { actions, selectors } from "@app/redux/auth";
 import { actions as regionActions } from "@app/redux/location";
+import { actions as provinceActions } from "@app/redux/location";
 import { selectors as locationSelector } from "@app/redux/location";
 import { FormikContext, useFormik } from "formik";
 import { newAddressStyle } from "./styles";
@@ -27,6 +28,7 @@ import {
 import { SubmitButton } from "@app/components/formik/submit-button";
 
 import { NewAddressRequest } from "redux/auth/models";
+import { ProvinceResponse } from "redux/location/models";
 import { validationSchema } from "./validation";
 import { useEffect } from "react";
 import { RegionResponse } from "redux/location/models";
@@ -72,6 +74,20 @@ const barangayData = [
     value: "Poblacion",
   },
 ];
+const cityData = [
+  {
+    id: 1,
+    value: "Talisay",
+  },
+  {
+    id: 2,
+    value: "Carcar",
+  },
+  {
+    id: 3,
+    value: "Danao",
+  },
+];
 
 const NewAddressScreen: React.FC = () => {
   const { goBack } = useNavigation();
@@ -92,6 +108,14 @@ const NewAddressScreen: React.FC = () => {
     getRegionResponse();
   }, []);
 
+  const getProvinceResponse = useCallback(
+    () => dispatch(provinceActions.callProvinceApi.request()),
+    [dispatch]
+  );
+  useEffect(() => {
+    getProvinceResponse();
+  }, []);
+
   const formikBag = useFormik({
     initialValues: {
       fullName: "",
@@ -109,9 +133,7 @@ const NewAddressScreen: React.FC = () => {
         detailed_address: values.region + values.province + values.barangay,
         isDefaultAddress: true,
         barangayId: 0,
-
       };
-
       callNewAddressApi(request);
     },
     validationSchema,
@@ -123,6 +145,12 @@ const NewAddressScreen: React.FC = () => {
     placeholder: "Choose Province",
     data: provinceData,
   };
+  const cityProps: AddressSelectionProps = {
+    name: "city",
+    label: "City",
+    placeholder: "Choose City",
+    data: cityData,
+  };
   const brgyProps: AddressSelectionProps = {
     name: "barangay",
     label: "Barangay",
@@ -132,6 +160,9 @@ const NewAddressScreen: React.FC = () => {
 
   const regionResponse = useMemoizedSelector(
     locationSelector.getRegionResponse
+  );
+  const provinceResponse = useMemoizedSelector(
+    locationSelector.getProvinceResponse
   );
 
   const headerProps: HeaderProps = {
@@ -170,12 +201,20 @@ const NewAddressScreen: React.FC = () => {
     textStyle: newAddressStyle.txtBtnSubmit,
   };
 
-  function getRegionsProp(regions : RegionResponse) : SelectionData[] {
+  function getRegionsProp(regions: RegionResponse): SelectionData[] {
     var regionsData: SelectionData[] = [];
     regions.map((data) => {
-      regionsData.push({id : data.id, value : data.name})
-    })
+      regionsData.push({ id: data.id, value: data.name });
+    });
     return regionsData;
+  }
+
+  function getProvinceProp(province: ProvinceResponse): SelectionData[] {
+    var provinceData: SelectionData[] = [];
+    province.map((data) => {
+      provinceData.push({ id: data.id, value: data.name });
+    });
+    return provinceData;
   }
 
   return (
@@ -184,11 +223,23 @@ const NewAddressScreen: React.FC = () => {
         <View style={{ marginTop: 10 }}>
           <AddressInput {...fullNameProps} />
           <AddressInput {...phoneNumberProps} />
-          {
-            regionResponse &&
-            <AddressInputPicker name="region" label="Region" placeholder="Choose Region" data={getRegionsProp(regionResponse)} />
-          }
-          <AddressInputPicker {...provinceProps} />
+          {regionResponse && (
+            <AddressInputPicker
+              name="region"
+              label="Region"
+              placeholder="Choose Region"
+              data={getRegionsProp(regionResponse)}
+            />
+          )}
+          {provinceResponse && (
+            <AddressInputPicker
+              name="province"
+              label="Province"
+              placeholder="Choose Province"
+              data={getProvinceProp(provinceResponse)}
+            />
+          )}
+          <AddressInputPicker {...cityProps} />
           <AddressInputPicker {...brgyProps} />
           <View
             style={[

@@ -22,10 +22,43 @@ export function* callRegionApi(): SagaIterator {
   }
 }
 
+export function* callProvinceApi(): SagaIterator {
+  try {
+    const response: AxiosResponse<models.ProvinceResponse> = yield call(
+      baseAxios.get,
+      apiEndpoints.province
+    );
+
+    yield put(actions.callProvinceApi.success(response.data));
+  } catch (error) {
+    yield put(actions.callProvinceApi.failure(error));
+  }
+}
+
+export function* callBarangayApi(): SagaIterator {
+  try {
+    const response: AxiosResponse<models.BarangayResponse> = yield call(
+      baseAxios.get,
+      apiEndpoints.barangay
+    );
+
+    yield put(actions.callBarangayApi.success(response.data));
+  } catch (error) {
+    yield put(actions.callBarangayApi.failure(error));
+  }
+}
+export function* onBarangaySaga() {
+  yield takeLatest(getType(actions.callBarangayApi.request), callBarangayApi);
+}
+
 export function* onRegionSaga() {
   yield takeLatest(getType(actions.callRegionApi.request), callRegionApi);
 }
 
+export function* onProvinceSaga() {
+  yield takeLatest(getType(actions.callProvinceApi.request), callProvinceApi);
+}
+
 export default function* () {
-  yield all([call(onRegionSaga)]);
+  yield all([call(onRegionSaga), call(onProvinceSaga), call(onBarangaySaga)]);
 }

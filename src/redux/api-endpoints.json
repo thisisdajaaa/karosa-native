@@ -1,8 +1,11 @@
 {
   "login": "/v1/auth/login",
   "addresses": "/v1/users/addresses",
-  "regions": "/v1/regions",
+  "regions": "/v1/addresses/regions",
   "shopInfo": "/v1/users/shop",
   "products": "/v1/shops/products",
-  "categories": "/v1/categories"
+  "categories": "/v1/categories",
+  "province": "/v1/addresses/4/provinces",
+  "barangay": "/v1/addresses/909/barangays",
+  "cities": "/v1/addresses/45/provinces"
 }

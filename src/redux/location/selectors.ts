@@ -16,7 +16,24 @@ export const getRegionResponse = () =>
     );
   });
 
+export const getProvinceResponse = () =>
+  createSelector(rootSelector, (state: LocationState) => {
+    return (
+      state.provinceResponse.response ||
+      initLocationState.provinceResponse.response
+    );
+  });
+
+export const getBarangayResponse = () =>
+  createSelector(rootSelector, (state: LocationState) => {
+    return (
+      state.barangayResponse.response ||
+      initLocationState.barangayResponse.response
+    );
+  });
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getRegionResponse,
+  getProvinceResponse,
+  getBarangayResponse,
 };

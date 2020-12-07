@@ -1,7 +1,7 @@
 export type Response = [
   {
-    id: number;
+    id: 0;
     name: string;
+    regionId: number;
   }
 ];
-
