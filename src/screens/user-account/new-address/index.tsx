@@ -22,12 +22,14 @@ import {
   AddressInputProps,
   AddressSelectionProps,
   DetailedAddressProps,
+  SelectionData,
 } from "components/list/list-address/types";
 import { SubmitButton } from "@app/components/formik/submit-button";
 
 import { NewAddressRequest } from "redux/auth/models";
 import { validationSchema } from "./validation";
 import { useEffect } from "react";
+import { RegionResponse } from "redux/location/models";
 const regionData = [
   {
     id: 1,
@@ -107,20 +109,14 @@ const NewAddressScreen: React.FC = () => {
         detailed_address: values.region + values.province + values.barangay,
         isDefaultAddress: true,
         barangayId: 0,
+
       };
 
-      // callNewAddressApi(request);
-      console.log(regionResponse);
+      callNewAddressApi(request);
     },
     validationSchema,
   });
 
-  const regionProps: AddressSelectionProps = {
-    name: "region",
-    label: "Region",
-    placeholder: "Choose Region",
-    data: regionData,
-  };
   const provinceProps: AddressSelectionProps = {
     name: "province",
     label: "Province",
@@ -174,13 +170,24 @@ const NewAddressScreen: React.FC = () => {
     textStyle: newAddressStyle.txtBtnSubmit,
   };
 
+  function getRegionsProp(regions : RegionResponse) : SelectionData[] {
+    var regionsData: SelectionData[] = [];
+    regions.map((data) => {
+      regionsData.push({id : data.id, value : data.name})
+    })
+    return regionsData;
+  }
+
   return (
     <FormikContext.Provider value={formikBag}>
       <Screen {...headerProps}>
         <View style={{ marginTop: 10 }}>
           <AddressInput {...fullNameProps} />
           <AddressInput {...phoneNumberProps} />
-          <AddressInputPicker {...regionProps} />
+          {
+            regionResponse &&
+            <AddressInputPicker name="region" label="Region" placeholder="Choose Region" data={getRegionsProp(regionResponse)} />
+          }
           <AddressInputPicker {...provinceProps} />
           <AddressInputPicker {...brgyProps} />
           <View

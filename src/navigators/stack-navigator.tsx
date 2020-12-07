@@ -12,7 +12,6 @@ import SearchProduct from "@app/screens/products/search-product";
 
 import { TabNavigator } from "./tab-navigator";
 import NewAddressScreen from "@app/screens/user-account/new-address";
-import routes from "./routes";
 import MyAddressScreen from "@app/screens/user-account/my-address";
 
 const Stack = createStackNavigator();
