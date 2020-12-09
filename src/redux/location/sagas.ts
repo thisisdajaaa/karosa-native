@@ -47,6 +47,23 @@ export function* callBarangayApi(): SagaIterator {
     yield put(actions.callBarangayApi.failure(error));
   }
 }
+
+export function* callCitiesApi(): SagaIterator {
+  try {
+    const response: AxiosResponse<models.CitiesResponse> = yield call(
+      baseAxios.get,
+      apiEndpoints.cities
+    );
+
+    yield put(actions.callCitiesApi.success(response.data));
+  } catch (error) {
+    yield put(actions.callCitiesApi.failure(error));
+  }
+}
+
+export function* onCitiesSaga() {
+  yield takeLatest(getType(actions.callCitiesApi.request), callCitiesApi);
+}
 export function* onBarangaySaga() {
   yield takeLatest(getType(actions.callBarangayApi.request), callBarangayApi);
 }
@@ -60,5 +77,10 @@ export function* onProvinceSaga() {
 }
 
 export default function* () {
-  yield all([call(onRegionSaga), call(onProvinceSaga), call(onBarangaySaga)]);
+  yield all([
+    call(onRegionSaga),
+    call(onProvinceSaga),
+    call(onBarangaySaga),
+    call(onCitiesSaga),
+  ]);
 }

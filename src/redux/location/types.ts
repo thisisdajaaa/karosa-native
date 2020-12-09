@@ -10,6 +10,10 @@ export const ACT_BARANGAY_REQUEST = "auth/actBarangayRequest" as const;
 export const ACT_BARANGAY_SUCCESS = "auth/actBarangaySuccess" as const;
 export const ACT_BARANGAY_FAILURE = "auth/actBarangayFailure" as const;
 
+export const ACT_CITIES_REQUEST = "auth/actCitiesRequest" as const;
+export const ACT_CITIES_SUCCESS = "auth/actCitiesSuccess" as const;
+export const ACT_CITIES_FAILURE = "auth/actCitiesFailure" as const;
+
 export type Types =
   | typeof ACT_REGION_REQUEST
   | typeof ACT_REGION_SUCCESS
@@ -19,4 +23,7 @@ export type Types =
   | typeof ACT_PROVINCE_FAILURE
   | typeof ACT_BARANGAY_REQUEST
   | typeof ACT_BARANGAY_SUCCESS
-  | typeof ACT_BARANGAY_FAILURE;
+  | typeof ACT_BARANGAY_FAILURE
+  | typeof ACT_CITIES_REQUEST
+  | typeof ACT_CITIES_SUCCESS
+  | typeof ACT_CITIES_FAILURE;

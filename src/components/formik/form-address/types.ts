@@ -24,9 +24,10 @@ type AddressInput = {
 
 type DetailedAddressInput = {
   placeholder: string;
+  label: string;
 };
 
-type SelectionData = {
+export type SelectionData = {
   id: number;
   value: string;
 };

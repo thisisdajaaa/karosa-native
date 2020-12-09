@@ -30,4 +30,14 @@ export const initLocationState: LocationState = {
     ],
     isLoading: false,
   },
+  citiesResponse: {
+    response: [
+      {
+        id: 0,
+        name: "",
+        cityId: 0,
+      },
+    ],
+    isLoading: false,
+  },
 };

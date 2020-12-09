@@ -7,5 +7,5 @@
   "categories": "/v1/categories",
   "province": "/v1/addresses/4/provinces",
   "barangay": "/v1/addresses/909/barangays",
-  "cities": "/v1/addresses/45/provinces"
+  "cities": "/v1/addresses/45/cities"
 }

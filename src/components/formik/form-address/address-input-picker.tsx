@@ -4,7 +4,7 @@ import { View } from "react-native";
 import { BaseText } from "../../base-text";
 import { Picker } from "@react-native-picker/picker";
 import { AddressInputStyle } from "./styles";
-import { TextInput } from "../../../components/input";
+import { TextInput } from "../../input";
 import { useFormikContext, useField } from "formik";
 
 export const AddressInputPicker: React.FC<AddressSelectionProps> = React.memo(

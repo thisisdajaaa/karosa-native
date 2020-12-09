@@ -84,10 +84,36 @@ export const barangayResponse = produce(
   data.initLocationState.barangayResponse
 );
 
+export const citiesResponse = produce(
+  (
+    draft: Draft<ResponseState<models.CitiesResponse>>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.callCitiesApi.request):
+        draft.response = data.initLocationState.citiesResponse.response;
+        draft.isLoading = true;
+        return draft;
+      case getType(actions.callCitiesApi.success):
+        draft.response = action.payload;
+        draft.isLoading = false;
+        return draft;
+      case getType(actions.callCitiesApi.failure):
+        draft.error = action.payload;
+        draft.isLoading = false;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initLocationState.citiesResponse
+);
+
 const reducer = combineReducers({
   regionResponse,
   provinceResponse,
   barangayResponse,
+  citiesResponse,
 });
 
 export default reducer;

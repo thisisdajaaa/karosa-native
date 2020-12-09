@@ -31,9 +31,17 @@ export const getBarangayResponse = () =>
       initLocationState.barangayResponse.response
     );
   });
+
+export const getCitiesResponse = () =>
+  createSelector(rootSelector, (state: LocationState) => {
+    return (
+      state.citiesResponse.response || initLocationState.citiesResponse.response
+    );
+  });
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getRegionResponse,
   getProvinceResponse,
   getBarangayResponse,
+  getCitiesResponse,
 };

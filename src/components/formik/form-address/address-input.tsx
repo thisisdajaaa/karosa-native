@@ -2,15 +2,12 @@ import React, { useState, useEffect, useCallback } from "react";
 
 import { View } from "react-native";
 import { BaseText } from "../../base-text";
-import { DetailedAddressProps } from "./types";
+import { AddressInputProps } from "./types";
 import { AddressInputStyle } from "./styles";
-import { TextInput } from "../../../components/input";
+import { TextInput } from "../../input";
 import { useFormikContext, useField } from "formik";
 
-export const DetailedAddress: React.FC<DetailedAddressProps> = ({
-  name,
-  detailedInput,
-}) => {
+export const AddressInput: React.FC<AddressInputProps> = ({ name, addressInput }) => {
   const [, meta, helpers] = useField(name);
   const { validateOnChange } = useFormikContext();
   const [currentValue, setCurrentValue] = useState(
@@ -30,28 +27,18 @@ export const DetailedAddress: React.FC<DetailedAddressProps> = ({
   );
 
   return (
-    <View>
-      <View style={{ flexWrap: "wrap", paddingLeft: 16 }}>
-        <BaseText
-          style={{
-            paddingTop: 30,
-            flexDirection: "column",
-            alignContent: "center",
-            color: "#BDBDBD",
-            fontSize: 12,
-          }}
-        >
-          Unit Number, House Number{"\n"}Building, Street Name
-        </BaseText>
-      </View>
-      <View style={{ paddingLeft: 16 }}>
+    <View style={AddressInputStyle.labelContainer}>
+      <BaseText style={AddressInputStyle.inputLabel}>
+        {addressInput.label}
+      </BaseText>
+      <View style={AddressInputStyle.inputContainer}>
         <TextInput
-          placeholder={detailedInput.placeholder}
+          placeholder={addressInput.placeholder}
           value={currentValue}
           onChangeText={handleChange}
-          style={{ textAlign: "left" }}
+          style={AddressInputStyle.inputStyle}
           customStyles={{
-            alignSelf: "flex-start",
+            flexDirection: "column",
             borderWidth: 0,
             padding: 0,
           }}

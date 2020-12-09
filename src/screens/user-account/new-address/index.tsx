@@ -7,24 +7,26 @@ import { View, CheckBox } from "react-native";
 import { useMemoizedSelector } from "@app/hooks";
 import { Props as ButtonProps } from "@app/components/button/types";
 import { useDispatch } from "react-redux";
-import { actions, selectors } from "@app/redux/auth";
+import { actions } from "@app/redux/auth";
 import { actions as regionActions } from "@app/redux/location";
 import { actions as provinceActions } from "@app/redux/location";
+import { actions as citiesActions } from "@app/redux/location";
+import { actions as barangayActions } from "@app/redux/location";
+
 import { selectors as locationSelector } from "@app/redux/location";
 import { FormikContext, useFormik } from "formik";
 import { newAddressStyle } from "./styles";
 import { BaseText } from "../../../components/base-text";
-import { DetailedAddress } from "../../../components/list/list-address/detailed-address-input";
 import {
   AddressInput,
   AddressInputPicker,
-} from "../../../components/list/list-address/";
+  DetailedAddressInput,
+} from "../../../components/formik/form-address";
 import {
   AddressInputProps,
-  AddressSelectionProps,
   DetailedAddressProps,
   SelectionData,
-} from "components/list/list-address/types";
+} from "components/formik/form-address/types";
 import { SubmitButton } from "@app/components/formik/submit-button";
 
 import { NewAddressRequest } from "redux/auth/models";
@@ -32,62 +34,8 @@ import { ProvinceResponse } from "redux/location/models";
 import { validationSchema } from "./validation";
 import { useEffect } from "react";
 import { RegionResponse } from "redux/location/models";
-const regionData = [
-  {
-    id: 1,
-    value: "Region1",
-  },
-  {
-    id: 2,
-    value: "Region2",
-  },
-  {
-    id: 3,
-    value: "Region3",
-  },
-];
-const provinceData = [
-  {
-    id: 1,
-    value: "Cebu",
-  },
-  {
-    id: 2,
-    value: "Davao",
-  },
-  {
-    id: 3,
-    value: "Negros Oriental",
-  },
-];
-const barangayData = [
-  {
-    id: 1,
-    value: "Dumlog",
-  },
-  {
-    id: 2,
-    value: "Tabunok",
-  },
-  {
-    id: 3,
-    value: "Poblacion",
-  },
-];
-const cityData = [
-  {
-    id: 1,
-    value: "Talisay",
-  },
-  {
-    id: 2,
-    value: "Carcar",
-  },
-  {
-    id: 3,
-    value: "Danao",
-  },
-];
+import { CitiesResponse } from "redux/location/models";
+import { BarangayResponse } from "redux/location/models";
 
 const NewAddressScreen: React.FC = () => {
   const { goBack } = useNavigation();
@@ -116,6 +64,22 @@ const NewAddressScreen: React.FC = () => {
     getProvinceResponse();
   }, []);
 
+  const getCitiesResponse = useCallback(
+    () => dispatch(citiesActions.callCitiesApi.request()),
+    [dispatch]
+  );
+  useEffect(() => {
+    getCitiesResponse();
+  }, []);
+
+  const getBarangayResponse = useCallback(
+    () => dispatch(barangayActions.callBarangayApi.request()),
+    [dispatch]
+  );
+  useEffect(() => {
+    getBarangayResponse();
+  }, []);
+
   const formikBag = useFormik({
     initialValues: {
       fullName: "",
@@ -123,7 +87,7 @@ const NewAddressScreen: React.FC = () => {
       region: "",
       province: "",
       barangay: "",
-      detailed_address: "",
+      detailedAddress: "",
     },
     onSubmit: (values) => {
       console.log(values);
@@ -139,30 +103,17 @@ const NewAddressScreen: React.FC = () => {
     validationSchema,
   });
 
-  const provinceProps: AddressSelectionProps = {
-    name: "province",
-    label: "Province",
-    placeholder: "Choose Province",
-    data: provinceData,
-  };
-  const cityProps: AddressSelectionProps = {
-    name: "city",
-    label: "City",
-    placeholder: "Choose City",
-    data: cityData,
-  };
-  const brgyProps: AddressSelectionProps = {
-    name: "barangay",
-    label: "Barangay",
-    placeholder: "Choose Barangay",
-    data: barangayData,
-  };
-
   const regionResponse = useMemoizedSelector(
     locationSelector.getRegionResponse
   );
   const provinceResponse = useMemoizedSelector(
     locationSelector.getProvinceResponse
+  );
+  const citiesResponse = useMemoizedSelector(
+    locationSelector.getCitiesResponse
+  );
+  const barangayResponse = useMemoizedSelector(
+    locationSelector.getBarangayResponse
   );
 
   const headerProps: HeaderProps = {
@@ -191,6 +142,7 @@ const NewAddressScreen: React.FC = () => {
   const DetailedAddressProps: DetailedAddressProps = {
     name: "detailedAddress",
     detailedInput: {
+      label: "Detailed Address",
       placeholder: "Set Detailed Address",
     },
   };
@@ -217,12 +169,36 @@ const NewAddressScreen: React.FC = () => {
     return provinceData;
   }
 
+  function getCitiesProp(cities: CitiesResponse): SelectionData[] {
+    var citiesData: SelectionData[] = [];
+    cities.map((data) => {
+      citiesData.push({ id: data.id, value: data.name });
+    });
+    return citiesData;
+  }
+
+  function getBarangayProp(barangay: BarangayResponse): SelectionData[] {
+    var barangayData: SelectionData[] = [];
+    barangay.map((data) => {
+      barangayData.push({ id: data.id, value: data.name });
+    });
+    return barangayData;
+  }
   return (
     <FormikContext.Provider value={formikBag}>
       <Screen {...headerProps}>
         <View style={{ marginTop: 10 }}>
-          <AddressInput {...fullNameProps} />
-          <AddressInput {...phoneNumberProps} />
+          <AddressInput
+            name="fullName"
+            addressInput={{ label: "Full Name", placeholder: "Set Full Name" }}
+          />
+          <AddressInput
+            name="phoneNumber"
+            addressInput={{
+              label: "Phone Number",
+              placeholder: "Set Phone Number",
+            }}
+          />
           {regionResponse && (
             <AddressInputPicker
               name="region"
@@ -239,8 +215,22 @@ const NewAddressScreen: React.FC = () => {
               data={getProvinceProp(provinceResponse)}
             />
           )}
-          <AddressInputPicker {...cityProps} />
-          <AddressInputPicker {...brgyProps} />
+          {citiesResponse && (
+            <AddressInputPicker
+              name="cities"
+              label="City"
+              placeholder="Choose City"
+              data={getCitiesProp(citiesResponse)}
+            />
+          )}
+          {barangayResponse && (
+            <AddressInputPicker
+              name="barangay"
+              label="Barangay"
+              placeholder="Choose Barangay"
+              data={getBarangayProp(barangayResponse)}
+            />
+          )}
           <View
             style={[
               newAddressStyle.newContainer,
@@ -250,7 +240,13 @@ const NewAddressScreen: React.FC = () => {
             <BaseText style={newAddressStyle.TextStyle}>
               Detailed Address
             </BaseText>
-            <DetailedAddress {...DetailedAddressProps} />
+            <DetailedAddressInput
+              name="detailedAddress"
+              detailedInput={{
+                label: "Detailed Address",
+                placeholder: "Set Detailed Address",
+              }}
+            />
           </View>
 
           <View style={newAddressStyle.newContainer}>

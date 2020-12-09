@@ -1,7 +1,12 @@
 import { createAsyncAction } from "typesafe-actions";
 
 import * as types from "./types";
-import { RegionResponse, ProvinceResponse, BarangayResponse } from "./models";
+import {
+  RegionResponse,
+  ProvinceResponse,
+  BarangayResponse,
+  CitiesResponse,
+} from "./models";
 
 export const callRegionApi = createAsyncAction(
   types.ACT_REGION_REQUEST,
@@ -20,9 +25,16 @@ export const callBarangayApi = createAsyncAction(
   types.ACT_BARANGAY_SUCCESS,
   types.ACT_BARANGAY_FAILURE
 )<undefined, BarangayResponse, Error>();
+
+export const callCitiesApi = createAsyncAction(
+  types.ACT_CITIES_REQUEST,
+  types.ACT_CITIES_SUCCESS,
+  types.ACT_CITIES_FAILURE
+)<undefined, CitiesResponse, Error>();
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   callRegionApi,
   callProvinceApi,
   callBarangayApi,
+  callCitiesApi,
 };
