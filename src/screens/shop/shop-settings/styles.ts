@@ -2,10 +2,31 @@ import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
 export const styles = StyleSheet.create({
+
+  itemContainer: {
+    flexDirection: "row",
+   
+  },
+  setDetailStyle: {
+    flexDirection: "column-reverse",
+    color: "#0AA351",
+    fontSize: 16,
+  },
+  actionContainer: {
+    paddingTop: 12,
+    paddingRight: 50,
+  },
+  separator: {
+    marginTop: 12,
+  },
   actionPhaseContainer: {
     height: 160,
     backgroundColor: theme.colors.white,
     marginBottom: 15,
+  },
+  txtLogo: {
+    position: "absolute",
+    left: 34,
   },
   headerContainer: {
     backgroundColor: theme.colors.white,
@@ -24,6 +45,7 @@ export const styles = StyleSheet.create({
   txtSeller: {
     color: theme.colors.white,
   },
+  txtLabel: { ...theme.textRegular, fontWeight: "400" },
   txtSales: {
     ...theme.title,
     fontWeight: "500",
@@ -50,3 +72,16 @@ export const styles = StyleSheet.create({
   multiListContainer: { height: 266, marginVertical: 18 },
   mainContainer: { backgroundColor: theme.colors.light5, flex: 1 },
 });
+
+export const itemStyle = (bgColor: string) => {
+  return StyleSheet.create({
+    circle: {
+      borderRadius: 50,
+      backgroundColor: bgColor,
+      height: 16,
+      width: 16,
+      marginTop: 2,
+      marginRight: 12,
+    },
+  });
+};

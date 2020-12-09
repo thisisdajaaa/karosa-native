@@ -1,5 +1,4 @@
-import { ShopState, ShopStatus , takeOverData} from "./models";
-
+import { ShopState, ShopStatus, takeOverData } from "./models";
 
 export const initShopStatus: ShopStatus = {
   available: false,
@@ -7,20 +6,22 @@ export const initShopStatus: ShopStatus = {
   planting: false,
 };
 
+
+
 export const initShopState: ShopState = {
   entryContext: {
     shopStatus: initShopStatus,
   },
   shopResponse: {
     response: {
-      username: "cxoge6",
-      email: "test2@gmail.com",
+      username: "",
+      email: "",
       shop: {
-        id: 8,
+        id: 0,
         name: "",
-        isActive: true,
-        createdAt: "2020-11-13T13:01:16.625Z",
-        updatedAt: "2020-11-13T13:01:16.625Z",
+        isActive: false,
+        createdAt: "",
+        updatedAt: "",
       },
     },
     isLoading: false,

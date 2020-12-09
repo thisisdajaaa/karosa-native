@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import { View } from "react-native";
 import { Screen } from "@app/components/base-screen";
 import { AppButton } from "@app/components/button";
@@ -10,10 +10,27 @@ import { Separator } from "@app/components/separator";
 import { styles } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import routes from "@app/navigators/routes";
+import { useDispatch } from "react-redux";
+import { ShopActivationRequest } from "@app/redux/shop/models";
+import { actions } from "@app/redux/shop";
 
 const TermsAndCondScreen: React.FC = () => {
-
   const { navigate } = useNavigation();
+  const dispatch = useDispatch();
+  const callActivateShopApi = useCallback(
+    (request: ShopActivationRequest) =>
+      dispatch(actions.callActivateShopApi.request(request)),
+    [dispatch]
+  );
+  // const handlePress = () => {
+  //   const request: ShopActivationRequest = {
+  //     isActive: true,
+  //   };
+
+  //   callActivateShopApi(request);
+  // };
+
+
 
   const screenProps: ScreenProps = {
     header: {
@@ -23,14 +40,18 @@ const TermsAndCondScreen: React.FC = () => {
   };
 
   const agreeButtonProps: ButtonProps = {
-    onPress: () => navigate(routes.SHOP_SETTINGS),
+    onPress: () => {
+      callActivateShopApi({ isActive: true });
+      navigate(routes.SHOP_SETTINGS);
+    },
+
     title: "I Agree",
     containerStyle: styles.agreeButtonContainer,
     textStyle: styles.txtAgreeButton,
   };
 
   const notNowButtonProps: ButtonProps = {
-    onPress: () => console.log("I agree"),
+    onPress: () => navigate(routes.SHOP_MAIN),
     title: "Not Now",
     containerStyle: styles.notNowButtonContainer,
     textStyle: styles.txtNotNow,

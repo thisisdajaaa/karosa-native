@@ -61,6 +61,29 @@ export const productResponse = produce(
         draft.isLoading = false;
         return draft;
       case getType(actions.callProductsApi.failure):
+      default:
+        return draft;
+    }
+  },
+
+  data.initShopState.productResponse
+);
+
+export const activateShopResponse = produce(
+  (
+    draft: Draft<ResponseState<models.ShopActivationResponse>>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.callActivateShopApi.request):
+        draft.response = data.initTakeOverData;
+        draft.isLoading = true;
+        return draft;
+      case getType(actions.callActivateShopApi.success):
+        draft.response = action.payload;
+        draft.isLoading = false;
+        return draft;
+      case getType(actions.callActivateShopApi.failure):
         draft.error = action.payload;
         draft.isLoading = false;
         return draft;
@@ -68,13 +91,15 @@ export const productResponse = produce(
         return draft;
     }
   },
-  data.initShopState.productResponse
+ 
+  data.initTakeOverData
 );
 
 const reducer = combineReducers({
   entryContext,
   shopResponse,
   productResponse,
+  activateShopResponse,
 });
 
 export default reducer;

@@ -1,7 +1,7 @@
 export type Request = {
-  shopId: string;
-  deletionReason: string;
-  password: string;
+  // shopId: string;
+  // deletionReason: string;
+  // password: string;
 };
 
 export type Response = {

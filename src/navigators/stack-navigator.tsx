@@ -12,6 +12,7 @@ import SearchProduct from "@app/screens/products/search-product";
 import ShopSettingScreen from "@app/screens/shop/shop-settings";
 import PaymentOptionsScreen from "@app/screens/shop/payment-options";
 import TermsAndCondScreen from "@app/screens//shop/terms";
+import ShopAddressScreen from "@app/screens/shop/edit-address";
 
 import { TabNavigator } from "./tab-navigator";
 
@@ -29,6 +30,7 @@ const StackNavigator: React.FC = () => (
     <Stack.Screen name="Forgot Password" component={ForgotScreen} />
     <Stack.Screen name="Account Settings" component={AccountSettingsScreen} />
     <Stack.Screen name="Shop Settings" component={ShopSettingScreen} />
+    <Stack.Screen name="Shop Address" component={ShopAddressScreen} />
     <Stack.Screen name="Payment Options" component={PaymentOptionsScreen} />
     <Stack.Screen
       name="Shop Terms and Conditions"

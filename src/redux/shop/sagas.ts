@@ -25,15 +25,14 @@ export function* callProductsApi(): SagaIterator {
 export function* onProductSaga() {
   yield takeLatest(getType(actions.callProductsApi.request), callProductsApi);
 }
-
-export function* callShopApi(
-  action: ReturnType<typeof actions.callShopApi.request>
-): SagaIterator {
+export function* callShopApi() {
+  // action: ReturnType<typeof actions.callShopApi.request>
+ 
   try {
     const response: AxiosResponse<models.ShopResponse> = yield call(
-      baseAxios.post,
-      apiEndpoints.shop,
-      action.payload
+      baseAxios.get,
+      apiEndpoints.shop
+      // action.payload
     );
 
     yield put(actions.callShopApi.success(response.data));
@@ -42,14 +41,34 @@ export function* callShopApi(
   }
 }
 
+export function* callActivateShopApi(
+  action: ReturnType<typeof actions.callActivateShopApi.request>
+): SagaIterator {
+  try {
+    const response: AxiosResponse<models.ShopActivationResponse> = yield call(
+      baseAxios.post,
+      apiEndpoints.shop,
+      action.payload
+    );
+
+    yield put(actions.callActivateShopApi.success(response.data));
+  } catch (error) {
+    yield put(actions.callActivateShopApi.failure(error));
+  }
+}
 
 export function* onShopSaga() {
-  console.log("onShopSaga called")
   yield takeLatest(getType(actions.callShopApi.request), callShopApi);
 }
 
+export function* onActivateShopSaga() {
+  yield takeLatest(getType(actions.callActivateShopApi.request), callShopApi);
+}
 
 export default function* () {
- 
-  yield all([call(onShopSaga), [call(onProductSaga)]]);
-};
+  yield all([
+    call(onShopSaga),
+    [call(onProductSaga)],
+    call(onActivateShopSaga),
+  ]);
+}
