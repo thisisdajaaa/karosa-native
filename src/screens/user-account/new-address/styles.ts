@@ -1,32 +1,21 @@
 import { StyleSheet } from "react-native";
-import { theme } from "@app/styles";
 
-export const newAddressStyle = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     backgroundColor: "#F5F5F5",
     flex: 1,
   },
-  logoStyle: { position: "absolute", left: 16, alignSelf: "center" },
-  multiListContainer: { height: 144, marginVertical: 18 },
-  addressContainer: { marginBottom: 18, marginTop: 6 },
+  addressContainer: { 
+    padding: 16,
+  },
 
-  TextStyle: {
-    flexDirection: "column",
+  textStyle: {
     paddingTop: 5,
-    position: "absolute",
-    left: 17,
-    alignSelf: "center",
     fontSize: 17,
     fontWeight: "400",
   },
-  checkboxContainer: {
-    flexDirection: "row-reverse",
-    justifyContent: "flex-start",
-    padding: 15,
-  },
 
   submitbuttonParent: {
-    margin: 16,
     alignSelf: "center",
   },
   setDetailStyle: {
@@ -38,9 +27,12 @@ export const newAddressStyle = StyleSheet.create({
     flexDirection: "row-reverse",
     textAlign: "right",
   },
-  newContainer: {
+  checkboxContainer: {
+    flexDirection: "row",
     backgroundColor: "white",
-    marginTop: 1,
+    marginTop: 8,
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   inputText: {
     flex: 1,
@@ -51,9 +43,7 @@ export const newAddressStyle = StyleSheet.create({
     fontSize: 12,
   },
   btnSubmtContainer: {
-    marginTop: 12,
     backgroundColor: "#0AA351",
-    minWidth: 330,
     width: "100%",
   },
   txtBtnSubmit: {

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-export const AddressInputStyle = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -10,7 +10,6 @@ export const AddressInputStyle = StyleSheet.create({
     alignItems: "center",
   },
   pickerContainer: {
-    paddingLeft: 16,
     flexDirection: "row",
     justifyContent: "space-between",
     backgroundColor: "white",
@@ -32,14 +31,12 @@ export const AddressInputStyle = StyleSheet.create({
   inputText: {
     flex: 1,
     fontSize: 16,
-    padding: 16,
+    paddingVertical: 16,
   },
   inputLabel: {
     fontSize: 16,
-    marginHorizontal: 16,
   },
   textStyle: {
-    alignItems: "center",
     fontSize: 17,
     fontWeight: "400",
   },
@@ -53,9 +50,16 @@ export const AddressInputStyle = StyleSheet.create({
     alignSelf: "flex-end",
   },
   inputContainer: {
-    alignContent: "flex-end",
     width: "50%",
     height: "100%",
-    paddingRight: 16,
   },
+  hintStyle: {
+    color: "#BDBDBD",
+    fontSize: 12,
+  },
+  customStyle: {
+    flexDirection: "column",
+    borderWidth: 0,
+    padding: 0,
+  }
 });

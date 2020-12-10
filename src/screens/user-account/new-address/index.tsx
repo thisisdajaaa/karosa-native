@@ -15,7 +15,7 @@ import { actions as barangayActions } from "@app/redux/location";
 
 import { selectors as locationSelector } from "@app/redux/location";
 import { FormikContext, useFormik } from "formik";
-import { newAddressStyle } from "./styles";
+import { styles } from "./styles";
 import { BaseText } from "../../../components/base-text";
 import {
   AddressInput,
@@ -23,8 +23,6 @@ import {
   DetailedAddressInput,
 } from "../../../components/formik/form-address";
 import {
-  AddressInputProps,
-  DetailedAddressProps,
   SelectionData,
 } from "components/formik/form-address/types";
 import { SubmitButton } from "@app/components/formik/submit-button";
@@ -125,32 +123,12 @@ const NewAddressScreen: React.FC = () => {
       },
     },
   };
-  const fullNameProps: AddressInputProps = {
-    name: "fullName",
-    addressInput: {
-      label: "Full Name",
-      placeholder: "Set Full Name",
-    },
-  };
-  const phoneNumberProps: AddressInputProps = {
-    name: "phoneNumber",
-    addressInput: {
-      label: "Phone Number",
-      placeholder: "Set Phone Number",
-    },
-  };
-  const DetailedAddressProps: DetailedAddressProps = {
-    name: "detailedAddress",
-    detailedInput: {
-      label: "Detailed Address",
-      placeholder: "Set Detailed Address",
-    },
-  };
+
 
   const SubmitButtonProps: ButtonProps = {
     title: "Submit",
-    containerStyle: newAddressStyle.btnSubmtContainer,
-    textStyle: newAddressStyle.txtBtnSubmit,
+    containerStyle: styles.btnSubmtContainer,
+    textStyle: styles.txtBtnSubmit,
   };
 
   function getRegionsProp(regions: RegionResponse): SelectionData[] {
@@ -187,7 +165,7 @@ const NewAddressScreen: React.FC = () => {
   return (
     <FormikContext.Provider value={formikBag}>
       <Screen {...headerProps}>
-        <View style={{ marginTop: 10 }}>
+        <View style={styles.addressContainer}>
           <AddressInput
             name="fullName"
             addressInput={{ label: "Full Name", placeholder: "Set Full Name" }}
@@ -231,38 +209,36 @@ const NewAddressScreen: React.FC = () => {
               data={getBarangayProp(barangayResponse)}
             />
           )}
-          <View
-            style={[
-              newAddressStyle.newContainer,
-              { height: 95, paddingRight: 10, paddingBottom: 10 },
-            ]}
-          >
-            <BaseText style={newAddressStyle.TextStyle}>
+          <View>
+            <BaseText style={styles.textStyle}>
               Detailed Address
             </BaseText>
             <DetailedAddressInput
               name="detailedAddress"
               detailedInput={{
-                label: "Detailed Address",
+                label: "Unit Number, House Number \nBuilding, Street Name",
                 placeholder: "Set Detailed Address",
               }}
             />
           </View>
 
-          <View style={newAddressStyle.newContainer}>
-            <BaseText style={newAddressStyle.TextStyle}>
+          <View style={styles.checkboxContainer}>
+            <BaseText>
               Set as default address
             </BaseText>
-            <View style={newAddressStyle.checkboxContainer}>
+            <View>
               <CheckBox value={isSelected} onValueChange={setSelection} />
             </View>
-            <BaseText style={{ color: "red", paddingLeft: 16 }}>
-              {formikBag.errors && Object.values(formikBag.errors)[0]}
-            </BaseText>
-            <View style={newAddressStyle.submitbuttonParent}>
-              <SubmitButton {...SubmitButtonProps} />
-            </View>
           </View>
+
+          <View style={styles.submitbuttonParent}>
+            <SubmitButton {...SubmitButtonProps} />
+          </View>
+
+          <BaseText style={{ color: "red"}}>
+            {formikBag.errors && Object.values(formikBag.errors)[0]}
+          </BaseText>
+
         </View>
       </Screen>
     </FormikContext.Provider>

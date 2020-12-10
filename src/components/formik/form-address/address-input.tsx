@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { View } from "react-native";
 import { BaseText } from "../../base-text";
 import { AddressInputProps } from "./types";
-import { AddressInputStyle } from "./styles";
+import { styles } from "./styles";
 import { TextInput } from "../../input";
 import { useFormikContext, useField } from "formik";
 
@@ -27,21 +27,17 @@ export const AddressInput: React.FC<AddressInputProps> = ({ name, addressInput }
   );
 
   return (
-    <View style={AddressInputStyle.labelContainer}>
-      <BaseText style={AddressInputStyle.inputLabel}>
+    <View style={styles.labelContainer}>
+      <BaseText style={styles.inputLabel}>
         {addressInput.label}
       </BaseText>
-      <View style={AddressInputStyle.inputContainer}>
+      <View style={styles.inputContainer}>
         <TextInput
           placeholder={addressInput.placeholder}
           value={currentValue}
           onChangeText={handleChange}
-          style={AddressInputStyle.inputStyle}
-          customStyles={{
-            flexDirection: "column",
-            borderWidth: 0,
-            padding: 0,
-          }}
+          style={styles.inputStyle}
+          customStyles={styles.customStyle}
         />
       </View>
     </View>
