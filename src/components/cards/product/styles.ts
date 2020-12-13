@@ -72,10 +72,12 @@ export const styles = StyleSheet.create({
     right: 0,
   },
   image: { width: "100%", height: 140 },
-  txtContainerOne: {
-    padding: 7,
+  mainTxtContainer: {
+    paddingTop: 3,
+    paddingLeft: 7,
+    paddingRight: 7,
   },
-  txtContainerTwo: {
+  txtContainer: {
     flexDirection: "row",
   },
   txtName: {
@@ -86,15 +88,38 @@ export const styles = StyleSheet.create({
   txtPrice: {
     ...theme.textRegular,
     marginTop: 7,
-    marginRight: "auto",
     fontWeight: "500",
+    fontStyle: "normal",
+  },
+  txtPrevPrice: {
+    ...theme.textRegular,
+    color: theme.colors.dark10,
+    marginTop: 7.2,
+    marginLeft: 6,
+    textDecorationLine: "line-through",
+    textDecorationStyle: "solid",
+    textDecorationColor: theme.colors.dark10,
+    fontWeight: "300",
     fontStyle: "normal",
   },
   txtSold: {
     ...theme.textLight,
-    marginTop: 11,
+    marginTop: 9,
     marginLeft: "auto",
     fontWeight: "300",
     fontStyle: "normal",
+  },
+  txtLocation: {
+    ...theme.textLight,
+    color: theme.colors.dark30,
+    fontWeight: "300",
+    marginTop: 9,
+    fontStyle: "normal",
+  },
+  heart: {
+    marginLeft: "auto",
+    marginTop: 9,
+    color: theme.colors.dark10,
+    fontSize: 15,
   },
 });

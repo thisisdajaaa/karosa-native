@@ -22,8 +22,8 @@ export const styles = StyleSheet.create({
   },
   iconLeft: {
     position: "absolute",
-    left: "10.86%",
-    top: 11,
+    left: 18,
+    top: 8,
   },
   iconRight: {
     position: "absolute",

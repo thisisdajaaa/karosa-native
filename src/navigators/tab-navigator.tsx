@@ -8,13 +8,16 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useAuth } from "@app/hooks";
 import { theme } from "@app/styles";
-import Content from "@app/screens/products/my-products/content";
 import UserAccountMainScreen from "@app/screens/user-account/main";
 import HomeScreen from "@app/screens/home";
 import ShopMainScreen from "@app/screens/shop/main";
 import AuthMainScreen from "@app/screens/auth/main";
 import BasketScreen from "@app/screens/basket";
 import NotificationScreen from "@app/screens/notifications";
+import SellerProducts from "@app/screens/products/my-products/product-content";
+import ShopContent from "@app/screens/shop/view-shop/shop-content";
+import BuyerProducts from "@app/screens/shop/view-shop/product-content";
+import CategoryContent from "@app/screens/shop/view-shop/category-content";
 
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -50,9 +53,27 @@ const ProductTabs: React.FC = () => {
     >
       {mockTopTab.map((tabName, index) => (
         <React.Fragment key={index}>
-          <TopTab.Screen name={tabName} component={Content} />
+          <TopTab.Screen name={tabName} component={SellerProducts} />
         </React.Fragment>
       ))}
+    </TopTab.Navigator>
+  );
+};
+
+const ViewShopTabs: React.FC = () => {
+  return (
+    <TopTab.Navigator
+      lazy
+      tabBarOptions={{
+        activeTintColor: theme.colors.primary,
+        inactiveTintColor: theme.colors.dark20,
+        pressColor: theme.colors.primary,
+        indicatorStyle: { backgroundColor: theme.colors.primary },
+      }}
+    >
+      <TopTab.Screen name={"Shop"} component={ShopContent} />
+      <TopTab.Screen name={"Products"} component={BuyerProducts} />
+      <TopTab.Screen name={"Categories"} component={CategoryContent} />
     </TopTab.Navigator>
   );
 };
@@ -67,7 +88,7 @@ const TabNavigator: React.FC = () => {
   };
 
   return (
-    <>
+    <React.Fragment>
       <BottomTab.Navigator
         lazy
         tabBarOptions={{
@@ -136,8 +157,8 @@ const TabNavigator: React.FC = () => {
       >
         <AuthMainScreen onLogin={hide} />
       </RBSheet>
-    </>
+    </React.Fragment>
   );
 };
 
-export { ProductTabs, TabNavigator };
+export { ProductTabs, ViewShopTabs, TabNavigator };

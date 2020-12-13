@@ -5,7 +5,7 @@ import { theme } from "@app/styles";
 
 import { Props } from "./types";
 
-export const FormSwitch: React.FC<Props> = ({ name, disabled }) => {
+export const FormSwitch: React.FC<Props> = React.memo(({ name, disabled }) => {
   const [, meta, helpers] = useField(name);
 
   const [currentValue, setCurrentValue] = useState<boolean>(
@@ -35,4 +35,6 @@ export const FormSwitch: React.FC<Props> = ({ name, disabled }) => {
       />
     </React.Fragment>
   );
-};
+});
+
+FormSwitch.displayName = "FormSwitch";

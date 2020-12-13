@@ -146,6 +146,7 @@ const AddProductScreen: React.FC = () => {
         }}
       />
     ),
+    isLoading: addProductResponse.isLoading,
     customStyles: styles.container,
   };
 

@@ -1,6 +1,13 @@
-import { Products } from "redux/api-models/product-list";
+import { Products } from "@app/redux/api-models/product-list";
 
-export type Props = {
+type Theme = "seller" | "buyer";
+
+export type SellerProps = {
+  item: Products;
+  ActionButton?: React.ReactElement;
+};
+
+export type BuyerProps = {
   item: Products;
   ActionButton?: React.ReactElement;
 };
