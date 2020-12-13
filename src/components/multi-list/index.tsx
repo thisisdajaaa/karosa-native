@@ -39,3 +39,5 @@ export const MultiList: React.FC<Props> = React.memo(
     );
   }
 );
+
+MultiList.displayName = "MultiList";

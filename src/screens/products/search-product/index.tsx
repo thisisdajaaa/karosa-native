@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Header, SearchBar } from "react-native-elements";
-import { MaterialIcons } from "@expo/vector-icons";
-import { FlatList, Platform, TouchableOpacity, View } from "react-native";
+import { Header } from "react-native-elements";
+import { FlatList, TouchableOpacity, View } from "react-native";
 import { theme } from "@app/styles";
 import { Screen } from "@app/components/base-screen";
 import { BaseText } from "@app/components/base-text";
+import { SearchBar } from "@app/components/search-bar";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 
 import { styles } from "./styles";
 
 const SearchProductScreen: React.FC = () => {
   const { goBack } = useNavigation();
-
-  const [search, setSearch] = useState("");
 
   const screenProps: ScreenProps = {
     customHeader: (
@@ -23,40 +21,22 @@ const SearchProductScreen: React.FC = () => {
           backgroundColor: "transparent",
           width: "100%",
         }}
-        leftComponent={
+        centerComponent={
           <SearchBar
-            placeholder="Search in My Products"
-            platform={Platform.OS === "android" ? "android" : "ios"}
-            inputContainerStyle={{
-              backgroundColor: "transparent",
-              width: "100%",
-            }}
-            autoFocus
-            onCancel={() => goBack()}
-            containerStyle={{
-              marginLeft: "auto",
-              backgroundColor: "transparent",
-              borderColor: "none",
-              width: "100%",
-            }}
-            returnKeyType={"search"}
-            showCancel
-            searchIcon={
-              <MaterialIcons
-                name="search"
-                size={24}
-                color={theme.colors.primary}
-              />
-            }
-            cancelButtonProps={{ color: theme.colors.dark20 }}
-            accessibilityTraits="search"
-            accessibilityRole="search"
-            onEndEditing={(_e) => console.log("submit search filter")}
-            style={styles.searchWidth}
-            onChangeText={(text) => setSearch(text)}
-            value={search}
+            placeholder={"Search in my products"}
+            backgroundColor={"secondary"}
+            width={300}
           />
         }
+        rightComponent={{
+          text: "Cancel",
+          onPress: goBack,
+          style: {
+            fontWeight: "400",
+            ...theme.textRegular,
+            color: theme.colors.dark20,
+          },
+        }}
       />
     ),
 
@@ -98,7 +78,7 @@ const SearchProductScreen: React.FC = () => {
           contentContainerStyle={styles.row}
           renderItem={({ item }) => (
             <TouchableOpacity
-              onPress={() => setSearch(item.title)}
+              onPress={() => console.log("title")}
               style={styles.item}
             >
               <BaseText style={styles.txtSearchTitle}>{item.title}</BaseText>

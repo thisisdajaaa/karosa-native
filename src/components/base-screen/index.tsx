@@ -20,3 +20,5 @@ export const Screen: React.FC<Props> = React.memo(
     );
   }
 );
+
+Screen.displayName = "Screen";
