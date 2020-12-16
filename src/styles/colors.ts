@@ -20,8 +20,9 @@ const palette = {
   dark10: "#BDBDBD",
   dark15: "#6e6969",
   dark20: "#1C1C1C",
+  dark25: "#0C0C0C",
   dark30: "#4F4F4F",
-  dark25: "#0c0c0c",
+  dark35: "#323232",
   light5: "#F5F5F5",
   light10: "#ECECEC",
 };

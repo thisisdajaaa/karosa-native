@@ -1,24 +1,26 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
+import { equals } from "ramda";
 import { useDispatch } from "react-redux";
 import { FlatList, TouchableOpacity, View } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { Feather, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { ListItem } from "react-native-elements";
 import { theme } from "@app/styles";
 import { AppButton } from "@app/components/button";
 import { useMemoizedSelector } from "@app/hooks";
 import { selectors, actions } from "@app/redux/shop";
+import { initShopState } from "@app/redux/shop/data";
 import { ListProduct } from "@app/components/list/list-product";
-import { ProductCard } from "@app/components/cards/product";
+import { SellerCard } from "@app/components/cards/product";
 import { Products } from "redux/api-models/product-list";
 import { Props as ButtonProps } from "@app/components/button/types";
 import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
 
-const Content: React.FC = () => {
+const ProductContent: React.FC = () => {
   const dispatch = useDispatch();
-  const { navigate, addListener } = useNavigation();
+  const { navigate } = useNavigation();
 
   const [view, setView] = useState({
     list: true,
@@ -33,14 +35,32 @@ const Content: React.FC = () => {
   const products = useMemoizedSelector(selectors.getProductListResponse)
     .response;
 
-  useEffect(() => {
-    const unsubscribe = addListener("focus", () => {
-      callProductListApi();
-    });
+  const addProductResponse = useMemoizedSelector(
+    selectors.getAddProductResponse
+  );
 
-    return unsubscribe;
+  const successResponse = useMemo(() => {
+    return (
+      !addProductResponse.isLoading &&
+      !equals(
+        addProductResponse.response,
+        initShopState.addProductResponse.response
+      )
+    );
+  }, [addProductResponse.isLoading, addProductResponse.response]);
+
+  useEffect(() => {
+    callProductListApi();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (successResponse) {
+      callProductListApi();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [successResponse]);
 
   const boostButtonProps: ButtonProps = {
     onPress: () => console.log("boost"),
@@ -65,7 +85,10 @@ const Content: React.FC = () => {
   return (
     <View style={styles.contentContainer}>
       <ListItem bottomDivider>
-        <ListItem.Title>Filter</ListItem.Title>
+        <ListItem.Title>List Filter</ListItem.Title>
+        <ListItem.Content style={styles.dropdownIconContainer}>
+          <AntDesign name="down" style={styles.dropdownIcon} />
+        </ListItem.Content>
         <ListItem.Content style={styles.flexRow}>
           <TouchableOpacity
             onPress={() => setView({ grid: false, list: true })}
@@ -120,7 +143,7 @@ const Content: React.FC = () => {
             keyExtractor={(item) => String(item.id)}
             contentContainerStyle={styles.row}
             renderItem={({ item }: { item: Products }) => (
-              <ProductCard
+              <SellerCard
                 item={item}
                 ActionButton={
                   <View style={styles.buttonContainer}>
@@ -139,4 +162,4 @@ const Content: React.FC = () => {
   );
 };
 
-export default React.memo(Content);
+export default ProductContent;

@@ -2,7 +2,8 @@ import React from "react";
 import { Header } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { View, TouchableOpacity } from "react-native";
+import { SearchBar } from "@app/components/search-bar";
+import { TouchableOpacity, Keyboard } from "react-native";
 import { theme } from "@app/styles";
 import { Screen } from "@app/components/base-screen";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
@@ -23,35 +24,18 @@ const MyProductsScreen: React.FC = () => {
           color: theme.colors.primary,
           onPress: goBack,
         }}
-        centerComponent={{
-          text: "My Products",
-          style: {
-            ...theme.textRegular,
-            fontWeight: "700",
-            alignSelf: "center",
-          },
-        }}
+        centerComponent={
+          <SearchBar
+            placeholder={"Search in My Products"}
+            backgroundColor={"secondary"}
+            onTouchStart={(_e) => navigate(routes.SEARCH_PRODUCT)}
+            onFocus={Keyboard.dismiss}
+          />
+        }
         rightComponent={
-          <View style={styles.flexRow}>
-            <TouchableOpacity
-              style={styles.searchHeader}
-              onPress={() => navigate(routes.SEARCH_PRODUCT)}
-            >
-              <MaterialIcons
-                name="search"
-                size={24}
-                color={theme.colors.primary}
-              />
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => console.log("messages")}>
-              <MaterialIcons
-                name="chat"
-                size={24}
-                color={theme.colors.primary}
-              />
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity onPress={() => console.log("messages")}>
+            <MaterialIcons name="chat" size={24} color={theme.colors.primary} />
+          </TouchableOpacity>
         }
       />
     ),

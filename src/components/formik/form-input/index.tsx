@@ -46,3 +46,5 @@ export const FormInput: React.FC<Props> = React.memo(({ name, ...props }) => {
     </React.Fragment>
   );
 });
+
+FormInput.displayName = "FormInput";

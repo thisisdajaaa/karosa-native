@@ -5,7 +5,7 @@ import { theme } from "@app/styles";
 
 import { Props } from "./types";
 
-export const FormCheckbox: React.FC<Props> = ({ label, name }) => {
+export const FormCheckbox: React.FC<Props> = React.memo(({ label, name }) => {
   const [, meta, helpers] = useField(name);
 
   const [currentValue, setCurrentValue] = useState<boolean>(
@@ -40,4 +40,6 @@ export const FormCheckbox: React.FC<Props> = ({ label, name }) => {
       />
     </React.Fragment>
   );
-};
+});
+
+FormCheckbox.displayName = "FormCheckbox";

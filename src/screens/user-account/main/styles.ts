@@ -98,6 +98,8 @@ export const styles = StyleSheet.create({
   myShopIcon: {
     fontSize: 16,
     color: theme.colors.white,
+    position: "absolute",
+    right: 10,
   },
   commonIconHeader: {
     fontSize: 24,

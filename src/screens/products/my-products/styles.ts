@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
 export const styles = StyleSheet.create({
@@ -19,10 +19,8 @@ export const styles = StyleSheet.create({
     width: "100%",
   },
   row: {
-    overflow: "hidden",
-    alignItems: "center",
-    borderWidth: 0,
-    width: Dimensions.get("window").width,
+    justifyContent: "center",
+    padding: 20,
   },
   boostButtonContainer: {
     minWidth: 124,
@@ -43,6 +41,15 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: 70,
     alignSelf: "center",
+  },
+  dropdownIconContainer: {
+    position: "absolute",
+    left: 90,
+    top: 21,
+  },
+  dropdownIcon: {
+    fontSize: 15,
+    color: theme.colors.dark35,
   },
   boostListContainer: {
     minWidth: 124,
