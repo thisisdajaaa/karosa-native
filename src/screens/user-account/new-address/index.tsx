@@ -1,39 +1,35 @@
 import React, { useState, useCallback } from "react";
-
-import { Props as HeaderProps } from "../../../components/base-screen/types";
-import { Screen } from "../../../components/base-screen";
 import { useNavigation } from "@react-navigation/native";
 import { View, CheckBox } from "react-native";
+import { FormikContext, useFormik } from "formik";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Props as HeaderProps } from "@app/components/base-screen/types";
+import { Screen } from "@app/components/base-screen";
 import { useMemoizedSelector } from "@app/hooks";
 import { Props as ButtonProps } from "@app/components/button/types";
-import { useDispatch } from "react-redux";
 import { actions } from "@app/redux/auth";
 import { actions as regionActions } from "@app/redux/location";
 import { actions as provinceActions } from "@app/redux/location";
 import { actions as citiesActions } from "@app/redux/location";
 import { actions as barangayActions } from "@app/redux/location";
-
 import { selectors as locationSelector } from "@app/redux/location";
-import { FormikContext, useFormik } from "formik";
-import { styles } from "./styles";
-import { BaseText } from "../../../components/base-text";
+import { BaseText } from "@app/components/base-text";
 import {
   AddressInput,
   AddressInputPicker,
   DetailedAddressInput,
-} from "../../../components/formik/form-address";
-import {
-  SelectionData,
-} from "components/formik/form-address/types";
+} from "@app/components/formik/form-address";
+import { SelectionData } from "@app/components/formik/form-address/types";
 import { SubmitButton } from "@app/components/formik/submit-button";
+import { NewAddressRequest } from "@app/redux/auth/models";
+import { ProvinceResponse } from "@app/redux/location/models";
+import { RegionResponse } from "@app/redux/location/models";
+import { CitiesResponse } from "@app/redux/location/models";
+import { BarangayResponse } from "@app/redux/location/models";
 
-import { NewAddressRequest } from "redux/auth/models";
-import { ProvinceResponse } from "redux/location/models";
+import { styles } from "./styles";
 import { validationSchema } from "./validation";
-import { useEffect } from "react";
-import { RegionResponse } from "redux/location/models";
-import { CitiesResponse } from "redux/location/models";
-import { BarangayResponse } from "redux/location/models";
 
 const NewAddressScreen: React.FC = () => {
   const { goBack } = useNavigation();
@@ -50,32 +46,27 @@ const NewAddressScreen: React.FC = () => {
     () => dispatch(regionActions.callRegionApi.request()),
     [dispatch]
   );
-  useEffect(() => {
-    getRegionResponse();
-  }, []);
 
   const getProvinceResponse = useCallback(
     () => dispatch(provinceActions.callProvinceApi.request()),
     [dispatch]
   );
-  useEffect(() => {
-    getProvinceResponse();
-  }, []);
 
   const getCitiesResponse = useCallback(
     () => dispatch(citiesActions.callCitiesApi.request()),
     [dispatch]
   );
-  useEffect(() => {
-    getCitiesResponse();
-  }, []);
 
   const getBarangayResponse = useCallback(
     () => dispatch(barangayActions.callBarangayApi.request()),
     [dispatch]
   );
+
   useEffect(() => {
-    getBarangayResponse();
+    getRegionResponse(),
+      getProvinceResponse(),
+      getCitiesResponse(),
+      getBarangayResponse();
   }, []);
 
   const formikBag = useFormik({
@@ -87,12 +78,13 @@ const NewAddressScreen: React.FC = () => {
       barangay: "",
       detailedAddress: "",
     },
+
     onSubmit: (values) => {
       console.log(values);
       const request: NewAddressRequest = {
         name: values.fullName,
-        phoneNo: values.phoneNumber,
-        detailed_address: values.region + values.province + values.barangay,
+        phoneNumber: values.phoneNumber,
+        detailedAddress: values.region + values.province + values.barangay,
         isDefaultAddress: true,
         barangayId: 0,
       };
@@ -104,15 +96,50 @@ const NewAddressScreen: React.FC = () => {
   const regionResponse = useMemoizedSelector(
     locationSelector.getRegionResponse
   );
+
   const provinceResponse = useMemoizedSelector(
     locationSelector.getProvinceResponse
   );
+
   const citiesResponse = useMemoizedSelector(
     locationSelector.getCitiesResponse
   );
+
   const barangayResponse = useMemoizedSelector(
     locationSelector.getBarangayResponse
   );
+
+  const regionProp = (regionResponse: RegionResponse) => {
+    const regionData: SelectionData[] = [];
+    regionResponse.map((data) => {
+      regionData.push({ id: data.id, value: data.name });
+    });
+    return regionData;
+  };
+
+  const barangayProp = (barangayResponse: BarangayResponse) => {
+    const barangayData: SelectionData[] = [];
+    barangayResponse.map((data) => {
+      barangayData.push({ id: data.id, value: data.name });
+    });
+    return barangayData;
+  };
+
+  const citiesProp = (citiesResponse: CitiesResponse) => {
+    const citiesData: SelectionData[] = [];
+    citiesResponse.map((data) => {
+      citiesData.push({ id: data.id, value: data.name });
+    });
+    return citiesData;
+  };
+
+  const provinceProp = (provinceResponse: ProvinceResponse) => {
+    const provinceData: SelectionData[] = [];
+    provinceResponse.map((data) => {
+      provinceData.push({ id: data.id, value: data.name });
+    });
+    return provinceData;
+  };
 
   const headerProps: HeaderProps = {
     header: {
@@ -124,44 +151,12 @@ const NewAddressScreen: React.FC = () => {
     },
   };
 
-
   const SubmitButtonProps: ButtonProps = {
     title: "Submit",
     containerStyle: styles.btnSubmtContainer,
     textStyle: styles.txtBtnSubmit,
   };
 
-  function getRegionsProp(regions: RegionResponse): SelectionData[] {
-    var regionsData: SelectionData[] = [];
-    regions.map((data) => {
-      regionsData.push({ id: data.id, value: data.name });
-    });
-    return regionsData;
-  }
-
-  function getProvinceProp(province: ProvinceResponse): SelectionData[] {
-    var provinceData: SelectionData[] = [];
-    province.map((data) => {
-      provinceData.push({ id: data.id, value: data.name });
-    });
-    return provinceData;
-  }
-
-  function getCitiesProp(cities: CitiesResponse): SelectionData[] {
-    var citiesData: SelectionData[] = [];
-    cities.map((data) => {
-      citiesData.push({ id: data.id, value: data.name });
-    });
-    return citiesData;
-  }
-
-  function getBarangayProp(barangay: BarangayResponse): SelectionData[] {
-    var barangayData: SelectionData[] = [];
-    barangay.map((data) => {
-      barangayData.push({ id: data.id, value: data.name });
-    });
-    return barangayData;
-  }
   return (
     <FormikContext.Provider value={formikBag}>
       <Screen {...headerProps}>
@@ -182,7 +177,7 @@ const NewAddressScreen: React.FC = () => {
               name="region"
               label="Region"
               placeholder="Choose Region"
-              data={getRegionsProp(regionResponse)}
+              data={regionProp(regionResponse)}
             />
           )}
           {provinceResponse && (
@@ -190,7 +185,7 @@ const NewAddressScreen: React.FC = () => {
               name="province"
               label="Province"
               placeholder="Choose Province"
-              data={getProvinceProp(provinceResponse)}
+              data={provinceProp(provinceResponse)}
             />
           )}
           {citiesResponse && (
@@ -198,7 +193,7 @@ const NewAddressScreen: React.FC = () => {
               name="cities"
               label="City"
               placeholder="Choose City"
-              data={getCitiesProp(citiesResponse)}
+              data={citiesProp(citiesResponse)}
             />
           )}
           {barangayResponse && (
@@ -206,13 +201,11 @@ const NewAddressScreen: React.FC = () => {
               name="barangay"
               label="Barangay"
               placeholder="Choose Barangay"
-              data={getBarangayProp(barangayResponse)}
+              data={barangayProp(barangayResponse)}
             />
           )}
           <View>
-            <BaseText style={styles.textStyle}>
-              Detailed Address
-            </BaseText>
+            <BaseText style={styles.textStyle}>Detailed Address</BaseText>
             <DetailedAddressInput
               name="detailedAddress"
               detailedInput={{
@@ -223,9 +216,7 @@ const NewAddressScreen: React.FC = () => {
           </View>
 
           <View style={styles.checkboxContainer}>
-            <BaseText>
-              Set as default address
-            </BaseText>
+            <BaseText>Set as default address</BaseText>
             <View>
               <CheckBox value={isSelected} onValueChange={setSelection} />
             </View>
@@ -235,10 +226,9 @@ const NewAddressScreen: React.FC = () => {
             <SubmitButton {...SubmitButtonProps} />
           </View>
 
-          <BaseText style={{ color: "red"}}>
+          <BaseText style={{ color: "red" }}>
             {formikBag.errors && Object.values(formikBag.errors)[0]}
           </BaseText>
-
         </View>
       </Screen>
     </FormikContext.Provider>

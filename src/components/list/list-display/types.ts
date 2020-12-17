@@ -13,7 +13,7 @@ type Address = {
   name: string;
   phoneNumber: string;
   barangayId: number;
-  detailed_Address: string;
+  detailedAddress: string;
   default: boolean;
 };
 
