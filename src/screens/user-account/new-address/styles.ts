@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { theme } from "styles";
+import { theme } from "@app/styles";
 
 export const styles = StyleSheet.create({
   container: {
@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   addressContainer: {
-    padding: 16,
+    paddingVertical:16,
   },
 
   textStyle: {
