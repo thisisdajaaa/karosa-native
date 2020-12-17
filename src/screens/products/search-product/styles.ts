@@ -18,9 +18,6 @@ export const styles = StyleSheet.create({
     width: "80%",
     backgroundColor: "transparent",
   },
-  searchWidth: {
-    width: "100%",
-  },
   txtRecentSearch: {
     ...theme.textRegular,
     fontWeight: "400",

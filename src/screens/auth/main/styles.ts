@@ -11,6 +11,8 @@ export const styles = StyleSheet.create({
   buttonIcon: {
     fontSize: 24,
     color: theme.colors.white,
+    position: "absolute",
+    left: 30,
   },
   logo: {
     width: 80,
@@ -18,7 +20,7 @@ export const styles = StyleSheet.create({
   },
   logoContainer: {
     position: "absolute",
-    top: 40,
+    top: 10,
     alignSelf: "center",
   },
   hrContainer: {

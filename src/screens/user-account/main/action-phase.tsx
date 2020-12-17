@@ -9,7 +9,7 @@ import {
 import { AccountActions } from "@app/components/account-actions";
 import { ListChevron } from "@app/components/list/list-chevron";
 import { Separator } from "@app/components/separator";
-import { Props as ListChevronProps } from "@app/components/list/list-chevron/types";
+import { BaseProps as ListChevronProps } from "@app/components/list/list-chevron/types";
 import { Props as AccountActionProps } from "@app/components/account-actions/types";
 
 import { styles } from "./styles";

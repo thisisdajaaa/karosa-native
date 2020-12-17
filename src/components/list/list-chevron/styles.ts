@@ -34,4 +34,9 @@ export const styles = StyleSheet.create({
     color: theme.colors.red5,
     fontWeight: "400",
   },
+  avatarImg: {
+    width: 40,
+    height: 40,
+    borderRadius: 100,
+  },
 });
