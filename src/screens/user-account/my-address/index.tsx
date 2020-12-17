@@ -1,16 +1,17 @@
 import React, { useCallback, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { View, TouchableWithoutFeedback } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { MaterialIcons } from "@expo/vector-icons";
 import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/auth";
-import { Props as HeaderProps } from "../../../components/base-screen/types";
-import { Screen } from "../../../components/base-screen";
-import { useNavigation } from "@react-navigation/native";
-import { View, TouchableWithoutFeedback } from "react-native";
-import { styleforaddress } from "./styleforaddress";
-import { AddressList } from "../../../components/list/list-display";
-import { BaseText } from "../../../components/base-text";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Props as HeaderProps } from "@app/components/base-screen/types";
+import { Screen } from "@app/components/base-screen";
+import { AddressList } from "@app/components/list/list-display";
+import { BaseText } from "@app/components/base-text";
 import routes from "@app/navigators/routes";
-import { useDispatch } from "react-redux";
+
+import { styles } from "./styles";
 
 const MyAddressScreen: React.FC = () => {
   const { goBack, navigate } = useNavigation();
@@ -20,6 +21,7 @@ const MyAddressScreen: React.FC = () => {
     () => dispatch(actions.callMyAddressApi.request()),
     [dispatch]
   );
+
   useEffect(() => {
     getAddress();
   }, []);
@@ -37,16 +39,16 @@ const MyAddressScreen: React.FC = () => {
 
   return (
     <Screen {...headerProps}>
-      <View style={styleforaddress.adressContainer}>
+      <View style={styles.addressContainer}>
         {addressResponse &&
           addressResponse.map((value, index) => (
             <AddressList
               key={index}
               address={{
                 name: value.name,
-                phoneNumber: value.phoneNo,
+                phoneNumber: value.phoneNumber,
                 barangayId: value.barangayId,
-                detailed_Address: value.detailed_address,
+                detailedAddress: value.detailedAddress,
                 default: value.isDefaultAddress,
               }}
             />
@@ -55,22 +57,15 @@ const MyAddressScreen: React.FC = () => {
       <TouchableWithoutFeedback
         onPress={() => navigate(routes.ACCOUNTS_NEW_ADDRESS)}
       >
-        <View style={styleforaddress.touchable}>
-          <BaseText style={styleforaddress.NewAddStyle}>
-            Add New Address
-          </BaseText>
-          <View style={styleforaddress.forIcon}>
-            <MaterialIcons
-              name="add"
-              size={25}
-              style={{
-                color: "#BDBDBD",
-              }}
-            />
+        <View style={styles.touchable}>
+          <BaseText style={styles.txtnewAdd}>Add New Address</BaseText>
+          <View style={styles.forIcon}>
+            <MaterialIcons name="add" size={25} style={styles.materialColor} />
           </View>
         </View>
       </TouchableWithoutFeedback>
     </Screen>
   );
 };
+
 export default MyAddressScreen;

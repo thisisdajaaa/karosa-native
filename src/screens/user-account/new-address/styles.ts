@@ -1,17 +1,18 @@
 import { StyleSheet } from "react-native";
+import { theme } from "styles";
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F5F5F5",
+    backgroundColor: theme.colors.white,
     flex: 1,
   },
-  addressContainer: { 
+  addressContainer: {
     padding: 16,
   },
 
   textStyle: {
+    ...theme.textRegular,
     paddingTop: 5,
-    fontSize: 17,
     fontWeight: "400",
   },
 
@@ -20,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   setDetailStyle: {
     flexDirection: "column-reverse",
-    color: "#0AA351",
+    color: theme.colors.primary,
     fontSize: 16,
   },
   inputStyle: {
@@ -29,7 +30,7 @@ export const styles = StyleSheet.create({
   },
   checkboxContainer: {
     flexDirection: "row",
-    backgroundColor: "white",
+    backgroundColor: theme.colors.white,
     marginTop: 8,
     justifyContent: "space-between",
     alignItems: "center",
@@ -40,13 +41,13 @@ export const styles = StyleSheet.create({
     padding: 16,
   },
   inputLabel: {
-    fontSize: 12,
+    ...theme.textRegular,
   },
   btnSubmtContainer: {
-    backgroundColor: "#0AA351",
+    backgroundColor: theme.colors.white,
     width: "100%",
   },
   txtBtnSubmit: {
-    color: "white",
+    color: theme.colors.white,
   },
 });
