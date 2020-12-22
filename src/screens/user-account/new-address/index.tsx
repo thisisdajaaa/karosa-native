@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, CheckBox } from "react-native";
+import { View } from "react-native";
 import { FormikContext, useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { Props as HeaderProps } from "@app/components/base-screen/types";
@@ -15,19 +15,19 @@ import {
   actions as barangayActions,
   selectors as locationSelector,
 } from "@app/redux/location";
-import { BaseText } from "@app/components/base-text";
 import { ListInput } from "@app/components/list/list-input";
 import { SelectionData } from "components/formik/form-picker/types";
 import { SubmitButton } from "@app/components/formik/submit-button";
 import { NewAddressRequest } from "@app/redux/auth/models";
 import { ListPicker } from "@app/components/list/list-picker";
+import { ListCheckBox } from "@app/components/list/list-checkbox";
+import { ScrollView } from "react-native-gesture-handler";
 
 import { styles } from "./styles";
 import { validationSchema } from "./validation";
 
 const NewAddressScreen: React.FC = () => {
   const { goBack } = useNavigation();
-  const [isSelected, setSelection] = useState(false);
   const dispatch = useDispatch();
 
   const callNewAddressApi = useCallback(
@@ -171,6 +171,10 @@ const NewAddressScreen: React.FC = () => {
     );
   };
 
+  const listCheckBox = (name: string, label: string) => {
+    return <ListCheckBox name={name} label={label} />;
+  };
+
   const listInputPicker = (
     name: string,
     label: string,
@@ -243,6 +247,11 @@ const NewAddressScreen: React.FC = () => {
       "Unit Number, House Number, Building, Street Name"
     );
 
+    const defaultAddress = listCheckBox(
+      "defaultAddress",
+      "Set as default address"
+    );
+
     elements.push(
       fullName,
       phoneNumber,
@@ -250,7 +259,8 @@ const NewAddressScreen: React.FC = () => {
       province,
       cities,
       barangay,
-      detailedAddress
+      detailedAddress,
+      defaultAddress
     );
 
     return listIterator(elements);
@@ -260,22 +270,12 @@ const NewAddressScreen: React.FC = () => {
     <FormikContext.Provider value={formikBag}>
       <Screen {...headerProps}>
         <View style={styles.addressContainer}>
-          <React.Fragment>{listDisplay()}</React.Fragment>
-
-          <View style={styles.checkboxContainer}>
-            <BaseText>Set as default address</BaseText>
-            <View>
-              <CheckBox value={isSelected} onValueChange={setSelection} />
+          <ScrollView>
+            <React.Fragment>{listDisplay()}</React.Fragment>
+            <View style={styles.submitbuttonParent}>
+              <SubmitButton {...SubmitButtonProps} />
             </View>
-          </View>
-
-          <View style={styles.submitbuttonParent}>
-            <SubmitButton {...SubmitButtonProps} />
-          </View>
-
-          <BaseText style={{ color: "red" }}>
-            {formikBag.errors && Object.values(formikBag.errors)[0]}
-          </BaseText>
+          </ScrollView>
         </View>
       </Screen>
     </FormikContext.Provider>

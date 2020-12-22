@@ -10,7 +10,7 @@ export const ListPicker: React.FC<Props> = React.memo(
   ({ name, label, data, placeholder }) => {
     return (
       <ListItem bottomDivider={true}>
-        <ListItem.Content style={styles.pickerContainer}>
+        <ListItem.Content style={styles.container}>
           <BaseText style={styles.textStyle}>{label}</BaseText>
           <FormPicker data={data} placeholder={placeholder} name={name} />
         </ListItem.Content>
