@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   addressContainer: {
-    paddingVertical:16,
+    paddingVertical: 16,
   },
 
   textStyle: {

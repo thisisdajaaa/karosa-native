@@ -1,33 +1,26 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, CheckBox } from "react-native";
 import { FormikContext, useFormik } from "formik";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Props as HeaderProps } from "@app/components/base-screen/types";
 import { Screen } from "@app/components/base-screen";
 import { useMemoizedSelector } from "@app/hooks";
 import { Props as ButtonProps } from "@app/components/button/types";
 import { actions } from "@app/redux/auth";
-import { actions as regionActions } from "@app/redux/location";
-import { actions as provinceActions } from "@app/redux/location";
-import { actions as citiesActions } from "@app/redux/location";
-import { actions as barangayActions } from "@app/redux/location";
-import { selectors as locationSelector } from "@app/redux/location";
-import { BaseText } from "@app/components/base-text";
 import {
-  AddressInput,
-  AddressInputPicker,
-  DetailedAddressInput,
-} from "@app/components/formik/form-address";
+  actions as regionActions,
+  actions as provinceActions,
+  actions as citiesActions,
+  actions as barangayActions,
+  selectors as locationSelector,
+} from "@app/redux/location";
+import { BaseText } from "@app/components/base-text";
 import { ListInput } from "@app/components/list/list-input";
-import { SelectionData } from "@app/components/formik/form-address/types";
+import { SelectionData } from "components/formik/form-picker/types";
 import { SubmitButton } from "@app/components/formik/submit-button";
 import { NewAddressRequest } from "@app/redux/auth/models";
-import { ProvinceResponse } from "@app/redux/location/models";
-import { RegionResponse } from "@app/redux/location/models";
-import { CitiesResponse } from "@app/redux/location/models";
-import { BarangayResponse } from "@app/redux/location/models";
+import { ListPicker } from "@app/components/list/list-picker";
 
 import { styles } from "./styles";
 import { validationSchema } from "./validation";
@@ -110,7 +103,7 @@ const NewAddressScreen: React.FC = () => {
     locationSelector.getBarangayResponse
   );
 
-  const regionProp = (regionResponse: RegionResponse) => {
+  const regionProp = () => {
     const regionData: SelectionData[] = [];
     regionResponse.map((data) => {
       regionData.push({ id: data.id, value: data.name });
@@ -118,7 +111,7 @@ const NewAddressScreen: React.FC = () => {
     return regionData;
   };
 
-  const barangayProp = (barangayResponse: BarangayResponse) => {
+  const barangayProp = () => {
     const barangayData: SelectionData[] = [];
     barangayResponse.map((data) => {
       barangayData.push({ id: data.id, value: data.name });
@@ -126,7 +119,7 @@ const NewAddressScreen: React.FC = () => {
     return barangayData;
   };
 
-  const citiesProp = (citiesResponse: CitiesResponse) => {
+  const citiesProp = () => {
     const citiesData: SelectionData[] = [];
     citiesResponse.map((data) => {
       citiesData.push({ id: data.id, value: data.name });
@@ -134,7 +127,7 @@ const NewAddressScreen: React.FC = () => {
     return citiesData;
   };
 
-  const provinceProp = (provinceResponse: ProvinceResponse) => {
+  const provinceProp = () => {
     const provinceData: SelectionData[] = [];
     provinceResponse.map((data) => {
       provinceData.push({ id: data.id, value: data.name });
@@ -163,7 +156,7 @@ const NewAddressScreen: React.FC = () => {
     orientation: string,
     label: string,
     placeholder: string
-  ): JSX.Element => {
+  ) => {
     return (
       <ListInput
         isColumn={orientation === "column" ? true : false}
@@ -178,13 +171,33 @@ const NewAddressScreen: React.FC = () => {
     );
   };
 
+  const listInputPicker = (
+    name: string,
+    label: string,
+    placeholder: string,
+    data: SelectionData[]
+  ): JSX.Element => {
+    return (
+      <>
+        {data && (
+          <ListPicker
+            name={name}
+            label={label}
+            placeholder={placeholder}
+            data={data}
+          />
+        )}
+      </>
+    );
+  };
+
   const listIterator = (listItems: React.ReactElement[]) => {
     return listItems.map((item, key) => (
       <React.Fragment key={key}>{item}</React.Fragment>
     ));
   };
 
-  const listDisplay = (): React.ReactElement[] => {
+  const listDisplay = () => {
     const elements: React.ReactElement[] = [];
 
     const fullName = listInput("fullName", "row", "Full Name", "Set Full Name");
@@ -194,6 +207,35 @@ const NewAddressScreen: React.FC = () => {
       "Phone Number",
       "Set Phone Number"
     );
+
+    const region = listInputPicker(
+      "region",
+      "Region",
+      "Choose Region",
+      regionProp()
+    );
+
+    const province = listInputPicker(
+      "province",
+      "Province",
+      "Choose Province",
+      provinceProp()
+    );
+
+    const cities = listInputPicker(
+      "cities",
+      "City",
+      "Choose City",
+      citiesProp()
+    );
+
+    const barangay = listInputPicker(
+      "barangay",
+      "Barangay",
+      "Choose Barangay",
+      barangayProp()
+    );
+
     const detailedAddress = listInput(
       "detailedAddress",
       "column",
@@ -201,7 +243,15 @@ const NewAddressScreen: React.FC = () => {
       "Unit Number, House Number, Building, Street Name"
     );
 
-    elements.push(fullName, phoneNumber, detailedAddress);
+    elements.push(
+      fullName,
+      phoneNumber,
+      region,
+      province,
+      cities,
+      barangay,
+      detailedAddress
+    );
 
     return listIterator(elements);
   };
@@ -211,59 +261,6 @@ const NewAddressScreen: React.FC = () => {
       <Screen {...headerProps}>
         <View style={styles.addressContainer}>
           <React.Fragment>{listDisplay()}</React.Fragment>
-          {/* <AddressInput
-            name="fullName"
-            addressInput={{ label: "Full Name", placeholder: "Set Full Name" }}
-          />
-          <AddressInput
-            name="phoneNumber"
-            addressInput={{
-              label: "Phone Number",
-              placeholder: "Set Phone Number",
-            }}
-          /> */}
-          {regionResponse && (
-            <AddressInputPicker
-              name="region"
-              label="Region"
-              placeholder="Choose Region"
-              data={regionProp(regionResponse)}
-            />
-          )}
-          {provinceResponse && (
-            <AddressInputPicker
-              name="province"
-              label="Province"
-              placeholder="Choose Province"
-              data={provinceProp(provinceResponse)}
-            />
-          )}
-          {citiesResponse && (
-            <AddressInputPicker
-              name="cities"
-              label="City"
-              placeholder="Choose City"
-              data={citiesProp(citiesResponse)}
-            />
-          )}
-          {barangayResponse && (
-            <AddressInputPicker
-              name="barangay"
-              label="Barangay"
-              placeholder="Choose Barangay"
-              data={barangayProp(barangayResponse)}
-            />
-          )}
-          {/* <View>
-            <BaseText style={styles.textStyle}>Detailed Address</BaseText>
-            <DetailedAddressInput
-              name="detailedAddress"
-              detailedInput={{
-                label: "Unit Number, House Number \nBuilding, Street Name",
-                placeholder: "Set Detailed Address",
-              }}
-            />
-          </View> */}
 
           <View style={styles.checkboxContainer}>
             <BaseText>Set as default address</BaseText>
