@@ -20,6 +20,7 @@ import {
   AddressInputPicker,
   DetailedAddressInput,
 } from "@app/components/formik/form-address";
+import { ListInput } from "@app/components/list/list-input";
 import { SelectionData } from "@app/components/formik/form-address/types";
 import { SubmitButton } from "@app/components/formik/submit-button";
 import { NewAddressRequest } from "@app/redux/auth/models";
@@ -157,11 +158,60 @@ const NewAddressScreen: React.FC = () => {
     textStyle: styles.txtBtnSubmit,
   };
 
+  const listInput = (
+    name: string,
+    orientation: string,
+    label: string,
+    placeholder: string
+  ): JSX.Element => {
+    return (
+      <ListInput
+        isColumn={orientation === "column" ? true : false}
+        isRow={orientation === "row" ? true : false}
+        hasBottomDivider
+        maxLength={name === "fullname" ? 100 : 1000}
+        required={false}
+        name={name}
+        label={label}
+        placeholder={placeholder}
+      />
+    );
+  };
+
+  const listIterator = (listItems: React.ReactElement[]) => {
+    return listItems.map((item, key) => (
+      <React.Fragment key={key}>{item}</React.Fragment>
+    ));
+  };
+
+  const listDisplay = (): React.ReactElement[] => {
+    const elements: React.ReactElement[] = [];
+
+    const fullName = listInput("fullName", "row", "Full Name", "Set Full Name");
+    const phoneNumber = listInput(
+      "phoneNumber",
+      "row",
+      "Phone Number",
+      "Set Phone Number"
+    );
+    const detailedAddress = listInput(
+      "detailedAddress",
+      "column",
+      "Set Detailed Address",
+      "Unit Number, House Number, Building, Street Name"
+    );
+
+    elements.push(fullName, phoneNumber, detailedAddress);
+
+    return listIterator(elements);
+  };
+
   return (
     <FormikContext.Provider value={formikBag}>
       <Screen {...headerProps}>
         <View style={styles.addressContainer}>
-          <AddressInput
+          <React.Fragment>{listDisplay()}</React.Fragment>
+          {/* <AddressInput
             name="fullName"
             addressInput={{ label: "Full Name", placeholder: "Set Full Name" }}
           />
@@ -171,7 +221,7 @@ const NewAddressScreen: React.FC = () => {
               label: "Phone Number",
               placeholder: "Set Phone Number",
             }}
-          />
+          /> */}
           {regionResponse && (
             <AddressInputPicker
               name="region"
@@ -204,7 +254,7 @@ const NewAddressScreen: React.FC = () => {
               data={barangayProp(barangayResponse)}
             />
           )}
-          <View>
+          {/* <View>
             <BaseText style={styles.textStyle}>Detailed Address</BaseText>
             <DetailedAddressInput
               name="detailedAddress"
@@ -213,7 +263,7 @@ const NewAddressScreen: React.FC = () => {
                 placeholder: "Set Detailed Address",
               }}
             />
-          </View>
+          </View> */}
 
           <View style={styles.checkboxContainer}>
             <BaseText>Set as default address</BaseText>
