@@ -46,4 +46,11 @@ export const initAuthState: AuthState = {
     },
     isLoading: false,
   },
+  registerResponse: {
+    response: {
+      username: "",
+      email: "",
+    },
+    isLoading: false,
+  },
 };
