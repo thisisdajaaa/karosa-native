@@ -7,12 +7,17 @@ import { styles } from "./styles";
 import { Props } from "./types";
 
 export const ListPicker: React.FC<Props> = React.memo(
-  ({ name, label, data, placeholder }) => {
+  ({ name, label, data, placeholder, returnType }) => {
     return (
       <ListItem bottomDivider={true}>
         <ListItem.Content style={styles.container}>
           <BaseText style={styles.textStyle}>{label}</BaseText>
-          <FormPicker data={data} placeholder={placeholder} name={name} />
+          <FormPicker
+            data={data}
+            placeholder={placeholder}
+            name={name}
+            returnType={returnType}
+          />
         </ListItem.Content>
       </ListItem>
     );

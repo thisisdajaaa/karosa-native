@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useFormikContext, useField } from "formik";
+import React, { useState, useEffect, useCallback, ReactText } from "react";
+import { useField } from "formik";
 import { Picker } from "@app/components/picker";
 
 import { Props } from "./types";
 
 export const FormPicker: React.FC<Props> = React.memo(
-  ({ name, data, placeholder }) => {
+  ({ name, data, placeholder, returnType }) => {
     const [, meta, helpers] = useField(name);
-    const { validateOnChange } = useFormikContext();
     const [currentValue, setCurrentValue] = useState(
       meta.value || meta.initialValue
     );
@@ -17,23 +16,20 @@ export const FormPicker: React.FC<Props> = React.memo(
     }, [meta.value]);
 
     const handleChange = useCallback(
-      (text: string) => {
-        setCurrentValue(text);
-        helpers.setValue(text);
+      (itemValue: ReactText, itemindex: number) => {
+        const value = returnType === "string" ? itemValue : itemindex;
+        setCurrentValue(value);
+        helpers.setValue(value);
       },
-      [helpers, validateOnChange]
+      [helpers, returnType]
     );
-
-    useEffect(() => {
-      setCurrentValue(currentValue);
-      helpers.setValue(currentValue);
-    }, []);
 
     return (
       <React.Fragment>
         <Picker
-          onChangeText={handleChange}
+          onValueChange={handleChange}
           data={data}
+          value={currentValue}
           placeholder={placeholder}
         />
       </React.Fragment>

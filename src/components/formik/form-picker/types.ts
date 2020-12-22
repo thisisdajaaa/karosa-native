@@ -10,5 +10,6 @@ export type SelectionData = {
 export type Props = {
   name: string;
   data: Array<SelectionData>;
+  returnType: string;
 } & TextInputProps &
   InputProps;

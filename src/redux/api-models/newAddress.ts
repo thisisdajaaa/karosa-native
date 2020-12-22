@@ -1,7 +1,7 @@
 export type Request = {
   name: string;
-  phoneNumber: string;
-  detailedAddress: string;
+  phoneNo: string;
+  detailed_address: string;
   isDefaultAddress: boolean;
   barangayId: number;
 };

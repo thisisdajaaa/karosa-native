@@ -1,3 +1,4 @@
+import { PickerProps } from "@react-native-picker/picker/typings/Picker";
 import { TextInputProps } from "react-native";
 
 export type Data = {
@@ -7,4 +8,6 @@ export type Data = {
 
 export type Props = {
   data: Array<Data>;
-} & TextInputProps;
+  value: string | number;
+} & PickerProps &
+  TextInputProps;

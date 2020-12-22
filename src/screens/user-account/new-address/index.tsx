@@ -69,18 +69,19 @@ const NewAddressScreen: React.FC = () => {
       phoneNumber: "",
       region: "",
       province: "",
-      barangay: "",
+      barangay: 0,
       detailedAddress: "",
+      defaultAddress: false,
     },
 
     onSubmit: (values) => {
       console.log(values);
       const request: NewAddressRequest = {
         name: values.fullName,
-        phoneNumber: values.phoneNumber,
-        detailedAddress: values.region + values.province + values.barangay,
-        isDefaultAddress: true,
-        barangayId: 0,
+        phoneNo: values.phoneNumber,
+        detailed_address: values.detailedAddress + values.region + values.province,
+        isDefaultAddress: values.defaultAddress,
+        barangayId: values.barangay,
       };
       callNewAddressApi(request);
     },
@@ -189,6 +190,7 @@ const NewAddressScreen: React.FC = () => {
             label={label}
             placeholder={placeholder}
             data={data}
+            returnType={name === "barangay" ? "number" : "string"}
           />
         )}
       </>
