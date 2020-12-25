@@ -7,8 +7,9 @@ import { useNavigation } from "@react-navigation/native";
 import { theme } from "@app/styles";
 import { Screen } from "@app/components/base-screen";
 import { ListInput } from "@app/components/list/list-input";
-import { SubmitButton } from "@app/components/formik/submit-button";
+import { ListIterator } from "@app/components/list/list-iterator";
 import { ListWarning } from "@app/components/list/list-warning";
+import { SubmitButton } from "@app/components/formik/submit-button";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
 import { useMemoizedSelector } from "@app/hooks";
@@ -83,12 +84,6 @@ const AddWholesaleScreen: React.FC = () => {
     );
   };
 
-  const listIterator = (listItems: React.ReactElement[]) => {
-    return listItems.map((item, key) => (
-      <React.Fragment key={key}>{item}</React.Fragment>
-    ));
-  };
-
   const listDisplay = (): React.ReactElement[] => {
     const elements: React.ReactElement[] = [];
 
@@ -98,7 +93,7 @@ const AddWholesaleScreen: React.FC = () => {
 
     elements.push(min, max, unit);
 
-    return listIterator(elements);
+    return ListIterator(elements);
   };
 
   const saveButtonProps: SubmitButtonProps = {

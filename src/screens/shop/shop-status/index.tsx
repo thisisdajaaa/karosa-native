@@ -4,9 +4,10 @@ import { View } from "react-native";
 import { BottomSheet } from "@app/components/bottom-sheet";
 import { actions } from "@app/redux/shop";
 import { theme } from "@app/styles";
-import { ShopStatus } from "@app/redux/shop/models";
+import { CommonStatus } from "@app/redux/shop/models";
 import { BaseText } from "@app/components/base-text";
 import { MultiList } from "@app/components/multi-list";
+import { MODAL_SIZE } from "@app/constants";
 import { Separator } from "@app/components/separator";
 import { Props as MultiListProps } from "@app/components/multi-list/types";
 
@@ -17,7 +18,7 @@ const ShopStatusModal: React.FC<Props> = ({ sheetRef }) => {
   const dispatch = useDispatch();
 
   const setShopStatus = useCallback(
-    (values: ShopStatus) => dispatch(actions.setShopStatus(values)),
+    (values: CommonStatus) => dispatch(actions.setShopStatus(values)),
     [dispatch]
   );
 
@@ -85,7 +86,7 @@ const ShopStatusModal: React.FC<Props> = ({ sheetRef }) => {
   };
 
   return (
-    <BottomSheet height={251} ref={sheetRef}>
+    <BottomSheet height={MODAL_SIZE.STATUS_MODAL} ref={sheetRef}>
       <BaseText style={styles.txtShopStatus}>Shop Status</BaseText>
       <View style={styles.spacer} />
       <MultiList {...multiListProps} />

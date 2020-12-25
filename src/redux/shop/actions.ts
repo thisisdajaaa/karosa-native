@@ -5,7 +5,7 @@ import * as models from "./models";
 
 export const setShopStatus = createAction(
   types.SET_SHOP_STATUS,
-  (resolve) => (values: models.ShopStatus) => resolve(values)
+  (resolve) => (values: models.CommonStatus) => resolve(values)
 );
 
 export const setProductStatus = createAction(
@@ -71,7 +71,6 @@ export const callProductListApi = createAsyncAction(
   types.ACT_PRODUCT_LIST_FAILURE
 )<undefined, models.ProductListResponse, Error>();
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   setShopStatus,
   setProductStatus,

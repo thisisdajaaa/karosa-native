@@ -1,16 +1,22 @@
 import { ImageSourcePropType } from "react-native";
+import { HeaderSubComponent } from "react-native-elements";
 
 type Perspective = "seller" | "buyer";
 
-export type Props = {
-  coverPhoto?: ImageSourcePropType;
-  avatarPhoto?: ImageSourcePropType;
-  placeholder: string;
+type Details = {
+  coverPhoto: ImageSourcePropType;
+  avatarPhoto: ImageSourcePropType;
+  perspective: Perspective;
   shopName: string;
   shopAddr: string;
-  isActive?: boolean;
+  isActive: boolean;
   rating: string;
   followers: string;
   chatPerf: string;
-  perspective?: Perspective;
+};
+
+export type Props = {
+  details: Details;
+  CenterComponent: HeaderSubComponent;
+  RightComponent: HeaderSubComponent;
 };

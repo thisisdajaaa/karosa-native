@@ -8,6 +8,7 @@ import { BottomSheet } from "@app/components/bottom-sheet";
 import { FormCheckbox } from "@app/components/formik/form-checkbox";
 import { Props as ButtonProps } from "@app/components/button/types";
 import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
+import { MODAL_SIZE } from "@app/constants";
 
 import { Props } from "./types";
 import { styles } from "./styles";
@@ -36,7 +37,7 @@ const DeleteAccountModal: React.FC<Props> = ({ sheetRef }) => {
 
   return (
     <FormikContext.Provider value={formikBag}>
-      <BottomSheet height={475} ref={sheetRef}>
+      <BottomSheet height={MODAL_SIZE.DEL_ACC_MODAL} ref={sheetRef}>
         <BaseText style={styles.txtDeleteAcc}>Delete Account</BaseText>
         <BaseText style={styles.txtDeleteAccPar}>
           We are sad that you want to leave us, but please note that account

@@ -9,7 +9,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { BuyerCard } from "@app/components/cards/product";
 import { BaseText } from "@app/components/base-text";
 
-import { ActiveLink } from "./type";
+import { ActiveLink } from "./types";
 import { styles, dropdownStyle, linkLabels } from "./styles";
 
 const ProductContent: React.FC = () => {

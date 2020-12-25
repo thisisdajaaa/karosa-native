@@ -11,6 +11,7 @@ import { Props as SubmitButtonProps } from "@app/components/formik/submit-button
 import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
 import { AvailabilityForm } from "@app/redux/shop/models";
+import { MODAL_SIZE } from "@app/constants";
 
 import { Props } from "./types";
 import { styles } from "./styles";
@@ -82,7 +83,7 @@ const AvailabilityModal: React.FC<Props> = ({ sheetRef }) => {
 
   return (
     <FormikContext.Provider value={formikBag}>
-      <BottomSheet height={527} ref={sheetRef}>
+      <BottomSheet height={MODAL_SIZE.AVAILABILITY_MODAL} ref={sheetRef}>
         <BaseText style={styles.txtProductStatus}>Available every</BaseText>
         <View style={styles.spacer} />
         <React.Fragment>{elements()}</React.Fragment>

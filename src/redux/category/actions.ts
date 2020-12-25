@@ -9,7 +9,6 @@ export const callCategoryListApi = createAsyncAction(
   types.ACT_CATEGORY_LIST_FAILURE
 )<undefined, models.CategoryListResponse, Error>();
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   callCategoryListApi,
 };

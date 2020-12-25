@@ -64,10 +64,8 @@ export type ShippingDetailsForm = {
   sellerCourier: boolean;
 };
 
-export type ShopStatus = CommonStatus;
-
 export type ShopEntryContext = {
-  shopStatus: ShopStatus;
+  shopStatus: CommonStatus;
 };
 
 export type ProductEntryContext = {

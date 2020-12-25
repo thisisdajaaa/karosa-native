@@ -4,28 +4,21 @@ import { Header } from "react-native-elements";
 import { AppButton } from "@app/components/button";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { BaseText } from "@app/components/base-text";
-import { SearchBar } from "@app/components/search-bar";
 
 import { Props } from "./types";
 import { styles } from "./styles";
 
 export const Profile: React.FC<Props> = ({
-  coverPhoto = require("../../../assets/shop.jpg"),
-  avatarPhoto = require("../../../assets/hinata.png"),
-  shopName,
-  shopAddr,
-  isActive = true,
-  rating,
-  followers,
-  chatPerf,
-  placeholder,
+  details,
+  CenterComponent,
+  RightComponent,
 }) => {
   return (
     <React.Fragment>
       <ImageBackground
         style={styles.coverPhoto}
         blurRadius={1}
-        source={coverPhoto}
+        source={details.coverPhoto}
       >
         <StatusBar translucent backgroundColor="transparent" />
         <Header
@@ -37,16 +30,12 @@ export const Profile: React.FC<Props> = ({
             icon: "arrow-back",
             color: "white",
           }}
-          centerComponent={<SearchBar placeholder={placeholder} />}
-          rightComponent={{
-            icon: "more-horiz",
-            color: "white",
-            onPress: () => console.log("more"),
-          }}
+          centerComponent={CenterComponent}
+          rightComponent={RightComponent}
         />
       </ImageBackground>
       <View style={styles.avatarContainer}>
-        <Image style={styles.avatarPhoto} source={avatarPhoto} />
+        <Image style={styles.avatarPhoto} source={details.avatarPhoto} />
       </View>
       <View style={styles.profileInfoContainer}>
         <AppButton
@@ -66,12 +55,12 @@ export const Profile: React.FC<Props> = ({
           title={"Follow"}
         />
         <View style={styles.shopNameContainer}>
-          <BaseText style={styles.txtShopName}>{shopName}</BaseText>
+          <BaseText style={styles.txtShopName}>{details.shopName}</BaseText>
         </View>
         <View style={styles.shopAddrContainer}>
-          <BaseText style={styles.txtShopAddr}>{shopAddr}</BaseText>
+          <BaseText style={styles.txtShopAddr}>{details.shopAddr}</BaseText>
           <View style={styles.activeContainer}>
-            {isActive ? (
+            {details.isActive ? (
               <React.Fragment>
                 <View style={styles.activeIcon} />
                 <BaseText style={styles.txtIcon}>Active</BaseText>
@@ -86,19 +75,25 @@ export const Profile: React.FC<Props> = ({
         </View>
         <View style={styles.bottomInfoContainer}>
           <View style={styles.ratingContainer}>
-            <BaseText style={styles.txtBottomValue}>{rating} / 5.0</BaseText>
+            <BaseText style={styles.txtBottomValue}>
+              {details.rating} / 5.0
+            </BaseText>
 
             <BaseText style={styles.txtBottomLabel}>Shop Rating</BaseText>
           </View>
 
           <View style={styles.followersPerfContainer}>
-            <BaseText style={styles.txtBottomValue}>{followers}</BaseText>
+            <BaseText style={styles.txtBottomValue}>
+              {details.followers}
+            </BaseText>
 
             <BaseText style={styles.txtBottomLabel}>Followers</BaseText>
           </View>
 
           <View style={styles.followersPerfContainer}>
-            <BaseText style={styles.txtBottomValue}>{chatPerf}%</BaseText>
+            <BaseText style={styles.txtBottomValue}>
+              {details.chatPerf}%
+            </BaseText>
 
             <BaseText style={styles.txtBottomLabel}>Chat Performance</BaseText>
           </View>

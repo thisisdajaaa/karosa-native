@@ -2,23 +2,13 @@
   "extends": "react-native-wcandillon",
   "rules": {
     "linebreak-style": ["error", "windows"],
-    "@typescript-eslint/no-explicit-any": "off",
     "import/no-named-as-default": 0,
+    "import/no-anonymous-default-export": 0,
     "import/prefer-default-export": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/no-empty-function": 0,
     "curly": "off",
-    "import/no-anonymous-default-export": [
-      "error",
-      {
-        "allowArray": false,
-        "allowArrowFunction": false,
-        "allowAnonymousClass": false,
-        "allowAnonymousFunction": true,
-        "allowCallExpression": true, // The true value here is for backward compatibility
-        "allowLiteral": false,
-        "allowObject": false
-      }
-    ],
     "prettier/prettier": [
       "error",
       {

@@ -9,6 +9,7 @@ import { Props as SubmitButtonProps } from "@app/components/formik/submit-button
 import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
 import { FormRadioGroup } from "@app/components/formik/form-radio-group";
+import { MODAL_SIZE } from "@app/constants";
 
 import { Props } from "./types";
 import { styles } from "./styles";
@@ -54,7 +55,7 @@ const MeasurementModal: React.FC<Props> = ({ sheetRef }) => {
 
   return (
     <FormikContext.Provider value={formikBag}>
-      <BottomSheet height={328} ref={sheetRef}>
+      <BottomSheet height={MODAL_SIZE.MEASUREMENT_MODAL} ref={sheetRef}>
         <BaseText style={styles.txtProductStatus}>Unit of Measurement</BaseText>
         <View style={styles.spacer} />
 

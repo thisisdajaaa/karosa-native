@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
-import { ActiveLink } from "./type";
+import { ActiveLink } from "./types";
 
 export const styles = StyleSheet.create({
   container: {

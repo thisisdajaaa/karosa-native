@@ -35,7 +35,6 @@ export const callNewAddressApi = createAsyncAction(
   types.ACT_NEW_ADDRESS_FAILURE
 )<NewAddressRequest, NewAddressResponse, Error>();
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   callLoginApi,
   callForgotApi,

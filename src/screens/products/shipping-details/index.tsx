@@ -7,8 +7,9 @@ import { useNavigation } from "@react-navigation/native";
 import { theme } from "@app/styles";
 import { Screen } from "@app/components/base-screen";
 import { ListInput } from "@app/components/list/list-input";
-import { SubmitButton } from "@app/components/formik/submit-button";
+import { ListIterator } from "@app/components/list/list-iterator";
 import { ListSwitch } from "@app/components/list/list-switch";
+import { SubmitButton } from "@app/components/formik/submit-button";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
 import { useMemoizedSelector } from "@app/hooks";
@@ -101,12 +102,6 @@ const ShippingDetailsScreen: React.FC = () => {
     );
   };
 
-  const listIterator = (listItems: React.ReactElement[]) => {
-    return listItems.map((item, key) => (
-      <React.Fragment key={key}>{item}</React.Fragment>
-    ));
-  };
-
   const inputDisplay = (): React.ReactElement[] => {
     const elements: React.ReactElement[] = [];
 
@@ -116,7 +111,7 @@ const ShippingDetailsScreen: React.FC = () => {
 
     elements.push(width, length, height);
 
-    return listIterator(elements);
+    return ListIterator(elements);
   };
 
   const switchDisplay = (): React.ReactElement[] => {
@@ -151,7 +146,7 @@ const ShippingDetailsScreen: React.FC = () => {
 
     elements.push(expressDelivery, karosaDelivery, pickUpBuyer, sellerCourier);
 
-    return listIterator(elements);
+    return ListIterator(elements);
   };
 
   const saveButtonProps: SubmitButtonProps = {

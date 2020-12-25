@@ -4,6 +4,7 @@ import { BaseText } from "@app/components/base-text";
 import { AppButton } from "@app/components/button";
 import { BottomSheet } from "@app/components/bottom-sheet";
 import { Props as ButtonProps } from "@app/components/button/types";
+import { MODAL_SIZE } from "@app/constants";
 
 import { Props } from "./types";
 import { styles } from "./styles";
@@ -24,7 +25,7 @@ const DeleteShopModal: React.FC<Props> = ({ sheetRef }) => {
   };
 
   return (
-    <BottomSheet height={335} ref={sheetRef}>
+    <BottomSheet height={MODAL_SIZE.DEL_SHOP_MODAL} ref={sheetRef}>
       <BaseText style={styles.txtDeleteShop}>Delete Shop</BaseText>
       <BaseText style={styles.txtDeleteShopPar}>
         We are sad that you don't want to be a seller anymore, but please note

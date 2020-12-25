@@ -1,4 +1,4 @@
-import { RES_GENDER } from "@app/constants";
+import { Gender } from "@app/constants";
 
 export type Avatar = {
   photoUrl?: string;
@@ -16,7 +16,7 @@ export type Response = {
   fullName?: string;
   phoneNo?: string;
   email?: string;
-  gender?: RES_GENDER;
+  gender?: Gender;
   avatar?: Avatar;
   shop?: any;
 };

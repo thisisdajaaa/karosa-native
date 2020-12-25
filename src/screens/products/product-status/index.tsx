@@ -9,6 +9,7 @@ import { BaseText } from "@app/components/base-text";
 import { MultiList } from "@app/components/multi-list";
 import { Separator } from "@app/components/separator";
 import { Props as MultiListProps } from "@app/components/multi-list/types";
+import { MODAL_SIZE } from "@app/constants";
 
 import { Props } from "./types";
 import { styles, itemStyle } from "./styles";
@@ -85,7 +86,7 @@ const ProductStatusModal: React.FC<Props> = ({ sheetRef }) => {
   };
 
   return (
-    <BottomSheet height={251} ref={sheetRef}>
+    <BottomSheet height={MODAL_SIZE.STATUS_MODAL} ref={sheetRef}>
       <BaseText style={styles.txtProductStatus}>Product Status</BaseText>
       <View style={styles.spacer} />
       <MultiList {...multiListProps} />

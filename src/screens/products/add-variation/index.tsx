@@ -8,6 +8,7 @@ import { theme } from "@app/styles";
 import { Screen } from "@app/components/base-screen";
 import { ListInput } from "@app/components/list/list-input";
 import { ListImage } from "@app/components/list/list-image";
+import { ListIterator } from "@app/components/list/list-iterator";
 import { SubmitButton } from "@app/components/formik/submit-button";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
@@ -85,12 +86,6 @@ const AddVariationScreen: React.FC = () => {
 
   const listImage = () => <ListImage name={"variationImg"} hasBottomDivider />;
 
-  const listIterator = (listItems: React.ReactElement[]) => {
-    return listItems.map((item, key) => (
-      <React.Fragment key={key}>{item}</React.Fragment>
-    ));
-  };
-
   const listDisplay = (): React.ReactElement[] => {
     const elements: React.ReactElement[] = [];
 
@@ -111,7 +106,7 @@ const AddVariationScreen: React.FC = () => {
 
     elements.push(listImage(), productNm, price, weight, stocks);
 
-    return listIterator(elements);
+    return ListIterator(elements);
   };
 
   const saveButtonProps: SubmitButtonProps = {

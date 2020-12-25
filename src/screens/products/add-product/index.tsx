@@ -19,6 +19,7 @@ import { ListInput } from "@app/components/list/list-input";
 import { ListChevron } from "@app/components/list/list-chevron";
 import { ListSwitch } from "@app/components/list/list-switch";
 import { ListStatus } from "@app/components/list/list-status";
+import { ListIterator } from "@app/components/list/list-iterator";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
@@ -204,12 +205,6 @@ const AddProductScreen: React.FC = () => {
 
   const listImage = () => <ListImage name={"productImg"} hasBottomDivider />;
 
-  const listIterator = (listItems: React.ReactElement[]) => {
-    return listItems.map((item, key) => (
-      <React.Fragment key={key}>{item}</React.Fragment>
-    ));
-  };
-
   const listDisplay = (): React.ReactElement[] => {
     const elements: React.ReactElement[] = [];
 
@@ -277,7 +272,7 @@ const AddProductScreen: React.FC = () => {
       shippingDetails
     );
 
-    return listIterator(elements);
+    return ListIterator(elements);
   };
 
   return (

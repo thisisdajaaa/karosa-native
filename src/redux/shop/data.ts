@@ -1,4 +1,4 @@
-import { RES_SHOP_STATUS } from "@app/constants";
+import { ShopStatus } from "@app/constants";
 
 import {
   AvailabilityForm,
@@ -6,12 +6,11 @@ import {
   ProductForm,
   ShippingDetailsForm,
   ShopState,
-  ShopStatus,
   VariationForm,
   WholesaleForm,
 } from "./models";
 
-export const initCommonStatus: ShopStatus = {
+export const initCommonStatus: CommonStatus = {
   available: true,
   harvesting: false,
   planting: false,
@@ -66,12 +65,9 @@ export const initShippingDetailsForm: ShippingDetailsForm = {
   sellerCourier: false,
 };
 
-export const initShopStatus: CommonStatus = initCommonStatus;
-export const initProductStatus: CommonStatus = initCommonStatus;
-
 export const initShopState: ShopState = {
   shopEntryContext: {
-    shopStatus: initShopStatus,
+    shopStatus: initCommonStatus,
   },
   productEntryContext: {
     productForm: initProductForm,
@@ -88,7 +84,7 @@ export const initShopState: ShopState = {
         id: 0,
         name: "",
         isActive: false,
-        status: RES_SHOP_STATUS.Active,
+        status: ShopStatus.Active,
         createdAt: "",
         updatedAt: "",
       },

@@ -7,6 +7,7 @@ import { BottomSheet } from "@app/components/bottom-sheet";
 import { AppButton } from "@app/components/button";
 import { Props as ButtonProps } from "@app/components/button/types";
 import { resetAllState } from "@app/redux/actions";
+import { MODAL_SIZE } from "@app/constants";
 
 import { Props } from "./types";
 import { styles } from "./styles";
@@ -27,7 +28,7 @@ const LogoutModal: React.FC<Props> = ({ sheetRef }) => {
   };
 
   return (
-    <BottomSheet height={407} ref={sheetRef}>
+    <BottomSheet height={MODAL_SIZE.LOGOUT_MODAL} ref={sheetRef}>
       <BaseText style={styles.txtLogout}>Logging out</BaseText>
 
       <View style={styles.subContainer}>
