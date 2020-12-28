@@ -22,42 +22,53 @@ export function* callRegionApi(): SagaIterator {
   }
 }
 
-export function* callProvinceApi(): SagaIterator {
+export function* callProvinceApi(
+  action: ReturnType<typeof actions.callProvinceApi.request>
+): SagaIterator {
   try {
     const response: AxiosResponse<models.ProvinceResponse> = yield call(
       baseAxios.get,
-      apiEndpoints.province
+      apiEndpoints.province.replace(
+        "{regionId}",
+        String(action.payload.regionId)
+      )
     );
-
     yield put(actions.callProvinceApi.success(response.data));
   } catch (error) {
     yield put(actions.callProvinceApi.failure(error));
   }
 }
 
-export function* callBarangayApi(): SagaIterator {
-  try {
-    const response: AxiosResponse<models.BarangayResponse> = yield call(
-      baseAxios.get,
-      apiEndpoints.barangay
-    );
-
-    yield put(actions.callBarangayApi.success(response.data));
-  } catch (error) {
-    yield put(actions.callBarangayApi.failure(error));
-  }
-}
-
-export function* callCitiesApi(): SagaIterator {
+export function* callCitiesApi(
+  action: ReturnType<typeof actions.callCitiesApi.request>
+): SagaIterator {
   try {
     const response: AxiosResponse<models.CitiesResponse> = yield call(
       baseAxios.get,
-      apiEndpoints.cities
+      apiEndpoints.cities.replace(
+        "{provinceId}",
+        String(action.payload.provinceId)
+      )
     );
 
     yield put(actions.callCitiesApi.success(response.data));
   } catch (error) {
     yield put(actions.callCitiesApi.failure(error));
+  }
+}
+
+export function* callBarangayApi(
+  action: ReturnType<typeof actions.callBarangayApi.request>
+): SagaIterator {
+  try {
+    const response: AxiosResponse<models.BarangayResponse> = yield call(
+      baseAxios.get,
+      apiEndpoints.barangay.replace("{cityId}", String(action.payload.cityId))
+    );
+
+    yield put(actions.callBarangayApi.success(response.data));
+  } catch (error) {
+    yield put(actions.callBarangayApi.failure(error));
   }
 }
 

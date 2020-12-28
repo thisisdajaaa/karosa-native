@@ -5,8 +5,8 @@
   "shopInfo": "/v1/users/shop",
   "products": "/v1/shops/products",
   "categories": "/v1/categories",
-  "province": "/v1/addresses/4/provinces",
-  "barangay": "/v1/addresses/909/barangays",
-  "cities": "/v1/addresses/45/cities",
+  "province": "/v1/addresses/{regionId}/provinces",
+  "cities": "/v1/addresses/{provinceId}/cities",
+  "barangay": "/v1/addresses/{cityId}/barangays",
   "register": "/v1/register"
 }

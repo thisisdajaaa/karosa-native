@@ -1,8 +1,9 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View } from "react-native";
 import { FormikContext, useFormik } from "formik";
 import { useDispatch } from "react-redux";
+import { ScrollView } from "react-native-gesture-handler";
 import { Props as HeaderProps } from "@app/components/base-screen/types";
 import { Screen } from "@app/components/base-screen";
 import { useMemoizedSelector } from "@app/hooks";
@@ -16,12 +17,16 @@ import {
   selectors as locationSelector,
 } from "@app/redux/location";
 import { ListInput } from "@app/components/list/list-input";
-import { SelectionData } from "components/formik/form-picker/types";
 import { SubmitButton } from "@app/components/formik/submit-button";
 import { NewAddressRequest } from "@app/redux/auth/models";
 import { ListPicker } from "@app/components/list/list-picker";
 import { ListCheckBox } from "@app/components/list/list-checkbox";
-import { ScrollView } from "react-native-gesture-handler";
+import { PickerData } from "@app/redux/api-models/common";
+import {
+  BarangayRequest,
+  CitiesRequest,
+  ProvinceRequest,
+} from "@app/redux/location/models";
 
 import { styles } from "./styles";
 import { validationSchema } from "./validation";
@@ -42,51 +47,84 @@ const NewAddressScreen: React.FC = () => {
   );
 
   const getProvinceResponse = useCallback(
-    () => dispatch(provinceActions.callProvinceApi.request()),
+    (request: ProvinceRequest) =>
+      dispatch(provinceActions.callProvinceApi.request(request)),
     [dispatch]
   );
 
   const getCitiesResponse = useCallback(
-    () => dispatch(citiesActions.callCitiesApi.request()),
+    (request: CitiesRequest) =>
+      dispatch(citiesActions.callCitiesApi.request(request)),
     [dispatch]
   );
 
   const getBarangayResponse = useCallback(
-    () => dispatch(barangayActions.callBarangayApi.request()),
+    (request: BarangayRequest) =>
+      dispatch(barangayActions.callBarangayApi.request(request)),
     [dispatch]
   );
 
   useEffect(() => {
-    getRegionResponse(),
-      getProvinceResponse(),
-      getCitiesResponse(),
-      getBarangayResponse();
+    getRegionResponse();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const formikBag = useFormik({
     initialValues: {
       fullName: "",
       phoneNumber: "",
-      region: "",
-      province: "",
-      barangay: 0,
+      region: { id: 0, value: "" } as PickerData,
+      province: { id: 0, value: "" } as PickerData,
+      barangay: { id: 0, value: "" } as PickerData,
+      cities: { id: 0, value: "" } as PickerData,
       detailedAddress: "",
       defaultAddress: false,
     },
 
     onSubmit: (values) => {
-      console.log(values);
       const request: NewAddressRequest = {
         name: values.fullName,
         phoneNo: values.phoneNumber,
-        detailed_address: values.detailedAddress + values.region + values.province,
+        // eslint-disable-next-line camelcase
+        detailed_address:
+          values.detailedAddress +
+          values.region.value +
+          values.province.value +
+          values.cities.value,
         isDefaultAddress: values.defaultAddress,
-        barangayId: values.barangay,
+        barangayId: values.barangay.id,
       };
       callNewAddressApi(request);
     },
     validationSchema,
   });
+
+  useEffect(() => {
+    const request: ProvinceRequest = {
+      regionId: formikBag.values.region.id,
+    };
+    getProvinceResponse(request);
+    formikBag.values.province = { id: 0, value: "" } as PickerData;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formikBag.values.region]);
+
+  useEffect(() => {
+    const request: CitiesRequest = {
+      provinceId: formikBag.values.province.id,
+    };
+    getCitiesResponse(request);
+    formikBag.values.cities = { id: 0, value: "" } as PickerData;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formikBag.values.province]);
+
+  useEffect(() => {
+    const request: BarangayRequest = {
+      cityId: formikBag.values.cities.id,
+    };
+    getBarangayResponse(request);
+    formikBag.values.barangay = { id: 0, value: "" } as PickerData;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formikBag.values.cities]);
 
   const regionResponse = useMemoizedSelector(
     locationSelector.getRegionResponse
@@ -105,7 +143,7 @@ const NewAddressScreen: React.FC = () => {
   );
 
   const regionProp = () => {
-    const regionData: SelectionData[] = [];
+    const regionData: PickerData[] = [];
     regionResponse.map((data) => {
       regionData.push({ id: data.id, value: data.name });
     });
@@ -113,7 +151,7 @@ const NewAddressScreen: React.FC = () => {
   };
 
   const barangayProp = () => {
-    const barangayData: SelectionData[] = [];
+    const barangayData: PickerData[] = [];
     barangayResponse.map((data) => {
       barangayData.push({ id: data.id, value: data.name });
     });
@@ -121,7 +159,7 @@ const NewAddressScreen: React.FC = () => {
   };
 
   const citiesProp = () => {
-    const citiesData: SelectionData[] = [];
+    const citiesData: PickerData[] = [];
     citiesResponse.map((data) => {
       citiesData.push({ id: data.id, value: data.name });
     });
@@ -129,7 +167,7 @@ const NewAddressScreen: React.FC = () => {
   };
 
   const provinceProp = () => {
-    const provinceData: SelectionData[] = [];
+    const provinceData: PickerData[] = [];
     provinceResponse.map((data) => {
       provinceData.push({ id: data.id, value: data.name });
     });
@@ -146,7 +184,7 @@ const NewAddressScreen: React.FC = () => {
     },
   };
 
-  const SubmitButtonProps: ButtonProps = {
+  const submitButtonProps: ButtonProps = {
     title: "Submit",
     containerStyle: styles.btnSubmtContainer,
     textStyle: styles.txtBtnSubmit,
@@ -180,7 +218,7 @@ const NewAddressScreen: React.FC = () => {
     name: string,
     label: string,
     placeholder: string,
-    data: SelectionData[]
+    data: PickerData[]
   ): JSX.Element => {
     return (
       <>
@@ -190,7 +228,6 @@ const NewAddressScreen: React.FC = () => {
             label={label}
             placeholder={placeholder}
             data={data}
-            returnType={name === "barangay" ? "number" : "string"}
           />
         )}
       </>
@@ -274,8 +311,8 @@ const NewAddressScreen: React.FC = () => {
         <View style={styles.addressContainer}>
           <ScrollView>
             <React.Fragment>{listDisplay()}</React.Fragment>
-            <View style={styles.submitbuttonParent}>
-              <SubmitButton {...SubmitButtonProps} />
+            <View style={styles.submitbuttonContainer}>
+              <SubmitButton {...submitButtonProps} />
             </View>
           </ScrollView>
         </View>

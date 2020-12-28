@@ -1,15 +1,10 @@
 import { TextInputProps } from "react-native";
 
 import { Props as InputProps } from "../../input/types";
-
-export type SelectionData = {
-  id: number;
-  value: string;
-};
+import { Props as PickerProps } from "../../picker/types";
 
 export type Props = {
   name: string;
-  data: Array<SelectionData>;
-  returnType: string;
 } & TextInputProps &
-  InputProps;
+  InputProps &
+  PickerProps;

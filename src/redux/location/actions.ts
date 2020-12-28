@@ -4,8 +4,11 @@ import * as types from "./types";
 import {
   RegionResponse,
   ProvinceResponse,
-  BarangayResponse,
+  ProvinceRequest,
   CitiesResponse,
+  CitiesRequest,
+  BarangayResponse,
+  BarangayRequest,
 } from "./models";
 
 export const callRegionApi = createAsyncAction(
@@ -18,19 +21,20 @@ export const callProvinceApi = createAsyncAction(
   types.ACT_PROVINCE_REQUEST,
   types.ACT_PROVINCE_SUCCESS,
   types.ACT_PROVINCE_FAILURE
-)<undefined, ProvinceResponse, Error>();
-
-export const callBarangayApi = createAsyncAction(
-  types.ACT_BARANGAY_REQUEST,
-  types.ACT_BARANGAY_SUCCESS,
-  types.ACT_BARANGAY_FAILURE
-)<undefined, BarangayResponse, Error>();
+)<ProvinceRequest, ProvinceResponse, Error>();
 
 export const callCitiesApi = createAsyncAction(
   types.ACT_CITIES_REQUEST,
   types.ACT_CITIES_SUCCESS,
   types.ACT_CITIES_FAILURE
-)<undefined, CitiesResponse, Error>();
+)<CitiesRequest, CitiesResponse, Error>();
+
+export const callBarangayApi = createAsyncAction(
+  types.ACT_BARANGAY_REQUEST,
+  types.ACT_BARANGAY_SUCCESS,
+  types.ACT_BARANGAY_FAILURE
+)<BarangayRequest, BarangayResponse, Error>();
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   callRegionApi,

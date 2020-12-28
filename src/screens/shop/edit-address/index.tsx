@@ -1,8 +1,9 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View } from "react-native";
 import { FormikContext, useFormik } from "formik";
 import { useDispatch } from "react-redux";
+import { ScrollView } from "react-native-gesture-handler";
 import { Props as HeaderProps } from "@app/components/base-screen/types";
 import { Screen } from "@app/components/base-screen";
 import { useMemoizedSelector } from "@app/hooks";
@@ -16,12 +17,15 @@ import {
   selectors as locationSelector,
 } from "@app/redux/location";
 import { ListInput } from "@app/components/list/list-input";
-import { SelectionData } from "components/formik/form-picker/types";
 import { SubmitButton } from "@app/components/formik/submit-button";
 import { NewAddressRequest } from "@app/redux/auth/models";
 import { ListPicker } from "@app/components/list/list-picker";
-import { ListCheckBox } from "@app/components/list/list-checkbox";
-import { ScrollView } from "react-native-gesture-handler";
+import { PickerData } from "@app/redux/api-models/common";
+import {
+  ProvinceRequest,
+  CitiesRequest,
+  BarangayRequest,
+} from "@app/redux/location/models";
 
 import { styles } from "./styles";
 import { validationSchema } from "./validation";
@@ -42,34 +46,36 @@ const EditAddressScreen: React.FC = () => {
   );
 
   const getProvinceResponse = useCallback(
-    () => dispatch(provinceActions.callProvinceApi.request()),
+    (request: ProvinceRequest) =>
+      dispatch(provinceActions.callProvinceApi.request(request)),
     [dispatch]
   );
 
   const getCitiesResponse = useCallback(
-    () => dispatch(citiesActions.callCitiesApi.request()),
+    (request: CitiesRequest) =>
+      dispatch(citiesActions.callCitiesApi.request(request)),
     [dispatch]
   );
 
   const getBarangayResponse = useCallback(
-    () => dispatch(barangayActions.callBarangayApi.request()),
+    (request: BarangayRequest) =>
+      dispatch(barangayActions.callBarangayApi.request(request)),
     [dispatch]
   );
 
   useEffect(() => {
-    getRegionResponse(),
-      getProvinceResponse(),
-      getCitiesResponse(),
-      getBarangayResponse();
+    getRegionResponse();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const formikBag = useFormik({
     initialValues: {
       fullName: "",
       phoneNumber: "",
-      region: "",
-      province: "",
-      barangay: "",
+      region: { id: 0, value: "" } as PickerData,
+      cities: { id: 0, value: "" } as PickerData,
+      province: { id: 0, value: "" } as PickerData,
+      barangay: { id: 0, value: "" } as PickerData,
       detailedAddress: "",
     },
 
@@ -77,15 +83,43 @@ const EditAddressScreen: React.FC = () => {
       console.log(values);
       const request: NewAddressRequest = {
         name: values.fullName,
-        phoneNumber: values.phoneNumber,
-        detailedAddress: values.region + values.province + values.barangay,
+        phoneNo: values.phoneNumber,
+        // eslint-disable-next-line camelcase
+        detailed_address: values.detailedAddress,
         isDefaultAddress: true,
-        barangayId: 0,
+        barangayId: values.barangay.id,
       };
       callNewAddressApi(request);
     },
     validationSchema,
   });
+
+  useEffect(() => {
+    const request: ProvinceRequest = {
+      regionId: formikBag.values.region.id,
+    };
+    getProvinceResponse(request);
+    formikBag.values.province = { id: 0, value: "" } as PickerData;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formikBag.values.region]);
+
+  useEffect(() => {
+    const request: CitiesRequest = {
+      provinceId: formikBag.values.province.id,
+    };
+    getCitiesResponse(request);
+    formikBag.values.cities = { id: 0, value: "" } as PickerData;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formikBag.values.province]);
+
+  useEffect(() => {
+    const request: BarangayRequest = {
+      cityId: formikBag.values.cities.id,
+    };
+    getBarangayResponse(request);
+    formikBag.values.barangay = { id: 0, value: "" } as PickerData;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formikBag.values.cities]);
 
   const regionResponse = useMemoizedSelector(
     locationSelector.getRegionResponse
@@ -104,7 +138,7 @@ const EditAddressScreen: React.FC = () => {
   );
 
   const regionProp = () => {
-    const regionData: SelectionData[] = [];
+    const regionData: PickerData[] = [];
     regionResponse.map((data) => {
       regionData.push({ id: data.id, value: data.name });
     });
@@ -112,7 +146,7 @@ const EditAddressScreen: React.FC = () => {
   };
 
   const barangayProp = () => {
-    const barangayData: SelectionData[] = [];
+    const barangayData: PickerData[] = [];
     barangayResponse.map((data) => {
       barangayData.push({ id: data.id, value: data.name });
     });
@@ -120,7 +154,7 @@ const EditAddressScreen: React.FC = () => {
   };
 
   const citiesProp = () => {
-    const citiesData: SelectionData[] = [];
+    const citiesData: PickerData[] = [];
     citiesResponse.map((data) => {
       citiesData.push({ id: data.id, value: data.name });
     });
@@ -128,7 +162,7 @@ const EditAddressScreen: React.FC = () => {
   };
 
   const provinceProp = () => {
-    const provinceData: SelectionData[] = [];
+    const provinceData: PickerData[] = [];
     provinceResponse.map((data) => {
       provinceData.push({ id: data.id, value: data.name });
     });
@@ -171,15 +205,11 @@ const EditAddressScreen: React.FC = () => {
     );
   };
 
-  const listCheckBox = (name: string, label: string) => {
-    return <ListCheckBox name={name} label={label} />;
-  };
-
   const listInputPicker = (
     name: string,
     label: string,
     placeholder: string,
-    data: SelectionData[]
+    data: PickerData[]
   ): JSX.Element => {
     return (
       <>

@@ -12,16 +12,17 @@ export const rootSelector: Selector<StateAll, LocationState> = (
 export const getRegionResponse = () =>
   createSelector(rootSelector, (state: LocationState) => {
     return (
-      (state.regionResponse.response.length > 1 && state.regionResponse.response) || initLocationState.regionResponse.response
+      (state.regionResponse.response.length > 1 &&
+        state.regionResponse.response) ||
+      initLocationState.regionResponse.response
     );
   });
 
 export const getProvinceResponse = () =>
   createSelector(rootSelector, (state: LocationState) => {
-   
-
     return (
-      (state.provinceResponse.response.length > 1 && state.provinceResponse.response) ||
+      (state.provinceResponse.response.length > 1 &&
+        state.provinceResponse.response) ||
       initLocationState.provinceResponse.response
     );
   });
@@ -29,7 +30,8 @@ export const getProvinceResponse = () =>
 export const getBarangayResponse = () =>
   createSelector(rootSelector, (state: LocationState) => {
     return (
-      (state.barangayResponse.response.length > 1 && state.barangayResponse.response) ||
+      (state.barangayResponse.response.length > 1 &&
+        state.barangayResponse.response) ||
       initLocationState.barangayResponse.response
     );
   });
@@ -37,7 +39,9 @@ export const getBarangayResponse = () =>
 export const getCitiesResponse = () =>
   createSelector(rootSelector, (state: LocationState) => {
     return (
-      (state.citiesResponse.response.length > 1 && state.citiesResponse.response) || initLocationState.citiesResponse.response
+      (state.citiesResponse.response.length > 1 &&
+        state.citiesResponse.response) ||
+      initLocationState.citiesResponse.response
     );
   });
 // eslint-disable-next-line import/no-anonymous-default-export

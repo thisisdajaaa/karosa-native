@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { Picker as ReactPicker } from "@react-native-picker/picker";
 import { TextInput } from "@app/components/input";
 import { theme } from "@app/styles";
+import { PickerData } from "@app/redux/api-models/common";
 
 import { styles } from "./styles";
 import { Props } from "./types";
 
 export const Picker: React.FC<Props> = React.memo(
   ({ data, placeholder, value, onValueChange }) => {
-    const [selectedValue, setSelectedValue] = useState<
-      string | number | undefined
-    >(value || placeholder);
+    const [selectedValue, setSelectedValue] = useState(value || placeholder);
 
+    useEffect(() => {
+      if (!value) {
+        setSelectedValue(placeholder);
+      }
+    }, [placeholder, value]);
     return (
       <View style={styles.container}>
         <TextInput
@@ -29,8 +33,8 @@ export const Picker: React.FC<Props> = React.memo(
           style={styles.picker}
           selectedValue={selectedValue}
           onValueChange={(itemValue, itemIndex) => {
-            if (itemIndex > 0) {
-              setSelectedValue(itemValue);
+            if (itemIndex > 0 && itemValue) {
+              setSelectedValue(String(itemValue));
               if (onValueChange) {
                 onValueChange(itemValue, itemIndex);
               }
@@ -43,13 +47,17 @@ export const Picker: React.FC<Props> = React.memo(
             key={-1}
             label={placeholder}
           />
-          {data.map((data) => (
-            <ReactPicker.Item
-              value={data.value}
-              key={data.id}
-              label={data.value}
-            />
-          ))}
+          {data.map((targetData) => {
+            return (
+              targetData.value && (
+                <ReactPicker.Item
+                  value={targetData.value}
+                  key={targetData.id}
+                  label={targetData.value}
+                />
+              )
+            );
+          })}
         </ReactPicker>
       </View>
     );

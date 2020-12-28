@@ -5,3 +5,7 @@ export type Response = [
     regionId: number;
   }
 ];
+
+export type Request = {
+  regionId: number;
+};

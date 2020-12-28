@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     fontWeight: "400",
   },
 
-  submitbuttonParent: {
+  submitbuttonContainer: {
     alignSelf: "center",
   },
   setDetailStyle: {
