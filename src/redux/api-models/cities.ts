@@ -5,3 +5,7 @@ export type Response = [
     cityId: number;
   }
 ];
+
+export type Request = {
+  provinceId: number;
+};

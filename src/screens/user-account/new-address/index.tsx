@@ -201,7 +201,6 @@ const NewAddressScreen: React.FC = () => {
         isColumn={orientation === "column" ? true : false}
         isRow={orientation === "row" ? true : false}
         hasBottomDivider
-        maxLength={name === "fullname" ? 100 : 1000}
         required={false}
         name={name}
         label={label}

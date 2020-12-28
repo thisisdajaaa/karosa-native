@@ -7,8 +7,11 @@ import { ResponseState } from "../api-models/common";
 export type RegionResponse = region.Response;
 export type ProvinceResponse = province.Response;
 export type ProvinceRequest = province.Request;
-export type BarangayResponse = barangay.Response;
 export type CitiesResponse = cities.Response;
+export type CitiesRequest = cities.Request;
+export type BarangayResponse = barangay.Response;
+export type BarangayRequest = barangay.Request;
+
 
 export type LocationState = {
   regionResponse: ResponseState<RegionResponse>;

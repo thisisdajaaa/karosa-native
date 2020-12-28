@@ -4,7 +4,3 @@ export type Response = [
     name: string;
   }
 ];
-
-export type Request = {
-  provinceId: number;
-};
