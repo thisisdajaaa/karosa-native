@@ -1,4 +1,4 @@
-import { TextStyle } from "react-native";
+import { TextStyle, ViewStyle } from "react-native";
 
 export type BaseProps = {
   title: string;
@@ -8,6 +8,7 @@ export type BaseProps = {
   required?: boolean;
   iconStyle?: TextStyle;
   txtInfoStyle?: TextStyle;
+  containerStyle?: ViewStyle;
   onPress: () => void;
 };
 

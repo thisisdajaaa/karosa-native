@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
   },
   chevronIcon: {
     fontSize: 28,
-    color: "#0AA351",
+    color: theme.colors.primary,
   },
   txtChevronInfo: {
     ...theme.textRegular,

@@ -16,9 +16,10 @@ export const ListChevron: React.FC<BaseProps> = ({
   hasBottomDivider,
   iconStyle,
   txtInfoStyle,
+  containerStyle,
 }) => {
   return (
-    <ListItem bottomDivider={hasBottomDivider}>
+    <ListItem bottomDivider={hasBottomDivider} containerStyle={containerStyle}>
       <ListItem.Content style={styles.container}>
         {listColor && (
           <MaterialCommunityIcons

@@ -1,13 +1,14 @@
 import { Products } from "@app/redux/api-models/product-list";
 
-type Theme = "seller" | "buyer";
-
-export type SellerProps = {
+type Common = {
   item: Products;
-  ActionButton?: React.ReactElement;
 };
 
-export type BuyerProps = {
+export type BuyerProps = Common;
+
+export type HomeProps = Common;
+
+export type SellerProps = {
   item: Products;
   ActionButton?: React.ReactElement;
 };

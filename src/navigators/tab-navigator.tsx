@@ -13,12 +13,11 @@ import HomeScreen from "@app/screens/home";
 import ShopMainScreen from "@app/screens/shop/main";
 import AuthMainScreen from "@app/screens/auth/main";
 import BasketScreen from "@app/screens/basket";
-//import NotificationScreen from "@app/screens/notifications";
+import NotificationScreen from "@app/screens/notifications";
 import SellerProducts from "@app/screens/products/my-products/product-content";
 import ShopContent from "@app/screens/shop/view-shop/shop-content";
 import BuyerProducts from "@app/screens/shop/view-shop/product-content";
 import CategoryContent from "@app/screens/shop/view-shop/category-content";
-import ViewShopScreen from "@app/screens/shop/view-shop";
 
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -117,7 +116,7 @@ const TabNavigator: React.FC = () => {
         />
         <BottomTab.Screen
           name="Notifications"
-          component={ViewShopScreen}
+          component={NotificationScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="ios-notifications" size={size} color={color} />
