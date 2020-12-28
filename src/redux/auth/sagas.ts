@@ -25,6 +25,22 @@ export function* callLoginApi(
   }
 }
 
+export function* callRegisterApi(
+  action: ReturnType<typeof actions.callRegisterApi.request>
+): SagaIterator {
+  try {
+    const response: AxiosResponse<models.RegisterResponse> = yield call(
+      baseAxios.post,
+      apiEndpoints.register,
+      action.payload
+    );
+
+    yield put(actions.callRegisterApi.success(response.data));
+  } catch (error) {
+    yield put(actions.callRegisterApi.failure(error));
+  }
+}
+
 export function* callForgotApi(): SagaIterator {
   try {
     const mockRes = {
@@ -84,6 +100,10 @@ export function* onLoginSaga() {
   yield takeLatest(getType(actions.callLoginApi.request), callLoginApi);
 }
 
+export function* onRegisterSaga() {
+  yield takeLatest(getType(actions.callRegisterApi.request), callRegisterApi);
+}
+
 export function* onForgotSaga() {
   yield takeLatest(getType(actions.callForgotApi.request), callForgotApi);
 }
@@ -105,5 +125,6 @@ export default function* () {
     call(onForgotSaga),
     call(onMyAddressSaga),
     call(onNewAddressSaga),
+    call(onRegisterSaga),
   ]);
 }

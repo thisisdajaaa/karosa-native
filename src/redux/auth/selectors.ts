@@ -13,6 +13,11 @@ export const getLoginResponse = () =>
     return state.loginResponse || initAuthState.loginResponse;
   });
 
+export const getRegisterResponse = () =>
+  createSelector([rootSelector], (state: AuthState) => {
+    return state.registerResponse || initAuthState.registerResponse;
+  });
+
 export const getForgotResponse = () =>
   createSelector(rootSelector, (state: AuthState) => {
     return state.forgotResponse || initAuthState.forgotResponse;
@@ -39,4 +44,5 @@ export default {
   getForgotResponse,
   getMyAddressResponse,
   getNewAddressResponse,
+  getRegisterResponse,
 };
