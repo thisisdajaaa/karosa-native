@@ -80,7 +80,6 @@ const EditAddressScreen: React.FC = () => {
     },
 
     onSubmit: (values) => {
-      console.log(values);
       const request: NewAddressRequest = {
         name: values.fullName,
         phoneNo: values.phoneNumber,
