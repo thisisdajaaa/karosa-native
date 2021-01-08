@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 5,
     borderBottomColor: "black",
     fontWeight: "400",
+    paddingHorizontal: 20
   },
   hiddenText: {
     position: "absolute",

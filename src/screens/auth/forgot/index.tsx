@@ -15,6 +15,7 @@ import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
 import { validationSchema } from "./validation";
+import { View } from "react-native";
 
 const ForgotScreen: React.FC = () => {
   const { goBack, navigate } = useNavigation();
@@ -79,8 +80,9 @@ const ForgotScreen: React.FC = () => {
         <BaseText customStyles={styles.txtResetPass}>
           You can reset your password here.
         </BaseText>
-
-        <FormInput {...identifierProps} />
+        <View style={styles.container}>
+          <FormInput {...identifierProps} />
+        </View>
         <SubmitButton {...submitButtonProps} />
       </Screen>
     </FormikContext.Provider>
