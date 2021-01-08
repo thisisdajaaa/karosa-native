@@ -3,7 +3,6 @@ import { View } from "react-native";
 import { Picker as ReactPicker } from "@react-native-picker/picker";
 import { TextInput } from "@app/components/input";
 import { theme } from "@app/styles";
-import { PickerData } from "@app/redux/api-models/common";
 
 import { styles } from "./styles";
 import { Props } from "./types";
@@ -45,7 +44,7 @@ export const Picker: React.FC<Props> = React.memo(
             value={placeholder ? placeholder : ""}
             color={theme.colors.light10}
             key={-1}
-            label={placeholder}
+            label={String(placeholder)}
           />
           {data.map((targetData) => {
             return (
