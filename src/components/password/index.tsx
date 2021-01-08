@@ -4,8 +4,12 @@ import { TextInput, View } from "react-native";
 import { Props } from "./types";
 import { styles } from "./styles";
 
-export const Password: React.FC<Props> = ({ inputLength }) => {
-  const [value, setValue] = useState<string>();
+export const Password: React.FC<Props> = ({
+  inputLength,
+  value,
+  onChangeText,
+}) => {
+  const [currentValue, setValue] = useState<string>(value || "");
 
   return (
     <View style={[styles.container]}>
@@ -14,8 +18,11 @@ export const Password: React.FC<Props> = ({ inputLength }) => {
           <TextInput
             editable={false}
             selectTextOnFocus={false}
-            style={[styles.text, { opacity: value?.charAt(index) ? 1 : 0.5 }]}
-            value={value?.charAt(index) || ""}
+            style={[
+              styles.text,
+              { opacity: currentValue?.charAt(index) ? 1 : 0.5 },
+            ]}
+            value={currentValue?.charAt(index) || ""}
             key={index}
           />
         );
@@ -24,6 +31,9 @@ export const Password: React.FC<Props> = ({ inputLength }) => {
         maxLength={inputLength}
         onChangeText={(text) => {
           setValue(text);
+          if (onChangeText) {
+            onChangeText(text);
+          }
         }}
         style={styles.hiddenText}
       />
