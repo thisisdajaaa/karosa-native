@@ -87,7 +87,6 @@ export const getProductListResponse = () =>
     return state.productListResponse || initShopState.productListResponse;
   });
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getAvailabilityForm,
   getProductForm,

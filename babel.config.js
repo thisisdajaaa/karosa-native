@@ -2,6 +2,11 @@ module.exports = function (api) {
   api.cache(true);
   return {
     presets: ["babel-preset-expo"],
+    env: {
+      development: {
+        plugins: ["inline-dotenv"],
+      },
+    },
     plugins: [
       [
         "module-resolver",
@@ -9,6 +14,7 @@ module.exports = function (api) {
           root: ["."],
           extensions: [".ios.js", ".android.js", ".js", ".ts", ".tsx", ".json"],
           alias: {
+            "@app/assets": "./src/assets",
             "@app/constants": "./src/constants",
             "@app/components": "./src/components",
             "@app/config": "./src/config",
@@ -19,6 +25,7 @@ module.exports = function (api) {
             "@app/styles": "./src/styles",
           },
         },
+        "inline-dotenv",
       ],
     ],
   };

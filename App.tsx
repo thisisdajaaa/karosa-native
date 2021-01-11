@@ -5,6 +5,8 @@ import LoadAssets from "@app/components/load-assets";
 import BaseNavigator from "@app/navigators/index";
 import configureStore from "@app/redux/store";
 
+import "@app/config/i18n";
+
 const fonts = {
   "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
   "SFProText-Semibold": require("./assets/fonts/SF-Pro-Text-Semibold.otf"),

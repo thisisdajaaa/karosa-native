@@ -4,6 +4,7 @@
     "jsx": "react-native",
     "lib": ["dom", "esnext"],
     "moduleResolution": "node",
+    "module": "commonjs",
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
@@ -22,6 +23,7 @@
     "baseUrl": ".",
     "paths": {
       "*": ["src/*"],
+      "@app/assets/*": ["src/assets/*"],
       "@app/constants": ["src/constants"],
       "@app/components/*": ["src/components/*"],
       "@app/config/*": ["src/config/*"],
