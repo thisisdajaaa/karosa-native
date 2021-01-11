@@ -40,6 +40,7 @@
     "expo-font": "~8.3.0",
     "expo-image-picker": "^9.1.1",
     "expo-localization": "^9.1.0",
+    "expo-permissions": "~9.3.0",
     "expo-status-bar": "~1.0.2",
     "formik": "^2.1.7",
     "i18n-js": "^3.8.0",

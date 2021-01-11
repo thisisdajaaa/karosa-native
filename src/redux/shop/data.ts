@@ -1,4 +1,4 @@
-import { RES_SHOP_STATUS } from "@app/constants";
+import { ENUM } from "@app/constants";
 
 import {
   AvailabilityForm,
@@ -88,7 +88,7 @@ export const initShopState: ShopState = {
         id: 0,
         name: "",
         isActive: false,
-        status: RES_SHOP_STATUS.Active,
+        status: ENUM.RES_SHOP_STATUS.Active,
         createdAt: "",
         updatedAt: "",
       },

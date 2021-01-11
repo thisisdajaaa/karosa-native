@@ -22,13 +22,16 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["src/*"],
       "@app/assets/*": ["src/assets/*"],
+      "@app/atoms/*": ["src/atoms/*"],
       "@app/constants": ["src/constants"],
       "@app/components/*": ["src/components/*"],
       "@app/config/*": ["src/config/*"],
       "@app/hooks": ["src/hooks"],
+      "@app/layouts": ["./src/components/layouts"],
+      "@app/molecules": ["./src/components/molecules"],
       "@app/navigators/*": ["src/navigators/*"],
+      "@app/organisms": ["./src/components/organisms"],
       "@app/redux/*": ["src/redux/*"],
       "@app/screens/*": ["src/screens/*"],
       "@app/styles": ["src/styles"]

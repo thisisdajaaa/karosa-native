@@ -1,9 +1,7 @@
 import React from "react";
 import { Dimensions } from "react-native";
-import { BaseText } from "@app/components/base-text";
 import { Screen } from "@app/components/base-screen";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
-import { t } from "@app/config/i18n";
 import Button from "@app/components/atoms/Button";
 
 import { styles } from "./styles";
@@ -18,7 +16,6 @@ const BasketScreen: React.FC = () => {
 
   return (
     <Screen {...screenProps}>
-      <BaseText>{t("HELLO")}</BaseText>
       <Button
         activeOpacity={0.8}
         raised

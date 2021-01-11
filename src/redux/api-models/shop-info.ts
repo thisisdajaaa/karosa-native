@@ -1,4 +1,4 @@
-import { RES_SHOP_STATUS } from "@app/constants";
+import { ENUM } from "@app/constants";
 
 import { Audit } from "./common";
 
@@ -6,7 +6,7 @@ export type Shop = {
   id: number;
   name: string;
   isActive: boolean;
-  status: RES_SHOP_STATUS | null;
+  status: ENUM.RES_SHOP_STATUS | null;
 } & Audit;
 
 export type Response = {

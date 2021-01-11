@@ -1,3 +1,4 @@
-export * from "./enums";
-export * from "./i18n";
-export * from "./limits";
+import LIMITS from "./limits";
+import * as ENUM from "./enums";
+
+export { LIMITS, ENUM };

@@ -5,18 +5,24 @@
  *
  */
 
-import React, {FC} from 'react';
+import React, { FC } from "react";
+import { Text as RnText } from "react-native-elements";
 
-import TextConfig from './config';
-import type {PropsType} from './types';
-import TextStyles from './styles';
-
+import type { PropsType } from "./types";
+import TextStyles from "./styles";
 
 const Text: FC<PropsType> = (props) => {
-  const {} = props;
+  const { text, customStyle, numberOfLines, ellipsizeMode } = props;
 
-  return ;
+  return (
+    <RnText
+      style={[TextStyles.text, customStyle]}
+      numberOfLines={numberOfLines}
+      ellipsizeMode={ellipsizeMode}
+    >
+      {text}
+    </RnText>
+  );
 };
 
 export default Text;
-

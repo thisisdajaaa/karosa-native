@@ -4,9 +4,8 @@
  *
  */
 
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
 
-const ButtonStyles = StyleSheet.create({
-});
+const ButtonStyles = StyleSheet.create({});
 
 export default ButtonStyles;
