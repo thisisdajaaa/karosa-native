@@ -13,6 +13,11 @@ const theme = {
     fontSize: 12,
     lineHeight: 14.06,
   },
+  textLightBold: {
+    fontSize: 12,
+    lineHeight: 14.06,
+    fontFamily: "SFProText-Semibold",
+  },
   textRegular: {
     fontSize: 16,
     lineHeight: 18.75,

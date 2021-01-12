@@ -23,7 +23,7 @@
     "baseUrl": ".",
     "paths": {
       "@app/assets/*": ["src/assets/*"],
-      "@app/atoms/*": ["src/atoms/*"],
+      "@app/atoms/*": ["src/components/atoms/*"],
       "@app/constants": ["src/constants"],
       "@app/components/*": ["src/components/*"],
       "@app/config/*": ["src/config/*"],

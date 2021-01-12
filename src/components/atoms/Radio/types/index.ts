@@ -5,7 +5,7 @@
  */
 
 export type PropsType = {
-  value: boolean;
-  label: string;
+  checked: boolean;
+  title: string;
   onPress(): void;
 };

@@ -5,7 +5,6 @@
  */
 
 export type PropsType = {
-  value: boolean;
-  label: string;
-  onPress(): void;
+  children: React.ReactNode;
+  height: number;
 };
