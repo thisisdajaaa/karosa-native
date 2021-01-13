@@ -48,10 +48,10 @@ const AuthMainScreen: React.FC<Props> = (props) => {
   };
 
   const signInButtonProps: ButtonProps = {
-    title: "Phone number / Username / Email",
+    title: "Phone number",
     containerStyle: styles.signInButtonContainer,
     onPress: () => {
-      navigate("Stack", { screen: routes.AUTH_LOGIN });
+      navigate("Stack", { screen: routes.AUTH_PHONE_NUMBER });
       props.onLogin && props.onLogin();
     },
   };

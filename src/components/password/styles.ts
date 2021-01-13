@@ -3,6 +3,7 @@ import { theme } from "@app/styles";
 
 export const styles = StyleSheet.create({
   container: {
+    justifyContent: "center",
     flex: 1,
     flexDirection: "row",
     height: 50,
@@ -18,7 +19,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 5,
     borderBottomColor: "black",
     fontWeight: "400",
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   hiddenText: {
     position: "absolute",

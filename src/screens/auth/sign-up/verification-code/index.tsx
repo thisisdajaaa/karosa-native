@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
+import { TouchableOpacity } from "react-native";
 import { FormikContext, useFormik } from "formik";
 import { useNavigation } from "@react-navigation/native";
 import { FormPassword } from "@app/components/formik/form-password";
@@ -9,8 +9,6 @@ import { Screen } from "@app/components/base-screen";
 import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
 import { Props as FormPasswordProps } from "@app/components/formik/form-password/types";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
-import { actions } from "@app/redux/auth";
-import { ForgotRequest } from "@app/redux/auth/models";
 import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
@@ -18,30 +16,15 @@ import { validationSchema } from "./validation";
 
 const VerificationScreen: React.FC = () => {
   const { goBack, navigate } = useNavigation();
-  const dispatch = useDispatch();
-
-  const callForgotApi = useCallback(
-    (request: ForgotRequest) =>
-      dispatch(actions.callForgotApi.request(request)),
-    [dispatch]
-  );
-
-  const handleSubmit = useCallback(() => {
-    try {
-      const request: ForgotRequest = {
-        identifier: formikBag.values.identifier,
-      };
-
-      if (!formikBag.dirty) callForgotApi(request);
-    } catch (error) {}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [callForgotApi]);
 
   const formikBag = useFormik({
-    initialValues: { identifier: "" },
+    initialValues: { otp: "" },
     validateOnChange: true,
     validateOnBlur: true,
-    onSubmit: handleSubmit,
+    onSubmit: (values) => {
+      navigate("Stack", { screen: routes.AUTH_PASSWORD });
+      console.log(values);
+    },
     validationSchema,
   });
 
@@ -66,8 +49,8 @@ const VerificationScreen: React.FC = () => {
     margin: 6,
   };
 
-  const passwordProps: FormPasswordProps = {
-    name: "Password",
+  const otpProps: FormPasswordProps = {
+    name: "otp",
     inputLength: 6,
     style: styles.container,
   };
@@ -75,11 +58,23 @@ const VerificationScreen: React.FC = () => {
   return (
     <FormikContext.Provider value={formikBag}>
       <Screen {...screenProps}>
-        <BaseText customStyles={styles.txtForgotPass}>
+        <BaseText customStyles={styles.txtVerificationCode}>
           Enter verification code
         </BaseText>
-        <FormPassword {...passwordProps} />
+        <BaseText style={styles.txtSMS}>
+          You verification code is sent by SMS to
+        </BaseText>
+        <FormPassword {...otpProps} />
         <SubmitButton {...submitButtonProps} />
+        <BaseText style={styles.txtSMS}>
+          Did not receive the code?
+          <TouchableOpacity
+            style={styles.txtResend}
+            onPress={() => console.log("Resend")}
+          >
+            <BaseText>Resend</BaseText>
+          </TouchableOpacity>
+        </BaseText>
       </Screen>
     </FormikContext.Provider>
   );

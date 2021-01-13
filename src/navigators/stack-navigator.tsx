@@ -14,7 +14,9 @@ import AddVariationScreen from "@app/screens/products/add-variation";
 import AddWholesaleScreen from "@app/screens/products/add-wholesale";
 import ChooseCategoryScreen from "@app/screens/products/choose-category";
 import ShippingDetailsScreen from "@app/screens/products/shipping-details";
-
+import PhoneNumberScreen from "@app/screens/auth/sign-up/phone-number";
+import PasswordScreen from "@app/screens/auth/sign-up/set-password";
+import VerificationScreen from "@app/screens/auth/sign-up/verification-code";
 import { TabNavigator } from "./tab-navigator";
 import NewAddressScreen from "@app/screens/user-account/new-address";
 import MyAddressScreen from "@app/screens/user-account/my-address";
@@ -29,6 +31,9 @@ const StackNavigator: React.FC = () => (
     <Stack.Screen name="Splash" component={SplashScreen} />
     <Stack.Screen name="Home" component={TabNavigator} />
     <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Screen name="Phone Number" component={PhoneNumberScreen} />
+    <Stack.Screen name="Verification" component={VerificationScreen} />
+    <Stack.Screen name="Password" component={PasswordScreen} />
     <Stack.Screen name="Help" component={HelpScreen} />
     <Stack.Screen name="Forgot Password" component={ForgotScreen} />
     <Stack.Screen name="Account Settings" component={AccountSettingsScreen} />
@@ -43,7 +48,6 @@ const StackNavigator: React.FC = () => (
     <Stack.Screen name="Add Wholesale" component={AddWholesaleScreen} />
     <Stack.Screen name="Shipping Details" component={ShippingDetailsScreen} />
     <Stack.Screen name="Choose Category" component={ChooseCategoryScreen} />
-
   </Stack.Navigator>
 );
 

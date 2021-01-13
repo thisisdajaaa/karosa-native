@@ -5,6 +5,9 @@ export default Object.freeze({
   AUTH_LOGIN: "Login",
   AUTH_HELP: "Help",
   AUTH_FORGOT: "Forgot Password",
+  AUTH_PHONE_NUMBER: "Phone Number",
+  AUTH_VERIFICATION: "Verification",
+  AUTH_PASSWORD: "Password",
 
   ACCOUNTS_MAIN: "User Account Main",
   ACCOUNTS_SETTINGS: "Account Settings",

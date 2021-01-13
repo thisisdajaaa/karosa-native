@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: theme.colors.white,
   },
-  txtForgotPass: {
+  txtEnterPhoneNumber: {
     ...theme.title,
     color: theme.colors.black,
     fontWeight: "500",
@@ -19,14 +19,5 @@ export const styles = StyleSheet.create({
     color: theme.colors.black,
     fontWeight: "300",
     marginVertical: 6,
-  },
-  txtLogin: {
-    ...theme.textRegular,
-    width: 70,
-    height: 50,
-    position: "absolute",
-    top: 20,
-    alignSelf: "center",
-    fontWeight: "700",
   },
 });
