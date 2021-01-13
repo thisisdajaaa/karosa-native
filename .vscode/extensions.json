@@ -1,0 +1,26 @@
+{
+    "recommendations": [
+        "EditorConfig.EditorConfig",
+        "christian-kohler.npm-intellisense",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "wix.vscode-import-cost",
+        "eamodio.gitlens",
+        "streetsidesoftware.code-spell-checker",
+        "wmaurer.change-case",
+        "mikestead.dotenv",
+        "waderyan.babelrc",
+        "esbenp.prettier-vscode",
+        "TimonVS.ReactSnippetsStandard",
+        "msjsdiag.vscode-react-native",
+        "waderyan.nodejs-extension-pack",
+        "gcazaciuc.vscode-flow-ide",
+        "Arjun.swagger-viewer",
+        "jundat95.react-native-snippet",
+        "oderwat.indent-rainbow",
+        "joelday.docthis",
+        "CoenraadS.bracket-pair-colorizer-2",
+        "aaron-bond.better-comments",
+        "flowtype.flow-for-vscode"
+    ]
+}  

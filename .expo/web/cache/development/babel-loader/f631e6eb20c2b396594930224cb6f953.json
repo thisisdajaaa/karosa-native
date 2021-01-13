@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default as theme } from \"./theme\";","map":{"version":3,"sources":["/Users/valiant.lamban/Downloads/karosa-native/src/styles/index.ts"],"names":["default","theme"],"mappings":"AAAA,SAASA,OAAO,IAAIC,KAApB","sourcesContent":["export { default as theme } from \"./theme\";\n"]},"metadata":{},"sourceType":"module"}
