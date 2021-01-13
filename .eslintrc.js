@@ -37,8 +37,13 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": ["error"],
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/naming-convention": [
+      // Enforce interface names that should begin with an 'I'
       "error",
-      { selector: "interface", format: ["PascalCase"], custom: { regex: "^I[A-Z]", match: true } }, // Enforce interface names that begin with an I
+      {
+        selector: "interface",
+        format: ["PascalCase"],
+        custom: { regex: "^I[A-Z]", match: true },
+      },
     ],
     "no-console": ["error", { allow: ["warn"] }],
     "react-native/no-unused-styles": "error",
