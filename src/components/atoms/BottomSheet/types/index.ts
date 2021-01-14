@@ -4,7 +4,9 @@
  *
  */
 
+import { ReactElement } from "react";
+
 export type PropsType = {
-  children: React.ReactNode;
+  children: ReactElement | ReactElement[];
   height: number;
 };

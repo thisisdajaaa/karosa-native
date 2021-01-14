@@ -57,6 +57,7 @@
     "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
     "react-native-simple-radio-button": "^2.7.4",
+    "react-native-skeleton-placeholder": "^3.0.2",
     "react-native-tab-view": "^2.15.2",
     "react-native-unimodules": "^0.7.0-rc.4",
     "react-native-web": "~0.13.12",
