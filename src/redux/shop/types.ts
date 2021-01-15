@@ -4,6 +4,11 @@ export const ACT_SHOP_ACTIVATION_REQUEST = "shop/actShopActivationRequest" as co
 export const ACT_SHOP_ACTIVATION_SUCCESS = "shop/actShopActivationSuccess" as const;
 export const ACT_SHOP_ACTIVATION_FAILURE = "shop/actShopActivationFailure" as const;
 
+
+export const ACT_SHOP_DELETION_REQUEST = "shop/actShopActivationRequest" as const;
+export const ACT_SHOP_DELETION_SUCCESS = "shop/actShopActivationSuccess" as const;
+export const ACT_SHOP_DELETION_FAILURE = "shop/actShopActivationFailure" as const;
+
 export const ACT_SHOP_SETTING_REQUEST = "shop/actShopRequest" as const;
 export const ACT_SHOP_SETTING_SUCCESS = "shop/actShopSuccess" as const;
 export const ACT_SHOP_SETTING_FAILURE = "shop/actShopFailure" as const;
@@ -26,4 +31,7 @@ export type Types =
   | typeof SET_SHOP_STATUS
   | typeof ACT_SHOP_ACTIVATION_REQUEST
   | typeof ACT_SHOP_ACTIVATION_SUCCESS
-  | typeof ACT_SHOP_ACTIVATION_FAILURE;
+  | typeof ACT_SHOP_ACTIVATION_FAILURE
+  | typeof ACT_SHOP_DELETION_REQUEST
+  | typeof ACT_SHOP_DELETION_SUCCESS
+  | typeof ACT_SHOP_DELETION_FAILURE;

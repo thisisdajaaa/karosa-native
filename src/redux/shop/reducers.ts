@@ -95,11 +95,39 @@ export const activateShopResponse = produce(
   data.initTakeOverData
 );
 
+export const deleteShopApi = produce(
+  (
+    draft: Draft<ResponseState<models.ShopActivationResponse>>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.callDeleteShopApi.request):
+        draft.response = data.initTakeOverData;
+        draft.isLoading = true;
+        return draft;
+      case getType(actions.callDeleteShopApi.success):
+        draft.response = action.payload;
+        draft.isLoading = false;
+        return draft;
+      case getType(actions.callDeleteShopApi.failure):
+        draft.error = action.payload;
+        draft.isLoading = false;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+ 
+  data.initTakeOverData
+);
+
+
 const reducer = combineReducers({
   entryContext,
   shopResponse,
   productResponse,
   activateShopResponse,
+  deleteShopApi,
 });
 
 export default reducer;

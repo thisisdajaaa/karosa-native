@@ -21,13 +21,12 @@ const ShopSettingScreen: React.FC = () => {
     header: {
       iconName: "arrow-back",
       title: "Shop Settings",
-      text:{
+      text: {
         right: "Save",
       },
       press: {
         left: () => navigate(routes.SHOP_MAIN),
-        right: () => {console.log("saving...")}
-        
+        right: () => processSaving(),
       },
     },
     customStyles: styles.container,
@@ -37,6 +36,8 @@ const ShopSettingScreen: React.FC = () => {
     (request: ShopRequest) => dispatch(actions.callShopApi.request(request)),
     [dispatch]
   );
+
+  const processSaving = useCallback(() => {}, []);
 
   useEffect(() => {
     callShopApi();

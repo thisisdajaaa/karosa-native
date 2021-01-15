@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { FormikContext, useFormik } from "formik";
 import { View } from "react-native";
@@ -8,12 +8,21 @@ import { SubmitButton } from "@app/components/formik/submit-button";
 import { FormCheckbox } from "@app/components/formik/form-checkbox";
 import { Props as ButtonProps } from "@app/components/button/types";
 import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
+import { useDispatch } from "react-redux";
 
+import { actions } from "../../../redux/shop";
 
 import { Props } from "./types";
 import { styles } from "./styles";
 
 const DeleteShopModal: React.FC<Props> = ({ sheetRef }) => {
+  const dispatch = useDispatch();
+
+  const callDeleteShop = useCallback(
+    () => dispatch(actions.callDeleteShopApi.request),
+    [dispatch]
+  );
+
   const formikBag = useFormik({
     initialValues: {
       firstReason: false,
@@ -21,7 +30,7 @@ const DeleteShopModal: React.FC<Props> = ({ sheetRef }) => {
       thirdReason: false,
       fourthReason: false,
     },
-    onSubmit: () => console.log("submit form"),
+    onSubmit: async () => callDeleteShop(),
   });
 
   const hasFormikVal = useMemo(() => {

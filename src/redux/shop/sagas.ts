@@ -26,13 +26,11 @@ export function* onProductSaga() {
   yield takeLatest(getType(actions.callProductsApi.request), callProductsApi);
 }
 export function* callShopApi() {
-  // action: ReturnType<typeof actions.callShopApi.request>
- 
+
   try {
     const response: AxiosResponse<models.ShopResponse> = yield call(
       baseAxios.get,
       apiEndpoints.shop
-      // action.payload
     );
 
     yield put(actions.callShopApi.success(response.data));
@@ -56,6 +54,20 @@ export function* callActivateShopApi(
     yield put(actions.callActivateShopApi.failure(error));
   }
 }
+
+export function* callDeleteShopApi(): SagaIterator {
+  try {
+    const response: AxiosResponse<models.ShopActivationResponse> = yield call(
+      baseAxios.post,
+      apiEndpoints.shop
+    );
+
+    yield put(actions.callDeleteShopApi.success(response.data));
+  } catch (error) {
+    yield put(actions.callDeleteShopApi.failure(error));
+  }
+}
+
 
 export function* onShopSaga() {
   yield takeLatest(getType(actions.callShopApi.request), callShopApi);

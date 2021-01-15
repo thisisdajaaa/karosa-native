@@ -15,6 +15,7 @@ import TermsAndCondScreen from "@app/screens//shop/terms";
 import ShopAddressScreen from "@app/screens/shop/edit-address";
 
 import { TabNavigator } from "./tab-navigator";
+import ShopMainScreen from "@app/screens/shop/main";
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,7 @@ const StackNavigator: React.FC = () => (
       component={TermsAndCondScreen}
     />
     <Stack.Screen name="Edit Profile" component={EditProfileScreen} />
+    <Stack.Screen name="Shop Main" component={ShopMainScreen} />
     <Stack.Screen name="Social Media Accounts" component={SocialMediaScreen} />
     <Stack.Screen name="My Products" component={MyProducts} />
     <Stack.Screen name="Search Product" component={SearchProduct} />

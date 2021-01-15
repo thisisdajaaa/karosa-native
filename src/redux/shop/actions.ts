@@ -27,10 +27,17 @@ export const callActivateShopApi = createAsyncAction(
   types.ACT_SHOP_ACTIVATION_FAILURE
 )<models.ShopActivationRequest, models.ShopActivationResponse, Error>();
 
+export const callDeleteShopApi = createAsyncAction(
+  types.ACT_SHOP_DELETION_REQUEST,
+  types.ACT_SHOP_DELETION_SUCCESS,
+  types.ACT_SHOP_DELETION_FAILURE
+)<models.ShopDeletionRequest, models.ShopDeletionResponse, Error>();
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   setShopStatus,
   callShopApi,
   callProductsApi,
   callActivateShopApi,
+  callDeleteShopApi,
 };
