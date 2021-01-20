@@ -18,6 +18,7 @@ import ShippingDetailsScreen from "@app/screens/products/shipping-details";
 import { TabNavigator } from "./tab-navigator";
 import NewAddressScreen from "@app/screens/user-account/new-address";
 import MyAddressScreen from "@app/screens/user-account/my-address";
+import ProductDetailScreen from "@app/screens/products/product-detail";
 
 const Stack = createStackNavigator();
 
@@ -28,7 +29,7 @@ const StackNavigator: React.FC = () => (
   >
     <Stack.Screen name="Splash" component={SplashScreen} />
     <Stack.Screen name="Home" component={TabNavigator} />
-    <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Screen name="Login" component={ProductDetailScreen} />
     <Stack.Screen name="Help" component={HelpScreen} />
     <Stack.Screen name="Forgot Password" component={ForgotScreen} />
     <Stack.Screen name="Account Settings" component={AccountSettingsScreen} />
@@ -43,7 +44,6 @@ const StackNavigator: React.FC = () => (
     <Stack.Screen name="Add Wholesale" component={AddWholesaleScreen} />
     <Stack.Screen name="Shipping Details" component={ShippingDetailsScreen} />
     <Stack.Screen name="Choose Category" component={ChooseCategoryScreen} />
-
   </Stack.Navigator>
 );
 

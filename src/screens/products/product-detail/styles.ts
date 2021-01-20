@@ -17,34 +17,17 @@ export const styles = StyleSheet.create({
     width: 50,
     borderRadius: 30,
   },
-  txtSeller: {
-    fontSize: 12,
-  },
-  txtRating: {
-    ...theme.textRegular,
-    color: theme.colors.black,
-  },
   rating: {
     flexDirection: "row",
-  },
-  txtSold: {
-    ...theme.textRegular,
-    color: theme.colors.black,
-    margin: 10,
+    alignItems: "center",
   },
   txtSellerInfo: {
     ...theme.textRegular,
     color: theme.colors.orange10,
   },
-  txtSellerLabel: {
+  txtLight: {
     ...theme.textLight,
     color: theme.colors.black,
-  },
-  txtVisitStore: {
-    marginLeft: 80,
-    ...theme.textRegular,
-    color: theme.colors.green10,
-    margin: 10,
   },
   txtFooters: {
     ...theme.textLight,
@@ -57,20 +40,18 @@ export const styles = StyleSheet.create({
     padding: 8,
     alignItems: "center",
   },
-  txtProductName: {
+  ratingContainer: {
+    paddingHorizontal: 16,
+    flex: 3,
+  },
+  txtBlackRegular: {
     ...theme.textRegular,
-    marginLeft: 8,
+    padding: 5,
   },
   iconStyleEllipsis: {
     position: "absolute",
     alignSelf: "flex-end",
     marginHorizontal: 10,
-  },
-  iconStyleFavorite: {
-    marginRight: 35,
-  },
-  iconStyleShare: {
-    margin: 5,
   },
   ratingIconStyle: {
     width: 15,
@@ -78,27 +59,21 @@ export const styles = StyleSheet.create({
   },
   footer: {
     flexDirection: "row",
-    width: "100%",
+    flex: 3,
     justifyContent: "center",
   },
-  greenBox: {
+  button: {
     padding: 5,
-    backgroundColor: theme.colors.green10,
     alignItems: "center",
     height: 50,
-    width: "30%",
     marginHorizontal: 2,
+    flex: 1,
+  },
+  green: {
+    backgroundColor: theme.colors.green10,
   },
   orangeBox: {
-    padding: 15,
     backgroundColor: theme.colors.orange10,
-    alignItems: "center",
-    height: 50,
-    width: "30%",
-    marginHorizontal: 2,
-  },
-  container: {
-    flexDirection: "column",
   },
   subContainer: {
     backgroundColor: theme.colors.white,
@@ -127,5 +102,18 @@ export const styles = StyleSheet.create({
   },
   reviewSeller: {
     alignItems: "center",
+    flex: 1,
+  },
+  txtSold: {
+    margin: 10,
+  },
+  txtGreen: {
+    color: theme.colors.green10,
+  },
+  txtWhite: {
+    color: theme.colors.white,
+  },
+  iconStyle: {
+    margin: 5,
   },
 });
