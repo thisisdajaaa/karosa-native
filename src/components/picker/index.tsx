@@ -44,7 +44,7 @@ export const Picker: React.FC<Props> = React.memo(
             value={placeholder ? placeholder : ""}
             color={theme.colors.light10}
             key={-1}
-            label={String(placeholder)}
+            label={placeholder}
           />
           {data.map((targetData) => {
             return (
