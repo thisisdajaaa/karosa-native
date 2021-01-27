@@ -8,7 +8,7 @@ import { theme } from "@app/styles";
 
 import { BackgroundColorType, SizeType } from "../types";
 
-// will use dimensions for getting size, will rework
+// will use dimensions for getting size, for rework
 const defaultSize: Record<SizeType, number> = {
   sm: 222,
   md: 225,
@@ -26,7 +26,9 @@ export const getWidth = (size: SizeType): number => {
   }
 };
 
-export const getBackgroundColor = (backgroundColor: BackgroundColorType) => {
+export const getBackgroundColor = (
+  backgroundColor: BackgroundColorType
+): string => {
   switch (backgroundColor) {
     case "secondary":
       return theme.colors.light10;

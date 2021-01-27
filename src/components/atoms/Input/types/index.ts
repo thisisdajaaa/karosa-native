@@ -12,6 +12,7 @@ export type PropsType = {
   onChange(text: string): void;
   customStyle?: StyleProp<ViewProps>;
   disabled?: boolean;
+  multiline?: boolean;
   keyboardType?: KeyboardTypeOptions;
   numberOfLines?: number;
 };

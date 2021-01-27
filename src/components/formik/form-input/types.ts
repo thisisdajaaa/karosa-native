@@ -6,3 +6,4 @@ export type Props = {
   name: string;
 } & TextInputProps &
   InputProps;
+w;

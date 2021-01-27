@@ -31,8 +31,6 @@ module.exports = function (api) {
         },
         "inline-dotenv",
       ],
-      "transform-inline-environment-variables",
     ],
-    retainLines: true,
   };
 };

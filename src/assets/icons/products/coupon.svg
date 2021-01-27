@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="239"
+  height="88"
+  viewBox="0 0 239 88"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M98 0C98 4.41828 94.4183 8 90 8C85.5817 8 82 4.41828 82 0H0V88H82C82 83.5817 85.5817 80 90 80C94.4183 80 98 83.5817 98 88H239V0H98Z"
+    fill="white"
+  />
+  <mask
+    id="mask0"
+    mask-type="alpha"
+    maskUnits="userSpaceOnUse"
+    x="0"
+    y="0"
+    width="239"
+    height="88"
+  >
+    <path
+      d="M98 0C98 4.41828 94.4183 8 90 8C85.5817 8 82 4.41828 82 0H0V88H82C82 83.5817 85.5817 80 90 80C94.4183 80 98 83.5817 98 88H239V0H98Z"
+      fill="white"
+    />
+  </mask>
+  <g mask="url(#mask0)">
+    <rect
+      x="0.5"
+      y="0.5"
+      width="90"
+      height="87"
+      fill="#FFFACD"
+      stroke="#BDBDBD"
+      stroke-dasharray="2 5"
+    />
+  </g>
+</svg>

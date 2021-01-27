@@ -20,6 +20,7 @@ const Input: FC<PropsType> = (props) => {
     keyboardType,
     numberOfLines,
     onChange,
+    multiline,
   } = props;
 
   const [placeholder, setPlaceholder] = useState(initPlaceholder);
@@ -29,7 +30,8 @@ const Input: FC<PropsType> = (props) => {
       value={value}
       placeholder={placeholder}
       disabled={disabled}
-      onFocus={() => setPlaceholder("")}
+      multiline={multiline}
+      onFocus={() => setPlaceholder(undefined)}
       inputContainerStyle={[InputStyles.container, customStyle]}
       keyboardType={keyboardType}
       numberOfLines={numberOfLines}

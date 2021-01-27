@@ -35,29 +35,6 @@
       "@app/redux/*": ["src/redux/*"],
       "@app/screens/*": ["src/screens/*"],
       "@app/styles": ["src/styles"]
-    },
-    "plugins": [
-      {
-        "name": "typescript-styled-plugin",
-        "lint": {
-          "validProperties": [
-            "shadow-color",
-            "shadow-opacity",
-            "shadow-offset",
-            "shadow-radius",
-            "padding-horizontal",
-            "padding-vertical",
-            "margin-vertical",
-            "margin-horizontal",
-            "tint-color",
-            "aspect-ratio",
-            "elevation"
-          ]
-        }
-      }
-    ]
-  },
-  "exclude": [
-    "node_modules",
-  ]
+    }
+  }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M21.6 0H2.4C1.08 0 0.012 1.08 0.012 2.4L0 24L4.8 19.2H21.6C22.92 19.2 24 18.12 24 16.8V2.4C24 1.08 22.92 0 21.6 0ZM4.8 8.4H19.2V10.8H4.8V8.4ZM14.4 14.4H4.8V12H14.4V14.4ZM19.2 7.2H4.8V4.8H19.2V7.2Z"
+    fill="#1C1C1C"
+  />
+</svg>
