@@ -48,6 +48,18 @@ export const styles = StyleSheet.create({
     ...theme.textRegular,
     padding: 5,
   },
+  txtReviewParagraph: {
+    ...theme.textRegular,
+    marginHorizontal: 16,
+  },
+  tagsStyle: {
+    backgroundColor: theme.colors.dark5,
+    margin: 3,
+    padding: 8,
+    borderRadius: 16,
+    ...theme.textLight,
+    color: theme.colors.dark15,
+  },
   iconStyleEllipsis: {
     position: "absolute",
     alignSelf: "flex-end",
@@ -59,8 +71,8 @@ export const styles = StyleSheet.create({
   },
   footer: {
     flexDirection: "row",
-    flex: 3,
     justifyContent: "center",
+    height: 100,
   },
   button: {
     padding: 5,
@@ -96,9 +108,15 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  reviewContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    margin: 8,
+  },
   txtNameAddress: {
     flexDirection: "column",
     justifyContent: "center",
+    marginLeft: 8,
   },
   reviewSeller: {
     alignItems: "center",
@@ -114,6 +132,25 @@ export const styles = StyleSheet.create({
     color: theme.colors.white,
   },
   iconStyle: {
-    margin: 5,
+    width: "100%",
+    height: 30,
+  },
+  buyerContainer: {
+    flexDirection: "row",
+  },
+  likedIcon: {
+    marginLeft: 10,
+  },
+  tagsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    margin: 8,
+  },
+  buyerGallery: {
+    flexDirection: "row",
+    margin: 8,
+  },
+  commentContainer: {
+    marginHorizontal: 25,
   },
 });
