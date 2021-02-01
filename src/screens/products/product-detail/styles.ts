@@ -1,11 +1,15 @@
 import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
+import { Dimensions } from "react-native";
 
 export const styles = StyleSheet.create({
   varietyImage: {
     width: 70,
     height: 70,
     marginRight: 10,
+  },
+  scrollviewContainer: {
+    height: 0.93 * Dimensions.get("window").height,
   },
   rowContainer: {
     flexDirection: "row",
@@ -70,9 +74,13 @@ export const styles = StyleSheet.create({
     height: 15,
   },
   footer: {
-    flexDirection: "row",
+    flex: 1,
     justifyContent: "center",
-    height: 100,
+  },
+  subFooterContainer: {
+    flexDirection: "row",
+    flex: 1,
+    alignItems: "flex-end",
   },
   button: {
     padding: 5,

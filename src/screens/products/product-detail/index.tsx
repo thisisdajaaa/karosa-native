@@ -40,7 +40,7 @@ const reviewsProps: ListChevronProps = {
 const ProductDetailScreen: React.FC = () => {
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ flex: 1 }}>
+      <View style={styles.scrollviewContainer}>
         <ScrollView style={{ flex: 1 }}>
           <View style={styles.subContainer}>
             <View>
@@ -313,22 +313,24 @@ const ProductDetailScreen: React.FC = () => {
         </ScrollView>
       </View>
       <View style={styles.footer}>
-        <View style={[styles.button, styles.green]}>
-          <FontAwesome name="comments-o" size={25} />
-          <BaseText style={[styles.txtLight, styles.txtWhite]}>
-            Chat Now
-          </BaseText>
-        </View>
-        <View style={[styles.button, styles.green]}>
-          <AntDesign name="shoppingcart" size={25} />
-          <BaseText style={[styles.txtLight, styles.txtWhite]}>
-            Add to Basket
-          </BaseText>
-        </View>
-        <View style={[styles.button, styles.orangeBox]}>
-          <BaseText style={[styles.txtLight, styles.txtWhite]}>
-            Buy Now
-          </BaseText>
+        <View style={styles.subFooterContainer}>
+          <View style={[styles.button, styles.green]}>
+            <FontAwesome name="comments-o" size={25} />
+            <BaseText style={[styles.txtLight, styles.txtWhite]}>
+              Chat Now
+            </BaseText>
+          </View>
+          <View style={[styles.button, styles.green]}>
+            <AntDesign name="shoppingcart" size={25} />
+            <BaseText style={[styles.txtLight, styles.txtWhite]}>
+              Add to Basket
+            </BaseText>
+          </View>
+          <View style={[styles.button, styles.orangeBox]}>
+            <BaseText style={[styles.txtLight, styles.txtWhite]}>
+              Buy Now
+            </BaseText>
+          </View>
         </View>
       </View>
     </View>
