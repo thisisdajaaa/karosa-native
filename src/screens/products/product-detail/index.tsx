@@ -10,6 +10,9 @@ import { Separator } from "@app/components/separator";
 
 import { styles } from "./styles";
 import { ScrollView } from "react-native-gesture-handler";
+import { Images } from "@app/components/image";
+import { Reviews } from "@app/components/reviews";
+import { Props as CommentProps } from "@app/components/reviews/types";
 
 const multiListProps: MultiListProps = {
   multiChev: [
@@ -18,6 +21,13 @@ const multiListProps: MultiListProps = {
       hasBottomDivider: false,
     },
   ],
+};
+
+const revProps: CommentProps = {
+  username: "gwapo123",
+  comments: "nice nice nice well played",
+  likes: 200,
+  tags: ["nice", "good!"],
 };
 
 const voucherProps: ListChevronProps = {
@@ -87,20 +97,13 @@ const ProductDetailScreen: React.FC = () => {
           <Separator />
           <View style={styles.subContainer}>
             <ListChevron {...variationProps} />
-            <View style={styles.rowContainer}>
-              <Image
-                source={require("../../../../assets/tom1.jpg")}
-                style={styles.varietyImage}
-              />
-              <Image
-                source={require("../../../../assets/tom2.jpg")}
-                style={styles.varietyImage}
-              />
-              <Image
-                source={require("../../../../assets/tom3.jpg")}
-                style={styles.varietyImage}
-              />
-            </View>
+            <Images
+              imageSources={[
+                require("../../../../assets/tom2.jpg"),
+                require("../../../../assets/tom1.jpg"),
+                require("../../../../assets/tom3.jpg"),
+              ]}
+            />
           </View>
           <View style={styles.subContainer}>
             <View style={styles.horizontalContainer}>
@@ -180,80 +183,9 @@ const ProductDetailScreen: React.FC = () => {
               </View>
             </View>
           </View>
-          <View style={styles.subContainer}>
-            <View style={styles.reviewContainer}>
-              <View style={styles.buyerContainer}>
-                <Image
-                  source={require("../../../../assets/seller.jpg")}
-                  style={styles.sellerImage}
-                />
-                <View style={styles.txtNameAddress}>
-                  <BaseText style={styles.txtBlackRegular}>
-                    iamgerald19
-                  </BaseText>
-                  <View>
-                    <Image
-                      source={require("../../../../assets/stars.png")}
-                      style={styles.iconStyle}
-                    />
-                  </View>
-                </View>
-              </View>
-              <BaseText>
-                <AntDesign name="like2" size={20} style={styles.likedIcon} />1
-                <AntDesign
-                  name="ellipsis1"
-                  size={20}
-                  style={{ marginLeft: 16 }}
-                />
-              </BaseText>
-            </View>
-            <View style={styles.commentContainer}>
-              <BaseText style={styles.txtReviewParagraph}>
-                This is my first time to Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Nunc sit amet augue ligula. Nunc porttitor dui
-                in interdum fermentum.
-              </BaseText>
-              <View style={styles.tagsContainer}>
-                <BaseText customStyles={styles.tagsStyle}>
-                  Excellent Quality
-                </BaseText>
-                <BaseText customStyles={styles.tagsStyle}>
-                  Good Quality
-                </BaseText>
-                <BaseText customStyles={styles.tagsStyle}>
-                  Good Quality
-                </BaseText>
-                <BaseText customStyles={styles.tagsStyle}>
-                  Good Quality
-                </BaseText>
-                <BaseText customStyles={styles.tagsStyle}>
-                  Good Quality
-                </BaseText>
-                <BaseText customStyles={styles.tagsStyle}>
-                  Good Quality
-                </BaseText>
-              </View>
-              <View style={styles.buyerGallery}>
-                <Image
-                  source={require("../../../../assets/tom3.jpg")}
-                  style={styles.varietyImage}
-                />
-                <Image
-                  source={require("../../../../assets/tom1.jpg")}
-                  style={styles.varietyImage}
-                />
-                <Image
-                  source={require("../../../../assets/tom2.jpg")}
-                  style={styles.varietyImage}
-                />
-                <Image
-                  source={require("../../../../assets/tom3.jpg")}
-                  style={styles.varietyImage}
-                />
-              </View>
-            </View>
-          </View>
+
+          <Reviews {...revProps} />
+
           <View style={styles.subContainer}>
             <View style={styles.reviewContainer}>
               <View style={{ flexDirection: "row" }}>
