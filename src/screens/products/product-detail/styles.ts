@@ -140,8 +140,7 @@ export const styles = StyleSheet.create({
     color: theme.colors.white,
   },
   iconStyle: {
-    width: "100%",
-    height: 30,
+    height: 16,
   },
   buyerContainer: {
     flexDirection: "row",

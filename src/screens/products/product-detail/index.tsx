@@ -23,11 +23,20 @@ const multiListProps: MultiListProps = {
   ],
 };
 
-const revProps: CommentProps = {
+const rev1Props: CommentProps = {
   username: "gwapo123",
   comments: "nice nice nice well played",
   likes: 200,
   tags: ["nice", "good!"],
+  rate: 4,
+};
+
+const rev2Props: CommentProps = {
+  username: "ValorantNoob213",
+  comments: "spike planted! lorem ipsusm dolo set amet groove street home ",
+  likes: 200,
+  tags: ["nice", "scatter!", "wonderful"],
+  rate: 2,
 };
 
 const voucherProps: ListChevronProps = {
@@ -105,6 +114,7 @@ const ProductDetailScreen: React.FC = () => {
               ]}
             />
           </View>
+
           <View style={styles.subContainer}>
             <View style={styles.horizontalContainer}>
               <View style={styles.sellerContainer}>
@@ -149,6 +159,7 @@ const ProductDetailScreen: React.FC = () => {
               </View>
             </View>
           </View>
+
           <View style={styles.subContainer}>
             <View
               style={{ flexDirection: "row", justifyContent: "space-between" }}
@@ -183,65 +194,8 @@ const ProductDetailScreen: React.FC = () => {
               </View>
             </View>
           </View>
-
-          <Reviews {...revProps} />
-
-          <View style={styles.subContainer}>
-            <View style={styles.reviewContainer}>
-              <View style={{ flexDirection: "row" }}>
-                <Image
-                  source={require("../../../../assets/seller.jpg")}
-                  style={styles.sellerImage}
-                />
-                <View style={styles.txtNameAddress}>
-                  <BaseText style={styles.txtBlackRegular}>
-                    iamgerald19
-                  </BaseText>
-                  <View>
-                    <Image
-                      source={require("../../../../assets/stars.png")}
-                      style={styles.iconStyle}
-                    />
-                  </View>
-                </View>
-              </View>
-              <BaseText>
-                <AntDesign name="like2" size={20} style={{ marginLeft: 10 }} />1
-                <AntDesign
-                  name="ellipsis1"
-                  size={20}
-                  style={{ marginLeft: 16 }}
-                />
-              </BaseText>
-            </View>
-            <View style={styles.commentContainer}>
-              <BaseText style={styles.txtReviewParagraph}>
-                This is my first time to Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Nunc sit amet augue ligula. Nunc porttitor dui
-                in interdum fermentum.
-              </BaseText>
-              <View style={styles.tagsContainer}>
-                <BaseText customStyles={styles.tagsStyle}>
-                  Excellent Quality
-                </BaseText>
-                <BaseText customStyles={styles.tagsStyle}>
-                  Good Quality
-                </BaseText>
-                <BaseText customStyles={styles.tagsStyle}>
-                  Good Quality
-                </BaseText>
-                <BaseText customStyles={styles.tagsStyle}>
-                  Good Quality
-                </BaseText>
-                <BaseText customStyles={styles.tagsStyle}>
-                  Good Quality
-                </BaseText>
-                <BaseText customStyles={styles.tagsStyle}>
-                  Good Quality
-                </BaseText>
-              </View>
-            </View>
-          </View>
+          <Reviews {...rev1Props} />
+          <Reviews {...rev2Props} />
         </ScrollView>
       </View>
       <View style={styles.footer}>

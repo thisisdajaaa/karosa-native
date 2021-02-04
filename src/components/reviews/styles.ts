@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
     height: 70,
     marginRight: 10,
   },
-
   sellerImage: {
     height: 50,
     width: 50,
@@ -15,7 +14,6 @@ export const styles = StyleSheet.create({
 
   txtBlackRegular: {
     ...theme.textRegular,
-    padding: 5,
   },
   txtReviewParagraph: {
     ...theme.textRegular,
@@ -68,5 +66,8 @@ export const styles = StyleSheet.create({
   },
   commentContainer: {
     marginHorizontal: 25,
+  },
+  ratingContainer: {
+    width: 80,
   },
 });

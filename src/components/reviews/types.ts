@@ -5,5 +5,6 @@ export type Props = {
   username: string;
   comments: string;
   likes: number;
+  rate:number;
   tags: string[];
 };

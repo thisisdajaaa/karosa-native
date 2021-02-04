@@ -3,6 +3,7 @@ import { View, Image } from "react-native";
 import { BaseText } from "@app/components/base-text";
 import { AntDesign } from "@expo/vector-icons";
 import { Images } from "@app/components/image";
+import { Rating } from "@app/components/rating";
 
 import { styles } from "./styles";
 import { Props } from "./types";
@@ -13,6 +14,7 @@ export const Reviews: React.FC<Props> = ({
   comments,
   likes,
   tags,
+  rate,
 }) => {
   return (
     <View style={styles.subContainer}>
@@ -20,12 +22,11 @@ export const Reviews: React.FC<Props> = ({
         <View style={styles.buyerContainer}>
           <Image source={avatarPhoto} style={styles.sellerImage} />
           <View style={styles.txtNameAddress}>
-            <BaseText style={styles.txtBlackRegular}>{username}</BaseText>
             <View>
-              <Image
-                source={require("../../../assets/stars.png")}
-                style={styles.iconStyle}
-              />
+              <BaseText style={styles.txtBlackRegular}>{username}</BaseText>
+              <View style={styles.ratingContainer}>
+                <Rating rate={rate} />
+              </View>
             </View>
           </View>
         </View>
