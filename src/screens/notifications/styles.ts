@@ -1,7 +1,13 @@
+/**
+ *
+ * @format
+ *
+ */
+
 import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
-export const styles = StyleSheet.create({
+const HomeStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
@@ -10,3 +16,5 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.white,
   },
 });
+
+export default HomeStyles;
