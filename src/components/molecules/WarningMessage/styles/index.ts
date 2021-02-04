@@ -5,34 +5,30 @@
  */
 
 import { StyleSheet } from "react-native";
-import { theme } from "@app/styles";
+import { DIMENS, SPACING, theme } from "@app/styles";
 
 const WarningMessageStyles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.gold15,
-    height: 88,
+    height: DIMENS.screenHeight * 0.2,
   },
   content: {
     flexDirection: "row",
   },
   warningIcon: {
-    fontSize: 25,
-    color: theme.colors.gold5,
-    marginRight: 1,
-    marginTop: 2,
+    marginRight: SPACING.xss,
+    marginTop: SPACING.xs,
   },
   closeIcon: {
     marginLeft: "auto",
-    fontSize: 25,
-    color: theme.colors.dark10,
   },
-  txtContainer: {
+  textContainer: {
     alignItems: "center",
     justifyContent: "center",
-    paddingLeft: 25,
-    paddingRight: 12,
+    paddingLeft: SPACING.xl,
+    paddingRight: SPACING.lg,
   },
-  txtMessage: {
+  text: {
     ...theme.textRegular,
     fontWeight: "400",
     color: theme.colors.dark30,

@@ -27,13 +27,13 @@ const FormRadioGroup: FC<PropsType> = (props) => {
   }, [meta.value]);
 
   const handlePress = useCallback(
-    (val) => async () => {
+    (val) => () => {
       setCheck({ value: val });
 
-      await helpers.setValue(val);
+      helpers.setValue(val);
 
       if (validateOnChange) {
-        await helpers.setTouched(true);
+        helpers.setTouched(true);
       }
     },
     [helpers, validateOnChange]

@@ -22,13 +22,12 @@ const FormSwitch: FC<PropsType> = (props) => {
 
   useEffect(() => {
     helpers.setValue(currentValue);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentValue]);
 
   const handleSwitch = useCallback(
-    async (value: boolean) => {
+    (value: boolean) => {
       setCurrentValue(value);
-      await helpers.setTouched(true);
+      helpers.setTouched(true);
     },
     [helpers]
   );

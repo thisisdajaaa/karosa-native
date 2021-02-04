@@ -5,7 +5,7 @@
  */
 
 import { StyleSheet } from "react-native";
-import { theme } from "@app/styles";
+import { DIMENS, theme } from "@app/styles";
 
 import { BackgroundColorType, SizeType } from "../types";
 import { getWidth, getBackgroundColor } from "../config";
@@ -16,7 +16,7 @@ const SearchBarStyles = (
 ) => {
   return StyleSheet.create({
     inputContainer: {
-      height: 42,
+      height: DIMENS.screenHeight * 0.07,
       width: getWidth(size),
       backgroundColor: getBackgroundColor(backgroundColor),
     },

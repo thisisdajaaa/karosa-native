@@ -4,12 +4,12 @@
  *
  */
 
-import { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, TextStyle } from "react-native";
 
 export type PropsType = {
   group: string;
   name: string;
-  extraStyle: StyleProp<ViewStyle>;
-  height: number;
-  width: number;
+  extraStyle?: StyleProp<TextStyle>;
+  height?: number;
+  width?: number;
 };

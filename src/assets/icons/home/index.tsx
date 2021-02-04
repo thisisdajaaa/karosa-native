@@ -3,28 +3,19 @@
  * @format
  *
  */
-import React, { ReactElement } from "react";
+import React from "react";
 import { ViewStyle, StyleProp } from "react-native";
 
-import RefreshIcon from "./refresh.svg";
+import Refresh from "./refresh.svg";
 
 const HomeIcons = (
   name: string,
   extraStyle: StyleProp<ViewStyle>,
   width: number,
   height: number
-): ReactElement => {
-  let widthProps = {};
-  let heightProps = {};
-
-  if (width) widthProps = { width };
-
-  if (height) heightProps = { heightProps };
-
-  const icons = {
-    refreshIcon: (
-      <RefreshIcon style={extraStyle} {...widthProps} {...heightProps} />
-    ),
+) => {
+  const icons: { [key: string]: JSX.Element } = {
+    refresh: <Refresh style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];

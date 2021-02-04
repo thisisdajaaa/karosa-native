@@ -6,10 +6,11 @@
  */
 
 import React, { FC } from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableWithoutFeedback, View } from "react-native";
 import { ListItem } from "react-native-elements";
-import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
+import Icon from "@app/atoms/Icon";
 
 import type { PropsType } from "./types";
 import WarningMessageStyles from "./styles";
@@ -20,16 +21,27 @@ const WarningMessage: FC<PropsType> = (props) => {
   return (
     <ListItem containerStyle={WarningMessageStyles.container}>
       <ListItem.Content style={WarningMessageStyles.content}>
-        <MaterialIcons
+        <Icon
+          group="products"
           name="warning"
-          style={WarningMessageStyles.warningIcon}
+          extraStyle={WarningMessageStyles.warningIcon}
         />
-        <ListItem.Content style={WarningMessageStyles.txtContainer}>
-          <Text text={message} customStyle={WarningMessageStyles.txtMessage} />
+        <ListItem.Content style={WarningMessageStyles.textContainer}>
+          <Text
+            numberOfLines={4}
+            text={message}
+            customStyle={WarningMessageStyles.text}
+          />
         </ListItem.Content>
-        <TouchableOpacity onPress={onPress}>
-          <AntDesign name="close" style={WarningMessageStyles.closeIcon} />
-        </TouchableOpacity>
+        <TouchableWithoutFeedback onPress={onPress}>
+          <View>
+            <Icon
+              group="common"
+              name="close"
+              extraStyle={WarningMessageStyles.closeIcon}
+            />
+          </View>
+        </TouchableWithoutFeedback>
       </ListItem.Content>
     </ListItem>
   );

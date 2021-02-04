@@ -7,12 +7,12 @@
 
 import React, { FC, useState, useEffect, useCallback } from "react";
 import { useFormikContext, useField } from "formik";
-import ImagePicker from "@app/atoms/ImagePicker";
+import ImagePicker from "@app/molecules/ImagePicker";
 
 import type { PropsType } from "./types";
 
 const FormImagePicker: FC<PropsType> = (props) => {
-  const { name, children } = props;
+  const { name, variation } = props;
   const [, meta, helpers] = useField(name);
   const { validateOnChange } = useFormikContext();
 
@@ -25,21 +25,23 @@ const FormImagePicker: FC<PropsType> = (props) => {
   }, [meta.value]);
 
   const handleChange = useCallback(
-    async (img: string) => {
+    (img: string) => {
       setCurrentValue(img);
 
       if (validateOnChange) {
-        await helpers.setValue(img);
-        await helpers.setTouched(true);
+        helpers.setValue(img);
+        helpers.setTouched(true);
       }
     },
     [helpers, validateOnChange]
   );
 
   return (
-    <ImagePicker uri={currentValue} onChange={handleChange}>
-      {children}
-    </ImagePicker>
+    <ImagePicker
+      variation={variation}
+      uri={currentValue}
+      onChange={handleChange}
+    />
   );
 };
 

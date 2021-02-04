@@ -5,18 +5,23 @@
  *
  */
 
-import React, {FC} from 'react';
+import React, { FC } from "react";
+import {
+  ErrorMessage as FormikErrorMessage,
+  ErrorMessageProps as PropsType,
+} from "formik";
+import Text from "@app/atoms/Text";
 
-import ValidationMessageConfig from './config';
-import type {PropsType} from './types';
-import ValidationMessageStyles from './styles';
-
+import ValidationMessageStyles from "./styles";
 
 const ValidationMessage: FC<PropsType> = (props) => {
-  const {} = props;
+  const { name } = props;
 
-  return ;
+  return (
+    <FormikErrorMessage name={name}>
+      {(msg) => <Text customStyle={ValidationMessageStyles.text} text={msg} />}
+    </FormikErrorMessage>
+  );
 };
 
 export default ValidationMessage;
-

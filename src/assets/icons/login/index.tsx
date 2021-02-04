@@ -3,32 +3,21 @@
  * @format
  *
  */
-import React, { ReactElement } from "react";
+import React from "react";
 import { ViewStyle, StyleProp } from "react-native";
 
-import EmailIcon from "./email.svg";
-import PhoneIcon from "./phone.svg";
+import Email from "./email.svg";
+import Phone from "./phone.svg";
 
 const LoginIcons = (
   name: string,
   extraStyle: StyleProp<ViewStyle>,
   width: number,
   height: number
-): ReactElement => {
-  let widthProps = {};
-  let heightProps = {};
-
-  if (width) widthProps = { width };
-
-  if (height) heightProps = { heightProps };
-
-  const icons = {
-    emailIcon: (
-      <EmailIcon style={extraStyle} {...widthProps} {...heightProps} />
-    ),
-    phoneIcon: (
-      <PhoneIcon style={extraStyle} {...widthProps} {...heightProps} />
-    ),
+) => {
+  const icons: { [key: string]: JSX.Element } = {
+    email: <Email style={extraStyle} height={height} width={width} />,
+    phone: <Phone style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];

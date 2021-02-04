@@ -13,7 +13,16 @@ import type { PropsType } from "./types";
 import ButtonStyles from "./styles";
 
 const Button: FC<PropsType> = (props) => {
-  const { title, type = "solid", disabled, loading, icon, customStyle } = props;
+  const {
+    title,
+    type = "solid",
+    disabled,
+    loading,
+    icon,
+    titleStyle,
+    customStyle,
+    onPress,
+  } = props;
 
   return (
     <RnButton
@@ -22,8 +31,10 @@ const Button: FC<PropsType> = (props) => {
       raised
       icon={icon}
       title={title}
+      onPress={onPress}
       loading={loading}
       disabled={disabled}
+      titleStyle={titleStyle}
       buttonStyle={[ButtonStyles.container, customStyle]}
     />
   );

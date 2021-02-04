@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <svg
-  width="130"
-  height="69"
-  viewBox="0 0 130 69"
+  width="207"
+  height="101"
+  viewBox="0 0 207 101"
   fill="none"
   xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink"
 >
-  <rect x="33.3508" width="63.2984" height="63.5347" fill="url(#pattern0)" />
+  <rect x="53.1047" width="100.791" height="93" fill="url(#pattern0)" />
   <defs>
     <pattern
       id="pattern0"
@@ -17,7 +16,7 @@
     >
       <use
         xlink:href="#image0"
-        transform="translate(-0.0330826) scale(0.00480255)"
+        transform="translate(0 -0.0101528) scale(0.0045045 0.00488184)"
       />
     </pattern>
     <image

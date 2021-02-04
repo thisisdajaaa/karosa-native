@@ -13,8 +13,8 @@ import SearchBarStyles from "./styles";
 
 const SearchBar: FC<PropsType> = (props) => {
   const {
-    backgroundColor,
-    size,
+    backgroundColor = "primary",
+    size = "lg",
     autoCorrect,
     onChangeText,
     onFocus,

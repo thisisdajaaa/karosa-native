@@ -5,6 +5,6 @@
  */
 
 export type PropsType = {
-  upperText: string;
-  lowerText: string;
+  upperText?: string;
+  lowerText?: string;
 };

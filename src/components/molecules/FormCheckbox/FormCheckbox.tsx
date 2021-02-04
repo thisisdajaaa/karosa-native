@@ -22,17 +22,14 @@ const FormCheckbox: FC<PropsType> = (props) => {
 
   useEffect(() => {
     helpers.setValue(currentValue);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentValue]);
 
-  const handlePress = useCallback(async () => {
+  const handlePress = useCallback(() => {
     setCurrentValue((prev: boolean) => !prev);
-    await helpers.setTouched(true);
+    helpers.setTouched(true);
   }, [helpers]);
 
-  return (
-    <Checkbox checked={currentValue} title={label} onPress={handlePress} />
-  );
+  return <Checkbox value={currentValue} label={label} onPress={handlePress} />;
 };
 
 export default FormCheckbox;

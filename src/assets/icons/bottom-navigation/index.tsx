@@ -3,32 +3,23 @@
  * @format
  *
  */
-import React, { ReactElement } from "react";
+import React from "react";
 import { ViewStyle, StyleProp } from "react-native";
 
-import HomeIcon from "./home.svg";
-import BasketIcon from "./basket.svg";
-import MeIcon from "./me.svg";
+import Basket from "./basket.svg";
+import Home from "./home.svg";
+import Me from "./me.svg";
 
 const BottomNavigationIcons = (
   name: string,
   extraStyle: StyleProp<ViewStyle>,
   width: number,
   height: number
-): ReactElement => {
-  let widthProps = {};
-  let heightProps = {};
-
-  if (width) widthProps = { width };
-
-  if (height) heightProps = { heightProps };
-
-  const icons = {
-    homeIcon: <HomeIcon style={extraStyle} {...widthProps} {...heightProps} />,
-    meIcon: <MeIcon style={extraStyle} {...widthProps} {...heightProps} />,
-    basketIcon: (
-      <BasketIcon style={extraStyle} {...widthProps} {...heightProps} />
-    ),
+) => {
+  const icons: { [key: string]: JSX.Element } = {
+    basket: <Basket style={extraStyle} height={height} width={width} />,
+    home: <Home style={extraStyle} height={height} width={width} />,
+    me: <Me style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];

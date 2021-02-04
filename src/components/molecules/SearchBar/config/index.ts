@@ -4,21 +4,21 @@
  *
  */
 
-import { theme } from "@app/styles";
+import { theme, DIMENS } from "@app/styles";
 
 import { BackgroundColorType, SizeType } from "../types";
 
 // will use dimensions for getting size, for rework
 const defaultSize: Record<SizeType, number> = {
-  sm: 222,
-  md: 225,
-  lg: 252,
+  sm: DIMENS.screenWidth * 0.8,
+  md: DIMENS.screenWidth * 0.85,
+  lg: DIMENS.screenWidth * 0.9,
 };
 
 export const getWidth = (size: SizeType): number => {
   switch (size) {
     case "md":
-      return defaultSize.sm;
+      return defaultSize.md;
     case "lg":
       return defaultSize.lg;
     default:

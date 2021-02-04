@@ -1,24 +1,21 @@
 {
-    "javascript.validate.enable": false,
-    "editor.formatOnSave": true,
-    "typescript.validate.enable": false,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "path-intellisense.mappings": {      
-      "@app/assets": "${workspaceRoot}/src/assets",
-      "@app/atoms": "${workspaceRoot}/src/components/atoms",
-      "@app/constants": "${workspaceRoot}/src/constants",
-      "@app/components": "${workspaceRoot}/src/components",
-      "@app/config": "${workspaceRoot}/src/config",
-      "@app/hooks": "${workspaceRoot}/src/hooks",
-      "@app/layouts": "${workspaceRoot}/src/components/layouts",
-      "@app/molecules": "${workspaceRoot}/src/components/molecules",
-      "@app/navigators": "${workspaceRoot}/src/navigators",
-      "@app/organisms": "${workspaceRoot}/src/components/organisms",
-      "@app/redux": "${workspaceRoot}/src/redux",
-      "@app/screens": "${workspaceRoot}/src/screens",
-      "@app/styles": "${workspaceRoot}/src/styles",
-    }
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "path-intellisense.mappings": {
+    "@app/assets": "${workspaceRoot}/src/assets",
+    "@app/atoms": "${workspaceRoot}/src/components/atoms",
+    "@app/constants": "${workspaceRoot}/src/constants",
+    "@app/components": "${workspaceRoot}/src/components",
+    "@app/config": "${workspaceRoot}/src/config",
+    "@app/hooks": "${workspaceRoot}/src/hooks",
+    "@app/layouts": "${workspaceRoot}/src/components/layouts",
+    "@app/molecules": "${workspaceRoot}/src/components/molecules",
+    "@app/navigators": "${workspaceRoot}/src/navigators",
+    "@app/organisms": "${workspaceRoot}/src/components/organisms",
+    "@app/redux": "${workspaceRoot}/src/redux",
+    "@app/screens": "${workspaceRoot}/src/screens",
+    "@app/styles": "${workspaceRoot}/src/styles"
   }
-  
+}

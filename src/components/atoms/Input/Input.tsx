@@ -23,7 +23,9 @@ const Input: FC<PropsType> = (props) => {
     multiline,
   } = props;
 
-  const [placeholder, setPlaceholder] = useState(initPlaceholder);
+  const [placeholder, setPlaceholder] = useState<string | undefined>(
+    initPlaceholder
+  );
 
   return (
     <RnInput

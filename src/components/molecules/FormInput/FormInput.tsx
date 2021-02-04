@@ -26,18 +26,18 @@ const FormInput: FC<PropsType> = (props) => {
   }, [meta.value]);
 
   const handleChange = useCallback(
-    async (text: string) => {
+    (text: string) => {
       setCurrentValue(text);
 
       if (validateOnChange) {
-        await helpers.setValue(text);
-        await helpers.setTouched(true);
+        helpers.setValue(text);
+        helpers.setTouched(true);
       }
     },
     [helpers, validateOnChange]
   );
 
-  return <Input value={currentValue} onChangeText={handleChange} {...props} />;
+  return <Input {...props} value={currentValue} onChange={handleChange} />;
 };
 
 export default FormInput;
