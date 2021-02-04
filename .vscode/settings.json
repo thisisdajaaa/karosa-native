@@ -10,7 +10,7 @@
     "@app/components": "${workspaceRoot}/src/components",
     "@app/config": "${workspaceRoot}/src/config",
     "@app/hooks": "${workspaceRoot}/src/hooks",
-    "@app/layouts": "${workspaceRoot}/src/components/layouts",
+    "@app/templates": "${workspaceRoot}/src/components/templates",
     "@app/molecules": "${workspaceRoot}/src/components/molecules",
     "@app/navigators": "${workspaceRoot}/src/navigators",
     "@app/organisms": "${workspaceRoot}/src/components/organisms",

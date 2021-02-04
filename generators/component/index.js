@@ -33,7 +33,7 @@ module.exports = {
       name: "folder",
       message: "Where do you want to keep this component?",
       default: "atoms",
-      choices: () => ["atoms", "molecules", "organisms", "layouts"],
+      choices: () => ["atoms", "molecules", "organisms", "templates"],
     },
   ],
   actions: () => {

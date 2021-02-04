@@ -1,6 +1,6 @@
 import { Props as BaseButtonProps } from "../../button/types";
 
 export type Props = {
-  title: string;
+  title?: string;
   margin?: number;
 } & BaseButtonProps;

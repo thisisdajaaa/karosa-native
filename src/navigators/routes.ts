@@ -25,4 +25,7 @@ export default Object.freeze({
   ADD_WHOLESALE: "Add Wholesale",
   SHIPPING_DETAILS: "Shipping Details",
   CHOOSE_CATEGORY: "Choose Category",
+
+  MY_BASKET: "My Basket",
+  NOTIFICATIONS: "Notifications",
 });

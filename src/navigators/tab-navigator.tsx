@@ -9,15 +9,16 @@ import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useAuth } from "@app/hooks";
 import { theme } from "@app/styles";
 import UserAccountMainScreen from "@app/screens/user-account/main";
-import HomeScreen from "@app/screens/home";
+import HomeScreen from "@app/screens/Home";
 import ShopMainScreen from "@app/screens/shop/main";
-import AuthMainScreen from "@app/screens/auth/main";
+import AuthMainScreen from "@app/screens/LoginMain";
 import BasketScreen from "@app/screens/basket";
 import NotificationScreen from "@app/screens/notifications";
 import SellerProducts from "@app/screens/products/my-products/product-content";
 import ShopContent from "@app/screens/shop/view-shop/shop-content";
 import BuyerProducts from "@app/screens/shop/view-shop/product-content";
 import CategoryContent from "@app/screens/shop/view-shop/category-content";
+import routes from "@app/navigators/routes";
 
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -49,8 +50,7 @@ const ProductTabs: React.FC = () => {
         pressColor: theme.colors.primary,
         indicatorStyle: { backgroundColor: theme.colors.primary },
         scrollEnabled: true,
-      }}
-    >
+      }}>
       {mockTopTab.map((tabName, index) => (
         <React.Fragment key={index}>
           <TopTab.Screen name={tabName} component={SellerProducts} />
@@ -69,8 +69,7 @@ const ViewShopTabs: React.FC = () => {
         inactiveTintColor: theme.colors.dark20,
         pressColor: theme.colors.primary,
         indicatorStyle: { backgroundColor: theme.colors.primary },
-      }}
-    >
+      }}>
       <TopTab.Screen name={"Shop"} component={ShopContent} />
       <TopTab.Screen name={"Products"} component={BuyerProducts} />
       <TopTab.Screen name={"Categories"} component={CategoryContent} />
@@ -94,10 +93,9 @@ const TabNavigator: React.FC = () => {
         tabBarOptions={{
           activeTintColor: theme.colors.primary,
           labelStyle: { position: "relative", bottom: 4 },
-        }}
-      >
+        }}>
         <BottomTab.Screen
-          name="Home"
+          name={routes.HOME}
           component={HomeScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
@@ -106,7 +104,7 @@ const TabNavigator: React.FC = () => {
           }}
         />
         <BottomTab.Screen
-          name="My Basket"
+          name={routes.MY_BASKET}
           component={BasketScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
@@ -115,7 +113,7 @@ const TabNavigator: React.FC = () => {
           }}
         />
         <BottomTab.Screen
-          name="Notifications"
+          name={routes.NOTIFICATIONS}
           component={NotificationScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
@@ -153,8 +151,7 @@ const TabNavigator: React.FC = () => {
             borderTopRightRadius: 10,
             alignItems: "center",
           },
-        }}
-      >
+        }}>
         <AuthMainScreen onLogin={hide} />
       </RBSheet>
     </React.Fragment>

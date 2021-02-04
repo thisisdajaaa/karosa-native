@@ -51,12 +51,6 @@ module.exports = {
       },
       {
         type: "add",
-        path: "../src/screens/{{properCase name}}/styles/index.ts",
-        templateFile: "./component/style.js.hbs",
-        abortOnFail: true,
-      },
-      {
-        type: "add",
         path: "../src/screens/{{properCase name}}/config/index.ts",
         templateFile: "./screen/config.js.hbs",
         abortOnFail: true,

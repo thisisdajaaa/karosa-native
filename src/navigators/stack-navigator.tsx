@@ -1,8 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import LoginScreen from "@app/screens/auth/login";
-import ForgotScreen from "@app/screens/auth/forgot";
-import HelpScreen from "@app/screens/auth/help";
+import LoginScreen from "@app/screens/Login";
+import ForgotScreen from "@app/screens/LoginForgot";
+import HelpScreen from "@app/screens/LoginHelp";
 import SplashScreen from "@app/screens/splash";
 import AccountSettingsScreen from "@app/screens/user-account/account-settings";
 import EditProfileScreen from "@app/screens/user-account/edit-profile";
@@ -24,11 +24,14 @@ const Stack = createStackNavigator();
 const StackNavigator: React.FC = () => (
   <Stack.Navigator
     initialRouteName="Splash"
-    screenOptions={{ headerShown: false }}
-  >
+    screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Splash" component={SplashScreen} />
     <Stack.Screen name="Home" component={TabNavigator} />
-    <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Screen
+      name="Login"
+      component={LoginScreen}
+      options={{ animationEnabled: false }}
+    />
     <Stack.Screen name="Help" component={HelpScreen} />
     <Stack.Screen name="Forgot Password" component={ForgotScreen} />
     <Stack.Screen name="Account Settings" component={AccountSettingsScreen} />
@@ -43,7 +46,6 @@ const StackNavigator: React.FC = () => (
     <Stack.Screen name="Add Wholesale" component={AddWholesaleScreen} />
     <Stack.Screen name="Shipping Details" component={ShippingDetailsScreen} />
     <Stack.Screen name="Choose Category" component={ChooseCategoryScreen} />
-
   </Stack.Navigator>
 );
 

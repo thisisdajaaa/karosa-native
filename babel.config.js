@@ -20,7 +20,7 @@ module.exports = function (api) {
             "@app/components": "./src/components",
             "@app/config": "./src/config",
             "@app/hooks": "./src/hooks",
-            "@app/layouts": "./src/components/layouts",
+            "@app/templates": "./src/components/templates",
             "@app/molecules": "./src/components/molecules",
             "@app/navigators": "./src/navigators",
             "@app/organisms": "./src/components/organisms",

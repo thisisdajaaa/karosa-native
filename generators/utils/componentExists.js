@@ -11,7 +11,7 @@ const organismComponent = fs.readdirSync(
   path.join(__dirname, "../../src/components/organisms")
 );
 const layoutComponent = fs.readdirSync(
-  path.join(__dirname, "../../src/components/layouts")
+  path.join(__dirname, "../../src/components/templates")
 );
 const component = atomComponent
   .concat(moleculeComponent)
