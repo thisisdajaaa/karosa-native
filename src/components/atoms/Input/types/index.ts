@@ -4,13 +4,13 @@
  *
  */
 
-import { KeyboardTypeOptions, StyleProp, ViewProps } from "react-native";
+import { KeyboardTypeOptions, StyleProp, ViewStyle } from "react-native";
 
 export type PropsType = {
   value: string;
   placeholder: string;
   onChange(text: string): void;
-  customStyle?: StyleProp<ViewProps>;
+  customStyle?: StyleProp<ViewStyle>;
   disabled?: boolean;
   multiline?: boolean;
   keyboardType?: KeyboardTypeOptions;

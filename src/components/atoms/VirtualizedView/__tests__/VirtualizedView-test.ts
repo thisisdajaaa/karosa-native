@@ -1,6 +1,6 @@
 /**
  *
- * ListDisplay Test
+ * VirtualizedView Test
  * @format
  *
  */
@@ -8,12 +8,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import ListDisplay from '../ListDisplay';
+import VirtualizedView from '../VirtualizedView';
 
-test('ListDisplay', () => {
+test('VirtualizedView', () => {
   const tree = renderer
     .create(
-      <ListDisplay />
+      <VirtualizedView />
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

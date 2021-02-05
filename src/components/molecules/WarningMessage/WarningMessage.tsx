@@ -8,7 +8,6 @@
 import React, { FC } from "react";
 import { TouchableWithoutFeedback, View } from "react-native";
 import { ListItem } from "react-native-elements";
-import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
 import Icon from "@app/atoms/Icon";
 
@@ -24,6 +23,8 @@ const WarningMessage: FC<PropsType> = (props) => {
         <Icon
           group="products"
           name="warning"
+          width={22}
+          height={19}
           extraStyle={WarningMessageStyles.warningIcon}
         />
         <ListItem.Content style={WarningMessageStyles.textContainer}>
@@ -38,6 +39,8 @@ const WarningMessage: FC<PropsType> = (props) => {
             <Icon
               group="common"
               name="close"
+              width={14}
+              height={14}
               extraStyle={WarningMessageStyles.closeIcon}
             />
           </View>

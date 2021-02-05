@@ -18,7 +18,7 @@ const Ribbon: FC<PropsType> = (props) => {
 
   return (
     <View>
-      <Icon group="common" name="ribbon" />
+      <Icon group="common" name="ribbon" height={37} width={30} />
       <View style={RibbonStyles.textContainer}>
         <Text customStyle={RibbonStyles.text} text={upperText!} />
         <Text customStyle={RibbonStyles.text} text={lowerText!} />
