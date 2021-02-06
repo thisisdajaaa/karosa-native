@@ -6,6 +6,8 @@
 
 import { KeyboardTypeOptions, StyleProp, ViewStyle } from "react-native";
 
+type InputOptions = "none" | "sentences" | "words" | "characters";
+
 export type PropsType = {
   value: string;
   placeholder: string;
@@ -15,4 +17,6 @@ export type PropsType = {
   multiline?: boolean;
   keyboardType?: KeyboardTypeOptions;
   numberOfLines?: number;
+  autoCapitalize?: InputOptions;
+  secureTextEntry?: boolean;
 };

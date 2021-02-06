@@ -8,12 +8,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Login from '../Login';
+import AuthLogin from '../AuthLogin';
 
 test('Login', () => {
   const tree = renderer
     .create(
-      <Login />
+      <AuthLogin />
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

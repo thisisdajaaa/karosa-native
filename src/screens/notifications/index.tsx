@@ -3,14 +3,14 @@ import { BaseText } from "@app/components/base-text";
 import { Screen } from "@app/components/base-screen";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 
-import { styles } from "./styles";
+import HomeStyles from "./styles";
 
 const NotificationScreen: React.FC = () => {
   const screenProps: ScreenProps = {
     header: {
       title: "Notification",
     },
-    customStyles: styles.container,
+    customStyles: HomeStyles.container,
   };
 
   return (

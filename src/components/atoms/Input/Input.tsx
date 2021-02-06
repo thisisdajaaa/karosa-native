@@ -21,6 +21,8 @@ const Input: FC<PropsType> = (props) => {
     numberOfLines,
     onChange,
     multiline,
+    autoCapitalize,
+    secureTextEntry,
   } = props;
 
   return (
@@ -33,6 +35,8 @@ const Input: FC<PropsType> = (props) => {
       keyboardType={keyboardType}
       numberOfLines={numberOfLines}
       onChangeText={onChange}
+      autoCapitalize={autoCapitalize}
+      secureTextEntry={secureTextEntry}
     />
   );
 };

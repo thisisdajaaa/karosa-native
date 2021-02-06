@@ -42,8 +42,17 @@ const Login: FC<PropsType> = (props: PropsType) => {
           />
         </View>
 
-        <FormInput name={identifierName} placeholder={identifierPlaceholder} />
-        <FormInput name={passwordName} placeholder={passwordPlaceholder} />
+        <FormInput
+          name={identifierName}
+          placeholder={identifierPlaceholder}
+          autoCapitalize={"none"}
+        />
+        <FormInput
+          name={passwordName}
+          placeholder={passwordPlaceholder}
+          autoCapitalize={"none"}
+          secureTextEntry={true}
+        />
         <SubmitButton {...loginButtonProps} />
 
         <TouchableOpacity onPress={onPress}>
