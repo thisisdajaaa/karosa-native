@@ -6,7 +6,7 @@
  */
 
 import React, { FC } from "react";
-import { BaseText } from "@app/components/base-text";
+import BaseText from "@app/atoms/Text";
 import { Screen } from "@app/components/base-screen";
 
 import type { PropsType } from "./types";
@@ -17,7 +17,7 @@ const Home: FC<PropsType> = (props: PropsType) => {
 
   return (
     <Screen {...screenProps}>
-      <BaseText>HOME</BaseText>
+      <BaseText text={"HOME"} />
     </Screen>
   );
 };

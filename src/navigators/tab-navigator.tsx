@@ -11,7 +11,7 @@ import { theme } from "@app/styles";
 import UserAccountMainScreen from "@app/screens/user-account/main";
 import HomeScreen from "@app/screens/Home";
 import ShopMainScreen from "@app/screens/shop/main";
-import AuthMainScreen from "@app/screens/LoginMain";
+import AuthMainScreen from "@app/screens/AuthMain";
 import BasketScreen from "@app/screens/basket";
 import NotificationScreen from "@app/screens/notifications";
 import SellerProducts from "@app/screens/products/my-products/product-content";

@@ -1,8 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import LoginScreen from "@app/screens/Login";
-import ForgotScreen from "@app/screens/LoginForgot";
-import HelpScreen from "@app/screens/LoginHelp";
+import AuthLoginScreen from "@app/screens/AuthLogin";
+import AuthForgotScreen from "@app/screens/AuthForgot";
+import HelpScreen from "@app/screens/AuthHelp";
 import SplashScreen from "@app/screens/splash";
 import AccountSettingsScreen from "@app/screens/user-account/account-settings";
 import EditProfileScreen from "@app/screens/user-account/edit-profile";
@@ -29,11 +29,11 @@ const StackNavigator: React.FC = () => (
     <Stack.Screen name="Home" component={TabNavigator} />
     <Stack.Screen
       name="Login"
-      component={LoginScreen}
+      component={AuthLoginScreen}
       options={{ animationEnabled: false }}
     />
     <Stack.Screen name="Help" component={HelpScreen} />
-    <Stack.Screen name="Forgot Password" component={ForgotScreen} />
+    <Stack.Screen name="Forgot Password" component={AuthForgotScreen} />
     <Stack.Screen name="Account Settings" component={AccountSettingsScreen} />
     <Stack.Screen name="Edit Profile" component={EditProfileScreen} />
     <Stack.Screen name="Social Media Accounts" component={SocialMediaScreen} />
