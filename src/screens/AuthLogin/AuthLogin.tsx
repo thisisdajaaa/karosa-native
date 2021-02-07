@@ -88,6 +88,9 @@ const AuthLogin: FC<PropsType> = () => {
       identifierPlaceholder={"Phone number / Username / Email"}
       passwordName={"password"}
       passwordPlaceholder={"Password"}
+      errorMsg={
+        loginResponse.error ? "Incorrect phone number or password" : undefined
+      }
     />
   );
 };

@@ -30,6 +30,7 @@ const Login: FC<PropsType> = (props: PropsType) => {
     isLoading,
     customStyles,
     header,
+    errorMsg,
   } = props;
 
   return (
@@ -52,6 +53,7 @@ const Login: FC<PropsType> = (props: PropsType) => {
           placeholder={passwordPlaceholder}
           autoCapitalize={"none"}
           secureTextEntry={true}
+          errorMessage={errorMsg}
         />
         <SubmitButton {...loginButtonProps} />
 

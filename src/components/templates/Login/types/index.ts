@@ -23,4 +23,5 @@ export type PropsType = {
   customStyles?: StyleProp<ViewStyle>;
   isLoading?: boolean;
   header?: LoginProps;
+  errorMsg?: string;
 };

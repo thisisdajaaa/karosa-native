@@ -13,7 +13,7 @@ import Button from "@app/atoms/Button";
 import type { PropsType } from "./types";
 
 const FormButton: FC<PropsType> = (props) => {
-  const { title, loading } = props;
+  const { title, loading, customStyle } = props;
   const {
     isValid,
     submitForm,
@@ -35,6 +35,7 @@ const FormButton: FC<PropsType> = (props) => {
       disabled={invalid}
       onPress={submitForm}
       loading={loading}
+      customStyle={customStyle}
     />
   );
 };

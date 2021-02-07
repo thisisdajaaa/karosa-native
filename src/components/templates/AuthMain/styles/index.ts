@@ -39,12 +39,14 @@ const AuthMainStyles = StyleSheet.create({
     height: 1,
     backgroundColor: theme.colors.light10,
   },
+  fbButtonWrapper: {
+    marginVertical: "8%",
+  },
   fbButtonContainer: {
     backgroundColor: theme.colors.blue10,
   },
   gmailButtonContainer: {
     backgroundColor: theme.colors.red10,
-    marginVertical: 17,
   },
   signInButtonContainer: {
     backgroundColor: theme.colors.primary,
@@ -64,6 +66,12 @@ const AuthMainStyles = StyleSheet.create({
   txtSignUp: {
     fontWeight: "700",
     color: theme.colors.primary,
+    marginLeft: 5,
+  },
+  txtSignUpContainer: {
+    flexDirection: "row",
+    alignSelf: "center",
+    marginVertical: 25,
   },
 });
 

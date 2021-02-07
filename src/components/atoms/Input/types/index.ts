@@ -12,11 +12,14 @@ export type PropsType = {
   value: string;
   placeholder: string;
   onChange(text: string): void;
-  customStyle?: StyleProp<ViewStyle>;
+  inputContainerStyle?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
   disabled?: boolean;
   multiline?: boolean;
   keyboardType?: KeyboardTypeOptions;
   numberOfLines?: number;
   autoCapitalize?: InputOptions;
   secureTextEntry?: boolean;
+  errorMessage?: string;
+  errorStyle?: StyleProp<ViewStyle>;
 };

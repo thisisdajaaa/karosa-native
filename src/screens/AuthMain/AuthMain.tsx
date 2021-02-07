@@ -45,7 +45,7 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
   return (
     <AuthMainTemplate
       signInButtonProps={{
-        title: "Login",
+        title: "Phone number / Username / Email",
         loading: false,
       }}
       onLogin={onPress}

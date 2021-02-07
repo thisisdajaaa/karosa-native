@@ -15,6 +15,7 @@ import { Screen } from "@app/components/base-screen";
 
 import type { PropsType } from "./types";
 import LoginMainStyles from "./styles";
+import { theme } from "@app/styles";
 
 const AuthMain: FC<PropsType> = (props: PropsType) => {
   const {
@@ -38,17 +39,19 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
         />
       </View>
 
-      <AppButton
-        onPress={onFBLogin}
-        customStyle={LoginMainStyles.fbButtonContainer}
-        title={"Continue with Facebook"}
-        icon={
-          <FontAwesome
-            name="facebook-official"
-            style={LoginMainStyles.buttonIcon}
-          />
-        }
-      />
+      <View style={LoginMainStyles.fbButtonWrapper}>
+        <AppButton
+          onPress={onFBLogin}
+          customStyle={LoginMainStyles.fbButtonContainer}
+          title={"Continue with Facebook"}
+          icon={
+            <FontAwesome
+              name="facebook-official"
+              style={LoginMainStyles.buttonIcon}
+            />
+          }
+        />
+      </View>
       <AppButton
         onPress={onGoogleLogin}
         customStyle={LoginMainStyles.gmailButtonContainer}
@@ -60,13 +63,13 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
         <View>
           <BaseText
             customStyle={LoginMainStyles.txtOr}
-            text={separatorLabel !== undefined ? separatorLabel : ""}
+            text={separatorLabel!}
           />
         </View>
         <View style={LoginMainStyles.hrLine} />
       </View>
       <AppButton onPress={onLogin} {...signInButtonProps} />
-      <View style={LoginMainStyles.hrContainer}>
+      <View style={LoginMainStyles.txtSignUpContainer}>
         <BaseText
           customStyle={LoginMainStyles.noAccContainer}
           text={subDescription !== undefined ? subDescription : ""}

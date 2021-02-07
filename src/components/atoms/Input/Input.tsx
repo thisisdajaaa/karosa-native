@@ -16,13 +16,16 @@ const Input: FC<PropsType> = (props) => {
     placeholder,
     value,
     disabled,
-    customStyle,
+    inputContainerStyle,
+    containerStyle,
     keyboardType,
     numberOfLines,
     onChange,
     multiline,
     autoCapitalize,
     secureTextEntry,
+    errorMessage,
+    errorStyle,
   } = props;
 
   return (
@@ -31,14 +34,23 @@ const Input: FC<PropsType> = (props) => {
       placeholder={placeholder}
       disabled={disabled}
       multiline={multiline}
-      inputContainerStyle={[InputStyles.container, customStyle]}
+      inputContainerStyle={[InputStyles.container, inputContainerStyle]}
       keyboardType={keyboardType}
       numberOfLines={numberOfLines}
       onChangeText={onChange}
       autoCapitalize={autoCapitalize}
       secureTextEntry={secureTextEntry}
+      containerStyle={containerStyle}
+      errorMessage={errorMessage}
+      errorStyle={errorStyle}
     />
   );
+};
+
+Input.defaultProps = {
+  containerStyle: {
+    paddingHorizontal: 0,
+  },
 };
 
 export default Input;
