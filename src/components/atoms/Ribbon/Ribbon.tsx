@@ -10,6 +10,7 @@ import { View } from "react-native";
 import Text from "@app/atoms/Text";
 import Icon from "@app/atoms/Icon";
 
+import { SIZE } from "./config";
 import type { PropsType } from "./types";
 import RibbonStyles from "./styles";
 
@@ -18,10 +19,21 @@ const Ribbon: FC<PropsType> = (props) => {
 
   return (
     <View>
-      <Icon group="common" name="ribbon" height={37} width={30} />
+      <Icon
+        group="common"
+        name="ribbon"
+        height={SIZE.HEIGHT}
+        width={SIZE.WIDTH}
+      />
       <View style={RibbonStyles.textContainer}>
-        <Text customStyle={RibbonStyles.text} text={upperText!} />
-        <Text customStyle={RibbonStyles.text} text={lowerText!} />
+        <Text
+          customStyle={RibbonStyles.text}
+          text={upperText ? upperText : ""}
+        />
+        <Text
+          customStyle={RibbonStyles.text}
+          text={lowerText ? lowerText : ""}
+        />
       </View>
     </View>
   );

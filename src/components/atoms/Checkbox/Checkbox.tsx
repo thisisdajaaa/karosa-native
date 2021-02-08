@@ -13,7 +13,7 @@ import { defaultColor } from "./config";
 import CheckboxStyles from "./styles";
 
 const Checkbox: FC<PropsType> = (props) => {
-  const { value, label, onPress } = props;
+  const { value, label, uncheckedColor, onPress } = props;
 
   return (
     <RnCheckbox
@@ -23,6 +23,7 @@ const Checkbox: FC<PropsType> = (props) => {
       checkedColor={defaultColor}
       titleProps={{ style: CheckboxStyles.text }}
       containerStyle={CheckboxStyles.container}
+      uncheckedColor={uncheckedColor}
     />
   );
 };

@@ -10,7 +10,9 @@ import Back from "./back.svg";
 import CameraGray from "./camera-gray.svg";
 import CameraWhite from "./camera-white.svg";
 import Chat from "./chat.svg";
-import Circle from "./circle.svg";
+import GreenCircle from "./green-circle.svg";
+import GrayCircle from "./gray-circle.svg";
+import GoldCircle from "./gold-circle.svg";
 import Close from "./close.svg";
 import Karosa from "./karosa.svg";
 import More from "./more.svg";
@@ -36,7 +38,11 @@ const CommonIcons = (
       <CameraWhite style={extraStyle} height={height} width={width} />
     ),
     chat: <Chat style={extraStyle} height={height} width={width} />,
-    circle: <Circle style={extraStyle} height={height} width={width} />,
+    greenCircle: (
+      <GreenCircle style={extraStyle} height={height} width={width} />
+    ),
+    grayCircle: <GrayCircle style={extraStyle} height={height} width={width} />,
+    goldCircle: <GoldCircle style={extraStyle} height={height} width={width} />,
     close: <Close style={extraStyle} height={height} width={width} />,
     karosa: <Karosa style={extraStyle} height={height} width={width} />,
     more: <More style={extraStyle} height={height} width={width} />,
