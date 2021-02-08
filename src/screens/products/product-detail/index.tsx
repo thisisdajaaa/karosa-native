@@ -7,6 +7,8 @@ import { ListChevron } from "@app/components/list/list-chevron";
 import { BaseProps as ListChevronProps } from "@app/components/list/list-chevron/types";
 import { Props as MultiListProps } from "@app/components/multi-list/types";
 import { Separator } from "@app/components/separator";
+import { AppButton } from "@app/components/button";
+import { Props as ButtonProps } from "@app/components/button/types";
 
 import { styles } from "./styles";
 import { ScrollView } from "react-native-gesture-handler";
@@ -56,6 +58,25 @@ const reviewsProps: ListChevronProps = {
   onPress: () => console.log("variation"),
 };
 
+const chatNowButtonProps: ButtonProps = {
+  title: "Chat Now",
+  textStyle: [styles.txtLight, styles.txtWhite],
+  containerStyle: styles.button,
+  icon: { left: <FontAwesome name="comments-o" size={25} /> },
+};
+
+const cartButtonProps: ButtonProps = {
+  title: "Add to Basket",
+  textStyle: [styles.txtLight, styles.txtWhite],
+  containerStyle: styles.button,
+  icon: { left: <AntDesign name="shoppingcart" size={25} /> },
+};
+
+const buyButtonProps: ButtonProps = {
+  title: "Buy Now",
+  textStyle: [styles.txtLight, styles.txtWhite],
+  containerStyle: [styles.button, styles.orangeBox],
+};
 const ProductDetailScreen: React.FC = () => {
   return (
     <View style={{ flex: 1 }}>
@@ -75,15 +96,23 @@ const ProductDetailScreen: React.FC = () => {
             </View>
             <View style={styles.detailsContainer}>
               <View style={styles.horizontalContainer}>
-                <BaseText style={[styles.txtBlackRegular, styles.txtGreen]}>
-                  Php 40
-                </BaseText>
+                <View>
+                  <BaseText style={[styles.txtBlackRegular, styles.txtGreen]}>
+                    Php 40
+                  </BaseText>
+                </View>
                 <View style={{ flexDirection: "row" }}>
                   <AntDesign name="hearto" size={20} style={styles.iconStyle} />
-                  <AntDesign name="sharealt" size={20} />
+                  <AntDesign
+                    name="sharealt"
+                    size={20}
+                    style={{ marginHorizontal: 8 }}
+                  />
                 </View>
               </View>
-              <BaseText style={styles.txtBlackRegular}>Fresh Tomato</BaseText>
+              <View style={styles.horizontalContainer}>
+                <BaseText style={styles.txtBlackRegular}>Fresh Tomato</BaseText>
+              </View>
               <View style={styles.horizontalContainer}>
                 <View style={styles.rating}>
                   <Image
@@ -106,15 +135,16 @@ const ProductDetailScreen: React.FC = () => {
           <Separator />
           <View style={styles.subContainer}>
             <ListChevron {...variationProps} />
-            <Images
-              imageSources={[
-                require("../../../../assets/tom2.jpg"),
-                require("../../../../assets/tom1.jpg"),
-                require("../../../../assets/tom3.jpg"),
-              ]}
-            />
+            <View style={styles.horizontalContainer}>
+              <Images
+                imageSources={[
+                  require("../../../../assets/tom2.jpg"),
+                  require("../../../../assets/tom1.jpg"),
+                  require("../../../../assets/tom3.jpg"),
+                ]}
+              />
+            </View>
           </View>
-
           <View style={styles.subContainer}>
             <View style={styles.horizontalContainer}>
               <View style={styles.sellerContainer}>
@@ -133,7 +163,6 @@ const ProductDetailScreen: React.FC = () => {
                       <AntDesign
                         name="enviromento"
                         size={20}
-                        style={{ marginLeft: 10 }}
                       />
                       Cebu City
                     </BaseText>
@@ -200,23 +229,9 @@ const ProductDetailScreen: React.FC = () => {
       </View>
       <View style={styles.footer}>
         <View style={styles.subFooterContainer}>
-          <View style={[styles.button, styles.green]}>
-            <FontAwesome name="comments-o" size={25} />
-            <BaseText style={[styles.txtLight, styles.txtWhite]}>
-              Chat Now
-            </BaseText>
-          </View>
-          <View style={[styles.button, styles.green]}>
-            <AntDesign name="shoppingcart" size={25} />
-            <BaseText style={[styles.txtLight, styles.txtWhite]}>
-              Add to Basket
-            </BaseText>
-          </View>
-          <View style={[styles.button, styles.orangeBox]}>
-            <BaseText style={[styles.txtLight, styles.txtWhite]}>
-              Buy Now
-            </BaseText>
-          </View>
+          <AppButton {...chatNowButtonProps} />
+          <AppButton {...cartButtonProps} />
+          <AppButton {...buyButtonProps} />
         </View>
       </View>
     </View>

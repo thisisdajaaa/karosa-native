@@ -33,15 +33,12 @@ export const styles = StyleSheet.create({
     ...theme.textLight,
     color: theme.colors.black,
   },
-  txtFooters: {
-    ...theme.textLight,
-    color: theme.colors.white,
-  },
   horizontalContainer: {
     backgroundColor: theme.colors.white,
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
     alignItems: "center",
   },
   ratingContainer: {
@@ -50,19 +47,6 @@ export const styles = StyleSheet.create({
   },
   txtBlackRegular: {
     ...theme.textRegular,
-    padding: 5,
-  },
-  txtReviewParagraph: {
-    ...theme.textRegular,
-    marginHorizontal: 16,
-  },
-  tagsStyle: {
-    backgroundColor: theme.colors.dark5,
-    margin: 3,
-    padding: 8,
-    borderRadius: 16,
-    ...theme.textLight,
-    color: theme.colors.dark15,
   },
   iconStyleEllipsis: {
     position: "absolute",
@@ -83,6 +67,7 @@ export const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   button: {
+    flexDirection: "column",
     padding: 5,
     alignItems: "center",
     height: 50,
@@ -94,6 +79,7 @@ export const styles = StyleSheet.create({
   },
   orangeBox: {
     backgroundColor: theme.colors.orange10,
+    justifyContent: "center",
   },
   subContainer: {
     backgroundColor: theme.colors.white,
@@ -116,11 +102,6 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  reviewContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    margin: 8,
-  },
   txtNameAddress: {
     flexDirection: "column",
     justifyContent: "center",
@@ -142,22 +123,8 @@ export const styles = StyleSheet.create({
   iconStyle: {
     height: 16,
   },
-  buyerContainer: {
-    flexDirection: "row",
-  },
-  likedIcon: {
-    marginLeft: 10,
-  },
-  tagsContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    margin: 8,
-  },
   buyerGallery: {
     flexDirection: "row",
     margin: 8,
-  },
-  commentContainer: {
-    marginHorizontal: 25,
   },
 });
