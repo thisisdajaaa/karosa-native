@@ -8,7 +8,7 @@ const BasketScreen: React.FC = () => {
     header: {
       title: "Basket",
     },
-    customStyles: styles.container,
+    customStyles: styles.screenContainer,
   };
 
   return <Screen {...screenProps} />;
