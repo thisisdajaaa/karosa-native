@@ -23,7 +23,7 @@ const PhoneNumberScreen: React.FC = () => {
     onSubmit: (values) => {
       navigate("Stack", {
         screen: routes.AUTH_VERIFICATION,
-        phoneNumber: values.identifier,
+        params: { values },
       });
       console.log(values);
     },

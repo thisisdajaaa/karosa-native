@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TouchableOpacity } from "react-native";
 import { FormikContext, useFormik } from "formik";
-import { useNavigation } from "@react-navigation/native";
+import {
+  NavigationContext,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import { FormPassword } from "@app/components/formik/form-password";
 import { SubmitButton } from "@app/components/formik/submit-button";
 import { BaseText } from "@app/components/base-text";
@@ -16,6 +20,11 @@ import { validationSchema } from "./validation";
 
 const VerificationScreen: React.FC = () => {
   const { goBack, navigate } = useNavigation();
+  const { values }: any = useRoute().params;
+
+  useEffect(() => {
+    console.log(values.identifier);
+  }, []);
 
   const formikBag = useFormik({
     initialValues: { otp: "" },
@@ -23,7 +32,7 @@ const VerificationScreen: React.FC = () => {
     validateOnBlur: true,
     onSubmit: (values) => {
       navigate("Stack", { screen: routes.AUTH_PASSWORD });
-      console.log(values);
+      console.log(values.otp);
     },
     validationSchema,
   });
@@ -59,10 +68,10 @@ const VerificationScreen: React.FC = () => {
     <FormikContext.Provider value={formikBag}>
       <Screen {...screenProps}>
         <BaseText customStyles={styles.txtVerificationCode}>
-          Enter verification code
+          Enter verification code:
         </BaseText>
         <BaseText style={styles.txtSMS}>
-          You verification code is sent by SMS to
+          You verification code is sent by SMS to: {values.identifier}
         </BaseText>
         <FormPassword {...otpProps} />
         <SubmitButton {...submitButtonProps} />

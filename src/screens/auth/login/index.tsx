@@ -22,7 +22,6 @@ const LoginScreen: React.FC = () => {
   const { navigate } = useNavigation();
   const { isLoggedIn } = useAuth();
   const dispatch = useDispatch();
-
   const callLoginApi = useCallback(
     (request: LoginRequest) => dispatch(actions.callLoginApi.request(request)),
     [dispatch]
@@ -90,11 +89,9 @@ const LoginScreen: React.FC = () => {
             source={require("../../../../assets/logo-red.png")}
           />
         </View>
-
         <FormInput {...identifierProps} />
         <FormInput {...passwordProps} />
         <SubmitButton {...loginButtonProps} />
-
         <TouchableOpacity onPress={() => navigate(routes.AUTH_FORGOT)}>
           <BaseText customStyles={styles.txtForgotPass}>
             I forgot my password
