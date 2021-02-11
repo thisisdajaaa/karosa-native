@@ -27,11 +27,11 @@ const VerificationScreen: React.FC = () => {
   }, []);
 
   const formikBag = useFormik({
-    initialValues: { otp: "" },
+    initialValues: { otp: "", phoneDigits:values.identifier},
     validateOnChange: true,
     validateOnBlur: true,
     onSubmit: (values) => {
-      navigate("Stack", { screen: routes.AUTH_PASSWORD });
+      navigate("Stack", { screen: routes.AUTH_PASSWORD, params:{values} });
       console.log(values.otp);
     },
     validationSchema,
