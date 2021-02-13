@@ -9,7 +9,7 @@ import React, { FC } from "react";
 import { CheckBox as RnRadio } from "react-native-elements";
 
 import type { PropsType } from "./types";
-import { defaultColor } from "./config";
+import { COLOR } from "./config";
 import RadioStyles from "./styles";
 
 const Radio: FC<PropsType> = (props) => {
@@ -22,7 +22,7 @@ const Radio: FC<PropsType> = (props) => {
       checkedIcon="dot-circle-o"
       uncheckedIcon="circle-o"
       onPress={onPress}
-      checkedColor={defaultColor}
+      checkedColor={COLOR}
       titleProps={{ style: RadioStyles.text }}
       containerStyle={RadioStyles.container}
     />

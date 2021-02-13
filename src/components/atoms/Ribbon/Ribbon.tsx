@@ -10,8 +10,8 @@ import { View } from "react-native";
 import Text from "@app/atoms/Text";
 import Icon from "@app/atoms/Icon";
 
-import { SIZE } from "./config";
 import type { PropsType } from "./types";
+import { SIZE } from "./config";
 import RibbonStyles from "./styles";
 
 const Ribbon: FC<PropsType> = (props) => {

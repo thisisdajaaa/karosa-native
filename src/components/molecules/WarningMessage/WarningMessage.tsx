@@ -12,6 +12,7 @@ import Text from "@app/atoms/Text";
 import Icon from "@app/atoms/Icon";
 
 import type { PropsType } from "./types";
+import { CLOSE_ICON, NUM_LINES, WARNING_ICON } from "./config";
 import WarningMessageStyles from "./styles";
 
 const WarningMessage: FC<PropsType> = (props) => {
@@ -23,13 +24,13 @@ const WarningMessage: FC<PropsType> = (props) => {
         <Icon
           group="products"
           name="warning"
-          width={22}
-          height={19}
+          width={WARNING_ICON.WIDTH}
+          height={WARNING_ICON.HEIGHT}
           extraStyle={WarningMessageStyles.warningIcon}
         />
         <ListItem.Content style={WarningMessageStyles.textContainer}>
           <Text
-            numberOfLines={4}
+            numberOfLines={NUM_LINES}
             text={message}
             customStyle={WarningMessageStyles.text}
           />
@@ -39,8 +40,8 @@ const WarningMessage: FC<PropsType> = (props) => {
             <Icon
               group="common"
               name="close"
-              width={14}
-              height={14}
+              width={CLOSE_ICON}
+              height={CLOSE_ICON}
               extraStyle={WarningMessageStyles.closeIcon}
             />
           </View>

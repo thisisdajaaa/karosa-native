@@ -4,4 +4,4 @@
  *
  */
 
-export const defaultRatingCount = 5;
+export const RATING_COUNT = 5;

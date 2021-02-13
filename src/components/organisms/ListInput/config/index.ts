@@ -4,5 +4,7 @@
  *
  */
 
-export const variationOneLines = 1;
-export const variationTwoLines = 10;
+export const NUM_LINES = {
+  ONE: 1,
+  TEN: 10,
+};

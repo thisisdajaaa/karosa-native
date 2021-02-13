@@ -9,7 +9,7 @@ import React, { FC } from "react";
 import { CheckBox as RnCheckbox } from "react-native-elements";
 
 import type { PropsType } from "./types";
-import { defaultColor } from "./config";
+import { COLOR } from "./config";
 import CheckboxStyles from "./styles";
 
 const Checkbox: FC<PropsType> = (props) => {
@@ -20,7 +20,7 @@ const Checkbox: FC<PropsType> = (props) => {
       checked={value}
       title={label}
       onPress={onPress}
-      checkedColor={defaultColor}
+      checkedColor={COLOR}
       titleProps={{ style: CheckboxStyles.text }}
       containerStyle={CheckboxStyles.container}
       uncheckedColor={uncheckedColor}

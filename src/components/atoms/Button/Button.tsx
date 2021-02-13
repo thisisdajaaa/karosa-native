@@ -8,8 +8,8 @@
 import React, { FC } from "react";
 import { Button as RnButton } from "react-native-elements";
 
-import { defaultOpacity } from "./config";
 import type { PropsType } from "./types";
+import { OPACITY } from "./config";
 import ButtonStyles from "./styles";
 
 const Button: FC<PropsType> = (props) => {
@@ -27,7 +27,7 @@ const Button: FC<PropsType> = (props) => {
   return (
     <RnButton
       type={type}
-      activeOpacity={defaultOpacity}
+      activeOpacity={OPACITY}
       raised
       icon={icon}
       title={title}

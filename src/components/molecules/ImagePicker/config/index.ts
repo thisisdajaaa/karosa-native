@@ -4,7 +4,10 @@
  *
  */
 
-export const aspectRatio: [number, number] = [4, 3];
-export const quality = 1;
-export const primarySize = 40;
-export const secondarySize = 24;
+export const ASPECT_RATIO: [number, number] = [4, 3];
+export const QUALITY = 1;
+
+export const SIZE = {
+  PRIMARY: 40,
+  SECONDARY: 24,
+};

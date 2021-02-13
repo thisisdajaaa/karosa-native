@@ -19,8 +19,7 @@ const LazyLoad: FC<PropsType> = (props) => {
       <SkeletonPlaceholder
         backgroundColor={backgroundColor}
         highlightColor={highlightColor}
-        speed={speed}
-      >
+        speed={speed}>
         {children}
       </SkeletonPlaceholder>
     </View>

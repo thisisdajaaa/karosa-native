@@ -4,12 +4,12 @@
  *
  */
 
-export type OptionType = {
+type Option = {
   id: string;
   label: string;
 };
 
 export type PropsType = {
   name: string;
-  options: OptionType[];
+  options: Option[];
 };

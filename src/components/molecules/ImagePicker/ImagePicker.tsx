@@ -11,7 +11,7 @@ import * as RnImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 
 import type { PropsType } from "./types";
-import { aspectRatio, quality } from "./config";
+import { ASPECT_RATIO, QUALITY } from "./config";
 import VariationOne from "./VariationOne";
 import VariationTwo from "./VariationTwo";
 import VariationThree from "./VariationThree";
@@ -48,13 +48,13 @@ const ImagePicker: FC<PropsType> = (props) => {
       const result = await RnImagePicker.launchImageLibraryAsync({
         mediaTypes: RnImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
-        aspect: aspectRatio,
-        quality: quality,
+        aspect: ASPECT_RATIO,
+        quality: QUALITY,
       });
 
       if (!result.cancelled) onChange(result.uri);
     } catch (error) {
-      console.log("Error reading an image", error);
+      Alert.alert("Error reading an image", error);
     }
   };
 

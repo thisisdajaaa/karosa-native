@@ -10,8 +10,8 @@ import { ListItem } from "react-native-elements";
 import { theme } from "@app/styles";
 import Image from "@app/atoms/Image";
 
-import { defaultFontSize } from "./config";
 import type { PropsType } from "./types";
+import { FONT_SIZE } from "./config";
 import ListChevronStyles from "./styles";
 
 const VariantTwo: FC<PropsType> = (props) => {
@@ -26,7 +26,7 @@ const VariantTwo: FC<PropsType> = (props) => {
 
   const iconStyle = {
     color: chevronColor,
-    fontSize: defaultFontSize,
+    fontSize: FONT_SIZE,
   };
 
   return (

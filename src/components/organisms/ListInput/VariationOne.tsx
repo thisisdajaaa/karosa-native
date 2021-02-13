@@ -13,7 +13,7 @@ import FormInput from "@app/molecules/FormInput";
 import ValidationMessage from "@app/components/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
-import { variationTwoLines } from "./config";
+import { NUM_LINES } from "./config";
 import ListInputStyles from "./styles";
 
 const VariationOne: FC<PropsType> = (props) => {
@@ -47,7 +47,7 @@ const VariationOne: FC<PropsType> = (props) => {
           name={name}
           keyboardType={keyboardType}
           placeholder={placeholder}
-          numberOfLines={variationTwoLines}
+          numberOfLines={NUM_LINES.TEN}
           multiline
           customStyle={ListInputStyles.columnInputContainer}
         />

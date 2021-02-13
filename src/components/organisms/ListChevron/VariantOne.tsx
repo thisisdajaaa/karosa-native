@@ -11,8 +11,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
 
-import { defaultFontSize } from "./config";
 import type { PropsType } from "./types";
+import { FONT_SIZE } from "./config";
 import ListChevronStyles from "./styles";
 
 const VariantOne: FC<PropsType> = (props) => {
@@ -29,7 +29,7 @@ const VariantOne: FC<PropsType> = (props) => {
 
   const iconStyle = {
     color: chevronColor,
-    fontSize: defaultFontSize,
+    fontSize: FONT_SIZE,
   };
 
   return (

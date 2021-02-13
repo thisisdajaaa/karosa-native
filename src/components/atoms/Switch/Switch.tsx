@@ -9,14 +9,14 @@ import React, { FC } from "react";
 import { Switch as RnSwitch } from "react-native";
 
 import type { PropsType } from "./types";
-import { trackColor } from "./config";
+import { COLOR } from "./config";
 
 const Switch: FC<PropsType> = (props) => {
   const { value, disabled, onChange } = props;
 
   return (
     <RnSwitch
-      trackColor={trackColor}
+      trackColor={COLOR}
       onValueChange={onChange}
       value={value}
       disabled={disabled}

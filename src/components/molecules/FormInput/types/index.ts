@@ -6,8 +6,8 @@
 
 import { PropsType as InputType } from "@app/atoms/Input/types";
 
-type KeysType = "onChange" | "value";
+type Keys = "onChange" | "value";
 
-export type PropsType = Omit<InputType, KeysType> & {
+export type PropsType = Omit<InputType, Keys> & {
   name: string;
 };

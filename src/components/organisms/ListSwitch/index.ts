@@ -1,1 +1,1 @@
-export { default } from './ListSwitch';
+export { default } from "./ListSwitch";

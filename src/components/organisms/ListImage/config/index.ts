@@ -4,4 +4,4 @@
  *
  */
 
-export const defaultVariation = 1;
+export const DEF_VARIATION = 1;

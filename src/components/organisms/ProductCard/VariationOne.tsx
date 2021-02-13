@@ -12,6 +12,7 @@ import Image from "@app/atoms/Image";
 import Card from "@app/molecules/Card";
 
 import type { PropsType } from "./types";
+import { NUM_LINES } from "./config";
 import ProductCardStyles from "./styles";
 import Ribbon from "@app/atoms/Ribbon";
 import Button from "@app/atoms/Button";
@@ -32,13 +33,11 @@ const VariantOne: FC<PropsType> = (props) => {
       <View style={ProductCardStyles.wholesaleContainer}>
         <Text customStyle={ProductCardStyles.txtWholesale} text={"Wholesale"} />
       </View>
-
       {discount && (
         <View style={ProductCardStyles.ribbonContainer}>
           <Ribbon upperText={discount} lowerText="OFF" />
         </View>
       )}
-
       <Image
         source={{ uri: image }}
         customStyle={ProductCardStyles.image}
@@ -47,7 +46,7 @@ const VariantOne: FC<PropsType> = (props) => {
       <View style={ProductCardStyles.bottomContentContainer}>
         <Text
           customStyle={ProductCardStyles.txtName}
-          numberOfLines={2}
+          numberOfLines={NUM_LINES}
           text={name}
         />
         <View style={ProductCardStyles.rowContainer}>
@@ -66,10 +65,10 @@ const VariantOne: FC<PropsType> = (props) => {
       <View style={ProductCardStyles.buttonContainer}>
         <Button
           type="outline"
-          title={buttonTitle!}
+          title={buttonTitle ? buttonTitle : ""}
           customStyle={ProductCardStyles.buttonContent}
           titleStyle={ProductCardStyles.txtButton}
-          onPress={onButtonClick!}
+          onPress={onButtonClick ? onButtonClick : () => 0}
         />
       </View>
     </Card>

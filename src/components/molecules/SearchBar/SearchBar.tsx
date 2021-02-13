@@ -35,7 +35,6 @@ const SearchBar: FC<PropsType> = (props) => {
       autoCorrect={autoCorrect}
       containerStyle={mainContainerStyle}
       returnKeyType="search"
-      accessibilityTraits="search"
       accessibilityRole="search"
       onTouchStart={onTouchStart}
       onFocus={onFocus}

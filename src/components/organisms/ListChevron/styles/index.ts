@@ -41,7 +41,7 @@ const ListChevronStyles = StyleSheet.create({
   },
   txtSubtitle: {
     ...theme.textLight,
-    color: theme.colors.dark10,
+    color: theme.colors.dark30,
     fontWeight: "300",
   },
   txtRequired: {

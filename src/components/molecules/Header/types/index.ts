@@ -7,14 +7,14 @@
 import { StyleProp, ViewStyle } from "react-native";
 import { HeaderSubComponent } from "react-native-elements";
 
-type PlacementType = "left" | "center" | "right";
+type Placement = "left" | "center" | "right";
 
-type BarStyleType = "default" | "light-content" | "dark-content";
+type BarStyle = "default" | "light-content" | "dark-content";
 
 export type PropsType = {
   isCustom?: boolean;
-  barStyle?: BarStyleType;
-  placement?: PlacementType;
+  barStyle?: BarStyle;
+  placement?: Placement;
   customStyle?: StyleProp<ViewStyle>;
   leftComponent?: HeaderSubComponent;
   centerComponent?: HeaderSubComponent;

@@ -6,13 +6,13 @@
  */
 
 import React, { FC, Fragment } from "react";
+import { View } from "react-native";
 import Icon from "@app/atoms/Icon";
 import Image from "@app/atoms/Image";
 
-import { secondarySize } from "./config";
 import type { VariationType } from "./types";
+import { SIZE } from "./config";
 import ImagePickerStyle from "./styles";
-import { View } from "react-native";
 
 const VariationThree: FC<VariationType> = (props) => {
   const { uri } = props;
@@ -24,8 +24,8 @@ const VariationThree: FC<VariationType> = (props) => {
           <Icon
             group="common"
             name="cameraWhite"
-            height={secondarySize}
-            width={secondarySize}
+            height={SIZE.SECONDARY}
+            width={SIZE.SECONDARY}
             extraStyle={ImagePickerStyle.cameraIcon}
           />
           <Image source={{ uri }} customStyle={ImagePickerStyle.image} />
@@ -35,8 +35,8 @@ const VariationThree: FC<VariationType> = (props) => {
           <Icon
             group="common"
             name="cameraGray"
-            height={secondarySize}
-            width={secondarySize}
+            height={SIZE.SECONDARY}
+            width={SIZE.SECONDARY}
           />
         </View>
       )}

@@ -15,23 +15,31 @@ import Ribbon from "@app/atoms/Ribbon";
 import Card from "@app/molecules/Card";
 
 import type { PropsType } from "./types";
+import { IMAGE_SIZE, NUM_LINES, RATING_COUNT } from "./config";
 import ProductCardStyles from "./styles";
 
 const VariantTwo: FC<PropsType> = (props) => {
-  const { name, image, rating, location, sold, currentPrice, discount } = props;
+  const {
+    name,
+    image,
+    rating,
+    location,
+    sold,
+    currentPrice,
+    discount,
+    previousPrice,
+  } = props;
 
   return (
     <Card wrapperStyle={ProductCardStyles.mainContainer}>
       <View style={ProductCardStyles.wholesaleContainer}>
         <Text customStyle={ProductCardStyles.txtWholesale} text={"Wholesale"} />
       </View>
-
       {discount && (
         <View style={ProductCardStyles.ribbonContainer}>
           <Ribbon upperText={discount} lowerText="OFF" />
         </View>
       )}
-
       <Image
         source={{ uri: image }}
         customStyle={ProductCardStyles.image}
@@ -40,7 +48,7 @@ const VariantTwo: FC<PropsType> = (props) => {
       <View style={ProductCardStyles.bottomContentContainer}>
         <Text
           customStyle={ProductCardStyles.txtName}
-          numberOfLines={2}
+          numberOfLines={NUM_LINES}
           text={name}
         />
         <View style={ProductCardStyles.rowContainer}>
@@ -51,15 +59,15 @@ const VariantTwo: FC<PropsType> = (props) => {
           <View style={ProductCardStyles.prevPriceContainer}>
             <Text
               customStyle={ProductCardStyles.txtPrevPrice}
-              text={`P${500}`}
+              text={`P${previousPrice}`}
             />
           </View>
         </View>
         <View style={ProductCardStyles.rowContainer}>
           <Rating
-            ratingCount={5}
+            ratingCount={RATING_COUNT}
             readonly
-            imageSize={15}
+            imageSize={IMAGE_SIZE}
             startingValue={rating}
           />
           <View style={ProductCardStyles.floatRight}>
@@ -70,7 +78,10 @@ const VariantTwo: FC<PropsType> = (props) => {
           </View>
         </View>
         <View style={ProductCardStyles.rowContainer}>
-          <Text customStyle={ProductCardStyles.txtLocation} text={location!} />
+          <Text
+            customStyle={ProductCardStyles.txtLocation}
+            text={location ? location : ""}
+          />
           <View style={ProductCardStyles.floatRight}>
             <Icon group="common" name="outlineHeart" />
           </View>

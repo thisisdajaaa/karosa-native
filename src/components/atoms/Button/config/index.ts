@@ -4,4 +4,4 @@
  *
  */
 
-export const defaultOpacity = 0.8;
+export const OPACITY = 0.8;

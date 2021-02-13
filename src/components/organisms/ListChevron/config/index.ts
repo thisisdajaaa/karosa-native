@@ -4,4 +4,4 @@
  *
  */
 
-export const defaultFontSize = 28;
+export const FONT_SIZE = 28;

@@ -8,9 +8,8 @@ import { theme, DIMENS } from "@app/styles";
 
 import { BackgroundColorType, SizeType } from "../types";
 
-// will use dimensions for getting size, for rework
 const defaultSize: Record<SizeType, number> = {
-  sm: DIMENS.screenWidth * 0.8,
+  sm: DIMENS.screenWidth * 0.72,
   md: DIMENS.screenWidth * 0.85,
   lg: DIMENS.screenWidth * 0.9,
 };

@@ -6,4 +6,4 @@
 
 import { theme } from "@app/styles";
 
-export const defaultColor = theme.colors.primary;
+export const COLOR = theme.colors.primary;

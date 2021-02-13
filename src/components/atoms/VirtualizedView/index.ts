@@ -1,1 +1,1 @@
-export { default } from './VirtualizedView';
+export { default } from "./VirtualizedView";

@@ -7,8 +7,8 @@
 
 import React, { FC, useState, useEffect } from "react";
 import { View } from "react-native";
-import { theme } from "@app/styles";
 import { Picker as RnPicker } from "@react-native-picker/picker";
+import { theme } from "@app/styles";
 import Input from "@app/atoms/Input";
 
 import type { PropsType } from "./types";
