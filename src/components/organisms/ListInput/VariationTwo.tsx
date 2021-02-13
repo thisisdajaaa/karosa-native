@@ -45,7 +45,7 @@ const VariationTwo: FC<PropsType> = (props) => {
               placeholderColor={theme.colors.primary}
               numberOfLines={NUM_LINES.ONE}
               inputStyle={ListInputStyles.txtRowInput}
-              customStyle={ListInputStyles.inputContainer}
+              inputContainerStyle={ListInputStyles.inputContainer}
             />
           </ListItem.Content>
         </ListItem.Content>

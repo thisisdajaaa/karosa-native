@@ -18,7 +18,8 @@ export type PropsType = {
   placeholder: string;
   onChange(text: string): void;
   inputStyle?: StyleProp<TextStyle>;
-  customStyle?: StyleProp<ViewStyle>;
+  inputContainerStyle?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
   placeholderColor?: string;
   disabled?: boolean;
   multiline?: boolean;

@@ -9,7 +9,8 @@ import { theme } from "@app/styles";
 
 const HeaderStyles = StyleSheet.create({
   container: {
-    backgroundColor: theme.colors.transparent,
+    backgroundColor: theme.colors.white,
+    borderBottomWidth: 0,
   },
 });
 

@@ -49,7 +49,7 @@ const VariationOne: FC<PropsType> = (props) => {
           placeholder={placeholder}
           numberOfLines={NUM_LINES.TEN}
           multiline
-          customStyle={ListInputStyles.columnInputContainer}
+          inputContainerStyle={ListInputStyles.columnInputContainer}
         />
         {meta.error && (
           <ListItem.Content style={ListInputStyles.errorContainer}>

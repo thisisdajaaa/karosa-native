@@ -5,29 +5,33 @@
  */
 
 import { StyleSheet } from "react-native";
-import { theme } from "@app/styles";
+import { DIMENS, SPACING, theme } from "@app/styles";
 
-const LoginStyles = StyleSheet.create({
+const AuthLoginStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    padding: 20,
+    padding: SPACING.lg,
     backgroundColor: theme.colors.white,
   },
   logo: {
-    width: 80,
-    height: 80,
+    width: DIMENS.screenWidth * 0.21,
+    height: DIMENS.screenHeight * 0.12,
   },
   logoContainer: {
     position: "absolute",
     top: 40,
     alignSelf: "center",
   },
+  txtHeader: {
+    ...theme.textBold,
+    fontWeight: "700",
+  },
   txtForgotPass: {
     ...theme.link2,
     fontWeight: "bold",
-    marginVertical: 6,
+    marginVertical: SPACING.sm,
   },
 });
 
-export default LoginStyles;
+export default AuthLoginStyles;

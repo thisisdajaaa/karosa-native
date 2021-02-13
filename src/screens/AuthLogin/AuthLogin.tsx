@@ -5,17 +5,17 @@
  *
  */
 
-import React, { FC, useCallback } from "react";
+import React, { FC, useEffect, useCallback } from "react";
 
-import LoginTemplate from "@app/templates/Login";
+import AuthLoginTemplate from "@app/components/templates/AuthLogin";
 import routes from "@app/navigators/routes";
-import { useFormik } from "formik";
+import { FormikProvider, useFormik } from "formik";
 import { LoginRequest } from "@app/redux/auth/models";
 import { useDispatch } from "react-redux";
 import { actions, selectors } from "@app/redux/auth";
 import { useAuth, useMemoizedSelector } from "@app/hooks";
 import * as Yup from "yup";
-import type { LOGIN_HEADER_PROPS as LoginProps } from "@app/constants";
+import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
 
 import type { PropsType } from "./types";
 import { useNavigation } from "@react-navigation/native";
@@ -39,6 +39,12 @@ const AuthLogin: FC<PropsType> = () => {
 
   const loginResponse = useMemoizedSelector(selectors.getLoginResponse);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("Me");
+    }
+  }, [isLoggedIn]);
+
   const formikBag = useFormik({
     initialValues: { identifier: "", password: "" },
     validateOnChange: true,
@@ -54,44 +60,27 @@ const AuthLogin: FC<PropsType> = () => {
     validationSchema,
   });
 
-  const headerProps: LoginProps = {
-    iconName: "arrow-back",
+  const handleBack = useCallback(() => {
+    navigate(routes.AUTH_MAIN);
+  }, [navigate]);
+
+  const loginButtonProps: SubmitButtonProps = {
     title: "Login",
-    borderBottom: false,
-    press: {
-      left: () => navigate(routes.AUTH_MAIN),
-    },
+    loading: loginResponse.isLoading,
   };
 
-  const onPress = () => {
+  const onPress = useCallback(() => {
     navigate(routes.AUTH_FORGOT);
-  };
-
-  React.useEffect(() => {
-    if (isLoggedIn) {
-      navigate("Me");
-    }
-  }, [isLoggedIn]);
+  }, [navigate]);
 
   return (
-    <LoginTemplate
-      loginButtonProps={{
-        title: "Login",
-        loading: false,
-      }}
-      onPress={onPress}
-      formikBag={formikBag}
-      description="I forgot my password"
-      isLoading={loginResponse.isLoading}
-      header={headerProps}
-      identifierName={"identifier"}
-      identifierPlaceholder={"Phone number / Username / Email"}
-      passwordName={"password"}
-      passwordPlaceholder={"Password"}
-      errorMsg={
-        loginResponse.error ? "Incorrect phone number or password" : undefined
-      }
-    />
+    <FormikProvider value={formikBag}>
+      <AuthLoginTemplate
+        loginButtonProps={loginButtonProps}
+        onPress={onPress}
+        onBack={handleBack}
+      />
+    </FormikProvider>
   );
 };
 
