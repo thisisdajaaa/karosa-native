@@ -10,12 +10,12 @@ import { View } from "react-native";
 import Text from "@app/atoms/Text";
 import Image from "@app/atoms/Image";
 import Card from "@app/molecules/Card";
+import Ribbon from "@app/atoms/Ribbon";
+import Button from "@app/atoms/Button";
 
 import type { PropsType } from "./types";
 import { NUM_LINES } from "./config";
 import ProductCardStyles from "./styles";
-import Ribbon from "@app/atoms/Ribbon";
-import Button from "@app/atoms/Button";
 
 const VariantOne: FC<PropsType> = (props) => {
   const {
