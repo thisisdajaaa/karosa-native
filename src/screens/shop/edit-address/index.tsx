@@ -20,18 +20,17 @@ import { ListInput } from "@app/components/list/list-input";
 import { SubmitButton } from "@app/components/formik/submit-button";
 import { NewAddressRequest } from "@app/redux/auth/models";
 import { ListPicker } from "@app/components/list/list-picker";
-import { ListCheckBox } from "@app/components/list/list-checkbox";
 import { PickerData } from "@app/redux/api-models/common";
 import {
-  BarangayRequest,
-  CitiesRequest,
   ProvinceRequest,
+  CitiesRequest,
+  BarangayRequest,
 } from "@app/redux/location/models";
 
 import { styles } from "./styles";
 import { validationSchema } from "./validation";
 
-const NewAddressScreen: React.FC = () => {
+const EditAddressScreen: React.FC = () => {
   const { goBack } = useNavigation();
   const dispatch = useDispatch();
 
@@ -74,11 +73,10 @@ const NewAddressScreen: React.FC = () => {
       fullName: "",
       phoneNumber: "",
       region: { id: 0, value: "" } as PickerData,
+      cities: { id: 0, value: "" } as PickerData,
       province: { id: 0, value: "" } as PickerData,
       barangay: { id: 0, value: "" } as PickerData,
-      cities: { id: 0, value: "" } as PickerData,
       detailedAddress: "",
-      defaultAddress: false,
     },
 
     onSubmit: (values) => {
@@ -86,12 +84,8 @@ const NewAddressScreen: React.FC = () => {
         name: values.fullName,
         phoneNo: values.phoneNumber,
         // eslint-disable-next-line camelcase
-        detailed_address:
-          values.detailedAddress +
-          values.region.value +
-          values.province.value +
-          values.cities.value,
-        isDefaultAddress: values.defaultAddress,
+        detailed_address: values.detailedAddress,
+        isDefaultAddress: true,
         barangayId: values.barangay.id,
       };
       callNewAddressApi(request);
@@ -177,14 +171,14 @@ const NewAddressScreen: React.FC = () => {
   const headerProps: HeaderProps = {
     header: {
       iconName: "arrow-back",
-      title: "New Address",
+      title: "Edit Address",
       press: {
         left: () => goBack(),
       },
     },
   };
 
-  const submitButtonProps: ButtonProps = {
+  const SubmitButtonProps: ButtonProps = {
     title: "Submit",
     containerStyle: styles.btnSubmtContainer,
     textStyle: styles.txtBtnSubmit,
@@ -207,10 +201,6 @@ const NewAddressScreen: React.FC = () => {
         placeholder={placeholder}
       />
     );
-  };
-
-  const listCheckBox = (name: string, label: string) => {
-    return <ListCheckBox name={name} label={label} />;
   };
 
   const listInputPicker = (
@@ -285,11 +275,6 @@ const NewAddressScreen: React.FC = () => {
       "Unit Number, House Number, Building, Street Name"
     );
 
-    const defaultAddress = listCheckBox(
-      "defaultAddress",
-      "Set as default address"
-    );
-
     elements.push(
       fullName,
       phoneNumber,
@@ -297,8 +282,7 @@ const NewAddressScreen: React.FC = () => {
       province,
       cities,
       barangay,
-      detailedAddress,
-      defaultAddress
+      detailedAddress
     );
 
     return listIterator(elements);
@@ -310,8 +294,8 @@ const NewAddressScreen: React.FC = () => {
         <View style={styles.addressContainer}>
           <ScrollView>
             <React.Fragment>{listDisplay()}</React.Fragment>
-            <View style={styles.submitbuttonContainer}>
-              <SubmitButton {...submitButtonProps} />
+            <View style={styles.submitbuttonParent}>
+              <SubmitButton {...SubmitButtonProps} />
             </View>
           </ScrollView>
         </View>
@@ -319,4 +303,4 @@ const NewAddressScreen: React.FC = () => {
     </FormikContext.Provider>
   );
 };
-export default NewAddressScreen;
+export default EditAddressScreen;

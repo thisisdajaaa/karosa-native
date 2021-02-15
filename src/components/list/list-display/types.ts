@@ -11,7 +11,9 @@ type Text = {
 };
 type Address = {
   name: string;
-  address: string;
+  phoneNumber: string;
+  barangayId: number;
+  detailedAddress: string;
   default: boolean;
 };
 

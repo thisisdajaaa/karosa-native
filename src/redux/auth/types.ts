@@ -14,6 +14,10 @@ export const ACT_NEW_ADDRESS_REQUEST = "auth/actNewAddressRequest" as const;
 export const ACT_NEW_ADDRESS_SUCCESS = "auth/actNewAddressSuccess" as const;
 export const ACT_NEW_ADDRESS_FAILURE = "auth/actNewAddressFailure" as const;
 
+export const ACT_REGISTER_REQUEST = "auth/actRegisterRequest" as const;
+export const ACT_REGISTER_SUCCESS = "auth/actRegisterSuccess" as const;
+export const ACT_REGISTER_FAILURE = "auth/actRegisterFailure" as const;
+
 export type Types =
   | typeof ACT_LOGIN_REQUEST
   | typeof ACT_LOGIN_SUCCESS
@@ -26,4 +30,7 @@ export type Types =
   | typeof ACT_MY_ADDRESS_FAILURE
   | typeof ACT_NEW_ADDRESS_REQUEST
   | typeof ACT_NEW_ADDRESS_SUCCESS
-  | typeof ACT_NEW_ADDRESS_FAILURE;
+  | typeof ACT_NEW_ADDRESS_FAILURE
+  | typeof ACT_REGISTER_REQUEST
+  | typeof ACT_REGISTER_SUCCESS
+  | typeof ACT_REGISTER_FAILURE;

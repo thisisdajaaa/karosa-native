@@ -34,6 +34,31 @@ export const loginResponse = produce(
   data.initAuthState.loginResponse
 );
 
+export const registerResponse = produce(
+  (
+    draft: Draft<ResponseState<models.RegisterResponse>>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.callRegisterApi.request):
+        draft.response = data.initAuthState.registerResponse.response;
+        draft.isLoading = true;
+        return draft;
+      case getType(actions.callRegisterApi.success):
+        draft.response = action.payload;
+        draft.isLoading = false;
+        return draft;
+      case getType(actions.callRegisterApi.failure):
+        draft.error = action.payload;
+        draft.isLoading = false;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initAuthState.registerResponse
+);
+
 export const forgotResponse = produce(
   (
     draft: Draft<ResponseState<models.ForgotResponse>>,

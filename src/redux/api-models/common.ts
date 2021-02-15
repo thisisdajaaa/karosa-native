@@ -8,3 +8,8 @@ export type Audit = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type PickerData = {
+  id: number;
+  value: string;
+};
