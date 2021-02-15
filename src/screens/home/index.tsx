@@ -188,6 +188,13 @@ const HomeScreen: React.FC = () => {
 
         <HomeList
           data={cardData}
+          title={"Top Products"}
+          info={"See More"}
+          onPress={() => console.log("chevron pressed")}
+        />
+
+        <HomeList
+          data={cardData}
           title={"Region's Best"}
           info={"See More"}
           onPress={() => console.log("chevron pressed")}
