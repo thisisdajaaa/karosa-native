@@ -25,7 +25,6 @@ const PhoneNumberScreen: React.FC = () => {
         screen: routes.AUTH_VERIFICATION,
         params: { values },
       });
-      console.log(values);
     },
     validationSchema,
   });

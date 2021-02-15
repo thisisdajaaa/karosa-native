@@ -12,7 +12,7 @@ import { Props as ScreenProps } from "@app/components/base-screen/types";
 import routes from "@app/navigators/routes";
 import { actions, selectors } from "@app/redux/auth";
 import { RegisterRequest } from "@app/redux/auth/models";
-import { useAuth, useMemoizedSelector } from "@app/hooks";
+import {  useMemoizedSelector } from "@app/hooks";
 
 import { styles } from "./styles";
 import { validationSchema } from "./validation";
@@ -24,7 +24,6 @@ const PasswordScreen: React.FC = () => {
 
   const { values }: any = useRoute().params;
   useEffect(() => {
-    console.log(values.identifier);
   }, []);
 
   const registerResponse = useMemoizedSelector(selectors.getRegisterResponse);
@@ -45,7 +44,6 @@ const PasswordScreen: React.FC = () => {
         password: formikBag.values.password,
       };
       callRegisterApi(request);
-      console.log(values);
     },
 
     validationSchema,

@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { TouchableOpacity } from "react-native";
 import { FormikContext, useFormik } from "formik";
 import {
-  NavigationContext,
   useNavigation,
   useRoute,
 } from "@react-navigation/native";
@@ -21,10 +20,6 @@ import { validationSchema } from "./validation";
 const VerificationScreen: React.FC = () => {
   const { goBack, navigate } = useNavigation();
   const { values }: any = useRoute().params;
-
-  useEffect(() => {
-    console.log(values.identifier);
-  }, []);
 
   const formikBag = useFormik({
     initialValues: { otp: "", phoneDigits:values.identifier},
@@ -79,7 +74,6 @@ const VerificationScreen: React.FC = () => {
           Did not receive the code?
           <TouchableOpacity
             style={styles.txtResend}
-            onPress={() => console.log("Resend")}
           >
             <BaseText>Resend</BaseText>
           </TouchableOpacity>
