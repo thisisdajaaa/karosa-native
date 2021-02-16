@@ -5,32 +5,25 @@
  *
  */
 
-import React, { FC, useEffect, useCallback } from "react";
-
+import React, { FC, useCallback } from "react";
+import { FormikProvider, useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
+import { LoginRequest } from "@app/redux/auth/models";
+import { actions, selectors } from "@app/redux/auth";
+import { useAuth, useMemoizedSelector, useUpdateEffect } from "@app/hooks";
+import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
 import AuthLoginTemplate from "@app/components/templates/AuthLogin";
 import routes from "@app/navigators/routes";
-import { FormikProvider, useFormik } from "formik";
-import { LoginRequest } from "@app/redux/auth/models";
-import { useDispatch } from "react-redux";
-import { actions, selectors } from "@app/redux/auth";
-import { useAuth, useMemoizedSelector } from "@app/hooks";
-import * as Yup from "yup";
-import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
 
 import type { PropsType } from "./types";
-import { useNavigation } from "@react-navigation/native";
+import AuthValidationSchema from "./validation";
 
 const AuthLogin: FC<PropsType> = () => {
-  const { navigate } = useNavigation();
   const dispatch = useDispatch();
-  const { isLoggedIn } = useAuth();
 
-  const validationSchema = Yup.object().shape({
-    identifier: Yup.string()
-      .required()
-      .label("Phone number / Username / Email"),
-    password: Yup.string().required().label("Password"),
-  });
+  const { navigate } = useNavigation();
+  const { isLoggedIn } = useAuth();
 
   const callLoginApi = useCallback(
     (request: LoginRequest) => dispatch(actions.callLoginApi.request(request)),
@@ -39,16 +32,19 @@ const AuthLogin: FC<PropsType> = () => {
 
   const loginResponse = useMemoizedSelector(selectors.getLoginResponse);
 
-  useEffect(() => {
+  const responseError = loginResponse.error?.message;
+
+  useUpdateEffect(() => {
     if (isLoggedIn) {
-      navigate("Me");
+      navigate(routes.ACCOUNTS_MAIN);
     }
   }, [isLoggedIn]);
 
-  const formikBag = useFormik({
+  const formikBag = useFormik<LoginRequest>({
     initialValues: { identifier: "", password: "" },
     validateOnChange: true,
     validateOnBlur: true,
+    validationSchema: AuthValidationSchema,
     onSubmit: (values) => {
       const request: LoginRequest = {
         identifier: values.identifier,
@@ -57,8 +53,16 @@ const AuthLogin: FC<PropsType> = () => {
 
       callLoginApi(request);
     },
-    validationSchema,
   });
+
+  useUpdateEffect(() => {
+    formikBag.setFieldError("password", "");
+
+    if (responseError && !loginResponse.isLoading) {
+      formikBag.setFieldError("identifier", " ");
+      formikBag.setFieldError("password", responseError);
+    }
+  }, [responseError, loginResponse.isLoading]);
 
   const handleBack = useCallback(() => {
     navigate(routes.AUTH_MAIN);

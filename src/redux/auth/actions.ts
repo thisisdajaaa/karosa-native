@@ -1,5 +1,6 @@
 import { createAsyncAction } from "typesafe-actions";
 
+import { ResponseError } from "../api-models/common";
 import * as types from "./types";
 import {
   LoginRequest,
@@ -17,7 +18,7 @@ export const callLoginApi = createAsyncAction(
   types.ACT_LOGIN_REQUEST,
   types.ACT_LOGIN_SUCCESS,
   types.ACT_LOGIN_FAILURE
-)<LoginRequest, LoginResponse, Error>();
+)<LoginRequest, LoginResponse, ResponseError>();
 
 export const callRegisterApi = createAsyncAction(
   types.ACT_REGISTER_REQUEST,
@@ -43,11 +44,12 @@ export const callNewAddressApi = createAsyncAction(
   types.ACT_NEW_ADDRESS_FAILURE
 )<NewAddressRequest, NewAddressResponse, Error>();
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+export const actions = {
   callLoginApi,
   callForgotApi,
   callMyAddressApi,
   callNewAddressApi,
   callRegisterApi,
 };
+
+export default actions;

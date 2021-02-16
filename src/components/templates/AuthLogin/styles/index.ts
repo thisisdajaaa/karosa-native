@@ -5,7 +5,7 @@
  */
 
 import { StyleSheet } from "react-native";
-import { DIMENS, SPACING, theme } from "@app/styles";
+import { SPACING, theme } from "@app/styles";
 
 const AuthLoginStyles = StyleSheet.create({
   container: {
@@ -14,14 +14,20 @@ const AuthLoginStyles = StyleSheet.create({
     padding: SPACING.lg,
     backgroundColor: theme.colors.white,
   },
-  logo: {
-    width: DIMENS.screenWidth * 0.21,
-    height: DIMENS.screenHeight * 0.12,
+  errorContainer: {
+    borderColor: theme.colors.red5,
+  },
+  validationContainer: {
+    position: "relative",
+    bottom: 13,
   },
   logoContainer: {
     position: "absolute",
-    top: 40,
+    top: 20,
     alignSelf: "center",
+  },
+  spacer: {
+    margin: SPACING.lg * 4,
   },
   txtHeader: {
     ...theme.textBold,

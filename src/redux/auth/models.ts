@@ -24,6 +24,7 @@ export type AuthState = {
 };
 
 declare module "../types" {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   export interface StateAll {
     auth: AuthState;
   }

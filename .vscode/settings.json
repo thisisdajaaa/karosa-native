@@ -16,6 +16,7 @@
     "@app/organisms": "${workspaceRoot}/src/components/organisms",
     "@app/redux": "${workspaceRoot}/src/redux",
     "@app/screens": "${workspaceRoot}/src/screens",
-    "@app/styles": "${workspaceRoot}/src/styles"
+    "@app/styles": "${workspaceRoot}/src/styles",
+    "@app/utils": "${workspaceRoot}/src/utils"
   }
 }

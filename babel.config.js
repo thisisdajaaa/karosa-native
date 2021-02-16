@@ -27,6 +27,7 @@ module.exports = function (api) {
             "@app/redux": "./src/redux",
             "@app/screens": "./src/screens",
             "@app/styles": "./src/styles",
+            "@app/utils": "./src/utils",
           },
         },
         "inline-dotenv",

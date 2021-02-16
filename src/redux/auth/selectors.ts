@@ -39,10 +39,12 @@ export const getNewAddressResponse = () =>
     );
   });
 
-export default {
+const selectors = {
   getLoginResponse,
   getForgotResponse,
   getMyAddressResponse,
   getNewAddressResponse,
   getRegisterResponse,
 };
+
+export default selectors;

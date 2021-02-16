@@ -122,7 +122,7 @@ const TabNavigator: React.FC = () => {
           }}
         />
         <BottomTab.Screen
-          name="Me"
+          name={routes.ACCOUNTS_MAIN}
           component={MeNavigator}
           options={{
             tabBarIcon: ({ color, size }) => (

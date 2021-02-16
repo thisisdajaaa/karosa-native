@@ -26,6 +26,8 @@ const Input: FC<PropsType> = (props) => {
     inputStyle,
     placeholderColor,
     containerStyle,
+    autoCompleteType,
+    autoCorrect,
   } = props;
 
   return (
@@ -36,10 +38,12 @@ const Input: FC<PropsType> = (props) => {
       multiline={multiline}
       inputContainerStyle={[InputStyles.inputContainer, inputContainerStyle]}
       inputStyle={inputStyle}
+      autoCorrect={autoCorrect}
       placeholderTextColor={placeholderColor}
       keyboardType={keyboardType}
       numberOfLines={numberOfLines}
       onChangeText={onChange}
+      autoCompleteType={autoCompleteType}
       autoCapitalize={autoCapitalize}
       secureTextEntry={secureTextEntry}
       containerStyle={[InputStyles.container, containerStyle]}

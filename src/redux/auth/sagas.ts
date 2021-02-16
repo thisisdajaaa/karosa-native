@@ -21,7 +21,7 @@ export function* callLoginApi(
 
     yield put(actions.callLoginApi.success(response.data));
   } catch (error) {
-    yield put(actions.callLoginApi.failure(error));
+    yield put(actions.callLoginApi.failure(error.response.data));
   }
 }
 

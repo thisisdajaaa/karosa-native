@@ -34,7 +34,8 @@
       "@app/organisms/*": ["src/components/organisms/*"],
       "@app/redux/*": ["src/redux/*"],
       "@app/screens/*": ["src/screens/*"],
-      "@app/styles": ["src/styles"]
+      "@app/styles": ["src/styles"],
+      "@app/utils": ["src/utils"]
     },
     "plugins": [
       {

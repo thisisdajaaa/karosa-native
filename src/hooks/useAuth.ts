@@ -2,9 +2,9 @@ import { equals } from "ramda";
 import { selectors } from "@app/redux/auth";
 import { initAuthState } from "@app/redux/auth/data";
 
-import { useMemoizedSelector } from "./use-memoized-selector";
+import useMemoizedSelector from "./useMemoizedSelector";
 
-export const useAuth = () => {
+const useAuth = () => {
   const loginResponse = useMemoizedSelector(selectors.getLoginResponse);
 
   const isLoggedIn =
@@ -13,3 +13,5 @@ export const useAuth = () => {
 
   return { isLoggedIn };
 };
+
+export default useAuth;
