@@ -30,7 +30,7 @@ import { IMAGE_HEIGHT, IMAGE_WIDTH } from "./config";
 import AuthLoginStyles from "./styles";
 
 const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
-  const { loginButtonProps, onPress, onBack } = props;
+  const { loginButtonProps, onForgot, onBack } = props;
   const { errors, touched } = useFormikContext<LoginRequest>();
 
   const isIOS = getPlatform.getInstance() === "ios";
@@ -140,7 +140,7 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
         </View>
 
         <SubmitButton {...loginButtonProps} />
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={onForgot}>
           <Text
             text="I forgot my password"
             customStyle={AuthLoginStyles.txtForgotPass}

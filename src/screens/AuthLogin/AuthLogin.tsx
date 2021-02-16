@@ -73,7 +73,7 @@ const AuthLogin: FC<PropsType> = () => {
     loading: loginResponse.isLoading,
   };
 
-  const onPress = useCallback(() => {
+  const handleForgot = useCallback(() => {
     navigate(routes.AUTH_FORGOT);
   }, [navigate]);
 
@@ -81,7 +81,7 @@ const AuthLogin: FC<PropsType> = () => {
     <FormikProvider value={formikBag}>
       <AuthLoginTemplate
         loginButtonProps={loginButtonProps}
-        onPress={onPress}
+        onForgot={handleForgot}
         onBack={handleBack}
       />
     </FormikProvider>
