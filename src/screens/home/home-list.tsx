@@ -3,6 +3,7 @@ import { FlatList, View } from "react-native";
 import { ListChevron } from "@app/components/list/list-chevron";
 import { HomeCard } from "@app/components/cards/product";
 
+
 import { HomeListProps } from "./types";
 
 export const HomeList: React.FC<HomeListProps> = ({

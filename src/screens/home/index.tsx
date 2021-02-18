@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import {
   FlatList,
   ScrollView,
   View,
   TouchableWithoutFeedback,
+  Image,
+  Dimensions,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { BaseText } from "@app/components/base-text";
 import { Trends } from "@app/components/cards/trends";
 import { Screen } from "@app/components/base-screen";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
+import Carousel, { Pagination } from "react-native-snap-carousel";
 
 import { HomeList } from "./home-list";
 import { styles } from "./styles";
 
 const HomeScreen: React.FC = () => {
+  const SLIDER_WIDTH = Dimensions.get("window").width;
+  const ITEM_WIDTH = SLIDER_WIDTH;
   const screenProps: ScreenProps = {
     header: {
       title: "Home",
@@ -101,9 +106,70 @@ const HomeScreen: React.FC = () => {
     },
   ];
 
+  const bannerData = [
+    {
+      title: "item 1",
+      text: "sds",
+      image: "https://picsum.photos/200/300",
+    },
+    {
+      title: "item 2",
+      text: "sds",
+      image: "https://picsum.photos/200/300",
+    },
+    {
+      title: "item 2",
+      text: "sds",
+      image: "https://picsum.photos/200/300",
+    },
+  ];
+
+  const renderImage = (item: {
+    item: { title: string; text: string; image: string };
+  }) => {
+    return (
+      <View>
+        <Image source={{ uri: item.item.image }} style={styles.image} />
+      </View>
+    );
+  };
+
+  const [index, setIndex] = useState(0);
+  const isCarousel = useRef(null);
+
   return (
     <Screen {...screenProps}>
       <ScrollView>
+        <View>
+          <View>
+            <Carousel
+              layout={"stack"}
+              data={bannerData}
+              ref={isCarousel}
+              renderItem={renderImage}
+              sliderWidth={SLIDER_WIDTH}
+              itemWidth={ITEM_WIDTH}
+              layoutCardOffset={0}
+              onSnapToItem={(value) => setIndex(value)}
+            />
+          </View>
+          <View style={styles.paginationStyle}>
+            <Pagination
+              dotsLength={bannerData.length}
+              activeDotIndex={index}
+              tappableDots={true}
+              dotStyle={{
+                width: 10,
+                height: 10,
+                borderRadius: 5,
+                marginHorizontal: 0,
+                backgroundColor: "white",
+              }}
+              inactiveDotOpacity={0.4}
+              inactiveDotScale={0.6}
+            />
+          </View>
+        </View>
         <View style={{ height: 251, backgroundColor: "white" }}>
           <BaseText
             style={{
@@ -142,14 +208,12 @@ const HomeScreen: React.FC = () => {
             />
           </ScrollView>
         </View>
-
         <HomeList
           data={cardData}
           title={"Flash Deals"}
           info={"See More"}
           onPress={() => console.log("chevron pressed")}
         />
-
         <View style={{ height: 207, marginTop: 15, backgroundColor: "white" }}>
           <View style={{ flexDirection: "row" }}>
             <BaseText
@@ -185,35 +249,30 @@ const HomeScreen: React.FC = () => {
             renderItem={({ item }: any) => <Trends item={item} />}
           />
         </View>
-
         <HomeList
           data={cardData}
           title={"Top Products"}
           info={"See More"}
           onPress={() => console.log("chevron pressed")}
         />
-
         <HomeList
           data={cardData}
           title={"Region's Best"}
           info={"See More"}
           onPress={() => console.log("chevron pressed")}
         />
-
         <HomeList
           data={cardData}
           title={"Upcoming Harvest/Supplies"}
           info={"See More"}
           onPress={() => console.log("chevron pressed")}
         />
-
         <HomeList
           data={cardData}
           title={"Products Near You"}
           info={"See More"}
           onPress={() => console.log("chevron pressed")}
         />
-
         <View style={{ marginTop: 20, marginBottom: 20 }} />
       </ScrollView>
     </Screen>
