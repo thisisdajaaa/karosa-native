@@ -142,7 +142,7 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
         <SubmitButton {...loginButtonProps} />
         <TouchableOpacity onPress={onForgot}>
           <Text
-            text="I forgot my password"
+            text="I forgot my passworda"
             customStyle={AuthLoginStyles.txtForgotPass}
           />
         </TouchableOpacity>

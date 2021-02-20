@@ -5,60 +5,66 @@
  *
  */
 
-import React, { FC } from "react";
+import React, { FC, Fragment } from "react";
 import { View, Image } from "react-native";
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-
-import BaseText from "@app/atoms/Text";
-import { Screen } from "@app/components/base-screen";
-import { ListAvatar } from "@app/components/list/list-avatar";
+import { theme } from "@app/styles";
+import Text from "@app/atoms/Text";
+import IconLabel from "@app/molecules/IconLabel";
+import Header from "@app/components/molecules/Header";
+import Icon from "@app/atoms/Icon";
 
 import type { PropsType } from "./types";
+import { IMAGE_SIZE } from "./config";
 import AuthHelpStyles from "./styles";
 
 const AuthHelp: FC<PropsType> = (props: PropsType) => {
-  const { phoneProps, emailProps, customStyles, header } = props;
+  const { onBack } = props;
+
+  const icon = (name: string) => {
+    return (
+      <Icon group="login" name={name} width={IMAGE_SIZE} height={IMAGE_SIZE} />
+    );
+  };
 
   return (
-    <Screen header={header} customStyles={customStyles}>
-      <View style={AuthHelpStyles.logoContainer}>
-        <Image
-          style={AuthHelpStyles.logo}
-          source={require("../../../../assets/logo-red.png")}
+    <Fragment>
+      <Header
+        leftComponent={{
+          icon: "close",
+          color: theme.colors.primary,
+          onPress: onBack,
+        }}
+        centerComponent={
+          <Text text="Help Centre" customStyle={AuthHelpStyles.txtHeader} />
+        }
+      />
+      <View style={AuthHelpStyles.container}>
+        <View style={AuthHelpStyles.logoContainer}>
+          <Image
+            style={AuthHelpStyles.logo}
+            source={require("../../../../assets/logo-red.png")}
+          />
+        </View>
+        <View style={AuthHelpStyles.textContainer}>
+          <IconLabel
+            title="karosasupport@gmail.com"
+            subtitle="Responds within 1-2 days"
+            containerStyle={AuthHelpStyles.spacer}
+            icon={icon("email")}
+          />
+          <IconLabel
+            title="032 456 3478"
+            subtitle="(Monday - Sunday, 9AM - 6PM)"
+            icon={icon("phone")}
+          />
+        </View>
+        <Text
+          text={"2020 Karosa. All rights reserved."}
+          customStyle={AuthHelpStyles.footer}
         />
       </View>
-
-      <ListAvatar {...emailProps} />
-      <ListAvatar {...phoneProps} />
-
-      <BaseText
-        text={"2020 Karosa. All rights reserved."}
-        customStyle={AuthHelpStyles.footer}
-      />
-    </Screen>
+    </Fragment>
   );
-};
-
-AuthHelp.defaultProps = {
-  customStyles: AuthHelpStyles.container,
-  phoneProps: {
-    title: "032 456 3478",
-    subTitle: "(Monday - Sunday, 9AM - 6PM)",
-    IconComponent: (
-      <MaterialCommunityIcons name="phone" style={AuthHelpStyles.icon} />
-    ),
-    style: {
-      containerStyle: AuthHelpStyles.phoneContainer,
-    },
-  },
-  emailProps: {
-    title: "karosasupport@gmail.com",
-    subTitle: "Responds within 1-2 days",
-    style: {
-      containerStyle: AuthHelpStyles.emailContainer,
-    },
-    IconComponent: <Ionicons name="md-mail" style={AuthHelpStyles.icon} />,
-  },
 };
 
 export default AuthHelp;

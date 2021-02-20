@@ -16,10 +16,9 @@ import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types"
 import AuthLoginTemplate from "@app/components/templates/AuthLogin";
 import routes from "@app/navigators/routes";
 
-import type { PropsType } from "./types";
-import AuthValidationSchema from "./validation";
+import LoginValidationSchema from "./validation";
 
-const AuthLogin: FC<PropsType> = () => {
+const AuthLogin: FC = () => {
   const dispatch = useDispatch();
 
   const { navigate } = useNavigation();
@@ -40,19 +39,23 @@ const AuthLogin: FC<PropsType> = () => {
     }
   }, [isLoggedIn]);
 
+  const handleSubmit = () => {
+    const request: LoginRequest = {
+      identifier: formikBag.values.identifier,
+      password: formikBag.values.password,
+    };
+
+    callLoginApi(request);
+  };
+
+  const formInitValues = { identifier: "", password: "" };
+
   const formikBag = useFormik<LoginRequest>({
-    initialValues: { identifier: "", password: "" },
+    initialValues: formInitValues,
     validateOnChange: true,
     validateOnBlur: true,
-    validationSchema: AuthValidationSchema,
-    onSubmit: (values) => {
-      const request: LoginRequest = {
-        identifier: values.identifier,
-        password: values.password,
-      };
-
-      callLoginApi(request);
-    },
+    validationSchema: LoginValidationSchema,
+    onSubmit: handleSubmit,
   });
 
   useUpdateEffect(() => {

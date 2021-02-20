@@ -19,11 +19,11 @@ const AuthLoginStyles = StyleSheet.create({
   },
   validationContainer: {
     position: "relative",
-    bottom: 13,
+    bottom: "2.2%",
   },
   logoContainer: {
     position: "absolute",
-    top: 20,
+    top: "5%",
     alignSelf: "center",
   },
   spacer: {

@@ -5,36 +5,35 @@
  */
 
 import { StyleSheet } from "react-native";
-import { theme } from "@app/styles";
+import { SPACING, theme } from "@app/styles";
 
 const LoginForgotStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    padding: 20,
+    padding: SPACING.lg,
     backgroundColor: theme.colors.white,
   },
   txtForgotPass: {
     ...theme.title,
     color: theme.colors.black,
     fontWeight: "500",
-    marginVertical: 6,
+    marginVertical: SPACING.sm,
+  },
+  errorContainer: {
+    borderColor: theme.colors.red5,
   },
   txtResetPass: {
     ...theme.textRegular,
     color: theme.colors.black,
     fontWeight: "300",
-    marginVertical: 6,
+    marginVertical: SPACING.sm,
   },
-  txtLogin: {
-    ...theme.textRegular,
-    width: 70,
-    height: 50,
-    position: "absolute",
-    top: 20,
-    alignSelf: "center",
-    fontWeight: "700",
+  validationContainer: {
+    position: "relative",
+    bottom: "2.2%",
   },
+  txtHelp: { ...theme.textRegular, color: theme.colors.primary },
 });
 
 export default LoginForgotStyles;

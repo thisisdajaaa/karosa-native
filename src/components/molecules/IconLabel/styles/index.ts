@@ -9,19 +9,18 @@ import { theme, SPACING } from "@app/styles";
 
 const IconLabelStyles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    justifyContent: "center",
     flexDirection: "row",
     backgroundColor: theme.colors.white,
   },
   detailsContainer: {
-    flex: 1,
-    marginLeft: SPACING.lg,
+    marginLeft: SPACING.md,
+    marginTop: SPACING.xss,
     justifyContent: "center",
   },
   title: {
     ...theme.textRegular,
-    fontWeight: "400",
+    fontWeight: "normal",
+    marginBottom: SPACING.md,
   },
   subtitle: { ...theme.textRegular, fontWeight: "300" },
 });

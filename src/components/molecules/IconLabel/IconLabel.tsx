@@ -13,10 +13,10 @@ import type { PropsType } from "./types";
 import IconLabelStyles from "./styles";
 
 const IconLabel: FC<PropsType> = (props) => {
-  const { icon, title, subtitle } = props;
+  const { icon, title, subtitle, containerStyle } = props;
 
   return (
-    <View style={IconLabelStyles.container}>
+    <View style={[IconLabelStyles.container, containerStyle]}>
       {icon}
       <View style={IconLabelStyles.detailsContainer}>
         <Text text={title} customStyle={IconLabelStyles.title} />

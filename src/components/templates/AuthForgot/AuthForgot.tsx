@@ -5,59 +5,69 @@
  *
  */
 
-import React, { FC } from "react";
-import { FormikContext } from "formik";
-
+import React, { FC, Fragment } from "react";
+import { useFormikContext } from "formik";
+import { View } from "react-native";
+import { theme } from "@app/styles";
+import { ForgotRequest } from "@app/redux/auth/models";
 import FormInput from "@app/molecules/FormInput";
 import SubmitButton from "@app/molecules/FormButton";
-import BaseText from "@app/atoms/Text";
-import { Screen } from "@app/components/base-screen";
+import Text from "@app/atoms/Text";
+import Header from "@app/components/molecules/Header";
+import ValidationMessage from "@app/components/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
 import AuthForgotStyles from "./styles";
 
 const AuthForgot: FC<PropsType> = (props: PropsType) => {
-  const {
-    formikBag,
-    customStyles,
-    header,
-    forgotDesc,
-    resetDesc,
-    submitButtonTitle,
-    identifierName,
-    identifierPlaceholder,
-  } = props;
+  const { forgotButtonProps, onBack, onHelp } = props;
+  const { errors, touched } = useFormikContext<ForgotRequest>();
+
+  const hasFieldError = (key: keyof ForgotRequest) => {
+    return touched[key] && errors[key] ? AuthForgotStyles.errorContainer : {};
+  };
 
   return (
-    <FormikContext.Provider value={formikBag}>
-      <Screen customStyles={customStyles} header={header}>
-        <BaseText
-          text={forgotDesc}
+    <Fragment>
+      <Header
+        leftComponent={{
+          icon: "arrow-back",
+          color: theme.colors.primary,
+          onPress: onBack,
+        }}
+        rightComponent={{
+          text: "Help",
+          style: AuthForgotStyles.txtHelp,
+          onPress: onHelp,
+        }}
+      />
+      <View style={AuthForgotStyles.container}>
+        <Text
+          text="Forgot Password?"
           customStyle={AuthForgotStyles.txtForgotPass}
         />
-        <BaseText
-          text={resetDesc}
+        <Text
+          text="You can reset your password here."
           customStyle={AuthForgotStyles.txtResetPass}
         />
 
         <FormInput
-          name={identifierName !== undefined ? identifierName : ""}
-          placeholder={
-            identifierPlaceholder !== undefined ? identifierPlaceholder : ""
-          }
+          name="identifier"
+          placeholder="Email/Phone"
+          autoCapitalize="none"
+          autoCompleteType="off"
+          inputContainerStyle={hasFieldError("identifier")}
+          autoCorrect={false}
         />
-        <SubmitButton
-          title={submitButtonTitle !== undefined ? submitButtonTitle : ""}
-        />
-      </Screen>
-    </FormikContext.Provider>
-  );
-};
 
-AuthForgot.defaultProps = {
-  customStyles: AuthForgotStyles.container,
-  submitButtonTitle: "Submit",
-  identifierPlaceholder: "Email / Phone",
+        <View style={AuthForgotStyles.validationContainer}>
+          <ValidationMessage name="identifier" />
+        </View>
+
+        <SubmitButton {...forgotButtonProps} />
+      </View>
+    </Fragment>
+  );
 };
 
 export default AuthForgot;

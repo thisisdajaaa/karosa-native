@@ -5,7 +5,7 @@
  */
 
 import { StyleSheet } from "react-native";
-import { theme } from "@app/styles";
+import { DIMENS, SPACING, theme } from "@app/styles";
 
 const AuthHelpStyles = StyleSheet.create({
   container: {
@@ -14,36 +14,27 @@ const AuthHelpStyles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: theme.colors.white,
   },
+  txtHeader: {
+    ...theme.textBold,
+    fontWeight: "700",
+  },
   footer: {
     ...theme.textLight,
     position: "absolute",
-    bottom: 12,
+    bottom: "2%",
     fontWeight: "300",
   },
-  logo: {
-    width: 80,
-    height: 80,
+  textContainer: {
+    marginTop: SPACING.xl * 4,
   },
-  icon: {
-    marginBottom: 12,
-    color: theme.colors.primary,
-    fontSize: 24,
+  spacer: { marginVertical: SPACING.lg * 2 },
+  logo: {
+    width: DIMENS.screenWidth * 0.21,
+    height: DIMENS.screenHeight * 0.12,
   },
   logoContainer: {
     position: "absolute",
-    top: 110,
-    alignSelf: "center",
-  },
-  emailContainer: {
-    marginLeft: 2,
-    position: "absolute",
-    left: 60,
-    top: 240,
-  },
-  phoneContainer: {
-    position: "absolute",
-    left: 60,
-    top: 300,
+    top: "25%",
   },
 });
 
