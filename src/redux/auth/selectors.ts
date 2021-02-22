@@ -8,6 +8,11 @@ import { initAuthState } from "./data";
 export const rootSelector: Selector<StateAll, AuthState> = (state: StateAll) =>
   state.auth || initAuthState;
 
+export const getAuthEntryContext = () =>
+  createSelector([rootSelector], (state: AuthState) => {
+    return state.authEntryContext || initAuthState.authEntryContext;
+  });
+
 export const getLoginResponse = () =>
   createSelector([rootSelector], (state: AuthState) => {
     return state.loginResponse || initAuthState.loginResponse;
@@ -40,6 +45,7 @@ export const getNewAddressResponse = () =>
   });
 
 const selectors = {
+  getAuthEntryContext,
   getLoginResponse,
   getForgotResponse,
   getMyAddressResponse,

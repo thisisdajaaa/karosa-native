@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
-import { Dimensions } from "react-native";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { EventArg } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { useAuth } from "@app/hooks";
+import { useAuth, useMemoizedSelector, useUpdateEffect } from "@app/hooks";
 import { theme } from "@app/styles";
+import { selectors } from "@app/redux/auth";
 import UserAccountMainScreen from "@app/screens/user-account/main";
 import HomeScreen from "@app/screens/Home";
 import ShopMainScreen from "@app/screens/shop/main";
@@ -78,13 +78,15 @@ const ViewShopTabs: React.FC = () => {
 };
 
 const TabNavigator: React.FC = () => {
-  const { isLoggedIn } = useAuth();
-
   const sheetRef = useRef<RBSheet>(null);
 
-  const hide = function () {
-    sheetRef.current?.close();
-  };
+  const { isLoggedIn } = useAuth();
+
+  const authEntryContext = useMemoizedSelector(selectors.getAuthEntryContext);
+
+  useUpdateEffect(() => {
+    if (authEntryContext.isBack) sheetRef.current?.open();
+  }, [authEntryContext.isBack]);
 
   return (
     <React.Fragment>
@@ -132,7 +134,6 @@ const TabNavigator: React.FC = () => {
           listeners={{
             tabPress: (e: EventArg<"tabPress", true, undefined>) => {
               if (!isLoggedIn) {
-                // Prevent default action
                 e.preventDefault();
                 sheetRef.current?.open();
               }
@@ -140,20 +141,8 @@ const TabNavigator: React.FC = () => {
           }}
         />
       </BottomTab.Navigator>
-      <RBSheet
-        ref={sheetRef}
-        closeOnDragDown={true}
-        closeOnPressMask={false}
-        height={Dimensions.get("window").height * 0.9}
-        customStyles={{
-          container: {
-            borderTopLeftRadius: 10,
-            borderTopRightRadius: 10,
-            alignItems: "center",
-          },
-        }}>
-        <AuthMainScreen onLogin={hide} />
-      </RBSheet>
+
+      <AuthMainScreen sheetRef={sheetRef} />
     </React.Fragment>
   );
 };

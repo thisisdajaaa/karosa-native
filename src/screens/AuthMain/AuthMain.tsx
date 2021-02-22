@@ -5,54 +5,62 @@
  *
  */
 
-import React, { FC } from "react";
+import React, { FC, useCallback } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-
-import AuthMainTemplate from "@app/templates/AuthMain";
-import type { AuthMainHeaderProps } from "@app/templates/AuthMain/types";
+import { actions } from "@app/redux/auth";
+import { useMount } from "@app/hooks";
 import routes from "@app/navigators/routes";
+import BottomSheet from "@app/molecules/BottomSheet";
+import AuthMainTemplate from "@app/templates/AuthMain";
 
+import { BTM_SHEET_HEIGHT } from "./config";
 import type { PropsType } from "./types";
 
 const AuthMain: FC<PropsType> = (props: PropsType) => {
+  const dispatch = useDispatch();
+
+  const { sheetRef } = props;
   const { navigate } = useNavigation();
-  const { onLogin } = props;
 
-  const headerProps: AuthMainHeaderProps = {
-    borderBottom: false,
-    text: {
-      left: "Login",
-      right: "Help",
-    },
-    press: {
-      right: () => navigate(routes.AUTH_HELP),
-    },
-  };
+  const setAuthOpen = useCallback(
+    (value: boolean) => dispatch(actions.setAuthOpen(value)),
+    [dispatch]
+  );
 
-  const onPress = () => {
+  useMount(() => {
+    setAuthOpen(true);
+  });
+
+  const handleHelp = useCallback(() => {
+    navigate(routes.AUTH_HELP);
+  }, [navigate]);
+
+  const handleLogin = () => {
+    sheetRef.current?.close();
     navigate(routes.AUTH_LOGIN);
-    onLogin && onLogin();
   };
 
-  const onPressGoogle = () => {
-    console.log("Gmail login");
+  const handleGoogle = () => {
+    0;
   };
 
-  const onPressFB = () => {
-    console.log("FB login");
+  const handleFb = () => {
+    0;
   };
 
   return (
-    <AuthMainTemplate
-      signInButtonProps={{
-        title: "Phone number / Username / Email",
-        loading: false,
-      }}
-      onLogin={onPress}
-      onFBLogin={onPressFB}
-      onGoogleLogin={onPressGoogle}
-      header={headerProps}
-    />
+    <BottomSheet
+      ref={sheetRef}
+      onClose={() => setAuthOpen(false)}
+      height={BTM_SHEET_HEIGHT}>
+      <AuthMainTemplate
+        onHelp={handleHelp}
+        onLogin={handleLogin}
+        onFBLogin={handleFb}
+        onGoogleLogin={handleGoogle}
+      />
+    </BottomSheet>
   );
 };
 

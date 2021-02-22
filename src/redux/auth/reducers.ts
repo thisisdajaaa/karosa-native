@@ -9,6 +9,25 @@ import * as actions from "./actions";
 import * as models from "./models";
 import * as data from "./data";
 
+export const authEntryContext = produce(
+  (
+    draft: Draft<models.AuthEntryContext>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.setAuthBack):
+        draft.isBack = action.payload;
+        return draft;
+      case getType(actions.setAuthBack):
+        draft.isOpen = action.payload;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initAuthState.authEntryContext
+);
+
 export const loginResponse = produce(
   (
     draft: Draft<ResponseState<models.LoginResponse>>,
@@ -133,6 +152,7 @@ export const newAddressResponse = produce(
 );
 
 const reducer = combineReducers({
+  authEntryContext,
   loginResponse,
   forgotResponse,
   myAddressResponse,

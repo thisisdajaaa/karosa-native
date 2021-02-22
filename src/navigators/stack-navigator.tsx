@@ -21,28 +21,33 @@ import MyAddressScreen from "@app/screens/user-account/my-address";
 
 const Stack = createStackNavigator();
 
-const StackNavigator: React.FC = () => (
-  <Stack.Navigator
-    initialRouteName="Splash"
-    screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="Splash" component={SplashScreen} />
-    <Stack.Screen name="Home" component={TabNavigator} />
-    <Stack.Screen name="Login" component={AuthLoginScreen} />
-    <Stack.Screen name="Help" component={HelpScreen} />
-    <Stack.Screen name="Forgot Password" component={AuthForgotScreen} />
-    <Stack.Screen name="Account Settings" component={AccountSettingsScreen} />
-    <Stack.Screen name="Edit Profile" component={EditProfileScreen} />
-    <Stack.Screen name="Social Media Accounts" component={SocialMediaScreen} />
-    <Stack.Screen name="New Address" component={NewAddressScreen} />
-    <Stack.Screen name="My Address" component={MyAddressScreen} />
-    <Stack.Screen name="My Products" component={MyProductsScreen} />
-    <Stack.Screen name="Search Product" component={SearchProductScreen} />
-    <Stack.Screen name="Add Product" component={AddProductScreen} />
-    <Stack.Screen name="Add Variation" component={AddVariationScreen} />
-    <Stack.Screen name="Add Wholesale" component={AddWholesaleScreen} />
-    <Stack.Screen name="Shipping Details" component={ShippingDetailsScreen} />
-    <Stack.Screen name="Choose Category" component={ChooseCategoryScreen} />
-  </Stack.Navigator>
-);
+const StackNavigator: React.FC = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Splash"
+      screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Splash" component={SplashScreen} />
+      <Stack.Screen name="Home" component={TabNavigator} />
+      <Stack.Screen name="Login" component={AuthLoginScreen} />
+      <Stack.Screen name="Help" component={HelpScreen} />
+      <Stack.Screen name="Forgot Password" component={AuthForgotScreen} />
+      <Stack.Screen name="Account Settings" component={AccountSettingsScreen} />
+      <Stack.Screen name="Edit Profile" component={EditProfileScreen} />
+      <Stack.Screen
+        name="Social Media Accounts"
+        component={SocialMediaScreen}
+      />
+      <Stack.Screen name="New Address" component={NewAddressScreen} />
+      <Stack.Screen name="My Address" component={MyAddressScreen} />
+      <Stack.Screen name="My Products" component={MyProductsScreen} />
+      <Stack.Screen name="Search Product" component={SearchProductScreen} />
+      <Stack.Screen name="Add Product" component={AddProductScreen} />
+      <Stack.Screen name="Add Variation" component={AddVariationScreen} />
+      <Stack.Screen name="Add Wholesale" component={AddWholesaleScreen} />
+      <Stack.Screen name="Shipping Details" component={ShippingDetailsScreen} />
+      <Stack.Screen name="Choose Category" component={ChooseCategoryScreen} />
+    </Stack.Navigator>
+  );
+};
 
 export default StackNavigator;

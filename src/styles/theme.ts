@@ -4,7 +4,7 @@ const theme = {
   colors: {
     ...palette,
   },
-  title: {
+  textTitle: {
     fontSize: 24,
     lineHeight: 28,
     fontFamily: "SFProText-Bold",

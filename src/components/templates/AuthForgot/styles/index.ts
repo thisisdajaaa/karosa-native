@@ -15,7 +15,7 @@ const LoginForgotStyles = StyleSheet.create({
     backgroundColor: theme.colors.white,
   },
   txtForgotPass: {
-    ...theme.title,
+    ...theme.textTitle,
     color: theme.colors.black,
     fontWeight: "500",
     marginVertical: SPACING.sm,

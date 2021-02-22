@@ -12,12 +12,14 @@ import type { PropsType } from "./types";
 import BottomSheetStyles from "./styles";
 
 const BottomSheet = forwardRef((props: PropsType, ref: Ref<RBSheet>) => {
-  const { children, height } = props;
+  const { children, height, onClose, onOpen } = props;
 
   return (
     <RBSheet
       ref={ref}
       height={height}
+      onOpen={onOpen}
+      onClose={onClose}
       closeOnDragDown={true}
       closeOnPressMask={false}
       customStyles={{ container: BottomSheetStyles.container }}>

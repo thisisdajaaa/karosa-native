@@ -5,13 +5,13 @@
  */
 
 import { StyleSheet } from "react-native";
-import { theme } from "@app/styles";
+import { DIMENS, SPACING, theme } from "@app/styles";
 
 const AuthMainStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    padding: 20,
+    padding: SPACING.lg,
     backgroundColor: theme.colors.white,
   },
   buttonIcon: {
@@ -21,13 +21,13 @@ const AuthMainStyles = StyleSheet.create({
     left: 30,
   },
   logo: {
-    width: 80,
-    height: 80,
+    width: DIMENS.screenWidth * 0.21,
+    height: DIMENS.screenHeight * 0.12,
   },
   logoContainer: {
     position: "absolute",
-    top: 10,
     alignSelf: "center",
+    top: "-1%",
   },
   hrContainer: {
     flexDirection: "row",
@@ -40,17 +40,13 @@ const AuthMainStyles = StyleSheet.create({
     backgroundColor: theme.colors.light10,
   },
   fbButtonWrapper: {
-    marginVertical: "8%",
+    marginVertical: "2.5%",
   },
   fbButtonContainer: {
     backgroundColor: theme.colors.blue10,
   },
   gmailButtonContainer: {
     backgroundColor: theme.colors.red10,
-  },
-  signInButtonContainer: {
-    backgroundColor: theme.colors.primary,
-    marginVertical: 17,
   },
   noAccContainer: {
     ...theme.textRegular,
@@ -60,18 +56,26 @@ const AuthMainStyles = StyleSheet.create({
   txtOr: {
     ...theme.textRegular,
     color: theme.colors.dark10,
-    width: 50,
+    width: DIMENS.screenWidth * 0.1,
     textAlign: "center",
   },
   txtSignUp: {
     fontWeight: "700",
     color: theme.colors.primary,
-    marginLeft: 5,
+    marginLeft: SPACING.sm,
   },
   txtSignUpContainer: {
     flexDirection: "row",
     alignSelf: "center",
-    marginVertical: 25,
+    marginVertical: SPACING.lg * 2,
+  },
+  txtTitle: {
+    ...theme.textTitle,
+    fontWeight: "500",
+  },
+  txtHelp: { ...theme.textRegular, color: theme.colors.primary },
+  spacer: {
+    marginVertical: "12%",
   },
 });
 

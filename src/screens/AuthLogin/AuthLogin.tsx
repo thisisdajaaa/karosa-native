@@ -11,7 +11,12 @@ import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { LoginRequest } from "@app/redux/auth/models";
 import { actions, selectors } from "@app/redux/auth";
-import { useAuth, useMemoizedSelector, useUpdateEffect } from "@app/hooks";
+import {
+  useAuth,
+  useMemoizedSelector,
+  useMount,
+  useUpdateEffect,
+} from "@app/hooks";
 import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
 import AuthLoginTemplate from "@app/components/templates/AuthLogin";
 import routes from "@app/navigators/routes";
@@ -26,6 +31,11 @@ const AuthLogin: FC = () => {
 
   const callLoginApi = useCallback(
     (request: LoginRequest) => dispatch(actions.callLoginApi.request(request)),
+    [dispatch]
+  );
+
+  const setAuthBack = useCallback(
+    (value: boolean) => dispatch(actions.setAuthBack(value)),
     [dispatch]
   );
 
@@ -58,6 +68,8 @@ const AuthLogin: FC = () => {
     onSubmit: handleSubmit,
   });
 
+  useMount(() => setAuthBack(false));
+
   useUpdateEffect(() => {
     formikBag.setFieldError("password", "");
 
@@ -68,7 +80,8 @@ const AuthLogin: FC = () => {
   }, [responseError, loginResponse.isLoading]);
 
   const handleBack = useCallback(() => {
-    navigate(routes.AUTH_MAIN);
+    navigate(routes.HOME);
+    setAuthBack(true);
   }, [navigate]);
 
   const loginButtonProps: SubmitButtonProps = {

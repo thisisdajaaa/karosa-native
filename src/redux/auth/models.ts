@@ -15,7 +15,13 @@ export type NewAddressResponse = newAddress.Response;
 export type RegisterRequest = register.Request;
 export type RegisterResponse = register.Response;
 
+export type AuthEntryContext = {
+  isOpen: boolean;
+  isBack: boolean;
+};
+
 export type AuthState = {
+  authEntryContext: AuthEntryContext;
   loginResponse: ResponseState<LoginResponse>;
   forgotResponse: ResponseState<ForgotResponse>;
   myAddressResponse: ResponseState<MyAddressResponse>;

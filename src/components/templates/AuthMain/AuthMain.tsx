@@ -5,89 +5,84 @@
  *
  */
 
-import React, { FC } from "react";
-import { View, Image } from "react-native";
+import React, { FC, Fragment } from "react";
+import { View } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 
 import AppButton from "@app/atoms/Button";
-import BaseText from "@app/atoms/Text";
-import { Screen } from "@app/components/base-screen";
+import Text from "@app/atoms/Text";
 
 import type { PropsType } from "./types";
-import LoginMainStyles from "./styles";
-import { theme } from "@app/styles";
+import AuthMainStyles from "./styles";
+import Header from "@app/components/molecules/Header";
+import Image from "@app/atoms/Image";
 
 const AuthMain: FC<PropsType> = (props: PropsType) => {
-  const {
-    onLogin,
-    onFBLogin,
-    onGoogleLogin,
-    header,
-    customStyles,
-    signInButtonProps,
-    separatorLabel,
-    subDescription,
-    signupDesc,
-  } = props;
+  const { onLogin, onFBLogin, onGoogleLogin, onHelp } = props;
 
   return (
-    <Screen customStyles={customStyles} header={header}>
-      <View style={LoginMainStyles.logoContainer}>
-        <Image
-          style={LoginMainStyles.logo}
-          source={require("../../../../assets/logo-red.png")}
-        />
-      </View>
+    <Fragment>
+      <Header
+        leftComponent={{
+          text: "Login",
+          style: AuthMainStyles.txtTitle,
+        }}
+        rightComponent={{
+          text: "Help",
+          style: AuthMainStyles.txtHelp,
+          onPress: onHelp,
+        }}
+      />
+      <View style={AuthMainStyles.container}>
+        <View style={AuthMainStyles.logoContainer}>
+          <Image
+            customStyle={AuthMainStyles.logo}
+            source={require("../../../../assets/logo-red.png")}
+          />
+        </View>
 
-      <View style={LoginMainStyles.fbButtonWrapper}>
+        <View style={AuthMainStyles.spacer} />
         <AppButton
           onPress={onFBLogin}
-          customStyle={LoginMainStyles.fbButtonContainer}
+          customStyle={AuthMainStyles.fbButtonContainer}
           title={"Continue with Facebook"}
           icon={
+            // to replace icon with svg
             <FontAwesome
               name="facebook-official"
-              style={LoginMainStyles.buttonIcon}
+              style={AuthMainStyles.buttonIcon}
             />
           }
         />
-      </View>
-      <AppButton
-        onPress={onGoogleLogin}
-        customStyle={LoginMainStyles.gmailButtonContainer}
-        title={"Continue with Google"}
-        icon={<AntDesign name="google" style={LoginMainStyles.buttonIcon} />}
-      />
-      <View style={LoginMainStyles.hrContainer}>
-        <View style={LoginMainStyles.hrLine} />
-        <View>
-          <BaseText
-            customStyle={LoginMainStyles.txtOr}
-            text={separatorLabel!}
-          />
+        <View style={AuthMainStyles.fbButtonWrapper} />
+        <AppButton
+          onPress={onGoogleLogin}
+          customStyle={AuthMainStyles.gmailButtonContainer}
+          title={"Continue with Google"}
+          icon={
+            // to replace icon with svg
+            <AntDesign name="google" style={AuthMainStyles.buttonIcon} />
+          }
+        />
+        <View style={AuthMainStyles.hrContainer}>
+          <View style={AuthMainStyles.hrLine} />
+          <View>
+            <Text customStyle={AuthMainStyles.txtOr} text="or" />
+          </View>
+          <View style={AuthMainStyles.hrLine} />
         </View>
-        <View style={LoginMainStyles.hrLine} />
-      </View>
-      <AppButton onPress={onLogin} {...signInButtonProps} />
-      <View style={LoginMainStyles.txtSignUpContainer}>
-        <BaseText
-          customStyle={LoginMainStyles.noAccContainer}
-          text={subDescription !== undefined ? subDescription : ""}
-        />
-        <BaseText
-          customStyle={LoginMainStyles.txtSignUp}
-          text={signupDesc !== undefined ? signupDesc : ""}
-        />
-      </View>
-    </Screen>
-  );
-};
 
-AuthMain.defaultProps = {
-  customStyles: LoginMainStyles.container,
-  separatorLabel: "or",
-  subDescription: " Don't have an account?",
-  signupDesc: "Sign up",
+        <AppButton onPress={onLogin} title="Phone number / Username / Email" />
+        <View style={AuthMainStyles.txtSignUpContainer}>
+          <Text
+            customStyle={AuthMainStyles.noAccContainer}
+            text="Don't have an account?"
+          />
+          <Text customStyle={AuthMainStyles.txtSignUp} text="Sign up" />
+        </View>
+      </View>
+    </Fragment>
+  );
 };
 
 export default AuthMain;
