@@ -4,24 +4,51 @@ import {
   ScrollView,
   View,
   TouchableWithoutFeedback,
+  Keyboard,
+  TouchableOpacity,
 } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { theme } from "@app/styles";
+import { Header } from "react-native-elements";
+import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { SearchBar } from "@app/components/search-bar";
 import { BaseText } from "@app/components/base-text";
 import { Trends } from "@app/components/cards/trends";
 import { Screen } from "@app/components/base-screen";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 import { BannerSlide } from "@app/components/banner";
 import { Props as BannerSlideProps } from "@app/components/banner/types";
+import routes from "@app/navigators/routes";
+import { useNavigation } from "@react-navigation/native";
 
 import { HomeList } from "./home-list";
 import { styles } from "./styles";
 
 const HomeScreen: React.FC = () => {
+  const { goBack, navigate } = useNavigation();
   const screenProps: ScreenProps = {
-    header: {
-      title: "Home",
-    },
-    customStyles: { backgroundColor: "#ECECEC" },
+    customHeader: (
+      <Header
+        placement={"left"}
+        containerStyle={{
+          backgroundColor: "transparent",
+          width: "100%",
+        }}
+        centerComponent={
+          <SearchBar
+            placeholder={"Search in My Products"}
+            backgroundColor={"primary"}
+            onTouchStart={(_e) => navigate(routes.SEARCH_PRODUCT)}
+            onFocus={Keyboard.dismiss}
+          />
+        }
+        rightComponent={
+          <TouchableOpacity onPress={() => console.log("messages")}>
+            <MaterialIcons name="chat" size={24} color={theme.colors.primary} />
+          </TouchableOpacity>
+        }
+      />
+    ),
+    subCustomStyles: styles.searchBarContainer,
   };
 
   const bannerProps: BannerSlideProps = {

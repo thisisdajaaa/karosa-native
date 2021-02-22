@@ -11,6 +11,10 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  searchBarContainer: {
+    backgroundColor: theme.colors.light5,
+    paddingTop: 0,
+  },
   categoryContainer: {
     alignItems: "center",
     width: 100,

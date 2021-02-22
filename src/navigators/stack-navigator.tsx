@@ -43,7 +43,6 @@ const StackNavigator: React.FC = () => (
     <Stack.Screen name="Add Wholesale" component={AddWholesaleScreen} />
     <Stack.Screen name="Shipping Details" component={ShippingDetailsScreen} />
     <Stack.Screen name="Choose Category" component={ChooseCategoryScreen} />
-
   </Stack.Navigator>
 );
 
