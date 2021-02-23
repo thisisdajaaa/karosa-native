@@ -1,8 +1,6 @@
 import React from "react";
-import { BaseText } from "@app/components/base-text";
 import { Screen } from "@app/components/base-screen";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
-
 import { styles } from "./styles";
 
 const BasketScreen: React.FC = () => {
@@ -10,14 +8,10 @@ const BasketScreen: React.FC = () => {
     header: {
       title: "Basket",
     },
-    customStyles: styles.container,
+    customStyles: styles.screenContainer,
   };
 
-  return (
-    <Screen {...screenProps}>
-      <BaseText>BASKET</BaseText>
-    </Screen>
-  );
+  return <Screen {...screenProps} />;
 };
 
 export default BasketScreen;

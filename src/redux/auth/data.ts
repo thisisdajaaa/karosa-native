@@ -1,8 +1,12 @@
-import { RES_GENDER } from "@app/constants";
+import { ENUM } from "@app/constants";
 
 import { AuthState } from "./models";
 
 export const initAuthState: AuthState = {
+  authEntryContext: {
+    isOpen: false,
+    isBack: false,
+  },
   loginResponse: {
     response: {
       id: "",
@@ -10,7 +14,7 @@ export const initAuthState: AuthState = {
       fullName: "",
       phoneNo: "",
       username: "",
-      gender: RES_GENDER.Other,
+      gender: ENUM.RES_GENDER.Other,
       avatar: {},
     },
     isLoading: false,

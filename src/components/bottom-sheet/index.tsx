@@ -17,8 +17,7 @@ export const BottomSheet = React.forwardRef(
             borderTopRightRadius: 10,
             padding: 5,
           },
-        }}
-      >
+        }}>
         {children}
       </RBSheet>
     );

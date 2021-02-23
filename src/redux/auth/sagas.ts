@@ -21,7 +21,7 @@ export function* callLoginApi(
 
     yield put(actions.callLoginApi.success(response.data));
   } catch (error) {
-    yield put(actions.callLoginApi.failure(error));
+    yield put(actions.callLoginApi.failure(error.response.data));
   }
 }
 
@@ -66,19 +66,6 @@ export function* callMyAddressApi(): SagaIterator {
     yield put(actions.callMyAddressApi.failure(error));
   }
 }
-
-// export function* callNewAddressApi(): SagaIterator {
-//   try {
-//     const response: AxiosResponse<models.NewAddressResponse> = yield call(
-//       baseAxios.post,
-//       apiEndpoints.addresses
-//     );
-
-//     yield put(actions.callNewAddressApi.success(response.data));
-//   } catch (error) {
-//     yield put(actions.callNewAddressApi.failure(error));
-//   }
-// }
 
 export function* callNewAddressApi(
   action: ReturnType<typeof actions.callNewAddressApi.request>

@@ -6,7 +6,7 @@ type Icon = {
 };
 
 export type Props = {
-  title: string;
+  title?: string;
   icon?: Icon;
   containerStyle?: StyleProp<ViewStyle>;
   disabled?: boolean;

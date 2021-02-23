@@ -15,7 +15,13 @@ export type NewAddressResponse = newAddress.Response;
 export type RegisterRequest = register.Request;
 export type RegisterResponse = register.Response;
 
+export type AuthEntryContext = {
+  isOpen: boolean;
+  isBack: boolean;
+};
+
 export type AuthState = {
+  authEntryContext: AuthEntryContext;
   loginResponse: ResponseState<LoginResponse>;
   forgotResponse: ResponseState<ForgotResponse>;
   myAddressResponse: ResponseState<MyAddressResponse>;
@@ -24,6 +30,7 @@ export type AuthState = {
 };
 
 declare module "../types" {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   export interface StateAll {
     auth: AuthState;
   }

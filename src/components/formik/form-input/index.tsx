@@ -33,6 +33,7 @@ export const FormInput: React.FC<Props> = React.memo(({ name, ...props }) => {
   return (
     <React.Fragment>
       <TextInput
+        autoCapitalize="none"
         value={currentValue}
         onChangeText={handleChange}
         customStyles={{

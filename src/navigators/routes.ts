@@ -6,7 +6,7 @@ export default Object.freeze({
   AUTH_HELP: "Help",
   AUTH_FORGOT: "Forgot Password",
 
-  ACCOUNTS_MAIN: "User Account Main",
+  ACCOUNTS_MAIN: "Me",
   ACCOUNTS_SETTINGS: "Account Settings",
   ACCOUNTS_EDT_PRFL: "Edit Profile",
   ACCOUNTS_ADDRESS: "My Address",
@@ -25,4 +25,7 @@ export default Object.freeze({
   ADD_WHOLESALE: "Add Wholesale",
   SHIPPING_DETAILS: "Shipping Details",
   CHOOSE_CATEGORY: "Choose Category",
+
+  MY_BASKET: "My Basket",
+  NOTIFICATIONS: "Notifications",
 });

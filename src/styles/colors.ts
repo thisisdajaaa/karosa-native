@@ -25,6 +25,7 @@ const palette = {
   dark35: "#323232",
   light5: "#F5F5F5",
   light10: "#ECECEC",
+  transparent: "transparent",
 };
 
 export default palette;

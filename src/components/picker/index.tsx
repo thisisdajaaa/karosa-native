@@ -39,8 +39,7 @@ export const Picker: React.FC<Props> = React.memo(
                 onValueChange(itemValue, itemIndex);
               }
             }
-          }}
-        >
+          }}>
           <ReactPicker.Item
             value={placeholder ? placeholder : ""}
             color={theme.colors.light10}

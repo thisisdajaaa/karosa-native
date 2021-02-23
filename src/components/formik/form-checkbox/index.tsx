@@ -14,7 +14,6 @@ export const FormCheckbox: React.FC<Props> = React.memo(({ label, name }) => {
 
   useEffect(() => {
     helpers.setValue(currentValue);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentValue]);
 
   const handlePress = useCallback(async () => {

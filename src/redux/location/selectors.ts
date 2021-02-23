@@ -44,7 +44,7 @@ export const getCitiesResponse = () =>
       initLocationState.citiesResponse.response
     );
   });
-// eslint-disable-next-line import/no-anonymous-default-export
+
 export default {
   getRegionResponse,
   getProvinceResponse,

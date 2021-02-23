@@ -1,4 +1,4 @@
-import { ResponseState } from "redux/api-models/common";
+import { ResponseState } from "@app/redux/api-models/common";
 
 import * as shopInfo from "../api-models/shop-info";
 import * as addProduct from "../api-models/add-product";
@@ -87,6 +87,7 @@ export type ShopState = {
 };
 
 declare module "../types" {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   export interface StateAll {
     shop: ShopState;
   }

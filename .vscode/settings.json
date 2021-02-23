@@ -1,0 +1,22 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "path-intellisense.mappings": {
+    "@app/assets": "${workspaceRoot}/src/assets",
+    "@app/atoms": "${workspaceRoot}/src/components/atoms",
+    "@app/constants": "${workspaceRoot}/src/constants",
+    "@app/components": "${workspaceRoot}/src/components",
+    "@app/config": "${workspaceRoot}/src/config",
+    "@app/hooks": "${workspaceRoot}/src/hooks",
+    "@app/templates": "${workspaceRoot}/src/components/templates",
+    "@app/molecules": "${workspaceRoot}/src/components/molecules",
+    "@app/navigators": "${workspaceRoot}/src/navigators",
+    "@app/organisms": "${workspaceRoot}/src/components/organisms",
+    "@app/redux": "${workspaceRoot}/src/redux",
+    "@app/screens": "${workspaceRoot}/src/screens",
+    "@app/styles": "${workspaceRoot}/src/styles",
+    "@app/utils": "${workspaceRoot}/src/utils"
+  }
+}

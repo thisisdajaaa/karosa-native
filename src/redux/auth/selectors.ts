@@ -8,6 +8,11 @@ import { initAuthState } from "./data";
 export const rootSelector: Selector<StateAll, AuthState> = (state: StateAll) =>
   state.auth || initAuthState;
 
+export const getAuthEntryContext = () =>
+  createSelector([rootSelector], (state: AuthState) => {
+    return state.authEntryContext || initAuthState.authEntryContext;
+  });
+
 export const getLoginResponse = () =>
   createSelector([rootSelector], (state: AuthState) => {
     return state.loginResponse || initAuthState.loginResponse;
@@ -38,11 +43,14 @@ export const getNewAddressResponse = () =>
       initAuthState.newAddressResponse.response
     );
   });
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+
+const selectors = {
+  getAuthEntryContext,
   getLoginResponse,
   getForgotResponse,
   getMyAddressResponse,
   getNewAddressResponse,
   getRegisterResponse,
 };
+
+export default selectors;
