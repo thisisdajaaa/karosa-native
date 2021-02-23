@@ -17,7 +17,7 @@ const ValidationMessage: FC<PropsType> = (props) => {
 
   return (
     <ErrorMessage name={name}>
-      {(msg) => <Text customStyle={ValidationMessageStyles.text} text={msg} />}
+      {(msg) => <Text textStyle={ValidationMessageStyles.text} text={msg} />}
     </ErrorMessage>
   );
 };

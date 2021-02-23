@@ -40,25 +40,25 @@ const ListProduct: FC<PropsType> = (props) => {
         <ListItem.Content style={ListProductStyles.subContainerOne}>
           <Image
             source={{ uri: image }}
-            customStyle={ListProductStyles.image}
+            imageStyle={ListProductStyles.image}
             resizeMode={"cover"}
           />
           <ListItem.Content style={ListProductStyles.topContainer}>
             <Text
               numberOfLines={NAME_LINES}
               text={productName}
-              customStyle={ListProductStyles.txtName}
+              textStyle={ListProductStyles.txtName}
             />
             <Text
               text={`PHP ${price}`}
-              customStyle={ListProductStyles.txtPrice}
+              textStyle={ListProductStyles.txtPrice}
             />
             <ListItem.Content style={ListProductStyles.badgeContainer}>
               {wholesale && (
                 <View style={ListProductStyles.wholesaleContainer}>
                   <Text
                     text="Wholesale"
-                    customStyle={ListProductStyles.txtBadge}
+                    textStyle={ListProductStyles.txtBadge}
                   />
                 </View>
               )}
@@ -66,7 +66,7 @@ const ListProduct: FC<PropsType> = (props) => {
                 <View style={ListProductStyles.discountContainer}>
                   <Text
                     text={`${discount}%`}
-                    customStyle={ListProductStyles.txtBadge}
+                    textStyle={ListProductStyles.txtBadge}
                   />
                 </View>
               )}
@@ -76,34 +76,34 @@ const ListProduct: FC<PropsType> = (props) => {
         <ListItem.Content style={ListProductStyles.subContainerTwo}>
           <ListItem.Content style={ListProductStyles.midContainerOne}>
             <ListItem.Content style={ListProductStyles.variationContainerOne}>
-              <Text text="Stock" customStyle={ListProductStyles.txtLabel} />
+              <Text text="Stock" textStyle={ListProductStyles.txtLabel} />
               <Text
                 text={String(stock)}
-                customStyle={ListProductStyles.txtValue}
+                textStyle={ListProductStyles.txtValue}
               />
             </ListItem.Content>
             <ListItem.Content style={ListProductStyles.variationContainerTwo}>
-              <Text text="Likes" customStyle={ListProductStyles.txtLabel} />
+              <Text text="Likes" textStyle={ListProductStyles.txtLabel} />
               <Text
                 text={String(likes)}
-                customStyle={ListProductStyles.txtValue}
+                textStyle={ListProductStyles.txtValue}
               />
             </ListItem.Content>
           </ListItem.Content>
           <ListItem.Content style={ListProductStyles.space} />
           <ListItem.Content style={ListProductStyles.midContainerTwo}>
             <ListItem.Content style={ListProductStyles.variationContainerOne}>
-              <Text text="Sold" customStyle={ListProductStyles.txtLabel} />
+              <Text text="Sold" textStyle={ListProductStyles.txtLabel} />
               <Text
                 text={String(sold)}
-                customStyle={ListProductStyles.txtValue}
+                textStyle={ListProductStyles.txtValue}
               />
             </ListItem.Content>
             <ListItem.Content style={ListProductStyles.variationContainerTwo}>
-              <Text text="Rating" customStyle={ListProductStyles.txtLabel} />
+              <Text text="Rating" textStyle={ListProductStyles.txtLabel} />
               <Text
                 text={String(rating)}
-                customStyle={ListProductStyles.txtValue}
+                textStyle={ListProductStyles.txtValue}
               />
             </ListItem.Content>
           </ListItem.Content>
@@ -122,7 +122,7 @@ const ListProduct: FC<PropsType> = (props) => {
             </View>
             <Text
               text="Discontinue"
-              customStyle={ListProductStyles.txtDiscontinue}
+              textStyle={ListProductStyles.txtDiscontinue}
             />
           </TouchableOpacity>
           <TouchableOpacity
@@ -136,13 +136,13 @@ const ListProduct: FC<PropsType> = (props) => {
                 width={IMAGE_SIZE}
               />
             </View>
-            <Text text="Edit" customStyle={ListProductStyles.txtEdit} />
+            <Text text="Edit" textStyle={ListProductStyles.txtEdit} />
           </TouchableOpacity>
           <View style={ListProductStyles.boostContainer}>
             <Button
               type="outline"
               title="Boost Now"
-              customStyle={ListProductStyles.buttonContent}
+              buttonStyle={ListProductStyles.buttonContent}
               titleStyle={ListProductStyles.txtButton}
               onPress={onBoost}
             />

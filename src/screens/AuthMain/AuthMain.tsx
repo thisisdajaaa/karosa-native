@@ -33,13 +33,14 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
   });
 
   const handleHelp = useCallback(() => {
+    sheetRef.current?.close();
     navigate(routes.AUTH_HELP);
   }, [navigate]);
 
-  const handleLogin = () => {
+  const handleLogin = useCallback(() => {
     sheetRef.current?.close();
     navigate(routes.AUTH_LOGIN);
-  };
+  }, [navigate]);
 
   const handleGoogle = () => {
     0;

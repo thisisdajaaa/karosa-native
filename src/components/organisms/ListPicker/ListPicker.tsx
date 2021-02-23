@@ -19,7 +19,7 @@ const ListPicker: FC<PropsType> = (props) => {
   return (
     <ListItem bottomDivider={true}>
       <ListItem.Content style={ListPickerStyles.container}>
-        <Text text={label} customStyle={ListPickerStyles.text} />
+        <Text text={label} textStyle={ListPickerStyles.text} />
         <FormPicker data={data} placeholder={placeholder} name={name} />
       </ListItem.Content>
     </ListItem>

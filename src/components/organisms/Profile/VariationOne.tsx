@@ -44,7 +44,7 @@ const VariationOne: FC<VariatonOne> = (props) => {
         <StatusBar translucent backgroundColor="transparent" />
         <View style={ProfileStyles.statusBarSpacer} />
         <Header
-          customStyle={ProfileStyles.headerContainer}
+          containerStyle={ProfileStyles.headerContainer}
           barStyle="light-content"
           leftComponent={{
             icon: "arrow-back",
@@ -61,7 +61,7 @@ const VariationOne: FC<VariatonOne> = (props) => {
       </ImageBackground>
       <View style={ProfileStyles.avatarContainer}>
         <Image
-          customStyle={ProfileStyles.avatarPhoto}
+          imageStyle={ProfileStyles.avatarPhoto}
           source={{ uri: avatarPhoto }}
         />
       </View>
@@ -78,7 +78,7 @@ const VariationOne: FC<VariatonOne> = (props) => {
           }
           onPress={onChat}
           titleStyle={ProfileStyles.txtChat}
-          customStyle={ProfileStyles.btnChat}
+          buttonStyle={ProfileStyles.btnChat}
           title={"Chat"}
         />
         <Button
@@ -93,14 +93,14 @@ const VariationOne: FC<VariatonOne> = (props) => {
           }
           onPress={onAdd}
           titleStyle={ProfileStyles.txtPerson}
-          customStyle={ProfileStyles.btnPerson}
+          buttonStyle={ProfileStyles.btnPerson}
           title={"Chat"}
         />
         <View style={ProfileStyles.shopNameContainer}>
-          <Text text={shopName} customStyle={ProfileStyles.txtShopName} />
+          <Text text={shopName} textStyle={ProfileStyles.txtShopName} />
         </View>
         <View style={ProfileStyles.shopAddrContainer}>
-          <Text text={address} customStyle={ProfileStyles.txtShopAddr} />
+          <Text text={address} textStyle={ProfileStyles.txtShopAddr} />
           <View style={ProfileStyles.activeContainer}>
             <Fragment>
               <Icon
@@ -112,7 +112,7 @@ const VariationOne: FC<VariatonOne> = (props) => {
               />
               <Text
                 text={isActive ? "active" : "inactive"}
-                customStyle={ProfileStyles.txtIcon}
+                textStyle={ProfileStyles.txtIcon}
               />
             </Fragment>
           </View>
@@ -121,22 +121,19 @@ const VariationOne: FC<VariatonOne> = (props) => {
           <View style={ProfileStyles.ratingContainer}>
             <Text
               text={`${rating} / 5.0`}
-              customStyle={ProfileStyles.txtBottomValue}
+              textStyle={ProfileStyles.txtBottomValue}
             />
-            <Text
-              text="Shop Rating"
-              customStyle={ProfileStyles.txtBottomLabel}
-            />
+            <Text text="Shop Rating" textStyle={ProfileStyles.txtBottomLabel} />
           </View>
           <View style={ProfileStyles.followersPerfContainer}>
-            <Text text={followers} customStyle={ProfileStyles.txtBottomValue} />
-            <Text text="Followers" customStyle={ProfileStyles.txtBottomLabel} />
+            <Text text={followers} textStyle={ProfileStyles.txtBottomValue} />
+            <Text text="Followers" textStyle={ProfileStyles.txtBottomLabel} />
           </View>
           <View style={ProfileStyles.followersPerfContainer}>
-            <Text text={chatPerf} customStyle={ProfileStyles.txtBottomValue} />
+            <Text text={chatPerf} textStyle={ProfileStyles.txtBottomValue} />
             <Text
               text=" Chat Performance"
-              customStyle={ProfileStyles.txtBottomLabel}
+              textStyle={ProfileStyles.txtBottomLabel}
             />
           </View>
         </View>

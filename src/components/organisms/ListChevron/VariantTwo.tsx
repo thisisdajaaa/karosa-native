@@ -33,7 +33,7 @@ const VariantTwo: FC<PropsType> = (props) => {
     <ListItem bottomDivider={hasBottomDivider} onPress={onPress}>
       <Image
         source={{ uri: avatar }}
-        customStyle={ListChevronStyles.avatarImg}
+        imageStyle={ListChevronStyles.avatarImg}
         resizeMode={"cover"}
       />
       <ListItem.Content>

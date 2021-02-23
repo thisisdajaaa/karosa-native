@@ -16,6 +16,6 @@ export type PropsType = {
   loading?: boolean;
   disabled?: boolean;
   titleStyle?: StyleProp<TextStyle>;
-  customStyle?: StyleProp<ViewStyle>;
+  buttonStyle?: StyleProp<ViewStyle>;
   icon?: IconNode;
 };

@@ -24,33 +24,30 @@ const AddressDetails: FC<PropsType> = (props) => {
           <Text
             text={name}
             numberOfLines={NUM_LINES.ONE}
-            customStyle={AddressDetailsStyles.txtName}
+            textStyle={AddressDetailsStyles.txtName}
           />
           <Text
             text={phoneNumber}
             numberOfLines={NUM_LINES.ONE}
-            customStyle={AddressDetailsStyles.txtDetails}
+            textStyle={AddressDetailsStyles.txtDetails}
           />
           {barangayId && (
             <Text
               text={`${barangayId}`}
               numberOfLines={NUM_LINES.ONE}
-              customStyle={AddressDetailsStyles.txtDetails}
+              textStyle={AddressDetailsStyles.txtDetails}
             />
           )}
           <Text
             text={detailedAddress}
             numberOfLines={NUM_LINES.SIX}
-            customStyle={AddressDetailsStyles.txtDetails}
+            textStyle={AddressDetailsStyles.txtDetails}
           />
         </View>
       </ListItem.Content>
       {isDefault && (
         <View style={AddressDetailsStyles.defaultContainer}>
-          <Text
-            text={"default"}
-            customStyle={AddressDetailsStyles.txtDefault}
-          />
+          <Text text={"default"} textStyle={AddressDetailsStyles.txtDefault} />
         </View>
       )}
     </ListItem>

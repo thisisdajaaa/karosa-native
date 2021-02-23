@@ -15,7 +15,7 @@ const Header: FC<PropsType> = (props) => {
   const {
     children,
     centerComponent,
-    customStyle,
+    containerStyle,
     isCustom,
     leftComponent,
     placement,
@@ -31,7 +31,7 @@ const Header: FC<PropsType> = (props) => {
     <RnHeader
       placement={placement}
       barStyle={barStyle}
-      containerStyle={[InputStyles.container, customStyle]}
+      containerStyle={[InputStyles.container, containerStyle]}
       leftComponent={leftComponent}
       centerComponent={centerComponent}
       rightComponent={rightComponent}

@@ -32,7 +32,7 @@ const WarningMessage: FC<PropsType> = (props) => {
           <Text
             numberOfLines={NUM_LINES}
             text={message}
-            customStyle={WarningMessageStyles.text}
+            textStyle={WarningMessageStyles.text}
           />
         </ListItem.Content>
         <TouchableWithoutFeedback onPress={onPress}>

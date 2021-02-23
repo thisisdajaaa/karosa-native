@@ -15,7 +15,7 @@ export type PropsType = {
   isCustom?: boolean;
   barStyle?: BarStyle;
   placement?: Placement;
-  customStyle?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
   leftComponent?: HeaderSubComponent;
   centerComponent?: HeaderSubComponent;
   rightComponent?: HeaderSubComponent;

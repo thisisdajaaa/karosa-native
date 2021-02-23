@@ -25,7 +25,7 @@ const ListCheckbox: FC<PropsType> = (props) => {
     <ListItem bottomDivider={hasBottomDivider}>
       <ListItem.Content style={ListCheckboxStyles.container}>
         <ListItem.Content style={ListCheckboxStyles.checkboxContainer}>
-          <Text customStyle={ListCheckboxStyles.text} text={label} />
+          <Text textStyle={ListCheckboxStyles.text} text={label} />
           <ListItem.Content style={ListCheckboxStyles.rightContainer}>
             <FormCheckbox name={name} label="" uncheckedColor={unchecked} />
           </ListItem.Content>

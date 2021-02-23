@@ -10,7 +10,7 @@ type EllipsizeMode = "head" | "middle" | "tail" | "clip";
 
 export type PropsType = {
   text: string;
-  customStyle?: StyleProp<TextStyle>;
+  textStyle?: StyleProp<TextStyle>;
   numberOfLines?: number;
   ellipsizeMode?: EllipsizeMode;
 };

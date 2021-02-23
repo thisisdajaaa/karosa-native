@@ -20,7 +20,7 @@ const Button: FC<PropsType> = (props) => {
     loading,
     icon,
     titleStyle,
-    customStyle,
+    buttonStyle,
     onPress,
   } = props;
 
@@ -35,7 +35,7 @@ const Button: FC<PropsType> = (props) => {
       loading={loading}
       disabled={disabled}
       titleStyle={titleStyle}
-      buttonStyle={[ButtonStyles.container, customStyle]}
+      buttonStyle={[ButtonStyles.container, buttonStyle]}
     />
   );
 };

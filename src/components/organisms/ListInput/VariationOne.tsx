@@ -34,13 +34,13 @@ const VariationOne: FC<PropsType> = (props) => {
     <ListItem bottomDivider={hasBottomDivider}>
       <ListItem.Content style={ListInputStyles.variationOneContainer}>
         <ListItem.Content style={ListInputStyles.labelLengthContainer}>
-          <Text text={label} customStyle={ListInputStyles.txtLabel} />
+          <Text text={label} textStyle={ListInputStyles.txtLabel} />
           <Text
             text={`${currentLength}/${maxLen}`}
-            customStyle={ListInputStyles.txtLength}
+            textStyle={ListInputStyles.txtLength}
           />
           {required && (
-            <Text text="*" customStyle={ListInputStyles.txtRequired} />
+            <Text text="*" textStyle={ListInputStyles.txtRequired} />
           )}
         </ListItem.Content>
         <FormInput

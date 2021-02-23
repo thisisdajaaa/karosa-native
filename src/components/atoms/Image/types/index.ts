@@ -14,5 +14,5 @@ import {
 export type PropsType = {
   source: ImageSourcePropType;
   resizeMode?: ImageResizeMode;
-  customStyle?: StyleProp<ImageStyle>;
+  imageStyle?: StyleProp<ImageStyle>;
 };

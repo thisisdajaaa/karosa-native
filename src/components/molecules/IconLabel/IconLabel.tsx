@@ -19,8 +19,8 @@ const IconLabel: FC<PropsType> = (props) => {
     <View style={[IconLabelStyles.container, containerStyle]}>
       {icon}
       <View style={IconLabelStyles.detailsContainer}>
-        <Text text={title} customStyle={IconLabelStyles.title} />
-        <Text text={subtitle} customStyle={IconLabelStyles.subtitle} />
+        <Text text={title} textStyle={IconLabelStyles.title} />
+        <Text text={subtitle} textStyle={IconLabelStyles.subtitle} />
       </View>
     </View>
   );

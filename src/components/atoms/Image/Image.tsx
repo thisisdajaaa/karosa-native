@@ -12,11 +12,11 @@ import type { PropsType } from "./types";
 import ImageStyles from "./styles";
 
 const Image: FC<PropsType> = (props) => {
-  const { source, customStyle, resizeMode } = props;
+  const { source, imageStyle, resizeMode } = props;
 
   return (
     <RnImage
-      style={[ImageStyles.container, customStyle]}
+      style={[ImageStyles.container, imageStyle]}
       source={source}
       resizeMode={resizeMode}
     />

@@ -96,7 +96,7 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
           onPress: onBack,
         }}
         centerComponent={
-          <Text text="Login" customStyle={AuthLoginStyles.txtHeader} />
+          <Text text="Login" textStyle={AuthLoginStyles.txtHeader} />
         }
       />
       <KeyboardAvoidingView
@@ -143,7 +143,7 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
         <TouchableOpacity onPress={onForgot}>
           <Text
             text="I forgot my password"
-            customStyle={AuthLoginStyles.txtForgotPass}
+            textStyle={AuthLoginStyles.txtForgotPass}
           />
         </TouchableOpacity>
       </KeyboardAvoidingView>

@@ -33,7 +33,7 @@ const VariantTwo: FC<PropsType> = (props) => {
   return (
     <Card wrapperStyle={ProductCardStyles.mainContainer}>
       <View style={ProductCardStyles.wholesaleContainer}>
-        <Text customStyle={ProductCardStyles.txtWholesale} text={"Wholesale"} />
+        <Text textStyle={ProductCardStyles.txtWholesale} text={"Wholesale"} />
       </View>
       {discount && (
         <View style={ProductCardStyles.ribbonContainer}>
@@ -42,23 +42,23 @@ const VariantTwo: FC<PropsType> = (props) => {
       )}
       <Image
         source={{ uri: image }}
-        customStyle={ProductCardStyles.image}
+        imageStyle={ProductCardStyles.image}
         resizeMode={"cover"}
       />
       <View style={ProductCardStyles.bottomContentContainer}>
         <Text
-          customStyle={ProductCardStyles.txtName}
+          textStyle={ProductCardStyles.txtName}
           numberOfLines={NUM_LINES}
           text={name}
         />
         <View style={ProductCardStyles.rowContainer}>
           <Text
-            customStyle={ProductCardStyles.txtPrice}
+            textStyle={ProductCardStyles.txtPrice}
             text={`P${currentPrice}`}
           />
           <View style={ProductCardStyles.prevPriceContainer}>
             <Text
-              customStyle={ProductCardStyles.txtPrevPrice}
+              textStyle={ProductCardStyles.txtPrevPrice}
               text={`P${previousPrice}`}
             />
           </View>
@@ -71,15 +71,12 @@ const VariantTwo: FC<PropsType> = (props) => {
             startingValue={rating}
           />
           <View style={ProductCardStyles.floatRight}>
-            <Text
-              customStyle={ProductCardStyles.txtSold}
-              text={`${sold} sold`}
-            />
+            <Text textStyle={ProductCardStyles.txtSold} text={`${sold} sold`} />
           </View>
         </View>
         <View style={ProductCardStyles.rowContainer}>
           <Text
-            customStyle={ProductCardStyles.txtLocation}
+            textStyle={ProductCardStyles.txtLocation}
             text={location ? location : ""}
           />
           <View style={ProductCardStyles.floatRight}>

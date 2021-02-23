@@ -44,21 +44,18 @@ const VariantOne: FC<PropsType> = (props) => {
         )}
         <Text
           text={title}
-          customStyle={[
+          textStyle={[
             listColor
               ? ListChevronStyles.txtListColor
               : ListChevronStyles.title,
           ]}
         />
         {required && (
-          <Text text={"*"} customStyle={ListChevronStyles.txtRequired} />
+          <Text text={"*"} textStyle={ListChevronStyles.txtRequired} />
         )}
       </ListItem.Content>
       {info && (
-        <Text
-          text={info}
-          customStyle={[ListChevronStyles.txtInfo, infoStyle]}
-        />
+        <Text text={info} textStyle={[ListChevronStyles.txtInfo, infoStyle]} />
       )}
       <ListItem.Chevron iconStyle={iconStyle} />
     </ListItem>

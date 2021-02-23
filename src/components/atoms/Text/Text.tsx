@@ -12,11 +12,11 @@ import type { PropsType } from "./types";
 import TextStyles from "./styles";
 
 const Text: FC<PropsType> = (props) => {
-  const { text, customStyle, numberOfLines, ellipsizeMode } = props;
+  const { text, textStyle, numberOfLines, ellipsizeMode } = props;
 
   return (
     <RnText
-      style={[TextStyles.text, customStyle]}
+      style={[TextStyles.text, textStyle]}
       numberOfLines={numberOfLines}
       ellipsizeMode={ellipsizeMode}>
       {text}

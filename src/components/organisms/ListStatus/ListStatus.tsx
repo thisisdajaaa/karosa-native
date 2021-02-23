@@ -34,10 +34,8 @@ const ListStatus: FC<PropsType> = (props) => {
   return (
     <ListItem bottomDivider={hasBottomDivider}>
       <ListItem.Content style={ListStatusStyles.container}>
-        <Text text={label} customStyle={ListStatusStyles.txtLabel} />
-        {required && (
-          <Text text="*" customStyle={ListStatusStyles.txtRequired} />
-        )}
+        <Text text={label} textStyle={ListStatusStyles.txtLabel} />
+        {required && <Text text="*" textStyle={ListStatusStyles.txtRequired} />}
       </ListItem.Content>
       <TouchableWithoutFeedback onPress={onPress}>
         <ListItem.Content style={ListStatusStyles.valueContainer}>
@@ -48,7 +46,7 @@ const ListStatus: FC<PropsType> = (props) => {
             width={ICON_SIZE}
             extraStyle={ListStatusStyles.iconStatus}
           />
-          <Text text={value} customStyle={ListStatusStyles.txtValue} />
+          <Text text={value} textStyle={ListStatusStyles.txtValue} />
         </ListItem.Content>
       </TouchableWithoutFeedback>
     </ListItem>

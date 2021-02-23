@@ -22,16 +22,11 @@ const ListSwitch: FC<PropsType> = (props) => {
       <ListItem.Content style={ListSwitchStyles.container}>
         <ListItem.Content style={ListSwitchStyles.switchContainer}>
           {boldTitle && (
-            <Text
-              text={boldTitle}
-              customStyle={ListSwitchStyles.txtBoldTitle}
-            />
+            <Text text={boldTitle} textStyle={ListSwitchStyles.txtBoldTitle} />
           )}
-          {title && (
-            <Text text={title} customStyle={ListSwitchStyles.txtTitle} />
-          )}
+          {title && <Text text={title} textStyle={ListSwitchStyles.txtTitle} />}
           {info && (
-            <Text text={info} customStyle={ListSwitchStyles.txtExtraInfo} />
+            <Text text={info} textStyle={ListSwitchStyles.txtExtraInfo} />
           )}
           <ListItem.Content style={ListSwitchStyles.rightContainer}>
             <FormSwitch name={name} disabled={disabled} />

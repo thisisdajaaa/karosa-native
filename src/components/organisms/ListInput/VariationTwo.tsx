@@ -31,9 +31,9 @@ const VariationTwo: FC<PropsType> = (props) => {
       <ListItem.Content style={ListInputStyles.variationTwoContainer}>
         <ListItem.Content style={ListInputStyles.mainRowContainer}>
           <ListItem.Content style={ListInputStyles.labelContainer}>
-            <Text text={label} customStyle={ListInputStyles.txtLabel} />
+            <Text text={label} textStyle={ListInputStyles.txtLabel} />
             {required && (
-              <Text text="*" customStyle={ListInputStyles.txtRequired} />
+              <Text text="*" textStyle={ListInputStyles.txtRequired} />
             )}
           </ListItem.Content>
 

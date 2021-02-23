@@ -35,7 +35,7 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
           onPress: onBack,
         }}
         centerComponent={
-          <Text text="Help Centre" customStyle={AuthHelpStyles.txtHeader} />
+          <Text text="Help Centre" textStyle={AuthHelpStyles.txtHeader} />
         }
       />
       <View style={AuthHelpStyles.container}>
@@ -60,7 +60,7 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
         </View>
         <Text
           text={"2020 Karosa. All rights reserved."}
-          customStyle={AuthHelpStyles.footer}
+          textStyle={AuthHelpStyles.footer}
         />
       </View>
     </Fragment>

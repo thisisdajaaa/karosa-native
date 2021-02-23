@@ -37,7 +37,7 @@ const Picker: FC<PropsType> = (props) => {
             ? PickerStyles.hintStyle
             : PickerStyles.inputStyle
         }
-        customStyle={PickerStyles.inputContainer}
+        containerStyle={PickerStyles.inputContainer}
       />
       <RnPicker
         mode="dialog"

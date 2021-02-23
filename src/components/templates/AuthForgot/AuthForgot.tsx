@@ -44,16 +44,16 @@ const AuthForgot: FC<PropsType> = (props: PropsType) => {
       <View style={AuthForgotStyles.container}>
         <Text
           text="Forgot Password?"
-          customStyle={AuthForgotStyles.txtForgotPass}
+          textStyle={AuthForgotStyles.txtForgotPass}
         />
         <Text
           text="You can reset your password here."
-          customStyle={AuthForgotStyles.txtResetPass}
+          textStyle={AuthForgotStyles.txtResetPass}
         />
 
         <FormInput
           name="identifier"
-          placeholder="Email/Phone"
+          placeholder="Email / Phone"
           autoCapitalize="none"
           autoCompleteType="off"
           inputContainerStyle={hasFieldError("identifier")}

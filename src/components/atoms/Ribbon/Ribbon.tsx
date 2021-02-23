@@ -26,14 +26,8 @@ const Ribbon: FC<PropsType> = (props) => {
         width={SIZE.WIDTH}
       />
       <View style={RibbonStyles.textContainer}>
-        <Text
-          customStyle={RibbonStyles.text}
-          text={upperText ? upperText : ""}
-        />
-        <Text
-          customStyle={RibbonStyles.text}
-          text={lowerText ? lowerText : ""}
-        />
+        <Text textStyle={RibbonStyles.text} text={upperText ? upperText : ""} />
+        <Text textStyle={RibbonStyles.text} text={lowerText ? lowerText : ""} />
       </View>
     </View>
   );
