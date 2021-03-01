@@ -1,14 +1,20 @@
-import { StyleProp, TextStyle, ViewStyle } from "react-native";
+import { TextStyle } from "react-native";
 
-type Style = {
-  containerStyle?: StyleProp<ViewStyle>;
-  textStyle?: StyleProp<TextStyle>;
-};
-
-export type Props = {
-  style?: Style;
+export type BaseProps = {
   title: string;
   listColor?: string;
-  rightLabel?: string;
+  hasBottomDivider?: boolean;
+  txtInfo?: string;
+  required?: boolean;
+  iconStyle?: TextStyle;
+  txtInfoStyle?: TextStyle;
+  onPress: () => void;
+};
+
+export type AvatarProps = {
+  title: string;
+  subtitle: string;
+  hasBottomDivider?: boolean;
+  avatar?: string;
   onPress: () => void;
 };

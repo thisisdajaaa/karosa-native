@@ -45,9 +45,7 @@ const ProfileHeader: React.FC = () => {
 
       <TouchableOpacity
         style={styles.messageIconContainer}
-        onPress={() =>
-          navigate("Main Stack", { screen: routes.DUMMY_MESSAGES })
-        }
+        onPress={() => console.log("Messages")}
       >
         <MaterialIcons name="chat" style={styles.commonIconHeader} />
       </TouchableOpacity>

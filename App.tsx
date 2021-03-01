@@ -2,8 +2,9 @@ import React from "react";
 import { Provider } from "react-redux";
 import LoadAssets from "@app/components/load-assets";
 import BaseNavigator from "@app/navigators/index";
-// import AuthNavigator from "@app/navigators/stack-navigator/auth";
 import configureStore from "@app/redux/store";
+
+import "@app/config/i18n";
 
 const fonts = {
   "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
@@ -17,7 +18,6 @@ export default function App() {
   return (
     <Provider store={store}>
       <LoadAssets {...{ fonts }}>
-        {/* <AuthNavigator /> */}
         <BaseNavigator />
       </LoadAssets>
     </Provider>

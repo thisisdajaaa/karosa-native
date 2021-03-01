@@ -4,8 +4,11 @@ const palette = {
   white: "#fff",
   green5: "#64C465",
   green10: "#31A14C",
-  orange: "#F09A36",
-  gold: "#F4C725",
+  orange5: "#F09A36",
+  orange10: "#F2994A",
+  gold5: "#FFBA00",
+  gold10: "#F4C725",
+  gold15: "#FFFACD",
   purple: "#5756CE",
   blue5: "#3478F6",
   blue10: "#3C579B",
@@ -17,10 +20,12 @@ const palette = {
   dark10: "#BDBDBD",
   dark15: "#6e6969",
   dark20: "#1C1C1C",
+  dark25: "#0C0C0C",
   dark30: "#4F4F4F",
-  dark25: "#0c0c0c",
+  dark35: "#323232",
   light5: "#F5F5F5",
   light10: "#ECECEC",
+  transparent: "transparent",
 };
 
 export default palette;

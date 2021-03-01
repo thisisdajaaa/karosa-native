@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { View } from "react-native";
+import RBSheet from "react-native-raw-bottom-sheet";
 import { useNavigation } from "@react-navigation/native";
 import { Screen } from "@app/components/base-screen";
 import { MultiList } from "@app/components/multi-list";
@@ -9,10 +10,16 @@ import { Props as MultiListProps } from "@app/components/multi-list/types";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 import routes from "@app/navigators/routes";
 
+import DeleteAccountModal from "../delete-account";
+import LogoutModal from "../logout";
+
 import { styles } from "./styles";
 
 const AccountSettingsScreen: React.FC = () => {
   const { goBack, navigate } = useNavigation();
+
+  const deleteAccRef = useRef<RBSheet>(null);
+  const logoutRef = useRef<RBSheet>(null);
 
   const screenProps: ScreenProps = {
     header: {
@@ -29,56 +36,58 @@ const AccountSettingsScreen: React.FC = () => {
     multiChev: [
       {
         title: "My Profile",
-        hasSeparator: true,
+        hasBottomDivider: true,
         onPress: () => navigate(routes.ACCOUNTS_EDT_PRFL),
       },
       {
         title: "Help Centre",
-        hasSeparator: true,
-        onPress: () =>
-          navigate("Main Stack", { screen: routes.DUMMY_HELP_CENTRE }),
+        hasBottomDivider: true,
+        onPress: () => console.log("Help Centre"),
       },
       {
         title: "Request for Account Deletion",
-        hasSeparator: true,
-        onPress: () =>
-          navigate("Main Stack", { screen: routes.ACCOUNTS_DELETE }),
+        hasBottomDivider: true,
+        onPress: () => deleteAccRef.current?.open(),
       },
       {
         title: "FAQ",
-        hasSeparator: true,
-        onPress: () => navigate("Main Stack", { screen: routes.DUMMY_FAQ }),
+        hasBottomDivider: true,
+        onPress: () => console.log("FAQ"),
       },
       {
         title: "Privacy Policy",
-        hasSeparator: true,
-        onPress: () =>
-          navigate("Main Stack", { screen: routes.DUMMY_PRIVACY_POLICY }),
+        hasBottomDivider: true,
+        onPress: () => console.log("Privacy Policy"),
       },
       {
         title: "About",
-        onPress: () => navigate("Main Stack", { screen: routes.DUMMY_ABOUT }),
+        onPress: () => console.log("About"),
       },
     ],
   };
 
   const logoutButtonProps: ButtonProps = {
-    onPress: () => navigate("Main Stack", { screen: routes.ACCOUNTS_LOGOUT }),
+    onPress: () => logoutRef.current?.open(),
     title: "Logout",
     containerStyle: styles.logoutButtonContainer,
     textStyle: styles.txtLogout,
   };
 
   return (
-    <Screen {...screenProps}>
-      <View style={styles.multiListContainer}>
-        <MultiList {...multiListProps} />
-      </View>
+    <>
+      <Screen {...screenProps}>
+        <View style={styles.multiListContainer}>
+          <MultiList {...multiListProps} />
+        </View>
 
-      <View style={styles.buttonContainer}>
-        <AppButton {...logoutButtonProps} />
-      </View>
-    </Screen>
+        <View style={styles.buttonContainer}>
+          <AppButton {...logoutButtonProps} />
+        </View>
+      </Screen>
+
+      <DeleteAccountModal sheetRef={deleteAccRef} />
+      <LogoutModal sheetRef={logoutRef} />
+    </>
   );
 };
 

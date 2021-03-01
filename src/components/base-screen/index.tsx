@@ -8,10 +8,11 @@ import { Props } from "./types";
 import { styles } from "./styles";
 
 export const Screen: React.FC<Props> = React.memo(
-  ({ children, customStyles, header, isLoading }) => {
+  ({ children, customStyles, customHeader, header, isLoading }) => {
     return (
       <SafeAreaView style={styles.screen}>
         {header && <Header {...header} />}
+        {customHeader}
         <View style={[styles.container, customStyles]}>
           {isLoading ? <LoadingView /> : children}
         </View>
@@ -19,3 +20,5 @@ export const Screen: React.FC<Props> = React.memo(
     );
   }
 );
+
+Screen.displayName = "Screen";

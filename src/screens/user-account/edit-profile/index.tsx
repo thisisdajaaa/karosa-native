@@ -8,7 +8,7 @@ import { ListChevron } from "@app/components/list/list-chevron";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 import { Props as MultiListProps } from "@app/components/multi-list/types";
 import { Props as ListActionProps } from "@app/components/list/list-action/types";
-import { Props as ListChevronProps } from "@app/components/list/list-chevron/types";
+import { BaseProps as ListChevronProps } from "@app/components/list/list-chevron/types";
 import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
@@ -84,7 +84,7 @@ const EditProfileScreen: React.FC = () => {
 
   const addressProps: ListChevronProps = {
     title: "Addresses",
-    onPress: () => navigate("Main Stack", { screen: routes.ACCOUNTS_ADDRESS }),
+    onPress: () => navigate(routes.ACCOUNTS_ADDRESS),
   };
 
   const socialMediaProps: ListChevronProps = {

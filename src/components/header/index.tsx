@@ -1,6 +1,7 @@
 import React from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import { View, TouchableOpacity } from "react-native";
+import { Separator } from "@app/components/separator";
 
 import { BaseText } from "../base-text";
 
@@ -13,6 +14,7 @@ export const Header: React.FC<Props> = ({
   text,
   press,
   customStyles,
+  borderBottom = true,
 }) => {
   return (
     <React.Fragment>
@@ -38,6 +40,7 @@ export const Header: React.FC<Props> = ({
           </TouchableOpacity>
         )}
       </View>
+      {borderBottom && <Separator />}
     </React.Fragment>
   );
 };

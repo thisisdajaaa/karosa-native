@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
   },
   headerContainer: {
     backgroundColor: theme.colors.white,
-    height: 200,
+    height: 180,
     justifyContent: "flex-end",
   },
   infoContainer: {
@@ -98,6 +98,8 @@ export const styles = StyleSheet.create({
   myShopIcon: {
     fontSize: 16,
     color: theme.colors.white,
+    position: "absolute",
+    right: 10,
   },
   commonIconHeader: {
     fontSize: 24,

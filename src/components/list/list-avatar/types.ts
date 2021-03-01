@@ -11,7 +11,7 @@ type Style = {
 };
 
 export type Props = {
-  title: string;
+  title?: string;
   subTitle?: string;
   isActive?: boolean;
   rating?: string;

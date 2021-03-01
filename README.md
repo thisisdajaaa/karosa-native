@@ -21,10 +21,10 @@
 
 ```bash
 # Install dependencies for the host
-npm install
+yarn
 
 # Start the application
-npm run start
+yarn dev
 ```
 
 This page should automatically open in your browser. You can choose to run it in your preferred platform by selecting the options on the left. You can also scan the QR code using the Expo app on iOS and android to execute it on your mobile device.
@@ -56,6 +56,10 @@ This page should automatically open in your browser. You can choose to run it in
 1. Create the component ( if needed )
 1. Create the screen
 1. Add the navigation
+
+### Code Scaffolding
+
+Run `yarn generateComponent|generateScreen <component-name>` to generate a new component
 
 ### Components ( if needed )
 

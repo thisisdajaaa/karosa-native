@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     paddingBottom: 13,
     backgroundColor: theme.colors.white,
   },
-  detailsContainer: {
+  leftContainer: {
     flex: 1,
     marginLeft: 15,
     justifyContent: "center",

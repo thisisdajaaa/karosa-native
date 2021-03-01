@@ -4,19 +4,29 @@ const theme = {
   colors: {
     ...palette,
   },
-  title: {
+  textTitle: {
     fontSize: 24,
     lineHeight: 28,
     fontFamily: "SFProText-Bold",
   },
   textLight: {
     fontSize: 12,
-    lineHeight: 14,
+    lineHeight: 14.06,
+  },
+  textLightBold: {
+    fontSize: 11,
+    lineHeight: 14.06,
+    fontFamily: "SFProText-Bold",
   },
   textRegular: {
     fontSize: 16,
-    lineHeight: 19,
+    lineHeight: 18.75,
     fontFamily: "SFProText-Regular",
+  },
+  textBold: {
+    fontSize: 16,
+    lineHeight: 19,
+    fontFamily: "SFProText-Bold",
   },
   link1: {
     color: palette.primary,
