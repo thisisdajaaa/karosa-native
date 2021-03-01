@@ -9,7 +9,7 @@ import React, { FC } from "react";
 import { Header as RnHeader } from "react-native-elements";
 
 import type { PropsType } from "./types";
-import InputStyles from "./styles";
+import HeaderStyles from "./styles";
 
 const Header: FC<PropsType> = (props) => {
   const {
@@ -21,6 +21,7 @@ const Header: FC<PropsType> = (props) => {
     placement,
     rightComponent,
     barStyle,
+    hasBottomDivider,
   } = props;
 
   if (isCustom) {
@@ -31,7 +32,11 @@ const Header: FC<PropsType> = (props) => {
     <RnHeader
       placement={placement}
       barStyle={barStyle}
-      containerStyle={[InputStyles.container, containerStyle]}
+      containerStyle={
+        hasBottomDivider
+          ? HeaderStyles.dividerContainer
+          : [HeaderStyles.container, containerStyle]
+      }
       leftComponent={leftComponent}
       centerComponent={centerComponent}
       rightComponent={rightComponent}
