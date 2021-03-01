@@ -12,6 +12,10 @@ const HeaderStyles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     borderBottomWidth: 0,
   },
+  dividerContainer: {
+    backgroundColor: theme.colors.white,
+    borderBottomWidth: 1,
+  },
 });
 
 export default HeaderStyles;
