@@ -17,10 +17,9 @@ import {
   useMount,
   useUpdateEffect,
 } from "@app/hooks";
-import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
+import { PropsType as SubmitButtonProps } from "@app/components/molecules/FormButton/types";
 import AuthLoginTemplate from "@app/components/templates/AuthLogin";
 import routes from "@app/navigators/routes";
-
 import LoginValidationSchema from "./validation";
 
 const AuthLogin: FC = () => {

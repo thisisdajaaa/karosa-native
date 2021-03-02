@@ -6,18 +6,18 @@
  */
 
 import React, { FC, Fragment } from "react";
-import { View } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
-import Button from "@app/atoms/Button";
-import Text from "@app/atoms/Text";
+import Button from "@app/components/atoms/Button";
+import Text from "@app/components/atoms/Text";
 import Header from "@app/components/molecules/Header";
-import Image from "@app/atoms/Image";
+import Image from "@app/components/atoms/Image";
 
 import type { PropsType } from "./types";
 import AuthMainStyles from "./styles";
 
 const AuthMain: FC<PropsType> = (props: PropsType) => {
-  const { onLogin, onFBLogin, onGoogleLogin, onHelp } = props;
+  const { onLogin, onFBLogin, onGoogleLogin, onHelp, onSignUp } = props;
 
   return (
     <Fragment>
@@ -72,13 +72,15 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
         </View>
 
         <Button onPress={onLogin} title="Phone number / Username / Email" />
-        <View style={AuthMainStyles.txtSignUpContainer}>
-          <Text
-            textStyle={AuthMainStyles.noAccContainer}
-            text="Don't have an account?"
-          />
-          <Text textStyle={AuthMainStyles.txtSignUp} text="Sign up" />
-        </View>
+        <TouchableOpacity onPress={onSignUp}>
+          <View style={AuthMainStyles.txtSignUpContainer}>
+            <Text
+              textStyle={AuthMainStyles.noAccContainer}
+              text="Don't have an account?"
+            />
+            <Text textStyle={AuthMainStyles.txtSignUp} text="Sign up" />
+          </View>
+        </TouchableOpacity>
       </View>
     </Fragment>
   );
