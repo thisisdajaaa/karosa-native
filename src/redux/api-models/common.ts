@@ -18,3 +18,5 @@ export type PickerData = {
   id: number;
   value: string;
 };
+
+export type ResponseWithAudit<T> = T & Audit;

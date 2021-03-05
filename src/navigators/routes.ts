@@ -16,9 +16,16 @@ export default Object.freeze({
   ACCOUNTS_LOGOUT: "Logout",
 
   SHOP_MAIN: "Shop Main",
-  VIEW_SHOP: "View Shop",
+  SHOP_SETTINGS: "Shop Settings",
+  SHOP_CHAT: "Shop Chat",
+  SHOP_PRODUCTS: "Shop Products",
+  SHOP_SHIP: "Shop Ship",
+  SHOP_CANCELLED: "Shop Cancelled",
+  SHOP_RETURNS: "Shop Returns",
+  SHOP_MARKETING: "Shop Marketing",
+  SHOP_FINANCE: "Shop Finance",
+  SHOP_REPORTS: "Shop Reports",
 
-  PRODUCT_MAIN: "My Products",
   SEARCH_PRODUCT: "Search Product",
   ADD_PRODUCT: "Add Product",
   ADD_VARIATION: "Add Variation",

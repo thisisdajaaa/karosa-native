@@ -14,7 +14,7 @@ export const initAuthState: AuthState = {
       fullName: "",
       phoneNo: "",
       username: "",
-      gender: ENUM.RES_GENDER.Other,
+      gender: ENUM.Gender.Other,
       avatar: {},
     },
     isLoading: false,

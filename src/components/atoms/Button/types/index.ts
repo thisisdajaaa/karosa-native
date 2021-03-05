@@ -11,7 +11,7 @@ type ButtonType = "solid" | "clear" | "outline";
 
 export type PropsType = {
   title: string;
-  onPress(): void;
+  onPress?(): void;
   type?: ButtonType;
   loading?: boolean;
   disabled?: boolean;

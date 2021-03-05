@@ -3,7 +3,6 @@ import { Alert, BackHandler, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import NetInfo from "@react-native-community/netinfo";
 import { BaseText } from "@app/components/base-text";
-import { LIMITS } from "@app/constants";
 import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
@@ -39,7 +38,7 @@ const SplashScreen: React.FC = () => {
     });
 
   const appStartLogic = () => {
-    setTimeout(() => navigate(routes.HOME), LIMITS.splashScreenWaitTime);
+    setTimeout(() => navigate(routes.HOME), 1000);
   };
 
   return (

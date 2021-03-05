@@ -43,6 +43,7 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
           <Image
             style={AuthHelpStyles.logo}
             source={require("../../../../assets/logo-red.png")}
+            resizeMode="contain"
           />
         </View>
         <View style={AuthHelpStyles.textContainer}>

@@ -14,10 +14,11 @@ import AddVariationScreen from "@app/screens/products/add-variation";
 import AddWholesaleScreen from "@app/screens/products/add-wholesale";
 import ChooseCategoryScreen from "@app/screens/products/choose-category";
 import ShippingDetailsScreen from "@app/screens/products/shipping-details";
-
-import { TabNavigator } from "./tab-navigator";
 import NewAddressScreen from "@app/screens/user-account/new-address";
 import MyAddressScreen from "@app/screens/user-account/my-address";
+import ShopMainScreen from "@app/screens/ShopMain";
+
+import { TabNavigator } from "./tab-navigator";
 
 const Stack = createStackNavigator();
 
@@ -39,7 +40,8 @@ const StackNavigator: React.FC = () => {
       />
       <Stack.Screen name="New Address" component={NewAddressScreen} />
       <Stack.Screen name="My Address" component={MyAddressScreen} />
-      <Stack.Screen name="My Products" component={MyProductsScreen} />
+      <Stack.Screen name="Shop Main" component={ShopMainScreen} />
+      <Stack.Screen name="Shop Products" component={MyProductsScreen} />
       <Stack.Screen name="Search Product" component={SearchProductScreen} />
       <Stack.Screen name="Add Product" component={AddProductScreen} />
       <Stack.Screen name="Add Variation" component={AddVariationScreen} />

@@ -8,16 +8,14 @@ import { PropsType as SearchBarProps } from "@app/molecules/SearchBar/types";
 
 export type PropsType = {
   variation: number;
-} & VariatonOne;
-
-export type VariatonOne = {
   coverPhoto: string;
   avatarPhoto: string;
-  searchProps: SearchBarProps;
+  searchProps?: SearchBarProps;
   onBack(): void;
-  onMore(): void;
-  onChat(): void;
-  onAdd(): void;
+  onMore?(): void;
+  onChat?(): void;
+  onFollow?(): void;
+  onSettings?(): void;
   shopName: string;
   address: string;
   isActive: boolean;

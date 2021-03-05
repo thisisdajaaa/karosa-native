@@ -22,6 +22,19 @@ export function* callShopInfoApi(): SagaIterator {
   }
 }
 
+export function* callShopAddressApi(): SagaIterator {
+  try {
+    const response: AxiosResponse<models.ShopAddressResponse> = yield call(
+      baseAxios.get,
+      apiEndpoints.shopAddress
+    );
+
+    yield put(actions.callShopAddressApi.success(response.data));
+  } catch (error) {
+    yield put(actions.callShopAddressApi.failure(error));
+  }
+}
+
 export function* callAddProductApi(
   action: ReturnType<typeof actions.callAddProductApi.request>
 ): SagaIterator {
@@ -69,10 +82,18 @@ export function* onShopInfoSaga() {
   yield takeLatest(getType(actions.callShopInfoApi.request), callShopInfoApi);
 }
 
+export function* onShopAddressSaga() {
+  yield takeLatest(
+    getType(actions.callShopAddressApi.request),
+    callShopAddressApi
+  );
+}
+
 export default function* () {
   yield all([
     call(onAddProductSaga),
     call(onProductListSaga),
     call(onShopInfoSaga),
+    call(onShopAddressSaga),
   ]);
 }
