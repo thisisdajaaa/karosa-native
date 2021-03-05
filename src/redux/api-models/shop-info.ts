@@ -6,7 +6,7 @@ export type Shop = {
   id: number;
   name: string;
   isActive: boolean;
-  status: ENUM.RES_SHOP_STATUS | null;
+  status: ENUM.Shop_Status | null;
 } & Audit;
 
 export type Response = {

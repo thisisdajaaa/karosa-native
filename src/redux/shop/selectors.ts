@@ -77,6 +77,11 @@ export const getShopInfoResponse = () =>
     return state.shopInfoResponse || initShopState.shopInfoResponse;
   });
 
+export const getShopAddressResponse = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return state.shopAddressResponse || initShopState.shopAddressResponse;
+  });
+
 export const getAddProductResponse = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return state.addProductResponse || initShopState.addProductResponse;
@@ -87,7 +92,7 @@ export const getProductListResponse = () =>
     return state.productListResponse || initShopState.productListResponse;
   });
 
-export default {
+const selectors = {
   getAvailabilityForm,
   getProductForm,
   getVariationForm,
@@ -97,6 +102,9 @@ export default {
   getProductStatus,
   getProductMeasurement,
   getShopInfoResponse,
+  getShopAddressResponse,
   getAddProductResponse,
   getProductListResponse,
 };
+
+export default selectors;

@@ -43,23 +43,23 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
   };
 
   useMount(() => {
-    const keyboardWillShowSub = Keyboard.addListener(
-      "keyboardWillShow",
-      keyboardWillShow
+    const displayEvent = isIOS ? "keyboardWillShow" : "keyboardDidShow";
+    const hideEvent = isIOS ? "keyboardWillHide" : "keyboardDidHide";
+
+    const displayKeyboard = Keyboard.addListener(
+      displayEvent,
+      animateKeyboardDisplay
     );
 
-    const keyboardWillHideSub = Keyboard.addListener(
-      "keyboardWillHide",
-      keyboardWillHide
-    );
+    const hideKeyboard = Keyboard.addListener(hideEvent, animateKeyboardHide);
 
     return () => {
-      keyboardWillShowSub.remove();
-      keyboardWillHideSub.remove();
+      displayKeyboard.remove();
+      hideKeyboard.remove();
     };
   });
 
-  const keyboardWillShow = (event: KeyboardEvent) => {
+  const animateKeyboardDisplay = (event: KeyboardEvent) => {
     Animated.timing(imageHeight.current, {
       duration: event.duration,
       toValue: IMAGE_HEIGHT.SMALL,
@@ -73,7 +73,7 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
     }).start();
   };
 
-  const keyboardWillHide = (event: KeyboardEvent) => {
+  const animateKeyboardHide = (event: KeyboardEvent) => {
     Animated.timing(imageHeight.current, {
       duration: event.duration,
       toValue: IMAGE_HEIGHT.REGULAR,
@@ -101,7 +101,7 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
       />
       <KeyboardAvoidingView
         style={AuthLoginStyles.container}
-        behavior={isIOS ? "padding" : "position"}>
+        behavior={isIOS ? "padding" : undefined}>
         <View style={AuthLoginStyles.logoContainer}>
           <Animated.Image
             style={{
@@ -109,6 +109,7 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
               width: imageWidth.current,
             }}
             source={require("../../../../assets/logo-red.png")}
+            resizeMode="contain"
           />
         </View>
         <View style={AuthLoginStyles.spacer} />

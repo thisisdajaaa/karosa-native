@@ -16,7 +16,7 @@ export type Response = {
   fullName?: string;
   phoneNo?: string;
   email?: string;
-  gender?: ENUM.RES_GENDER;
+  gender?: ENUM.Gender;
   avatar?: Avatar;
   shop?: any;
 };

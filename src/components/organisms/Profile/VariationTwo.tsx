@@ -1,6 +1,6 @@
 /**
  *
- * VariationOne
+ * VariationTwo
  * @format
  *
  */
@@ -10,7 +10,6 @@ import { ImageBackground, StatusBar, View } from "react-native";
 import Image from "@app/atoms/Image";
 import Button from "@app/atoms/Button";
 import Header from "@app/molecules/Header";
-import Searchbar from "@app/molecules/SearchBar";
 import Icon from "@app/atoms/Icon";
 import Text from "@app/atoms/Text";
 
@@ -18,15 +17,13 @@ import type { PropsType } from "./types";
 import { BLUR_RADIUS, ICON } from "./config";
 import ProfileStyles from "./styles";
 
-const VariationOne: FC<PropsType> = (props) => {
+const VariationTwo: FC<PropsType> = (props) => {
   const {
     coverPhoto,
     avatarPhoto,
-    searchProps,
     onBack,
-    onMore,
     onChat,
-    onFollow,
+    onSettings,
     shopName,
     address,
     isActive,
@@ -51,11 +48,10 @@ const VariationOne: FC<PropsType> = (props) => {
             color: "white",
             onPress: onBack,
           }}
-          centerComponent={<Searchbar {...searchProps} />}
           rightComponent={{
-            icon: "more-horiz",
+            icon: "chat",
             color: "white",
-            onPress: onMore,
+            onPress: onChat,
           }}
         />
       </ImageBackground>
@@ -63,7 +59,6 @@ const VariationOne: FC<PropsType> = (props) => {
         <Image
           imageStyle={ProfileStyles.avatarPhoto}
           source={{ uri: avatarPhoto }}
-          resizeMode="contain"
         />
       </View>
       <View style={ProfileStyles.profileInfoContainer}>
@@ -71,31 +66,16 @@ const VariationOne: FC<PropsType> = (props) => {
           icon={
             <Icon
               group="common"
-              name="chat"
+              name="settingsWhite"
               width={ICON.BUTTON}
               height={ICON.BUTTON}
-              extraStyle={ProfileStyles.chatIcon}
+              extraStyle={ProfileStyles.settingsIcon}
             />
           }
-          onPress={onChat}
-          titleStyle={ProfileStyles.txtChat}
-          buttonStyle={ProfileStyles.btnChat}
-          title={"Chat"}
-        />
-        <Button
-          icon={
-            <Icon
-              group="products"
-              name="add"
-              width={ICON.BUTTON}
-              height={ICON.BUTTON}
-              extraStyle={ProfileStyles.personIcon}
-            />
-          }
-          onPress={onFollow}
+          onPress={onSettings}
           titleStyle={ProfileStyles.txtPerson}
           buttonStyle={ProfileStyles.btnPerson}
-          title={"Chat"}
+          title={"Settings"}
         />
         <View style={ProfileStyles.shopNameContainer}>
           <Text text={shopName} textStyle={ProfileStyles.txtShopName} />
@@ -131,7 +111,9 @@ const VariationOne: FC<PropsType> = (props) => {
             <Text text="Followers" textStyle={ProfileStyles.txtBottomLabel} />
           </View>
           <View style={ProfileStyles.chatPerformanceContainer}>
-            <Text text={chatPerf} textStyle={ProfileStyles.txtBottomValue} />
+            <View style={ProfileStyles.chatPerfSubContainer}>
+              <Text text={chatPerf} textStyle={ProfileStyles.txtBottomValue} />
+            </View>
             <Text
               text=" Chat Performance"
               textStyle={ProfileStyles.txtBottomLabel}
@@ -143,4 +125,4 @@ const VariationOne: FC<PropsType> = (props) => {
   );
 };
 
-export default VariationOne;
+export default VariationTwo;

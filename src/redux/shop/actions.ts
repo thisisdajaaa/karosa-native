@@ -1,5 +1,6 @@
 import { createAction, createAsyncAction } from "typesafe-actions";
 
+import { ResponseError } from "../api-models/common";
 import * as types from "./types";
 import * as models from "./models";
 
@@ -57,19 +58,25 @@ export const callShopInfoApi = createAsyncAction(
   types.ACT_SHOP_INFO_REQUEST,
   types.ACT_SHOP_INFO_SUCCESS,
   types.ACT_SHOP_INFO_FAILURE
-)<undefined, models.ShopInfoResponse, Error>();
+)<undefined, models.ShopInfoResponse, ResponseError>();
+
+export const callShopAddressApi = createAsyncAction(
+  types.ACT_SHOP_ADDRESS_REQUEST,
+  types.ACT_SHOP_ADDRESS_SUCCESS,
+  types.ACT_SHOP_ADDRESS_FAILURE
+)<undefined, models.ShopAddressResponse, ResponseError>();
 
 export const callAddProductApi = createAsyncAction(
   types.ACT_ADD_PRODUCT_REQUEST,
   types.ACT_ADD_PRODUCT_SUCCESS,
   types.ACT_ADD_PRODUCT_FAILURE
-)<models.AddProductRequest, models.AddProductResponse, Error>();
+)<models.AddProductRequest, models.AddProductResponse, ResponseError>();
 
 export const callProductListApi = createAsyncAction(
   types.ACT_PRODUCT_LIST_REQUEST,
   types.ACT_PRODUCT_LIST_SUCCESS,
   types.ACT_PRODUCT_LIST_FAILURE
-)<undefined, models.ProductListResponse, Error>();
+)<undefined, models.ProductListResponse, ResponseError>();
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
@@ -83,6 +90,7 @@ export default {
   setWholesaleForm,
   setShippingDetailsForm,
   callShopInfoApi,
+  callShopAddressApi,
   callAddProductApi,
   callProductListApi,
   clearProductEntry,
