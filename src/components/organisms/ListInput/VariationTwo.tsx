@@ -15,6 +15,7 @@ import ValidationMessage from "@app/components/molecules/ValidationMessage";
 import type { PropsType } from "./types";
 import { NUM_LINES } from "./config";
 import ListInputStyles from "./styles";
+import { View } from "react-native";
 
 const VariationTwo: FC<PropsType> = (props) => {
   const {
@@ -29,14 +30,13 @@ const VariationTwo: FC<PropsType> = (props) => {
   return (
     <ListItem bottomDivider={hasBottomDivider}>
       <ListItem.Content style={ListInputStyles.variationTwoContainer}>
-        <ListItem.Content style={ListInputStyles.mainRowContainer}>
-          <ListItem.Content style={ListInputStyles.labelContainer}>
+        <View style={ListInputStyles.mainRowContainer}>
+          <View style={ListInputStyles.labelContainer}>
             <Text text={label} textStyle={ListInputStyles.txtLabel} />
             {required && (
               <Text text="*" textStyle={ListInputStyles.txtRequired} />
             )}
-          </ListItem.Content>
-
+          </View>
           <ListItem.Content style={ListInputStyles.rowInputContainer}>
             <FormInput
               keyboardType={keyboardType}
@@ -48,7 +48,7 @@ const VariationTwo: FC<PropsType> = (props) => {
               inputContainerStyle={ListInputStyles.inputContainer}
             />
           </ListItem.Content>
-        </ListItem.Content>
+        </View>
         <ValidationMessage name={name} />
       </ListItem.Content>
     </ListItem>

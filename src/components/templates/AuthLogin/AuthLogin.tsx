@@ -87,21 +87,25 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
     }).start();
   };
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         leftComponent={{
           icon: "arrow-back",
           color: theme.colors.primary,
           onPress: onBack,
         }}
-        centerComponent={
-          <Text text="Login" textStyle={AuthLoginStyles.txtHeader} />
-        }
+        centerComponent={{
+          text: "Login",
+          style: AuthLoginStyles.txtHeader,
+        }}
       />
-      <KeyboardAvoidingView
-        style={AuthLoginStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+    );
+  };
+
+  const getAnimatedLogo = () => {
+    return (
+      <Fragment>
         <View style={AuthLoginStyles.logoContainer}>
           <Animated.Image
             style={{
@@ -113,6 +117,13 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
           />
         </View>
         <View style={AuthLoginStyles.spacer} />
+      </Fragment>
+    );
+  };
+
+  const getLoginForm = () => {
+    return (
+      <Fragment>
         <FormInput
           name="identifier"
           placeholder="Phone number / Username / Email"
@@ -147,6 +158,18 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
             textStyle={AuthLoginStyles.txtForgotPass}
           />
         </TouchableOpacity>
+      </Fragment>
+    );
+  };
+
+  return (
+    <Fragment>
+      <Fragment>{getHeader()}</Fragment>
+      <KeyboardAvoidingView
+        style={AuthLoginStyles.container}
+        behavior={isIOS ? "padding" : undefined}>
+        <Fragment>{getAnimatedLogo()}</Fragment>
+        <Fragment>{getLoginForm()}</Fragment>
       </KeyboardAvoidingView>
     </Fragment>
   );

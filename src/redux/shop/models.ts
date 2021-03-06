@@ -4,18 +4,13 @@ import * as shopInfo from "../api-models/shop-info";
 import * as shopAddress from "../api-models/shop-address";
 import * as addProduct from "../api-models/add-product";
 import * as productList from "../api-models/product-list";
+import { ENUM } from "@app/constants";
 
 export type ShopInfoResponse = shopInfo.Response;
 export type ShopAddressResponse = shopAddress.Response;
 export type AddProductRequest = addProduct.Request;
 export type AddProductResponse = addProduct.Response;
 export type ProductListResponse = productList.Response;
-
-export type CommonStatus = {
-  available: boolean;
-  planting: boolean;
-  harvesting: boolean;
-};
 
 export type ProductForm = {
   productImg: null;
@@ -28,7 +23,7 @@ export type ProductForm = {
   preOrder: boolean;
   measurement: string;
   categoryId: number;
-  status: CommonStatus;
+  status: ENUM.Product_Status;
 };
 
 export type VariationForm = {
@@ -66,10 +61,15 @@ export type ShippingDetailsForm = {
   sellerCourier: boolean;
 };
 
-export type ShopStatus = CommonStatus;
+export type ShopSettingsForm = {
+  coverPhoto?: string;
+  avatarPhoto?: string;
+  shopName: string;
+  status: ENUM.Shop_Status;
+};
 
 export type ShopEntryContext = {
-  shopStatus: ShopStatus;
+  shopSettings: ShopSettingsForm;
 };
 
 export type ProductEntryContext = {

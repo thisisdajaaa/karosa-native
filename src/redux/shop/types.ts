@@ -1,4 +1,5 @@
 export const SET_SHOP_STATUS = "shop/setShopStatus" as const;
+export const SET_SHOP_SETTINGS = "shop/setShopSettings" as const;
 export const SET_PRODUCT_STATUS = "shop/setProductStatus" as const;
 export const SET_PRODUCT_MEASUREMENT = "shop/setProductMeasurement" as const;
 export const SET_CATEGORY = "shop/setCategory" as const;

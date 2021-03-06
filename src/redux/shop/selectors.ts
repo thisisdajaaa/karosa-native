@@ -56,6 +56,14 @@ export const getShopStatus = () =>
     );
   });
 
+export const getShopSettings = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return (
+      state.shopEntryContext.shopSettings ||
+      initShopState.shopEntryContext.shopSettings
+    );
+  });
+
 export const getProductStatus = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return (
@@ -97,6 +105,7 @@ const selectors = {
   getProductForm,
   getVariationForm,
   getWholesaleForm,
+  getShopSettings,
   getShippingDetailsForm,
   getShopStatus,
   getProductStatus,

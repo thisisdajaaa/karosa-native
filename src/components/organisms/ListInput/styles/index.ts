@@ -15,8 +15,8 @@ const ListInputStyles = StyleSheet.create({
     flexDirection: "column",
   },
   mainRowContainer: {
-    height: DIMENS.screenHeight * 0.05,
     flexDirection: "row",
+    height: DIMENS.screenHeight * 0.05,
   },
   labelLengthContainer: {
     flexDirection: "row",
@@ -35,6 +35,7 @@ const ListInputStyles = StyleSheet.create({
     borderWidth: 0,
     borderBottomWidth: 0,
     padding: 0,
+    marginRight: 10,
   },
   errorContainer: {
     marginTop: SPACING.md,

@@ -27,8 +27,8 @@ const AuthForgot: FC<PropsType> = (props: PropsType) => {
     return touched[key] && errors[key] ? AuthForgotStyles.errorContainer : {};
   };
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         leftComponent={{
           icon: "arrow-back",
@@ -41,6 +41,11 @@ const AuthForgot: FC<PropsType> = (props: PropsType) => {
           onPress: onHelp,
         }}
       />
+    );
+  };
+
+  const getForgotContent = () => {
+    return (
       <View style={AuthForgotStyles.container}>
         <Text
           text="Forgot Password?"
@@ -66,6 +71,13 @@ const AuthForgot: FC<PropsType> = (props: PropsType) => {
 
         <SubmitButton {...forgotButtonProps} />
       </View>
+    );
+  };
+
+  return (
+    <Fragment>
+      <Fragment>{getHeader()}</Fragment>
+      <Fragment>{getForgotContent()}</Fragment>
     </Fragment>
   );
 };

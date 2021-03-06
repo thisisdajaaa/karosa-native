@@ -5,8 +5,9 @@
  *
  */
 
-import React, { FC, useState, useEffect, useCallback } from "react";
+import React, { FC, useState, useCallback } from "react";
 import { useField } from "formik";
+import { useUpdateEffect } from "@app/hooks";
 import Switch from "@app/atoms/Switch";
 
 import type { PropsType } from "./types";
@@ -20,7 +21,7 @@ const FormSwitch: FC<PropsType> = (props) => {
     meta.value || meta.initialValue
   );
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     helpers.setValue(currentValue);
   }, [currentValue]);
 

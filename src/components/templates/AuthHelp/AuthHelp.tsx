@@ -26,8 +26,8 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
     );
   };
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         leftComponent={{
           icon: "close",
@@ -38,6 +38,11 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
           <Text text="Help Centre" textStyle={AuthHelpStyles.txtHeader} />
         }
       />
+    );
+  };
+
+  const getHelpContent = () => {
+    return (
       <View style={AuthHelpStyles.container}>
         <View style={AuthHelpStyles.logoContainer}>
           <Image
@@ -64,6 +69,13 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
           textStyle={AuthHelpStyles.footer}
         />
       </View>
+    );
+  };
+
+  return (
+    <Fragment>
+      <Fragment>{getHeader()}</Fragment>
+      <Fragment>{getHelpContent()}</Fragment>
     </Fragment>
   );
 };

@@ -16,7 +16,10 @@ export const shopEntryContext = produce(
   ) => {
     switch (action.type) {
       case getType(actions.setShopStatus):
-        draft.shopStatus = action.payload;
+        draft.shopSettings.status = action.payload;
+        return draft;
+      case getType(actions.setShopSettings):
+        draft.shopSettings = action.payload;
         return draft;
       default:
         return draft;

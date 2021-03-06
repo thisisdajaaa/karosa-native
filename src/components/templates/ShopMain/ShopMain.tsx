@@ -51,24 +51,50 @@ const ShopMain: FC<PropsType> = (props) => {
     );
   };
 
+  const icons = {
+    ship: (
+      <MaterialIcons name="local-shipping" style={ShopMainStyles.commonIcon} />
+    ),
+    cancel: (
+      <MaterialCommunityIcons name="cancel" style={ShopMainStyles.commonIcon} />
+    ),
+    return: <AntDesign name="inbox" style={ShopMainStyles.inboxIcon} />,
+  };
+
+  const myProductsProps: ListChevronType = {
+    title: "My Products",
+    info: "80 Products",
+    listColor: theme.colors.orange5,
+    variation: COMMON.VARIATION.ONE,
+    hasBottomDivider: true,
+    onPress: navigation.handleProducts,
+  };
+
+  const marketingProps: ListChevronType = {
+    title: "Marketing",
+    listColor: theme.colors.blue5,
+    variation: COMMON.VARIATION.ONE,
+    hasBottomDivider: true,
+    onPress: navigation.handleMarketing,
+  };
+
+  const financeProps: ListChevronType = {
+    title: "Finance",
+    listColor: theme.colors.red5,
+    variation: COMMON.VARIATION.ONE,
+    hasBottomDivider: true,
+    onPress: navigation.handleFinance,
+  };
+
+  const reportsProps: ListChevronType = {
+    title: "Reports",
+    listColor: theme.colors.purple,
+    variation: COMMON.VARIATION.ONE,
+    onPress: navigation.handleReports,
+  };
+
   const getActions = () => {
     const elements: ReactElement[] = [];
-
-    const icons = {
-      ship: (
-        <MaterialIcons
-          name="local-shipping"
-          style={ShopMainStyles.commonIcon}
-        />
-      ),
-      cancel: (
-        <MaterialCommunityIcons
-          name="cancel"
-          style={ShopMainStyles.commonIcon}
-        />
-      ),
-      return: <AntDesign name="inbox" style={ShopMainStyles.inboxIcon} />,
-    };
 
     const toShip = action(() => navigation.handleToShip, icons.ship, "To Ship");
     const cancelled = action(
@@ -84,43 +110,36 @@ const ShopMain: FC<PropsType> = (props) => {
 
     elements.push(toShip, cancelled, returns);
 
-    return listIterator(elements);
+    return (
+      <View style={ShopMainStyles.actionPhaseContainer}>
+        <View style={ShopMainStyles.actionMainContainer}>
+          <Fragment>{listIterator(elements)}</Fragment>
+        </View>
+      </View>
+    );
+  };
+
+  const getProfile = () => {
+    return (
+      <Profile
+        variation={COMMON.VARIATION.TWO}
+        coverPhoto="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606613/karosa/shop_ynswwn.jpg"
+        avatarPhoto="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
+        onBack={navigation.handleBack}
+        onChat={navigation.handleChat}
+        onSettings={navigation.handleSettings}
+        shopName={shopName}
+        address={address}
+        rating="4.8"
+        followers="4.3K"
+        chatPerf="89%"
+        isActive={isActive}
+      />
+    );
   };
 
   const getChevron = () => {
     const elements: ReactElement[] = [];
-
-    const myProductsProps: ListChevronType = {
-      title: "My Products",
-      info: "80 Products",
-      listColor: theme.colors.orange5,
-      variation: COMMON.VARIATION.ONE,
-      hasBottomDivider: true,
-      onPress: navigation.handleProducts,
-    };
-
-    const marketingProps: ListChevronType = {
-      title: "Marketing",
-      listColor: theme.colors.blue5,
-      variation: COMMON.VARIATION.ONE,
-      hasBottomDivider: true,
-      onPress: navigation.handleMarketing,
-    };
-
-    const financeProps: ListChevronType = {
-      title: "Finance",
-      listColor: theme.colors.red5,
-      variation: COMMON.VARIATION.ONE,
-      hasBottomDivider: true,
-      onPress: navigation.handleFinance,
-    };
-
-    const reportsProps: ListChevronType = {
-      title: "Reports",
-      listColor: theme.colors.purple,
-      variation: COMMON.VARIATION.ONE,
-      onPress: navigation.handleReports,
-    };
 
     const myProducts = <ListChevron {...myProductsProps} />;
     const marketing = <ListChevron {...marketingProps} />;
@@ -129,7 +148,12 @@ const ShopMain: FC<PropsType> = (props) => {
 
     elements.push(myProducts, marketing, finance, reports);
 
-    return listIterator(elements);
+    return (
+      <View style={ShopMainStyles.choicesContainer}>
+        <Fragment>{listIterator(elements)}</Fragment>
+        <View style={ShopMainStyles.spacer} />
+      </View>
+    );
   };
 
   return (
@@ -143,25 +167,9 @@ const ShopMain: FC<PropsType> = (props) => {
             tintColor={theme.colors.primary}
           />
         }>
-        <Profile
-          variation={COMMON.VARIATION.TWO}
-          coverPhoto="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606613/karosa/shop_ynswwn.jpg"
-          avatarPhoto="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
-          onBack={navigation.handleBack}
-          onChat={navigation.handleChat}
-          onSettings={navigation.handleSettings}
-          shopName={shopName}
-          address={address}
-          rating="4.8"
-          followers="4.3K"
-          chatPerf="89%"
-          isActive={isActive}
-        />
-        <View style={ShopMainStyles.actionPhaseContainer}>
-          <View style={ShopMainStyles.actionMainContainer}>{getActions()}</View>
-        </View>
-        <View style={ShopMainStyles.choicesContainer}>{getChevron()}</View>
-        <View style={ShopMainStyles.spacer} />
+        <Fragment>{getProfile()}</Fragment>
+        <Fragment>{getActions()}</Fragment>
+        <Fragment>{getChevron()}</Fragment>
       </ScrollView>
     </Fragment>
   );

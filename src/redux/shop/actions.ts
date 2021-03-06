@@ -3,15 +3,21 @@ import { createAction, createAsyncAction } from "typesafe-actions";
 import { ResponseError } from "../api-models/common";
 import * as types from "./types";
 import * as models from "./models";
+import { ENUM } from "@app/constants";
 
 export const setShopStatus = createAction(
   types.SET_SHOP_STATUS,
-  (resolve) => (values: models.ShopStatus) => resolve(values)
+  (resolve) => (values: ENUM.Shop_Status) => resolve(values)
+);
+
+export const setShopSettings = createAction(
+  types.SET_SHOP_SETTINGS,
+  (resolve) => (values: models.ShopSettingsForm) => resolve(values)
 );
 
 export const setProductStatus = createAction(
   types.SET_PRODUCT_STATUS,
-  (resolve) => (values: models.CommonStatus) => resolve(values)
+  (resolve) => (values: ENUM.Product_Status) => resolve(values)
 );
 
 export const setProductMeasurement = createAction(
@@ -78,9 +84,9 @@ export const callProductListApi = createAsyncAction(
   types.ACT_PRODUCT_LIST_FAILURE
 )<undefined, models.ProductListResponse, ResponseError>();
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+const actions = {
   setShopStatus,
+  setShopSettings,
   setProductStatus,
   setProductMeasurement,
   setCategory,
@@ -95,3 +101,5 @@ export default {
   callProductListApi,
   clearProductEntry,
 };
+
+export default actions;

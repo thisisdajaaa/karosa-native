@@ -5,10 +5,11 @@
  *
  */
 
-import React, { FC, useState, useEffect, useCallback, ReactText } from "react";
+import React, { FC, useState, useCallback, ReactText } from "react";
 import { useField } from "formik";
 import { Picker } from "@app/components/picker";
 import { PickerData } from "@app/redux/api-models/common";
+import { useUpdateEffect } from "@app/hooks";
 
 import type { PropsType } from "./types";
 
@@ -20,7 +21,7 @@ const FormPicker: FC<PropsType> = (props) => {
     meta.value || meta.initialValue
   );
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     setCurrentValue(meta.value);
   }, [meta.value]);
 

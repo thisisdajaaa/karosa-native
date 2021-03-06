@@ -6,7 +6,6 @@
  */
 
 import React, { FC, useMemo } from "react";
-import { TouchableWithoutFeedback } from "react-native";
 import { ListItem } from "react-native-elements";
 import Text from "@app/atoms/Text";
 import Icon from "@app/atoms/Icon";
@@ -32,23 +31,21 @@ const ListStatus: FC<PropsType> = (props) => {
   }, [color]);
 
   return (
-    <ListItem bottomDivider={hasBottomDivider}>
+    <ListItem bottomDivider={hasBottomDivider} onPress={onPress}>
       <ListItem.Content style={ListStatusStyles.container}>
         <Text text={label} textStyle={ListStatusStyles.txtLabel} />
         {required && <Text text="*" textStyle={ListStatusStyles.txtRequired} />}
       </ListItem.Content>
-      <TouchableWithoutFeedback onPress={onPress}>
-        <ListItem.Content style={ListStatusStyles.valueContainer}>
-          <Icon
-            group="common"
-            name={iconColor}
-            height={ICON_SIZE}
-            width={ICON_SIZE}
-            extraStyle={ListStatusStyles.iconStatus}
-          />
-          <Text text={value} textStyle={ListStatusStyles.txtValue} />
-        </ListItem.Content>
-      </TouchableWithoutFeedback>
+      <ListItem.Content style={ListStatusStyles.valueContainer}>
+        <Icon
+          group="common"
+          name={iconColor}
+          height={ICON_SIZE}
+          width={ICON_SIZE}
+          extraStyle={ListStatusStyles.iconStatus}
+        />
+        <Text text={value} textStyle={ListStatusStyles.txtValue} />
+      </ListItem.Content>
     </ListItem>
   );
 };
