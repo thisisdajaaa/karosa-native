@@ -8,7 +8,7 @@ export type Response = ResponseWithAudit<{
   type: ENUM.Address_Type | null;
   phoneNo: string;
   detailed_address: string;
-  isDefaultAddress: boolean | null;
+  isDefaultAddress: boolean;
   barangayId: number;
   userId: string;
 }>;

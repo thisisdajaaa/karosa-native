@@ -1,9 +1,11 @@
 import { ENUM } from "@app/constants";
+import { PickerData } from "@app/redux/api-models/common";
 
 import {
   AvailabilityForm,
   ProductForm,
   ShippingDetailsForm,
+  ShopAddressForm,
   ShopPaymentForm,
   ShopSettingsForm,
   ShopState,
@@ -73,10 +75,25 @@ export const initShopPaymentForm: ShopPaymentForm = {
   creditCard: false,
 };
 
+const initPickerData: PickerData = {
+  id: 0,
+  value: "",
+};
+
+export const initShopAddressForm: ShopAddressForm = {
+  fullName: "",
+  detailedAddress: "",
+  phoneNumber: "",
+  barangay: initPickerData,
+  province: initPickerData,
+  region: initPickerData,
+};
+
 export const initShopState: ShopState = {
   shopEntryContext: {
     shopSettings: initShopSettingsForm,
     shopPayment: initShopPaymentForm,
+    shopAddress: initShopAddressForm,
   },
   productEntryContext: {
     productForm: initProductForm,
@@ -111,7 +128,7 @@ export const initShopState: ShopState = {
       type: ENUM.Address_Type.Shop,
       phoneNo: "",
       detailed_address: "",
-      isDefaultAddress: null,
+      isDefaultAddress: false,
       barangayId: 0,
       userId: "",
       createdAt: "",

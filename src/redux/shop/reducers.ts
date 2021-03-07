@@ -23,6 +23,9 @@ export const shopEntryContext = produce(
       case getType(actions.setShopPayment):
         draft.shopPayment = action.payload;
         return draft;
+      case getType(actions.setShopAddressForm):
+        draft.shopAddress = action.payload;
+        return draft;
       default:
         return draft;
     }

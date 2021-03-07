@@ -16,7 +16,7 @@ import ShopStatus from "@app/screens/ShopStatus";
 import ShopDelete from "@app/screens/ShopDelete";
 import routes from "@app/navigators/routes";
 
-import type { ShopMainNavigation } from "./types";
+import type { ShopSettingsNavigation } from "./types";
 import { statusInformation } from "./config";
 
 const ShopSettings: FC = () => {
@@ -42,7 +42,7 @@ const ShopSettings: FC = () => {
     onSubmit: handleSubmit,
   });
 
-  const navigation: ShopMainNavigation = {
+  const navigation: ShopSettingsNavigation = {
     onBack: useCallback(() => {
       goBack();
     }, [goBack]),

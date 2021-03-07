@@ -40,6 +40,11 @@ export const setProductForm = createAction(
   (resolve) => (values: models.ProductForm) => resolve(values)
 );
 
+export const setShopAddressForm = createAction(
+  types.SET_SHOP_ADDRESS,
+  (resolve) => (values: models.ShopAddressForm) => resolve(values)
+);
+
 export const setVariationForm = createAction(
   types.SET_VARIATION_FORM,
   (resolve) => (values: models.VariationForm) => resolve(values)
@@ -98,6 +103,7 @@ export const callProductListApi = createAsyncAction(
 const actions = {
   setShopStatus,
   setShopSettings,
+  setShopAddressForm,
   setShopPayment,
   setProductStatus,
   setProductMeasurement,

@@ -5,5 +5,5 @@
  */
 
 export type PropsType = {
-
+  onBack(): void;
 };

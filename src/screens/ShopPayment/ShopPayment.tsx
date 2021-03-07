@@ -15,11 +15,7 @@ import { useMemoizedSelector } from "@app/hooks";
 import type { PropsType as FormButtonProps } from "@app/molecules/FormButton/types";
 import ShopPaymentTemplate from "@app/templates/ShopPayment";
 
-import type { PropsType } from "./types";
-
-const ShopPayment: FC<PropsType> = (props) => {
-  const {} = props;
-
+const ShopPayment: FC = () => {
   const dispatch = useDispatch();
 
   const { goBack } = useNavigation();

@@ -56,6 +56,14 @@ export const getShopSettings = () =>
     );
   });
 
+export const getShopAddressForm = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return (
+      state.shopEntryContext.shopAddress ||
+      initShopState.shopEntryContext.shopAddress
+    );
+  });
+
 export const getShopPayment = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return (
@@ -106,6 +114,7 @@ const selectors = {
   getVariationForm,
   getWholesaleForm,
   getShopPayment,
+  getShopAddressForm,
   getShopSettings,
   getShippingDetailsForm,
   getProductStatus,
