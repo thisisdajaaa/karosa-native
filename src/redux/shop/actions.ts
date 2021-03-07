@@ -1,9 +1,9 @@
+import { ENUM } from "@app/constants";
 import { createAction, createAsyncAction } from "typesafe-actions";
+import { ResponseError } from "@app/redux/api-models/common";
 
-import { ResponseError } from "../api-models/common";
 import * as types from "./types";
 import * as models from "./models";
-import { ENUM } from "@app/constants";
 
 export const setShopStatus = createAction(
   types.SET_SHOP_STATUS,
@@ -13,6 +13,11 @@ export const setShopStatus = createAction(
 export const setShopSettings = createAction(
   types.SET_SHOP_SETTINGS,
   (resolve) => (values: models.ShopSettingsForm) => resolve(values)
+);
+
+export const setShopPayment = createAction(
+  types.SET_SHOP_PAYMENT,
+  (resolve) => (values: models.ShopPaymentForm) => resolve(values)
 );
 
 export const setProductStatus = createAction(
@@ -93,6 +98,7 @@ export const callProductListApi = createAsyncAction(
 const actions = {
   setShopStatus,
   setShopSettings,
+  setShopPayment,
   setProductStatus,
   setProductMeasurement,
   setCategory,

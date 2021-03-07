@@ -1,11 +1,11 @@
 import { ResponseState } from "@app/redux/api-models/common";
+import { ENUM } from "@app/constants";
 
 import * as shopInfo from "../api-models/shop-info";
 import * as shopDelete from "../api-models/shop-delete";
 import * as shopAddress from "../api-models/shop-address";
 import * as addProduct from "../api-models/add-product";
 import * as productList from "../api-models/product-list";
-import { ENUM } from "@app/constants";
 
 export type ShopInfoResponse = shopInfo.Response;
 export type ShopDeleteResponse = shopDelete.Response;
@@ -70,8 +70,15 @@ export type ShopSettingsForm = {
   status: ENUM.Shop_Status;
 };
 
+export type ShopPaymentForm = {
+  cod: boolean;
+  gcash: boolean;
+  creditCard: boolean;
+};
+
 export type ShopEntryContext = {
   shopSettings: ShopSettingsForm;
+  shopPayment: ShopPaymentForm;
 };
 
 export type ProductEntryContext = {

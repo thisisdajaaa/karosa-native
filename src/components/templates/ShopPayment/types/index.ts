@@ -3,10 +3,10 @@
  * @format
  *
  */
+
 import { PropsType as FormButtonProps } from "@app/molecules/FormButton/types";
 
 export type PropsType = {
-  forgotButtonProps: FormButtonProps;
+  paymentButtonProps: FormButtonProps;
   onBack(): void;
-  onHelp(): void;
 };

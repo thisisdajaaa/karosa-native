@@ -80,17 +80,21 @@ const ProfileStyles = StyleSheet.create({
     borderRadius: 3,
   },
   shopNameContainer: {
-    position: "absolute",
-    bottom: DIMENS.screenHeight * 0.108,
+    position: "relative",
+    top: DIMENS.screenHeight * 0.085,
     left: DIMENS.screenWidth * 0.045,
+  },
+  shopAddressSubContainer: {
+    width: "70%",
+    flexDirection: "row",
   },
   txtShopName: {
     ...theme.textBold,
     fontWeight: "500",
   },
   shopAddrContainer: {
-    position: "absolute",
-    bottom: "32%",
+    position: "relative",
+    top: DIMENS.screenHeight * 0.1,
     left: DIMENS.screenWidth * 0.045,
     flexDirection: "row",
   },
@@ -100,7 +104,7 @@ const ProfileStyles = StyleSheet.create({
   },
   activeContainer: {
     flexDirection: "row",
-    marginLeft: SPACING.lg + 4,
+    marginLeft: SPACING.md,
   },
   activeIcon: {
     marginTop: SPACING.xs - 1,
@@ -114,7 +118,7 @@ const ProfileStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     position: "absolute",
-    bottom: DIMENS.screenHeight * 0.018,
+    bottom: DIMENS.screenHeight * 0.01,
     left: DIMENS.screenWidth * 0.045,
   },
   ratingContainer: {

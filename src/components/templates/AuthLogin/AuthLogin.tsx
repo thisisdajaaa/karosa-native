@@ -22,7 +22,7 @@ import { getPlatform } from "@app/utils";
 import Text from "@app/atoms/Text";
 import Header from "@app/components/molecules/Header";
 import FormInput from "@app/molecules/FormInput";
-import SubmitButton from "@app/molecules/FormButton";
+import FormButton from "@app/molecules/FormButton";
 import ValidationMessage from "@app/components/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
@@ -151,7 +151,7 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
           <ValidationMessage name="password" />
         </View>
 
-        <SubmitButton {...loginButtonProps} />
+        <FormButton {...loginButtonProps} />
         <TouchableOpacity onPress={onForgot}>
           <Text
             text="I forgot my password"
@@ -162,15 +162,21 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
     );
   };
 
-  return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
+  const getContent = () => {
+    return (
       <KeyboardAvoidingView
         style={AuthLoginStyles.container}
         behavior={isIOS ? "padding" : undefined}>
         <Fragment>{getAnimatedLogo()}</Fragment>
         <Fragment>{getLoginForm()}</Fragment>
       </KeyboardAvoidingView>
+    );
+  };
+
+  return (
+    <Fragment>
+      <Fragment>{getHeader()}</Fragment>
+      <Fragment>{getContent()}</Fragment>
     </Fragment>
   );
 };

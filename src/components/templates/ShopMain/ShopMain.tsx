@@ -109,7 +109,7 @@ const ShopMain: FC<PropsType> = (props) => {
     return (
       <View style={ShopMainStyles.actionPhaseContainer}>
         <View style={ShopMainStyles.actionMainContainer}>
-          <Fragment>{listIterator(elements)}</Fragment>
+          {listIterator(elements)}
         </View>
       </View>
     );
@@ -145,15 +145,17 @@ const ShopMain: FC<PropsType> = (props) => {
     elements.push(myProducts, marketing, finance, reports);
 
     return (
-      <View style={ShopMainStyles.choicesContainer}>
-        <Fragment>{listIterator(elements)}</Fragment>
+      <Fragment>
+        <View style={ShopMainStyles.choicesContainer}>
+          {listIterator(elements)}
+        </View>
         <View style={ShopMainStyles.spacer} />
-      </View>
+      </Fragment>
     );
   };
 
-  return (
-    <Fragment>
+  const getContent = () => {
+    return (
       <ScrollView
         showsVerticalScrollIndicator={false}
         refreshControl={
@@ -167,8 +169,10 @@ const ShopMain: FC<PropsType> = (props) => {
         <Fragment>{getActions()}</Fragment>
         <Fragment>{getChevron()}</Fragment>
       </ScrollView>
-    </Fragment>
-  );
+    );
+  };
+
+  return <Fragment>{getContent()}</Fragment>;
 };
 
 export default ShopMain;

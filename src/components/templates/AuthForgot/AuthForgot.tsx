@@ -11,7 +11,7 @@ import { View } from "react-native";
 import { theme } from "@app/styles";
 import { ForgotRequest } from "@app/redux/auth/models";
 import FormInput from "@app/molecules/FormInput";
-import SubmitButton from "@app/molecules/FormButton";
+import FormButton from "@app/molecules/FormButton";
 import Text from "@app/atoms/Text";
 import Header from "@app/components/molecules/Header";
 import ValidationMessage from "@app/components/molecules/ValidationMessage";
@@ -44,7 +44,7 @@ const AuthForgot: FC<PropsType> = (props: PropsType) => {
     );
   };
 
-  const getForgotContent = () => {
+  const getContent = () => {
     return (
       <View style={AuthForgotStyles.container}>
         <Text
@@ -69,7 +69,7 @@ const AuthForgot: FC<PropsType> = (props: PropsType) => {
           <ValidationMessage name="identifier" />
         </View>
 
-        <SubmitButton {...forgotButtonProps} />
+        <FormButton {...forgotButtonProps} />
       </View>
     );
   };
@@ -77,7 +77,7 @@ const AuthForgot: FC<PropsType> = (props: PropsType) => {
   return (
     <Fragment>
       <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getForgotContent()}</Fragment>
+      <Fragment>{getContent()}</Fragment>
     </Fragment>
   );
 };

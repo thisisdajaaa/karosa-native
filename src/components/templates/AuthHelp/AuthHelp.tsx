@@ -41,7 +41,7 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
     );
   };
 
-  const getHelpContent = () => {
+  const getContent = () => {
     return (
       <View style={AuthHelpStyles.container}>
         <View style={AuthHelpStyles.logoContainer}>
@@ -75,7 +75,7 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
   return (
     <Fragment>
       <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getHelpContent()}</Fragment>
+      <Fragment>{getContent()}</Fragment>
     </Fragment>
   );
 };

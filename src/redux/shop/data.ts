@@ -4,6 +4,7 @@ import {
   AvailabilityForm,
   ProductForm,
   ShippingDetailsForm,
+  ShopPaymentForm,
   ShopSettingsForm,
   ShopState,
   VariationForm,
@@ -66,9 +67,16 @@ export const initShopSettingsForm: ShopSettingsForm = {
   status: ENUM.Shop_Status.Active,
 };
 
+export const initShopPaymentForm: ShopPaymentForm = {
+  cod: false,
+  gcash: false,
+  creditCard: false,
+};
+
 export const initShopState: ShopState = {
   shopEntryContext: {
     shopSettings: initShopSettingsForm,
+    shopPayment: initShopPaymentForm,
   },
   productEntryContext: {
     productForm: initProductForm,

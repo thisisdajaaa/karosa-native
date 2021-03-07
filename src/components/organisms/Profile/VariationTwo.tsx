@@ -14,7 +14,7 @@ import Icon from "@app/atoms/Icon";
 import Text from "@app/atoms/Text";
 
 import type { PropsType } from "./types";
-import { BLUR_RADIUS, ICON } from "./config";
+import { ADDRESS_LINE_NO, BLUR_RADIUS, ICON } from "./config";
 import ProfileStyles from "./styles";
 
 const VariationTwo: FC<PropsType> = (props) => {
@@ -81,9 +81,13 @@ const VariationTwo: FC<PropsType> = (props) => {
           <Text text={shopName} textStyle={ProfileStyles.txtShopName} />
         </View>
         <View style={ProfileStyles.shopAddrContainer}>
-          <Text text={address} textStyle={ProfileStyles.txtShopAddr} />
-          <View style={ProfileStyles.activeContainer}>
-            <Fragment>
+          <View style={ProfileStyles.shopAddressSubContainer}>
+            <Text
+              text={address}
+              numberOfLines={ADDRESS_LINE_NO}
+              textStyle={ProfileStyles.txtShopAddr}
+            />
+            <View style={ProfileStyles.activeContainer}>
               <Icon
                 group="common"
                 name={isActive ? "greenCircle" : "grayCircle"}
@@ -95,7 +99,7 @@ const VariationTwo: FC<PropsType> = (props) => {
                 text={isActive ? "Active" : "Inactive"}
                 textStyle={ProfileStyles.txtIcon}
               />
-            </Fragment>
+            </View>
           </View>
         </View>
         <View style={ProfileStyles.bottomInfoContainer}>

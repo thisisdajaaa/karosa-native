@@ -100,14 +100,20 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
     );
   };
 
-  return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
+  const getContent = () => {
+    return (
       <View style={AuthMainStyles.container}>
         <Fragment>{getLogo()}</Fragment>
         <Fragment>{getMainButtons()}</Fragment>
         <Fragment>{getBottomText()}</Fragment>
       </View>
+    );
+  };
+
+  return (
+    <Fragment>
+      <Fragment>{getHeader()}</Fragment>
+      <Fragment>{getContent()}</Fragment>
     </Fragment>
   );
 };

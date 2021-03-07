@@ -1,5 +1,6 @@
 export const SET_SHOP_STATUS = "shop/setShopStatus" as const;
 export const SET_SHOP_SETTINGS = "shop/setShopSettings" as const;
+export const SET_SHOP_PAYMENT = "shop/setShopPayment" as const;
 export const SET_PRODUCT_STATUS = "shop/setProductStatus" as const;
 export const SET_PRODUCT_MEASUREMENT = "shop/setProductMeasurement" as const;
 export const SET_CATEGORY = "shop/setCategory" as const;
@@ -33,6 +34,8 @@ export const ACT_PRODUCT_LIST_FAILURE = "shop/actProductListFailure" as const;
 
 export type Types =
   | typeof SET_SHOP_STATUS
+  | typeof SET_SHOP_PAYMENT
+  | typeof SET_SHOP_SETTINGS
   | typeof SET_PRODUCT_STATUS
   | typeof SET_PRODUCT_MEASUREMENT
   | typeof SET_CATEGORY

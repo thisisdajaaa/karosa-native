@@ -48,19 +48,19 @@ export const getShippingDetailsForm = () =>
     );
   });
 
-export const getShopStatus = () =>
-  createSelector([rootSelector], (state: ShopState) => {
-    return (
-      state.shopEntryContext.shopStatus ||
-      initShopState.shopEntryContext.shopStatus
-    );
-  });
-
 export const getShopSettings = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return (
       state.shopEntryContext.shopSettings ||
       initShopState.shopEntryContext.shopSettings
+    );
+  });
+
+export const getShopPayment = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return (
+      state.shopEntryContext.shopPayment ||
+      initShopState.shopEntryContext.shopPayment
     );
   });
 
@@ -105,9 +105,9 @@ const selectors = {
   getProductForm,
   getVariationForm,
   getWholesaleForm,
+  getShopPayment,
   getShopSettings,
   getShippingDetailsForm,
-  getShopStatus,
   getProductStatus,
   getProductMeasurement,
   getShopInfoResponse,

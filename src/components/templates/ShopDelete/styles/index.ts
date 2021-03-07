@@ -17,7 +17,7 @@ const ShopDeleteStyles = StyleSheet.create({
     backgroundColor: theme.colors.light10,
   },
   subButtonContainer: {
-    marginTop: 13,
+    marginTop: SPACING.md,
   },
   buttonContainer: {
     position: "relative",
@@ -35,7 +35,7 @@ const ShopDeleteStyles = StyleSheet.create({
   },
   txtDeleteShopPar: {
     ...theme.textRegular,
-    paddingHorizontal: 4,
+    paddingHorizontal: SPACING.sm,
     textAlign: "center",
     color: theme.colors.dark30,
     fontWeight: "400",

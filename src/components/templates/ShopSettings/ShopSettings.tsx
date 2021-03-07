@@ -127,14 +127,20 @@ const ShopSettings: FC<PropsType> = (props) => {
     );
   };
 
-  return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
+  const getContent = () => {
+    return (
       <View style={ShopSettingsStyles.container}>
         <Fragment>{getImageForm()}</Fragment>
         <Fragment>{getListForm()}</Fragment>
         <Fragment>{getBtnDeleteShop()}</Fragment>
       </View>
+    );
+  };
+
+  return (
+    <Fragment>
+      <Fragment>{getHeader()}</Fragment>
+      <Fragment>{getContent()}</Fragment>
     </Fragment>
   );
 };

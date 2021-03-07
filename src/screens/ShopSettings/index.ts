@@ -1,1 +1,1 @@
-export { default } from './ShopSettings';
+export { default } from "./ShopSettings";

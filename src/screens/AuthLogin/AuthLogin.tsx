@@ -17,7 +17,7 @@ import {
   useMount,
   useUpdateEffect,
 } from "@app/hooks";
-import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
+import type { PropsType as FormButtonProps } from "@app/molecules/FormButton/types";
 import AuthLoginTemplate from "@app/components/templates/AuthLogin";
 import routes from "@app/navigators/routes";
 
@@ -84,7 +84,7 @@ const AuthLogin: FC = () => {
     setAuthBack(true);
   }, [navigate]);
 
-  const loginButtonProps: SubmitButtonProps = {
+  const loginButtonProps: FormButtonProps = {
     title: "Login",
     loading: loginResponse.isLoading,
   };
