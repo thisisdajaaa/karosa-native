@@ -67,7 +67,7 @@ const ShopMain: FC<PropsType> = (props) => {
     listColor: theme.colors.orange5,
     variation: COMMON.VARIATION.ONE,
     hasBottomDivider: true,
-    onPress: navigation.handleProducts,
+    onPress: navigation.onProducts,
   };
 
   const marketingProps: ListChevronType = {
@@ -75,7 +75,7 @@ const ShopMain: FC<PropsType> = (props) => {
     listColor: theme.colors.blue5,
     variation: COMMON.VARIATION.ONE,
     hasBottomDivider: true,
-    onPress: navigation.handleMarketing,
+    onPress: navigation.onMarketing,
   };
 
   const financeProps: ListChevronType = {
@@ -83,30 +83,26 @@ const ShopMain: FC<PropsType> = (props) => {
     listColor: theme.colors.red5,
     variation: COMMON.VARIATION.ONE,
     hasBottomDivider: true,
-    onPress: navigation.handleFinance,
+    onPress: navigation.onFinance,
   };
 
   const reportsProps: ListChevronType = {
     title: "Reports",
     listColor: theme.colors.purple,
     variation: COMMON.VARIATION.ONE,
-    onPress: navigation.handleReports,
+    onPress: navigation.onReports,
   };
 
   const getActions = () => {
     const elements: ReactElement[] = [];
 
-    const toShip = action(() => navigation.handleToShip, icons.ship, "To Ship");
+    const toShip = action(() => navigation.onToShip, icons.ship, "To Ship");
     const cancelled = action(
-      () => navigation.handleCancelled,
+      () => navigation.onCancelled,
       icons.cancel,
       "Cancelled"
     );
-    const returns = action(
-      () => navigation.handleReturns,
-      icons.return,
-      "Returns"
-    );
+    const returns = action(() => navigation.onReturns, icons.return, "Returns");
 
     elements.push(toShip, cancelled, returns);
 
@@ -125,9 +121,9 @@ const ShopMain: FC<PropsType> = (props) => {
         variation={COMMON.VARIATION.TWO}
         coverPhoto="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606613/karosa/shop_ynswwn.jpg"
         avatarPhoto="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
-        onBack={navigation.handleBack}
-        onChat={navigation.handleChat}
-        onSettings={navigation.handleSettings}
+        onBack={navigation.onBack}
+        onChat={navigation.onChat}
+        onSettings={navigation.onSettings}
         shopName={shopName}
         address={address}
         rating="4.8"

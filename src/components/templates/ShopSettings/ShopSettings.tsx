@@ -6,7 +6,7 @@
  */
 
 import React, { FC, Fragment, ReactElement } from "react";
-import { View } from "react-native";
+import { StatusBar, View } from "react-native";
 import { theme } from "@app/styles";
 import { COMMON } from "src/constants";
 import { listIterator } from "@app/utils";
@@ -24,7 +24,13 @@ import type { PropsType } from "./types";
 import ShopSettingsStyles from "./styles";
 
 const ShopSettings: FC<PropsType> = (props) => {
-  const { sheetRef } = props;
+  const {
+    shopStatusRef,
+    shopDeleteRef,
+    statusColor,
+    statusValue,
+    navigation,
+  } = props;
 
   const shopNameProps: ListInputType = {
     name: "shopName",
@@ -36,44 +42,47 @@ const ShopSettings: FC<PropsType> = (props) => {
 
   const shopStatusProps: ListStatusType = {
     label: "Shop Status",
-    onPress: () => sheetRef.current?.open(),
+    onPress: () => shopStatusRef.current?.open(),
     hasBottomDivider: true,
-    color: "gold",
-    value: "Available",
+    color: statusColor,
+    value: statusValue,
   };
 
   const shopAddressProps: ListChevronType = {
     title: "Shop Address",
     variation: COMMON.VARIATION.ONE,
     hasBottomDivider: true,
-    onPress: () => alert("gg"),
+    onPress: navigation.onAddress,
   };
 
   const shopPaymentProps: ListChevronType = {
     title: "Payment Option",
     variation: COMMON.VARIATION.ONE,
     hasBottomDivider: true,
-    onPress: () => alert("gg"),
+    onPress: navigation.onPayment,
   };
 
   const getHeader = () => {
     return (
-      <Header
-        leftComponent={{
-          icon: "arrow-back",
-          color: theme.colors.primary,
-          onPress: () => alert("back"),
-        }}
-        centerComponent={{
-          text: "Shop Settings",
-          style: ShopSettingsStyles.txtHeader,
-        }}
-        rightComponent={{
-          text: "Save",
-          style: ShopSettingsStyles.txtSave,
-          onPress: () => alert("save"),
-        }}
-      />
+      <Fragment>
+        <StatusBar barStyle="dark-content" />
+        <Header
+          leftComponent={{
+            icon: "arrow-back",
+            color: theme.colors.primary,
+            onPress: navigation.onBack,
+          }}
+          centerComponent={{
+            text: "Shop Settings",
+            style: ShopSettingsStyles.txtHeader,
+          }}
+          rightComponent={{
+            text: "Save",
+            style: ShopSettingsStyles.txtSave,
+            onPress: () => alert("save"),
+          }}
+        />
+      </Fragment>
     );
   };
 
@@ -107,11 +116,11 @@ const ShopSettings: FC<PropsType> = (props) => {
 
   const getBtnDeleteShop = () => {
     return (
-      <View style={ShopSettingsStyles.mainBtnDeleteContainer}>
+      <View style={ShopSettingsStyles.mainButtonContainer}>
         <Button
-          onPress={() => alert("deleteShop")}
+          onPress={() => shopDeleteRef.current?.open()}
           title="Delete Shop"
-          buttonStyle={ShopSettingsStyles.subBtnDeleteContainer}
+          buttonStyle={ShopSettingsStyles.subButtonContainer}
           titleStyle={ShopSettingsStyles.txtBtnDelete}
         />
       </View>

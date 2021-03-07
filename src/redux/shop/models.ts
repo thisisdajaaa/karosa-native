@@ -1,12 +1,14 @@
 import { ResponseState } from "@app/redux/api-models/common";
 
 import * as shopInfo from "../api-models/shop-info";
+import * as shopDelete from "../api-models/shop-delete";
 import * as shopAddress from "../api-models/shop-address";
 import * as addProduct from "../api-models/add-product";
 import * as productList from "../api-models/product-list";
 import { ENUM } from "@app/constants";
 
 export type ShopInfoResponse = shopInfo.Response;
+export type ShopDeleteResponse = shopDelete.Response;
 export type ShopAddressResponse = shopAddress.Response;
 export type AddProductRequest = addProduct.Request;
 export type AddProductResponse = addProduct.Response;
@@ -84,6 +86,7 @@ export type ShopState = {
   shopEntryContext: ShopEntryContext;
   productEntryContext: ProductEntryContext;
   shopInfoResponse: ResponseState<ShopInfoResponse>;
+  shopDeleteResponse: ResponseState<ShopDeleteResponse>;
   shopAddressResponse: ResponseState<ShopAddressResponse>;
   addProductResponse: ResponseState<AddProductResponse>;
   productListResponse: ResponseState<ProductListResponse>;

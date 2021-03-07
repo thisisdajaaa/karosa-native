@@ -92,6 +92,10 @@ export const initShopState: ShopState = {
     },
     isLoading: false,
   },
+  shopDeleteResponse: {
+    response: false,
+    isLoading: false,
+  },
   shopAddressResponse: {
     response: {
       id: 0,

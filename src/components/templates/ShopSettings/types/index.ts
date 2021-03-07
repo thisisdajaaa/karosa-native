@@ -6,7 +6,12 @@
 
 import { RefObject } from "react";
 import RBSheet from "react-native-raw-bottom-sheet";
+import { ShopMainNavigation } from "@app/screens/ShopSettings/types";
 
 export type PropsType = {
-  sheetRef: RefObject<RBSheet>;
+  shopStatusRef: RefObject<RBSheet>;
+  shopDeleteRef: RefObject<RBSheet>;
+  statusColor: string;
+  statusValue: string;
+  navigation: ShopMainNavigation;
 };

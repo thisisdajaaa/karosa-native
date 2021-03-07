@@ -66,6 +66,12 @@ export const callShopInfoApi = createAsyncAction(
   types.ACT_SHOP_INFO_FAILURE
 )<undefined, models.ShopInfoResponse, ResponseError>();
 
+export const callShopDeleteApi = createAsyncAction(
+  types.ACT_SHOP_DELETE_REQUEST,
+  types.ACT_SHOP_DELETE_SUCCESS,
+  types.ACT_SHOP_DELETE_FAILURE
+)<undefined, models.ShopDeleteResponse, ResponseError>();
+
 export const callShopAddressApi = createAsyncAction(
   types.ACT_SHOP_ADDRESS_REQUEST,
   types.ACT_SHOP_ADDRESS_SUCCESS,
@@ -96,6 +102,7 @@ const actions = {
   setWholesaleForm,
   setShippingDetailsForm,
   callShopInfoApi,
+  callShopDeleteApi,
   callShopAddressApi,
   callAddProductApi,
   callProductListApi,

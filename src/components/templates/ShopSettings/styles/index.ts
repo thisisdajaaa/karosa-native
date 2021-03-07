@@ -22,6 +22,8 @@ const ShopSettingsStyles = StyleSheet.create({
     fontWeight: "700",
   },
   txtBtnDelete: {
+    ...theme.textRegular,
+    fontWeight: "700",
     color: theme.colors.dark20,
   },
   txtSave: {
@@ -32,13 +34,13 @@ const ShopSettingsStyles = StyleSheet.create({
   spacer: {
     marginTop: SPACING.xl * 2.5,
   },
-  mainBtnDeleteContainer: {
+  mainButtonContainer: {
     position: "absolute",
     bottom: "4%",
     width: "90%",
     alignSelf: "center",
   },
-  subBtnDeleteContainer: {
+  subButtonContainer: {
     backgroundColor: theme.colors.light10,
   },
 });

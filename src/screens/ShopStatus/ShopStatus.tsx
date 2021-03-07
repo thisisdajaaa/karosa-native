@@ -21,16 +21,21 @@ const ShopStatus: FC<PropsType> = (props) => {
   const dispatch = useDispatch();
 
   const setShopStatus = useCallback(
+    (value: ENUM.Shop_Status) => dispatch(actions.setShopStatus(value)),
+    [dispatch]
+  );
+
+  const setStatusValue = useCallback(
     (value: ENUM.Shop_Status) => {
-      dispatch(actions.setShopStatus(value));
+      setShopStatus(value);
       sheetRef.current?.close();
     },
-    [dispatch]
+    [setShopStatus]
   );
 
   return (
     <BottomSheet ref={sheetRef} height={BTM_SHEET_HEIGHT}>
-      <ShopStatusTemplate setShopStatus={setShopStatus} />
+      <ShopStatusTemplate setShopStatus={setStatusValue} />
     </BottomSheet>
   );
 };
