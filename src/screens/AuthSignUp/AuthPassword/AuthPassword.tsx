@@ -12,10 +12,9 @@ import { Props as ScreenProps } from "@app/components/base-screen/types";
 import routes from "@app/navigators/routes";
 import { actions, selectors } from "@app/redux/auth";
 import { RegisterRequest } from "@app/redux/auth/models";
-import { useAuth, useMemoizedSelector } from "@app/hooks";
-
+import { useMemoizedSelector } from "@app/hooks";
 import { styles } from "./styles";
-import { validationSchema } from "./validation/validation";
+import { validationSchema } from "./validation";
 
 const PasswordScreen: React.FC = () => {
   const { goBack, navigate } = useNavigation();
@@ -40,6 +39,7 @@ const PasswordScreen: React.FC = () => {
     validateOnChange: true,
     validateOnBlur: true,
     onSubmit: (values) => {
+      navigate(routes.AUTH_OTP);
       const request: RegisterRequest = {
         identifier: formikBag.values.phoneDigits,
         password: formikBag.values.password,
@@ -47,7 +47,6 @@ const PasswordScreen: React.FC = () => {
       callRegisterApi(request);
       console.log(values);
     },
-
     validationSchema,
   });
 

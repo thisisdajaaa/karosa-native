@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useField } from "formik";
+import { useField, useFormikContext } from "formik";
 import { Password } from "@app/components/password";
 
 import { Props } from "./types";
@@ -7,6 +7,7 @@ import { Props } from "./types";
 export const FormPassword: React.FC<Props> = React.memo(
   ({ name, inputLength }) => {
     const [, meta, helpers] = useField(name);
+    const { validateOnChange } = useFormikContext();
 
     const [currentValue, setCurrentValue] = useState(
       meta.value || meta.initialValue
@@ -17,11 +18,15 @@ export const FormPassword: React.FC<Props> = React.memo(
     }, [meta.value]);
 
     const handleChange = useCallback(
-      (text: string) => {
+      async (text: string) => {
         setCurrentValue(text);
         helpers.setValue(text);
+        if (validateOnChange) {
+          await helpers.setValue(text);
+          await helpers.setTouched(true);
+        }
       },
-      [helpers]
+      [helpers, validateOnChange]
     );
 
     return (

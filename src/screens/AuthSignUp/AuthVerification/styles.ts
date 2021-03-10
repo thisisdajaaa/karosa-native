@@ -8,25 +8,23 @@ export const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: theme.colors.white,
   },
-  txtForgotPass: {
-    ...theme.title,
+  txtVerificationCode: {
+    ...theme.textTitle,
     color: theme.colors.black,
     fontWeight: "500",
     marginVertical: 6,
   },
-  txtResetPass: {
+  txtSMS: {
     ...theme.textRegular,
     color: theme.colors.black,
     fontWeight: "300",
     marginVertical: 6,
   },
-  txtLogin: {
+  txtResend: {
     ...theme.textRegular,
-    width: 70,
-    height: 50,
-    position: "absolute",
-    top: 20,
-    alignSelf: "center",
-    fontWeight: "700",
+    color: theme.colors.green10,
+    fontWeight: "bold",
+    marginVertical: 6,
+    marginHorizontal: 5,
   },
 });

@@ -1,6 +1,9 @@
 import * as Yup from "yup";
 
 export const validationSchema = Yup.object().shape({
-  identifier: Yup.string().required().label("Email / Phone"),
-  password: Yup.string().required().label("Password"),
+  otp: Yup.string()
+    .required()
+    .label("otp")
+    .matches(/^[0-9]+$/, "Must be only digits")
+    .min(6),
 });

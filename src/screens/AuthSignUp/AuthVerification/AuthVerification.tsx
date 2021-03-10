@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 import { TouchableOpacity } from "react-native";
 import { FormikContext, useFormik } from "formik";
-import {
-  NavigationContext,
-  useNavigation,
-  useRoute,
-} from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { FormPassword } from "@app/components/molecules/FormInputPassword";
 import { SubmitButton } from "@app/components/formik/submit-button";
 import { BaseText } from "@app/components/base-text";
@@ -22,20 +18,20 @@ const VerificationScreen: React.FC = () => {
   const { goBack, navigate } = useNavigation();
   const { values }: any = useRoute().params;
 
-  useEffect(() => {
-    console.log(values.identifier);
-  }, []);
-
   const formikBag = useFormik({
-    initialValues: { otp: "", phoneDigits:values.identifier},
+    initialValues: { otp: "12" },
     validateOnChange: true,
-    validateOnBlur: true,
     onSubmit: (values) => {
-      navigate("Stack", { screen: routes.AUTH_PASSWORD, params:{values} });
+      navigate("Stack", { screen: routes.AUTH_PASSWORD, params: { values } });
       console.log(values.otp);
     },
     validationSchema,
   });
+
+  useEffect(() => {
+    console.log(values.identifier);
+    console.log(formikBag.errors.otp);
+  }, [formikBag]);
 
   const screenProps: ScreenProps = {
     header: {
@@ -79,8 +75,7 @@ const VerificationScreen: React.FC = () => {
           Did not receive the code?
           <TouchableOpacity
             style={styles.txtResend}
-            onPress={() => console.log("Resend")}
-          >
+            onPress={() => console.log("Resend")}>
             <BaseText>Resend</BaseText>
           </TouchableOpacity>
         </BaseText>
