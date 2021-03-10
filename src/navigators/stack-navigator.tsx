@@ -17,6 +17,7 @@ import ShippingDetailsScreen from "@app/screens/products/shipping-details";
 import NewAddressScreen from "@app/screens/user-account/new-address";
 import MyAddressScreen from "@app/screens/user-account/my-address";
 import ShopMainScreen from "@app/screens/ShopMain";
+import ProductDetailScreen from "@app/screens/products/product-detail";
 
 import { TabNavigator } from "./tab-navigator";
 
