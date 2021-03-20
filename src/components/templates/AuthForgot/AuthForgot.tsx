@@ -11,10 +11,10 @@ import { View } from "react-native";
 import { theme } from "@app/styles";
 import { ForgotRequest } from "@app/redux/auth/models";
 import FormInput from "@app/molecules/FormInput";
-import SubmitButton from "@app/molecules/FormButton";
+import FormButton from "@app/molecules/FormButton";
 import Text from "@app/atoms/Text";
-import Header from "@app/components/molecules/Header";
-import ValidationMessage from "@app/components/molecules/ValidationMessage";
+import Header from "@app/molecules/Header";
+import ValidationMessage from "@app/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
 import AuthForgotStyles from "./styles";
@@ -27,8 +27,8 @@ const AuthForgot: FC<PropsType> = (props: PropsType) => {
     return touched[key] && errors[key] ? AuthForgotStyles.errorContainer : {};
   };
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         leftComponent={{
           icon: "arrow-back",
@@ -41,6 +41,11 @@ const AuthForgot: FC<PropsType> = (props: PropsType) => {
           onPress: onHelp,
         }}
       />
+    );
+  };
+
+  const getContent = () => {
+    return (
       <View style={AuthForgotStyles.container}>
         <Text
           text="Forgot Password?"
@@ -64,8 +69,15 @@ const AuthForgot: FC<PropsType> = (props: PropsType) => {
           <ValidationMessage name="identifier" />
         </View>
 
-        <SubmitButton {...forgotButtonProps} />
+        <FormButton {...forgotButtonProps} />
       </View>
+    );
+  };
+
+  return (
+    <Fragment>
+      <Fragment>{getHeader()}</Fragment>
+      <Fragment>{getContent()}</Fragment>
     </Fragment>
   );
 };

@@ -4,10 +4,10 @@
  *
  */
 
-import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
+import { PropsType as FormButtonProps } from "@app/molecules/FormButton/types";
 
 export type PropsType = {
   onForgot: () => void;
-  loginButtonProps: SubmitButtonProps;
+  loginButtonProps: FormButtonProps;
   onBack(): void;
 };

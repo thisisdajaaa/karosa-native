@@ -54,7 +54,7 @@ export const callNewAddressApi = createAsyncAction(
   types.ACT_NEW_ADDRESS_FAILURE
 )<NewAddressRequest, NewAddressResponse, ResponseError>();
 
-export const actions = {
+const actions = {
   setAuthBack,
   setAuthOpen,
   callLoginApi,

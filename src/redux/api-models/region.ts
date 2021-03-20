@@ -1,6 +1,3 @@
-export type Response = [
-  {
-    id: number;
-    name: string;
-  }
-];
+import { CommonLocation } from "./common";
+
+export type Response = CommonLocation[];

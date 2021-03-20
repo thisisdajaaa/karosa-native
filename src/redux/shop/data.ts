@@ -2,20 +2,15 @@ import { ENUM } from "@app/constants";
 
 import {
   AvailabilityForm,
-  CommonStatus,
   ProductForm,
   ShippingDetailsForm,
+  ShopAddressForm,
+  ShopPaymentForm,
+  ShopSettingsForm,
   ShopState,
-  ShopStatus,
   VariationForm,
   WholesaleForm,
 } from "./models";
-
-export const initCommonStatus: ShopStatus = {
-  available: true,
-  harvesting: false,
-  planting: false,
-};
 
 export const initProductForm: ProductForm = {
   productImg: null,
@@ -28,7 +23,7 @@ export const initProductForm: ProductForm = {
   preOrder: false,
   measurement: "1",
   categoryId: 1,
-  status: initCommonStatus,
+  status: ENUM.Product_Status.Available,
 };
 
 export const initVariationForm: VariationForm = {
@@ -66,12 +61,34 @@ export const initShippingDetailsForm: ShippingDetailsForm = {
   sellerCourier: false,
 };
 
-export const initShopStatus: CommonStatus = initCommonStatus;
-export const initProductStatus: CommonStatus = initCommonStatus;
+export const initShopSettingsForm: ShopSettingsForm = {
+  shopName: "",
+  coverPhoto: "",
+  avatarPhoto: "",
+  status: ENUM.Shop_Status.Active,
+};
+
+export const initShopPaymentForm: ShopPaymentForm = {
+  cod: false,
+  gcash: false,
+  creditCard: false,
+};
+
+export const initShopAddressForm: ShopAddressForm = {
+  fullName: "",
+  detailedAddress: "",
+  phoneNumber: "",
+  cities: -1,
+  barangay: -1,
+  province: -1,
+  region: -1,
+};
 
 export const initShopState: ShopState = {
   shopEntryContext: {
-    shopStatus: initShopStatus,
+    shopSettings: initShopSettingsForm,
+    shopPayment: initShopPaymentForm,
+    shopAddress: initShopAddressForm,
   },
   productEntryContext: {
     productForm: initProductForm,
@@ -95,6 +112,10 @@ export const initShopState: ShopState = {
     },
     isLoading: false,
   },
+  shopDeleteResponse: {
+    response: false,
+    isLoading: false,
+  },
   shopAddressResponse: {
     response: {
       id: 0,
@@ -102,7 +123,7 @@ export const initShopState: ShopState = {
       type: ENUM.Address_Type.Shop,
       phoneNo: "",
       detailed_address: "",
-      isDefaultAddress: null,
+      isDefaultAddress: false,
       barangayId: 0,
       userId: "",
       createdAt: "",

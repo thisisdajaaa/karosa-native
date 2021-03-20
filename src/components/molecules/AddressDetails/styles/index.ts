@@ -27,7 +27,7 @@ const AddressDetailsStyles = StyleSheet.create({
   txtDefault: {
     ...theme.textLight,
     fontWeight: "300",
-    color: "#4F4F4F",
+    color: theme.colors.dark30,
   },
 });
 

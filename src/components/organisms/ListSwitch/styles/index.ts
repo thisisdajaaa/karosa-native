@@ -24,7 +24,7 @@ const ListSwitchStyles = StyleSheet.create({
     fontWeight: "400",
   },
   txtBoldTitle: {
-    ...theme.textRegular,
+    ...theme.textBold,
     fontWeight: "700",
   },
   txtExtraInfo: {

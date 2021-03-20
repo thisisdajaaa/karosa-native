@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { FormikProvider, useFormik } from "formik";
 import { ForgotRequest } from "@app/redux/auth/models";
 import { actions } from "@app/redux/auth";
-import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
+import { PropsType as FormButtonProps } from "@app/molecules/FormButton/types";
 import AuthForgotTemplate from "@app/templates/AuthForgot";
 import routes from "@app/navigators/routes";
 
@@ -45,7 +45,7 @@ const LoginForgot: FC = () => {
     validationSchema: ForgotValidationSchema,
   });
 
-  const forgotButtonProps: SubmitButtonProps = {
+  const forgotButtonProps: FormButtonProps = {
     title: "Submit",
   };
 

@@ -5,8 +5,9 @@
  *
  */
 
-import React, { FC, Fragment, useState, useEffect, useCallback } from "react";
+import React, { FC, Fragment, useState, useCallback } from "react";
 import { useField, useFormikContext } from "formik";
+import { useUpdateEffect } from "@app/hooks";
 import Radio from "@app/atoms/Radio";
 
 import type { PropsType } from "./types";
@@ -20,7 +21,7 @@ const FormRadioGroup: FC<PropsType> = (props) => {
     value: meta.value || meta.initialValue,
   });
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     setCheck({
       value: meta.value,
     });

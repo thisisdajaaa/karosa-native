@@ -15,8 +15,8 @@ const ListInputStyles = StyleSheet.create({
     flexDirection: "column",
   },
   mainRowContainer: {
-    height: DIMENS.screenHeight * 0.05,
     flexDirection: "row",
+    height: DIMENS.screenHeight * 0.05,
   },
   labelLengthContainer: {
     flexDirection: "row",
@@ -25,6 +25,11 @@ const ListInputStyles = StyleSheet.create({
     marginTop: SPACING.sm - 1,
     flexDirection: "row",
     justifyContent: "flex-start",
+  },
+  infoContainer: {
+    width: "90%",
+    height: DIMENS.screenHeight * 0.07,
+    flexDirection: "row",
   },
   rowInputContainer: {
     marginTop: SPACING.lg,
@@ -35,6 +40,7 @@ const ListInputStyles = StyleSheet.create({
     borderWidth: 0,
     borderBottomWidth: 0,
     padding: 0,
+    marginRight: 10,
   },
   errorContainer: {
     marginTop: SPACING.md,
@@ -50,6 +56,11 @@ const ListInputStyles = StyleSheet.create({
   txtLabel: {
     ...theme.textRegular,
     color: theme.colors.dark20,
+    fontWeight: "400",
+  },
+  txtInfo: {
+    ...theme.textRegular,
+    color: theme.colors.dark10,
     fontWeight: "400",
   },
   txtLength: {

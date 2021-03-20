@@ -10,7 +10,7 @@ import { View } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import Button from "@app/atoms/Button";
 import Text from "@app/atoms/Text";
-import Header from "@app/components/molecules/Header";
+import Header from "@app/molecules/Header";
 import Image from "@app/atoms/Image";
 
 import type { PropsType } from "./types";
@@ -19,8 +19,8 @@ import AuthMainStyles from "./styles";
 const AuthMain: FC<PropsType> = (props: PropsType) => {
   const { onLogin, onFBLogin, onGoogleLogin, onHelp } = props;
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         leftComponent={{
           text: "Login",
@@ -32,7 +32,12 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
           onPress: onHelp,
         }}
       />
-      <View style={AuthMainStyles.container}>
+    );
+  };
+
+  const getLogo = () => {
+    return (
+      <Fragment>
         <View style={AuthMainStyles.logoContainer}>
           <Image
             imageStyle={AuthMainStyles.logo}
@@ -40,8 +45,14 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
             resizeMode="contain"
           />
         </View>
-
         <View style={AuthMainStyles.spacer} />
+      </Fragment>
+    );
+  };
+
+  const getMainButtons = () => {
+    return (
+      <Fragment>
         <Button
           onPress={onFBLogin}
           buttonStyle={AuthMainStyles.fbButtonContainer}
@@ -73,14 +84,36 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
         </View>
 
         <Button onPress={onLogin} title="Phone number / Username / Email" />
-        <View style={AuthMainStyles.txtSignUpContainer}>
-          <Text
-            textStyle={AuthMainStyles.noAccContainer}
-            text="Don't have an account?"
-          />
-          <Text textStyle={AuthMainStyles.txtSignUp} text="Sign up" />
-        </View>
+      </Fragment>
+    );
+  };
+
+  const getBottomText = () => {
+    return (
+      <View style={AuthMainStyles.txtSignUpContainer}>
+        <Text
+          textStyle={AuthMainStyles.noAccContainer}
+          text="Don't have an account?"
+        />
+        <Text textStyle={AuthMainStyles.txtSignUp} text="Sign up" />
       </View>
+    );
+  };
+
+  const getContent = () => {
+    return (
+      <View style={AuthMainStyles.container}>
+        <Fragment>{getLogo()}</Fragment>
+        <Fragment>{getMainButtons()}</Fragment>
+        <Fragment>{getBottomText()}</Fragment>
+      </View>
+    );
+  };
+
+  return (
+    <Fragment>
+      <Fragment>{getHeader()}</Fragment>
+      <Fragment>{getContent()}</Fragment>
     </Fragment>
   );
 };

@@ -1,6 +1,6 @@
 const baseSpacing = 10;
 
-export default {
+const spacing = {
   xss: baseSpacing * 0.2,
   xs: baseSpacing * 0.4,
   sm: baseSpacing * 0.8,
@@ -8,3 +8,5 @@ export default {
   lg: baseSpacing * 1.6,
   xl: baseSpacing * 2.4,
 };
+
+export default spacing;
