@@ -25,13 +25,10 @@ const FormSwitch: FC<PropsType> = (props) => {
     helpers.setValue(currentValue);
   }, [currentValue]);
 
-  const handleSwitch = useCallback(
-    (value: boolean) => {
-      setCurrentValue(value);
-      helpers.setTouched(true);
-    },
-    [helpers]
-  );
+  const handleSwitch = useCallback((value: boolean) => {
+    setCurrentValue(value);
+    helpers.setTouched(true);
+  }, []);
 
   return (
     <Switch onChange={handleSwitch} value={currentValue} disabled={disabled} />

@@ -31,7 +31,7 @@ type AutoCompleteType =
 export type PropsType = {
   value: string;
   placeholder: string;
-  onChange(text: string): void;
+  onChange?(text: string): void;
   inputStyle?: StyleProp<TextStyle>;
   inputContainerStyle?: StyleProp<ViewStyle>;
   containerStyle?: StyleProp<ViewStyle>;

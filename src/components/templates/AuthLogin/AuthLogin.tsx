@@ -20,10 +20,10 @@ import { LoginRequest } from "@app/redux/auth/models";
 import { useMount } from "@app/hooks";
 import { getPlatform } from "@app/utils";
 import Text from "@app/atoms/Text";
-import Header from "@app/components/molecules/Header";
+import Header from "@app/molecules/Header";
 import FormInput from "@app/molecules/FormInput";
 import FormButton from "@app/molecules/FormButton";
-import ValidationMessage from "@app/components/molecules/ValidationMessage";
+import ValidationMessage from "@app/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
 import { IMAGE_HEIGHT, IMAGE_WIDTH } from "./config";

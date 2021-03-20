@@ -14,11 +14,12 @@ import { ShopPaymentForm } from "@app/redux/shop/models";
 import { useMemoizedSelector } from "@app/hooks";
 import type { PropsType as FormButtonProps } from "@app/molecules/FormButton/types";
 import ShopPaymentTemplate from "@app/templates/ShopPayment";
+import routes from "@app/navigators/routes";
 
 const ShopPayment: FC = () => {
   const dispatch = useDispatch();
 
-  const { goBack } = useNavigation();
+  const { goBack, navigate } = useNavigation();
 
   const shopPaymentForm = useMemoizedSelector(selectors.getShopPayment);
 
@@ -31,9 +32,9 @@ const ShopPayment: FC = () => {
     goBack();
   }, [goBack]);
 
-  // missing back end implementation
-  const handleSubmit = () => {
-    setShopPayment({ ...formikBag.values });
+  const handleSubmit = (values: ShopPaymentForm) => {
+    setShopPayment({ ...values });
+    navigate(routes.SHOP_SETTINGS);
   };
 
   const formikBag = useFormik({

@@ -18,7 +18,7 @@ import {
   useUpdateEffect,
 } from "@app/hooks";
 import type { PropsType as FormButtonProps } from "@app/molecules/FormButton/types";
-import AuthLoginTemplate from "@app/components/templates/AuthLogin";
+import AuthLoginTemplate from "@app/templates/AuthLogin";
 import routes from "@app/navigators/routes";
 
 import LoginValidationSchema from "./validation";

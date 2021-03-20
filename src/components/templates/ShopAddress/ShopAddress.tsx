@@ -8,7 +8,7 @@
 import React, { FC, Fragment } from "react";
 import { theme } from "@app/styles";
 import { View } from "react-native";
-import Header from "@app/components/molecules/Header";
+import Header from "@app/molecules/Header";
 import AddressDetails from "@app/molecules/AddressDetails";
 
 import type { PropsType } from "./types";

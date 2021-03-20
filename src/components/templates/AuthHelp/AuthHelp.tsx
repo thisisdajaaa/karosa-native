@@ -10,7 +10,7 @@ import { View, Image } from "react-native";
 import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
 import IconLabel from "@app/molecules/IconLabel";
-import Header from "@app/components/molecules/Header";
+import Header from "@app/molecules/Header";
 import Icon from "@app/atoms/Icon";
 
 import type { PropsType } from "./types";

@@ -10,7 +10,7 @@ import { View } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import Button from "@app/atoms/Button";
 import Text from "@app/atoms/Text";
-import Header from "@app/components/molecules/Header";
+import Header from "@app/molecules/Header";
 import Image from "@app/atoms/Image";
 
 import type { PropsType } from "./types";

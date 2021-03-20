@@ -1,5 +1,4 @@
 import { ENUM } from "@app/constants";
-import { PickerData } from "@app/redux/api-models/common";
 
 import {
   AvailabilityForm,
@@ -75,18 +74,14 @@ export const initShopPaymentForm: ShopPaymentForm = {
   creditCard: false,
 };
 
-const initPickerData: PickerData = {
-  id: 0,
-  value: "",
-};
-
 export const initShopAddressForm: ShopAddressForm = {
   fullName: "",
   detailedAddress: "",
   phoneNumber: "",
-  barangay: initPickerData,
-  province: initPickerData,
-  region: initPickerData,
+  cities: -1,
+  barangay: -1,
+  province: -1,
+  region: -1,
 };
 
 export const initShopState: ShopState = {

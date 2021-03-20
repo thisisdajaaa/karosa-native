@@ -26,6 +26,11 @@ const ListInputStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
   },
+  infoContainer: {
+    width: "90%",
+    height: DIMENS.screenHeight * 0.07,
+    flexDirection: "row",
+  },
   rowInputContainer: {
     marginTop: SPACING.lg,
     position: "relative",
@@ -51,6 +56,11 @@ const ListInputStyles = StyleSheet.create({
   txtLabel: {
     ...theme.textRegular,
     color: theme.colors.dark20,
+    fontWeight: "400",
+  },
+  txtInfo: {
+    ...theme.textRegular,
+    color: theme.colors.dark10,
     fontWeight: "400",
   },
   txtLength: {

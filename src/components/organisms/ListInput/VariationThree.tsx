@@ -1,6 +1,6 @@
 /**
  *
- * VariationTwo
+ * VariationThree
  * @format
  *
  */
@@ -17,7 +17,7 @@ import type { PropsType } from "./types";
 import { NUM_LINES } from "./config";
 import ListInputStyles from "./styles";
 
-const VariationTwo: FC<PropsType> = (props) => {
+const VariationThree: FC<PropsType> = (props) => {
   const {
     label,
     name,
@@ -25,6 +25,7 @@ const VariationTwo: FC<PropsType> = (props) => {
     required,
     hasBottomDivider,
     keyboardType,
+    info,
   } = props;
 
   return (
@@ -37,6 +38,11 @@ const VariationTwo: FC<PropsType> = (props) => {
               <Text text="*" textStyle={ListInputStyles.txtRequired} />
             )}
           </View>
+        </View>
+        <View style={ListInputStyles.infoContainer}>
+          {info && <Text text={info} textStyle={ListInputStyles.txtInfo} />}
+        </View>
+        <View style={ListInputStyles.mainRowContainer}>
           <ListItem.Content style={ListInputStyles.rowInputContainer}>
             <FormInput
               keyboardType={keyboardType}
@@ -55,4 +61,4 @@ const VariationTwo: FC<PropsType> = (props) => {
   );
 };
 
-export default VariationTwo;
+export default VariationThree;

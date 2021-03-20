@@ -23,6 +23,11 @@ const theme = {
     lineHeight: 18.75,
     fontFamily: "SFProText-Regular",
   },
+  textPicker: {
+    fontSize: 18,
+    lineHeight: 18.75,
+    fontFamily: "SFProText-Regular",
+  },
   textBold: {
     fontSize: 16,
     lineHeight: 19,

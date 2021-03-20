@@ -9,7 +9,7 @@ import React, { FC, Fragment, ReactElement } from "react";
 import { View } from "react-native";
 import { theme } from "@app/styles";
 import { listIterator } from "@app/utils";
-import Header from "@app/components/molecules/Header";
+import Header from "@app/molecules/Header";
 import ListSwitch from "@app/organisms/ListSwitch";
 import FormButton from "@app/molecules/FormButton";
 

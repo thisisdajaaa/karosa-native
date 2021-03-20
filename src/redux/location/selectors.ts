@@ -45,9 +45,11 @@ export const getCitiesResponse = () =>
     );
   });
 
-export default {
+const selectors = {
   getRegionResponse,
   getProvinceResponse,
   getBarangayResponse,
   getCitiesResponse,
 };
+
+export default selectors;

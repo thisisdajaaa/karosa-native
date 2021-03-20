@@ -11,7 +11,8 @@ import { ShopSettingsNavigation } from "@app/screens/ShopSettings/types";
 export type PropsType = {
   shopStatusRef: RefObject<RBSheet>;
   shopDeleteRef: RefObject<RBSheet>;
+  navigation: ShopSettingsNavigation;
   statusColor: string;
   statusValue: string;
-  navigation: ShopSettingsNavigation;
+  submitForm(): void;
 };

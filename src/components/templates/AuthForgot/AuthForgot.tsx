@@ -13,8 +13,8 @@ import { ForgotRequest } from "@app/redux/auth/models";
 import FormInput from "@app/molecules/FormInput";
 import FormButton from "@app/molecules/FormButton";
 import Text from "@app/atoms/Text";
-import Header from "@app/components/molecules/Header";
-import ValidationMessage from "@app/components/molecules/ValidationMessage";
+import Header from "@app/molecules/Header";
+import ValidationMessage from "@app/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
 import AuthForgotStyles from "./styles";

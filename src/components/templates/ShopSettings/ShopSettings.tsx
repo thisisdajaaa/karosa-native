@@ -10,14 +10,14 @@ import { StatusBar, View } from "react-native";
 import { theme } from "@app/styles";
 import { COMMON } from "src/constants";
 import { listIterator } from "@app/utils";
-import type { PropsType as ListChevronType } from "@app/components/organisms/ListChevron/types";
-import type { PropsType as ListInputType } from "@app/components/organisms/ListInput/types";
-import type { PropsType as ListStatusType } from "@app/components/organisms/ListStatus/types";
-import Header from "@app/components/molecules/Header";
-import FormImagePicker from "@app/components/molecules/FormImagePicker";
-import ListInput from "@app/components/organisms/ListInput";
-import ListStatus from "@app/components/organisms/ListStatus";
-import ListChevron from "@app/components/organisms/ListChevron";
+import type { PropsType as ListChevronType } from "@app/organisms/ListChevron/types";
+import type { PropsType as ListInputType } from "@app/organisms/ListInput/types";
+import type { PropsType as ListStatusType } from "@app/organisms/ListStatus/types";
+import Header from "@app/molecules/Header";
+import FormImagePicker from "@app/molecules/FormImagePicker";
+import ListInput from "@app/organisms/ListInput";
+import ListStatus from "@app/organisms/ListStatus";
+import ListChevron from "@app/organisms/ListChevron";
 import Button from "@app/atoms/Button";
 
 import type { PropsType } from "./types";
@@ -30,6 +30,7 @@ const ShopSettings: FC<PropsType> = (props) => {
     statusColor,
     statusValue,
     navigation,
+    submitForm,
   } = props;
 
   const shopNameProps: ListInputType = {
@@ -79,7 +80,7 @@ const ShopSettings: FC<PropsType> = (props) => {
           rightComponent={{
             text: "Save",
             style: ShopSettingsStyles.txtSave,
-            onPress: () => alert("save"),
+            onPress: submitForm,
           }}
         />
       </Fragment>

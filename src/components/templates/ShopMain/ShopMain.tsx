@@ -20,10 +20,10 @@ import {
 import { listIterator } from "@app/utils";
 import { theme } from "@app/styles";
 import { COMMON } from "@app/constants";
-import type { PropsType as ListChevronType } from "@app/components/organisms/ListChevron/types";
+import type { PropsType as ListChevronType } from "@app/organisms/ListChevron/types";
 import Text from "@app/atoms/Text";
-import Profile from "@app/components/organisms/Profile";
-import ListChevron from "@app/components/organisms/ListChevron";
+import Profile from "@app/organisms/Profile";
+import ListChevron from "@app/organisms/ListChevron";
 
 import type { PropsType } from "./types";
 import ShopMainStyles from "./styles";

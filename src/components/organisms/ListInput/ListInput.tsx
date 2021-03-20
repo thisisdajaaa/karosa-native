@@ -9,6 +9,7 @@ import React, { FC } from "react";
 
 import type { PropsType } from "./types";
 import VariationOne from "./VariationOne";
+import VariationThree from "./VariationThree";
 import VariationTwo from "./VariationTwo";
 
 const ListInput: FC<PropsType> = (props) => {
@@ -21,6 +22,7 @@ const ListInput: FC<PropsType> = (props) => {
     required,
     maxLen,
     keyboardType,
+    info,
   } = props;
 
   switch (variation) {
@@ -49,7 +51,19 @@ const ListInput: FC<PropsType> = (props) => {
           keyboardType={keyboardType}
         />
       );
-
+    case 3:
+      return (
+        <VariationThree
+          variation={variation}
+          label={label}
+          info={info}
+          hasBottomDivider={hasBottomDivider}
+          name={name}
+          placeholder={placeholder}
+          required={required}
+          keyboardType={keyboardType}
+        />
+      );
     default:
       return (
         <VariationOne

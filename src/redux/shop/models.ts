@@ -1,4 +1,4 @@
-import { PickerData, ResponseState } from "@app/redux/api-models/common";
+import { ResponseState } from "@app/redux/api-models/common";
 import { ENUM } from "@app/constants";
 
 import * as shopInfo from "../api-models/shop-info";
@@ -79,9 +79,10 @@ export type ShopPaymentForm = {
 export type ShopAddressForm = {
   fullName: string;
   phoneNumber: string;
-  region: PickerData;
-  province: PickerData;
-  barangay: PickerData;
+  region: number;
+  province: number;
+  cities: number;
+  barangay: number;
   detailedAddress: string;
 };
 

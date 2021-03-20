@@ -12,7 +12,6 @@ export type CitiesRequest = cities.Request;
 export type BarangayResponse = barangay.Response;
 export type BarangayRequest = barangay.Request;
 
-
 export type LocationState = {
   regionResponse: ResponseState<RegionResponse>;
   provinceResponse: ResponseState<ProvinceResponse>;
@@ -21,6 +20,7 @@ export type LocationState = {
 };
 
 declare module "../types" {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   export interface StateAll {
     location: LocationState;
   }
