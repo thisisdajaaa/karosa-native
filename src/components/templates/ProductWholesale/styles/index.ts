@@ -7,7 +7,7 @@
 import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
-const ShopEditAddressStyles = StyleSheet.create({
+const ProductWholesaleStyles = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -21,6 +21,10 @@ const ShopEditAddressStyles = StyleSheet.create({
     ...theme.textBold,
     fontWeight: "700",
   },
+  spacer: {
+    marginTop: "23%",
+    marginBottom: "23%",
+  },
 });
 
-export default ShopEditAddressStyles;
+export default ProductWholesaleStyles;

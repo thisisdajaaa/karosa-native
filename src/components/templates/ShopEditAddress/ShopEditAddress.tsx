@@ -180,10 +180,6 @@ const ShopEditAddress: FC<PropsType> = (props) => {
     return (
       <ScrollView showsVerticalScrollIndicator={false}>
         <Fragment>{getAddressForm()}</Fragment>
-        <View style={ShopEditAddressStyles.spacer} />
-        <View style={ShopEditAddressStyles.buttonContainer}>
-          <FormButton title="Submit" />
-        </View>
       </ScrollView>
     );
   };
@@ -194,6 +190,9 @@ const ShopEditAddress: FC<PropsType> = (props) => {
         style={ShopEditAddressStyles.container}
         behavior={isIOS ? "padding" : undefined}>
         <Fragment>{getScrollableForm()}</Fragment>
+        <View style={ShopEditAddressStyles.buttonContainer}>
+          <FormButton title="Submit" />
+        </View>
       </KeyboardAvoidingView>
     );
   };

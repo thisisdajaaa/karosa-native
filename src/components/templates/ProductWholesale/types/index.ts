@@ -5,5 +5,6 @@
  */
 
 export type PropsType = {
-  message: string;
+  onBack(): void;
+  submitForm(): void;
 };

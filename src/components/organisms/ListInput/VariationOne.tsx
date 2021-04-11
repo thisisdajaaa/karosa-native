@@ -15,6 +15,7 @@ import ValidationMessage from "@app/components/molecules/ValidationMessage";
 import type { PropsType } from "./types";
 import { NUM_LINES } from "./config";
 import ListInputStyles from "./styles";
+import { View } from "react-native";
 
 const VariationOne: FC<PropsType> = (props) => {
   const {
@@ -33,24 +34,29 @@ const VariationOne: FC<PropsType> = (props) => {
   return (
     <ListItem bottomDivider={hasBottomDivider}>
       <ListItem.Content style={ListInputStyles.variationOneContainer}>
-        <ListItem.Content style={ListInputStyles.labelLengthContainer}>
-          <Text text={label} textStyle={ListInputStyles.txtLabel} />
-          <Text
-            text={`${currentLength}/${maxLen}`}
-            textStyle={ListInputStyles.txtLength}
+        <View style={ListInputStyles.variationOneLabelContainer}>
+          <ListItem.Content style={ListInputStyles.labelLengthContainer}>
+            <Text text={label} textStyle={ListInputStyles.txtLabel} />
+            <Text
+              text={`(${currentLength}/${maxLen})`}
+              textStyle={ListInputStyles.txtLength}
+            />
+            {required && (
+              <Text text="*" textStyle={ListInputStyles.txtRequired} />
+            )}
+          </ListItem.Content>
+        </View>
+        <View style={ListInputStyles.formInputContainer}>
+          <FormInput
+            name={name}
+            keyboardType={keyboardType}
+            placeholder={placeholder}
+            numberOfLines={NUM_LINES.TEN}
+            multiline
+            inputContainerStyle={ListInputStyles.columnInputContainer}
           />
-          {required && (
-            <Text text="*" textStyle={ListInputStyles.txtRequired} />
-          )}
-        </ListItem.Content>
-        <FormInput
-          name={name}
-          keyboardType={keyboardType}
-          placeholder={placeholder}
-          numberOfLines={NUM_LINES.TEN}
-          multiline
-          inputContainerStyle={ListInputStyles.columnInputContainer}
-        />
+        </View>
+
         {meta.error && (
           <ListItem.Content style={ListInputStyles.errorContainer}>
             <ValidationMessage name={name} />

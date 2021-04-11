@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 export enum Shop_Status {
   Active = "active",
   OnVacation = "on vacation",

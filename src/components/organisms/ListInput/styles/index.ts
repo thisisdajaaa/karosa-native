@@ -14,6 +14,14 @@ const ListInputStyles = StyleSheet.create({
   variationTwoContainer: {
     flexDirection: "column",
   },
+  variationOneLabelContainer: {
+    height: DIMENS.screenHeight * 0.05,
+    justifyContent: "flex-start",
+  },
+  formInputContainer: {
+    width: "100%",
+    marginLeft: "3%",
+  },
   mainRowContainer: {
     flexDirection: "row",
     height: DIMENS.screenHeight * 0.05,

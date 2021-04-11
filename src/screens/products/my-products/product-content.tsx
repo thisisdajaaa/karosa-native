@@ -70,7 +70,7 @@ const ProductContent: React.FC = () => {
   };
 
   const addProdButtonProps: ButtonProps = {
-    onPress: () => navigate(routes.ADD_PRODUCT),
+    onPress: () => navigate(routes.PRODUCT_ADD),
     title: "Add Product",
     containerStyle: styles.addProdButton,
   };
@@ -92,8 +92,7 @@ const ProductContent: React.FC = () => {
         <ListItem.Content style={styles.flexRow}>
           <TouchableOpacity
             onPress={() => setView({ grid: false, list: true })}
-            style={styles.listView}
-          >
+            style={styles.listView}>
             <Feather
               name="list"
               size={24}
@@ -102,8 +101,7 @@ const ProductContent: React.FC = () => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setView({ grid: true, list: false })}
-            style={styles.gridView}
-          >
+            style={styles.gridView}>
             <Feather
               name="grid"
               size={20}

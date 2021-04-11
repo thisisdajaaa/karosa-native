@@ -13,7 +13,7 @@ import {
 } from "./models";
 
 export const initProductForm: ProductForm = {
-  productImg: null,
+  productImg: "",
   productNm: "",
   description: "",
   price: "",
@@ -27,8 +27,8 @@ export const initProductForm: ProductForm = {
 };
 
 export const initVariationForm: VariationForm = {
-  variationImg: null,
-  productNm: "",
+  variationImg: "",
+  variationNm: "",
   price: "",
   weight: "",
   stocks: "",

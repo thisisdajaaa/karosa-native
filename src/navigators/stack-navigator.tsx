@@ -4,14 +4,14 @@ import AuthLoginScreen from "@app/screens/AuthLogin";
 import AuthForgotScreen from "@app/screens/AuthForgot";
 import HelpScreen from "@app/screens/AuthHelp";
 import SplashScreen from "@app/screens/splash";
+import ProductNewScreen from "@app/screens/ProductNew";
 import AccountSettingsScreen from "@app/screens/user-account/account-settings";
 import EditProfileScreen from "@app/screens/user-account/edit-profile";
 import SocialMediaScreen from "@app/screens/user-account/social-media";
 import MyProductsScreen from "@app/screens/products/my-products";
 import SearchProductScreen from "@app/screens/products/search-product";
-import AddProductScreen from "@app/screens/products/add-product";
-import AddVariationScreen from "@app/screens/products/add-variation";
-import AddWholesaleScreen from "@app/screens/products/add-wholesale";
+import AddVariationScreen from "@app/screens/ProductVariation";
+import AddWholesaleScreen from "@app/screens/ProductWholesale";
 import ChooseCategoryScreen from "@app/screens/products/choose-category";
 import ShippingDetailsScreen from "@app/screens/products/shipping-details";
 import NewAddressScreen from "@app/screens/user-account/new-address";
@@ -54,7 +54,7 @@ const StackNavigator: React.FC = () => {
       />
       <Stack.Screen name="Shop Products" component={MyProductsScreen} />
       <Stack.Screen name="Search Product" component={SearchProductScreen} />
-      <Stack.Screen name="Add Product" component={AddProductScreen} />
+      <Stack.Screen name="Add Product" component={ProductNewScreen} />
       <Stack.Screen name="Add Variation" component={AddVariationScreen} />
       <Stack.Screen name="Add Wholesale" component={AddWholesaleScreen} />
       <Stack.Screen name="Shipping Details" component={ShippingDetailsScreen} />

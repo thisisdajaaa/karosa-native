@@ -71,7 +71,7 @@ const ShopMain: FC = () => {
       navigate(routes.SHOP_RETURNS);
     }, [navigate]),
     onProducts: useCallback(() => {
-      navigate(routes.SHOP_RETURNS);
+      navigate(routes.SHOP_PRODUCTS);
     }, [navigate]),
     onMarketing: useCallback(() => {
       navigate(routes.SHOP_MARKETING);

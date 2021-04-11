@@ -7,7 +7,7 @@
 import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
-const ShopEditAddressStyles = StyleSheet.create({
+const ProductVariationStyles = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -23,4 +23,4 @@ const ShopEditAddressStyles = StyleSheet.create({
   },
 });
 
-export default ShopEditAddressStyles;
+export default ProductVariationStyles;
