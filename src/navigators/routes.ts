@@ -5,6 +5,9 @@ export default Object.freeze({
   AUTH_LOGIN: "Login",
   AUTH_HELP: "Help",
   AUTH_FORGOT: "Forgot Password",
+  AUTH_PHONENUMBER: "SignUp Phonenumber",
+  AUTH_OTP: "SignUp OTP",
+  AUTH_SET_PASSWORD: "SignUp Password",
 
   ACCOUNTS_MAIN: "Me",
   ACCOUNTS_SETTINGS: "Account Settings",
@@ -25,6 +28,9 @@ export default Object.freeze({
   SHOP_MARKETING: "Shop Marketing",
   SHOP_FINANCE: "Shop Finance",
   SHOP_REPORTS: "Shop Reports",
+  SHOP_ADDRESS: "Shop Address",
+  SHOP_EDIT_ADDRESS: "Shop Edit Address",
+  SHOP_PAYMENT: "Shop Payment",
 
   SEARCH_PRODUCT: "Search Product",
   ADD_PRODUCT: "Add Product",

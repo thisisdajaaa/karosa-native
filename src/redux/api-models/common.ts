@@ -1,3 +1,5 @@
+import { Item } from "react-native-picker-select";
+
 export type ResponseError = {
   code: any;
   message: string;
@@ -14,9 +16,11 @@ export type Audit = {
   updatedAt: string;
 };
 
-export type PickerData = {
+export type PickerData = Omit<Item, "color" | "inputLabel">;
+
+export type CommonLocation = {
   id: number;
-  value: string;
+  name: string;
 };
 
 export type ResponseWithAudit<T> = T & Audit;

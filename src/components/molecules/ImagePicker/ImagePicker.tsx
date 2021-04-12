@@ -37,10 +37,11 @@ const ImagePicker: FC<PropsType> = (props) => {
     if (!uri) {
       selectImage();
     } else
-      Alert.alert("Delete", "Are you sure you want to delete this image?", [
-        { text: "Yes", onPress: () => onChange(null) },
-        { text: "No" },
-      ]);
+      Alert.alert(
+        "Change Image",
+        "Are you sure you want to change this image?",
+        [{ text: "Yes", onPress: selectImage }, { text: "No" }]
+      );
   };
 
   const selectImage = async () => {

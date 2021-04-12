@@ -1,17 +1,28 @@
+import { ENUM } from "@app/constants";
 import { createAction, createAsyncAction } from "typesafe-actions";
+import { ResponseError } from "@app/redux/api-models/common";
 
-import { ResponseError } from "../api-models/common";
 import * as types from "./types";
 import * as models from "./models";
 
 export const setShopStatus = createAction(
   types.SET_SHOP_STATUS,
-  (resolve) => (values: models.ShopStatus) => resolve(values)
+  (resolve) => (values: ENUM.Shop_Status) => resolve(values)
+);
+
+export const setShopSettings = createAction(
+  types.SET_SHOP_SETTINGS,
+  (resolve) => (values: models.ShopSettingsForm) => resolve(values)
+);
+
+export const setShopPayment = createAction(
+  types.SET_SHOP_PAYMENT,
+  (resolve) => (values: models.ShopPaymentForm) => resolve(values)
 );
 
 export const setProductStatus = createAction(
   types.SET_PRODUCT_STATUS,
-  (resolve) => (values: models.CommonStatus) => resolve(values)
+  (resolve) => (values: ENUM.Product_Status) => resolve(values)
 );
 
 export const setProductMeasurement = createAction(
@@ -27,6 +38,11 @@ export const setCategory = createAction(
 export const setProductForm = createAction(
   types.SET_PRODUCT_FORM,
   (resolve) => (values: models.ProductForm) => resolve(values)
+);
+
+export const setShopAddressForm = createAction(
+  types.SET_SHOP_ADDRESS,
+  (resolve) => (values: models.ShopAddressForm) => resolve(values)
 );
 
 export const setVariationForm = createAction(
@@ -60,6 +76,12 @@ export const callShopInfoApi = createAsyncAction(
   types.ACT_SHOP_INFO_FAILURE
 )<undefined, models.ShopInfoResponse, ResponseError>();
 
+export const callShopDeleteApi = createAsyncAction(
+  types.ACT_SHOP_DELETE_REQUEST,
+  types.ACT_SHOP_DELETE_SUCCESS,
+  types.ACT_SHOP_DELETE_FAILURE
+)<undefined, models.ShopDeleteResponse, ResponseError>();
+
 export const callShopAddressApi = createAsyncAction(
   types.ACT_SHOP_ADDRESS_REQUEST,
   types.ACT_SHOP_ADDRESS_SUCCESS,
@@ -78,9 +100,11 @@ export const callProductListApi = createAsyncAction(
   types.ACT_PRODUCT_LIST_FAILURE
 )<undefined, models.ProductListResponse, ResponseError>();
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+const actions = {
   setShopStatus,
+  setShopSettings,
+  setShopAddressForm,
+  setShopPayment,
   setProductStatus,
   setProductMeasurement,
   setCategory,
@@ -90,8 +114,11 @@ export default {
   setWholesaleForm,
   setShippingDetailsForm,
   callShopInfoApi,
+  callShopDeleteApi,
   callShopAddressApi,
   callAddProductApi,
   callProductListApi,
   clearProductEntry,
 };
+
+export default actions;

@@ -1,21 +1,18 @@
 import { ResponseState } from "@app/redux/api-models/common";
+import { ENUM } from "@app/constants";
 
 import * as shopInfo from "../api-models/shop-info";
+import * as shopDelete from "../api-models/shop-delete";
 import * as shopAddress from "../api-models/shop-address";
 import * as addProduct from "../api-models/add-product";
 import * as productList from "../api-models/product-list";
 
 export type ShopInfoResponse = shopInfo.Response;
+export type ShopDeleteResponse = shopDelete.Response;
 export type ShopAddressResponse = shopAddress.Response;
 export type AddProductRequest = addProduct.Request;
 export type AddProductResponse = addProduct.Response;
 export type ProductListResponse = productList.Response;
-
-export type CommonStatus = {
-  available: boolean;
-  planting: boolean;
-  harvesting: boolean;
-};
 
 export type ProductForm = {
   productImg: null;
@@ -28,7 +25,7 @@ export type ProductForm = {
   preOrder: boolean;
   measurement: string;
   categoryId: number;
-  status: CommonStatus;
+  status: ENUM.Product_Status;
 };
 
 export type VariationForm = {
@@ -66,10 +63,33 @@ export type ShippingDetailsForm = {
   sellerCourier: boolean;
 };
 
-export type ShopStatus = CommonStatus;
+export type ShopSettingsForm = {
+  coverPhoto?: string;
+  avatarPhoto?: string;
+  shopName: string;
+  status: ENUM.Shop_Status;
+};
+
+export type ShopPaymentForm = {
+  cod: boolean;
+  gcash: boolean;
+  creditCard: boolean;
+};
+
+export type ShopAddressForm = {
+  fullName: string;
+  phoneNumber: string;
+  region: number;
+  province: number;
+  cities: number;
+  barangay: number;
+  detailedAddress: string;
+};
 
 export type ShopEntryContext = {
-  shopStatus: ShopStatus;
+  shopSettings: ShopSettingsForm;
+  shopPayment: ShopPaymentForm;
+  shopAddress: ShopAddressForm;
 };
 
 export type ProductEntryContext = {
@@ -84,6 +104,7 @@ export type ShopState = {
   shopEntryContext: ShopEntryContext;
   productEntryContext: ProductEntryContext;
   shopInfoResponse: ResponseState<ShopInfoResponse>;
+  shopDeleteResponse: ResponseState<ShopDeleteResponse>;
   shopAddressResponse: ResponseState<ShopAddressResponse>;
   addProductResponse: ResponseState<AddProductResponse>;
   productListResponse: ResponseState<ProductListResponse>;

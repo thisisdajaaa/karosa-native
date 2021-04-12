@@ -5,14 +5,14 @@
  */
 
 export type ShopMainNavigation = {
-  handleBack(): void;
-  handleSettings(): void;
-  handleChat(): void;
-  handleToShip(): void;
-  handleCancelled(): void;
-  handleReturns(): void;
-  handleProducts(): void;
-  handleMarketing(): void;
-  handleFinance(): void;
-  handleReports(): void;
+  onBack(): void;
+  onSettings(): void;
+  onChat(): void;
+  onToShip(): void;
+  onCancelled(): void;
+  onReturns(): void;
+  onProducts(): void;
+  onMarketing(): void;
+  onFinance(): void;
+  onReports(): void;
 };

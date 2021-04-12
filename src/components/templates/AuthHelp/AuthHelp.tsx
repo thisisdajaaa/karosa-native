@@ -10,7 +10,7 @@ import { View, Image } from "react-native";
 import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
 import IconLabel from "@app/molecules/IconLabel";
-import Header from "@app/components/molecules/Header";
+import Header from "@app/molecules/Header";
 import Icon from "@app/atoms/Icon";
 
 import type { PropsType } from "./types";
@@ -26,8 +26,8 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
     );
   };
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         leftComponent={{
           icon: "close",
@@ -38,6 +38,11 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
           <Text text="Help Centre" textStyle={AuthHelpStyles.txtHeader} />
         }
       />
+    );
+  };
+
+  const getContent = () => {
+    return (
       <View style={AuthHelpStyles.container}>
         <View style={AuthHelpStyles.logoContainer}>
           <Image
@@ -64,6 +69,13 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
           textStyle={AuthHelpStyles.footer}
         />
       </View>
+    );
+  };
+
+  return (
+    <Fragment>
+      <Fragment>{getHeader()}</Fragment>
+      <Fragment>{getContent()}</Fragment>
     </Fragment>
   );
 };

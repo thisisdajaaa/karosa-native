@@ -52,34 +52,34 @@ const ShopMain: FC = () => {
   }, [isRefreshDragged]);
 
   const navigation: ShopMainNavigation = {
-    handleBack: useCallback(() => {
+    onBack: useCallback(() => {
       goBack();
     }, [goBack]),
-    handleSettings: useCallback(() => {
+    onSettings: useCallback(() => {
       navigate(routes.SHOP_SETTINGS);
     }, [navigate]),
-    handleChat: useCallback(() => {
+    onChat: useCallback(() => {
       navigate(routes.SHOP_CHAT);
     }, [navigate]),
-    handleToShip: useCallback(() => {
+    onToShip: useCallback(() => {
       navigate(routes.SHOP_SHIP);
     }, [navigate]),
-    handleCancelled: useCallback(() => {
+    onCancelled: useCallback(() => {
       navigate(routes.SHOP_CANCELLED);
     }, [navigate]),
-    handleReturns: useCallback(() => {
+    onReturns: useCallback(() => {
       navigate(routes.SHOP_RETURNS);
     }, [navigate]),
-    handleProducts: useCallback(() => {
+    onProducts: useCallback(() => {
       navigate(routes.SHOP_RETURNS);
     }, [navigate]),
-    handleMarketing: useCallback(() => {
+    onMarketing: useCallback(() => {
       navigate(routes.SHOP_MARKETING);
     }, [navigate]),
-    handleFinance: useCallback(() => {
+    onFinance: useCallback(() => {
       navigate(routes.SHOP_FINANCE);
     }, [navigate]),
-    handleReports: useCallback(() => {
+    onReports: useCallback(() => {
       navigate(routes.SHOP_REPORTS);
     }, [navigate]),
   };

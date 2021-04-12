@@ -5,6 +5,12 @@ export enum Shop_Status {
   Harvesting = "harvesting",
 }
 
+export enum Product_Status {
+  Available = "available",
+  Planting = "planting",
+  Harvesting = "harvesting",
+}
+
 export enum Gender {
   Male = "male",
   Female = "female",

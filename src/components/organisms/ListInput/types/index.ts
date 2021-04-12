@@ -15,4 +15,5 @@ export type PropsType = {
   required?: boolean;
   hasBottomDivider?: boolean;
   keyboardType?: KeyboardTypeOptions;
+  info?: string;
 };

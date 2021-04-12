@@ -3,10 +3,10 @@
  * @format
  *
  */
-import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
+import { PropsType as FormButtonProps } from "@app/molecules/FormButton/types";
 
 export type PropsType = {
-  forgotButtonProps: SubmitButtonProps;
+  forgotButtonProps: FormButtonProps;
   onBack(): void;
   onHelp(): void;
 };

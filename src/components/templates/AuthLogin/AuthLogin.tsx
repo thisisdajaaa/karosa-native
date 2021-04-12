@@ -20,10 +20,10 @@ import { LoginRequest } from "@app/redux/auth/models";
 import { useMount } from "@app/hooks";
 import { getPlatform } from "@app/utils";
 import Text from "@app/atoms/Text";
-import Header from "@app/components/molecules/Header";
+import Header from "@app/molecules/Header";
 import FormInput from "@app/molecules/FormInput";
-import SubmitButton from "@app/molecules/FormButton";
-import ValidationMessage from "@app/components/molecules/ValidationMessage";
+import FormButton from "@app/molecules/FormButton";
+import ValidationMessage from "@app/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
 import { IMAGE_HEIGHT, IMAGE_WIDTH } from "./config";
@@ -87,21 +87,25 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
     }).start();
   };
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         leftComponent={{
           icon: "arrow-back",
           color: theme.colors.primary,
           onPress: onBack,
         }}
-        centerComponent={
-          <Text text="Login" textStyle={AuthLoginStyles.txtHeader} />
-        }
+        centerComponent={{
+          text: "Login",
+          style: AuthLoginStyles.txtHeader,
+        }}
       />
-      <KeyboardAvoidingView
-        style={AuthLoginStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+    );
+  };
+
+  const getAnimatedLogo = () => {
+    return (
+      <Fragment>
         <View style={AuthLoginStyles.logoContainer}>
           <Animated.Image
             style={{
@@ -113,6 +117,13 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
           />
         </View>
         <View style={AuthLoginStyles.spacer} />
+      </Fragment>
+    );
+  };
+
+  const getLoginForm = () => {
+    return (
+      <Fragment>
         <FormInput
           name="identifier"
           placeholder="Phone number / Username / Email"
@@ -140,14 +151,32 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
           <ValidationMessage name="password" />
         </View>
 
-        <SubmitButton {...loginButtonProps} />
+        <FormButton {...loginButtonProps} />
         <TouchableOpacity onPress={onForgot}>
           <Text
             text="I forgot my password"
             textStyle={AuthLoginStyles.txtForgotPass}
           />
         </TouchableOpacity>
+      </Fragment>
+    );
+  };
+
+  const getContent = () => {
+    return (
+      <KeyboardAvoidingView
+        style={AuthLoginStyles.container}
+        behavior={isIOS ? "padding" : undefined}>
+        <Fragment>{getAnimatedLogo()}</Fragment>
+        <Fragment>{getLoginForm()}</Fragment>
       </KeyboardAvoidingView>
+    );
+  };
+
+  return (
+    <Fragment>
+      <Fragment>{getHeader()}</Fragment>
+      <Fragment>{getContent()}</Fragment>
     </Fragment>
   );
 };

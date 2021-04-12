@@ -17,6 +17,13 @@ import ShippingDetailsScreen from "@app/screens/products/shipping-details";
 import NewAddressScreen from "@app/screens/user-account/new-address";
 import MyAddressScreen from "@app/screens/user-account/my-address";
 import ShopMainScreen from "@app/screens/ShopMain";
+import ShopSettingsScreen from "@app/screens/ShopSettings";
+import ShopPaymentScreen from "@app/screens/ShopPayment";
+import ShopAddressScreen from "@app/screens/ShopAddress";
+import ShopEditAddressScreen from "@app/screens/ShopEditAddress";
+import SignUpPhoneNumberScreen from "@app/screens/SignUpPhoneNumber";
+import SignUpSetPasswordScreen from "@app/screens/SignUpSetPassword";
+import SignUpVerification from "@app/screens/SignUpVerification";
 
 import { TabNavigator } from "./tab-navigator";
 
@@ -38,9 +45,25 @@ const StackNavigator: React.FC = () => {
         name="Social Media Accounts"
         component={SocialMediaScreen}
       />
+      <Stack.Screen
+        name="SignUp Phonenumber"
+        component={SignUpPhoneNumberScreen}
+      />
+      <Stack.Screen
+        name="SignUp Password"
+        component={SignUpSetPasswordScreen}
+      />
+      <Stack.Screen name="SignUp OTP" component={SignUpVerification} />
       <Stack.Screen name="New Address" component={NewAddressScreen} />
       <Stack.Screen name="My Address" component={MyAddressScreen} />
       <Stack.Screen name="Shop Main" component={ShopMainScreen} />
+      <Stack.Screen name="Shop Settings" component={ShopSettingsScreen} />
+      <Stack.Screen name="Shop Payment" component={ShopPaymentScreen} />
+      <Stack.Screen name="Shop Address" component={ShopAddressScreen} />
+      <Stack.Screen
+        name="Shop Edit Address"
+        component={ShopEditAddressScreen}
+      />
       <Stack.Screen name="Shop Products" component={MyProductsScreen} />
       <Stack.Screen name="Search Product" component={SearchProductScreen} />
       <Stack.Screen name="Add Product" component={AddProductScreen} />

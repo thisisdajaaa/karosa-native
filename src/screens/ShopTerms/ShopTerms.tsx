@@ -14,7 +14,7 @@ const ShopTerms: FC = () => {
   const { navigate } = useNavigation();
 
   const handleAgree = useCallback(() => {
-    navigate(routes.SHOP_MAIN);
+    navigate(routes.SHOP_SETTINGS);
   }, [navigate]);
 
   const handleNotNow = useCallback(() => {

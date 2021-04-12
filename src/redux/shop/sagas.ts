@@ -2,8 +2,8 @@ import { SagaIterator } from "@redux-saga/core";
 import { AxiosResponse } from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { getType } from "typesafe-actions";
+import { baseAxios } from "@app/config/axios/instance";
 
-import { baseAxios } from "../../config/axios/instance";
 import apiEndpoints from "../api-endpoints.json";
 
 import * as actions from "./actions";
@@ -17,6 +17,19 @@ export function* callShopInfoApi(): SagaIterator {
     );
 
     yield put(actions.callShopInfoApi.success(response.data));
+  } catch (error) {
+    yield put(actions.callShopInfoApi.failure(error));
+  }
+}
+
+export function* callShopDeleteApi(): SagaIterator {
+  try {
+    const response: AxiosResponse<models.ShopDeleteResponse> = yield call(
+      baseAxios.delete,
+      apiEndpoints.shopInfo
+    );
+
+    yield put(actions.callShopDeleteApi.success(response.data));
   } catch (error) {
     yield put(actions.callShopInfoApi.failure(error));
   }
@@ -82,6 +95,13 @@ export function* onShopInfoSaga() {
   yield takeLatest(getType(actions.callShopInfoApi.request), callShopInfoApi);
 }
 
+export function* onShopDeleteSaga() {
+  yield takeLatest(
+    getType(actions.callShopDeleteApi.request),
+    callShopDeleteApi
+  );
+}
+
 export function* onShopAddressSaga() {
   yield takeLatest(
     getType(actions.callShopAddressApi.request),
@@ -94,6 +114,7 @@ export default function* () {
     call(onAddProductSaga),
     call(onProductListSaga),
     call(onShopInfoSaga),
+    call(onShopDeleteSaga),
     call(onShopAddressSaga),
   ]);
 }

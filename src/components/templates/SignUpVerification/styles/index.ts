@@ -30,8 +30,7 @@ const SignUpVerificationStyles = StyleSheet.create({
     ...theme.textRegular,
     color: theme.colors.green10,
     fontWeight: "bold",
-    marginVertical: 6,
-    marginHorizontal: 5,
+    marginTop: 10,
   },
 });
 

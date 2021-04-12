@@ -5,8 +5,9 @@
  *
  */
 
-import React, { FC, useState, useEffect, useCallback } from "react";
+import React, { FC, useState, useCallback } from "react";
 import { useFormikContext, useField } from "formik";
+import { useUpdateEffect } from "@app/hooks";
 import Input from "@app/atoms/Input";
 
 import type { PropsType } from "./types";
@@ -21,7 +22,7 @@ const FormInput: FC<PropsType> = (props) => {
     meta.value || meta.initialValue
   );
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     setCurrentValue(meta.value);
   }, [meta.value]);
 

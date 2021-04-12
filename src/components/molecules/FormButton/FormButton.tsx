@@ -31,8 +31,8 @@ const FormButton: FC<PropsType> = (props) => {
 
   return (
     <Button
-      title={title}
       disabled={invalid}
+      title={title}
       onPress={submitForm}
       loading={loading}
       buttonStyle={buttonStyle}

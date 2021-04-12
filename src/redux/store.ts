@@ -19,7 +19,10 @@ const configureStore = (initialState: any) => {
 
   enhancers.push(loggerMiddleware);
 
-  const composeEnhancers = composeWithDevTools({ trace: true, traceLimit: 25 });
+  const composeEnhancers = composeWithDevTools({
+    trace: false,
+    traceLimit: 25,
+  });
 
   const store = createStore(
     rootReducer,

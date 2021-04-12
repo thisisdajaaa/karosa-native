@@ -9,11 +9,11 @@ import React, { FC } from "react";
 import SignUpPhoneNumberTemplate from "@app/templates/SignUpPhoneNumber";
 import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
 import { PropsType as FormInputProps } from "@app/molecules/FormInput/types";
-import { FormikProvider,useFormik } from "formik";
+import { FormikProvider, useFormik } from "formik";
 import { useNavigation } from "@react-navigation/native";
 import routes from "@app/navigators/routes";
 
-import validationSchema from "./validation"
+import validationSchema from "./validation";
 
 const SignUpPhoneNumber: FC = () => {
   const { goBack, navigate } = useNavigation();
@@ -24,7 +24,7 @@ const SignUpPhoneNumber: FC = () => {
     validateOnBlur: true,
     onSubmit: (values) => {
       navigate("Stack", {
-        screen: routes.AUTH_VERIFICATION,
+        screen: routes.AUTH_OTP,
         params: { values },
       });
       console.log(values);

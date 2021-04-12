@@ -3,3 +3,5 @@ export const VARIATION = {
   TWO: 2,
   THREE: 3,
 };
+
+export const INIT_PICKER_VALUE = -1;
