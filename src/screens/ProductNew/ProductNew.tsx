@@ -19,7 +19,7 @@ import routes from "@app/navigators/routes";
 import type { ProductNewNavigation, ProductNewSheetRefs } from "./types";
 import { statusInformation } from "./config";
 
-const ProductNew: FC = () => {
+const ProductNewScreen: FC = () => {
   const dispatch = useDispatch();
 
   const productStatusRef = useRef<RBSheet>(null);
@@ -99,4 +99,4 @@ const ProductNew: FC = () => {
   );
 };
 
-export default ProductNew;
+export default ProductNewScreen;

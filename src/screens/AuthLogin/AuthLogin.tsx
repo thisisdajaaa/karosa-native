@@ -23,7 +23,7 @@ import routes from "@app/navigators/routes";
 
 import LoginValidationSchema from "./validation";
 
-const AuthLogin: FC = () => {
+const AuthLoginScreen: FC = () => {
   const dispatch = useDispatch();
 
   const { navigate } = useNavigation();
@@ -104,4 +104,4 @@ const AuthLogin: FC = () => {
   );
 };
 
-export default AuthLogin;
+export default AuthLoginScreen;

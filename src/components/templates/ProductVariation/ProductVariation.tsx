@@ -18,7 +18,7 @@ import { getPlatform, listIterator } from "@app/utils";
 import { KeyboardAvoidingView, ScrollView, View } from "react-native";
 import FormButton from "@app/components/molecules/FormButton";
 
-const ProductVariation: FC<PropsType> = (props) => {
+const ProductVariationTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
 
   const isIOS = getPlatform.getInstance() === "ios";
@@ -90,4 +90,4 @@ const ProductVariation: FC<PropsType> = (props) => {
   );
 };
 
-export default ProductVariation;
+export default ProductVariationTemplate;

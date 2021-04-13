@@ -23,7 +23,7 @@ import Button from "@app/atoms/Button";
 import type { PropsType } from "./types";
 import ShopSettingsStyles from "./styles";
 
-const ShopSettings: FC<PropsType> = (props) => {
+const ShopSettingsTemplate: FC<PropsType> = (props) => {
   const {
     shopStatusRef,
     shopDeleteRef,
@@ -146,4 +146,4 @@ const ShopSettings: FC<PropsType> = (props) => {
   );
 };
 
-export default ShopSettings;
+export default ShopSettingsTemplate;

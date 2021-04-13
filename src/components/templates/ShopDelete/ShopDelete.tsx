@@ -13,7 +13,7 @@ import Text from "@app/atoms/Text";
 import type { PropsType } from "./types";
 import ShopDeleteStyles from "./styles";
 
-const ShopDelete: FC<PropsType> = (props) => {
+const ShopDeleteTemplate: FC<PropsType> = (props) => {
   const { onDelete, sheetRef } = props;
 
   const getHeader = () => {
@@ -58,4 +58,4 @@ const ShopDelete: FC<PropsType> = (props) => {
   );
 };
 
-export default ShopDelete;
+export default ShopDeleteTemplate;

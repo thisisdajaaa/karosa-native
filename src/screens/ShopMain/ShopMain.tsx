@@ -15,7 +15,7 @@ import routes from "@app/navigators/routes";
 
 import type { ShopMainNavigation } from "./types";
 
-const ShopMain: FC = () => {
+const ShopMainScreen: FC = () => {
   const dispatch = useDispatch();
 
   const [isRefreshDragged, setIsRefreshDragged] = useState(false);
@@ -96,4 +96,4 @@ const ShopMain: FC = () => {
   );
 };
 
-export default ShopMain;
+export default ShopMainScreen;

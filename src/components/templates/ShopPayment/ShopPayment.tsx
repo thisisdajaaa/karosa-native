@@ -16,7 +16,7 @@ import FormButton from "@app/molecules/FormButton";
 import type { PropsType } from "./types";
 import ShopPaymentStyles from "./styles";
 
-const ShopPayment: FC<PropsType> = (props) => {
+const ShopPaymentTemplate: FC<PropsType> = (props) => {
   const { onBack, paymentButtonProps } = props;
 
   const listSwitch = (title: string, name: string) => {
@@ -69,4 +69,4 @@ const ShopPayment: FC<PropsType> = (props) => {
   );
 };
 
-export default ShopPayment;
+export default ShopPaymentTemplate;

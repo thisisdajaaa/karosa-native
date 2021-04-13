@@ -25,7 +25,7 @@ import ListSwitch from "@app/organisms/ListSwitch";
 import type { PropsType } from "./types";
 import ProductNewStyles from "./styles";
 
-const ProductNew: FC<PropsType> = (props) => {
+const ProductNewTemplate: FC<PropsType> = (props) => {
   const { navigation, sheetRefs, statusColor, statusValue } = props;
 
   const isIOS = getPlatform.getInstance() === "ios";
@@ -207,4 +207,4 @@ const ProductNew: FC<PropsType> = (props) => {
   );
 };
 
-export default ProductNew;
+export default ProductNewTemplate;

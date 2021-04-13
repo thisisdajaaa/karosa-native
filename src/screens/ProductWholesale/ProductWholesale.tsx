@@ -14,7 +14,7 @@ import { actions, selectors } from "@app/redux/shop";
 import { WholesaleForm } from "@app/redux/shop/models";
 import ProductWholesaleTemplate from "@app/templates/ProductWholesale";
 
-const ProductWholesale: FC = () => {
+const ProductWholesaleScreen: FC = () => {
   const dispatch = useDispatch();
 
   const { goBack } = useNavigation();
@@ -42,12 +42,9 @@ const ProductWholesale: FC = () => {
 
   return (
     <FormikProvider value={formikBag}>
-      <ProductWholesaleTemplate
-        onBack={handleBack}
-        submitForm={formikBag.submitForm}
-      />
+      <ProductWholesaleTemplate onBack={handleBack} />
     </FormikProvider>
   );
 };
 
-export default ProductWholesale;
+export default ProductWholesaleScreen;

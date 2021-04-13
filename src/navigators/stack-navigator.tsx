@@ -13,7 +13,7 @@ import SearchProductScreen from "@app/screens/products/search-product";
 import AddVariationScreen from "@app/screens/ProductVariation";
 import AddWholesaleScreen from "@app/screens/ProductWholesale";
 import ChooseCategoryScreen from "@app/screens/products/choose-category";
-import ShippingDetailsScreen from "@app/screens/products/shipping-details";
+import ShippingDetailsScreen from "@app/screens/ProductShipping";
 import NewAddressScreen from "@app/screens/user-account/new-address";
 import MyAddressScreen from "@app/screens/user-account/my-address";
 import ShopMainScreen from "@app/screens/ShopMain";

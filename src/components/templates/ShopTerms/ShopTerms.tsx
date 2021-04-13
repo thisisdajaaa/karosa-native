@@ -14,7 +14,7 @@ import Header from "@app/molecules/Header";
 import type { PropsType } from "./types";
 import ShopTermsStyles from "./styles";
 
-const ShopTerms: FC<PropsType> = (props) => {
+const ShopTermsTemplate: FC<PropsType> = (props) => {
   const { onAgree, onNotNow } = props;
 
   const getHeader = () => {
@@ -92,4 +92,4 @@ const ShopTerms: FC<PropsType> = (props) => {
   );
 };
 
-export default ShopTerms;
+export default ShopTermsTemplate;

@@ -28,7 +28,7 @@ import ListChevron from "@app/organisms/ListChevron";
 import type { PropsType } from "./types";
 import ShopMainStyles from "./styles";
 
-const ShopMain: FC<PropsType> = (props) => {
+const ShopMainTemplate: FC<PropsType> = (props) => {
   const {
     refreshing,
     onRefresh,
@@ -175,4 +175,4 @@ const ShopMain: FC<PropsType> = (props) => {
   return <Fragment>{getContent()}</Fragment>;
 };
 
-export default ShopMain;
+export default ShopMainTemplate;

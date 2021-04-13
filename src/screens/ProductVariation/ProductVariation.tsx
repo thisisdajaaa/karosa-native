@@ -14,7 +14,7 @@ import { actions, selectors } from "@app/redux/shop";
 import { VariationForm } from "@app/redux/shop/models";
 import ProductVariationTemplate from "@app/templates/ProductVariation";
 
-const ProductVariation: FC = () => {
+const ProductVariationScreen: FC = () => {
   const dispatch = useDispatch();
 
   const { goBack } = useNavigation();
@@ -42,12 +42,9 @@ const ProductVariation: FC = () => {
 
   return (
     <FormikProvider value={formikBag}>
-      <ProductVariationTemplate
-        onBack={handleBack}
-        submitForm={formikBag.submitForm}
-      />
+      <ProductVariationTemplate onBack={handleBack} />
     </FormikProvider>
   );
 };
 
-export default ProductVariation;
+export default ProductVariationScreen;

@@ -16,7 +16,7 @@ import routes from "@app/navigators/routes";
 import { BTM_SHEET_HEIGHT } from "./config";
 import type { PropsType } from "./types";
 
-const ShopDelete: FC<PropsType> = (props) => {
+const ShopDeleteScreen: FC<PropsType> = (props) => {
   const { sheetRef } = props;
 
   const dispatch = useDispatch();
@@ -41,4 +41,4 @@ const ShopDelete: FC<PropsType> = (props) => {
   );
 };
 
-export default ShopDelete;
+export default ShopDeleteScreen;

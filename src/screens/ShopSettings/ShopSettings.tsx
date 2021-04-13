@@ -22,7 +22,7 @@ import ShopSettingsValidationSchema from "./validation";
 import { ShopSettingsForm } from "@app/redux/shop/models";
 import { useDispatch } from "react-redux";
 
-const ShopSettings: FC = () => {
+const ShopSettingsScreen: FC = () => {
   const dispatch = useDispatch();
 
   const shopStatusRef = useRef<RBSheet>(null);
@@ -82,4 +82,4 @@ const ShopSettings: FC = () => {
   );
 };
 
-export default ShopSettings;
+export default ShopSettingsScreen;

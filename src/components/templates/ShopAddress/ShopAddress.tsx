@@ -15,7 +15,7 @@ import type { PropsType } from "./types";
 import { formatPhoneNumber } from "./config";
 import ShopAddressStyles from "./styles";
 
-const ShopAddress: FC<PropsType> = (props) => {
+const ShopAddressTemplate: FC<PropsType> = (props) => {
   const {
     navigation,
     name,
@@ -67,4 +67,4 @@ const ShopAddress: FC<PropsType> = (props) => {
   );
 };
 
-export default ShopAddress;
+export default ShopAddressTemplate;

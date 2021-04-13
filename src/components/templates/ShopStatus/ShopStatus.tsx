@@ -16,7 +16,7 @@ import Text from "@app/atoms/Text";
 import type { PropsType } from "./types";
 import ShopStatusStyles, { StatusItemStyle } from "./styles";
 
-const ShopStatus: FC<PropsType> = (props) => {
+const ShopStatusTemplate: FC<PropsType> = (props) => {
   const { setShopStatus } = props;
 
   const statusItem = (
@@ -84,4 +84,4 @@ const ShopStatus: FC<PropsType> = (props) => {
   );
 };
 
-export default ShopStatus;
+export default ShopStatusTemplate;

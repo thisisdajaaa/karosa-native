@@ -24,7 +24,7 @@ import FormButton from "@app/molecules/FormButton";
 import type { PropsType } from "./types";
 import ShopEditAddressStyles from "./styles";
 
-const ShopEditAddress: FC<PropsType> = (props) => {
+const ShopEditAddressTemplate: FC<PropsType> = (props) => {
   const { onBack, pickerValues, pickerDisable } = props;
 
   const picker = useMemo(() => {
@@ -205,4 +205,4 @@ const ShopEditAddress: FC<PropsType> = (props) => {
   );
 };
 
-export default ShopEditAddress;
+export default ShopEditAddressTemplate;

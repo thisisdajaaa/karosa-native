@@ -18,7 +18,7 @@ import { KeyboardAvoidingView, ScrollView, View } from "react-native";
 import FormButton from "@app/molecules/FormButton";
 import WarningMessage from "@app/components/molecules/WarningMessage";
 
-const ProductWholesale: FC<PropsType> = (props) => {
+const ProductWholesaleTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
 
   const isIOS = getPlatform.getInstance() === "ios";
@@ -86,4 +86,4 @@ const ProductWholesale: FC<PropsType> = (props) => {
   );
 };
 
-export default ProductWholesale;
+export default ProductWholesaleTemplate;
