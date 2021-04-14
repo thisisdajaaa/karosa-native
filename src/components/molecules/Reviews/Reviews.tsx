@@ -10,7 +10,7 @@ import { View, Image } from "react-native";
 import { BaseText } from "@app/components/base-text";
 import { AntDesign } from "@expo/vector-icons";
 import Images from "@app/atoms/Image";
-import { Rating } from "@app/components/rating";
+import Rating from "@app/molecules/Rating";
 import type { PropsType } from "./types";
 
 import ReviewsStyles from "./styles";
