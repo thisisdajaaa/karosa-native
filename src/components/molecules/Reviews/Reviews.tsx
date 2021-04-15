@@ -9,7 +9,7 @@ import React, { FC } from "react";
 import { View, Image } from "react-native";
 import { BaseText } from "@app/components/base-text";
 import { AntDesign } from "@expo/vector-icons";
-import Images from "@app/atoms/Image";
+import ReviewImages from "@app/atoms/ReviewImages";
 import Rating from "@app/molecules/Rating";
 import type { PropsType } from "./types";
 
@@ -57,7 +57,7 @@ const Reviews: FC<PropsType> = (props) => {
           })}
         </View>
         <View style={ReviewsStyles.buyerGallery}>
-          <Images
+          <ReviewImages
             imageSources={[
               require("../../../assets/tom2.jpg"),
               require("../../../assets/tom1.jpg"),
