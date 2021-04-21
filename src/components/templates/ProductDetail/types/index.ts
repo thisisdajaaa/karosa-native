@@ -3,16 +3,14 @@
  * @format
  *
  */
- import { Props as MultiListProps } from "@app/components/multi-list/types";
- import { Props as CommentProps } from "@app/components/reviews/types";
- import { BaseProps as ListChevronProps } from "@app/components/list/list-chevron/types";
-
-
+import { Props as MultiListProps } from "@app/components/multi-list/types";
+import { PropsType as CommentProps } from "@app/molecules/Reviews/types";
+import { BaseProps as ListChevronProps } from "@app/components/list/list-chevron/types";
 
 export type PropsType = {
-multiListProps:MultiListProps;
-commmentProps:CommentProps;
-voucherProps: ListChevronProps;
-variationProps: ListChevronProps;
-reviewsProps: ListChevronProps;
+  multiListProps: MultiListProps;
+  commentProps: CommentProps[];
+  voucherProps: ListChevronProps;
+  variationProps: ListChevronProps;
+  reviewsProps: ListChevronProps;
 };

@@ -11,61 +11,15 @@ import { BaseText } from "@app/components/base-text";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { MultiList } from "@app/components/multi-list";
 import { ListChevron } from "@app/components/list/list-chevron";
-import { BaseProps as ListChevronProps } from "@app/components/list/list-chevron/types";
-import { Props as MultiListProps } from "@app/components/multi-list/types";
 import { Separator } from "@app/components/separator";
 import { AppButton } from "@app/components/button";
 import { Props as ButtonProps } from "@app/components/button/types";
 
 import ProductDetailStyles from "./styles";
 import { ScrollView } from "react-native-gesture-handler";
-import ReviewImages from "@app/atoms/ReviewImages";
 import Reviews from "@app/molecules/Reviews/";
-import { Props as CommentProps } from "@app/components/molecules/Reviews/types";
 
 import type { PropsType } from "./types";
-
-const multiListProps: MultiListProps = {
-  multiChev: [
-    {
-      title: "Shipping from Cebu City",
-      hasBottomDivider: false,
-    },
-  ],
-};
-
-const rev1Props: CommentProps = {
-  username: "gwapo123",
-  comments: "nice nice nice well played",
-  likes: 200,
-  tags: ["nice", "good!"],
-  rate: 4,
-};
-
-const rev2Props: CommentProps = {
-  username: "ValorantNoob213",
-  comments: "spike planted! lorem ipsusm dolo set amet groove street home ",
-  likes: 200,
-  tags: ["nice", "scatter!", "wonderful"],
-  rate: 2,
-};
-
-const voucherProps: ListChevronProps = {
-  title: "Shop Vouchers",
-  txtInfo: "20% OFF",
-  onPress: () => console.log("20%"),
-};
-
-const variationProps: ListChevronProps = {
-  title: "Select Variation",
-  onPress: () => console.log("variation"),
-};
-
-const reviewsProps: ListChevronProps = {
-  title: "",
-  txtInfo: "See All",
-  onPress: () => console.log("variation"),
-};
 
 const chatNowButtonProps: ButtonProps = {
   title: "Chat Now",
@@ -87,7 +41,13 @@ const buyButtonProps: ButtonProps = {
   containerStyle: [ProductDetailStyles.button, ProductDetailStyles.orangeBox],
 };
 const ProductDetail: FC<PropsType> = (props) => {
-  const {} = props;
+  const {
+    multiListProps,
+    voucherProps,
+    variationProps,
+    reviewsProps,
+    commentProps,
+  } = props;
 
   return (
     <View style={{ flex: 1 }}>
@@ -96,7 +56,10 @@ const ProductDetail: FC<PropsType> = (props) => {
           <View style={ProductDetailStyles.subContainer}>
             <View>
               <Image
-                source={require("../../../../assets/kamatis.jpg")}
+                source={{
+                  uri:
+                    "https://squadstate.com/wp-content/uploads/2020/03/ancient-apparition.jpg",
+                }}
                 style={ProductDetailStyles.productImage}
               />
               <AntDesign
@@ -136,10 +99,10 @@ const ProductDetail: FC<PropsType> = (props) => {
               </View>
               <View style={ProductDetailStyles.horizontalContainer}>
                 <View style={ProductDetailStyles.rating}>
-                  <Image
+                  {/* <Image
                     source={require("../../../../assets/star.png")}
                     style={ProductDetailStyles.ratingIconStyle}
-                  />
+                  /> */}
                   <BaseText style={ProductDetailStyles.txtBlackRegular}>
                     4.1
                   </BaseText>
@@ -165,23 +128,23 @@ const ProductDetail: FC<PropsType> = (props) => {
           <View style={ProductDetailStyles.subContainer}>
             <ListChevron {...variationProps} />
             <View style={ProductDetailStyles.horizontalContainer}>
-              <ReviewImages
+              {/* <ReviewImages
                 imageSources={[
                   require("../../../../assets/tom2.jpg"),
                   require("../../../../assets/tom1.jpg"),
                   require("../../../../assets/tom3.jpg"),
                 ]}
-              />
+              /> */}
             </View>
           </View>
           <View style={ProductDetailStyles.subContainer}>
             <View style={ProductDetailStyles.horizontalContainer}>
               <View style={ProductDetailStyles.sellerContainer}>
                 <View>
-                  <Image
+                  {/* <Image
                     source={require("../../../../assets/seller.jpg")}
                     style={ProductDetailStyles.sellerImage}
-                  />
+                  /> */}
                 </View>
                 <View style={ProductDetailStyles.txtNameAddress}>
                   <BaseText style={ProductDetailStyles.txtBlackRegular}>
@@ -253,26 +216,39 @@ const ProductDetail: FC<PropsType> = (props) => {
               </BaseText>
               <View style={ProductDetailStyles.buyerGallery}>
                 <Image
-                  source={require("../../../../assets/tom3.jpg")}
+                  source={{
+                    uri:
+                      "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                  }}
                   style={ProductDetailStyles.varietyImage}
                 />
                 <Image
-                  source={require("../../../../assets/tom1.jpg")}
+                  source={{
+                    uri:
+                      "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                  }}
                   style={ProductDetailStyles.varietyImage}
                 />
                 <Image
-                  source={require("../../../../assets/tom2.jpg")}
+                  source={{
+                    uri:
+                      "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                  }}
                   style={ProductDetailStyles.varietyImage}
                 />
                 <Image
-                  source={require("../../../../assets/tom3.jpg")}
+                  source={{
+                    uri:
+                      "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                  }}
                   style={ProductDetailStyles.varietyImage}
                 />
               </View>
             </View>
+            {commentProps.map((comment, index) => {
+              return <Reviews key={index} {...comment} />;
+            })}
           </View>
-          <Reviews {...rev1Props} />
-          <Reviews {...rev2Props} />
         </ScrollView>
       </View>
       <View style={ProductDetailStyles.footer}>

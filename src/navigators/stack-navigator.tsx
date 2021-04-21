@@ -21,6 +21,7 @@ import ShopSettingsScreen from "@app/screens/ShopSettings";
 import ShopPaymentScreen from "@app/screens/ShopPayment";
 import ShopAddressScreen from "@app/screens/ShopAddress";
 import ShopEditAddressScreen from "@app/screens/ShopEditAddress";
+import ProductDetailScreen from "@app/screens/ShopProductDetails";
 
 import { TabNavigator } from "./tab-navigator";
 
@@ -33,7 +34,7 @@ const StackNavigator: React.FC = () => {
       screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="Home" component={TabNavigator} />
-      <Stack.Screen name="Login" component={AuthLoginScreen} />
+      <Stack.Screen name="Login" component={ProductDetailScreen} />
       <Stack.Screen name="Help" component={HelpScreen} />
       <Stack.Screen name="Forgot Password" component={AuthForgotScreen} />
       <Stack.Screen name="Account Settings" component={AccountSettingsScreen} />

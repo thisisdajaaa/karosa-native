@@ -16,20 +16,19 @@ import type { PropsType } from "./types";
 import ReviewsStyles from "./styles";
 
 const Reviews: FC<PropsType> = (props) => {
-  const {
-    username,
-    comments,
-    likes,
-    tags,
-    rate,
-    avatarPhoto = require("../../../assets/seller.jpg"),
-  } = props;
+  const { username, comments, likes, tags, rate, avatarPhoto } = props;
 
   return (
     <View style={ReviewsStyles.subContainer}>
       <View style={ReviewsStyles.reviewContainer}>
         <View style={ReviewsStyles.buyerContainer}>
-          <Image source={avatarPhoto} style={ReviewsStyles.sellerImage} />
+          <Image
+            source={{
+              uri:
+                "http://2.bp.blogspot.com/-wvCP_ff54N4/Ukpp0EjfInI/AAAAAAAAAYI/QR4VOlfCLfg/s1600/index.jpg",
+            }}
+            style={ReviewsStyles.sellerImage}
+          />
           <View style={ReviewsStyles.txtNameAddress}>
             <View>
               <BaseText style={ReviewsStyles.txtBlackRegular}>
@@ -59,9 +58,18 @@ const Reviews: FC<PropsType> = (props) => {
         <View style={ReviewsStyles.buyerGallery}>
           <ReviewImages
             imageSources={[
-              require("../../../assets/tom2.jpg"),
-              require("../../../assets/tom1.jpg"),
-              require("../../../assets/tom3.jpg"),
+              {
+                uri:
+                  "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+              },
+              {
+                uri:
+                  "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+              },
+              {
+                uri:
+                  "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+              },
             ]}
           />
         </View>

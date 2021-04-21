@@ -3,10 +3,9 @@
  * @format
  *
  */
-import { ImageSourcePropType } from "react-native";
 
 export type PropsType = {
-  avatarPhoto?: ImageSourcePropType;
+  avatarPhoto: string;
   username: string;
   comments: string;
   likes: number;
