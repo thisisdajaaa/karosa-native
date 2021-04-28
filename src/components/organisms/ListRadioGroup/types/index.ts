@@ -4,10 +4,7 @@
  *
  */
 
-export type Option = {
-  id: string;
-  label: string;
-};
+import { Option } from "@app/molecules/FormRadioGroup/types";
 
 export type PropsType = {
   name: string;

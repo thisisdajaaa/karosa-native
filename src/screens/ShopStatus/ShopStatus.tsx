@@ -9,7 +9,7 @@ import React, { FC, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { ENUM } from "@app/constants";
 import { actions } from "@app/redux/shop";
-import BottomSheet from "@app/components/molecules/BottomSheet";
+import BottomSheet from "@app/molecules/BottomSheet";
 import ShopStatusTemplate from "@app/templates/ShopStatus";
 
 import type { PropsType } from "./types";

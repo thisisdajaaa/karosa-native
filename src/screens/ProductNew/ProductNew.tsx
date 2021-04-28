@@ -15,6 +15,9 @@ import { actions, selectors } from "@app/redux/shop";
 import { AddProductRequest, ProductForm } from "@app/redux/shop/models";
 import ProductNewTemplate from "@app/templates/ProductNew";
 import routes from "@app/navigators/routes";
+import ProductStatus from "@app/screens/ProductStatus";
+import ProductAvailability from "@app/screens/ProductAvailability";
+import ProductMeasurement from "@app/screens/ProductMeasurement";
 
 import type { ProductNewNavigation, ProductNewSheetRefs } from "./types";
 import { statusInformation } from "./config";
@@ -95,6 +98,10 @@ const ProductNewScreen: FC = () => {
         statusColor={statusColor}
         statusValue={statusValue}
       />
+
+      <ProductStatus sheetRef={productStatusRef} />
+      <ProductAvailability sheetRef={availabilityRef} />
+      <ProductMeasurement sheetRef={measurementRef} />
     </FormikContext.Provider>
   );
 };
