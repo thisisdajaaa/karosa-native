@@ -1,6 +1,6 @@
 /**
  *
- * Categories Test
+ * ProductCategories Test
  * @format
  *
  */
@@ -8,12 +8,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Categories from '../Categories';
+import ProductCategories from '../ProductCategories';
 
-test('Categories', () => {
+test('ProductCategories', () => {
   const tree = renderer
     .create(
-      <Categories />
+      <ProductCategories />
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

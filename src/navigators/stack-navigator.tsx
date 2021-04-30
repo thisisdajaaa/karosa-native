@@ -12,7 +12,7 @@ import MyProductsScreen from "@app/screens/products/my-products";
 import SearchProductScreen from "@app/screens/products/search-product";
 import AddVariationScreen from "@app/screens/ProductVariation";
 import AddWholesaleScreen from "@app/screens/ProductWholesale";
-import ChooseCategoryScreen from "@app/screens/products/choose-category";
+import ChooseCategoryScreen from "@app/screens/ProductCategories";
 import ShippingDetailsScreen from "@app/screens/ProductShipping";
 import NewAddressScreen from "@app/screens/user-account/new-address";
 import MyAddressScreen from "@app/screens/user-account/my-address";
