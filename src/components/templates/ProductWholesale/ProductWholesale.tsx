@@ -50,7 +50,7 @@ const ProductWholesaleTemplate: FC<PropsType> = (props) => {
     const unit = listInput("unit", "Unit Price", "Set Price/Grams", true);
 
     const warningMsg = (
-      <WarningMessage message="Wholesale price will be hidden when the product is uder promotion." />
+      <WarningMessage message="Wholesale price will be hidden when the product is under promotion." />
     );
 
     elements.push(warningMsg, min, max, unit);

@@ -1,7 +1,17 @@
+/**
+ *
+ * @format
+ *
+ */
+
 import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
-export const styles = StyleSheet.create({
+const ProductListStyles = StyleSheet.create({
+  txtHeader: {
+    ...theme.textBold,
+    fontWeight: "700",
+  },
   container: {
     backgroundColor: theme.colors.light5,
   },
@@ -14,32 +24,15 @@ export const styles = StyleSheet.create({
   searchHeader: {
     marginRight: 15,
   },
-  addProdButton: {
-    minWidth: 288,
-    width: "100%",
-  },
   row: {
     justifyContent: "center",
   },
-  boostButtonContainer: {
-    minWidth: 124,
-    width: "100%",
-    height: 28,
-    padding: 0,
-    backgroundColor: theme.colors.white,
-    borderColor: theme.colors.primary,
-    borderWidth: 2,
-  },
-  txtBoostNow: {
-    ...theme.textLight,
-    fontWeight: "700",
-    textAlign: "center",
-    color: theme.colors.primary,
-  },
   buttonContainer: {
     position: "absolute",
-    top: 70,
-    alignSelf: "center",
+    bottom: 5,
+    left: 0,
+    right: 0,
+    paddingHorizontal: 20,
   },
   dropdownIconContainer: {
     position: "absolute",
@@ -82,4 +75,10 @@ export const styles = StyleSheet.create({
     paddingRight: 10,
     marginBottom: 12,
   },
+  spacer: {
+    height: 70,
+    backgroundColor: theme.colors.light5,
+  },
 });
+
+export default ProductListStyles;

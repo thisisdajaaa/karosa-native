@@ -1,7 +1,15 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { equals } from "ramda";
 import { useDispatch } from "react-redux";
-import { FlatList, TouchableOpacity, View } from "react-native";
+import {
+  Animated,
+  Dimensions,
+  FlatList,
+  LayoutChangeEvent,
+  LayoutRectangle,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { Feather, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { ListItem } from "react-native-elements";
@@ -17,6 +25,9 @@ import { Props as ButtonProps } from "@app/components/button/types";
 import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
+import { HeaderHeightContext } from "@react-navigation/stack";
+
+const { height } = Dimensions.get("screen");
 
 const ProductContent: React.FC = () => {
   const dispatch = useDispatch();
@@ -82,6 +93,25 @@ const ProductContent: React.FC = () => {
     textStyle: styles.txtBoostList,
   };
 
+  const productss = [
+    {
+      id: "1",
+      name: "gg",
+    },
+    {
+      id: "2",
+      name: "gg",
+    },
+    {
+      id: "3",
+      name: "gg",
+    },
+    {
+      id: "4",
+      name: "gg",
+    },
+  ];
+
   return (
     <View style={styles.contentContainer}>
       <ListItem bottomDivider>
@@ -114,8 +144,11 @@ const ProductContent: React.FC = () => {
       {view.list && (
         <React.Fragment>
           <FlatList
-            data={products}
+            data={productss}
             keyExtractor={(item) => String(item.id)}
+            ListFooterComponent={
+              <View style={{ height: 60, backgroundColor: "#F5F5F5" }} />
+            }
             renderItem={({ item }: { item: Products }) => (
               <ListProduct
                 item={item}
@@ -127,7 +160,14 @@ const ProductContent: React.FC = () => {
               />
             )}
           />
-          <View style={styles.addProdContainer}>
+          <View
+            style={{
+              position: "absolute",
+              bottom: 5,
+              left: 0,
+              right: 0,
+              paddingHorizontal: 20,
+            }}>
             <AppButton {...addProdButtonProps} />
           </View>
         </React.Fragment>
@@ -137,9 +177,12 @@ const ProductContent: React.FC = () => {
         <React.Fragment>
           <FlatList
             numColumns={2}
-            data={products}
+            data={productss}
             keyExtractor={(item) => String(item.id)}
             contentContainerStyle={styles.row}
+            ListFooterComponent={
+              <View style={{ height: 60, backgroundColor: "#F5F5F5" }} />
+            }
             renderItem={({ item }: { item: Products }) => (
               <SellerCard
                 item={item}
@@ -151,7 +194,14 @@ const ProductContent: React.FC = () => {
               />
             )}
           />
-          <View style={styles.addProdContainer}>
+          <View
+            style={{
+              position: "absolute",
+              bottom: 5,
+              left: 0,
+              right: 0,
+              paddingHorizontal: 20,
+            }}>
             <AppButton {...addProdButtonProps} />
           </View>
         </React.Fragment>

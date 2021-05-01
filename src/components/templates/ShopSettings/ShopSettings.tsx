@@ -6,10 +6,15 @@
  */
 
 import React, { FC, Fragment, ReactElement } from "react";
-import { StatusBar, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  StatusBar,
+  View,
+} from "react-native";
 import { theme } from "@app/styles";
 import { COMMON } from "src/constants";
-import { listIterator } from "@app/utils";
+import { getPlatform, listIterator } from "@app/utils";
 import type { PropsType as ListChevronType } from "@app/organisms/ListChevron/types";
 import type { PropsType as ListInputType } from "@app/organisms/ListInput/types";
 import type { PropsType as ListStatusType } from "@app/organisms/ListStatus/types";
@@ -32,6 +37,8 @@ const ShopSettingsTemplate: FC<PropsType> = (props) => {
     navigation,
     submitForm,
   } = props;
+
+  const isIOS = getPlatform.getInstance() === "ios";
 
   const shopNameProps: ListInputType = {
     name: "shopName",
@@ -130,11 +137,15 @@ const ShopSettingsTemplate: FC<PropsType> = (props) => {
 
   const getContent = () => {
     return (
-      <View style={ShopSettingsStyles.container}>
-        <Fragment>{getImageForm()}</Fragment>
-        <Fragment>{getListForm()}</Fragment>
+      <KeyboardAvoidingView
+        style={ShopSettingsStyles.container}
+        behavior={isIOS ? "padding" : undefined}>
+        <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
+          <Fragment>{getImageForm()}</Fragment>
+          <Fragment>{getListForm()}</Fragment>
+        </ScrollView>
         <Fragment>{getBtnDeleteShop()}</Fragment>
-      </View>
+      </KeyboardAvoidingView>
     );
   };
 

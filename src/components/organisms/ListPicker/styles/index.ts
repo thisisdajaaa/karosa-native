@@ -13,10 +13,10 @@ const ListPickerStyles = StyleSheet.create({
   },
   mainRowContainer: {
     flexDirection: "row",
-    height: DIMENS.screenHeight * 0.05,
+    height: DIMENS.screenHeight * 0.028,
   },
   labelContainer: {
-    marginTop: SPACING.sm - 1,
+    marginTop: SPACING.xss - 4,
     flexDirection: "row",
     justifyContent: "flex-start",
   },

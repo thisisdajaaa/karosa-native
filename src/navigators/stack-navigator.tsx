@@ -8,7 +8,7 @@ import ProductNewScreen from "@app/screens/ProductNew";
 import AccountSettingsScreen from "@app/screens/user-account/account-settings";
 import EditProfileScreen from "@app/screens/user-account/edit-profile";
 import SocialMediaScreen from "@app/screens/user-account/social-media";
-import MyProductsScreen from "@app/screens/products/my-products";
+import MyProductsScreen from "@app/screens/ProductList";
 import SearchProductScreen from "@app/screens/products/search-product";
 import AddVariationScreen from "@app/screens/ProductVariation";
 import AddWholesaleScreen from "@app/screens/ProductWholesale";

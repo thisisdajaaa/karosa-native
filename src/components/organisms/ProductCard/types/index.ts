@@ -9,6 +9,7 @@ export type PropsType = {
   discount?: string;
   image?: string;
   name: string;
+  wholesale?: boolean;
   currentPrice?: string;
   previousPrice?: string;
   sold?: string;

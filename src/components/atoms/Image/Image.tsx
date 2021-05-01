@@ -6,7 +6,7 @@
  */
 
 import React, { FC } from "react";
-import { Image as RnImage } from "react-native";
+import { Image as RnImage } from "react-native-elements";
 
 import type { PropsType } from "./types";
 import ImageStyles from "./styles";

@@ -12,7 +12,6 @@ import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
 
 import type { PropsType } from "./types";
-import { FONT_SIZE } from "./config";
 import ListChevronStyles from "./styles";
 
 const VariantOne: FC<PropsType> = (props) => {
@@ -26,11 +25,6 @@ const VariantOne: FC<PropsType> = (props) => {
     infoStyle,
     chevronColor = theme.colors.dark10,
   } = props;
-
-  const iconStyle = {
-    color: chevronColor,
-    fontSize: FONT_SIZE,
-  };
 
   return (
     <ListItem bottomDivider={hasBottomDivider} onPress={onPress}>
@@ -57,7 +51,10 @@ const VariantOne: FC<PropsType> = (props) => {
       {info && (
         <Text text={info} textStyle={[ListChevronStyles.txtInfo, infoStyle]} />
       )}
-      <ListItem.Chevron iconStyle={iconStyle} />
+      <ListItem.Chevron
+        iconProps={{ name: "ios-arrow-forward" }}
+        iconStyle={{ color: chevronColor }}
+      />
     </ListItem>
   );
 };

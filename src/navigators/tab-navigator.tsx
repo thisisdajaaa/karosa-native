@@ -11,7 +11,7 @@ import UserAccountMainScreen from "@app/screens/user-account/main";
 import AuthMainScreen from "@app/screens/AuthMain";
 import BasketScreen from "@app/screens/basket";
 import NotificationScreen from "@app/screens/notifications";
-import SellerProducts from "@app/screens/products/my-products/product-content";
+import ProductListContent from "@app/templates/ProductList/MainContent";
 import ShopContent from "@app/screens/shop/view-shop/shop-content";
 import BuyerProducts from "@app/screens/shop/view-shop/product-content";
 import CategoryContent from "@app/screens/shop/view-shop/category-content";
@@ -41,7 +41,7 @@ const ProductTabs: React.FC = () => {
       }}>
       {mockTopTab.map((tabName, index) => (
         <React.Fragment key={index}>
-          <TopTab.Screen name={tabName} component={SellerProducts} />
+          <TopTab.Screen name={tabName} component={ProductListContent} />
         </React.Fragment>
       ))}
     </TopTab.Navigator>

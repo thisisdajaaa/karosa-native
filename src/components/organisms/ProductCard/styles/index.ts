@@ -12,7 +12,7 @@ const ProductCardStyles = StyleSheet.create({
     height: DIMENS.screenHeight * 0.4,
     width: DIMENS.screenWidth * 0.4,
     padding: 0,
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.03,
     shadowOffset: { height: 2, width: 1 },
     shadowColor: theme.colors.black,
   },
@@ -64,7 +64,7 @@ const ProductCardStyles = StyleSheet.create({
     color: theme.colors.primary,
   },
   txtPrice: {
-    ...theme.textRegular,
+    ...theme.textBold,
     fontWeight: "500",
     fontStyle: "normal",
   },
