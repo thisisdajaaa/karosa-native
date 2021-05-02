@@ -11,15 +11,15 @@ import { ListItem } from "react-native-elements";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import { theme } from "@app/styles";
 import { Products } from "@app/redux/api-models/product-list";
+import { COMMON } from "@app/constants";
 import ListProduct from "@app/organisms/ListProduct";
 import Button from "@app/atoms/Button";
 import Text from "@app/atoms/Text";
+import ProductCard from "@app/organisms/ProductCard";
 
-import ProductListStyles from "./styles";
-import { ViewType } from "./types";
+import type { ViewType } from "./types";
 import { mockProducts } from "./config";
-import ProductCard from "@app/components/organisms/ProductCard";
-import { VARIATION } from "src/constants/common";
+import ProductListStyles from "./styles";
 
 const MainContent: FC = () => {
   const [view, setView] = useState<ViewType>("List");
@@ -108,7 +108,7 @@ const MainContent: FC = () => {
                 buttonTitle="Boost Now"
                 onButtonClick={() => alert("boost")}
                 discount="30"
-                variation={VARIATION.ONE}
+                variation={COMMON.VARIATION.ONE}
               />
             )}
           />

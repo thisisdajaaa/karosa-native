@@ -9,18 +9,22 @@ import React, { FC, useCallback } from "react";
 import ProductListTemplate from "@app/templates/ProductList";
 import { useNavigation } from "@react-navigation/native";
 
-import type { PropsType } from "./types";
+import type { ProductListNavigation } from "./types";
+import routes from "@app/navigators/routes";
 
-const ProductList: FC<PropsType> = (props) => {
-  const {} = props;
+const ProductList: FC = () => {
+  const { goBack, navigate } = useNavigation();
 
-  const { goBack } = useNavigation();
+  const navigation: ProductListNavigation = {
+    onBack: useCallback(() => {
+      goBack();
+    }, [goBack]),
+    onSearch: useCallback(() => {
+      navigate(routes.SEARCH_MY_PRODUCT);
+    }, [navigate]),
+  };
 
-  const handleBack = useCallback(() => {
-    goBack();
-  }, [goBack]);
-
-  return <ProductListTemplate onBack={handleBack} />;
+  return <ProductListTemplate navigation={navigation} />;
 };
 
 export default ProductList;

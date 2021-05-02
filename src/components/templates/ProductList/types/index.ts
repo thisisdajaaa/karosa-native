@@ -4,8 +4,10 @@
  *
  */
 
+import { ProductListNavigation } from "@app/screens/ProductList/types";
+
 export type ViewType = "List" | "Grid";
 
 export type PropsType = {
-  onBack(): void;
+  navigation: ProductListNavigation;
 };

@@ -32,7 +32,7 @@ const VariantTwo: FC<PropsType> = (props) => {
   } = props;
 
   return (
-    <Card wrapperStyle={ProductCardStyles.mainContainer}>
+    <Card containerStyle={ProductCardStyles.mainContainer}>
       {wholesale && (
         <View style={ProductCardStyles.wholesaleContainer}>
           <Text textStyle={ProductCardStyles.txtWholesale} text={"Wholesale"} />

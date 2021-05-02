@@ -4,6 +4,7 @@
  *
  */
 
-export type PropsType = {
-
+export type ProductListNavigation = {
+  onBack(): void;
+  onSearch(): void;
 };

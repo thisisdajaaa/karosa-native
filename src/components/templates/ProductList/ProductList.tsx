@@ -15,7 +15,7 @@ import SearchBar from "@app/molecules/SearchBar";
 import type { PropsType } from "./types";
 
 const ProductList: FC<PropsType> = (props) => {
-  const { onBack } = props;
+  const { navigation } = props;
 
   return (
     <Fragment>
@@ -25,13 +25,14 @@ const ProductList: FC<PropsType> = (props) => {
         leftComponent={{
           icon: "arrow-back",
           color: theme.colors.primary,
-          onPress: onBack,
+          onPress: navigation.onBack,
         }}
         centerComponent={
           <SearchBar
             backgroundColor="secondary"
             size="sm"
             placeholder="Search in My Products"
+            onFocus={navigation.onSearch}
           />
         }
         rightComponent={{

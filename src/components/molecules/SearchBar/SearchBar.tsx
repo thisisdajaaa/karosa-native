@@ -17,7 +17,9 @@ const SearchBar: FC<PropsType> = (props) => {
     backgroundColor = "primary",
     size = "lg",
     autoCorrect,
+    autoFocus,
     onChangeText,
+    onCancel,
     onFocus,
     onTouchStart,
     placeholder,
@@ -38,7 +40,9 @@ const SearchBar: FC<PropsType> = (props) => {
       containerStyle={mainContainerStyle}
       returnKeyType="search"
       accessibilityRole="search"
+      autoFocus={autoFocus}
       onTouchStart={onTouchStart}
+      onCancel={onCancel}
       onFocus={onFocus}
       onChangeText={onChangeText}
       value={value}

@@ -15,6 +15,7 @@ const ProductCardStyles = StyleSheet.create({
     shadowOpacity: 0.03,
     shadowOffset: { height: 2, width: 1 },
     shadowColor: theme.colors.black,
+    borderRadius: 3,
   },
   wholesaleContainer: {
     backgroundColor: theme.colors.primary,

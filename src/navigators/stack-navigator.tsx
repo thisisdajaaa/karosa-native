@@ -9,7 +9,7 @@ import AccountSettingsScreen from "@app/screens/user-account/account-settings";
 import EditProfileScreen from "@app/screens/user-account/edit-profile";
 import SocialMediaScreen from "@app/screens/user-account/social-media";
 import MyProductsScreen from "@app/screens/ProductList";
-import SearchProductScreen from "@app/screens/products/search-product";
+import SearchMyProductScreen from "@app/screens/ProductSearch";
 import AddVariationScreen from "@app/screens/ProductVariation";
 import AddWholesaleScreen from "@app/screens/ProductWholesale";
 import ChooseCategoryScreen from "@app/screens/ProductCategories";
@@ -53,7 +53,10 @@ const StackNavigator: React.FC = () => {
         component={ShopEditAddressScreen}
       />
       <Stack.Screen name="Shop Products" component={MyProductsScreen} />
-      <Stack.Screen name="Search Product" component={SearchProductScreen} />
+      <Stack.Screen
+        name="Search My Product"
+        component={SearchMyProductScreen}
+      />
       <Stack.Screen name="Add Product" component={ProductNewScreen} />
       <Stack.Screen name="Add Variation" component={AddVariationScreen} />
       <Stack.Screen name="Add Wholesale" component={AddWholesaleScreen} />
