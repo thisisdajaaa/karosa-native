@@ -1,6 +1,6 @@
 import { RefObject } from "react";
 import { FlatList } from "react-native";
-import { Value } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 
 export type HeaderConfig = {
   heightExpanded: number;
@@ -9,5 +9,5 @@ export type HeaderConfig = {
 
 export type ScrollPair = {
   list: RefObject<FlatList>;
-  position: Value<number>;
+  position: Animated.SharedValue<number>;
 };

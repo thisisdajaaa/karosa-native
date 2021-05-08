@@ -2,7 +2,10 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "moduleResolution": "node",
     "module": "es2015",
     "noEmit": true,
@@ -22,20 +25,48 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@app/assets/*": ["src/assets/*"],
-      "@app/atoms/*": ["src/components/atoms/*"],
-      "@app/constants": ["src/constants"],
-      "@app/components/*": ["src/components/*"],
-      "@app/config/*": ["src/config/*"],
-      "@app/hooks": ["src/hooks"],
-      "@app/templates/*": ["src/components/templates/*"],
-      "@app/molecules/*": ["src/components/molecules/*"],
-      "@app/navigators/*": ["src/navigators/*"],
-      "@app/organisms/*": ["src/components/organisms/*"],
-      "@app/redux/*": ["src/redux/*"],
-      "@app/screens/*": ["src/screens/*"],
-      "@app/styles": ["src/styles"],
-      "@app/utils": ["src/utils"]
+      "@app/assets/*": [
+        "src/assets/*"
+      ],
+      "@app/atoms/*": [
+        "src/components/atoms/*"
+      ],
+      "@app/constants": [
+        "src/constants"
+      ],
+      "@app/components/*": [
+        "src/components/*"
+      ],
+      "@app/config/*": [
+        "src/config/*"
+      ],
+      "@app/hooks": [
+        "src/hooks"
+      ],
+      "@app/templates/*": [
+        "src/components/templates/*"
+      ],
+      "@app/molecules/*": [
+        "src/components/molecules/*"
+      ],
+      "@app/navigators/*": [
+        "src/navigators/*"
+      ],
+      "@app/organisms/*": [
+        "src/components/organisms/*"
+      ],
+      "@app/redux/*": [
+        "src/redux/*"
+      ],
+      "@app/screens/*": [
+        "src/screens/*"
+      ],
+      "@app/styles": [
+        "src/styles"
+      ],
+      "@app/utils": [
+        "src/utils"
+      ]
     },
     "plugins": [
       {
@@ -58,5 +89,8 @@
       }
     ]
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ],
+  "extends": "expo/tsconfig.base"
 }
