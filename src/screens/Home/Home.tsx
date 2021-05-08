@@ -1,153 +1,273 @@
-import { ProductTabs } from "@app/navigators/tab-navigator";
-import React from "react";
+import { ENUM } from "@app/constants";
+import { useScrollSync } from "@app/hooks";
+import { theme } from "@app/styles";
+import { Connection, HeaderConfig, ScrollPair } from "@app/utils";
 import {
-  Animated,
-  TouchableOpacity,
-  View,
-  Text,
+  createMaterialTopTabNavigator,
+  MaterialTopTabBarProps,
+} from "@react-navigation/material-top-tabs";
+import React, { FC, useCallback, useMemo, useRef, useState } from "react";
+import {
+  FlatList,
+  FlatListProps,
+  StyleProp,
   StyleSheet,
-  ScrollView,
-  Platform,
+  View,
+  ViewProps,
+  ViewStyle,
+  useWindowDimensions,
 } from "react-native";
-import { Tab } from "react-native-elements";
-import {
-  useSafeAreaInsets,
-  SafeAreaView,
-} from "react-native-safe-area-context";
+import Animated, {
+  interpolate,
+  useAnimatedScrollHandler,
+  useAnimatedStyle,
+  useDerivedValue,
+  useSharedValue,
+} from "react-native-reanimated";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { FRIENDS, SUGGESTIONS } from "./config";
+import ConnectionList from "./ConnectionList";
+import Header from "./Header";
+import HeaderOverlay from "./HeaderOverlay";
+import TabBar from "./TabBar";
 
-const HEADER_HEIGHT = 200;
+const TAB_BAR_HEIGHT = 48;
+const HEADER_HEIGHT = 48;
 
-const DATA = [
-  {
-    id: 1,
-    title: "The Hunger Games",
-  },
-  {
-    id: 2,
-    title: "Harry Potter and the Order of the Phoenix",
-  },
-  {
-    id: 3,
-    title: "To Kill a Mockingbird",
-  },
-  {
-    id: 4,
-    title: "Pride and Prejudice",
-  },
-  {
-    id: 5,
-    title: "Twilight",
-  },
-  {
-    id: 6,
-    title: "The Book Thief",
-  },
-  {
-    id: 7,
-    title: "The Chronicles of Narnia",
-  },
-  {
-    id: 8,
-    title: "Animal Farm",
-  },
-  {
-    id: 9,
-    title: "Gone with the Wind",
-  },
-  {
-    id: 10,
-    title: "The Shadow of the Wind",
-  },
-  {
-    id: 11,
-    title: "The Fault in Our Stars",
-  },
-  {
-    id: 12,
-    title: "The Hitchhiker's Guide to the Galaxy",
-  },
-  {
-    id: 13,
-    title: "The Giving Tree",
-  },
-  {
-    id: 14,
-    title: "Wuthering Heights",
-  },
-  {
-    id: 15,
-    title: "The Da Vinci Code",
-  },
-];
-const Home = () => {
-  const insets = useSafeAreaInsets();
-  const offset = React.useRef(new Animated.Value(0)).current;
-  const headerY = Animated.multiply(
-    Animated.diffClamp(offset, 0, HEADER_HEIGHT),
-    -1
+const OVERLAY_VISIBILITY_OFFSET = 32;
+
+const Tab = createMaterialTopTabNavigator();
+
+const Home: FC = () => {
+  const { top, bottom } = useSafeAreaInsets();
+
+  const { height: screenHeight } = useWindowDimensions();
+
+  const friendsRef = useRef<FlatList>(null);
+  const suggestionsRef = useRef<FlatList>(null);
+
+  const [tabIndex, setTabIndex] = useState(0);
+
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  const defaultHeaderHeight = top + HEADER_HEIGHT;
+
+  const headerConfig = useMemo<HeaderConfig>(
+    () => ({
+      heightCollapsed: defaultHeaderHeight,
+      heightExpanded: headerHeight,
+    }),
+    [defaultHeaderHeight, headerHeight]
   );
-  const tabY = Animated.add(offset, headerY);
 
-  const headerHeight = offset.interpolate({
-    inputRange: [0, HEADER_HEIGHT + insets.top],
-    outputRange: [HEADER_HEIGHT + insets.top, insets.top + 44],
-    extrapolate: "clamp",
-  });
+  const { heightCollapsed, heightExpanded } = headerConfig;
 
-  Animated.add;
+  const headerDiff = heightExpanded - heightCollapsed;
+
+  const rendered = headerHeight > 0;
+
+  const handleHeaderLayout = useCallback<NonNullable<ViewProps["onLayout"]>>(
+    (event) => setHeaderHeight(event.nativeEvent.layout.height),
+    []
+  );
+
+  const friendsScrollValue = useSharedValue(0);
+
+  const friendsScrollHandler = useAnimatedScrollHandler(
+    (event) => (friendsScrollValue.value = event.contentOffset.y)
+  );
+
+  const suggestionsScrollValue = useSharedValue(0);
+
+  const suggestionsScrollHandler = useAnimatedScrollHandler(
+    (event) => (suggestionsScrollValue.value = event.contentOffset.y)
+  );
+
+  const scrollPairs = useMemo<ScrollPair[]>(
+    () => [
+      { list: friendsRef, position: friendsScrollValue },
+      { list: suggestionsRef, position: suggestionsScrollValue },
+    ],
+    [friendsRef, friendsScrollValue, suggestionsRef, suggestionsScrollValue]
+  );
+
+  const { sync } = useScrollSync(scrollPairs, headerConfig);
+
+  const сurrentScrollValue = useDerivedValue(
+    () =>
+      tabIndex === 0 ? friendsScrollValue.value : suggestionsScrollValue.value,
+    [tabIndex, friendsScrollValue, suggestionsScrollValue]
+  );
+
+  const translateY = useDerivedValue(
+    () => -Math.min(сurrentScrollValue.value, headerDiff)
+  );
+
+  const tabBarAnimatedStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: translateY.value }],
+  }));
+
+  const headerAnimatedStyle = useAnimatedStyle(() => ({
+    transform: [{ translateY: translateY.value }],
+    opacity: interpolate(
+      translateY.value,
+      [-headerDiff, 0],
+      [ENUM.Visibility.Hidden, ENUM.Visibility.Visible]
+    ),
+  }));
+
+  const contentContainerStyle = useMemo<StyleProp<ViewStyle>>(
+    () => ({
+      paddingTop: rendered ? headerHeight + TAB_BAR_HEIGHT : 0,
+      paddingBottom: bottom,
+      minHeight: screenHeight + headerDiff,
+    }),
+    [rendered, headerHeight, bottom, screenHeight, headerDiff]
+  );
+
+  const sharedProps = useMemo<Partial<FlatListProps<Connection>>>(
+    () => ({
+      contentContainerStyle,
+      onMomentumScrollEnd: sync,
+      onScrollEndDrag: sync,
+      scrollEventThrottle: 16,
+      scrollIndicatorInsets: { top: heightExpanded },
+    }),
+    [contentContainerStyle, sync, heightExpanded]
+  );
+
+  const renderFriends = useCallback(
+    () => (
+      <ConnectionList
+        ref={friendsRef}
+        data={FRIENDS}
+        onScroll={friendsScrollHandler}
+        {...sharedProps}
+      />
+    ),
+    [friendsRef, friendsScrollHandler, sharedProps]
+  );
+
+  const renderSuggestions = useCallback(
+    () => (
+      <ConnectionList
+        ref={suggestionsRef}
+        data={SUGGESTIONS}
+        onScroll={suggestionsScrollHandler}
+        {...sharedProps}
+      />
+    ),
+    [suggestionsRef, suggestionsScrollHandler, sharedProps]
+  );
+
+  const tabBarStyle = useMemo<StyleProp<ViewStyle>>(
+    () => [
+      rendered ? styles.tabBarContainer : undefined,
+      {
+        top: rendered ? headerHeight : undefined,
+      },
+      tabBarAnimatedStyle,
+    ],
+    [rendered, headerHeight, tabBarAnimatedStyle]
+  );
+
+  const renderTabBar = useCallback<
+    (props: MaterialTopTabBarProps) => React.ReactElement
+  >(
+    (props) => (
+      <Animated.View style={tabBarStyle}>
+        <TabBar
+          onIndexChange={setTabIndex}
+          style={{
+            borderTopColor: theme.colors.light10,
+            borderTopWidth: StyleSheet.hairlineWidth,
+          }}
+          {...props}
+        />
+      </Animated.View>
+    ),
+    [tabBarStyle]
+  );
+
+  const headerContainerStyle = useMemo<StyleProp<ViewStyle>>(
+    () => [rendered ? styles.headerContainer : undefined, headerAnimatedStyle],
+
+    [rendered, top, headerAnimatedStyle]
+  );
+
+  const collapsedOverlayAnimatedStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(
+      translateY.value,
+      [-headerDiff, OVERLAY_VISIBILITY_OFFSET - headerDiff, 0],
+      [ENUM.Visibility.Visible, ENUM.Visibility.Hidden, ENUM.Visibility.Hidden]
+    ),
+  }));
+
+  const collapsedOverlayStyle = useMemo<StyleProp<ViewStyle>>(
+    () => [
+      styles.collapsedOvarlay,
+      collapsedOverlayAnimatedStyle,
+      { height: heightCollapsed, paddingTop: top },
+    ],
+    [collapsedOverlayAnimatedStyle, heightCollapsed, top]
+  );
 
   return (
-    <>
-      {Platform.OS === "ios" && (
-        <View
-          style={{
-            backgroundColor: "lightblue",
-            height: 20,
-            width: "100%",
-            position: "absolute",
-            zIndex: 2,
-          }}
+    <View style={styles.container}>
+      <Animated.View onLayout={handleHeaderLayout} style={headerContainerStyle}>
+        <Header
+          name="Emily Davis"
+          bio="Let's get started 🚀"
+          photo={"https://picsum.photos/id/1027/300/300"}
         />
-      )}
-      <Animated.View
-        style={{
-          width: "100%",
-          position: "absolute",
-          transform: [
-            {
-              translateY: headerY,
-            },
-          ],
-          elevation: 0,
-          flex: 1,
-          zIndex: 1,
-          backgroundColor: "lightblue",
-        }}
-      />
-      <Animated.ScrollView
-        scrollEventThrottle={1}
-        bounces={false}
-        showsVerticalScrollIndicator={false}
-        style={{ zIndex: 0, height: "100%", elevation: -1 }}
-        contentContainerStyle={{ paddingTop: HEADER_HEIGHT }}
-        onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { y: offset } } }],
-          { useNativeDriver: true }
-        )}
-        overScrollMode="never">
-        <Tab
-          style={{
-            transform: [{ translateY: tabY }],
-            zIndex: 1,
-            width: "100%",
-          }}>
-          <Tab.Item title="Recent" />
-          <Tab.Item title="favourite" />
-          <Tab.Item title="cart" />
-        </Tab>
-      </Animated.ScrollView>
-    </>
+      </Animated.View>
+      <Animated.View style={collapsedOverlayStyle}>
+        <HeaderOverlay name="Emily Davis" />
+      </Animated.View>
+      <Tab.Navigator
+        tabBar={renderTabBar}
+        lazy
+        tabBarOptions={{
+          activeTintColor: theme.colors.primary,
+          inactiveTintColor: theme.colors.dark20,
+          pressColor: theme.colors.primary,
+          indicatorStyle: { backgroundColor: theme.colors.primary },
+        }}>
+        <Tab.Screen name="Shop">{renderFriends}</Tab.Screen>
+        <Tab.Screen name="Products">{renderSuggestions}</Tab.Screen>
+        <Tab.Screen name="Categories">{renderFriends}</Tab.Screen>
+      </Tab.Navigator>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  tabBarContainer: {
+    top: 0,
+    left: 0,
+    right: 0,
+    position: "absolute",
+    zIndex: 1,
+  },
+  collapsedOvarlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "white",
+    justifyContent: "center",
+    zIndex: 2,
+  },
+  headerContainer: {
+    top: 0,
+    left: 0,
+    right: 0,
+    position: "absolute",
+    zIndex: 1,
+  },
+});
 
 export default Home;

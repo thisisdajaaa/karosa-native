@@ -11,3 +11,8 @@ export type ScrollPair = {
   list: RefObject<FlatList>;
   position: Animated.SharedValue<number>;
 };
+
+export type Connection = {
+  photo: string;
+  name: string;
+};

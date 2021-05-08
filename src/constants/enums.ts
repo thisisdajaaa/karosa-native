@@ -22,3 +22,8 @@ export enum Address_Type {
   Home = "home",
   Shop = "shop",
 }
+
+export enum Visibility {
+  Hidden = 0,
+  Visible = 1,
+}
