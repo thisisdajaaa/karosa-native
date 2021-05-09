@@ -17,7 +17,7 @@ import AuthMainTemplate from "@app/templates/AuthMain";
 import { BTM_SHEET_HEIGHT } from "./config";
 import type { PropsType } from "./types";
 
-const AuthMain: FC<PropsType> = (props: PropsType) => {
+const AuthMainScreen: FC<PropsType> = (props: PropsType) => {
   const dispatch = useDispatch();
 
   const { sheetRef } = props;
@@ -65,4 +65,4 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
   );
 };
 
-export default AuthMain;
+export default AuthMainScreen;

@@ -4,16 +4,16 @@ import AuthLoginScreen from "@app/screens/AuthLogin";
 import AuthForgotScreen from "@app/screens/AuthForgot";
 import HelpScreen from "@app/screens/AuthHelp";
 import SplashScreen from "@app/screens/splash";
+import ProductNewScreen from "@app/screens/ProductNew";
 import AccountSettingsScreen from "@app/screens/user-account/account-settings";
 import EditProfileScreen from "@app/screens/user-account/edit-profile";
 import SocialMediaScreen from "@app/screens/user-account/social-media";
-import MyProductsScreen from "@app/screens/products/my-products";
-import SearchProductScreen from "@app/screens/products/search-product";
-import AddProductScreen from "@app/screens/products/add-product";
-import AddVariationScreen from "@app/screens/products/add-variation";
-import AddWholesaleScreen from "@app/screens/products/add-wholesale";
-import ChooseCategoryScreen from "@app/screens/products/choose-category";
-import ShippingDetailsScreen from "@app/screens/products/shipping-details";
+import MyProductsScreen from "@app/screens/ProductList";
+import SearchMyProductScreen from "@app/screens/ProductSearch";
+import AddVariationScreen from "@app/screens/ProductVariation";
+import AddWholesaleScreen from "@app/screens/ProductWholesale";
+import ChooseCategoryScreen from "@app/screens/ProductCategories";
+import ShippingDetailsScreen from "@app/screens/ProductShipping";
 import NewAddressScreen from "@app/screens/user-account/new-address";
 import MyAddressScreen from "@app/screens/user-account/my-address";
 import ShopMainScreen from "@app/screens/ShopMain";
@@ -53,8 +53,11 @@ const StackNavigator: React.FC = () => {
         component={ShopEditAddressScreen}
       />
       <Stack.Screen name="Shop Products" component={MyProductsScreen} />
-      <Stack.Screen name="Search Product" component={SearchProductScreen} />
-      <Stack.Screen name="Add Product" component={AddProductScreen} />
+      <Stack.Screen
+        name="Search My Product"
+        component={SearchMyProductScreen}
+      />
+      <Stack.Screen name="Add Product" component={ProductNewScreen} />
       <Stack.Screen name="Add Variation" component={AddVariationScreen} />
       <Stack.Screen name="Add Wholesale" component={AddWholesaleScreen} />
       <Stack.Screen name="Shipping Details" component={ShippingDetailsScreen} />

@@ -8,9 +8,10 @@
 import React, { FC } from "react";
 import { useField } from "formik";
 import { ListItem } from "react-native-elements";
+import { View } from "react-native";
 import Text from "@app/atoms/Text";
 import FormInput from "@app/molecules/FormInput";
-import ValidationMessage from "@app/components/molecules/ValidationMessage";
+import ValidationMessage from "@app/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
 import { NUM_LINES } from "./config";
@@ -33,24 +34,29 @@ const VariationOne: FC<PropsType> = (props) => {
   return (
     <ListItem bottomDivider={hasBottomDivider}>
       <ListItem.Content style={ListInputStyles.variationOneContainer}>
-        <ListItem.Content style={ListInputStyles.labelLengthContainer}>
-          <Text text={label} textStyle={ListInputStyles.txtLabel} />
-          <Text
-            text={`${currentLength}/${maxLen}`}
-            textStyle={ListInputStyles.txtLength}
+        <View style={ListInputStyles.variationOneLabelContainer}>
+          <ListItem.Content style={ListInputStyles.labelLengthContainer}>
+            <Text text={label} textStyle={ListInputStyles.txtLabel} />
+            <Text
+              text={`(${currentLength}/${maxLen})`}
+              textStyle={ListInputStyles.txtLength}
+            />
+            {required && (
+              <Text text="*" textStyle={ListInputStyles.txtRequired} />
+            )}
+          </ListItem.Content>
+        </View>
+        <View style={ListInputStyles.formInputContainer}>
+          <FormInput
+            name={name}
+            keyboardType={keyboardType}
+            placeholder={placeholder}
+            numberOfLines={NUM_LINES.TEN}
+            multiline
+            inputContainerStyle={ListInputStyles.columnInputContainer}
           />
-          {required && (
-            <Text text="*" textStyle={ListInputStyles.txtRequired} />
-          )}
-        </ListItem.Content>
-        <FormInput
-          name={name}
-          keyboardType={keyboardType}
-          placeholder={placeholder}
-          numberOfLines={NUM_LINES.TEN}
-          multiline
-          inputContainerStyle={ListInputStyles.columnInputContainer}
-        />
+        </View>
+
         {meta.error && (
           <ListItem.Content style={ListInputStyles.errorContainer}>
             <ValidationMessage name={name} />

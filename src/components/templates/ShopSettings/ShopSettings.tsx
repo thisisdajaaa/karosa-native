@@ -5,11 +5,16 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement } from "react";
-import { StatusBar, View } from "react-native";
+import React, { FC, ReactElement } from "react";
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  StatusBar,
+  View,
+} from "react-native";
 import { theme } from "@app/styles";
 import { COMMON } from "src/constants";
-import { listIterator } from "@app/utils";
+import { getPlatform, listIterator } from "@app/utils";
 import type { PropsType as ListChevronType } from "@app/organisms/ListChevron/types";
 import type { PropsType as ListInputType } from "@app/organisms/ListInput/types";
 import type { PropsType as ListStatusType } from "@app/organisms/ListStatus/types";
@@ -23,7 +28,7 @@ import Button from "@app/atoms/Button";
 import type { PropsType } from "./types";
 import ShopSettingsStyles from "./styles";
 
-const ShopSettings: FC<PropsType> = (props) => {
+const ShopSettingsTemplate: FC<PropsType> = (props) => {
   const {
     shopStatusRef,
     shopDeleteRef,
@@ -32,6 +37,8 @@ const ShopSettings: FC<PropsType> = (props) => {
     navigation,
     submitForm,
   } = props;
+
+  const isIOS = getPlatform.getInstance() === "ios";
 
   const shopNameProps: ListInputType = {
     name: "shopName",
@@ -65,7 +72,7 @@ const ShopSettings: FC<PropsType> = (props) => {
 
   const getHeader = () => {
     return (
-      <Fragment>
+      <>
         <StatusBar barStyle="dark-content" />
         <Header
           leftComponent={{
@@ -83,13 +90,13 @@ const ShopSettings: FC<PropsType> = (props) => {
             onPress: submitForm,
           }}
         />
-      </Fragment>
+      </>
     );
   };
 
   const getImageForm = () => {
     return (
-      <Fragment>
+      <>
         <FormImagePicker name="coverPhoto" variation={COMMON.VARIATION.THREE} />
         <View style={ShopSettingsStyles.avatarContainer}>
           <FormImagePicker
@@ -98,7 +105,7 @@ const ShopSettings: FC<PropsType> = (props) => {
           />
         </View>
         <View style={ShopSettingsStyles.spacer} />
-      </Fragment>
+      </>
     );
   };
 
@@ -130,20 +137,24 @@ const ShopSettings: FC<PropsType> = (props) => {
 
   const getContent = () => {
     return (
-      <View style={ShopSettingsStyles.container}>
-        <Fragment>{getImageForm()}</Fragment>
-        <Fragment>{getListForm()}</Fragment>
-        <Fragment>{getBtnDeleteShop()}</Fragment>
-      </View>
+      <KeyboardAvoidingView
+        style={ShopSettingsStyles.container}
+        behavior={isIOS ? "padding" : undefined}>
+        <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
+          <>{getImageForm()}</>
+          <>{getListForm()}</>
+        </ScrollView>
+        <>{getBtnDeleteShop()}</>
+      </KeyboardAvoidingView>
     );
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 
-export default ShopSettings;
+export default ShopSettingsTemplate;

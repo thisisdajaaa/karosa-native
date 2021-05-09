@@ -12,8 +12,8 @@ import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
 
 import type { PropsType } from "./types";
-import { FONT_SIZE } from "./config";
 import ListChevronStyles from "./styles";
+import { View } from "react-native";
 
 const VariantOne: FC<PropsType> = (props) => {
   const {
@@ -26,11 +26,6 @@ const VariantOne: FC<PropsType> = (props) => {
     infoStyle,
     chevronColor = theme.colors.dark10,
   } = props;
-
-  const iconStyle = {
-    color: chevronColor,
-    fontSize: FONT_SIZE,
-  };
 
   return (
     <ListItem bottomDivider={hasBottomDivider} onPress={onPress}>
@@ -55,9 +50,14 @@ const VariantOne: FC<PropsType> = (props) => {
         )}
       </ListItem.Content>
       {info && (
-        <Text text={info} textStyle={[ListChevronStyles.txtInfo, infoStyle]} />
+        <View style={ListChevronStyles.infoContainer}>
+          <Text
+            text={info}
+            textStyle={[ListChevronStyles.txtInfo, infoStyle]}
+          />
+        </View>
       )}
-      <ListItem.Chevron iconStyle={iconStyle} />
+      <ListItem.Chevron iconStyle={{ color: chevronColor }} />
     </ListItem>
   );
 };

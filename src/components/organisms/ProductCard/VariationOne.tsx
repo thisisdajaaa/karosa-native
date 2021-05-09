@@ -26,16 +26,20 @@ const VariantOne: FC<PropsType> = (props) => {
     sold,
     currentPrice,
     discount,
+    wholesale,
   } = props;
 
   return (
-    <Card wrapperStyle={ProductCardStyles.mainContainer}>
-      <View style={ProductCardStyles.wholesaleContainer}>
-        <Text textStyle={ProductCardStyles.txtWholesale} text={"Wholesale"} />
-      </View>
+    <Card containerStyle={ProductCardStyles.mainContainer}>
+      {wholesale && (
+        <View style={ProductCardStyles.wholesaleContainer}>
+          <Text textStyle={ProductCardStyles.txtWholesale} text={"Wholesale"} />
+        </View>
+      )}
+
       {discount && (
         <View style={ProductCardStyles.ribbonContainer}>
-          <Ribbon upperText={discount} lowerText="OFF" />
+          <Ribbon upperText={`${discount}%`} lowerText="OFF" />
         </View>
       )}
       <Image

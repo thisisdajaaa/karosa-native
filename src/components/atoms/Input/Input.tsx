@@ -36,6 +36,7 @@ const Input: FC<PropsType> = (props) => {
       placeholder={placeholder}
       disabled={disabled}
       multiline={multiline}
+      returnKeyType={keyboardType === "number-pad" ? "done" : "default"}
       inputContainerStyle={[InputStyles.inputContainer, inputContainerStyle]}
       inputStyle={inputStyle}
       autoCorrect={autoCorrect}

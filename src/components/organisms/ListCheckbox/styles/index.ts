@@ -5,21 +5,19 @@
  */
 
 import { StyleSheet } from "react-native";
-import { theme, DIMENS } from "@app/styles";
+import { DIMENS, theme } from "@app/styles";
 
 const ListCheckboxStyles = StyleSheet.create({
   container: {
     flexDirection: "column",
+    position: "relative",
+    left: "-80%",
   },
   checkboxContainer: {
-    height: DIMENS.screenHeight * 0.05,
     flexDirection: "row",
+    height: DIMENS.screenWidth * 0.08,
+    justifyContent: "flex-start",
     alignItems: "center",
-  },
-  rightContainer: {
-    alignItems: "flex-end",
-    position: "relative",
-    left: "32%",
   },
   text: {
     ...theme.textRegular,

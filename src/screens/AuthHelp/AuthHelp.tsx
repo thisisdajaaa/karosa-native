@@ -9,12 +9,12 @@ import React, { FC, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { actions } from "@app/redux/auth";
+import { useMount } from "@app/hooks";
 import AuthHelpTemplate from "@app/components/templates/AuthHelp";
 
 import type { PropsType } from "./types";
-import { useMount } from "@app/hooks";
 
-const AuthHelp: FC<PropsType> = () => {
+const AuthHelpScreen: FC<PropsType> = () => {
   const dispatch = useDispatch();
 
   const { goBack } = useNavigation();
@@ -34,4 +34,4 @@ const AuthHelp: FC<PropsType> = () => {
   return <AuthHelpTemplate onBack={handleBack} />;
 };
 
-export default AuthHelp;
+export default AuthHelpScreen;

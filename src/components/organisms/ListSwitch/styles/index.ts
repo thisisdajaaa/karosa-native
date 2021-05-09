@@ -12,11 +12,12 @@ const ListSwitchStyles = StyleSheet.create({
     flexDirection: "column",
   },
   switchContainer: {
-    height: DIMENS.screenHeight * 0.05,
+    height: DIMENS.screenHeight * 0.028,
     flexDirection: "row",
     alignItems: "center",
   },
   rightContainer: {
+    marginTop: 10,
     alignItems: "flex-end",
   },
   txtTitle: {

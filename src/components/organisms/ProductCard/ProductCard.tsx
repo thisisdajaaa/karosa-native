@@ -17,11 +17,13 @@ const ProductCard: FC<PropsType> = (props) => {
     variation,
     buttonTitle,
     onButtonClick,
+    previousPrice,
     image,
     rating,
     location,
     sold,
     currentPrice,
+    wholesale,
     discount,
   } = props;
 
@@ -30,6 +32,7 @@ const ProductCard: FC<PropsType> = (props) => {
       return (
         <VariationOne
           name={name}
+          wholesale={wholesale}
           image={image}
           buttonTitle={buttonTitle}
           onButtonClick={onButtonClick}
@@ -48,6 +51,7 @@ const ProductCard: FC<PropsType> = (props) => {
           location={location}
           sold={sold}
           currentPrice={currentPrice}
+          previousPrice={previousPrice}
           discount={discount}
           variation={variation}
         />

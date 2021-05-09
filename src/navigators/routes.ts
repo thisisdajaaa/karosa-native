@@ -29,8 +29,8 @@ export default Object.freeze({
   SHOP_EDIT_ADDRESS: "Shop Edit Address",
   SHOP_PAYMENT: "Shop Payment",
 
-  SEARCH_PRODUCT: "Search Product",
-  ADD_PRODUCT: "Add Product",
+  SEARCH_MY_PRODUCT: "Search My Product",
+  PRODUCT_ADD: "Add Product",
   ADD_VARIATION: "Add Variation",
   ADD_WHOLESALE: "Add Wholesale",
   SHIPPING_DETAILS: "Shipping Details",

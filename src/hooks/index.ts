@@ -6,3 +6,4 @@ export { default as useMemoizedSelector } from "./useMemoizedSelector";
 export { default as useEffectOnce } from "./useEffectOnce";
 export { default as useFirstMountState } from "./useFirstMountState";
 export { default as useUpdateEffect } from "./useUpdateEffect";
+export { default as useScrollSync } from "./useScrollSync";
