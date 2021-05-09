@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import { useFormikContext } from "formik";
 import { View } from "react-native";
 import { theme } from "@app/styles";
@@ -75,10 +75,10 @@ const AuthForgotTemplate: FC<PropsType> = (props: PropsType) => {
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 

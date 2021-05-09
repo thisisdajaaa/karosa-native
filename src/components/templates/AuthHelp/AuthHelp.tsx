@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import { View, Image } from "react-native";
 import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
@@ -73,10 +73,10 @@ const AuthHelpTemplate: FC<PropsType> = (props: PropsType) => {
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 

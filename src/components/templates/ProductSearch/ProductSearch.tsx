@@ -5,23 +5,23 @@
  *
  */
 
-import React, { FC, Fragment, useState } from "react";
+import React, { FC, useState } from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 import Header from "@app/molecules/Header";
 import SearchBar from "@app/molecules/SearchBar";
 import Text from "@app/atoms/Text";
 
+import { mockRecentSearch } from "./config";
 import type { PropsType } from "./types";
 import ProductSearchStyles from "./styles";
-import { mockRecentSearch } from "./config";
 
-const ProductSearch: FC<PropsType> = (props) => {
+const ProductSearchTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
 
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<string>("");
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         hasBottomDivider
         centerComponent={
@@ -36,6 +36,26 @@ const ProductSearch: FC<PropsType> = (props) => {
           />
         }
       />
+    );
+  };
+
+  const getContent = () => {
+    return mockRecentSearch.map((item, index) => (
+      <TouchableOpacity
+        key={index}
+        onPress={() => setValue(item.title)}
+        style={ProductSearchStyles.item}>
+        <Text
+          textStyle={ProductSearchStyles.txtSearchTitle}
+          text={item.title}
+        />
+      </TouchableOpacity>
+    ));
+  };
+
+  return (
+    <>
+      <>{getHeader()}</>
       <View style={ProductSearchStyles.container}>
         <Text
           textStyle={ProductSearchStyles.txtRecentSearch}
@@ -45,20 +65,11 @@ const ProductSearch: FC<PropsType> = (props) => {
         <ScrollView
           contentContainerStyle={ProductSearchStyles.flatListContainer}
           showsVerticalScrollIndicator={false}>
-          {mockRecentSearch.map((item) => (
-            <TouchableOpacity
-              onPress={() => setValue(item.title)}
-              style={ProductSearchStyles.item}>
-              <Text
-                textStyle={ProductSearchStyles.txtSearchTitle}
-                text={item.title}
-              />
-            </TouchableOpacity>
-          ))}
+          <>{getContent()}</>
         </ScrollView>
       </View>
-    </Fragment>
+    </>
   );
 };
 
-export default ProductSearch;
+export default ProductSearchTemplate;

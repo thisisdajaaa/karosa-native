@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 import {
   KeyboardAvoidingView,
   KeyboardTypeOptions,
@@ -176,8 +176,8 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
     return listIterator(elements);
   };
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         hasBottomDivider
         leftComponent={{
@@ -192,18 +192,24 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
         rightComponent={{
           text: "Edit",
           style: ProductNewStyles.txtSave,
-          onPress: () => alert("saved"),
+          onPress: () => 0,
         }}
       />
+    );
+  };
+
+  return (
+    <>
+      <>{getHeader()}</>
       <KeyboardAvoidingView
         style={ProductNewStyles.container}
         behavior={isIOS ? "padding" : undefined}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Fragment>{getProductForm()}</Fragment>
+          <>{getProductForm()}</>
           <View style={ProductNewStyles.spacer} />
         </ScrollView>
       </KeyboardAvoidingView>
-    </Fragment>
+    </>
   );
 };
 

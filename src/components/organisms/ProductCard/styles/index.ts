@@ -10,7 +10,7 @@ import { theme, DIMENS, SPACING } from "@app/styles";
 const ProductCardStyles = StyleSheet.create({
   mainContainer: {
     height: DIMENS.screenHeight * 0.4,
-    width: DIMENS.screenWidth * 0.4,
+    width: DIMENS.screenWidth * 0.45,
     padding: 0,
     shadowOpacity: 0.03,
     shadowOffset: { height: 2, width: 1 },

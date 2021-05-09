@@ -41,7 +41,7 @@ const VariantTwo: FC<PropsType> = (props) => {
 
       {discount && (
         <View style={ProductCardStyles.ribbonContainer}>
-          <Ribbon upperText={discount} lowerText="OFF" />
+          <Ribbon upperText={`${discount}%`} lowerText="OFF" />
         </View>
       )}
       <Image
@@ -84,7 +84,7 @@ const VariantTwo: FC<PropsType> = (props) => {
             text={location ? location : ""}
           />
           <View style={ProductCardStyles.floatRight}>
-            <Icon group="common" name="outlineHeart" />
+            <Icon group="common" name="outlineHeart" height={12} width={13} />
           </View>
         </View>
       </View>

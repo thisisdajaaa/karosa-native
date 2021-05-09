@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 import { View } from "react-native";
 import { theme } from "@app/styles";
 import { listIterator } from "@app/utils";
@@ -61,11 +61,11 @@ const ShopPaymentTemplate: FC<PropsType> = (props) => {
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getPaymentForm()}</Fragment>
-      <Fragment>{getPaymentButton()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getPaymentForm()}</>
+      <>{getPaymentButton()}</>
+    </>
   );
 };
 

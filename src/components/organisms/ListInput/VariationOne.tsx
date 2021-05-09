@@ -8,14 +8,14 @@
 import React, { FC } from "react";
 import { useField } from "formik";
 import { ListItem } from "react-native-elements";
+import { View } from "react-native";
 import Text from "@app/atoms/Text";
 import FormInput from "@app/molecules/FormInput";
-import ValidationMessage from "@app/components/molecules/ValidationMessage";
+import ValidationMessage from "@app/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
 import { NUM_LINES } from "./config";
 import ListInputStyles from "./styles";
-import { View } from "react-native";
 
 const VariationOne: FC<PropsType> = (props) => {
   const {

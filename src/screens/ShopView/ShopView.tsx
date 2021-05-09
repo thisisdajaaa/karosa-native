@@ -4,18 +4,19 @@
  * @format
  *
  */
- 
-import React, {FC} from 'react';
 
-import ShopViewConfig from './config';
-import type {PropsType} from './types';
-import ShopViewStyles from './styles';
+import React, { FC, useCallback } from "react";
+import { useNavigation } from "@react-navigation/native";
+import ShopViewTemplate from "@app/templates/ShopView";
 
+const ShopViewScreen: FC = () => {
+  const { goBack } = useNavigation();
 
-const ShopView: FC<PropsType> = (props) => {
-  const {} = props;
+  const handleBack = useCallback(() => {
+    goBack();
+  }, [goBack]);
 
-  return ;
+  return <ShopViewTemplate onBack={handleBack} />;
 };
 
-export default ShopView;
+export default ShopViewScreen;

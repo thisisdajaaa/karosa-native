@@ -7,14 +7,14 @@
 
 import React, { FC } from "react";
 import { ListItem } from "react-native-elements";
+import { View } from "react-native";
 import { useField } from "formik";
 import { theme } from "@app/styles";
 import FormCheckbox from "@app/molecules/FormCheckbox";
-import ValidationMessage from "@app/components/molecules/ValidationMessage";
+import ValidationMessage from "@app/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
 import ListCheckboxStyles from "./styles";
-import { View } from "react-native";
 
 const ListCheckbox: FC<PropsType> = (props) => {
   const { name, label, hasBottomDivider } = props;

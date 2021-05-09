@@ -13,6 +13,7 @@ import Text from "@app/atoms/Text";
 
 import type { PropsType } from "./types";
 import ListChevronStyles from "./styles";
+import { View } from "react-native";
 
 const VariantOne: FC<PropsType> = (props) => {
   const {
@@ -49,12 +50,14 @@ const VariantOne: FC<PropsType> = (props) => {
         )}
       </ListItem.Content>
       {info && (
-        <Text text={info} textStyle={[ListChevronStyles.txtInfo, infoStyle]} />
+        <View style={ListChevronStyles.infoContainer}>
+          <Text
+            text={info}
+            textStyle={[ListChevronStyles.txtInfo, infoStyle]}
+          />
+        </View>
       )}
-      <ListItem.Chevron
-        iconProps={{ name: "ios-arrow-forward" }}
-        iconStyle={{ color: chevronColor }}
-      />
+      <ListItem.Chevron iconStyle={{ color: chevronColor }} />
     </ListItem>
   );
 };

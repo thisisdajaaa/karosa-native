@@ -5,19 +5,19 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement } from "react";
-
-import type { PropsType } from "./types";
-import ProductShippingStyles from "./styles";
-import { theme } from "@app/styles";
-import Header from "@app/molecules/Header";
-import { getPlatform, listIterator } from "@app/utils";
-import ListInput from "@app/organisms/ListInput";
-import { COMMON } from "@app/constants";
+import React, { FC, ReactElement } from "react";
 import { KeyboardAvoidingView, ScrollView, View } from "react-native";
+import { theme } from "@app/styles";
+import { getPlatform, listIterator } from "@app/utils";
+import { COMMON } from "@app/constants";
+import Header from "@app/molecules/Header";
+import ListInput from "@app/organisms/ListInput";
 import FormButton from "@app/molecules/FormButton";
 import ListTitle from "@app/organisms/ListTitle";
 import ListSwitch from "@app/organisms/ListSwitch";
+
+import type { PropsType } from "./types";
+import ProductShippingStyles from "./styles";
 
 const ProductShippingTemplate: FC<PropsType> = (props) => {
   const { onBack, disableSwitch } = props;
@@ -114,8 +114,8 @@ const ProductShippingTemplate: FC<PropsType> = (props) => {
     return listIterator(elements);
   };
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         hasBottomDivider
         leftComponent={{
@@ -128,18 +128,24 @@ const ProductShippingTemplate: FC<PropsType> = (props) => {
           style: ProductShippingStyles.txtHeader,
         }}
       />
+    );
+  };
+
+  return (
+    <>
+      <>{getHeader()}</>
       <KeyboardAvoidingView
         style={ProductShippingStyles.container}
         behavior={isIOS ? "padding" : undefined}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Fragment>{getShippingForm()}</Fragment>
+          <>{getShippingForm()}</>
           <View style={ProductShippingStyles.buttonSpacer} />
           <View style={ProductShippingStyles.buttonContainer}>
             <FormButton title="Submit" />
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
-    </Fragment>
+    </>
   );
 };
 

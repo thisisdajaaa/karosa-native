@@ -12,7 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import type { ProductListNavigation } from "./types";
 import routes from "@app/navigators/routes";
 
-const ProductList: FC = () => {
+const ProductListScreen: FC = () => {
   const { goBack, navigate } = useNavigation();
 
   const navigation: ProductListNavigation = {
@@ -27,4 +27,4 @@ const ProductList: FC = () => {
   return <ProductListTemplate navigation={navigation} />;
 };
 
-export default ProductList;
+export default ProductListScreen;

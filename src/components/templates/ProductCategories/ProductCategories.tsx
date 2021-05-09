@@ -5,16 +5,16 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
-
-import type { PropsType } from "./types";
-import ProductCategoriesStyles from "./styles";
+import React, { FC } from "react";
 import Header from "@app/molecules/Header";
 import { theme } from "@app/styles";
 import { FlatList, View } from "react-native";
 import Category from "@app/atoms/Category";
 import { Categories as CategoryType } from "@app/redux/api-models/category-list";
+
+import type { PropsType } from "./types";
 import { COLS, dummyCategories } from "./config";
+import ProductCategoriesStyles from "./styles";
 
 const ProductCategoriesTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
@@ -23,8 +23,8 @@ const ProductCategoriesTemplate: FC<PropsType> = (props) => {
     return <Category name={item.name} onPress={onBack} />;
   };
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         hasBottomDivider
         leftComponent={{
@@ -37,6 +37,11 @@ const ProductCategoriesTemplate: FC<PropsType> = (props) => {
           style: ProductCategoriesStyles.txtHeader,
         }}
       />
+    );
+  };
+
+  const getCategories = () => {
+    return (
       <FlatList
         numColumns={COLS}
         data={dummyCategories as never[]}
@@ -47,7 +52,14 @@ const ProductCategoriesTemplate: FC<PropsType> = (props) => {
         columnWrapperStyle={ProductCategoriesStyles.columnWrapper}
         ListFooterComponent={<View style={ProductCategoriesStyles.spacer} />}
       />
-    </Fragment>
+    );
+  };
+
+  return (
+    <>
+      <>{getHeader()}</>
+      <>{getCategories()}</>
+    </>
   );
 };
 

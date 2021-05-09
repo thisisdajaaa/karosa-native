@@ -14,7 +14,7 @@ import SearchBar from "@app/molecules/SearchBar";
 
 import type { PropsType } from "./types";
 
-const ProductList: FC<PropsType> = (props) => {
+const ProductListTemplate: FC<PropsType> = (props) => {
   const { navigation } = props;
 
   return (
@@ -45,4 +45,4 @@ const ProductList: FC<PropsType> = (props) => {
   );
 };
 
-export default ProductList;
+export default ProductListTemplate;

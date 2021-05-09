@@ -5,18 +5,18 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
+import { KeyboardAvoidingView, ScrollView, View } from "react-native";
+import { theme } from "@app/styles";
+import { COMMON } from "@app/constants";
+import { getPlatform, listIterator } from "@app/utils";
+import Header from "@app/molecules/Header";
+import ListImage from "@app/organisms/ListImage";
+import ListInput from "@app/organisms/ListInput";
+import FormButton from "@app/molecules/FormButton";
 
 import type { PropsType } from "./types";
 import ProductVariationStyles from "./styles";
-import Header from "@app/molecules/Header";
-import { theme } from "@app/styles";
-import ListImage from "@app/components/organisms/ListImage";
-import ListInput from "@app/components/organisms/ListInput";
-import { COMMON } from "@app/constants";
-import { getPlatform, listIterator } from "@app/utils";
-import { KeyboardAvoidingView, ScrollView, View } from "react-native";
-import FormButton from "@app/components/molecules/FormButton";
 
 const ProductVariationTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
@@ -62,8 +62,8 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
     return listIterator(elements);
   };
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         hasBottomDivider
         leftComponent={{
@@ -76,17 +76,23 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
           style: ProductVariationStyles.txtHeader,
         }}
       />
+    );
+  };
+
+  return (
+    <>
+      <>{getHeader()}</>
       <KeyboardAvoidingView
         style={ProductVariationStyles.container}
         behavior={isIOS ? "padding" : undefined}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Fragment>{getVariationForm()}</Fragment>
+          <>{getVariationForm()}</>
         </ScrollView>
       </KeyboardAvoidingView>
       <View style={ProductVariationStyles.buttonContainer}>
         <FormButton title="Submit" />
       </View>
-    </Fragment>
+    </>
   );
 };
 

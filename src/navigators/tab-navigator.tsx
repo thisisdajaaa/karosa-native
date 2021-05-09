@@ -12,9 +12,6 @@ import AuthMainScreen from "@app/screens/AuthMain";
 import BasketScreen from "@app/screens/basket";
 import NotificationScreen from "@app/screens/notifications";
 import ProductListContent from "@app/templates/ProductList/MainContent";
-import ShopContent from "@app/screens/shop/view-shop/shop-content";
-import BuyerProducts from "@app/screens/shop/view-shop/product-content";
-import CategoryContent from "@app/screens/shop/view-shop/category-content";
 import routes from "@app/navigators/routes";
 import Home from "@app/screens/Home";
 
@@ -44,23 +41,6 @@ const ProductTabs: React.FC = () => {
           <TopTab.Screen name={tabName} component={ProductListContent} />
         </React.Fragment>
       ))}
-    </TopTab.Navigator>
-  );
-};
-
-const ViewShopTabs: React.FC = () => {
-  return (
-    <TopTab.Navigator
-      lazy
-      tabBarOptions={{
-        activeTintColor: theme.colors.primary,
-        inactiveTintColor: theme.colors.dark20,
-        pressColor: theme.colors.primary,
-        indicatorStyle: { backgroundColor: theme.colors.primary },
-      }}>
-      <TopTab.Screen name={"Shop"} component={ShopContent} />
-      <TopTab.Screen name={"Products"} component={BuyerProducts} />
-      <TopTab.Screen name={"Categories"} component={CategoryContent} />
     </TopTab.Navigator>
   );
 };
@@ -135,4 +115,4 @@ const TabNavigator: React.FC = () => {
   );
 };
 
-export { ProductTabs, ViewShopTabs, TabNavigator };
+export { ProductTabs, TabNavigator };

@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement, useMemo } from "react";
+import React, { FC, ReactElement, useMemo } from "react";
 import {
   KeyboardAvoidingView,
   KeyboardTypeOptions,
@@ -79,7 +79,7 @@ const ShopEditAddressTemplate: FC<PropsType> = (props) => {
     disabled: boolean
   ): JSX.Element => {
     return (
-      <Fragment>
+      <>
         {data && (
           <ListPicker
             name={name}
@@ -91,7 +91,7 @@ const ShopEditAddressTemplate: FC<PropsType> = (props) => {
             required
           />
         )}
-      </Fragment>
+      </>
     );
   };
 
@@ -179,7 +179,7 @@ const ShopEditAddressTemplate: FC<PropsType> = (props) => {
   const getScrollableForm = () => {
     return (
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Fragment>{getAddressForm()}</Fragment>
+        <>{getAddressForm()}</>
       </ScrollView>
     );
   };
@@ -189,7 +189,7 @@ const ShopEditAddressTemplate: FC<PropsType> = (props) => {
       <KeyboardAvoidingView
         style={ShopEditAddressStyles.container}
         behavior={isIOS ? "padding" : undefined}>
-        <Fragment>{getScrollableForm()}</Fragment>
+        <>{getScrollableForm()}</>
         <View style={ShopEditAddressStyles.buttonContainer}>
           <FormButton title="Submit" />
         </View>
@@ -198,10 +198,10 @@ const ShopEditAddressTemplate: FC<PropsType> = (props) => {
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 

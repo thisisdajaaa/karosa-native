@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import { View } from "react-native";
 import Text from "@app/atoms/Text";
 import Button from "@app/atoms/Button";
@@ -79,16 +79,16 @@ const ShopTermsTemplate: FC<PropsType> = (props) => {
           </View>
         </View>
 
-        <Fragment>{getButtons()}</Fragment>
+        <>{getButtons()}</>
       </View>
     );
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 

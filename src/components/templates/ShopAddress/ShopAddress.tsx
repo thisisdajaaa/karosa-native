@@ -5,9 +5,9 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
-import { theme } from "@app/styles";
+import React, { FC } from "react";
 import { View } from "react-native";
+import { theme } from "@app/styles";
 import Header from "@app/molecules/Header";
 import AddressDetails from "@app/molecules/AddressDetails";
 
@@ -46,8 +46,9 @@ const ShopAddressTemplate: FC<PropsType> = (props) => {
     );
   };
 
-  const getContent = () => {
-    return (
+  return (
+    <>
+      <>{getHeader()}</>
       <View style={ShopAddressStyles.container}>
         <AddressDetails
           name={name}
@@ -56,14 +57,7 @@ const ShopAddressTemplate: FC<PropsType> = (props) => {
           isDefault={isDefaultAddress}
         />
       </View>
-    );
-  };
-
-  return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    </>
   );
 };
 

@@ -5,10 +5,11 @@
  *
  */
 
-import React, { FC, Fragment, useState } from "react";
+import React, { FC, useState } from "react";
 import { FlatList, TouchableOpacity, View } from "react-native";
 import { ListItem } from "react-native-elements";
 import { AntDesign, Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { theme } from "@app/styles";
 import { Products } from "@app/redux/api-models/product-list";
 import { COMMON } from "@app/constants";
@@ -16,6 +17,7 @@ import ListProduct from "@app/organisms/ListProduct";
 import Button from "@app/atoms/Button";
 import Text from "@app/atoms/Text";
 import ProductCard from "@app/organisms/ProductCard";
+import routes from "@app/navigators/routes";
 
 import type { ViewType } from "./types";
 import { mockProducts } from "./config";
@@ -24,8 +26,10 @@ import ProductListStyles from "./styles";
 const MainContent: FC = () => {
   const [view, setView] = useState<ViewType>("List");
 
-  return (
-    <View style={ProductListStyles.contentContainer}>
+  const { navigate } = useNavigation();
+
+  const getListConfig = () => {
+    return (
       <ListItem bottomDivider>
         <ListItem.Title>
           <Text text="List Filter" />
@@ -58,9 +62,13 @@ const MainContent: FC = () => {
           </TouchableOpacity>
         </ListItem.Content>
       </ListItem>
+    );
+  };
 
-      {view === "List" && (
-        <Fragment>
+  const getList = () => {
+    return (
+      view === "List" && (
+        <>
           <FlatList
             data={mockProducts}
             showsVerticalScrollIndicator={false}
@@ -78,27 +86,34 @@ const MainContent: FC = () => {
                 rating={4.5}
                 sold={12}
                 hasBottomDivder
-                onDiscontinue={() => alert("Discontinue")}
-                onBoost={() => alert("boost")}
-                onEdit={() => alert("Edit")}
+                onDiscontinue={() => 0}
+                onBoost={() => 0}
+                onEdit={() => 0}
               />
             )}
           />
           <View style={ProductListStyles.buttonContainer}>
-            <Button title="Add Product" onPress={() => alert("GG")} />
+            <Button
+              title="Add Product"
+              onPress={() => navigate(routes.PRODUCT_ADD)}
+            />
           </View>
-        </Fragment>
-      )}
+        </>
+      )
+    );
+  };
 
-      {view === "Grid" && (
-        <Fragment>
+  const getGrid = () => {
+    return (
+      view === "Grid" && (
+        <>
           <FlatList
             numColumns={2}
             data={mockProducts}
             showsVerticalScrollIndicator={false}
             keyExtractor={(item) => String(item.id)}
             ListFooterComponent={<View style={ProductListStyles.spacer} />}
-            contentContainerStyle={ProductListStyles.row}
+            columnWrapperStyle={ProductListStyles.row}
             renderItem={({ item }: { item: Products }) => (
               <ProductCard
                 name={item.name}
@@ -106,17 +121,28 @@ const MainContent: FC = () => {
                 sold="30"
                 currentPrice="300"
                 buttonTitle="Boost Now"
-                onButtonClick={() => alert("boost")}
+                onButtonClick={() => 0}
                 discount="30"
                 variation={COMMON.VARIATION.ONE}
               />
             )}
           />
           <View style={ProductListStyles.buttonContainer}>
-            <Button title="Add Product" onPress={() => alert("GG")} />
+            <Button
+              title="Add Product"
+              onPress={() => navigate(routes.PRODUCT_ADD)}
+            />
           </View>
-        </Fragment>
-      )}
+        </>
+      )
+    );
+  };
+
+  return (
+    <View style={ProductListStyles.contentContainer}>
+      <>{getListConfig()}</>
+      <>{getList()}</>
+      <>{getGrid()}</>
     </View>
   );
 };

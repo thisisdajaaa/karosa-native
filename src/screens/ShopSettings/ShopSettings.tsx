@@ -8,6 +8,8 @@
 import React, { FC, useCallback, useRef } from "react";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { FormikProvider, useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { ShopSettingsForm } from "@app/redux/shop/models";
 import { useNavigation } from "@react-navigation/native";
 import { selectors, actions } from "@app/redux/shop";
 import { useMemoizedSelector } from "@app/hooks";
@@ -19,8 +21,6 @@ import routes from "@app/navigators/routes";
 import type { ShopSettingsNavigation } from "./types";
 import { statusInformation } from "./config";
 import ShopSettingsValidationSchema from "./validation";
-import { ShopSettingsForm } from "@app/redux/shop/models";
-import { useDispatch } from "react-redux";
 
 const ShopSettingsScreen: FC = () => {
   const dispatch = useDispatch();

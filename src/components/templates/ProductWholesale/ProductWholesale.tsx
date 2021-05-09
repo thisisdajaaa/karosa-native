@@ -5,18 +5,18 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
+import { KeyboardAvoidingView, ScrollView, View } from "react-native";
+import { theme } from "@app/styles";
+import { getPlatform, listIterator } from "@app/utils";
+import { COMMON } from "@app/constants";
+import Header from "@app/molecules/Header";
+import ListInput from "@app/organisms/ListInput";
+import FormButton from "@app/molecules/FormButton";
+import WarningMessage from "@app/molecules/WarningMessage";
 
 import type { PropsType } from "./types";
 import ProductWholesaleStyles from "./styles";
-import { theme } from "@app/styles";
-import Header from "@app/molecules/Header";
-import ListInput from "@app/organisms/ListInput";
-import { COMMON } from "@app/constants";
-import { getPlatform, listIterator } from "@app/utils";
-import { KeyboardAvoidingView, ScrollView, View } from "react-native";
-import FormButton from "@app/molecules/FormButton";
-import WarningMessage from "@app/components/molecules/WarningMessage";
 
 const ProductWholesaleTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
@@ -58,8 +58,8 @@ const ProductWholesaleTemplate: FC<PropsType> = (props) => {
     return listIterator(elements);
   };
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         hasBottomDivider
         leftComponent={{
@@ -72,17 +72,23 @@ const ProductWholesaleTemplate: FC<PropsType> = (props) => {
           style: ProductWholesaleStyles.txtHeader,
         }}
       />
+    );
+  };
+
+  return (
+    <>
+      <>{getHeader()}</>
       <KeyboardAvoidingView
         style={ProductWholesaleStyles.container}
         behavior={isIOS ? "padding" : undefined}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <Fragment>{getWholesaleForm()}</Fragment>
+          <>{getWholesaleForm()}</>
         </ScrollView>
         <View style={ProductWholesaleStyles.buttonContainer}>
           <FormButton title="Submit" />
         </View>
       </KeyboardAvoidingView>
-    </Fragment>
+    </>
   );
 };
 

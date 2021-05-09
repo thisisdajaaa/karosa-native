@@ -7,8 +7,7 @@
 
 import React, { FC } from "react";
 import { View, Pressable } from "react-native";
-
-import { BaseText } from "@app/components/base-text";
+import Text from "@app/atoms/Text";
 
 import type { PropsType } from "./types";
 import CategoryStyles from "./styles";
@@ -21,7 +20,7 @@ const Category: FC<PropsType> = (props) => {
       <View style={CategoryStyles.categoryContainer}>
         <View style={CategoryStyles.categoryCircle} />
         <View style={CategoryStyles.nameContainer}>
-          <BaseText style={CategoryStyles.txtName}>{name}</BaseText>
+          <Text text={name} textStyle={CategoryStyles.txtName} />
         </View>
       </View>
     </Pressable>

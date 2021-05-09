@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 import {
   KeyboardAvoidingView,
   ScrollView,
@@ -72,7 +72,7 @@ const ShopSettingsTemplate: FC<PropsType> = (props) => {
 
   const getHeader = () => {
     return (
-      <Fragment>
+      <>
         <StatusBar barStyle="dark-content" />
         <Header
           leftComponent={{
@@ -90,13 +90,13 @@ const ShopSettingsTemplate: FC<PropsType> = (props) => {
             onPress: submitForm,
           }}
         />
-      </Fragment>
+      </>
     );
   };
 
   const getImageForm = () => {
     return (
-      <Fragment>
+      <>
         <FormImagePicker name="coverPhoto" variation={COMMON.VARIATION.THREE} />
         <View style={ShopSettingsStyles.avatarContainer}>
           <FormImagePicker
@@ -105,7 +105,7 @@ const ShopSettingsTemplate: FC<PropsType> = (props) => {
           />
         </View>
         <View style={ShopSettingsStyles.spacer} />
-      </Fragment>
+      </>
     );
   };
 
@@ -141,19 +141,19 @@ const ShopSettingsTemplate: FC<PropsType> = (props) => {
         style={ShopSettingsStyles.container}
         behavior={isIOS ? "padding" : undefined}>
         <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
-          <Fragment>{getImageForm()}</Fragment>
-          <Fragment>{getListForm()}</Fragment>
+          <>{getImageForm()}</>
+          <>{getListForm()}</>
         </ScrollView>
-        <Fragment>{getBtnDeleteShop()}</Fragment>
+        <>{getBtnDeleteShop()}</>
       </KeyboardAvoidingView>
     );
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 

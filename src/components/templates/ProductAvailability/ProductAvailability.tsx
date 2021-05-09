@@ -5,9 +5,8 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 import { View } from "react-native";
-
 import { listIterator } from "@app/utils";
 import ListCheckbox from "@app/organisms/ListCheckbox";
 import FormButton from "@app/molecules/FormButton";
@@ -15,7 +14,7 @@ import Text from "@app/atoms/Text";
 
 import ProductAvailabilityStyles from "./styles";
 
-const ProductAvailability: FC = () => {
+const ProductAvailabilityTemplate: FC = () => {
   const checkbox = (label: string, name: string) => (
     <View style={ProductAvailabilityStyles.availabilityContainer}>
       <ListCheckbox label={label} name={name} hasBottomDivider />
@@ -24,13 +23,13 @@ const ProductAvailability: FC = () => {
 
   const getBtmSheetTitle = () => {
     return (
-      <Fragment>
+      <>
         <Text
           text="Available every"
           textStyle={ProductAvailabilityStyles.txtProductAvailability}
         />
         <View style={ProductAvailabilityStyles.spacer} />
-      </Fragment>
+      </>
     );
   };
 
@@ -57,11 +56,11 @@ const ProductAvailability: FC = () => {
   };
 
   return (
-    <Fragment>
-      <Fragment>{getBtmSheetTitle()}</Fragment>
-      <Fragment>{getAvailabilityForm()}</Fragment>
-    </Fragment>
+    <>
+      <>{getBtmSheetTitle()}</>
+      <>{getAvailabilityForm()}</>
+    </>
   );
 };
 
-export default ProductAvailability;
+export default ProductAvailabilityTemplate;

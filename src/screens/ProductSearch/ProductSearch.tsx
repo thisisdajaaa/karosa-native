@@ -9,7 +9,7 @@ import React, { FC, useCallback } from "react";
 import { useNavigation } from "@react-navigation/native";
 import ProductSearchTemplate from "@app/templates/ProductSearch";
 
-const ProductSearch: FC = () => {
+const ProductSearchScreen: FC = () => {
   const { goBack } = useNavigation();
 
   const handleBack = useCallback(() => {
@@ -19,4 +19,4 @@ const ProductSearch: FC = () => {
   return <ProductSearchTemplate onBack={handleBack} />;
 };
 
-export default ProductSearch;
+export default ProductSearchScreen;
