@@ -6,17 +6,18 @@
  */
 
 import React, { FC } from "react";
-import { View, Image } from "react-native";
-import { BaseText } from "@app/components/base-text";
+import { View } from "react-native";
+import Text from "@app/atoms/Text";
 import { AntDesign } from "@expo/vector-icons";
 import ReviewImages from "@app/atoms/ReviewImages";
-import Rating from "@app/molecules/Rating";
+import { Rating } from "react-native-elements";
+import Image from "@app/atoms/Image";
 import type { PropsType } from "./types";
 
 import ReviewsStyles from "./styles";
 
 const Reviews: FC<PropsType> = (props) => {
-  const { username, comments, likes, tags, rate, avatarPhoto } = props;
+  const { username, comments, likes, tags } = props;
 
   return (
     <View style={ReviewsStyles.subContainer}>
@@ -27,32 +28,34 @@ const Reviews: FC<PropsType> = (props) => {
               uri:
                 "http://2.bp.blogspot.com/-wvCP_ff54N4/Ukpp0EjfInI/AAAAAAAAAYI/QR4VOlfCLfg/s1600/index.jpg",
             }}
-            style={ReviewsStyles.sellerImage}
+            imageStyle={ReviewsStyles.sellerImage}
           />
           <View style={ReviewsStyles.txtNameAddress}>
             <View>
-              <BaseText style={ReviewsStyles.txtBlackRegular}>
-                {username}
-              </BaseText>
+              <Text text={username} textStyle={ReviewsStyles.txtBlackRegular} />
               <View style={ReviewsStyles.ratingContainer}>
-                <Rating rate={rate} />
+                <Rating
+                  type="star"
+                  ratingCount={5}
+                  readonly
+                  imageSize={15}
+                  startingValue={5}
+                />
               </View>
             </View>
           </View>
         </View>
-        <BaseText>
+        <View>
           <AntDesign name="like2" size={20} style={ReviewsStyles.likedIcon} />
-          {likes}
+          <Text text={likes.toString()} />
           <AntDesign name="ellipsis1" size={20} style={{ marginLeft: 16 }} />
-        </BaseText>
+        </View>
       </View>
       <View style={ReviewsStyles.commentContainer}>
-        <BaseText style={ReviewsStyles.txtReviewParagraph}>{comments}</BaseText>
+        <Text text={comments} textStyle={ReviewsStyles.txtReviewParagraph} />
         <View style={ReviewsStyles.tagsContainer}>
           {tags.map((tag) => {
-            return (
-              <BaseText customStyles={ReviewsStyles.tagsStyle}>{tag}</BaseText>
-            );
+            return <Text text={tag} textStyle={ReviewsStyles.tagsStyle} />;
           })}
         </View>
         <View style={ReviewsStyles.buyerGallery}>

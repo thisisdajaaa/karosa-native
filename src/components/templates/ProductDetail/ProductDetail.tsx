@@ -10,10 +10,10 @@ import { Image, View } from "react-native";
 import { BaseText } from "@app/components/base-text";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { MultiList } from "@app/components/multi-list";
-import { ListChevron } from "@app/components/list/list-chevron";
-import { Separator } from "@app/components/separator";
-import { AppButton } from "@app/components/button";
-import { Props as ButtonProps } from "@app/components/button/types";
+import { FlatList } from "react-native";
+import ListChevron from "@app/organisms/ListChevron";
+import Button from "@app/atoms/Button";
+import { PropsType as ButtonProps } from "@app/atoms/Button/types";
 
 import ProductDetailStyles from "./styles";
 import { ScrollView } from "react-native-gesture-handler";
@@ -23,24 +23,24 @@ import type { PropsType } from "./types";
 
 const chatNowButtonProps: ButtonProps = {
   title: "Chat Now",
-  textStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
-  containerStyle: ProductDetailStyles.button,
-  icon: { left: <FontAwesome name="comments-o" size={25} /> },
+  titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
+  buttonStyle: ProductDetailStyles.button,
+  icon: <FontAwesome name="comments-o" size={25} />,
 };
 
 const cartButtonProps: ButtonProps = {
   title: "Add to Basket",
-  textStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
-  containerStyle: ProductDetailStyles.button,
-  icon: { left: <AntDesign name="shoppingcart" size={25} /> },
+  titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
+  buttonStyle: ProductDetailStyles.button,
+  icon: <AntDesign name="shoppingcart" size={25} />,
 };
 
 const buyButtonProps: ButtonProps = {
   title: "Buy Now",
-  textStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
-  containerStyle: [ProductDetailStyles.button, ProductDetailStyles.orangeBox],
+  titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
+  buttonStyle: [ProductDetailStyles.button, ProductDetailStyles.orangeBox],
 };
-const ProductDetail: FC<PropsType> = (props) => {
+const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
     multiListProps,
     voucherProps,
@@ -99,10 +99,6 @@ const ProductDetail: FC<PropsType> = (props) => {
               </View>
               <View style={ProductDetailStyles.horizontalContainer}>
                 <View style={ProductDetailStyles.rating}>
-                  {/* <Image
-                    source={require("../../../../assets/star.png")}
-                    style={ProductDetailStyles.ratingIconStyle}
-                  /> */}
                   <BaseText style={ProductDetailStyles.txtBlackRegular}>
                     4.1
                   </BaseText>
@@ -123,10 +119,9 @@ const ProductDetail: FC<PropsType> = (props) => {
               Cost: Php 50.00
             </BaseText>
           </View>
-          <ListChevron {...voucherProps} />
-          <Separator />
+          <ListChevron hasBottomDivider={true} {...voucherProps} />
           <View style={ProductDetailStyles.subContainer}>
-            <ListChevron {...variationProps} />
+            <ListChevron hasBottomDivider={true} {...variationProps} />
             <View style={ProductDetailStyles.horizontalContainer}>
               {/* <ReviewImages
                 imageSources={[
@@ -253,13 +248,13 @@ const ProductDetail: FC<PropsType> = (props) => {
       </View>
       <View style={ProductDetailStyles.footer}>
         <View style={ProductDetailStyles.subFooterContainer}>
-          <AppButton {...chatNowButtonProps} />
-          <AppButton {...cartButtonProps} />
-          <AppButton {...buyButtonProps} />
+          <Button {...chatNowButtonProps} />
+          <Button {...cartButtonProps} />
+          <Button {...buyButtonProps} />
         </View>
       </View>
     </View>
   );
 };
 
-export default ProductDetail;
+export default ProductDetailTemplate;

@@ -1,6 +1,6 @@
 /**
  *
- * Rating Test
+ * ShopAddress Test
  * @format
  *
  */
@@ -8,12 +8,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Rating from '../Rating';
+import ShopAddress from '../ShopAddress';
 
-test('Rating', () => {
+test('ShopAddress', () => {
   const tree = renderer
     .create(
-      <Rating />
+      <ShopAddress />
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

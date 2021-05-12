@@ -32,6 +32,7 @@
     "@types/redux-logger": "^3.0.8",
     "@types/yup": "^0.29.8",
     "@unimodules/core": "^5.5.1",
+    "@unimodules/react-native-adapter": "^6.2.2",
     "axios": "0.21.1",
     "expo": "~39.0.2",
     "expo-asset": "~8.2.0",

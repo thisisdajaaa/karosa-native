@@ -63,21 +63,23 @@ const ProductDetailStyles = StyleSheet.create({
     height: 15,
   },
   footer: {
-    flex: 1,
+    flex: 3,
+    backgroundColor: "yellow",
     justifyContent: "center",
   },
   subFooterContainer: {
+    justifyContent: "space-between",
     flexDirection: "row",
     flex: 1,
-    alignItems: "flex-end",
   },
   button: {
     flexDirection: "column",
-    padding: 5,
+    padding: 8,
     alignItems: "center",
-    height: 50,
+    height: "100%",
     marginHorizontal: 2,
     flex: 1,
+    width: "100%",
   },
   green: {
     backgroundColor: theme.colors.green10,
