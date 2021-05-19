@@ -17,7 +17,7 @@ import routes from "@app/navigators/routes";
 
 import ForgotValidationSchema from "./validation";
 
-const LoginForgot: FC = () => {
+const AuthForgotScreen: FC = () => {
   const { goBack, navigate } = useNavigation();
   const dispatch = useDispatch();
 
@@ -68,4 +68,4 @@ const LoginForgot: FC = () => {
   );
 };
 
-export default LoginForgot;
+export default AuthForgotScreen;

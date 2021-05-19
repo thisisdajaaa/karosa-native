@@ -15,8 +15,10 @@ export type PropsType = {
   placeholder?: string;
   autoCorrect?: boolean;
   size?: SizeType;
+  autoFocus?: boolean;
   backgroundColor?: BackgroundColorType;
   onChangeText?(text: string): void;
   onFocus?(): void;
+  onCancel?(): void;
   onTouchStart?: (event: GestureResponderEvent) => void;
 };

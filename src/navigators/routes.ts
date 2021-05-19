@@ -19,6 +19,7 @@ export default Object.freeze({
   SHOP_SETTINGS: "Shop Settings",
   SHOP_CHAT: "Shop Chat",
   SHOP_PRODUCTS: "Shop Products",
+  SHOP_PRODUCT_DETAILS: "Shop Product Details",
   SHOP_SHIP: "Shop Ship",
   SHOP_CANCELLED: "Shop Cancelled",
   SHOP_RETURNS: "Shop Returns",
@@ -29,8 +30,8 @@ export default Object.freeze({
   SHOP_EDIT_ADDRESS: "Shop Edit Address",
   SHOP_PAYMENT: "Shop Payment",
 
-  SEARCH_PRODUCT: "Search Product",
-  ADD_PRODUCT: "Add Product",
+  SEARCH_MY_PRODUCT: "Search My Product",
+  PRODUCT_ADD: "Add Product",
   ADD_VARIATION: "Add Variation",
   ADD_WHOLESALE: "Add Wholesale",
   SHIPPING_DETAILS: "Shipping Details",

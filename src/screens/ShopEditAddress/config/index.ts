@@ -4,8 +4,8 @@
  *
  */
 
-import { PickerData } from "@app/redux/api-models/common";
 import { isEmpty } from "ramda";
+import { PickerData } from "@app/redux/api-models/common";
 import { Locations } from "../types";
 
 export const PHONE_NUM_LENGTH = 11;

@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 import { View } from "react-native";
 import { theme } from "@app/styles";
 import { listIterator } from "@app/utils";
@@ -16,7 +16,7 @@ import FormButton from "@app/molecules/FormButton";
 import type { PropsType } from "./types";
 import ShopPaymentStyles from "./styles";
 
-const ShopPayment: FC<PropsType> = (props) => {
+const ShopPaymentTemplate: FC<PropsType> = (props) => {
   const { onBack, paymentButtonProps } = props;
 
   const listSwitch = (title: string, name: string) => {
@@ -61,12 +61,12 @@ const ShopPayment: FC<PropsType> = (props) => {
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getPaymentForm()}</Fragment>
-      <Fragment>{getPaymentButton()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getPaymentForm()}</>
+      <>{getPaymentButton()}</>
+    </>
   );
 };
 
-export default ShopPayment;
+export default ShopPaymentTemplate;

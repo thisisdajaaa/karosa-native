@@ -20,6 +20,9 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "experiments": {
+      "turboModules": true
+    },
     "packagerOpts": {
       "config": "metro.config.js",
       "sourceExts": [

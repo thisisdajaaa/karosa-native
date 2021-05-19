@@ -1,10 +1,3 @@
-/**
- *
- * Home
- * @format
- *
- */
-
 import React, { FC } from "react";
 import HomeLayout from "@app/templates/Home";
 

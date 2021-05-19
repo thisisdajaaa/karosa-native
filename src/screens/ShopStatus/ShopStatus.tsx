@@ -9,13 +9,13 @@ import React, { FC, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { ENUM } from "@app/constants";
 import { actions } from "@app/redux/shop";
-import BottomSheet from "@app/components/molecules/BottomSheet";
+import BottomSheet from "@app/molecules/BottomSheet";
 import ShopStatusTemplate from "@app/templates/ShopStatus";
 
 import type { PropsType } from "./types";
 import { BTM_SHEET_HEIGHT } from "./config";
 
-const ShopStatus: FC<PropsType> = (props) => {
+const ShopStatusScreen: FC<PropsType> = (props) => {
   const { sheetRef } = props;
 
   const dispatch = useDispatch();
@@ -40,4 +40,4 @@ const ShopStatus: FC<PropsType> = (props) => {
   );
 };
 
-export default React.memo(ShopStatus);
+export default ShopStatusScreen;

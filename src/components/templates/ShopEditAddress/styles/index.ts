@@ -21,10 +21,6 @@ const ShopEditAddressStyles = StyleSheet.create({
     ...theme.textBold,
     fontWeight: "700",
   },
-  spacer: {
-    marginTop: "20%",
-    marginBottom: "20%",
-  },
 });
 
 export default ShopEditAddressStyles;

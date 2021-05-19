@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment, useRef } from "react";
+import React, { FC, useRef } from "react";
 import { useFormikContext } from "formik";
 import {
   View,
@@ -35,8 +35,8 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
 
   const isIOS = getPlatform.getInstance() === "ios";
 
-  const imageHeight = useRef(new Animated.Value(IMAGE_HEIGHT.REGULAR));
-  const imageWidth = useRef(new Animated.Value(IMAGE_WIDTH.REGULAR));
+  const imageHeight = useRef(new Animated.Value(IMAGE_HEIGHT.REGULAR)).current;
+  const imageWidth = useRef(new Animated.Value(IMAGE_WIDTH.REGULAR)).current;
 
   const hasFieldError = (key: keyof LoginRequest) => {
     return touched[key] && errors[key] ? AuthLoginStyles.errorContainer : {};
@@ -60,13 +60,13 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
   });
 
   const animateKeyboardDisplay = (event: KeyboardEvent) => {
-    Animated.timing(imageHeight.current, {
+    Animated.timing(imageHeight, {
       duration: event.duration,
       toValue: IMAGE_HEIGHT.SMALL,
       useNativeDriver: false,
     }).start();
 
-    Animated.timing(imageWidth.current, {
+    Animated.timing(imageWidth, {
       duration: event.duration,
       toValue: IMAGE_WIDTH.SMALL,
       useNativeDriver: false,
@@ -74,13 +74,13 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
   };
 
   const animateKeyboardHide = (event: KeyboardEvent) => {
-    Animated.timing(imageHeight.current, {
+    Animated.timing(imageHeight, {
       duration: event.duration,
       toValue: IMAGE_HEIGHT.REGULAR,
       useNativeDriver: false,
     }).start();
 
-    Animated.timing(imageWidth.current, {
+    Animated.timing(imageWidth, {
       duration: event.duration,
       toValue: IMAGE_WIDTH.REGULAR,
       useNativeDriver: false,
@@ -105,25 +105,25 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
 
   const getAnimatedLogo = () => {
     return (
-      <Fragment>
+      <>
         <View style={AuthLoginStyles.logoContainer}>
           <Animated.Image
             style={{
-              height: imageHeight.current,
-              width: imageWidth.current,
+              height: imageHeight,
+              width: imageWidth,
             }}
             source={require("../../../../assets/logo-red.png")}
             resizeMode="contain"
           />
         </View>
         <View style={AuthLoginStyles.spacer} />
-      </Fragment>
+      </>
     );
   };
 
   const getLoginForm = () => {
     return (
-      <Fragment>
+      <>
         <FormInput
           name="identifier"
           placeholder="Phone number / Username / Email"
@@ -158,26 +158,20 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
             textStyle={AuthLoginStyles.txtForgotPass}
           />
         </TouchableOpacity>
-      </Fragment>
-    );
-  };
-
-  const getContent = () => {
-    return (
-      <KeyboardAvoidingView
-        style={AuthLoginStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
-        <Fragment>{getAnimatedLogo()}</Fragment>
-        <Fragment>{getLoginForm()}</Fragment>
-      </KeyboardAvoidingView>
+      </>
     );
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <KeyboardAvoidingView
+        style={AuthLoginStyles.container}
+        behavior={isIOS ? "padding" : undefined}>
+        <>{getAnimatedLogo()}</>
+        <>{getLoginForm()}</>
+      </KeyboardAvoidingView>
+    </>
   );
 };
 

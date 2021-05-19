@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement, useMemo } from "react";
+import React, { FC, ReactElement, useMemo } from "react";
 import {
   KeyboardAvoidingView,
   KeyboardTypeOptions,
@@ -24,7 +24,7 @@ import FormButton from "@app/molecules/FormButton";
 import type { PropsType } from "./types";
 import ShopEditAddressStyles from "./styles";
 
-const ShopEditAddress: FC<PropsType> = (props) => {
+const ShopEditAddressTemplate: FC<PropsType> = (props) => {
   const { onBack, pickerValues, pickerDisable } = props;
 
   const picker = useMemo(() => {
@@ -79,7 +79,7 @@ const ShopEditAddress: FC<PropsType> = (props) => {
     disabled: boolean
   ): JSX.Element => {
     return (
-      <Fragment>
+      <>
         {data && (
           <ListPicker
             name={name}
@@ -91,7 +91,7 @@ const ShopEditAddress: FC<PropsType> = (props) => {
             required
           />
         )}
-      </Fragment>
+      </>
     );
   };
 
@@ -179,11 +179,7 @@ const ShopEditAddress: FC<PropsType> = (props) => {
   const getScrollableForm = () => {
     return (
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Fragment>{getAddressForm()}</Fragment>
-        <View style={ShopEditAddressStyles.spacer} />
-        <View style={ShopEditAddressStyles.buttonContainer}>
-          <FormButton title="Submit" />
-        </View>
+        <>{getAddressForm()}</>
       </ScrollView>
     );
   };
@@ -193,17 +189,20 @@ const ShopEditAddress: FC<PropsType> = (props) => {
       <KeyboardAvoidingView
         style={ShopEditAddressStyles.container}
         behavior={isIOS ? "padding" : undefined}>
-        <Fragment>{getScrollableForm()}</Fragment>
+        <>{getScrollableForm()}</>
+        <View style={ShopEditAddressStyles.buttonContainer}>
+          <FormButton title="Submit" />
+        </View>
       </KeyboardAvoidingView>
     );
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 
-export default ShopEditAddress;
+export default ShopEditAddressTemplate;

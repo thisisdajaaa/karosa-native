@@ -64,22 +64,18 @@ const ProductDetailStyles = StyleSheet.create({
   },
   footer: {
     flex: 3,
-    backgroundColor: "yellow",
-    justifyContent: "center",
+    flexDirection: "row",
   },
   subFooterContainer: {
-    justifyContent: "space-between",
-    flexDirection: "row",
-    flex: 1,
-  },
-  button: {
-    flexDirection: "column",
-    padding: 8,
-    alignItems: "center",
-    height: "100%",
-    marginHorizontal: 2,
     flex: 1,
     width: "100%",
+  },
+  button: {
+    width: "100%",
+    flexDirection: "column",
+    padding: 8,
+    marginHorizontal: 1,
+    alignItems: "center",
   },
   green: {
     backgroundColor: theme.colors.green10,
@@ -133,6 +129,17 @@ const ProductDetailStyles = StyleSheet.create({
   buyerGallery: {
     flexDirection: "row",
     margin: 8,
+  },
+  productRatingMain: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  productRatingSub: {
+    justifyContent: "center",
+    marginHorizontal: 8,
+  },
+  buyerGallerySection: {
+    marginHorizontal: 8,
   },
 });
 

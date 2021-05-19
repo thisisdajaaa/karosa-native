@@ -30,7 +30,7 @@ const VariationTwo: FC<PropsType> = (props) => {
   return (
     <ListItem bottomDivider={hasBottomDivider}>
       <ListItem.Content style={ListInputStyles.variationTwoContainer}>
-        <View style={ListInputStyles.mainRowContainer}>
+        <ListItem.Content style={ListInputStyles.mainRowContainer}>
           <View style={ListInputStyles.labelContainer}>
             <Text text={label} textStyle={ListInputStyles.txtLabel} />
             {required && (
@@ -48,7 +48,7 @@ const VariationTwo: FC<PropsType> = (props) => {
               inputContainerStyle={ListInputStyles.inputContainer}
             />
           </ListItem.Content>
-        </View>
+        </ListItem.Content>
         <ValidationMessage name={name} />
       </ListItem.Content>
     </ListItem>

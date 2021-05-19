@@ -16,7 +16,7 @@ import type { PropsType as FormButtonProps } from "@app/molecules/FormButton/typ
 import ShopPaymentTemplate from "@app/templates/ShopPayment";
 import routes from "@app/navigators/routes";
 
-const ShopPayment: FC = () => {
+const ShopPaymentScreen: FC = () => {
   const dispatch = useDispatch();
 
   const { goBack, navigate } = useNavigation();
@@ -56,4 +56,4 @@ const ShopPayment: FC = () => {
   );
 };
 
-export default ShopPayment;
+export default ShopPaymentScreen;

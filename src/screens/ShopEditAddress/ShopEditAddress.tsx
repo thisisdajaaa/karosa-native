@@ -32,7 +32,7 @@ import type { LocationChoices, PickerDisable, PickerValues } from "./types";
 import { setPickerData } from "./config";
 import ShopAddressValidationSchema from "./validation";
 
-const ShopEditAddress: FC = () => {
+const ShopEditAddressScreen: FC = () => {
   const dispatch = useDispatch();
 
   const { goBack, navigate } = useNavigation();
@@ -180,4 +180,4 @@ const ShopEditAddress: FC = () => {
   );
 };
 
-export default ShopEditAddress;
+export default ShopEditAddressScreen;
