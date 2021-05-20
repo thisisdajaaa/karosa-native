@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import { View } from "react-native";
 import Text from "@app/atoms/Text";
 import Button from "@app/atoms/Button";
@@ -14,7 +14,7 @@ import Header from "@app/molecules/Header";
 import type { PropsType } from "./types";
 import ShopTermsStyles from "./styles";
 
-const ShopTerms: FC<PropsType> = (props) => {
+const ShopTermsTemplate: FC<PropsType> = (props) => {
   const { onAgree, onNotNow } = props;
 
   const getHeader = () => {
@@ -79,17 +79,17 @@ const ShopTerms: FC<PropsType> = (props) => {
           </View>
         </View>
 
-        <Fragment>{getButtons()}</Fragment>
+        <>{getButtons()}</>
       </View>
     );
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 
-export default ShopTerms;
+export default ShopTermsTemplate;

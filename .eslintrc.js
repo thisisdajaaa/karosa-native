@@ -46,6 +46,7 @@ module.exports = {
       },
     ],
     "no-console": ["error", { allow: ["warn"] }],
+    "no-shadow": "off",
     "react-native/no-unused-styles": "error",
     "react-native/split-platform-components": "warn",
     "react-native/no-inline-styles": "warn",

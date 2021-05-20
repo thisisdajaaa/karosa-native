@@ -15,12 +15,9 @@ import { PropsType as FormInputProps } from "@app/molecules/FormInput/types";
 import { actions } from "@app/redux/auth";
 import { RegisterRequest } from "@app/redux/auth/models";
 
-import type { PropsType } from "./types";
 import validationSchema from "./validation";
 
-const SignUpSetPassword: FC<PropsType> = (props) => {
-  const {} = props;
-
+const SignUpSetPasswordScreen: FC = () => {
   const dispatch = useDispatch();
 
   const { values }: any = useRoute().params;
@@ -28,22 +25,22 @@ const SignUpSetPassword: FC<PropsType> = (props) => {
     console.log(values.identifier);
   }, []);
 
-  // const callRegisterApi = useCallback(
-  //   (request: RegisterRequest) =>
-  //     dispatch(actions.callRegisterApi.request(request)),
-  //   [dispatch]
-  // );
+  const callRegisterApi = useCallback(
+    (request: RegisterRequest) =>
+      dispatch(actions.callRegisterApi.request(request)),
+    [dispatch]
+  );
 
   const formikBag = useFormik({
     initialValues: { password: "", phoneDigits: values },
     validateOnChange: true,
     validateOnBlur: true,
     onSubmit: (values) => {
-      // const request: RegisterRequest = {
-      //   identifier: formikBag.values.phoneDigits,
-      //   password: formikBag.values.password,
-      // };
-      // callRegisterApi(request);
+      const request: RegisterRequest = {
+        identifier: formikBag.values.phoneDigits,
+        password: formikBag.values.password,
+      };
+      callRegisterApi(request);
       console.log(values);
     },
     validationSchema,
@@ -67,4 +64,4 @@ const SignUpSetPassword: FC<PropsType> = (props) => {
   );
 };
 
-export default SignUpSetPassword;
+export default SignUpSetPasswordScreen;

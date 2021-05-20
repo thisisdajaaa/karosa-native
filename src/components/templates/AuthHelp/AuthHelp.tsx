@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import { View, Image } from "react-native";
 import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
@@ -17,7 +17,7 @@ import type { PropsType } from "./types";
 import { IMAGE_SIZE } from "./config";
 import AuthHelpStyles from "./styles";
 
-const AuthHelp: FC<PropsType> = (props: PropsType) => {
+const AuthHelpTemplate: FC<PropsType> = (props: PropsType) => {
   const { onBack } = props;
 
   const icon = (name: string) => {
@@ -73,11 +73,11 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 
-export default AuthHelp;
+export default AuthHelpTemplate;

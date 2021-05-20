@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import { useFormikContext } from "formik";
 import { View } from "react-native";
 import { theme } from "@app/styles";
@@ -19,7 +19,7 @@ import ValidationMessage from "@app/molecules/ValidationMessage";
 import type { PropsType } from "./types";
 import AuthForgotStyles from "./styles";
 
-const AuthForgot: FC<PropsType> = (props: PropsType) => {
+const AuthForgotTemplate: FC<PropsType> = (props: PropsType) => {
   const { forgotButtonProps, onBack, onHelp } = props;
   const { errors, touched } = useFormikContext<ForgotRequest>();
 
@@ -75,11 +75,11 @@ const AuthForgot: FC<PropsType> = (props: PropsType) => {
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 
-export default AuthForgot;
+export default AuthForgotTemplate;

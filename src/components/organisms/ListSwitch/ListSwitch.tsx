@@ -8,9 +8,9 @@
 import React, { FC } from "react";
 import { ListItem } from "react-native-elements";
 import { View } from "react-native";
-import FormSwitch from "@app/components/molecules/FormSwitch";
+import FormSwitch from "@app/molecules/FormSwitch";
 import Text from "@app/atoms/Text";
-import ValidationMessage from "@app/components/molecules/ValidationMessage";
+import ValidationMessage from "@app/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
 import ListSwitchStyles from "./styles";

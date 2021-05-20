@@ -15,8 +15,8 @@ import routes from "@app/navigators/routes";
 
 import validationSchema from "./validation";
 
-const SignUpPhoneNumber: FC = () => {
-  const { goBack, navigate } = useNavigation();
+const SignUpPhoneNumberScreen: FC = () => {
+  const { navigate } = useNavigation();
 
   const formikBag = useFormik({
     initialValues: { identifier: "" },
@@ -27,7 +27,6 @@ const SignUpPhoneNumber: FC = () => {
         screen: routes.AUTH_OTP,
         params: { values },
       });
-      console.log(values);
     },
     validationSchema,
   });
@@ -51,4 +50,4 @@ const SignUpPhoneNumber: FC = () => {
   );
 };
 
-export default SignUpPhoneNumber;
+export default SignUpPhoneNumberScreen;

@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import { View } from "react-native";
 import Button from "@app/atoms/Button";
 import Text from "@app/atoms/Text";
@@ -13,15 +13,15 @@ import Text from "@app/atoms/Text";
 import type { PropsType } from "./types";
 import ShopDeleteStyles from "./styles";
 
-const ShopDelete: FC<PropsType> = (props) => {
+const ShopDeleteTemplate: FC<PropsType> = (props) => {
   const { onDelete, sheetRef } = props;
 
   const getHeader = () => {
     return (
-      <Fragment>
+      <>
         <Text text="Delete Shop" textStyle={ShopDeleteStyles.txtDeleteShop} />
         <View style={ShopDeleteStyles.spacer} />
-      </Fragment>
+      </>
     );
   };
 
@@ -51,11 +51,11 @@ const ShopDelete: FC<PropsType> = (props) => {
   };
 
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 
-export default ShopDelete;
+export default ShopDeleteTemplate;

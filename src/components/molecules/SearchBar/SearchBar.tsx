@@ -6,6 +6,7 @@
  */
 
 import React, { FC } from "react";
+import { Platform } from "react-native";
 import { SearchBar as RnSearchBar } from "react-native-elements";
 
 import type { PropsType } from "./types";
@@ -16,7 +17,9 @@ const SearchBar: FC<PropsType> = (props) => {
     backgroundColor = "primary",
     size = "lg",
     autoCorrect,
+    autoFocus,
     onChangeText,
+    onCancel,
     onFocus,
     onTouchStart,
     placeholder,
@@ -30,13 +33,16 @@ const SearchBar: FC<PropsType> = (props) => {
 
   return (
     <RnSearchBar
+      platform={Platform.OS === "android" ? "android" : "ios"}
       placeholder={placeholder}
       inputContainerStyle={inputContainerStyle}
       autoCorrect={autoCorrect}
       containerStyle={mainContainerStyle}
       returnKeyType="search"
       accessibilityRole="search"
+      autoFocus={autoFocus}
       onTouchStart={onTouchStart}
+      onCancel={onCancel}
       onFocus={onFocus}
       onChangeText={onChangeText}
       value={value}

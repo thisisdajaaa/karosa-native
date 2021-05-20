@@ -5,10 +5,10 @@
  *
  */
 
-import React, { FC, useState, useEffect, useCallback } from "react";
+import React, { FC, useState, useCallback } from "react";
+import { useUpdateEffect } from "@app/hooks";
 import { useField, useFormikContext } from "formik";
-import { Password } from "@app/components/password";
-
+import Password from "@app/atoms/Password";
 import type { PropsType } from "./types";
 import { View } from "react-native";
 import FormPasswordStyle from "./styles";
@@ -22,7 +22,7 @@ const FormPassword: FC<PropsType> = (props) => {
     meta.value || meta.initialValue
   );
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     setCurrentValue(meta.value);
   }, [meta.value]);
 

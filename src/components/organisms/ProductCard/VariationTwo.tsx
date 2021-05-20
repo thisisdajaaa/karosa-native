@@ -21,6 +21,7 @@ import ProductCardStyles from "./styles";
 const VariantTwo: FC<PropsType> = (props) => {
   const {
     name,
+    wholesale,
     image,
     rating,
     location,
@@ -31,13 +32,16 @@ const VariantTwo: FC<PropsType> = (props) => {
   } = props;
 
   return (
-    <Card wrapperStyle={ProductCardStyles.mainContainer}>
-      <View style={ProductCardStyles.wholesaleContainer}>
-        <Text textStyle={ProductCardStyles.txtWholesale} text={"Wholesale"} />
-      </View>
+    <Card containerStyle={ProductCardStyles.mainContainer}>
+      {wholesale && (
+        <View style={ProductCardStyles.wholesaleContainer}>
+          <Text textStyle={ProductCardStyles.txtWholesale} text={"Wholesale"} />
+        </View>
+      )}
+
       {discount && (
         <View style={ProductCardStyles.ribbonContainer}>
-          <Ribbon upperText={discount} lowerText="OFF" />
+          <Ribbon upperText={`${discount}%`} lowerText="OFF" />
         </View>
       )}
       <Image
@@ -80,7 +84,7 @@ const VariantTwo: FC<PropsType> = (props) => {
             text={location ? location : ""}
           />
           <View style={ProductCardStyles.floatRight}>
-            <Icon group="common" name="outlineHeart" />
+            <Icon group="common" name="outlineHeart" height={12} width={13} />
           </View>
         </View>
       </View>

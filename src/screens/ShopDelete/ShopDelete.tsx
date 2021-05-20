@@ -8,15 +8,15 @@
 import React, { FC, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
-import ShopDeleteTemplate from "@app/templates/ShopDelete";
-import BottomSheet from "@app/components/molecules/BottomSheet";
 import { actions } from "@app/redux/shop";
+import ShopDeleteTemplate from "@app/templates/ShopDelete";
+import BottomSheet from "@app/molecules/BottomSheet";
 import routes from "@app/navigators/routes";
 
-import { BTM_SHEET_HEIGHT } from "./config";
 import type { PropsType } from "./types";
+import { BTM_SHEET_HEIGHT } from "./config";
 
-const ShopDelete: FC<PropsType> = (props) => {
+const ShopDeleteScreen: FC<PropsType> = (props) => {
   const { sheetRef } = props;
 
   const dispatch = useDispatch();
@@ -41,4 +41,4 @@ const ShopDelete: FC<PropsType> = (props) => {
   );
 };
 
-export default ShopDelete;
+export default ShopDeleteScreen;

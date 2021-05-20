@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import { View } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import Button from "@app/atoms/Button";
@@ -16,7 +16,7 @@ import Image from "@app/atoms/Image";
 import type { PropsType } from "./types";
 import AuthMainStyles from "./styles";
 
-const AuthMain: FC<PropsType> = (props: PropsType) => {
+const AuthMainTemplate: FC<PropsType> = (props: PropsType) => {
   const { onLogin, onFBLogin, onGoogleLogin, onHelp } = props;
 
   const getHeader = () => {
@@ -37,7 +37,7 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
 
   const getLogo = () => {
     return (
-      <Fragment>
+      <>
         <View style={AuthMainStyles.logoContainer}>
           <Image
             imageStyle={AuthMainStyles.logo}
@@ -46,13 +46,13 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
           />
         </View>
         <View style={AuthMainStyles.spacer} />
-      </Fragment>
+      </>
     );
   };
 
   const getMainButtons = () => {
     return (
-      <Fragment>
+      <>
         <Button
           onPress={onFBLogin}
           buttonStyle={AuthMainStyles.fbButtonContainer}
@@ -84,7 +84,7 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
         </View>
 
         <Button onPress={onLogin} title="Phone number / Username / Email" />
-      </Fragment>
+      </>
     );
   };
 
@@ -100,22 +100,16 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
     );
   };
 
-  const getContent = () => {
-    return (
-      <View style={AuthMainStyles.container}>
-        <Fragment>{getLogo()}</Fragment>
-        <Fragment>{getMainButtons()}</Fragment>
-        <Fragment>{getBottomText()}</Fragment>
-      </View>
-    );
-  };
-
   return (
-    <Fragment>
-      <Fragment>{getHeader()}</Fragment>
-      <Fragment>{getContent()}</Fragment>
-    </Fragment>
+    <>
+      <>{getHeader()}</>
+      <View style={AuthMainStyles.container}>
+        <>{getLogo()}</>
+        <>{getMainButtons()}</>
+        <>{getBottomText()}</>
+      </View>
+    </>
   );
 };
 
-export default AuthMain;
+export default AuthMainTemplate;

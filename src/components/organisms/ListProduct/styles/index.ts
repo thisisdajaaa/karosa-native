@@ -16,8 +16,8 @@ const ListProductStyles = StyleSheet.create({
     marginBottom: SPACING.lg,
   },
   image: {
-    width: DIMENS.screenWidth * 0.35,
-    height: DIMENS.screenHeight * 0.18,
+    width: DIMENS.screenWidth * 0.3,
+    height: DIMENS.screenHeight * 0.15,
   },
   topContainer: {
     flexDirection: "column",
@@ -52,6 +52,12 @@ const ListProductStyles = StyleSheet.create({
     marginTop: SPACING.xss,
   },
   discountContainer: {
+    backgroundColor: theme.colors.orange10,
+    height: DIMENS.screenHeight * 0.03,
+    width: DIMENS.screenWidth * 0.12,
+    borderRadius: 3,
+  },
+  discountWithWholesaleContainer: {
     backgroundColor: theme.colors.orange10,
     height: DIMENS.screenHeight * 0.03,
     width: DIMENS.screenWidth * 0.12,

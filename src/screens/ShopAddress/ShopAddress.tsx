@@ -14,7 +14,7 @@ import routes from "@app/navigators/routes";
 
 import type { ShopAddressNavigation } from "./types";
 
-const ShopAddress: FC = () => {
+const ShopAddressScreen: FC = () => {
   const { goBack, navigate } = useNavigation();
 
   const {
@@ -44,4 +44,4 @@ const ShopAddress: FC = () => {
   );
 };
 
-export default ShopAddress;
+export default ShopAddressScreen;

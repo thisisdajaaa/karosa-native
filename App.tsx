@@ -7,19 +7,21 @@ import configureStore from "@app/redux/store";
 import "@app/config/i18n";
 
 const fonts = {
-  "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
-  "SFProText-Semibold": require("./assets/fonts/SF-Pro-Text-Semibold.otf"),
-  "SFProText-Regular": require("./assets/fonts/SF-Pro-Text-Regular.otf"),
+  "SFProText-Bold": require("./src/assets/fonts/SF-Pro-Text-Bold.otf"),
+  "SFProText-Semibold": require("./src/assets/fonts/SF-Pro-Text-Semibold.otf"),
+  "SFProText-Regular": require("./src/assets/fonts/SF-Pro-Text-Regular.otf"),
 };
 
 export const store = configureStore({});
 
-export default function App() {
+const App = () => {
   return (
     <Provider store={store}>
-      <LoadAssets {...{ fonts }}>
+      <LoadAssets fonts={fonts}>
         <BaseNavigator />
       </LoadAssets>
     </Provider>
   );
-}
+};
+
+export default App;
