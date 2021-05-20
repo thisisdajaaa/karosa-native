@@ -55,6 +55,10 @@ const ListChevronStyles = StyleSheet.create({
     height: DIMENS.screenHeight * 0.056,
     borderRadius: 50,
   },
+  infoContainer: {
+    position: "relative",
+    left: 12,
+  },
 });
 
 export default ListChevronStyles;

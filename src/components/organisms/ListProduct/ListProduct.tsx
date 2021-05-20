@@ -63,7 +63,12 @@ const ListProduct: FC<PropsType> = (props) => {
                 </View>
               )}
               {discount && (
-                <View style={ListProductStyles.discountContainer}>
+                <View
+                  style={
+                    wholesale
+                      ? ListProductStyles.discountWithWholesaleContainer
+                      : ListProductStyles.discountContainer
+                  }>
                   <Text
                     text={`${discount}%`}
                     textStyle={ListProductStyles.txtBadge}

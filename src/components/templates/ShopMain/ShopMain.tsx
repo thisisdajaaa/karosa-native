@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 import {
   RefreshControl,
   ScrollView,
@@ -28,7 +28,7 @@ import ListChevron from "@app/organisms/ListChevron";
 import type { PropsType } from "./types";
 import ShopMainStyles from "./styles";
 
-const ShopMain: FC<PropsType> = (props) => {
+const ShopMainTemplate: FC<PropsType> = (props) => {
   const {
     refreshing,
     onRefresh,
@@ -40,14 +40,12 @@ const ShopMain: FC<PropsType> = (props) => {
 
   const action = (onPress: () => void, icon: ReactElement, label: string) => {
     return (
-      <Fragment>
-        <TouchableWithoutFeedback onPress={onPress}>
-          <View style={ShopMainStyles.actionSubContainer}>
-            {icon}
-            <Text text={label} textStyle={ShopMainStyles.actionLabel} />
-          </View>
-        </TouchableWithoutFeedback>
-      </Fragment>
+      <TouchableWithoutFeedback onPress={onPress}>
+        <View style={ShopMainStyles.actionSubContainer}>
+          {icon}
+          <Text text={label} textStyle={ShopMainStyles.actionLabel} />
+        </View>
+      </TouchableWithoutFeedback>
     );
   };
 
@@ -145,12 +143,12 @@ const ShopMain: FC<PropsType> = (props) => {
     elements.push(myProducts, marketing, finance, reports);
 
     return (
-      <Fragment>
+      <>
         <View style={ShopMainStyles.choicesContainer}>
           {listIterator(elements)}
         </View>
         <View style={ShopMainStyles.spacer} />
-      </Fragment>
+      </>
     );
   };
 
@@ -165,14 +163,14 @@ const ShopMain: FC<PropsType> = (props) => {
             tintColor={theme.colors.primary}
           />
         }>
-        <Fragment>{getProfile()}</Fragment>
-        <Fragment>{getActions()}</Fragment>
-        <Fragment>{getChevron()}</Fragment>
+        <>{getProfile()}</>
+        <>{getActions()}</>
+        <>{getChevron()}</>
       </ScrollView>
     );
   };
 
-  return <Fragment>{getContent()}</Fragment>;
+  return <>{getContent()}</>;
 };
 
-export default ShopMain;
+export default ShopMainTemplate;

@@ -4,9 +4,10 @@
  *
  */
 
-import { StyleSheet, Dimensions } from "react-native";
+import { DIMENS } from "@app/styles";
+import { StyleSheet } from "react-native";
 
-export const SLIDER_WIDTH = Dimensions.get("window").width;
+export const SLIDER_WIDTH = DIMENS.screenWidth;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
 
 const BannerStyles = StyleSheet.create({
@@ -36,6 +37,13 @@ const BannerStyles = StyleSheet.create({
     flexDirection: "column-reverse",
     height: "100%",
     alignSelf: "center",
+  },
+  dotStyle: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginHorizontal: 0,
+    backgroundColor: "white",
   },
 });
 

@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC } from "react";
+import React, { FC, Fragment, useState } from "react";
 import { TouchableWithoutFeedback, View } from "react-native";
 import { ListItem } from "react-native-elements";
 import Text from "@app/atoms/Text";
@@ -16,7 +16,11 @@ import { CLOSE_ICON, NUM_LINES, WARNING_ICON } from "./config";
 import WarningMessageStyles from "./styles";
 
 const WarningMessage: FC<PropsType> = (props) => {
-  const { message, onPress } = props;
+  const { message } = props;
+
+  const [hide, setHide] = useState(false);
+
+  if (hide) return <Fragment />;
 
   return (
     <ListItem containerStyle={WarningMessageStyles.container}>
@@ -35,7 +39,7 @@ const WarningMessage: FC<PropsType> = (props) => {
             textStyle={WarningMessageStyles.text}
           />
         </ListItem.Content>
-        <TouchableWithoutFeedback onPress={onPress}>
+        <TouchableWithoutFeedback onPress={() => setHide(true)}>
           <View>
             <Icon
               group="common"

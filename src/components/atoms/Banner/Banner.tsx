@@ -6,15 +6,21 @@
  */
 
 import React, { FC, useState, useRef } from "react";
-import { Dimensions, Image, View } from "react-native";
+import {Image, View } from "react-native";
+import { DIMENS } from "@app/styles";
 import Carousel, { Pagination } from "react-native-snap-carousel";
+import {
+  INACTIVEDOTOPACITY,
+  INACTIVESCALEDOT,
+  LAYOUTCARDOFFSET,
+} from "./config";
 
 import type { PropsType, CarouselData } from "./types";
 import BannerStyles from "./styles";
 
 const Banner: FC<PropsType> = (props) => {
   const { carouselData } = props;
-  const SLIDER_WIDTH = Dimensions.get("window").width;
+  const SLIDER_WIDTH = DIMENS.screenWidth
 
   const ITEM_WIDTH = SLIDER_WIDTH;
 
@@ -38,7 +44,7 @@ const Banner: FC<PropsType> = (props) => {
           renderItem={renderImage}
           sliderWidth={SLIDER_WIDTH}
           itemWidth={ITEM_WIDTH}
-          layoutCardOffset={0}
+          layoutCardOffset={LAYOUTCARDOFFSET}
           onSnapToItem={(value) => setIndex(value)}
         />
       </View>
@@ -47,15 +53,9 @@ const Banner: FC<PropsType> = (props) => {
           dotsLength={carouselData.length}
           activeDotIndex={index}
           tappableDots={true}
-          dotStyle={{
-            width: 10,
-            height: 10,
-            borderRadius: 5,
-            marginHorizontal: 0,
-            backgroundColor: "white",
-          }}
-          inactiveDotOpacity={0.4}
-          inactiveDotScale={0.6}
+          dotStyle={BannerStyles.dotStyle}
+          inactiveDotOpacity={INACTIVEDOTOPACITY}
+          inactiveDotScale={INACTIVESCALEDOT}
         />
       </View>
     </View>

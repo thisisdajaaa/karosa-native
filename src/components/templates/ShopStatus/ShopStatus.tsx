@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment, ReactElement } from "react";
+import React, { FC, ReactElement } from "react";
 import { View, TouchableWithoutFeedback } from "react-native";
 import { ListItem } from "react-native-elements";
 import { theme } from "@app/styles";
@@ -16,7 +16,7 @@ import Text from "@app/atoms/Text";
 import type { PropsType } from "./types";
 import ShopStatusStyles, { StatusItemStyle } from "./styles";
 
-const ShopStatus: FC<PropsType> = (props) => {
+const ShopStatusTemplate: FC<PropsType> = (props) => {
   const { setShopStatus } = props;
 
   const statusItem = (
@@ -40,10 +40,10 @@ const ShopStatus: FC<PropsType> = (props) => {
 
   const getBtmSheetTitle = () => {
     return (
-      <Fragment>
+      <>
         <Text text="Shop Status" textStyle={ShopStatusStyles.txtShopStatus} />
         <View style={ShopStatusStyles.spacer} />
-      </Fragment>
+      </>
     );
   };
 
@@ -77,11 +77,11 @@ const ShopStatus: FC<PropsType> = (props) => {
   };
 
   return (
-    <Fragment>
-      <Fragment>{getBtmSheetTitle()}</Fragment>
-      <Fragment>{getStatusItems()}</Fragment>
-    </Fragment>
+    <>
+      <>{getBtmSheetTitle()}</>
+      <>{getStatusItems()}</>
+    </>
   );
 };
 
-export default ShopStatus;
+export default ShopStatusTemplate;
