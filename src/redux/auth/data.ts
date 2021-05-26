@@ -21,8 +21,9 @@ export const initAuthState: AuthState = {
     response: [
       {
         id: "",
-        phoneNo: "",
-        detailed_address: "",
+        name: "",
+        phoneNumber: "",
+        detailedAddress: "",
         isDefaultAddress: false,
         barangayId: 0,
         userId: 0,
