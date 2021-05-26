@@ -6,7 +6,7 @@
  */
 
 import React, { FC, useState, useRef } from "react";
-import {Image, View } from "react-native";
+import { Image, View } from "react-native";
 import { DIMENS } from "@app/styles";
 import Carousel, { Pagination } from "react-native-snap-carousel";
 import {
@@ -20,7 +20,7 @@ import BannerStyles from "./styles";
 
 const Banner: FC<PropsType> = (props) => {
   const { carouselData } = props;
-  const SLIDER_WIDTH = DIMENS.screenWidth
+  const SLIDER_WIDTH = DIMENS.screenWidth;
 
   const ITEM_WIDTH = SLIDER_WIDTH;
 
