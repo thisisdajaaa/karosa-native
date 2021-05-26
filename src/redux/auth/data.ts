@@ -1,5 +1,3 @@
-import { ENUM } from "@app/constants";
-
 import { AuthState } from "./models";
 
 export const initAuthState: AuthState = {
@@ -9,13 +7,7 @@ export const initAuthState: AuthState = {
   },
   loginResponse: {
     response: {
-      id: "",
-      email: "",
-      fullName: "",
-      phoneNo: "",
-      username: "",
-      gender: ENUM.Gender.Other,
-      avatar: {},
+      isLoggedIn: false,
     },
     isLoading: false,
   },

@@ -29,17 +29,13 @@ export const authEntryContext = produce(
 );
 
 export const loginResponse = produce(
-  (
-    draft: Draft<ResponseState<models.LoginResponse>>,
-    action: ActionType<typeof actions>
-  ) => {
+  (draft: Draft<models.LoginResponse>, action: ActionType<typeof actions>) => {
     switch (action.type) {
       case getType(actions.callLoginApi.request):
-        draft.response = data.initAuthState.loginResponse.response;
         draft.isLoading = true;
         return draft;
       case getType(actions.callLoginApi.success):
-        draft.response = action.payload;
+        draft.response.isLoggedIn = true;
         draft.isLoading = false;
         return draft;
       case getType(actions.callLoginApi.failure):

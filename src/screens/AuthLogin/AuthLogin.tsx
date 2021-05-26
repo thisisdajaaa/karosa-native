@@ -15,6 +15,7 @@ import {
   useAuth,
   useMemoizedSelector,
   useMount,
+  useToast,
   useUpdateEffect,
 } from "@app/hooks";
 import type { PropsType as FormButtonProps } from "@app/molecules/FormButton/types";
@@ -28,6 +29,7 @@ const AuthLoginScreen: FC = () => {
 
   const { navigate } = useNavigation();
   const { isLoggedIn } = useAuth();
+  const { showToast, clearToastQueue } = useToast();
 
   const callLoginApi = useCallback(
     (request: LoginRequest) => dispatch(actions.callLoginApi.request(request)),
@@ -41,10 +43,11 @@ const AuthLoginScreen: FC = () => {
 
   const loginResponse = useMemoizedSelector(selectors.getLoginResponse);
 
-  const responseError = loginResponse.error?.message;
+  const responseError = loginResponse.error;
 
   useUpdateEffect(() => {
     if (isLoggedIn) {
+      clearToastQueue();
       navigate(routes.ACCOUNTS_MAIN);
     }
   }, [isLoggedIn]);
@@ -63,7 +66,7 @@ const AuthLoginScreen: FC = () => {
   const formikBag = useFormik<LoginRequest>({
     initialValues: formInitValues,
     validateOnChange: true,
-    validateOnBlur: true,
+    validateOnBlur: false,
     validationSchema: LoginValidationSchema,
     onSubmit: handleSubmit,
   });
@@ -71,11 +74,12 @@ const AuthLoginScreen: FC = () => {
   useMount(() => setAuthBack(false));
 
   useUpdateEffect(() => {
-    formikBag.setFieldError("password", "");
-
-    if (responseError && !loginResponse.isLoading) {
-      formikBag.setFieldError("identifier", " ");
-      formikBag.setFieldError("password", responseError);
+    if (responseError === 400 && !loginResponse.isLoading && !isLoggedIn) {
+      showToast({
+        message: "Invalid Account or Password.",
+        autoHideDuration: 3000,
+        type: "error",
+      });
     }
   }, [responseError, loginResponse.isLoading]);
 

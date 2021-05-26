@@ -17,7 +17,7 @@ import {
 } from "react-native";
 import { theme } from "@app/styles";
 import { LoginRequest } from "@app/redux/auth/models";
-import { useMount } from "@app/hooks";
+import { useFieldError, useMount } from "@app/hooks";
 import { getPlatform } from "@app/utils";
 import Text from "@app/atoms/Text";
 import Header from "@app/molecules/Header";
@@ -34,6 +34,9 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
   const { errors, touched } = useFormikContext<LoginRequest>();
 
   const isIOS = getPlatform.getInstance() === "ios";
+
+  const { isError: identifierHasError } = useFieldError("identifier");
+  const { isError: passwordHasError } = useFieldError("password");
 
   const imageHeight = useRef(new Animated.Value(IMAGE_HEIGHT.REGULAR)).current;
   const imageWidth = useRef(new Animated.Value(IMAGE_WIDTH.REGULAR)).current;
@@ -112,7 +115,7 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
               height: imageHeight,
               width: imageWidth,
             }}
-            source={require("../../../../assets/logo-red.png")}
+            source={require("../../../assets/images/karosa.png")}
             resizeMode="contain"
           />
         </View>
@@ -133,9 +136,11 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
           inputContainerStyle={hasFieldError("identifier")}
         />
 
-        <View style={AuthLoginStyles.validationContainer}>
-          <ValidationMessage name="identifier" />
-        </View>
+        {identifierHasError && (
+          <View style={AuthLoginStyles.validationContainer}>
+            <ValidationMessage name="identifier" />
+          </View>
+        )}
 
         <FormInput
           name="password"
@@ -147,9 +152,11 @@ const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
           inputContainerStyle={hasFieldError("password")}
         />
 
-        <View style={AuthLoginStyles.validationContainer}>
-          <ValidationMessage name="password" />
-        </View>
+        {passwordHasError && (
+          <View style={AuthLoginStyles.validationContainer}>
+            <ValidationMessage name="password" />
+          </View>
+        )}
 
         <FormButton {...loginButtonProps} />
         <TouchableOpacity onPress={onForgot}>

@@ -4,7 +4,6 @@ import { ResponseError } from "../api-models/common";
 import * as types from "./types";
 import {
   LoginRequest,
-  LoginResponse,
   RegisterRequest,
   ForgotRequest,
   ForgotResponse,
@@ -12,6 +11,7 @@ import {
   NewAddressRequest,
   NewAddressResponse,
   RegisterResponse,
+  LoginResponse,
 } from "./models";
 
 export const setAuthBack = createAction(

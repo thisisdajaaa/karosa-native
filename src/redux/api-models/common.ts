@@ -8,7 +8,7 @@ export type ResponseError = {
 export type ResponseState<T> = {
   response: T;
   isLoading: boolean;
-  error?: ResponseError;
+  error?: ResponseError | number;
 };
 
 export type Audit = {

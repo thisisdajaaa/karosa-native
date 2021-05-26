@@ -9,6 +9,7 @@ import React, { FC } from "react";
 import { useField } from "formik";
 import { ListItem } from "react-native-elements";
 import { View } from "react-native";
+import { useFieldError } from "@app/hooks";
 import Text from "@app/atoms/Text";
 import FormInput from "@app/molecules/FormInput";
 import ValidationMessage from "@app/molecules/ValidationMessage";
@@ -29,6 +30,7 @@ const VariationOne: FC<PropsType> = (props) => {
   } = props;
 
   const [, meta] = useField(name);
+  const { isError } = useFieldError(name);
   const currentLength = String(meta.value).length;
 
   return (
@@ -57,7 +59,7 @@ const VariationOne: FC<PropsType> = (props) => {
           />
         </View>
 
-        {meta.error && (
+        {isError && (
           <ListItem.Content style={ListInputStyles.errorContainer}>
             <ValidationMessage name={name} />
           </ListItem.Content>

@@ -1,5 +1,5 @@
 {
-  "login": "/v1/auth/login",
+  "login": "/api/authentication/login",
   "addresses": "/v1/users/addresses",
   "regions": "/v1/addresses/regions",
   "shopInfo": "/v1/users/shop",
