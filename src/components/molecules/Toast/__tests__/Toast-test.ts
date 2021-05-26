@@ -1,6 +1,6 @@
 /**
  *
- * ShopAddress Test
+ * Toast Test
  * @format
  *
  */
@@ -8,12 +8,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import ShopAddress from '../ShopAddress';
+import Toast from '../Toast';
 
-test('ShopAddress', () => {
+test('Toast', () => {
   const tree = renderer
     .create(
-      <ShopAddress />
+      <Toast />
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

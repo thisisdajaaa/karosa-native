@@ -41,7 +41,7 @@ const AuthMainTemplate: FC<PropsType> = (props: PropsType) => {
         <View style={AuthMainStyles.logoContainer}>
           <Image
             imageStyle={AuthMainStyles.logo}
-            source={require("../../../../assets/logo-red.png")}
+            source={require("../../../assets/images/karosa.png")}
             resizeMode="contain"
           />
         </View>

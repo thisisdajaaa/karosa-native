@@ -6,7 +6,6 @@ import * as newAddress from "../api-models/new-address";
 import { ResponseState } from "../api-models/common";
 
 export type LoginRequest = login.Request;
-export type LoginResponse = login.Response;
 export type ForgotRequest = forgot.Request;
 export type ForgotResponse = forgot.Response;
 export type MyAddressResponse = myAddress.Response;
@@ -20,9 +19,11 @@ export type AuthEntryContext = {
   isBack: boolean;
 };
 
+export type LoginResponse = ResponseState<{ isLoggedIn: boolean }>;
+
 export type AuthState = {
   authEntryContext: AuthEntryContext;
-  loginResponse: ResponseState<LoginResponse>;
+  loginResponse: LoginResponse;
   forgotResponse: ResponseState<ForgotResponse>;
   myAddressResponse: ResponseState<MyAddressResponse>;
   newAddressResponse: ResponseState<NewAddressResponse>;

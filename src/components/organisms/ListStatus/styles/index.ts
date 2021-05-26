@@ -10,7 +10,6 @@ import { DIMENS, SPACING, theme } from "@app/styles";
 const ListStatusStyles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    height: DIMENS.screenHeight * 0.028,
     justifyContent: "flex-start",
     alignItems: "center",
   },

@@ -3,8 +3,7 @@ import { Provider } from "react-redux";
 import LoadAssets from "@app/components/load-assets";
 import BaseNavigator from "@app/navigators/index";
 import configureStore from "@app/redux/store";
-
-import "@app/config/i18n";
+import ToastProvider from "@app/components/molecules/Toast/context/ToastProvider";
 
 const fonts = {
   "SFProText-Bold": require("./src/assets/fonts/SF-Pro-Text-Bold.otf"),
@@ -17,9 +16,11 @@ export const store = configureStore({});
 const App = () => {
   return (
     <Provider store={store}>
-      <LoadAssets fonts={fonts}>
-        <BaseNavigator />
-      </LoadAssets>
+      <ToastProvider>
+        <LoadAssets fonts={fonts}>
+          <BaseNavigator />
+        </LoadAssets>
+      </ToastProvider>
     </Provider>
   );
 };

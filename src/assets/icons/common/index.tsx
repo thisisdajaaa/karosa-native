@@ -24,6 +24,7 @@ import ToPay from "./to-pay.svg";
 import ToRate from "./to-rate.svg";
 import ToReceive from "./to-receive.svg";
 import ToShip from "./to-ship.svg";
+import Warning from "./warning.svg";
 
 const CommonIcons = (
   name: string,
@@ -58,6 +59,7 @@ const CommonIcons = (
     toRate: <ToRate style={extraStyle} height={height} width={width} />,
     toReceive: <ToReceive style={extraStyle} height={height} width={width} />,
     toShip: <ToShip style={extraStyle} height={height} width={width} />,
+    warning: <Warning style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];

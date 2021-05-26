@@ -28,6 +28,7 @@ const Input: FC<PropsType> = (props) => {
     containerStyle,
     autoCompleteType,
     autoCorrect,
+    onEndEditing,
   } = props;
 
   return (
@@ -38,7 +39,8 @@ const Input: FC<PropsType> = (props) => {
       multiline={multiline}
       returnKeyType={keyboardType === "number-pad" ? "done" : "default"}
       inputContainerStyle={[InputStyles.inputContainer, inputContainerStyle]}
-      inputStyle={inputStyle}
+      inputStyle={inputStyle as never}
+      onEndEditing={onEndEditing}
       autoCorrect={autoCorrect}
       placeholderTextColor={placeholderColor}
       keyboardType={keyboardType}
