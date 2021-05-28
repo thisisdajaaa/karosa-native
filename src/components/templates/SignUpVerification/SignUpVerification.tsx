@@ -1,93 +1,75 @@
-import React, { useEffect } from "react";
-import { TouchableOpacity } from "react-native";
-import { FormikContext, useFormik } from "formik";
-import {
-  NavigationContext,
-  useNavigation,
-  useRoute,
-} from "@react-navigation/native";
-import { FormPassword } from "@app/components/formik/form-password";
-import { SubmitButton } from "@app/components/formik/submit-button";
-import { BaseText } from "@app/components/base-text";
-import { Screen } from "@app/components/base-screen";
-import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
-import { Props as FormPasswordProps } from "@app/components/formik/form-password/types";
-import { Props as ScreenProps } from "@app/components/base-screen/types";
-import routes from "@app/navigators/routes";
+import React from "react";
+import { KeyboardAvoidingView, View } from "react-native";
+import { useRoute } from "@react-navigation/native";
+import FormPassword from "@app/molecules/FormPassword";
+import FormButton from "@app/molecules/FormButton";
+import Text from "@app/atoms/Text";
 
 import type { PropsType } from "./types";
 import SignUpVerificationStyles from "./styles";
-import { validationSchema } from "./validation";
+import { theme } from "@app/styles";
+import Header from "@app/molecules/Header";
+import { formatPhoneNumber, getPlatform } from "@app/utils";
 
-const VerificationScreen: React.FC<PropsType> = (props: PropsType) => {
-  const { nextButtonProps, verificationNumberProps } = props;
-  const { goBack, navigate } = useNavigation();
+const SignUpVerificationTemplate: React.FC<PropsType> = (props: PropsType) => {
+  const { onHelp, onBack } = props;
   const { values }: any = useRoute().params;
 
-  useEffect(() => {
-    console.log(values.identifier);
-  }, []);
-
-  const formikBag = useFormik({
-    initialValues: { otp: "", phoneDigits: values.identifier },
-    validateOnChange: true,
-    validateOnBlur: true,
-    onSubmit: (values) => {
-      navigate("Stack", { screen: routes.AUTH_PASSWORD, params: { values } });
-      console.log(values.otp);
-    },
-    validationSchema,
-  });
-
-  const screenProps: ScreenProps = {
-    header: {
-      iconName: "arrow-back",
-      borderBottom: false,
-      title: "Sign up",
-      text: {
-        right: "Help",
-      },
-      press: {
-        left: () => goBack(),
-        right: () => navigate(routes.AUTH_HELP),
-      },
-    },
-    customStyles: styles.container,
-  };
-
-  const submitButtonProps: SubmitButtonProps = {
-    title: "Next",
-    margin: 6,
-  };
-
-  const otpProps: FormPasswordProps = {
-    name: "otp",
-    inputLength: 6,
-    style: styles.container,
-  };
+  const isIOS = getPlatform.getInstance() === "ios";
 
   return (
-    <FormikContext.Provider value={formikBag}>
-      <Screen {...screenProps}>
-        <BaseText customStyles={SignUpVerificationStyles.txtVerificationCode}>
-          Enter verification code:
-        </BaseText>
-        <BaseText style={SignUpVerificationStyles.txtSMS}>
-          You verification code is sent by SMS to: {values.identifier}
-        </BaseText>
-        <FormPassword {...verificationNumberProps} />
-        <SubmitButton {...nextButtonProps} />
-        <BaseText style={SignUpVerificationStyles.txtSMS}>
-          Did not receive the code?
-          <TouchableOpacity
-            style={SignUpVerificationStyles.txtResend}
-            onPress={() => console.log("Resend")}>
-            <BaseText>Resend</BaseText>
-          </TouchableOpacity>
-        </BaseText>
-      </Screen>
-    </FormikContext.Provider>
+    <>
+      <Header
+        leftComponent={{
+          icon: "arrow-back",
+          color: theme.colors.primary,
+          onPress: onBack,
+        }}
+        centerComponent={{
+          text: "Sign up",
+          style: SignUpVerificationStyles.txtHeader,
+        }}
+        rightComponent={{
+          text: "Help",
+          style: SignUpVerificationStyles.txtHelp,
+          onPress: onHelp,
+        }}
+      />
+      <KeyboardAvoidingView
+        style={SignUpVerificationStyles.container}
+        behavior={isIOS ? "padding" : undefined}>
+        <Text
+          text={"Enter verification code"}
+          textStyle={SignUpVerificationStyles.txtVerificationCode}
+        />
+        <Text
+          text={"Your verification code is sent by SMS to "}
+          textStyle={SignUpVerificationStyles.txtSMS}
+        />
+        <Text
+          text={formatPhoneNumber(values.identifier)}
+          textStyle={SignUpVerificationStyles.txtSMSNumber}
+        />
+
+        <FormPassword name="otp" inputLength={6} />
+
+        <View style={SignUpVerificationStyles.btnContainer}>
+          <FormButton title="Next" />
+        </View>
+
+        <View style={{ flexDirection: "row", marginTop: 16 }}>
+          <Text
+            text={"Did not receive the code?"}
+            textStyle={SignUpVerificationStyles.txtDidNotReceiveCode}
+          />
+          <Text
+            text={" Resend"}
+            textStyle={SignUpVerificationStyles.txtResend}
+          />
+        </View>
+      </KeyboardAvoidingView>
+    </>
   );
 };
 
-export default VerificationScreen;
+export default SignUpVerificationTemplate;

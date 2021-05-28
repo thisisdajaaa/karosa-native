@@ -20,18 +20,35 @@ const SignUpVerificationStyles = StyleSheet.create({
     fontWeight: "500",
     marginVertical: 6,
   },
+  txtHeader: {
+    ...theme.textBold,
+    fontWeight: "700",
+  },
+  btnContainer: {
+    marginTop: 18,
+  },
+  txtHelp: { ...theme.textRegular, color: theme.colors.primary },
   txtSMS: {
     ...theme.textRegular,
     color: theme.colors.black,
     fontWeight: "300",
-    marginVertical: 6,
+    marginTop: 6,
+  },
+  txtDidNotReceiveCode: {
+    ...theme.textRegular,
+    color: theme.colors.black,
+    fontWeight: "300",
+  },
+  txtSMSNumber: {
+    ...theme.textBold,
+    color: theme.colors.black,
+    fontWeight: "700",
+    marginBottom: 30,
   },
   txtResend: {
-    ...theme.textRegular,
+    ...theme.textBold,
     color: theme.colors.green10,
     fontWeight: "bold",
-    marginVertical: 6,
-    marginHorizontal: 5,
   },
 });
 

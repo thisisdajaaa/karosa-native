@@ -5,48 +5,53 @@
  *
  */
 
-import React, { FC } from "react";
+import React, { FC, useCallback } from "react";
 import SignUpPhoneNumberTemplate from "@app/templates/SignUpPhoneNumber";
-import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
-import { PropsType as FormInputProps } from "@app/molecules/FormInput/types";
-import { FormikProvider,useFormik } from "formik";
+import { FormikProvider, useFormik } from "formik";
 import { useNavigation } from "@react-navigation/native";
 import routes from "@app/navigators/routes";
 
-import validationSchema from "./validation"
+import validationSchema from "./validation";
+import { useDispatch } from "react-redux";
+import actions from "@app/redux/auth/actions";
+import { useMount } from "@app/hooks";
 
 const SignUpPhoneNumber: FC = () => {
-  const { goBack, navigate } = useNavigation();
+  const dispatch = useDispatch();
+  const { navigate, goBack } = useNavigation();
+
+  const setAuthBack = useCallback(
+    (value: boolean) => dispatch(actions.setAuthBack(value)),
+    [dispatch]
+  );
+
+  useMount(() => setAuthBack(false));
 
   const formikBag = useFormik({
     initialValues: { identifier: "" },
     validateOnChange: true,
-    validateOnBlur: true,
+    validateOnBlur: false,
     onSubmit: (values) => {
       navigate("Stack", {
-        screen: routes.AUTH_VERIFICATION,
+        screen: routes.AUTH_OTP,
         params: { values },
       });
-      console.log(values);
     },
     validationSchema,
   });
 
-  const identifierProps: FormInputProps = {
-    name: "identifier",
-    placeholder: "Phone",
-  };
+  const handleBack = useCallback(() => {
+    setAuthBack(true);
+    goBack();
+  }, [goBack]);
 
-  const nextButtonProps: SubmitButtonProps = {
-    title: "Next",
-  };
+  const handleHelp = useCallback(() => {
+    navigate(routes.AUTH_HELP);
+  }, [navigate]);
 
   return (
     <FormikProvider value={formikBag}>
-      <SignUpPhoneNumberTemplate
-        nextButtonProps={nextButtonProps}
-        phoneNumberProps={identifierProps}
-      />
+      <SignUpPhoneNumberTemplate onBack={handleBack} onHelp={handleHelp} />
     </FormikProvider>
   );
 };

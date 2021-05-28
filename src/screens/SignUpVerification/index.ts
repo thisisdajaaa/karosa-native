@@ -1,1 +1,1 @@
-export { default } from './SignUpVerification';
+export { default } from "./SignUpVerification";

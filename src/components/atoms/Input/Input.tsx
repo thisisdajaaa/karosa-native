@@ -17,7 +17,7 @@ const Input: FC<PropsType> = (props) => {
     value,
     disabled,
     inputContainerStyle,
-    keyboardType,
+    keyboardType = "default",
     numberOfLines,
     onChange,
     multiline,
@@ -37,7 +37,11 @@ const Input: FC<PropsType> = (props) => {
       placeholder={placeholder}
       disabled={disabled}
       multiline={multiline}
-      returnKeyType={keyboardType === "number-pad" ? "done" : "default"}
+      returnKeyType={
+        keyboardType === "number-pad" || keyboardType === "default"
+          ? "done"
+          : "default"
+      }
       inputContainerStyle={[InputStyles.inputContainer, inputContainerStyle]}
       inputStyle={inputStyle as never}
       onEndEditing={onEndEditing}

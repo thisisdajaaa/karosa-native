@@ -9,4 +9,5 @@ export type PropsType = {
   onGoogleLogin(): void;
   onLogin(): void;
   onHelp(): void;
+  onSignUp(): void;
 };

@@ -7,19 +7,14 @@
 import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
-const SignUpPhonenumberStyles = StyleSheet.create({
+const SignUpPasswordStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     padding: 20,
     backgroundColor: theme.colors.white,
   },
-  txtHeader: {
-    ...theme.textBold,
-    fontWeight: "700",
-  },
-  txtHelp: { ...theme.textRegular, color: theme.colors.primary },
-  txtEnterPhoneNumber: {
+  txtSetPass: {
     ...theme.textTitle,
     color: theme.colors.black,
     fontWeight: "500",
@@ -29,8 +24,8 @@ const SignUpPhonenumberStyles = StyleSheet.create({
     ...theme.textRegular,
     color: theme.colors.black,
     fontWeight: "300",
-    marginVertical: 12,
+    marginVertical: 6,
   },
 });
 
-export default SignUpPhonenumberStyles;
+export default SignUpPasswordStyles;

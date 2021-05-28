@@ -12,17 +12,12 @@ import Header from "@app/molecules/Header";
 import AddressDetails from "@app/molecules/AddressDetails";
 
 import type { PropsType } from "./types";
-import { formatPhoneNumber } from "./config";
 import ShopAddressStyles from "./styles";
+import { formatPhoneNumber } from "@app/utils";
 
 const ShopAddressTemplate: FC<PropsType> = (props) => {
-  const {
-    navigation,
-    name,
-    phoneNo,
-    detailedAddress,
-    isDefaultAddress,
-  } = props;
+  const { navigation, name, phoneNo, detailedAddress, isDefaultAddress } =
+    props;
 
   const getHeader = () => {
     return (
