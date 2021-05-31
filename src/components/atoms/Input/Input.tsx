@@ -26,6 +26,7 @@ const Input: FC<PropsType> = (props) => {
     inputStyle,
     placeholderColor,
     containerStyle,
+    maxLength,
     autoCompleteType,
     autoCorrect,
     onEndEditing,
@@ -52,6 +53,7 @@ const Input: FC<PropsType> = (props) => {
       onChangeText={onChange}
       autoCompleteType={autoCompleteType}
       autoCapitalize={autoCapitalize}
+      maxLength={maxLength}
       secureTextEntry={secureTextEntry}
       containerStyle={[InputStyles.container, containerStyle]}
     />

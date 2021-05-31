@@ -17,7 +17,7 @@ import type { PropsType } from "./types";
 import { IMAGE_SIZE } from "./config";
 import AuthHelpStyles from "./styles";
 
-const AuthHelpTemplate: FC<PropsType> = (props: PropsType) => {
+const AuthHelpTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
 
   const icon = (name: string) => {

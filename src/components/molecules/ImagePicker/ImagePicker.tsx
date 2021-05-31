@@ -8,7 +8,6 @@
 import React, { FC, useEffect } from "react";
 import { Alert, Platform, View, TouchableWithoutFeedback } from "react-native";
 import * as RnImagePicker from "expo-image-picker";
-import * as Permissions from "expo-permissions";
 
 import type { PropsType } from "./types";
 import { ASPECT_RATIO, QUALITY } from "./config";
@@ -22,7 +21,9 @@ const ImagePicker: FC<PropsType> = (props) => {
   useEffect(() => {
     (async () => {
       if (Platform.OS !== "web") {
-        const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+        const { status } =
+          await RnImagePicker.requestMediaLibraryPermissionsAsync();
+
         if (status !== "granted") {
           Alert.alert(
             "Unauthorized Permission",

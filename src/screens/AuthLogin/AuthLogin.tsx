@@ -74,7 +74,7 @@ const AuthLoginScreen: FC = () => {
   useMount(() => setAuthBack(false));
 
   useUpdateEffect(() => {
-    if (responseError === 400 && !loginResponse.isLoading && !isLoggedIn) {
+    if (responseError === 401 && !loginResponse.isLoading && !isLoggedIn) {
       showToast({
         message: "Invalid Account or Password.",
         autoHideDuration: 3000,

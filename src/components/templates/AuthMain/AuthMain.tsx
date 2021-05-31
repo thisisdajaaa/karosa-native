@@ -16,7 +16,7 @@ import Image from "@app/atoms/Image";
 import type { PropsType } from "./types";
 import AuthMainStyles from "./styles";
 
-const AuthMainTemplate: FC<PropsType> = (props: PropsType) => {
+const AuthMainTemplate: FC<PropsType> = (props) => {
   const { onLogin, onFBLogin, onGoogleLogin, onHelp, onSignUp } = props;
 
   const getHeader = () => {

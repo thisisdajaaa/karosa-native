@@ -40,7 +40,7 @@ const AuthForgotScreen: FC = () => {
   const formikBag = useFormik<ForgotRequest>({
     initialValues: formInitValues,
     validateOnChange: true,
-    validateOnBlur: true,
+    validateOnBlur: false,
     onSubmit: handleSubmit,
     validationSchema: ForgotValidationSchema,
   });

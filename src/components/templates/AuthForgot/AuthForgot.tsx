@@ -7,9 +7,10 @@
 
 import React, { FC } from "react";
 import { useFormikContext } from "formik";
-import { View } from "react-native";
+import { KeyboardAvoidingView, View } from "react-native";
 import { theme } from "@app/styles";
 import { ForgotRequest } from "@app/redux/auth/models";
+import { getPlatform } from "@app/utils";
 import FormInput from "@app/molecules/FormInput";
 import FormButton from "@app/molecules/FormButton";
 import Text from "@app/atoms/Text";
@@ -19,9 +20,11 @@ import ValidationMessage from "@app/molecules/ValidationMessage";
 import type { PropsType } from "./types";
 import AuthForgotStyles from "./styles";
 
-const AuthForgotTemplate: FC<PropsType> = (props: PropsType) => {
+const AuthForgotTemplate: FC<PropsType> = (props) => {
   const { forgotButtonProps, onBack, onHelp } = props;
   const { errors, touched } = useFormikContext<ForgotRequest>();
+
+  const isIOS = getPlatform.getInstance() === "ios";
 
   const hasFieldError = (key: keyof ForgotRequest) => {
     return touched[key] && errors[key] ? AuthForgotStyles.errorContainer : {};
@@ -46,7 +49,9 @@ const AuthForgotTemplate: FC<PropsType> = (props: PropsType) => {
 
   const getContent = () => {
     return (
-      <View style={AuthForgotStyles.container}>
+      <KeyboardAvoidingView
+        style={AuthForgotStyles.container}
+        behavior={isIOS ? "padding" : undefined}>
         <Text
           text="Forgot Password?"
           textStyle={AuthForgotStyles.txtForgotPass}
@@ -70,7 +75,7 @@ const AuthForgotTemplate: FC<PropsType> = (props: PropsType) => {
         </View>
 
         <FormButton {...forgotButtonProps} />
-      </View>
+      </KeyboardAvoidingView>
     );
   };
 

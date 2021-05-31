@@ -22,9 +22,9 @@ import ShopPaymentScreen from "@app/screens/ShopPayment";
 import ShopAddressScreen from "@app/screens/ShopAddress";
 import ShopEditAddressScreen from "@app/screens/ShopEditAddress";
 import ProductDetailScreen from "@app/screens/ShopProductDetails";
-import SignUpPhoneNumberScreen from "@app/screens/SignUpPhoneNumber";
-import SignUpPasswordScreen from "@app/screens/SignUpPassword";
-import SignUpVerificationScreen from "@app/screens/SignUpVerification";
+import AuthPhoneNumberScreen from "@app/screens/AuthPhoneNumber";
+import AuthPasswordScreen from "@app/screens/AuthPassword";
+import AuthVerificationScreen from "@app/screens/AuthVerification";
 
 import { TabNavigator } from "./tab-navigator";
 
@@ -48,10 +48,10 @@ const StackNavigator: React.FC = () => {
       />
       <Stack.Screen
         name="SignUp Phonenumber"
-        component={SignUpPhoneNumberScreen}
+        component={AuthPhoneNumberScreen}
       />
-      <Stack.Screen name="SignUp Password" component={SignUpPasswordScreen} />
-      <Stack.Screen name="SignUp OTP" component={SignUpVerificationScreen} />
+      <Stack.Screen name="SignUp Password" component={AuthPasswordScreen} />
+      <Stack.Screen name="SignUp OTP" component={AuthVerificationScreen} />
       <Stack.Screen name="New Address" component={NewAddressScreen} />
       <Stack.Screen name="My Address" component={MyAddressScreen} />
       <Stack.Screen name="Shop Main" component={ShopMainScreen} />
