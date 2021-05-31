@@ -4,8 +4,13 @@ import useMemoizedSelector from "./useMemoizedSelector";
 
 const useAuth = () => {
   const loginResponse = useMemoizedSelector(selectors.getLoginResponse);
+  const registerResponse = useMemoizedSelector(
+    selectors.getRegisterByPhoneResponse
+  );
 
-  const isLoggedIn = loginResponse.response.isLoggedIn;
+  const isLoggedIn = registerResponse.response.isLoggedIn
+    ? registerResponse.response.isLoggedIn
+    : loginResponse.response.isLoggedIn;
 
   return { isLoggedIn };
 };

@@ -23,6 +23,10 @@ const AuthPasswordStyles = StyleSheet.create({
     right: "5%",
     top: "25%",
   },
+  validationContainer: {
+    position: "relative",
+    bottom: "2.2%",
+  },
   txtToggle: {
     ...theme.textLightBold,
     color: theme.colors.primary,

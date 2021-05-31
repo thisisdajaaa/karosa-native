@@ -5,7 +5,7 @@
  *
  */
 
-import React from "react";
+import React, { FC } from "react";
 import { KeyboardAvoidingView, View } from "react-native";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { formatPhoneNumber, getPlatform } from "@app/utils";
@@ -20,7 +20,7 @@ import type { PropsType } from "./types";
 import { OTP_LENGTH } from "./config";
 import AuthVerificationStyles from "./styles";
 
-const AuthVerificationTemplate: React.FC<PropsType> = (props) => {
+const AuthVerificationTemplate: FC<PropsType> = (props) => {
   const { onHelp, onBack } = props;
   const { params } =
     useRoute<RouteProp<AuthRegistrationParams, "AuthPhoneNumber">>();

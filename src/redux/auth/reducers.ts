@@ -29,7 +29,10 @@ export const authEntryContext = produce(
 );
 
 export const loginResponse = produce(
-  (draft: Draft<models.LoginResponse>, action: ActionType<typeof actions>) => {
+  (
+    draft: Draft<models.LoggedInResponse>,
+    action: ActionType<typeof actions>
+  ) => {
     switch (action.type) {
       case getType(actions.callLoginApi.request):
         draft.isLoading = true;
@@ -49,21 +52,20 @@ export const loginResponse = produce(
   data.initAuthState.loginResponse
 );
 
-export const registerResponse = produce(
+export const registerByPhoneNumberResponse = produce(
   (
-    draft: Draft<ResponseState<models.RegisterResponse>>,
+    draft: Draft<models.LoggedInResponse>,
     action: ActionType<typeof actions>
   ) => {
     switch (action.type) {
-      case getType(actions.callRegisterApi.request):
-        draft.response = data.initAuthState.registerResponse.response;
+      case getType(actions.callRegisterByPhoneNumberApi.request):
         draft.isLoading = true;
         return draft;
-      case getType(actions.callRegisterApi.success):
-        draft.response = action.payload;
+      case getType(actions.callRegisterByPhoneNumberApi.success):
+        draft.response.isLoggedIn = true;
         draft.isLoading = false;
         return draft;
-      case getType(actions.callRegisterApi.failure):
+      case getType(actions.callRegisterByPhoneNumberApi.failure):
         draft.error = action.payload;
         draft.isLoading = false;
         return draft;
@@ -71,7 +73,7 @@ export const registerResponse = produce(
         return draft;
     }
   },
-  data.initAuthState.registerResponse
+  data.initAuthState.registerByPhoneNumberResponse
 );
 
 export const forgotResponse = produce(
@@ -151,6 +153,7 @@ const reducer = combineReducers({
   authEntryContext,
   loginResponse,
   forgotResponse,
+  registerByPhoneNumberResponse,
   myAddressResponse,
   newAddressResponse,
 });

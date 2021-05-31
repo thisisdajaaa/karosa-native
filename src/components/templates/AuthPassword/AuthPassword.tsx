@@ -5,7 +5,7 @@
  *
  */
 
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import { getPlatform } from "@app/utils";
 import { theme } from "@app/styles";
+import { useFieldError } from "@app/hooks";
+import ValidationMessage from "@app/molecules/ValidationMessage";
 import FormInput from "@app/molecules/FormInput";
 import FormButton from "@app/molecules/FormButton";
 import Text from "@app/atoms/Text";
@@ -22,8 +24,10 @@ import type { PropsType } from "./types";
 import { PASSWORD_LENGTH } from "./config";
 import AuthPasswordScreenStyles from "./styles";
 
-const AuthPasswordTemplate: React.FC<PropsType> = (props) => {
-  const { onBack, onHelp } = props;
+const AuthPasswordTemplate: FC<PropsType> = (props) => {
+  const { onBack, onHelp, registerByPhoneButtonProps } = props;
+
+  const { isError } = useFieldError("password");
 
   const [securePassword, setSecurePassword] = useState<boolean>(true);
 
@@ -67,6 +71,7 @@ const AuthPasswordTemplate: React.FC<PropsType> = (props) => {
             maxLength={PASSWORD_LENGTH}
             secureTextEntry={securePassword}
           />
+
           <TouchableWithoutFeedback
             onPress={() => setSecurePassword((value) => !value)}>
             <View style={AuthPasswordScreenStyles.toggleContainer}>
@@ -78,7 +83,13 @@ const AuthPasswordTemplate: React.FC<PropsType> = (props) => {
           </TouchableWithoutFeedback>
         </View>
 
-        <FormButton title="Next" />
+        {isError && (
+          <View style={AuthPasswordScreenStyles.validationContainer}>
+            <ValidationMessage name="password" />
+          </View>
+        )}
+
+        <FormButton {...registerByPhoneButtonProps} />
       </KeyboardAvoidingView>
     </>
   );

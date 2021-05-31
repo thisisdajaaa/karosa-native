@@ -5,20 +5,25 @@
  *
  */
 
-import React from "react";
-import { KeyboardAvoidingView } from "react-native";
+import React, { FC } from "react";
+import { KeyboardAvoidingView, View } from "react-native";
 import { theme } from "@app/styles";
 import { getPlatform } from "@app/utils";
+import { useFieldError } from "@app/hooks";
+import ValidationMessage from "@app/molecules/ValidationMessage";
 import FormInput from "@app/molecules/FormInput";
 import FormButton from "@app/molecules/FormButton";
 import Text from "@app/atoms/Text";
 import Header from "@app/molecules/Header";
 
 import type { PropsType } from "./types";
+import { PHONE_NUMBER_LENGTH } from "./config";
 import AuthPhoneNumberStyles from "./styles";
 
-const AuthPhoneNumberTemplate: React.FC<PropsType> = (props) => {
+const AuthPhoneNumberTemplate: FC<PropsType> = (props) => {
   const { onBack, onHelp } = props;
+
+  const { isError } = useFieldError("identifier");
 
   const isIOS = getPlatform.getInstance() === "ios";
 
@@ -55,7 +60,15 @@ const AuthPhoneNumberTemplate: React.FC<PropsType> = (props) => {
           name="identifier"
           placeholder="Phone number"
           keyboardType="number-pad"
+          maxLength={PHONE_NUMBER_LENGTH}
         />
+
+        {isError && (
+          <View style={AuthPhoneNumberStyles.validationContainer}>
+            <ValidationMessage name="identifier" />
+          </View>
+        )}
+
         <FormButton title="Next" />
       </KeyboardAvoidingView>
     </>

@@ -43,10 +43,9 @@ export const initAuthState: AuthState = {
     },
     isLoading: false,
   },
-  registerResponse: {
+  registerByPhoneNumberResponse: {
     response: {
-      username: "",
-      email: "",
+      isLoggedIn: false,
     },
     isLoading: false,
   },

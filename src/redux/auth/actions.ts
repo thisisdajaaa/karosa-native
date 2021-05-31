@@ -10,8 +10,7 @@ import {
   MyAddressResponse,
   NewAddressRequest,
   NewAddressResponse,
-  RegisterResponse,
-  LoginResponse,
+  LoggedInResponse,
 } from "./models";
 
 export const setAuthBack = createAction(
@@ -28,13 +27,13 @@ export const callLoginApi = createAsyncAction(
   types.ACT_LOGIN_REQUEST,
   types.ACT_LOGIN_SUCCESS,
   types.ACT_LOGIN_FAILURE
-)<LoginRequest, LoginResponse, ResponseError>();
+)<LoginRequest, LoggedInResponse, ResponseError>();
 
-export const callRegisterApi = createAsyncAction(
-  types.ACT_REGISTER_REQUEST,
-  types.ACT_REGISTER_SUCCESS,
-  types.ACT_REGISTER_FAILURE
-)<RegisterRequest, RegisterResponse, ResponseError>();
+export const callRegisterByPhoneNumberApi = createAsyncAction(
+  types.ACT_REGISTER_BY_PHONE_NUMBER_REQUEST,
+  types.ACT_REGISTER_BY_PHONE_NUMBER__SUCCESS,
+  types.ACT_RREGISTER_BY_PHONE_NUMBER__FAILURE
+)<RegisterRequest, LoggedInResponse, ResponseError>();
 
 export const callForgotApi = createAsyncAction(
   types.ACT_FORGOT_PASS_REQUEST,
@@ -61,7 +60,7 @@ const actions = {
   callForgotApi,
   callMyAddressApi,
   callNewAddressApi,
-  callRegisterApi,
+  callRegisterByPhoneNumberApi,
 };
 
 export default actions;
