@@ -7,11 +7,19 @@
     "ios": "expo start -c --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint --ext .ts,.tsx . --max-warnings 0",
     "tsc": "tsc",
     "ci": "yarn lint && yarn tsc",
     "generateComponent": "plop --plopfile generators/component.js",
-    "generateScreen": "plop --plopfile generators/screen.js"
+    "generateScreen": "plop --plopfile generators/screen.js",
+    "lint": "eslint --ignore-path .gitignore \"src/**/**/*.+(ts|js|tsx)\"",
+    "format": "prettier --ignore-path .gitignore \"src/**/**/*.+(ts|js|tsx)\" --write",
+    "postinstall": "husky install"
+  },
+  "lint-staged": {
+    "./src/**/**/*.{ts,js,jsx,tsx}": [
+      "yarn lint --fix",
+      "yarn format"
+    ]
   },
   "dependencies": {
     "@expo-google-fonts/caveat-brush": "^0.1.0",
@@ -79,6 +87,8 @@
   "devDependencies": {
     "@babel/core": "~7.9.0",
     "@babel/runtime": "^7.11.2",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@react-native-community/eslint-config": "~2.0.0",
     "@types/i18n-js": "^3.8.0",
     "@types/jest": "^26.0.14",
@@ -94,6 +104,8 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "babel-preset-expo": "8.3.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-import-resolver-babel-module": "^5.1.2",
@@ -106,11 +118,18 @@
     "eslint-plugin-react-native": "^3.10.0",
     "eslint-plugin-react-native-a11y": "^2.0.3",
     "eslint-plugin-testing-library": "^3.10.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "metro": "^0.58.0",
     "plop": "^2.7.4",
     "prettier": "^2.2.1",
     "react-native-svg-transformer": "^0.14.3",
     "tsconfig-paths": "^3.9.0",
     "typescript": "~4.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
