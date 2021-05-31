@@ -8,11 +8,11 @@
 import React, { FC, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { FormikContext, useFormik } from "formik";
-import routes from "@app/navigators/routes";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { actions } from "@app/redux/auth";
 import { RegisterRequest } from "@app/redux/auth/models";
 import { AuthRegistrationParams } from "@app/screens/AuthPhoneNumber/types";
+import routes from "@app/navigators/routes";
 import AuthPasswordTemplate from "@app/templates/AuthPassword";
 
 import validationSchema from "./validation";
