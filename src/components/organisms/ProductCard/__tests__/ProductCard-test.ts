@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import ProductCard from '../ProductCard';
+import ProductCard from "../ProductCard";
 
-test('ProductCard', () => {
-  const tree = renderer
-    .create(
-      <ProductCard />
-    )
-    .toJSON();
+test("ProductCard", () => {
+  const tree = renderer.create(<ProductCard />).toJSON();
   expect(tree).toMatchSnapshot();
 });

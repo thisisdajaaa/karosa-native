@@ -12,8 +12,7 @@ export const ListDisplay: React.FC<Props> = ({ text, style }) => {
       <View style={styles.detailsContainer}>
         <BaseText
           customStyles={[styles.left, style?.textStyle]}
-          numberOfLines={1}
-        >
+          numberOfLines={1}>
           {text.left}
         </BaseText>
       </View>
@@ -29,8 +28,7 @@ export const AddressList: React.FC<AddressProps> = ({ address, style }) => {
       <View style={styles.detailsContainer}>
         <BaseText
           customStyles={[styles.left, style?.textStyle]}
-          numberOfLines={1}
-        >
+          numberOfLines={1}>
           {address.name}
         </BaseText>
 

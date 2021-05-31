@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import FormSwitch from '../FormSwitch';
+import FormSwitch from "../FormSwitch";
 
-test('FormSwitch', () => {
-  const tree = renderer
-    .create(
-      <FormSwitch />
-    )
-    .toJSON();
+test("FormSwitch", () => {
+  const tree = renderer.create(<FormSwitch />).toJSON();
   expect(tree).toMatchSnapshot();
 });

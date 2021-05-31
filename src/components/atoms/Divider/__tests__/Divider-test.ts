@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import Divider from '../Divider';
+import Divider from "../Divider";
 
-test('Divider', () => {
-  const tree = renderer
-    .create(
-      <Divider />
-    )
-    .toJSON();
+test("Divider", () => {
+  const tree = renderer.create(<Divider />).toJSON();
   expect(tree).toMatchSnapshot();
 });

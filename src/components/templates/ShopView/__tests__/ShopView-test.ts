@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import ShopView from '../ShopView';
+import ShopView from "../ShopView";
 
-test('ShopView', () => {
-  const tree = renderer
-    .create(
-      <ShopView />
-    )
-    .toJSON();
+test("ShopView", () => {
+  const tree = renderer.create(<ShopView />).toJSON();
   expect(tree).toMatchSnapshot();
 });

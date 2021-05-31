@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import Input from '../Input';
+import Input from "../Input";
 
-test('Input', () => {
-  const tree = renderer
-    .create(
-      <Input />
-    )
-    .toJSON();
+test("Input", () => {
+  const tree = renderer.create(<Input />).toJSON();
   expect(tree).toMatchSnapshot();
 });

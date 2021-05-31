@@ -5,15 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import Home from '../Home';
+import Home from "../Home";
 
-test('Home', () => {
-  const tree = renderer.create(
-      <Home />
-    )
-    .toJSON();
+test("Home", () => {
+  const tree = renderer.create(<Home />).toJSON();
   expect(tree).toMatchSnapshot();
 });

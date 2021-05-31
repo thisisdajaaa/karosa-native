@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import ProductVariation from '../ProductVariation';
+import ProductVariation from "../ProductVariation";
 
-test('ProductVariation', () => {
-  const tree = renderer
-    .create(
-      <ProductVariation />
-    )
-    .toJSON();
+test("ProductVariation", () => {
+  const tree = renderer.create(<ProductVariation />).toJSON();
   expect(tree).toMatchSnapshot();
 });

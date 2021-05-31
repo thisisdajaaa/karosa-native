@@ -1,1 +1,1 @@
-export { default } from './ShopView';
+export { default } from "./ShopView";

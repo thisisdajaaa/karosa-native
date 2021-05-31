@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import FormButton from '../FormButton';
+import FormButton from "../FormButton";
 
-test('FormButton', () => {
-  const tree = renderer
-    .create(
-      <FormButton />
-    )
-    .toJSON();
+test("FormButton", () => {
+  const tree = renderer.create(<FormButton />).toJSON();
   expect(tree).toMatchSnapshot();
 });

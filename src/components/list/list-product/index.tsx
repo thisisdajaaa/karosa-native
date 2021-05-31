@@ -58,16 +58,14 @@ export const ListProduct: React.FC<Props> = ({ item, ActionButton }) => {
         <ListItem.Content style={styles.botContainer}>
           <TouchableOpacity
             style={styles.buttonContainer}
-            onPress={() => console.log("discontinue")}
-          >
+            onPress={() => console.log("discontinue")}>
             <AntDesign name="minuscircle" style={styles.discontinueIcon} />
             <BaseText style={styles.txtDiscontinue}>Discontinue</BaseText>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.buttonContainer}
-            onPress={() => console.log("edit")}
-          >
+            onPress={() => console.log("edit")}>
             <MaterialIcons name="edit" style={styles.editIcon} />
             <BaseText style={styles.txtEdit}>Edit</BaseText>
           </TouchableOpacity>

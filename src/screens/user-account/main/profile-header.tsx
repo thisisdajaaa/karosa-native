@@ -38,15 +38,13 @@ const ProfileHeader: React.FC = () => {
     <View style={styles.headerContainer}>
       <TouchableOpacity
         style={styles.settingsIconContainer}
-        onPress={() => navigate(routes.ACCOUNTS_SETTINGS)}
-      >
+        onPress={() => navigate(routes.ACCOUNTS_SETTINGS)}>
         <MaterialIcons name="settings" style={styles.commonIconHeader} />
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.messageIconContainer}
-        onPress={() => console.log("Messages")}
-      >
+        onPress={() => console.log("Messages")}>
         <MaterialIcons name="chat" style={styles.commonIconHeader} />
       </TouchableOpacity>
 

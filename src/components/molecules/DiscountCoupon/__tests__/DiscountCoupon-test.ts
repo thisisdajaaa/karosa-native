@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import DiscountCoupon from '../DiscountCoupon';
+import DiscountCoupon from "../DiscountCoupon";
 
-test('DiscountCoupon', () => {
-  const tree = renderer
-    .create(
-      <DiscountCoupon />
-    )
-    .toJSON();
+test("DiscountCoupon", () => {
+  const tree = renderer.create(<DiscountCoupon />).toJSON();
   expect(tree).toMatchSnapshot();
 });

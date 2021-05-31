@@ -1,1 +1,1 @@
-export { default } from './FormSwitch';
+export { default } from "./FormSwitch";
