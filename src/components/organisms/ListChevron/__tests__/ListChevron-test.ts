@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import ListChevron from '../ListChevron';
+import ListChevron from "../ListChevron";
 
-test('ListChevron', () => {
-  const tree = renderer
-    .create(
-      <ListChevron />
-    )
-    .toJSON();
+test("ListChevron", () => {
+  const tree = renderer.create(<ListChevron />).toJSON();
   expect(tree).toMatchSnapshot();
 });

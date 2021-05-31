@@ -1,11 +1,15 @@
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
-  identifier: Yup.string()
+  password: Yup.string()
     .required()
-    .label("Phone Number")
-    .max(11)
-    .matches(/^[0-9]+$/, "Must be only digits"),
+    .label("Password")
+    .min(8)
+    .max(16)
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
+      "Incorrect format"
+    ),
 });
 
 export default validationSchema;

@@ -16,8 +16,7 @@ export const AppButton: React.FC<Props> = ({
     <TouchableOpacity
       style={[styles.button, containerStyle]}
       onPress={onPress}
-      disabled={disabled}
-    >
+      disabled={disabled}>
       {icon?.left}
       <Text style={[styles.text, textStyle]}>{title}</Text>
       {icon?.right}

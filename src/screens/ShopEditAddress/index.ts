@@ -1,1 +1,1 @@
-export { default } from './ShopEditAddress';
+export { default } from "./ShopEditAddress";

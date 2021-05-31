@@ -18,14 +18,8 @@ import { NUM_LINES } from "./config";
 import ListInputStyles from "./styles";
 
 const VariationTwo: FC<PropsType> = (props) => {
-  const {
-    label,
-    name,
-    placeholder,
-    required,
-    hasBottomDivider,
-    keyboardType,
-  } = props;
+  const { label, name, placeholder, required, hasBottomDivider, keyboardType } =
+    props;
 
   return (
     <ListItem bottomDivider={hasBottomDivider}>

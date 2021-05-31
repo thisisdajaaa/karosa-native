@@ -25,8 +25,7 @@ const Reviews: FC<PropsType> = (props) => {
         <View style={ReviewsStyles.buyerContainer}>
           <Image
             source={{
-              uri:
-                "http://2.bp.blogspot.com/-wvCP_ff54N4/Ukpp0EjfInI/AAAAAAAAAYI/QR4VOlfCLfg/s1600/index.jpg",
+              uri: "http://2.bp.blogspot.com/-wvCP_ff54N4/Ukpp0EjfInI/AAAAAAAAAYI/QR4VOlfCLfg/s1600/index.jpg",
             }}
             imageStyle={ReviewsStyles.sellerImage}
           />
@@ -62,16 +61,13 @@ const Reviews: FC<PropsType> = (props) => {
           <ReviewImages
             imageSources={[
               {
-                uri:
-                  "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
               },
               {
-                uri:
-                  "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
               },
               {
-                uri:
-                  "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
               },
             ]}
           />

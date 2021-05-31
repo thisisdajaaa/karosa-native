@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import ListInput from '../ListInput';
+import ListInput from "../ListInput";
 
-test('ListInput', () => {
-  const tree = renderer
-    .create(
-      <ListInput />
-    )
-    .toJSON();
+test("ListInput", () => {
+  const tree = renderer.create(<ListInput />).toJSON();
   expect(tree).toMatchSnapshot();
 });

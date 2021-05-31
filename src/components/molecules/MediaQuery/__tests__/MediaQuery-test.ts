@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import MediaQuery from '../MediaQuery';
+import MediaQuery from "../MediaQuery";
 
-test('MediaQuery', () => {
-  const tree = renderer
-    .create(
-      <MediaQuery />
-    )
-    .toJSON();
+test("MediaQuery", () => {
+  const tree = renderer.create(<MediaQuery />).toJSON();
   expect(tree).toMatchSnapshot();
 });

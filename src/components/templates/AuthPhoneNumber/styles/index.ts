@@ -31,6 +31,10 @@ const AuthPhoneNumberStyles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 24,
   },
+  validationContainer: {
+    position: "relative",
+    bottom: "2.2%",
+  },
 });
 
 export default AuthPhoneNumberStyles;

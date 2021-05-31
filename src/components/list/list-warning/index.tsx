@@ -12,8 +12,7 @@ export const ListWarning: React.FC<Props> = React.memo(
   ({ message, onPress }) => {
     return (
       <ListItem
-        containerStyle={{ backgroundColor: theme.colors.gold15, height: 88 }}
-      >
+        containerStyle={{ backgroundColor: theme.colors.gold15, height: 88 }}>
         <ListItem.Content style={styles.content}>
           <MaterialIcons name="warning" style={styles.warningIcon} />
           <ListItem.Content style={styles.txtContainer}>

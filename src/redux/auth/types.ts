@@ -17,9 +17,12 @@ export const ACT_NEW_ADDRESS_REQUEST = "auth/actNewAddressRequest" as const;
 export const ACT_NEW_ADDRESS_SUCCESS = "auth/actNewAddressSuccess" as const;
 export const ACT_NEW_ADDRESS_FAILURE = "auth/actNewAddressFailure" as const;
 
-export const ACT_REGISTER_REQUEST = "auth/actRegisterRequest" as const;
-export const ACT_REGISTER_SUCCESS = "auth/actRegisterSuccess" as const;
-export const ACT_REGISTER_FAILURE = "auth/actRegisterFailure" as const;
+export const ACT_REGISTER_BY_PHONE_NUMBER_REQUEST =
+  "auth/actRegisterByPhoneNumberRequest" as const;
+export const ACT_REGISTER_BY_PHONE_NUMBER__SUCCESS =
+  "auth/actRegisterByPhoneNumberSuccess" as const;
+export const ACT_RREGISTER_BY_PHONE_NUMBER__FAILURE =
+  "auth/actRegisterByPhoneNumberFailure" as const;
 
 export type Types =
   | typeof SET_AUTH_BACK
@@ -36,6 +39,6 @@ export type Types =
   | typeof ACT_NEW_ADDRESS_REQUEST
   | typeof ACT_NEW_ADDRESS_SUCCESS
   | typeof ACT_NEW_ADDRESS_FAILURE
-  | typeof ACT_REGISTER_REQUEST
-  | typeof ACT_REGISTER_SUCCESS
-  | typeof ACT_REGISTER_FAILURE;
+  | typeof ACT_REGISTER_BY_PHONE_NUMBER_REQUEST
+  | typeof ACT_REGISTER_BY_PHONE_NUMBER__SUCCESS
+  | typeof ACT_RREGISTER_BY_PHONE_NUMBER__FAILURE;

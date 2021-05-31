@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import FormPicker from '../FormPicker';
+import FormPicker from "../FormPicker";
 
-test('FormPicker', () => {
-  const tree = renderer
-    .create(
-      <FormPicker />
-    )
-    .toJSON();
+test("FormPicker", () => {
+  const tree = renderer.create(<FormPicker />).toJSON();
   expect(tree).toMatchSnapshot();
 });

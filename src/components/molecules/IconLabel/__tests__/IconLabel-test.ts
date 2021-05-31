@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import IconLabel from '../IconLabel';
+import IconLabel from "../IconLabel";
 
-test('IconLabel', () => {
-  const tree = renderer
-    .create(
-      <IconLabel />
-    )
-    .toJSON();
+test("IconLabel", () => {
+  const tree = renderer.create(<IconLabel />).toJSON();
   expect(tree).toMatchSnapshot();
 });

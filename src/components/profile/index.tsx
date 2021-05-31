@@ -25,8 +25,7 @@ export const Profile: React.FC<Props> = ({
       <ImageBackground
         style={styles.coverPhoto}
         blurRadius={1}
-        source={coverPhoto}
-      >
+        source={coverPhoto}>
         <StatusBar translucent backgroundColor="transparent" />
         <Header
           containerStyle={{

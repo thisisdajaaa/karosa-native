@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import ImagePicker from '../ImagePicker';
+import ImagePicker from "../ImagePicker";
 
-test('ImagePicker', () => {
-  const tree = renderer
-    .create(
-      <ImagePicker />
-    )
-    .toJSON();
+test("ImagePicker", () => {
+  const tree = renderer.create(<ImagePicker />).toJSON();
   expect(tree).toMatchSnapshot();
 });

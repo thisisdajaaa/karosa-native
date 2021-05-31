@@ -33,8 +33,7 @@ export const ListAction: React.FC<Props> = ({
               customStyles={
                 image ? styles.hasImage : [styles.left, style?.textStyle?.left]
               }
-              numberOfLines={1}
-            >
+              numberOfLines={1}>
               {text?.left}
             </BaseText>
           </View>

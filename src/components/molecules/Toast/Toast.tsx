@@ -44,15 +44,15 @@ const Toast: FC = () => {
   const [inProgress, setInProgress] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
-  const onHide = useMemo(() => activeToast?.onHide ?? defaults.onHide, [
-    activeToast?.onHide,
-    defaults.onHide,
-  ]);
+  const onHide = useMemo(
+    () => activeToast?.onHide ?? defaults.onHide,
+    [activeToast?.onHide, defaults.onHide]
+  );
 
-  const onShow = useMemo(() => activeToast?.onShow ?? defaults.onShow, [
-    activeToast?.onShow,
-    defaults.onShow,
-  ]);
+  const onShow = useMemo(
+    () => activeToast?.onShow ?? defaults.onShow,
+    [activeToast?.onShow, defaults.onShow]
+  );
 
   const prevHeightRef = useRef<number | null>();
   const heightRef = useRef<number | null>(

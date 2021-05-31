@@ -13,8 +13,7 @@ export const AccountActions: React.FC<Props> = ({ actions }) => {
         <TouchableOpacity
           key={key}
           style={styles.actionContainer}
-          onPress={action.onPress}
-        >
+          onPress={action.onPress}>
           {action.icon}
           <BaseText style={styles.label}>{action.label}</BaseText>
         </TouchableOpacity>

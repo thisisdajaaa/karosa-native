@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import SearchBar from '../SearchBar';
+import SearchBar from "../SearchBar";
 
-test('SearchBar', () => {
-  const tree = renderer
-    .create(
-      <SearchBar />
-    )
-    .toJSON();
+test("SearchBar", () => {
+  const tree = renderer.create(<SearchBar />).toJSON();
   expect(tree).toMatchSnapshot();
 });
