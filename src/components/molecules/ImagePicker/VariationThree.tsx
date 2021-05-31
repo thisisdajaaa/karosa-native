@@ -13,13 +13,14 @@ import Image from "@app/atoms/Image";
 import type { VariationType } from "./types";
 import { SIZE } from "./config";
 import ImagePickerStyle from "./styles";
+import { isNil } from "ramda";
 
 const VariationThree: FC<VariationType> = (props) => {
   const { uri } = props;
 
   return (
     <Fragment>
-      {uri ? (
+      {!isNil(uri) ? (
         <View style={ImagePickerStyle.variationThreeContainer}>
           <Icon
             group="common"
@@ -28,7 +29,11 @@ const VariationThree: FC<VariationType> = (props) => {
             width={SIZE.SECONDARY}
             extraStyle={ImagePickerStyle.cameraIcon}
           />
-          <Image source={{ uri }} imageStyle={ImagePickerStyle.image} />
+          <Image
+            source={{ uri }}
+            imageStyle={ImagePickerStyle.image}
+            resizeMode="cover"
+          />
         </View>
       ) : (
         <View style={ImagePickerStyle.variationThreeContainer}>

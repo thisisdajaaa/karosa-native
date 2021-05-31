@@ -41,6 +41,7 @@ export type PropsType = {
   placeholderColor?: string;
   disabled?: boolean;
   autoCorrect?: boolean;
+  maxLength?: number;
   multiline?: boolean;
   keyboardType?: KeyboardTypeOptions;
   numberOfLines?: number;

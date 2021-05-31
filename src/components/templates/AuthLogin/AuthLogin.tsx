@@ -29,7 +29,7 @@ import type { PropsType } from "./types";
 import { IMAGE_HEIGHT, IMAGE_WIDTH } from "./config";
 import AuthLoginStyles from "./styles";
 
-const AuthLoginTemplate: FC<PropsType> = (props: PropsType) => {
+const AuthLoginTemplate: FC<PropsType> = (props) => {
   const { loginButtonProps, onForgot, onBack } = props;
   const { errors, touched } = useFormikContext<LoginRequest>();
 

@@ -20,7 +20,6 @@ const ImagePickerStyles = StyleSheet.create({
     overflow: "hidden",
     width: DIMENS.screenWidth * 0.22,
   },
-  // eslint-disable-next-line react-native/no-color-literals
   variationTwoContainer: {
     alignItems: "center",
     backgroundColor: theme.colors.dark35,
@@ -33,7 +32,6 @@ const ImagePickerStyles = StyleSheet.create({
     overflow: "hidden",
     width: DIMENS.screenWidth * 0.24,
   },
-  // eslint-disable-next-line react-native/no-color-literals
   variationThreeContainer: {
     alignItems: "center",
     backgroundColor: theme.colors.dark35,
@@ -43,10 +41,10 @@ const ImagePickerStyles = StyleSheet.create({
     width: DIMENS.screenWidth,
   },
   image: {
-    width: "100%",
+    width: DIMENS.screenWidth,
     height: "100%",
     opacity: 0.5,
-    zIndex: 0,
+    zIndex: 21,
   },
   cameraIcon: {
     zIndex: 1,

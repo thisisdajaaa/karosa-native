@@ -29,7 +29,11 @@ const VariationOne: FC<VariationType> = (props) => {
             width={SIZE.PRIMARY}
             extraStyle={ImagePickerStyle.cameraIcon}
           />
-          <Image source={{ uri }} imageStyle={ImagePickerStyle.image} />
+          <Image
+            source={{ uri }}
+            imageStyle={ImagePickerStyle.image}
+            resizeMode="contain"
+          />
         </View>
       ) : (
         <View style={ImagePickerStyle.variationOneContainer}>

@@ -12,7 +12,7 @@ import { Screen } from "@app/components/base-screen";
 import type { PropsType } from "./types";
 import HomeStyles from "./styles";
 
-const HomeTemplate: FC<PropsType> = (props: PropsType) => {
+const HomeTemplate: FC<PropsType> = (props) => {
   const { screenProps } = props;
 
   return (

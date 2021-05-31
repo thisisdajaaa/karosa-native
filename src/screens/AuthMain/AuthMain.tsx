@@ -17,7 +17,7 @@ import AuthMainTemplate from "@app/templates/AuthMain";
 import { BTM_SHEET_HEIGHT } from "./config";
 import type { PropsType } from "./types";
 
-const AuthMainScreen: FC<PropsType> = (props: PropsType) => {
+const AuthMainScreen: FC<PropsType> = (props) => {
   const dispatch = useDispatch();
 
   const { sheetRef } = props;
@@ -42,6 +42,11 @@ const AuthMainScreen: FC<PropsType> = (props: PropsType) => {
     navigate(routes.AUTH_LOGIN);
   }, [navigate]);
 
+  const handleSignUp = useCallback(() => {
+    sheetRef.current?.close();
+    navigate(routes.AUTH_PHONENUMBER);
+  }, [navigate]);
+
   const handleGoogle = () => {
     0;
   };
@@ -58,6 +63,7 @@ const AuthMainScreen: FC<PropsType> = (props: PropsType) => {
       <AuthMainTemplate
         onHelp={handleHelp}
         onLogin={handleLogin}
+        onSignUp={handleSignUp}
         onFBLogin={handleFb}
         onGoogleLogin={handleGoogle}
       />

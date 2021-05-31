@@ -6,7 +6,7 @@
  */
 
 import React, { FC } from "react";
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import Button from "@app/atoms/Button";
 import Text from "@app/atoms/Text";
@@ -16,8 +16,8 @@ import Image from "@app/atoms/Image";
 import type { PropsType } from "./types";
 import AuthMainStyles from "./styles";
 
-const AuthMainTemplate: FC<PropsType> = (props: PropsType) => {
-  const { onLogin, onFBLogin, onGoogleLogin, onHelp } = props;
+const AuthMainTemplate: FC<PropsType> = (props) => {
+  const { onLogin, onFBLogin, onGoogleLogin, onHelp, onSignUp } = props;
 
   const getHeader = () => {
     return (
@@ -95,7 +95,9 @@ const AuthMainTemplate: FC<PropsType> = (props: PropsType) => {
           textStyle={AuthMainStyles.noAccContainer}
           text="Don't have an account?"
         />
-        <Text textStyle={AuthMainStyles.txtSignUp} text="Sign up" />
+        <TouchableOpacity onPress={onSignUp}>
+          <Text textStyle={AuthMainStyles.txtSignUp} text="Sign up" />
+        </TouchableOpacity>
       </View>
     );
   };

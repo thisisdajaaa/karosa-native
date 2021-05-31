@@ -1,9 +1,3 @@
-/**
- *
- * @format
- *
- */
-
 export const formatPhoneNumber = (phoneNumber: string) => {
   const sectionOne =
     phoneNumber.substring(0, 4).substring(0, 1) === "0"

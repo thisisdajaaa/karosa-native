@@ -28,7 +28,11 @@ const VariationTwo: FC<VariationType> = (props) => {
             width={SIZE.SECONDARY}
             extraStyle={ImagePickerStyle.cameraIcon}
           />
-          <Image source={{ uri }} imageStyle={ImagePickerStyle.image} />
+          <Image
+            source={{ uri }}
+            imageStyle={ImagePickerStyle.image}
+            resizeMode="contain"
+          />
         </View>
       ) : (
         <View style={ImagePickerStyle.variationTwoContainer}>
