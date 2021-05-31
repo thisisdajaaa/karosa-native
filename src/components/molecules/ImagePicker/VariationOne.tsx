@@ -7,6 +7,7 @@
 
 import React, { FC, Fragment } from "react";
 import { View } from "react-native";
+import { isNil } from "ramda";
 import Icon from "@app/atoms/Icon";
 import Image from "@app/atoms/Image";
 import Text from "@app/atoms/Text";
@@ -20,7 +21,7 @@ const VariationOne: FC<VariationType> = (props) => {
 
   return (
     <Fragment>
-      {uri ? (
+      {!isNil(uri) ? (
         <View style={ImagePickerStyle.variationOneContainer}>
           <Icon
             group="common"

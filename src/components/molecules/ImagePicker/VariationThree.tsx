@@ -7,13 +7,13 @@
 
 import React, { FC, Fragment } from "react";
 import { View } from "react-native";
+import { isNil } from "ramda";
 import Icon from "@app/atoms/Icon";
 import Image from "@app/atoms/Image";
 
 import type { VariationType } from "./types";
 import { SIZE } from "./config";
 import ImagePickerStyle from "./styles";
-import { isNil } from "ramda";
 
 const VariationThree: FC<VariationType> = (props) => {
   const { uri } = props;
