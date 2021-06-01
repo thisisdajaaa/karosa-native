@@ -17,7 +17,14 @@ import type { PropsType } from "./types";
 import AuthMainStyles from "./styles";
 
 const AuthMainTemplate: FC<PropsType> = (props) => {
-  const { onLogin, onFBLogin, onGoogleLogin, onHelp, onSignUp } = props;
+  const {
+    isGoogleButtonLoading,
+    onLogin,
+    onFBLogin,
+    onGoogleLogin,
+    onHelp,
+    onSignUp,
+  } = props;
 
   const getHeader = () => {
     return (
@@ -69,6 +76,7 @@ const AuthMainTemplate: FC<PropsType> = (props) => {
         <Button
           onPress={onGoogleLogin}
           buttonStyle={AuthMainStyles.gmailButtonContainer}
+          loading={isGoogleButtonLoading}
           title={"Continue with Google"}
           icon={
             // to replace icon with svg

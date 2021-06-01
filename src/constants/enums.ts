@@ -26,3 +26,9 @@ export enum Visibility {
   Hidden = 0,
   Visible = 1,
 }
+
+export enum OAuth {
+  Google = "google",
+  Facebook = "facebook",
+  None = "none",
+}

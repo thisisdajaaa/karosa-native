@@ -33,6 +33,17 @@ module.exports = function (api) {
         },
         "inline-dotenv",
       ],
+      [
+        "module:react-native-dotenv",
+        {
+          moduleName: "@env",
+          path: ".env",
+          blacklist: null,
+          whitelist: null,
+          safe: false,
+          allowUndefined: true,
+        },
+      ],
       "transform-inline-environment-variables",
     ],
     retainLines: true,

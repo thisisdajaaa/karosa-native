@@ -2,9 +2,8 @@ import { SagaIterator } from "@redux-saga/core";
 import { AxiosResponse } from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { getType } from "typesafe-actions";
-
-import { baseAxios } from "../../config/axios/instance";
-import apiEndpoints from "../api-endpoints.json";
+import { baseAxios } from "@app/config/axios/instance";
+import apiEndpoints from "@app/redux/api-endpoints.json";
 
 import * as actions from "./actions";
 import * as models from "./models";

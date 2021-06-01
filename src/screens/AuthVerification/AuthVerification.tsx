@@ -74,7 +74,7 @@ const AuthVerificationScreen: FC = () => {
   }, [navigate]);
 
   const btnRegisterProps: FormButtonProps = {
-    title: "Next",
+    title: "Sign Up",
     loading: registerResponse.isLoading,
   };
 

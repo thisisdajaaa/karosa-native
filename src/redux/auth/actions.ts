@@ -1,6 +1,7 @@
 import { createAction, createAsyncAction } from "typesafe-actions";
+import { ENUM } from "@app/constants";
+import { ResponseError } from "@app/redux/api-models/common";
 
-import { ResponseError } from "../api-models/common";
 import * as types from "./types";
 import {
   LoginRequest,
@@ -21,6 +22,11 @@ export const setAuthBack = createAction(
 export const setAuthOpen = createAction(
   types.SET_AUTH_OPEN,
   (resolve) => (value: boolean) => resolve(value)
+);
+
+export const setOAuth = createAction(
+  types.SET_OAUTH,
+  (resolve) => (value: ENUM.OAuth) => resolve(value)
 );
 
 export const callLoginApi = createAsyncAction(
@@ -56,6 +62,7 @@ export const callNewAddressApi = createAsyncAction(
 const actions = {
   setAuthBack,
   setAuthOpen,
+  setOAuth,
   callLoginApi,
   callForgotApi,
   callMyAddressApi,

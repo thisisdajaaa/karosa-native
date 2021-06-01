@@ -2,8 +2,7 @@ import { combineReducers } from "redux";
 import produce, { Draft } from "immer";
 import { getType } from "typesafe-actions";
 import { ActionType } from "typesafe-actions/dist/type-helpers";
-
-import { ResponseState } from "../api-models/common";
+import { ResponseState } from "@app/redux/api-models/common";
 
 import * as actions from "./actions";
 import * as models from "./models";
@@ -20,6 +19,9 @@ export const authEntryContext = produce(
         return draft;
       case getType(actions.setAuthBack):
         draft.isOpen = action.payload;
+        return draft;
+      case getType(actions.setOAuth):
+        draft.oauth = action.payload;
         return draft;
       default:
         return draft;
