@@ -72,7 +72,7 @@ const AuthPasswordScreen: FC = () => {
   }, [navigate]);
 
   const registerByPhoneButtonProps: FormButtonProps = {
-    title: "Next",
+    title: "Sign Up",
     loading: registerByPhoneResponse.isLoading,
   };
 
