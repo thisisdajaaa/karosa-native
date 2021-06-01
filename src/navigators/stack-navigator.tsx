@@ -3,7 +3,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import AuthLoginScreen from "@app/screens/AuthLogin";
 import AuthForgotScreen from "@app/screens/AuthForgot";
 import HelpScreen from "@app/screens/AuthHelp";
-import SplashScreen from "@app/screens/splash";
 import ProductNewScreen from "@app/screens/ProductNew";
 import AccountSettingsScreen from "@app/screens/user-account/account-settings";
 import EditProfileScreen from "@app/screens/user-account/edit-profile";
@@ -32,10 +31,7 @@ const Stack = createStackNavigator();
 
 const StackNavigator: React.FC = () => {
   return (
-    <Stack.Navigator
-      initialRouteName="Splash"
-      screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Splash" component={SplashScreen} />
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={TabNavigator} />
       <Stack.Screen name="Login" component={AuthLoginScreen} />
       <Stack.Screen name="Help" component={HelpScreen} />

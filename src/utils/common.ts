@@ -1,3 +1,6 @@
+import NetInfo from "@react-native-community/netinfo";
+import { Alert, BackHandler } from "react-native";
+
 export const formatPhoneNumber = (phoneNumber: string) => {
   const sectionOne =
     phoneNumber.substring(0, 4).substring(0, 1) === "0"
@@ -22,3 +25,22 @@ export const generateRandomUsername = (length: number) => {
 
   return result.toLowerCase();
 };
+
+export const internetCheck = () =>
+  NetInfo.fetch().then((state) => {
+    if (!state.isConnected) {
+      Alert.alert(
+        "No internet connection",
+        "Make sure that WI-FI or mobile data is turned on, then try again",
+        [
+          {
+            text: "cancel",
+            onPress: () => BackHandler.exitApp(),
+            style: "cancel",
+          },
+          { text: "ok", onPress: () => internetCheck() },
+        ],
+        { cancelable: false }
+      );
+    }
+  });
