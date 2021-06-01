@@ -1,6 +1,6 @@
 {
   "login": "/api/authentication/login",
-  "registerByPhoneNumber": "/api/authentication/register/phone",
+  "register": "/api/authentication/register/phone",
   "addresses": "/v1/users/addresses",
   "regions": "/v1/addresses/regions",
   "shopInfo": "/v1/users/shop",

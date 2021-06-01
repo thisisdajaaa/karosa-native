@@ -21,9 +21,9 @@ import { OTP_LENGTH } from "./config";
 import AuthVerificationStyles from "./styles";
 
 const AuthVerificationTemplate: FC<PropsType> = (props) => {
-  const { onHelp, onBack } = props;
+  const { onHelp, onBack, btnRegisterProps } = props;
   const { params } =
-    useRoute<RouteProp<AuthRegistrationParams, "AuthPhoneNumber">>();
+    useRoute<RouteProp<AuthRegistrationParams, "AuthPassword">>();
 
   const isIOS = getPlatform.getInstance() === "ios";
 
@@ -64,7 +64,7 @@ const AuthVerificationTemplate: FC<PropsType> = (props) => {
         <FormOTP name="otp" inputLength={OTP_LENGTH} />
 
         <View style={AuthVerificationStyles.btnContainer}>
-          <FormButton title="Next" />
+          <FormButton {...btnRegisterProps} />
         </View>
 
         <View style={AuthVerificationStyles.txtBottom}>

@@ -1,5 +1,5 @@
 import * as login from "../api-models/login";
-import * as registerByPhone from "../api-models/register-phone";
+import * as register from "../api-models/register";
 import * as forgot from "../api-models/forgot";
 import * as myAddress from "../api-models/my-address";
 import * as newAddress from "../api-models/new-address";
@@ -11,7 +11,7 @@ export type ForgotResponse = forgot.Response;
 export type MyAddressResponse = myAddress.Response;
 export type NewAddressRequest = newAddress.Request;
 export type NewAddressResponse = newAddress.Response;
-export type RegisterByPhoneRequest = registerByPhone.Request;
+export type RegisterRequest = register.Request;
 
 export type AuthEntryContext = {
   isOpen: boolean;
@@ -23,7 +23,7 @@ export type LoggedInResponse = ResponseState<{ isLoggedIn: boolean }>;
 export type AuthState = {
   authEntryContext: AuthEntryContext;
   loginResponse: LoggedInResponse;
-  registerByPhoneNumberResponse: LoggedInResponse;
+  registerResponse: LoggedInResponse;
   forgotResponse: ResponseState<ForgotResponse>;
   myAddressResponse: ResponseState<MyAddressResponse>;
   newAddressResponse: ResponseState<NewAddressResponse>;

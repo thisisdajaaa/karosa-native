@@ -8,8 +8,8 @@ export type AuthRegistrationParams = {
   AuthPhoneNumber: {
     identifier: string;
   };
-  AuthVerification: {
-    otp: string;
+  AuthPassword: {
     identifier: string;
+    password: string;
   };
 };
