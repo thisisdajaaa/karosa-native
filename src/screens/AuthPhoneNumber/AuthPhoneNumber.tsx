@@ -33,7 +33,7 @@ const AuthPhoneNumberScreen: FC = () => {
     validateOnBlur: false,
     onSubmit: (values) => {
       navigate("Stack", {
-        screen: routes.AUTH_OTP,
+        screen: routes.AUTH_SET_PASSWORD,
         params: { identifier: values.identifier },
       });
     },

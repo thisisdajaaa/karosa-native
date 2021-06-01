@@ -25,21 +25,19 @@ export function* callLoginApi(
   }
 }
 
-export function* callRegisterByPhoneNumberApi(
-  action: ReturnType<typeof actions.callRegisterByPhoneNumberApi.request>
+export function* callRegisterApi(
+  action: ReturnType<typeof actions.callRegisterApi.request>
 ): SagaIterator {
   try {
     const response: AxiosResponse<models.LoggedInResponse> = yield call(
       baseAxios.post,
-      apiEndpoints.registerByPhoneNumber,
+      apiEndpoints.register,
       action.payload
     );
 
-    yield put(actions.callRegisterByPhoneNumberApi.success(response.data));
+    yield put(actions.callRegisterApi.success(response.data));
   } catch (error) {
-    yield put(
-      actions.callRegisterByPhoneNumberApi.failure(error.response.data)
-    );
+    yield put(actions.callRegisterApi.failure(error.response.data));
   }
 }
 
@@ -89,11 +87,8 @@ export function* onLoginSaga() {
   yield takeLatest(getType(actions.callLoginApi.request), callLoginApi);
 }
 
-export function* onRegisterByPhoneNumberSaga() {
-  yield takeLatest(
-    getType(actions.callRegisterByPhoneNumberApi.request),
-    callRegisterByPhoneNumberApi
-  );
+export function* onRegisterSaga() {
+  yield takeLatest(getType(actions.callRegisterApi.request), callRegisterApi);
 }
 
 export function* onForgotSaga() {
@@ -117,6 +112,6 @@ export default function* () {
     call(onForgotSaga),
     call(onMyAddressSaga),
     call(onNewAddressSaga),
-    call(onRegisterByPhoneNumberSaga),
+    call(onRegisterSaga),
   ]);
 }

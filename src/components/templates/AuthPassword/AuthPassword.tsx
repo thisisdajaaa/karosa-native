@@ -25,7 +25,7 @@ import { PASSWORD_LENGTH } from "./config";
 import AuthPasswordScreenStyles from "./styles";
 
 const AuthPasswordTemplate: FC<PropsType> = (props) => {
-  const { onBack, onHelp, registerByPhoneButtonProps } = props;
+  const { onBack, onHelp } = props;
 
   const { isError } = useFieldError("password");
 
@@ -89,7 +89,7 @@ const AuthPasswordTemplate: FC<PropsType> = (props) => {
           </View>
         )}
 
-        <FormButton {...registerByPhoneButtonProps} />
+        <FormButton title="Sign Up" />
       </KeyboardAvoidingView>
     </>
   );

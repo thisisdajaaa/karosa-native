@@ -29,10 +29,10 @@ export const callLoginApi = createAsyncAction(
   types.ACT_LOGIN_FAILURE
 )<LoginRequest, LoggedInResponse, ResponseError>();
 
-export const callRegisterByPhoneNumberApi = createAsyncAction(
-  types.ACT_REGISTER_BY_PHONE_NUMBER_REQUEST,
-  types.ACT_REGISTER_BY_PHONE_NUMBER__SUCCESS,
-  types.ACT_RREGISTER_BY_PHONE_NUMBER__FAILURE
+export const callRegisterApi = createAsyncAction(
+  types.ACT_REGISTER_REQUEST,
+  types.ACT_REGISTER_SUCCESS,
+  types.ACT_REGISTER_FAILURE
 )<RegisterRequest, LoggedInResponse, ResponseError>();
 
 export const callForgotApi = createAsyncAction(
@@ -60,7 +60,7 @@ const actions = {
   callForgotApi,
   callMyAddressApi,
   callNewAddressApi,
-  callRegisterByPhoneNumberApi,
+  callRegisterApi,
 };
 
 export default actions;

@@ -43,7 +43,7 @@ export const initAuthState: AuthState = {
     },
     isLoading: false,
   },
-  registerByPhoneNumberResponse: {
+  registerResponse: {
     response: {
       isLoggedIn: false,
     },
