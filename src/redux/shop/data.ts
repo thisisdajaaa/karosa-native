@@ -2,23 +2,18 @@ import { ENUM } from "@app/constants";
 
 import {
   AvailabilityForm,
-  CommonStatus,
   ProductForm,
   ShippingDetailsForm,
+  ShopAddressForm,
+  ShopPaymentForm,
+  ShopSettingsForm,
   ShopState,
-  ShopStatus,
   VariationForm,
   WholesaleForm,
 } from "./models";
 
-export const initCommonStatus: ShopStatus = {
-  available: true,
-  harvesting: false,
-  planting: false,
-};
-
 export const initProductForm: ProductForm = {
-  productImg: null,
+  productImg: "",
   productNm: "",
   description: "",
   price: "",
@@ -28,12 +23,12 @@ export const initProductForm: ProductForm = {
   preOrder: false,
   measurement: "1",
   categoryId: 1,
-  status: initCommonStatus,
+  status: ENUM.Product_Status.Available,
 };
 
 export const initVariationForm: VariationForm = {
-  variationImg: null,
-  productNm: "",
+  variationImg: "",
+  variationNm: "",
   price: "",
   weight: "",
   stocks: "",
@@ -66,12 +61,34 @@ export const initShippingDetailsForm: ShippingDetailsForm = {
   sellerCourier: false,
 };
 
-export const initShopStatus: CommonStatus = initCommonStatus;
-export const initProductStatus: CommonStatus = initCommonStatus;
+export const initShopSettingsForm: ShopSettingsForm = {
+  shopName: "",
+  coverPhoto: "",
+  avatarPhoto: "",
+  status: ENUM.Shop_Status.Active,
+};
+
+export const initShopPaymentForm: ShopPaymentForm = {
+  cod: false,
+  gcash: false,
+  creditCard: false,
+};
+
+export const initShopAddressForm: ShopAddressForm = {
+  fullName: "",
+  detailedAddress: "",
+  phoneNumber: "",
+  cities: -1,
+  barangay: -1,
+  province: -1,
+  region: -1,
+};
 
 export const initShopState: ShopState = {
   shopEntryContext: {
-    shopStatus: initShopStatus,
+    shopSettings: initShopSettingsForm,
+    shopPayment: initShopPaymentForm,
+    shopAddress: initShopAddressForm,
   },
   productEntryContext: {
     productForm: initProductForm,
@@ -88,10 +105,29 @@ export const initShopState: ShopState = {
         id: 0,
         name: "",
         isActive: false,
-        status: ENUM.RES_SHOP_STATUS.Active,
+        status: ENUM.Shop_Status.Active,
         createdAt: "",
         updatedAt: "",
       },
+    },
+    isLoading: false,
+  },
+  shopDeleteResponse: {
+    response: false,
+    isLoading: false,
+  },
+  shopAddressResponse: {
+    response: {
+      id: 0,
+      name: "",
+      type: ENUM.Address_Type.Shop,
+      phoneNo: "",
+      detailed_address: "",
+      isDefaultAddress: false,
+      barangayId: 0,
+      userId: "",
+      createdAt: "",
+      updatedAt: "",
     },
     isLoading: false,
   },

@@ -5,22 +5,29 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
-import { View } from "react-native";
+import React, { FC } from "react";
+import { TouchableOpacity, View } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import Button from "@app/atoms/Button";
 import Text from "@app/atoms/Text";
-import Header from "@app/components/molecules/Header";
+import Header from "@app/molecules/Header";
 import Image from "@app/atoms/Image";
 
 import type { PropsType } from "./types";
 import AuthMainStyles from "./styles";
 
-const AuthMain: FC<PropsType> = (props: PropsType) => {
-  const { onLogin, onFBLogin, onGoogleLogin, onHelp } = props;
+const AuthMainTemplate: FC<PropsType> = (props) => {
+  const {
+    isGoogleButtonLoading,
+    onLogin,
+    onFBLogin,
+    onGoogleLogin,
+    onHelp,
+    onSignUp,
+  } = props;
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         leftComponent={{
           text: "Login",
@@ -32,15 +39,27 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
           onPress: onHelp,
         }}
       />
-      <View style={AuthMainStyles.container}>
+    );
+  };
+
+  const getLogo = () => {
+    return (
+      <>
         <View style={AuthMainStyles.logoContainer}>
           <Image
             imageStyle={AuthMainStyles.logo}
-            source={require("../../../../assets/logo-red.png")}
+            source={require("../../../assets/images/karosa.png")}
+            resizeMode="contain"
           />
         </View>
-
         <View style={AuthMainStyles.spacer} />
+      </>
+    );
+  };
+
+  const getMainButtons = () => {
+    return (
+      <>
         <Button
           onPress={onFBLogin}
           buttonStyle={AuthMainStyles.fbButtonContainer}
@@ -57,6 +76,7 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
         <Button
           onPress={onGoogleLogin}
           buttonStyle={AuthMainStyles.gmailButtonContainer}
+          loading={isGoogleButtonLoading}
           title={"Continue with Google"}
           icon={
             // to replace icon with svg
@@ -72,16 +92,34 @@ const AuthMain: FC<PropsType> = (props: PropsType) => {
         </View>
 
         <Button onPress={onLogin} title="Phone number / Username / Email" />
-        <View style={AuthMainStyles.txtSignUpContainer}>
-          <Text
-            textStyle={AuthMainStyles.noAccContainer}
-            text="Don't have an account?"
-          />
+      </>
+    );
+  };
+
+  const getBottomText = () => {
+    return (
+      <View style={AuthMainStyles.txtSignUpContainer}>
+        <Text
+          textStyle={AuthMainStyles.noAccContainer}
+          text="Don't have an account?"
+        />
+        <TouchableOpacity onPress={onSignUp}>
           <Text textStyle={AuthMainStyles.txtSignUp} text="Sign up" />
-        </View>
+        </TouchableOpacity>
       </View>
-    </Fragment>
+    );
+  };
+
+  return (
+    <>
+      <>{getHeader()}</>
+      <View style={AuthMainStyles.container}>
+        <>{getLogo()}</>
+        <>{getMainButtons()}</>
+        <>{getBottomText()}</>
+      </View>
+    </>
   );
 };
 
-export default AuthMain;
+export default AuthMainTemplate;

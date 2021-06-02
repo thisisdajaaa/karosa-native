@@ -8,14 +8,8 @@ import { AppButton } from "../../button";
 import { Props } from "./types";
 
 export const SubmitButton: React.FC<Props> = ({ title, margin }) => {
-  const {
-    isValid,
-    submitForm,
-    touched,
-    initialValues,
-    values,
-    errors,
-  } = useFormikContext();
+  const { isValid, submitForm, touched, initialValues, values, errors } =
+    useFormikContext();
 
   const invalid =
     !isValid ||

@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import AuthLogin from '../AuthLogin';
+import AuthLogin from "../AuthLogin";
 
-test('Login', () => {
-  const tree = renderer
-    .create(
-      <AuthLogin />
-    )
-    .toJSON();
+test("Login", () => {
+  const tree = renderer.create(<AuthLogin />).toJSON();
   expect(tree).toMatchSnapshot();
 });

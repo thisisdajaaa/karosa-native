@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { EventArg } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
@@ -9,20 +8,15 @@ import { useAuth, useMemoizedSelector, useUpdateEffect } from "@app/hooks";
 import { theme } from "@app/styles";
 import { selectors } from "@app/redux/auth";
 import UserAccountMainScreen from "@app/screens/user-account/main";
-import HomeScreen from "@app/screens/Home";
-import ShopMainScreen from "@app/screens/shop/main";
 import AuthMainScreen from "@app/screens/AuthMain";
 import BasketScreen from "@app/screens/basket";
 import NotificationScreen from "@app/screens/notifications";
-import SellerProducts from "@app/screens/products/my-products/product-content";
-import ShopContent from "@app/screens/shop/view-shop/shop-content";
-import BuyerProducts from "@app/screens/shop/view-shop/product-content";
-import CategoryContent from "@app/screens/shop/view-shop/category-content";
+import ProductListContent from "@app/templates/ProductList/MainContent";
 import routes from "@app/navigators/routes";
+import Home from "@app/screens/Home";
 
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
-const MeStack = createStackNavigator();
 
 const mockTopTab = [
   "Recent (1)",
@@ -30,15 +24,6 @@ const mockTopTab = [
   "Suspended (3)",
   "Discontinued (4)",
 ];
-
-const MeNavigator: React.FC = () => {
-  return (
-    <MeStack.Navigator screenOptions={{ headerShown: false }}>
-      <MeStack.Screen name="Settings" component={UserAccountMainScreen} />
-      <MeStack.Screen name="Shop Main" component={ShopMainScreen} />
-    </MeStack.Navigator>
-  );
-};
 
 const ProductTabs: React.FC = () => {
   return (
@@ -53,26 +38,9 @@ const ProductTabs: React.FC = () => {
       }}>
       {mockTopTab.map((tabName, index) => (
         <React.Fragment key={index}>
-          <TopTab.Screen name={tabName} component={SellerProducts} />
+          <TopTab.Screen name={tabName} component={ProductListContent} />
         </React.Fragment>
       ))}
-    </TopTab.Navigator>
-  );
-};
-
-const ViewShopTabs: React.FC = () => {
-  return (
-    <TopTab.Navigator
-      lazy
-      tabBarOptions={{
-        activeTintColor: theme.colors.primary,
-        inactiveTintColor: theme.colors.dark20,
-        pressColor: theme.colors.primary,
-        indicatorStyle: { backgroundColor: theme.colors.primary },
-      }}>
-      <TopTab.Screen name={"Shop"} component={ShopContent} />
-      <TopTab.Screen name={"Products"} component={BuyerProducts} />
-      <TopTab.Screen name={"Categories"} component={CategoryContent} />
     </TopTab.Navigator>
   );
 };
@@ -98,7 +66,7 @@ const TabNavigator: React.FC = () => {
         }}>
         <BottomTab.Screen
           name={routes.HOME}
-          component={HomeScreen}
+          component={Home}
           options={{
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name="home" size={size} color={color} />
@@ -125,7 +93,7 @@ const TabNavigator: React.FC = () => {
         />
         <BottomTab.Screen
           name={routes.ACCOUNTS_MAIN}
-          component={MeNavigator}
+          component={UserAccountMainScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons name="person-outline" size={size} color={color} />
@@ -147,4 +115,4 @@ const TabNavigator: React.FC = () => {
   );
 };
 
-export { ProductTabs, ViewShopTabs, TabNavigator };
+export { ProductTabs, TabNavigator };

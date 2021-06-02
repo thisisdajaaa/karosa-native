@@ -14,14 +14,8 @@ import type { PropsType } from "./types";
 
 const FormButton: FC<PropsType> = (props) => {
   const { title, loading, buttonStyle } = props;
-  const {
-    isValid,
-    submitForm,
-    touched,
-    initialValues,
-    values,
-    errors,
-  } = useFormikContext();
+  const { isValid, submitForm, touched, initialValues, values, errors } =
+    useFormikContext();
 
   const invalid =
     !isValid ||
@@ -31,8 +25,8 @@ const FormButton: FC<PropsType> = (props) => {
 
   return (
     <Button
-      title={title}
       disabled={invalid}
+      title={title}
       onPress={submitForm}
       loading={loading}
       buttonStyle={buttonStyle}

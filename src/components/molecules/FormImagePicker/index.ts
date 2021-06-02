@@ -1,1 +1,1 @@
-export { default } from './FormImagePicker';
+export { default } from "./FormImagePicker";

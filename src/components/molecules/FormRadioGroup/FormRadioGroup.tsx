@@ -5,11 +5,15 @@
  *
  */
 
-import React, { FC, Fragment, useState, useEffect, useCallback } from "react";
+import React, { FC, Fragment, useState, useCallback } from "react";
+import { View } from "react-native";
+import { ListItem } from "react-native-elements";
 import { useField, useFormikContext } from "formik";
+import { useUpdateEffect } from "@app/hooks";
 import Radio from "@app/atoms/Radio";
 
 import type { PropsType } from "./types";
+import FormRadioGroupStyles from "./styles";
 
 const FormRadioGroup: FC<PropsType> = (props) => {
   const { name, options } = props;
@@ -20,7 +24,7 @@ const FormRadioGroup: FC<PropsType> = (props) => {
     value: meta.value || meta.initialValue,
   });
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     setCheck({
       value: meta.value,
     });
@@ -43,11 +47,15 @@ const FormRadioGroup: FC<PropsType> = (props) => {
     <Fragment>
       {options.map((option, index) => (
         <Fragment key={index}>
-          <Radio
-            checked={check.value === option.id}
-            title={option.label}
-            onPress={handlePress(option.id)}
-          />
+          <ListItem style={FormRadioGroupStyles.container} bottomDivider>
+            <View style={FormRadioGroupStyles.radioContainer}>
+              <Radio
+                checked={check.value === option.id}
+                title={option.label}
+                onPress={handlePress(option.id)}
+              />
+            </View>
+          </ListItem>
         </Fragment>
       ))}
     </Fragment>

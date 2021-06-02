@@ -10,7 +10,6 @@ import { DIMENS, SPACING, theme } from "@app/styles";
 const ListStatusStyles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    height: DIMENS.screenHeight * 0.05,
     justifyContent: "flex-start",
     alignItems: "center",
   },
@@ -25,14 +24,23 @@ const ListStatusStyles = StyleSheet.create({
     fontWeight: "400",
   },
   valueContainer: { flexDirection: "row", justifyContent: "flex-end" },
-  iconStatus: {
-    marginRight: SPACING.sm,
-    marginTop: SPACING.xss - 1,
-  },
   txtValue: {
     ...theme.textRegular,
     fontWeight: "700",
   },
 });
+
+export const StatusItemStyle = (bgColor: string) => {
+  return StyleSheet.create({
+    circle: {
+      borderRadius: 50,
+      backgroundColor: bgColor,
+      height: 16,
+      width: 16,
+      marginRight: SPACING.sm,
+      marginTop: SPACING.xss - 1,
+    },
+  });
+};
 
 export default ListStatusStyles;

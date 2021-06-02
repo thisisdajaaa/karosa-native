@@ -10,14 +10,14 @@ import { DIMENS, SPACING, theme } from "@app/styles";
 const WarningMessageStyles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.gold15,
-    height: DIMENS.screenHeight * 0.2,
+    height: DIMENS.screenHeight * 0.15,
   },
   content: {
     flexDirection: "row",
   },
   warningIcon: {
     marginRight: SPACING.xss,
-    marginTop: SPACING.xs,
+    marginTop: SPACING.xss,
   },
   closeIcon: {
     marginLeft: "auto",
@@ -25,8 +25,8 @@ const WarningMessageStyles = StyleSheet.create({
   textContainer: {
     alignItems: "center",
     justifyContent: "center",
-    paddingLeft: SPACING.xl,
-    paddingRight: SPACING.lg,
+    paddingLeft: SPACING.sm,
+    paddingRight: SPACING.sm,
   },
   text: {
     ...theme.textRegular,

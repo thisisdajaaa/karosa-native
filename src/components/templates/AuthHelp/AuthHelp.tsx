@@ -5,19 +5,19 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import { View, Image } from "react-native";
 import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
 import IconLabel from "@app/molecules/IconLabel";
-import Header from "@app/components/molecules/Header";
+import Header from "@app/molecules/Header";
 import Icon from "@app/atoms/Icon";
 
 import type { PropsType } from "./types";
 import { IMAGE_SIZE } from "./config";
 import AuthHelpStyles from "./styles";
 
-const AuthHelp: FC<PropsType> = (props: PropsType) => {
+const AuthHelpTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
 
   const icon = (name: string) => {
@@ -26,8 +26,8 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
     );
   };
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         leftComponent={{
           icon: "close",
@@ -38,11 +38,17 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
           <Text text="Help Centre" textStyle={AuthHelpStyles.txtHeader} />
         }
       />
+    );
+  };
+
+  const getContent = () => {
+    return (
       <View style={AuthHelpStyles.container}>
         <View style={AuthHelpStyles.logoContainer}>
           <Image
             style={AuthHelpStyles.logo}
-            source={require("../../../../assets/logo-red.png")}
+            source={require("../../../assets/images/karosa.png")}
+            resizeMode="contain"
           />
         </View>
         <View style={AuthHelpStyles.textContainer}>
@@ -63,8 +69,15 @@ const AuthHelp: FC<PropsType> = (props: PropsType) => {
           textStyle={AuthHelpStyles.footer}
         />
       </View>
-    </Fragment>
+    );
+  };
+
+  return (
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 
-export default AuthHelp;
+export default AuthHelpTemplate;

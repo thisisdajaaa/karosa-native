@@ -30,8 +30,7 @@ export const ListAvatar: React.FC<Props> = ({
       <View style={styles.detailsContainer}>
         <BaseText
           customStyles={[styles.title, style?.textStyle]}
-          numberOfLines={2}
-        >
+          numberOfLines={2}>
           {title}
         </BaseText>
         {subTitle && (

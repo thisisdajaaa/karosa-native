@@ -47,7 +47,7 @@ const AddressDetails: FC<PropsType> = (props) => {
       </ListItem.Content>
       {isDefault && (
         <View style={AddressDetailsStyles.defaultContainer}>
-          <Text text={"default"} textStyle={AddressDetailsStyles.txtDefault} />
+          <Text text={"Default"} textStyle={AddressDetailsStyles.txtDefault} />
         </View>
       )}
     </ListItem>

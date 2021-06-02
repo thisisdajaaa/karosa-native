@@ -14,22 +14,22 @@ const ProfileStyles = StyleSheet.create({
   headerContainer: { backgroundColor: theme.colors.transparent },
   avatarContainer: {
     position: "absolute",
-    top: 105,
-    left: 16,
+    top: DIMENS.screenHeight * 0.14,
+    left: DIMENS.screenWidth * 0.038,
     zIndex: 1,
   },
   statusBarSpacer: {
-    margin: 3,
+    margin: SPACING.xs - 1,
   },
   avatarPhoto: {
-    width: DIMENS.screenWidth * 0.25,
+    width: DIMENS.screenHeight * 0.15,
     height: DIMENS.screenHeight * 0.15,
-    borderRadius: 50,
+    borderRadius: (DIMENS.screenHeight * 0.15) / 2,
     borderColor: theme.colors.white,
     borderWidth: 5,
   },
   profileInfoContainer: {
-    height: 165,
+    height: DIMENS.screenHeight * 0.23,
     backgroundColor: theme.colors.white,
     zIndex: 0,
     borderBottomWidth: 1,
@@ -58,36 +58,44 @@ const ProfileStyles = StyleSheet.create({
   },
   personIcon: {
     position: "absolute",
-    left: 20,
+    left: DIMENS.screenWidth * 0.05,
+  },
+  settingsIcon: {
+    position: "absolute",
+    left: DIMENS.screenWidth * 0.05,
   },
   txtPerson: {
     ...theme.textLight,
     alignSelf: "center",
     position: "absolute",
-    left: 45,
+    left: DIMENS.screenWidth * 0.12,
     fontWeight: "700",
   },
   btnPerson: {
     position: "absolute",
-    right: 20,
-    top: 13,
+    right: DIMENS.screenWidth * 0.06,
+    top: DIMENS.screenHeight * 0.01,
     width: DIMENS.screenWidth * 0.3,
     height: DIMENS.screenHeight * 0.05,
     borderRadius: 3,
   },
   shopNameContainer: {
-    position: "absolute",
-    bottom: 70,
-    left: 24,
+    position: "relative",
+    top: DIMENS.screenHeight * 0.085,
+    left: DIMENS.screenWidth * 0.045,
+  },
+  shopAddressSubContainer: {
+    width: "70%",
+    flexDirection: "row",
   },
   txtShopName: {
     ...theme.textBold,
     fontWeight: "500",
   },
   shopAddrContainer: {
-    position: "absolute",
-    bottom: 50,
-    left: 24,
+    position: "relative",
+    top: DIMENS.screenHeight * 0.1,
+    left: DIMENS.screenWidth * 0.045,
     flexDirection: "row",
   },
   txtShopAddr: {
@@ -96,7 +104,7 @@ const ProfileStyles = StyleSheet.create({
   },
   activeContainer: {
     flexDirection: "row",
-    marginLeft: SPACING.lg + 4,
+    marginLeft: SPACING.md,
   },
   activeIcon: {
     marginTop: SPACING.xs - 1,
@@ -108,9 +116,10 @@ const ProfileStyles = StyleSheet.create({
   },
   bottomInfoContainer: {
     flexDirection: "row",
+    justifyContent: "space-between",
     position: "absolute",
-    bottom: 12,
-    left: 24,
+    bottom: DIMENS.screenHeight * 0.01,
+    left: DIMENS.screenWidth * 0.045,
   },
   ratingContainer: {
     flexDirection: "column",
@@ -123,9 +132,18 @@ const ProfileStyles = StyleSheet.create({
     ...theme.textLight,
     fontWeight: "300",
   },
-  followersPerfContainer: {
+  followersContainer: {
     flexDirection: "column",
-    marginLeft: SPACING.lg * 3,
+    position: "absolute",
+    left: DIMENS.screenWidth * 0.32,
+  },
+  chatPerformanceContainer: {
+    flexDirection: "column",
+    position: "absolute",
+    left: DIMENS.screenWidth * 0.6,
+  },
+  chatPerfSubContainer: {
+    marginLeft: SPACING.xs,
   },
 });
 

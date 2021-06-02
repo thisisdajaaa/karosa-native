@@ -1,25 +1,36 @@
 import React from "react";
 import { Provider } from "react-redux";
+import { LogBox } from "react-native";
+import { useMount } from "@app/hooks";
+import { internetCheck } from "@app/utils";
 import LoadAssets from "@app/components/load-assets";
 import BaseNavigator from "@app/navigators/index";
 import configureStore from "@app/redux/store";
-
-import "@app/config/i18n";
+import ToastProvider from "@app/molecules/Toast/context/ToastProvider";
 
 const fonts = {
-  "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
-  "SFProText-Semibold": require("./assets/fonts/SF-Pro-Text-Semibold.otf"),
-  "SFProText-Regular": require("./assets/fonts/SF-Pro-Text-Regular.otf"),
+  "SFProText-Bold": require("./src/assets/fonts/SF-Pro-Text-Bold.otf"),
+  "SFProText-Semibold": require("./src/assets/fonts/SF-Pro-Text-Semibold.otf"),
+  "SFProText-Regular": require("./src/assets/fonts/SF-Pro-Text-Regular.otf"),
 };
 
 export const store = configureStore({});
 
-export default function App() {
+LogBox.ignoreLogs(["Setting a timer"]);
+LogBox.ignoreLogs(["Remote debugger"]);
+
+const App = () => {
+  useMount(internetCheck);
+
   return (
     <Provider store={store}>
-      <LoadAssets {...{ fonts }}>
-        <BaseNavigator />
-      </LoadAssets>
+      <ToastProvider>
+        <LoadAssets fonts={fonts}>
+          <BaseNavigator />
+        </LoadAssets>
+      </ToastProvider>
     </Provider>
   );
-}
+};
+
+export default App;

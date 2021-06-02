@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import FormRadioGroup from '../FormRadioGroup';
+import FormRadioGroup from "../FormRadioGroup";
 
-test('FormRadioGroup', () => {
-  const tree = renderer
-    .create(
-      <FormRadioGroup />
-    )
-    .toJSON();
+test("FormRadioGroup", () => {
+  const tree = renderer.create(<FormRadioGroup />).toJSON();
   expect(tree).toMatchSnapshot();
 });

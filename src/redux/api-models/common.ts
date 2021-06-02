@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Item } from "react-native-picker-select";
+
 export type ResponseError = {
   code: any;
   message: string;
@@ -6,7 +9,7 @@ export type ResponseError = {
 export type ResponseState<T> = {
   response: T;
   isLoading: boolean;
-  error?: ResponseError;
+  error?: ResponseError[] | any;
 };
 
 export type Audit = {
@@ -14,7 +17,11 @@ export type Audit = {
   updatedAt: string;
 };
 
-export type PickerData = {
+export type PickerData = Omit<Item, "color" | "inputLabel">;
+
+export type CommonLocation = {
   id: number;
-  value: string;
+  name: string;
 };
+
+export type ResponseWithAudit<T> = T & Audit;

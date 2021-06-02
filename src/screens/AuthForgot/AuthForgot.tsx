@@ -11,13 +11,13 @@ import { useDispatch } from "react-redux";
 import { FormikProvider, useFormik } from "formik";
 import { ForgotRequest } from "@app/redux/auth/models";
 import { actions } from "@app/redux/auth";
-import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
+import { PropsType as FormButtonProps } from "@app/molecules/FormButton/types";
 import AuthForgotTemplate from "@app/templates/AuthForgot";
 import routes from "@app/navigators/routes";
 
 import ForgotValidationSchema from "./validation";
 
-const LoginForgot: FC = () => {
+const AuthForgotScreen: FC = () => {
   const { goBack, navigate } = useNavigation();
   const dispatch = useDispatch();
 
@@ -40,12 +40,12 @@ const LoginForgot: FC = () => {
   const formikBag = useFormik<ForgotRequest>({
     initialValues: formInitValues,
     validateOnChange: true,
-    validateOnBlur: true,
+    validateOnBlur: false,
     onSubmit: handleSubmit,
     validationSchema: ForgotValidationSchema,
   });
 
-  const forgotButtonProps: SubmitButtonProps = {
+  const forgotButtonProps: FormButtonProps = {
     title: "Submit",
   };
 
@@ -68,4 +68,4 @@ const LoginForgot: FC = () => {
   );
 };
 
-export default LoginForgot;
+export default AuthForgotScreen;

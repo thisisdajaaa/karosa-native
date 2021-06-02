@@ -1,11 +1,9 @@
-export type Response = [
-  {
-    id: 0;
-    name: string;
-    provinceId: 0;
-  }
-];
+import { CommonLocation } from "./common";
 
 export type Request = {
   cityId: number;
 };
+
+export type Barangay = CommonLocation & { provinceId: number };
+
+export type Response = Barangay[];

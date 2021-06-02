@@ -8,6 +8,7 @@ import { StyleSheet } from "react-native";
 import { DIMENS, theme } from "@app/styles";
 
 const ImagePickerStyles = StyleSheet.create({
+  // eslint-disable-next-line react-native/no-color-literals
   variationOneContainer: {
     alignItems: "center",
     backgroundColor: "rgba(196, 196, 196, 0.3)",
@@ -21,10 +22,10 @@ const ImagePickerStyles = StyleSheet.create({
   },
   variationTwoContainer: {
     alignItems: "center",
-    backgroundColor: "rgba(196, 196, 196, 0.3)",
+    backgroundColor: theme.colors.dark35,
     borderWidth: 4,
     borderStyle: "solid",
-    borderColor: "#FFFFFF",
+    borderColor: theme.colors.white,
     borderRadius: 50,
     height: DIMENS.screenHeight * 0.14,
     justifyContent: "center",
@@ -33,17 +34,17 @@ const ImagePickerStyles = StyleSheet.create({
   },
   variationThreeContainer: {
     alignItems: "center",
-    backgroundColor: "rgba(196, 196, 196, 0.3)",
+    backgroundColor: theme.colors.dark35,
     height: DIMENS.screenHeight * 0.23,
     justifyContent: "center",
     overflow: "hidden",
     width: DIMENS.screenWidth,
   },
   image: {
-    width: "100%",
+    width: DIMENS.screenWidth,
     height: "100%",
     opacity: 0.5,
-    zIndex: 0,
+    zIndex: 21,
   },
   cameraIcon: {
     zIndex: 1,

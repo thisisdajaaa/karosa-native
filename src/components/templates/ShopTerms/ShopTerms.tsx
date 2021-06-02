@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import { View } from "react-native";
 import Text from "@app/atoms/Text";
 import Button from "@app/atoms/Button";
@@ -14,11 +14,11 @@ import Header from "@app/molecules/Header";
 import type { PropsType } from "./types";
 import ShopTermsStyles from "./styles";
 
-const ShopTerms: FC<PropsType> = (props) => {
+const ShopTermsTemplate: FC<PropsType> = (props) => {
   const { onAgree, onNotNow } = props;
 
-  return (
-    <Fragment>
+  const getHeader = () => {
+    return (
       <Header
         hasBottomDivider
         centerComponent={
@@ -28,6 +28,26 @@ const ShopTerms: FC<PropsType> = (props) => {
           />
         }
       />
+    );
+  };
+
+  const getButtons = () => {
+    return (
+      <View style={ShopTermsStyles.buttonContainer}>
+        <Button onPress={onAgree} title="I Agree" />
+        <View style={ShopTermsStyles.buttonSpacer} />
+        <Button
+          onPress={onNotNow}
+          title="Not Now"
+          buttonStyle={ShopTermsStyles.notNowButtonContainer}
+          titleStyle={ShopTermsStyles.txtNotNow}
+        />
+      </View>
+    );
+  };
+
+  const getContent = () => {
+    return (
       <View style={ShopTermsStyles.container}>
         <View style={ShopTermsStyles.subContainer}>
           <View style={ShopTermsStyles.paragContainer}>
@@ -59,19 +79,17 @@ const ShopTerms: FC<PropsType> = (props) => {
           </View>
         </View>
 
-        <View style={ShopTermsStyles.buttonContainer}>
-          <Button onPress={onAgree} title="I Agree" />
-          <View style={ShopTermsStyles.buttonSpacer} />
-          <Button
-            onPress={onNotNow}
-            title="Not Now"
-            buttonStyle={ShopTermsStyles.notNowButtonContainer}
-            titleStyle={ShopTermsStyles.txtNotNow}
-          />
-        </View>
+        <>{getButtons()}</>
       </View>
-    </Fragment>
+    );
+  };
+
+  return (
+    <>
+      <>{getHeader()}</>
+      <>{getContent()}</>
+    </>
   );
 };
 
-export default ShopTerms;
+export default ShopTermsTemplate;

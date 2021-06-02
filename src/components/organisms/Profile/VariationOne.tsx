@@ -14,11 +14,11 @@ import Searchbar from "@app/molecules/SearchBar";
 import Icon from "@app/atoms/Icon";
 import Text from "@app/atoms/Text";
 
-import type { VariatonOne } from "./types";
+import type { PropsType } from "./types";
 import { BLUR_RADIUS, ICON } from "./config";
 import ProfileStyles from "./styles";
 
-const VariationOne: FC<VariatonOne> = (props) => {
+const VariationOne: FC<PropsType> = (props) => {
   const {
     coverPhoto,
     avatarPhoto,
@@ -26,7 +26,7 @@ const VariationOne: FC<VariatonOne> = (props) => {
     onBack,
     onMore,
     onChat,
-    onAdd,
+    onFollow,
     shopName,
     address,
     isActive,
@@ -63,6 +63,7 @@ const VariationOne: FC<VariatonOne> = (props) => {
         <Image
           imageStyle={ProfileStyles.avatarPhoto}
           source={{ uri: avatarPhoto }}
+          resizeMode="contain"
         />
       </View>
       <View style={ProfileStyles.profileInfoContainer}>
@@ -91,7 +92,7 @@ const VariationOne: FC<VariatonOne> = (props) => {
               extraStyle={ProfileStyles.personIcon}
             />
           }
-          onPress={onAdd}
+          onPress={onFollow}
           titleStyle={ProfileStyles.txtPerson}
           buttonStyle={ProfileStyles.btnPerson}
           title={"Chat"}
@@ -111,7 +112,7 @@ const VariationOne: FC<VariatonOne> = (props) => {
                 extraStyle={ProfileStyles.activeIcon}
               />
               <Text
-                text={isActive ? "active" : "inactive"}
+                text={isActive ? "Active" : "Inactive"}
                 textStyle={ProfileStyles.txtIcon}
               />
             </Fragment>
@@ -125,11 +126,11 @@ const VariationOne: FC<VariatonOne> = (props) => {
             />
             <Text text="Shop Rating" textStyle={ProfileStyles.txtBottomLabel} />
           </View>
-          <View style={ProfileStyles.followersPerfContainer}>
+          <View style={ProfileStyles.followersContainer}>
             <Text text={followers} textStyle={ProfileStyles.txtBottomValue} />
             <Text text="Followers" textStyle={ProfileStyles.txtBottomLabel} />
           </View>
-          <View style={ProfileStyles.followersPerfContainer}>
+          <View style={ProfileStyles.chatPerformanceContainer}>
             <Text text={chatPerf} textStyle={ProfileStyles.txtBottomValue} />
             <Text
               text=" Chat Performance"

@@ -15,19 +15,21 @@ import {
   useAuth,
   useMemoizedSelector,
   useMount,
+  useToast,
   useUpdateEffect,
 } from "@app/hooks";
-import { PropsType as SubmitButtonProps } from "@app/molecules/FormButton/types";
-import AuthLoginTemplate from "@app/components/templates/AuthLogin";
+import type { PropsType as FormButtonProps } from "@app/molecules/FormButton/types";
+import AuthLoginTemplate from "@app/templates/AuthLogin";
 import routes from "@app/navigators/routes";
 
 import LoginValidationSchema from "./validation";
 
-const AuthLogin: FC = () => {
+const AuthLoginScreen: FC = () => {
   const dispatch = useDispatch();
 
   const { navigate } = useNavigation();
   const { isLoggedIn } = useAuth();
+  const { showToast, clearToastQueue } = useToast();
 
   const callLoginApi = useCallback(
     (request: LoginRequest) => dispatch(actions.callLoginApi.request(request)),
@@ -41,10 +43,11 @@ const AuthLogin: FC = () => {
 
   const loginResponse = useMemoizedSelector(selectors.getLoginResponse);
 
-  const responseError = loginResponse.error?.message;
+  const responseError = loginResponse.error;
 
   useUpdateEffect(() => {
     if (isLoggedIn) {
+      clearToastQueue();
       navigate(routes.ACCOUNTS_MAIN);
     }
   }, [isLoggedIn]);
@@ -63,7 +66,7 @@ const AuthLogin: FC = () => {
   const formikBag = useFormik<LoginRequest>({
     initialValues: formInitValues,
     validateOnChange: true,
-    validateOnBlur: true,
+    validateOnBlur: false,
     validationSchema: LoginValidationSchema,
     onSubmit: handleSubmit,
   });
@@ -71,11 +74,12 @@ const AuthLogin: FC = () => {
   useMount(() => setAuthBack(false));
 
   useUpdateEffect(() => {
-    formikBag.setFieldError("password", "");
-
-    if (responseError && !loginResponse.isLoading) {
-      formikBag.setFieldError("identifier", " ");
-      formikBag.setFieldError("password", responseError);
+    if (responseError === 401 && !loginResponse.isLoading && !isLoggedIn) {
+      showToast({
+        message: "Invalid Account or Password.",
+        autoHideDuration: 3000,
+        type: "error",
+      });
     }
   }, [responseError, loginResponse.isLoading]);
 
@@ -84,7 +88,7 @@ const AuthLogin: FC = () => {
     setAuthBack(true);
   }, [navigate]);
 
-  const loginButtonProps: SubmitButtonProps = {
+  const loginButtonProps: FormButtonProps = {
     title: "Login",
     loading: loginResponse.isLoading,
   };
@@ -104,4 +108,4 @@ const AuthLogin: FC = () => {
   );
 };
 
-export default AuthLogin;
+export default AuthLoginScreen;

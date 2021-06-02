@@ -2,8 +2,7 @@ import { combineReducers } from "redux";
 import produce, { Draft } from "immer";
 import { getType } from "typesafe-actions";
 import { ActionType } from "typesafe-actions/dist/type-helpers";
-
-import { ResponseState } from "../api-models/common";
+import { ResponseState } from "@app/redux/api-models/common";
 
 import * as actions from "./actions";
 import * as models from "./models";
@@ -16,7 +15,16 @@ export const shopEntryContext = produce(
   ) => {
     switch (action.type) {
       case getType(actions.setShopStatus):
-        draft.shopStatus = action.payload;
+        draft.shopSettings.status = action.payload;
+        return draft;
+      case getType(actions.setShopSettings):
+        draft.shopSettings = action.payload;
+        return draft;
+      case getType(actions.setShopPayment):
+        draft.shopPayment = action.payload;
+        return draft;
+      case getType(actions.setShopAddressForm):
+        draft.shopAddress = action.payload;
         return draft;
       default:
         return draft;
@@ -89,6 +97,30 @@ export const shopInfoResponse = produce(
   data.initShopState.shopInfoResponse
 );
 
+export const shopAddressResponse = produce(
+  (
+    draft: Draft<ResponseState<models.ShopAddressResponse>>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.callShopAddressApi.request):
+        draft.isLoading = true;
+        return draft;
+      case getType(actions.callShopAddressApi.success):
+        draft.response = action.payload;
+        draft.isLoading = false;
+        return draft;
+      case getType(actions.callShopAddressApi.failure):
+        draft.error = action.payload;
+        draft.isLoading = false;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initShopState.shopAddressResponse
+);
+
 export const addProductResponse = produce(
   (
     draft: Draft<ResponseState<models.AddProductResponse>>,
@@ -142,6 +174,7 @@ const reducer = combineReducers({
   shopEntryContext,
   productEntryContext,
   shopInfoResponse,
+  shopAddressResponse,
   addProductResponse,
   productListResponse,
 });

@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from '@app/components/templates/AuthLogin/__tests__/node_modules/react-test-renderer';
+import React from "react";
+import renderer from "@app/components/templates/AuthLogin/__tests__/node_modules/react-test-renderer";
 
-import Badge from '../Badge';
+import Badge from "../Badge";
 
-test('Badge', () => {
-  const tree = renderer
-    .create(
-      <Badge />
-    )
-    .toJSON();
+test("Badge", () => {
+  const tree = renderer.create(<Badge />).toJSON();
   expect(tree).toMatchSnapshot();
 });

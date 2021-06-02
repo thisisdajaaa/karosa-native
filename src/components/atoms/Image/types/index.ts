@@ -15,4 +15,5 @@ export type PropsType = {
   source: ImageSourcePropType;
   resizeMode?: ImageResizeMode;
   imageStyle?: StyleProp<ImageStyle>;
+  onLoadEnd?(): void;
 };

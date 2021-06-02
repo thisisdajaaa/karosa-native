@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import Radio from '../Radio';
+import Radio from "../Radio";
 
-test('Radio', () => {
-  const tree = renderer
-    .create(
-      <Radio />
-    )
-    .toJSON();
+test("Radio", () => {
+  const tree = renderer.create(<Radio />).toJSON();
   expect(tree).toMatchSnapshot();
 });

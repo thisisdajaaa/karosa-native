@@ -17,8 +17,14 @@
     "ios": {
       "supportsTablet": true
     },
+    "android": {
+      "package": "host.exp.exponent"
+    },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "experiments": {
+      "turboModules": true
     },
     "packagerOpts": {
       "config": "metro.config.js",

@@ -1,12 +1,13 @@
 {
-  "login": "/v1/auth/login",
+  "login": "/api/authentication/login",
+  "register": "/api/authentication/register/phone",
   "addresses": "/v1/users/addresses",
   "regions": "/v1/addresses/regions",
   "shopInfo": "/v1/users/shop",
+  "shopAddress": "/v1/shops/address",
   "products": "/v1/shops/products",
   "categories": "/v1/categories",
   "province": "/v1/addresses/{regionId}/provinces",
   "cities": "/v1/addresses/{provinceId}/cities",
-  "barangay": "/v1/addresses/{cityId}/barangays",
-  "register": "/v1/register"
+  "barangay": "/v1/addresses/{cityId}/barangays"
 }

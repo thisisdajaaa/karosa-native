@@ -28,7 +28,11 @@ const VariationThree: FC<VariationType> = (props) => {
             width={SIZE.SECONDARY}
             extraStyle={ImagePickerStyle.cameraIcon}
           />
-          <Image source={{ uri }} imageStyle={ImagePickerStyle.image} />
+          <Image
+            source={{ uri }}
+            imageStyle={ImagePickerStyle.image}
+            resizeMode="cover"
+          />
         </View>
       ) : (
         <View style={ImagePickerStyle.variationThreeContainer}>

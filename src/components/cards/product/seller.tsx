@@ -18,8 +18,7 @@ export const SellerCard: React.FC<SellerProps> = ({ item, ActionButton }) => {
         shadowOpacity: 0.1,
         shadowOffset: { height: 4, width: 1 },
         shadowColor: theme.colors.black,
-      }}
-    >
+      }}>
       <View style={styles.wholesaleContainer}>
         <BaseText style={styles.txtWholesale}>Wholesale</BaseText>
       </View>

@@ -2,8 +2,7 @@ import { combineReducers } from "redux";
 import produce, { Draft } from "immer";
 import { getType } from "typesafe-actions";
 import { ActionType } from "typesafe-actions/dist/type-helpers";
-
-import { ResponseState } from "../api-models/common";
+import { ResponseState } from "@app/redux/api-models/common";
 
 import * as actions from "./actions";
 import * as models from "./models";
@@ -21,6 +20,9 @@ export const authEntryContext = produce(
       case getType(actions.setAuthBack):
         draft.isOpen = action.payload;
         return draft;
+      case getType(actions.setOAuth):
+        draft.oauth = action.payload;
+        return draft;
       default:
         return draft;
     }
@@ -30,16 +32,15 @@ export const authEntryContext = produce(
 
 export const loginResponse = produce(
   (
-    draft: Draft<ResponseState<models.LoginResponse>>,
+    draft: Draft<models.LoggedInResponse>,
     action: ActionType<typeof actions>
   ) => {
     switch (action.type) {
       case getType(actions.callLoginApi.request):
-        draft.response = data.initAuthState.loginResponse.response;
         draft.isLoading = true;
         return draft;
       case getType(actions.callLoginApi.success):
-        draft.response = action.payload;
+        draft.response.isLoggedIn = true;
         draft.isLoading = false;
         return draft;
       case getType(actions.callLoginApi.failure):
@@ -55,16 +56,15 @@ export const loginResponse = produce(
 
 export const registerResponse = produce(
   (
-    draft: Draft<ResponseState<models.RegisterResponse>>,
+    draft: Draft<models.LoggedInResponse>,
     action: ActionType<typeof actions>
   ) => {
     switch (action.type) {
       case getType(actions.callRegisterApi.request):
-        draft.response = data.initAuthState.registerResponse.response;
         draft.isLoading = true;
         return draft;
       case getType(actions.callRegisterApi.success):
-        draft.response = action.payload;
+        draft.response.isLoggedIn = true;
         draft.isLoading = false;
         return draft;
       case getType(actions.callRegisterApi.failure):
@@ -155,6 +155,7 @@ const reducer = combineReducers({
   authEntryContext,
   loginResponse,
   forgotResponse,
+  registerResponse,
   myAddressResponse,
   newAddressResponse,
 });

@@ -13,7 +13,6 @@ import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
 
-
 const MyAddressScreen: React.FC = () => {
   const { goBack, navigate } = useNavigation();
   const dispatch = useDispatch();
@@ -56,8 +55,7 @@ const MyAddressScreen: React.FC = () => {
           ))}
       </View>
       <TouchableWithoutFeedback
-        onPress={() => navigate(routes.ACCOUNTS_NEW_ADDRESS)}
-      >
+        onPress={() => navigate(routes.ACCOUNTS_NEW_ADDRESS)}>
         <View style={styles.touchable}>
           <BaseText style={styles.txtnewAdd}>Add New Address</BaseText>
           <View style={styles.forIcon}>

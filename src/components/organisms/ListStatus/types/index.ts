@@ -4,7 +4,7 @@
  *
  */
 
-type Icon = "green" | "gray" | "gold";
+type Icon = "green" | "gray" | "gold" | string;
 
 export type PropsType = {
   label: string;

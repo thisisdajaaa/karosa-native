@@ -1,6 +1,5 @@
 import { createSelector, Selector } from "reselect";
-
-import { StateAll } from "../types";
+import { StateAll } from "@app/redux/types";
 
 import { ShopState } from "./models";
 import { initShopState } from "./data";
@@ -48,19 +47,27 @@ export const getShippingDetailsForm = () =>
     );
   });
 
-export const getShopStatus = () =>
+export const getShopSettings = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return (
-      state.shopEntryContext.shopStatus ||
-      initShopState.shopEntryContext.shopStatus
+      state.shopEntryContext.shopSettings ||
+      initShopState.shopEntryContext.shopSettings
     );
   });
 
-export const getProductStatus = () =>
+export const getShopAddressForm = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return (
-      state.productEntryContext.productForm.status ||
-      initShopState.productEntryContext.productForm.status
+      state.shopEntryContext.shopAddress ||
+      initShopState.shopEntryContext.shopAddress
+    );
+  });
+
+export const getShopPayment = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return (
+      state.shopEntryContext.shopPayment ||
+      initShopState.shopEntryContext.shopPayment
     );
   });
 
@@ -77,6 +84,11 @@ export const getShopInfoResponse = () =>
     return state.shopInfoResponse || initShopState.shopInfoResponse;
   });
 
+export const getShopAddressResponse = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return state.shopAddressResponse || initShopState.shopAddressResponse;
+  });
+
 export const getAddProductResponse = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return state.addProductResponse || initShopState.addProductResponse;
@@ -87,16 +99,20 @@ export const getProductListResponse = () =>
     return state.productListResponse || initShopState.productListResponse;
   });
 
-export default {
+const selectors = {
   getAvailabilityForm,
   getProductForm,
   getVariationForm,
   getWholesaleForm,
+  getShopPayment,
+  getShopAddressForm,
+  getShopSettings,
   getShippingDetailsForm,
-  getShopStatus,
-  getProductStatus,
   getProductMeasurement,
   getShopInfoResponse,
+  getShopAddressResponse,
   getAddProductResponse,
   getProductListResponse,
 };
+
+export default selectors;

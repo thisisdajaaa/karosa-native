@@ -6,16 +6,11 @@ export const initAuthState: AuthState = {
   authEntryContext: {
     isOpen: false,
     isBack: false,
+    oauth: ENUM.OAuth.None,
   },
   loginResponse: {
     response: {
-      id: "",
-      email: "",
-      fullName: "",
-      phoneNo: "",
-      username: "",
-      gender: ENUM.RES_GENDER.Other,
-      avatar: {},
+      isLoggedIn: false,
     },
     isLoading: false,
   },
@@ -29,8 +24,9 @@ export const initAuthState: AuthState = {
     response: [
       {
         id: "",
-        phoneNo: "",
-        detailed_address: "",
+        name: "",
+        phoneNumber: "",
+        detailedAddress: "",
         isDefaultAddress: false,
         barangayId: 0,
         userId: 0,
@@ -52,8 +48,7 @@ export const initAuthState: AuthState = {
   },
   registerResponse: {
     response: {
-      username: "",
-      email: "",
+      isLoggedIn: false,
     },
     isLoading: false,
   },

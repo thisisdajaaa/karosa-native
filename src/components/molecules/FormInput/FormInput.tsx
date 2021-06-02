@@ -5,8 +5,10 @@
  *
  */
 
-import React, { FC, useState, useEffect, useCallback } from "react";
-import { useFormikContext, useField } from "formik";
+import React, { FC, useState, useCallback } from "react";
+import { useField, useFormikContext } from "formik";
+import { isNil } from "ramda";
+import { useUpdateEffect } from "@app/hooks";
 import Input from "@app/atoms/Input";
 
 import type { PropsType } from "./types";
@@ -18,18 +20,17 @@ const FormInput: FC<PropsType> = (props) => {
   const { validateOnChange } = useFormikContext();
 
   const [currentValue, setCurrentValue] = useState(
-    meta.value || meta.initialValue
+    isNil(meta.value) ? meta.initialValue : meta.value
   );
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     setCurrentValue(meta.value);
   }, [meta.value]);
 
   const handleChange = useCallback(
     (text: string) => {
-      setCurrentValue(text);
-
       if (validateOnChange) {
+        setCurrentValue(text);
         helpers.setValue(text);
         helpers.setTouched(true);
       }

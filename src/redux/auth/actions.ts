@@ -1,17 +1,17 @@
 import { createAction, createAsyncAction } from "typesafe-actions";
+import { ENUM } from "@app/constants";
+import { ResponseError } from "@app/redux/api-models/common";
 
-import { ResponseError } from "../api-models/common";
 import * as types from "./types";
 import {
   LoginRequest,
-  LoginResponse,
   RegisterRequest,
   ForgotRequest,
   ForgotResponse,
   MyAddressResponse,
   NewAddressRequest,
   NewAddressResponse,
-  RegisterResponse,
+  LoggedInResponse,
 } from "./models";
 
 export const setAuthBack = createAction(
@@ -24,17 +24,22 @@ export const setAuthOpen = createAction(
   (resolve) => (value: boolean) => resolve(value)
 );
 
+export const setOAuth = createAction(
+  types.SET_OAUTH,
+  (resolve) => (value: ENUM.OAuth) => resolve(value)
+);
+
 export const callLoginApi = createAsyncAction(
   types.ACT_LOGIN_REQUEST,
   types.ACT_LOGIN_SUCCESS,
   types.ACT_LOGIN_FAILURE
-)<LoginRequest, LoginResponse, ResponseError>();
+)<LoginRequest, LoggedInResponse, ResponseError>();
 
 export const callRegisterApi = createAsyncAction(
   types.ACT_REGISTER_REQUEST,
   types.ACT_REGISTER_SUCCESS,
   types.ACT_REGISTER_FAILURE
-)<RegisterRequest, RegisterResponse, ResponseError>();
+)<RegisterRequest, LoggedInResponse, ResponseError>();
 
 export const callForgotApi = createAsyncAction(
   types.ACT_FORGOT_PASS_REQUEST,
@@ -54,9 +59,10 @@ export const callNewAddressApi = createAsyncAction(
   types.ACT_NEW_ADDRESS_FAILURE
 )<NewAddressRequest, NewAddressResponse, ResponseError>();
 
-export const actions = {
+const actions = {
   setAuthBack,
   setAuthOpen,
+  setOAuth,
   callLoginApi,
   callForgotApi,
   callMyAddressApi,

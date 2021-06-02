@@ -5,16 +5,12 @@
  *
  */
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import renderer from "react-test-renderer";
 
-import ListCheckbox from '../ListCheckbox';
+import ListCheckbox from "../ListCheckbox";
 
-test('ListCheckbox', () => {
-  const tree = renderer
-    .create(
-      <ListCheckbox />
-    )
-    .toJSON();
+test("ListCheckbox", () => {
+  const tree = renderer.create(<ListCheckbox />).toJSON();
   expect(tree).toMatchSnapshot();
 });

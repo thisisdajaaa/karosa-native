@@ -1,4 +1,7 @@
 export const SET_SHOP_STATUS = "shop/setShopStatus" as const;
+export const SET_SHOP_SETTINGS = "shop/setShopSettings" as const;
+export const SET_SHOP_PAYMENT = "shop/setShopPayment" as const;
+export const SET_SHOP_ADDRESS = "shop/setShopAddress" as const;
 export const SET_PRODUCT_STATUS = "shop/setProductStatus" as const;
 export const SET_PRODUCT_MEASUREMENT = "shop/setProductMeasurement" as const;
 export const SET_CATEGORY = "shop/setCategory" as const;
@@ -14,6 +17,14 @@ export const ACT_SHOP_INFO_REQUEST = "shop/actShopInfoRequest" as const;
 export const ACT_SHOP_INFO_SUCCESS = "shop/actShopInfoSuccess" as const;
 export const ACT_SHOP_INFO_FAILURE = "shop/actShopInfoFailure" as const;
 
+export const ACT_SHOP_DELETE_REQUEST = "shop/actShopDeleteRequest" as const;
+export const ACT_SHOP_DELETE_SUCCESS = "shop/actShopDeleteSuccess" as const;
+export const ACT_SHOP_DELETE_FAILURE = "shop/actShopDeleteFailure" as const;
+
+export const ACT_SHOP_ADDRESS_REQUEST = "shop/actShopAddressRequest" as const;
+export const ACT_SHOP_ADDRESS_SUCCESS = "shop/actShopAddressSuccess" as const;
+export const ACT_SHOP_ADDRESS_FAILURE = "shop/actShopAddressFailure" as const;
+
 export const ACT_ADD_PRODUCT_REQUEST = "shop/actAddProductRequest" as const;
 export const ACT_ADD_PRODUCT_SUCCESS = "shop/actAddProductSuccess" as const;
 export const ACT_ADD_PRODUCT_FAILURE = "shop/actAddProductFailure" as const;
@@ -24,6 +35,9 @@ export const ACT_PRODUCT_LIST_FAILURE = "shop/actProductListFailure" as const;
 
 export type Types =
   | typeof SET_SHOP_STATUS
+  | typeof SET_SHOP_PAYMENT
+  | typeof SET_SHOP_SETTINGS
+  | typeof SET_SHOP_ADDRESS
   | typeof SET_PRODUCT_STATUS
   | typeof SET_PRODUCT_MEASUREMENT
   | typeof SET_CATEGORY
@@ -36,6 +50,12 @@ export type Types =
   | typeof ACT_SHOP_INFO_REQUEST
   | typeof ACT_SHOP_INFO_SUCCESS
   | typeof ACT_SHOP_INFO_FAILURE
+  | typeof ACT_SHOP_DELETE_REQUEST
+  | typeof ACT_SHOP_DELETE_SUCCESS
+  | typeof ACT_SHOP_DELETE_FAILURE
+  | typeof ACT_SHOP_ADDRESS_REQUEST
+  | typeof ACT_SHOP_ADDRESS_SUCCESS
+  | typeof ACT_SHOP_ADDRESS_FAILURE
   | typeof ACT_ADD_PRODUCT_REQUEST
   | typeof ACT_ADD_PRODUCT_SUCCESS
   | typeof ACT_ADD_PRODUCT_FAILURE

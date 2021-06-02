@@ -17,7 +17,7 @@ const Input: FC<PropsType> = (props) => {
     value,
     disabled,
     inputContainerStyle,
-    keyboardType,
+    keyboardType = "default",
     numberOfLines,
     onChange,
     multiline,
@@ -26,8 +26,10 @@ const Input: FC<PropsType> = (props) => {
     inputStyle,
     placeholderColor,
     containerStyle,
+    maxLength,
     autoCompleteType,
     autoCorrect,
+    onEndEditing,
   } = props;
 
   return (
@@ -36,8 +38,14 @@ const Input: FC<PropsType> = (props) => {
       placeholder={placeholder}
       disabled={disabled}
       multiline={multiline}
+      returnKeyType={
+        keyboardType === "number-pad" || keyboardType === "default"
+          ? "done"
+          : "default"
+      }
       inputContainerStyle={[InputStyles.inputContainer, inputContainerStyle]}
-      inputStyle={inputStyle}
+      inputStyle={inputStyle as never}
+      onEndEditing={onEndEditing}
       autoCorrect={autoCorrect}
       placeholderTextColor={placeholderColor}
       keyboardType={keyboardType}
@@ -45,6 +53,7 @@ const Input: FC<PropsType> = (props) => {
       onChangeText={onChange}
       autoCompleteType={autoCompleteType}
       autoCapitalize={autoCapitalize}
+      maxLength={maxLength}
       secureTextEntry={secureTextEntry}
       containerStyle={[InputStyles.container, containerStyle]}
     />

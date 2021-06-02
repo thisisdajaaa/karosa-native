@@ -7,9 +7,10 @@
 
 import React, { FC } from "react";
 import { ListItem } from "react-native-elements";
-import FormSwitch from "@app/components/molecules/FormSwitch";
+import { View } from "react-native";
+import FormSwitch from "@app/molecules/FormSwitch";
 import Text from "@app/atoms/Text";
-import ValidationMessage from "@app/components/molecules/ValidationMessage";
+import ValidationMessage from "@app/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
 import ListSwitchStyles from "./styles";
@@ -20,7 +21,7 @@ const ListSwitch: FC<PropsType> = (props) => {
   return (
     <ListItem bottomDivider={hasBottomDivider}>
       <ListItem.Content style={ListSwitchStyles.container}>
-        <ListItem.Content style={ListSwitchStyles.switchContainer}>
+        <View style={ListSwitchStyles.switchContainer}>
           {boldTitle && (
             <Text text={boldTitle} textStyle={ListSwitchStyles.txtBoldTitle} />
           )}
@@ -31,7 +32,7 @@ const ListSwitch: FC<PropsType> = (props) => {
           <ListItem.Content style={ListSwitchStyles.rightContainer}>
             <FormSwitch name={name} disabled={disabled} />
           </ListItem.Content>
-        </ListItem.Content>
+        </View>
         <ValidationMessage name={name} />
       </ListItem.Content>
     </ListItem>

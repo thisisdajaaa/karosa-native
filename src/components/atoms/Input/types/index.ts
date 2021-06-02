@@ -9,6 +9,8 @@ import {
   StyleProp,
   ViewStyle,
   TextStyle,
+  NativeSyntheticEvent,
+  TextInputEndEditingEventData,
 } from "react-native";
 
 type InputOptions = "none" | "sentences" | "words" | "characters";
@@ -31,13 +33,15 @@ type AutoCompleteType =
 export type PropsType = {
   value: string;
   placeholder: string;
-  onChange(text: string): void;
+  onChange?(text: string): void;
+  onEndEditing?(e: NativeSyntheticEvent<TextInputEndEditingEventData>): void;
   inputStyle?: StyleProp<TextStyle>;
   inputContainerStyle?: StyleProp<ViewStyle>;
   containerStyle?: StyleProp<ViewStyle>;
   placeholderColor?: string;
   disabled?: boolean;
   autoCorrect?: boolean;
+  maxLength?: number;
   multiline?: boolean;
   keyboardType?: KeyboardTypeOptions;
   numberOfLines?: number;

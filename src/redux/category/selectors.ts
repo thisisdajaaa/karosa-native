@@ -1,6 +1,5 @@
 import { createSelector, Selector } from "reselect";
-
-import { StateAll } from "../types";
+import { StateAll } from "@app/redux/types";
 
 import { CategoryState } from "./models";
 import { initCategoryState } from "./data";
@@ -14,6 +13,8 @@ export const getCategoryListResponse = () =>
     return state.categoryListResponse || initCategoryState.categoryListResponse;
   });
 
-export default {
+const selectors = {
   getCategoryListResponse,
 };
+
+export default selectors;

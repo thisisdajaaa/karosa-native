@@ -2,9 +2,8 @@ import { SagaIterator } from "@redux-saga/core";
 import { AxiosResponse } from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { getType } from "typesafe-actions";
-
-import { baseAxios } from "../../config/axios/instance";
-import apiEndpoints from "../api-endpoints.json";
+import { baseAxios } from "@app/config/axios/instance";
+import apiEndpoints from "@app/redux/api-endpoints.json";
 
 import * as actions from "./actions";
 import * as models from "./models";
@@ -13,7 +12,7 @@ export function* callLoginApi(
   action: ReturnType<typeof actions.callLoginApi.request>
 ): SagaIterator {
   try {
-    const response: AxiosResponse<models.LoginResponse> = yield call(
+    const response: AxiosResponse<models.LoggedInResponse> = yield call(
       baseAxios.post,
       apiEndpoints.login,
       action.payload
@@ -21,7 +20,7 @@ export function* callLoginApi(
 
     yield put(actions.callLoginApi.success(response.data));
   } catch (error) {
-    yield put(actions.callLoginApi.failure(error.response.data));
+    yield put(actions.callLoginApi.failure(error.response.status));
   }
 }
 
@@ -29,7 +28,7 @@ export function* callRegisterApi(
   action: ReturnType<typeof actions.callRegisterApi.request>
 ): SagaIterator {
   try {
-    const response: AxiosResponse<models.RegisterResponse> = yield call(
+    const response: AxiosResponse<models.LoggedInResponse> = yield call(
       baseAxios.post,
       apiEndpoints.register,
       action.payload
@@ -37,7 +36,7 @@ export function* callRegisterApi(
 
     yield put(actions.callRegisterApi.success(response.data));
   } catch (error) {
-    yield put(actions.callRegisterApi.failure(error));
+    yield put(actions.callRegisterApi.failure(error.response.data));
   }
 }
 

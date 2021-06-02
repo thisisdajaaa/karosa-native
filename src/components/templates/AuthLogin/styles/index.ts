@@ -12,6 +12,7 @@ const AuthLoginStyles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: SPACING.lg,
+    position: "relative",
     backgroundColor: theme.colors.white,
   },
   errorContainer: {

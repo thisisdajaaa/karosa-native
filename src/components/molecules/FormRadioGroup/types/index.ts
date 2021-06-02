@@ -4,7 +4,7 @@
  *
  */
 
-type Option = {
+export type Option = {
   id: string;
   label: string;
 };

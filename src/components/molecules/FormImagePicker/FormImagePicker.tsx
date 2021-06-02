@@ -5,8 +5,9 @@
  *
  */
 
-import React, { FC, useState, useEffect, useCallback } from "react";
+import React, { FC, useState, useCallback } from "react";
 import { useFormikContext, useField } from "formik";
+import { useUpdateEffect } from "@app/hooks";
 import ImagePicker from "@app/molecules/ImagePicker";
 
 import type { PropsType } from "./types";
@@ -20,7 +21,7 @@ const FormImagePicker: FC<PropsType> = (props) => {
     meta.value || meta.initialValue
   );
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     setCurrentValue(meta.value);
   }, [meta.value]);
 

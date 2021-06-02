@@ -1,6 +1,5 @@
 import { createSelector, Selector } from "reselect";
-
-import { StateAll } from "../types";
+import { StateAll } from "@app/redux/types";
 
 import { AuthState } from "./models";
 import { initAuthState } from "./data";

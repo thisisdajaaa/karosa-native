@@ -18,12 +18,13 @@ import Karosa from "./karosa.svg";
 import More from "./more.svg";
 import OutlineHeart from "./outline-heart.svg";
 import Ribbon from "./ribbon.svg";
-import Settings from "./settings.svg";
+import SettingsWhite from "./settings-white.svg";
 import SolidHeart from "./solid-heart.svg";
 import ToPay from "./to-pay.svg";
 import ToRate from "./to-rate.svg";
 import ToReceive from "./to-receive.svg";
 import ToShip from "./to-ship.svg";
+import Warning from "./warning.svg";
 
 const CommonIcons = (
   name: string,
@@ -50,12 +51,15 @@ const CommonIcons = (
       <OutlineHeart style={extraStyle} height={height} width={width} />
     ),
     ribbon: <Ribbon style={extraStyle} height={height} width={width} />,
-    settings: <Settings style={extraStyle} height={height} width={width} />,
+    settingsWhite: (
+      <SettingsWhite style={extraStyle} height={height} width={width} />
+    ),
     solidHeart: <SolidHeart style={extraStyle} height={height} width={width} />,
     toPay: <ToPay style={extraStyle} height={height} width={width} />,
     toRate: <ToRate style={extraStyle} height={height} width={width} />,
     toReceive: <ToReceive style={extraStyle} height={height} width={width} />,
     toShip: <ToShip style={extraStyle} height={height} width={width} />,
+    warning: <Warning style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];

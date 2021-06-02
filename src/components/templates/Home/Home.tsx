@@ -12,7 +12,7 @@ import { Screen } from "@app/components/base-screen";
 import type { PropsType } from "./types";
 import HomeStyles from "./styles";
 
-const Home: FC<PropsType> = (props: PropsType) => {
+const HomeTemplate: FC<PropsType> = (props) => {
   const { screenProps } = props;
 
   return (
@@ -22,11 +22,11 @@ const Home: FC<PropsType> = (props: PropsType) => {
   );
 };
 
-Home.defaultProps = {
+HomeTemplate.defaultProps = {
   screenProps: {
     header: { title: "Home" },
     customStyles: HomeStyles.container,
   },
 };
 
-export default Home;
+export default HomeTemplate;
