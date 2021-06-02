@@ -7,4 +7,5 @@ declare module "*.svg" {
 declare module "@env" {
   export const KAROSA_IOS: string;
   export const KAROSA_ANDROID: string;
+  export const KAROSA_APP_ID: string;
 }

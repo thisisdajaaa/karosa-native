@@ -12,13 +12,18 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ENUM } from "@app/constants";
 import { actions } from "@app/redux/auth";
 import { useMount } from "@app/hooks";
-import { signInWithGoogle } from "@app/utils";
+import { signInWithFb, signInWithGoogle } from "@app/utils";
 import routes from "@app/navigators/routes";
 import BottomSheet from "@app/molecules/BottomSheet";
 import AuthMainTemplate from "@app/templates/AuthMain";
 
 import type { PropsType } from "./types";
-import { ACCESS_TOKEN, BTM_SHEET_HEIGHT, GOOGLE_USER_DATA } from "./config";
+import {
+  GOOGLE_ACCESS_TOKEN,
+  BTM_SHEET_HEIGHT,
+  GOOGLE_USER_DATA,
+  FB_ACCESS_TOKEN,
+} from "./config";
 
 const AuthMainScreen: FC<PropsType> = (props) => {
   const dispatch = useDispatch();
@@ -28,6 +33,7 @@ const AuthMainScreen: FC<PropsType> = (props) => {
 
   const [isGoogleButtonLoading, setIsGoogleButtonLoading] =
     useState<boolean>(false);
+  const [isFbButtonLoading, setIsFbButtonLoading] = useState<boolean>(false);
 
   const setAuthOpen = useCallback(
     (value: boolean) => dispatch(actions.setAuthOpen(value)),
@@ -64,7 +70,10 @@ const AuthMainScreen: FC<PropsType> = (props) => {
 
       if (result.user) {
         setOAuth(ENUM.OAuth.Google);
-        AsyncStorage.setItem(ACCESS_TOKEN, JSON.stringify(result.accessToken));
+        AsyncStorage.setItem(
+          GOOGLE_ACCESS_TOKEN,
+          JSON.stringify(result.accessToken)
+        );
         AsyncStorage.setItem(GOOGLE_USER_DATA, JSON.stringify(result.user));
         sheetRef.current?.close();
       }
@@ -73,8 +82,18 @@ const AuthMainScreen: FC<PropsType> = (props) => {
     }
   };
 
-  const handleFb = () => {
-    0;
+  const handleFb = async () => {
+    try {
+      const result = await signInWithFb(setIsFbButtonLoading);
+
+      if (result.token) {
+        setOAuth(ENUM.OAuth.Facebook);
+        AsyncStorage.setItem(FB_ACCESS_TOKEN, JSON.stringify(result.token));
+        sheetRef.current?.close();
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
   };
 
   return (
@@ -84,6 +103,7 @@ const AuthMainScreen: FC<PropsType> = (props) => {
       height={BTM_SHEET_HEIGHT}>
       <AuthMainTemplate
         isGoogleButtonLoading={isGoogleButtonLoading}
+        isFbButtonLoading={isFbButtonLoading}
         onHelp={handleHelp}
         onLogin={handleLogin}
         onSignUp={handleSignUp}
