@@ -23,6 +23,9 @@
 # Install dependencies for the host
 yarn
 
+# Install git hooks
+yarn postinstall
+
 # Start the application
 yarn dev
 ```
@@ -38,28 +41,38 @@ This page should automatically open in your browser. You can choose to run it in
 | **src/components**/\*         | All app wise common components                               |
 | **src/config**/environment/\* | Any app level environment configs should go here.            |
 | **src/config**/axios/\*       | Configurations for axios                                     |
+| **src/constants**/\*          | Common constant values                                       |
 | **src/hooks**/\*              | Custom react hooks                                           |
 | **src/navigators**/\*         | Define your navigation and routings here                     |
 | **src/redux**/\*              | Redux store that stores all global state of the app          |
 | **src/screens**/\*            | Screens made out of components                               |
+| **src/styles**/\*             | Common styles                                                |
+| **src/utils**/\*              | Utility functions                                            |
+| .comminlintrc.json            | Commit lint configuration                                    |
+| .editorconfig                 | Editor configuration                                         |
 | .eslintrc                     | Eslint configuration                                         |
+| .env.example                  | Project environment variables                                |
+| .eslintignore                 | Folder and files ignored by eslint                           |
 | .gitignore                    | Folder and files ignored by git.                             |
+| .prettierignore               | Folder and files ignored by prettier.                        |
+| .prettierrc                   | Prettier configuration                                       |
 | app.json                      | App configurations by expo                                   |
 | App.tsx                       | Entry point for the applicatinon                             |
 | babel.config.js               | Babel configuration                                          |
+| metro.config.js               | Metro configuration                                          |
 | package.json                  | NPM dependencies.                                            |
 | package-lock.json             | Contains exact versions of NPM dependencies in package.json. |
 | tsconfig.json                 | Contains typescript configuration for this project.          |
 
 ## Recommended Workflow
 
-1. Create the component ( if needed )
-1. Create the screen
+1. Create the atomic components eg atoms, molecules and organisms ( if needed )
+1. Create the screen and template
 1. Add the navigation
 
 ### Code Scaffolding
 
-Run `yarn generateComponent|generateScreen <component-name>` to generate a new component
+Run `yarn generateComponent|generateScreen <component-name>` to generate a new component or screen
 
 ### Components ( if needed )
 
@@ -85,7 +98,7 @@ The navigation defines the routing/relationship between the screens. For more in
 
 ### For files and folders
 
-Use `kebab-case` for files and folders and `camelCase` for variables within files. The only exception would be the component names which should be `PascalCase`.
+Use `kebab-case` for files and folders that are not components or screens and `camelCase` for variables within files and for files and folders that are components or screens. The only exception would be the component names which should be `PascalCase`.
 
 ```
 // File name is edit-profile.tsx
@@ -99,6 +112,7 @@ const EditProfileScreen: React.FC = () => {
 In some cases, we include the file `functionality` in its file name in the format:
 
 `<file-name>-<functionality>.<extension>`
+`<file-name><functionality>.<extension>`
 
 For example:
 
@@ -106,14 +120,13 @@ For example:
 - user`-model`.ts
 - bcrypt`-util`.ts
 
-TypeScript `Interface` and `Type` file names should match their definition name.
-
 For example:
 
-| Interface/Type name | File name            |
-| ------------------- | -------------------- |
-| `IRepository`       | `IRepository`.ts     |
-| `IUserRepository`   | `IUserRepository`.ts |
+- AuthMain
+- ShopEditAddress
+- ProductNew
+
+
 
 ## Deployment
 
