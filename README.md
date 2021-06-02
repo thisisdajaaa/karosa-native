@@ -153,13 +153,13 @@ In some cases, we include the file `functionality` in its file name in the forma
 `<file-name>-<functionality>.<extension>`
 `<file-name><functionality>.<extension>`
 
-For example:
+Non-component/screen file/folder naming example:
 
 - user`-service`.ts
 - user`-model`.ts
 - bcrypt`-util`.ts
 
-For example:
+Screen/component file/folder naming example:
 
 - AuthMain
 - ShopEditAddress
