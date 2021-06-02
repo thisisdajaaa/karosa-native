@@ -19,6 +19,7 @@ import AuthMainStyles from "./styles";
 const AuthMainTemplate: FC<PropsType> = (props) => {
   const {
     isGoogleButtonLoading,
+    isFbButtonLoading,
     onLogin,
     onFBLogin,
     onGoogleLogin,
@@ -64,6 +65,7 @@ const AuthMainTemplate: FC<PropsType> = (props) => {
           onPress={onFBLogin}
           buttonStyle={AuthMainStyles.fbButtonContainer}
           title={"Continue with Facebook"}
+          loading={isFbButtonLoading}
           icon={
             // to replace icon with svg
             <FontAwesome

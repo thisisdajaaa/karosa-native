@@ -10,6 +10,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "facebookScheme": "fb1091360418020555",
+    "facebookAppId": "1091360418020555",
+    "facebookDisplayName": "karosa",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
