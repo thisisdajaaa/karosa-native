@@ -30,6 +30,21 @@ yarn postinstall
 yarn dev
 ```
 
+## Commit Changes
+
+```add
+# Identify changes you want to commit
+git add .
+
+```commit
+# Husky will trigger, select appropriate choices for commit message and after finalizing commit message, upon arriving to vim just type :wq and enter to save
+git commit
+
+```push
+# Push changes to remote branch if changes has been finalized
+git push origin master
+```
+
 This page should automatically open in your browser. You can choose to run it in your preferred platform by selecting the options on the left. You can also scan the QR code using the Expo app on iOS and android to execute it on your mobile device.
 ![image](https://user-images.githubusercontent.com/9653764/97178203-236f4d80-17d2-11eb-9b85-c6feb0b505ec.png)
 
@@ -63,6 +78,11 @@ This page should automatically open in your browser. You can choose to run it in
 | package.json                  | NPM dependencies.                                            |
 | package-lock.json             | Contains exact versions of NPM dependencies in package.json. |
 | tsconfig.json                 | Contains typescript configuration for this project.          |
+
+## Core File Changes
+
+Every time you have changes in the core files e.g env, app.json, package.json etc. just restart and run expo r -c to reset cache in order to reflect changes
+
 
 ## Recommended Workflow
 
