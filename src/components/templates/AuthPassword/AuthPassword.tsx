@@ -89,7 +89,7 @@ const AuthPasswordTemplate: FC<PropsType> = (props) => {
           </View>
         )}
 
-        <FormButton title="Sign Up" />
+        <FormButton title="Next" />
       </KeyboardAvoidingView>
     </>
   );

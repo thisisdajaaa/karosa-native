@@ -1,6 +1,5 @@
 import { createSelector, Selector } from "reselect";
-
-import { StateAll } from "../types";
+import { StateAll } from "@app/redux/types";
 
 import { LocationState } from "./models";
 import { initLocationState } from "./data";

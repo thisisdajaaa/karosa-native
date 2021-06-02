@@ -58,6 +58,7 @@
       }
     ]
   },
+  "typeRoots": ["./src/config/types"],
   "exclude": ["node_modules"],
   "extends": "expo/tsconfig.base"
 }

@@ -1,11 +1,10 @@
 import { ResponseState } from "@app/redux/api-models/common";
 import { ENUM } from "@app/constants";
-
-import * as shopInfo from "../api-models/shop-info";
-import * as shopDelete from "../api-models/shop-delete";
-import * as shopAddress from "../api-models/shop-address";
-import * as addProduct from "../api-models/add-product";
-import * as productList from "../api-models/product-list";
+import * as shopInfo from "@app/redux/api-models/shop-info";
+import * as shopDelete from "@app/redux/api-models/shop-delete";
+import * as shopAddress from "@app/redux/api-models/shop-address";
+import * as addProduct from "@app/redux/api-models/add-product";
+import * as productList from "@app/redux/api-models/product-list";
 
 export type ShopInfoResponse = shopInfo.Response;
 export type ShopDeleteResponse = shopDelete.Response;

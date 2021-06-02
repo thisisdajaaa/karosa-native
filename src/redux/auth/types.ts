@@ -1,5 +1,6 @@
 export const SET_AUTH_BACK = "auth/setAuthBack" as const;
 export const SET_AUTH_OPEN = "auth/setAuthOpen" as const;
+export const SET_OAUTH = "auth/setOAuth" as const;
 
 export const ACT_LOGIN_REQUEST = "auth/actLoginRequest" as const;
 export const ACT_LOGIN_SUCCESS = "auth/actLoginSuccess" as const;
@@ -24,6 +25,7 @@ export const ACT_REGISTER_FAILURE = "auth/actRegisterFailure" as const;
 export type Types =
   | typeof SET_AUTH_BACK
   | typeof SET_AUTH_OPEN
+  | typeof SET_OAUTH
   | typeof ACT_LOGIN_REQUEST
   | typeof ACT_LOGIN_SUCCESS
   | typeof ACT_LOGIN_FAILURE

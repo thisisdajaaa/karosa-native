@@ -1,9 +1,10 @@
-import * as login from "../api-models/login";
-import * as register from "../api-models/register";
-import * as forgot from "../api-models/forgot";
-import * as myAddress from "../api-models/my-address";
-import * as newAddress from "../api-models/new-address";
-import { ResponseState } from "../api-models/common";
+import { ENUM } from "@app/constants";
+import * as login from "@app/redux/api-models/login";
+import * as register from "@app/redux/api-models/register";
+import * as forgot from "@app/redux/api-models/forgot";
+import * as myAddress from "@app/redux/api-models/my-address";
+import * as newAddress from "@app/redux/api-models/new-address";
+import { ResponseState } from "@app/redux/api-models/common";
 
 export type LoginRequest = login.Request;
 export type ForgotRequest = forgot.Request;
@@ -16,6 +17,7 @@ export type RegisterRequest = register.Request;
 export type AuthEntryContext = {
   isOpen: boolean;
   isBack: boolean;
+  oauth: ENUM.OAuth;
 };
 
 export type LoggedInResponse = ResponseState<{ isLoggedIn: boolean }>;

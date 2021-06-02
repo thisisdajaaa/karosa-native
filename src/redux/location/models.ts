@@ -1,8 +1,8 @@
-import * as region from "../api-models/region";
-import * as province from "../api-models/province";
-import * as barangay from "../api-models/barangay";
-import * as cities from "../api-models/cities";
-import { ResponseState } from "../api-models/common";
+import * as region from "@app/redux//api-models/region";
+import * as province from "@app/redux//api-models/province";
+import * as barangay from "@app/redux//api-models/barangay";
+import * as cities from "@app/redux//api-models/cities";
+import { ResponseState } from "@app/redux//api-models/common";
 
 export type RegionResponse = region.Response;
 export type ProvinceResponse = province.Response;

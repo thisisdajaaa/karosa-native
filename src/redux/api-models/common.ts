@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Item } from "react-native-picker-select";
 
 export type ResponseError = {
