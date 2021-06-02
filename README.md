@@ -52,7 +52,7 @@ This page should automatically open in your browser. You can choose to run it in
 
 | Name                          | Description                                                  |
 | ----------------------------- | ------------------------------------------------------------ |
-| **assets**/\*                 | All the static assets needed for the application.            |
+| **src/assets**/\*                 | All the static assets needed for the application.        |
 | **src/components**/\*         | All app wise common components                               |
 | **src/config**/environment/\* | Any app level environment configs should go here.            |
 | **src/config**/axios/\*       | Configurations for axios                                     |
