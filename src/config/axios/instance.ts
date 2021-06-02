@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
+import { API_URL } from "@env";
 
-const localhost =
-  "http://tambisqa-env.eba-hwct9u5s.ap-southeast-1.elasticbeanstalk.com";
+const localhost = API_URL;
 
 const baseAxios: AxiosInstance = axios.create({
   baseURL: localhost,
