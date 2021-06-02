@@ -81,14 +81,33 @@ This page should automatically open in your browser. You can choose to run it in
 
 ## Core File Changes
 
-Every time you have changes in the core files e.g env, app.json, package.json etc. just restart and run expo r -c to reset cache in order to reflect changes
-
+Every time you have changes in the core files e.g. env, app.json, package.json etc. just restart and run expo r -c to reset cache in order to reflect changes
 
 ## Recommended Workflow
 
-1. Create the atomic components eg atoms, molecules and organisms ( if needed )
+1. Create the atomic components e.g. atoms, molecules and organisms ( if needed )
 1. Create the screen and template
 1. Add the navigation
+
+## Sample Environment File
+
+This project contains a `.env.example` file that you can use. Rename it to `.env` and modify the contents to your needs. After modifying dotenv values always perform expo r -c to clear cache and pick up core file changes. Also update the values in *.d.ts.
+
+```dotenv
+KAROSA_IOS=value
+KAROSA_ANDROID=value
+```
+
+```*.d.ts
+declare module "@env" {
+  export const KAROSA_IOS: string;
+  export const KAROSA_ANDROID: string;
+}
+```
+
+```usage
+import { KAROSA_ANDROID, KAROSA_IOS } from "@env";
+```
 
 ### Code Scaffolding
 
