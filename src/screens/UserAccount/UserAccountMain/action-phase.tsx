@@ -6,18 +6,19 @@ import {
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import { AccountActions } from "@app/components/account-actions";
-import { ListChevron } from "@app/components/list/list-chevron";
-import { Separator } from "@app/components/separator";
-import { BaseProps as ListChevronProps } from "@app/components/list/list-chevron/types";
-import { Props as AccountActionProps } from "@app/components/account-actions/types";
-
+import ListChevron from "@app/organisms/ListChevron";
+import { PropsType as ListChevronProps } from "@app/organisms/ListChevron/types";
+import AccountActions from "@app/atoms/AccountActions";
+import { Props as AccountActionProps } from "@app/atoms/AccountActions/types";
+// import { Separator } from "@app/components/separator";
+import Divider from "@app/atoms/Divider";
 import { styles } from "./styles";
 
 const ActionPhase: React.FC = () => {
   const listChevronProps: ListChevronProps = {
+    variation: 1,
     title: "My Purchases",
-    txtInfo: "All purchases",
+    info: "All purchases",
     onPress: () => console.log("My Purchases"),
   };
 
@@ -54,8 +55,8 @@ const ActionPhase: React.FC = () => {
   return (
     <View style={styles.actionPhaseContainer}>
       <ListChevron {...listChevronProps} />
-      <Separator />
-
+      {/* <Separator /> */}
+      <Divider />
       <AccountActions {...accountActionsProps} />
     </View>
   );

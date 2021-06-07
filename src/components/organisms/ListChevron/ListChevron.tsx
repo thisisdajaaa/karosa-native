@@ -11,7 +11,7 @@ import type { PropsType } from "./types";
 import VariationOne from "./VariantOne";
 import VariationTwo from "./VariantTwo";
 
-const VariantTwo: FC<PropsType> = (props) => {
+const ListChevron: FC<PropsType> = (props) => {
   const {
     hasBottomDivider,
     title,
@@ -71,4 +71,4 @@ const VariantTwo: FC<PropsType> = (props) => {
   }
 };
 
-export default VariantTwo;
+export default ListChevron;

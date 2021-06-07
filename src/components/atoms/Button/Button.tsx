@@ -6,38 +6,64 @@
  */
 
 import React, { FC } from "react";
-import { Button as RnButton } from "react-native-elements";
-
-import type { PropsType } from "./types";
-import { OPACITY } from "./config";
-import ButtonStyles from "./styles";
+import { PropsType } from "./types";
+import VariationOne from "./VariationOne";
+import VariationTwo from "./VariationTwo";
 
 const Button: FC<PropsType> = (props) => {
   const {
+    variation,
     title,
-    type = "solid",
-    disabled,
+    onPress,
+    type,
     loading,
-    icon,
+    disabled,
     titleStyle,
     buttonStyle,
-    onPress,
+    icon,
+    containerStyle,
+    textStyle,
+    iconVariationTwo,
   } = props;
-
-  return (
-    <RnButton
-      type={type}
-      activeOpacity={OPACITY}
-      raised
-      icon={icon}
-      title={title}
-      onPress={onPress}
-      loading={loading}
-      disabled={disabled}
-      titleStyle={titleStyle}
-      buttonStyle={[ButtonStyles.container, buttonStyle]}
-    />
-  );
+  switch (variation) {
+    case 1:
+      return (
+        <VariationOne
+          title={title}
+          onPress={onPress}
+          type={type}
+          loading={loading}
+          disabled={disabled}
+          titleStyle={titleStyle}
+          buttonStyle={buttonStyle}
+          icon={icon}
+        />
+      );
+    case 2:
+      return (
+        <VariationTwo
+          title={title}
+          disabled={disabled}
+          onPress={onPress}
+          containerStyle={containerStyle}
+          textStyle={textStyle}
+          iconVariationTwo={iconVariationTwo}
+        />
+      );
+    default:
+      return (
+        <VariationOne
+          title={title}
+          onPress={onPress}
+          type={type}
+          loading={loading}
+          disabled={disabled}
+          titleStyle={titleStyle}
+          buttonStyle={buttonStyle}
+          icon={icon}
+        />
+      );
+  }
 };
 
 export default Button;

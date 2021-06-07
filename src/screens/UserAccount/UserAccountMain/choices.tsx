@@ -1,8 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 import { theme } from "@app/styles";
-import { MultiList } from "@app/components/multi-list";
-import { Props as MultiListProps } from "@app/components/multi-list/types";
+import { MultiList } from "@app/organisms/MultiList";
+import { Props as MultiListProps } from "@app/organisms/MultiList/types";
 
 import { styles } from "./styles";
 
@@ -11,7 +11,7 @@ const Choices = () => {
     multiChev: [
       {
         title: "My Wishlist",
-        txtInfo: "140 Items",
+        info: "140 Items",
         listColor: theme.colors.orange5,
         hasBottomDivider: true,
         onPress: () => console.log("My Wishlist"),
