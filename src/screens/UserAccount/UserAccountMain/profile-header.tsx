@@ -2,12 +2,12 @@ import React from "react";
 import { AntDesign, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import { View, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { AppButton } from "@app/components/button";
-import { ListAvatar } from "@app/components/list/list-avatar";
-import { Separator } from "@app/components/separator";
-import { Props as ButtonProps } from "@app/components/button/types";
-import { Props as ListAvatarProps } from "@app/components/list/list-avatar/types";
-import { BaseText } from "@app/components/base-text";
+import Button from "@app/atoms/Button";
+import { PropsType as ButtonProps } from "@app/atoms/Button/types";
+import ListAvatar from "@app/organisms/ListAvatar";
+import { Props as ListAvatarProps } from "@app/organisms/ListAvatar/types";
+import Text from "@app/atoms/Text";
+import Divider from "@app/atoms/Divider";
 import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
@@ -16,9 +16,10 @@ const ProfileHeader: React.FC = () => {
   const { navigate } = useNavigation();
 
   const myShopButtonProps: ButtonProps = {
+    variation: 2,
     onPress: () => navigate(routes.SHOP_MAIN),
     title: "My Shop",
-    icon: {
+    iconVariationTwo: {
       right: <AntDesign name="right" style={styles.myShopIcon} />,
     },
     containerStyle: styles.myShopButtonContainer,
@@ -28,7 +29,7 @@ const ProfileHeader: React.FC = () => {
   const buyerProps: ListAvatarProps = {
     image: require("../../../../assets/hinata.png"),
     title: "Hinata Shoyo",
-    ButtonComponent: <AppButton {...myShopButtonProps} />,
+    ButtonComponent: <Button {...myShopButtonProps} />,
     style: {
       containerStyle: styles.buyerContainer,
     },
@@ -50,18 +51,18 @@ const ProfileHeader: React.FC = () => {
 
       <ListAvatar {...buyerProps} />
 
-      <Separator />
+      <Divider />
 
       <View style={styles.infoContainer}>
         <View style={styles.firstInfoContainer}>
           <MaterialIcons style={styles.peopleIcon} name="people" />
-          <BaseText customStyles={styles.txtInfo}>Following</BaseText>
-          <BaseText customStyles={styles.txtAmt}>50</BaseText>
+          <Text text="Following" textStyle={styles.txtInfo} />
+          <Text text="50" textStyle={styles.txtAmt} />
         </View>
         <View style={styles.secondInfoContainer}>
           <FontAwesome5 name="coins" style={styles.coinsIcon} />
-          <BaseText customStyles={styles.txtInfo}>Karosa Coins</BaseText>
-          <BaseText customStyles={styles.txtAmt}>100</BaseText>
+          <Text text="Karosa Coins" textStyle={styles.txtInfo} />
+          <Text text="100" textStyle={styles.txtAmt} />
         </View>
       </View>
     </View>

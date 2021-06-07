@@ -1,4 +1,4 @@
-import { Props as ListChevron } from "../list/list-chevron/types";
+import { BaseProps as ListChevron } from "../list/list-chevron/types";
 import { Props as ListDisplay } from "../list/list-display/types";
 import { Props as ListAction } from "../list/list-action/types";
 

@@ -1,8 +1,13 @@
+/**
+ *
+ * ListDisplay
+ * @format
+ *
+ */
+
 import React from "react";
 import { View } from "react-native";
-
-import { BaseText } from "../../base-text";
-
+import Text from "@app/atoms/Text";
 import { Props, AddressProps } from "./types";
 import { styles } from "./styles";
 
@@ -10,14 +15,13 @@ export const ListDisplay: React.FC<Props> = ({ text, style }) => {
   return (
     <View style={[styles.container, style?.containerStyle]}>
       <View style={styles.detailsContainer}>
-        <BaseText
-          customStyles={[styles.left, style?.textStyle]}
-          numberOfLines={1}>
-          {text.left}
-        </BaseText>
+        <Text
+          text={text.left}
+          numberOfLines={1}
+          textStyle={[styles.left, style?.textStyle]}
+        />
       </View>
-
-      <BaseText style={styles.right}>{text.right}</BaseText>
+      <Text text={text.right} textStyle={styles.right} />
     </View>
   );
 };
@@ -26,16 +30,17 @@ export const AddressList: React.FC<AddressProps> = ({ address, style }) => {
   return (
     <View style={[styles.container, style?.containerStyle]}>
       <View style={styles.detailsContainer}>
-        <BaseText
-          customStyles={[styles.left, style?.textStyle]}
-          numberOfLines={1}>
-          {address.name}
-        </BaseText>
-
-        <BaseText>{address.address}</BaseText>
+        <Text
+          text={address.name}
+          numberOfLines={1}
+          textStyle={[styles.left, style?.textStyle]}
+        />
+        <Text text={address.detailedAddress} />
       </View>
-
-      <BaseText style={styles.default}>{address.default && "default"}</BaseText>
+      <Text
+        text={address.default ? "default" : ""}
+        textStyle={styles.default}
+      />
     </View>
   );
 };

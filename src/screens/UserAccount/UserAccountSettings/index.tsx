@@ -10,8 +10,8 @@ import { Props as MultiListProps } from "@app/components/multi-list/types";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
 import routes from "@app/navigators/routes";
 
-import DeleteAccountModal from "../delete-account";
-import LogoutModal from "../logout";
+import DeleteAccountModal from "../UserAccountDelete";
+import LogoutModal from "../UserAccountLogout";
 
 import { styles } from "./styles";
 
