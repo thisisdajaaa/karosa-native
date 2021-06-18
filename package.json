@@ -14,11 +14,14 @@
     "generateScreen": "plop --plopfile generators/screen.js"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "@ant-design/icons-react-native": "^2.2.1",
     "@expo-google-fonts/caveat-brush": "^0.1.0",
     "@expo-google-fonts/inter": "^0.1.0",
     "@expo/metro-config": "^0.1.65",
     "@expo/vector-icons": "^12.0.0",
     "@ionic/react": "^5.4.1",
+    "@mdi/font": "^5.9.55",
     "@react-native-async-storage/async-storage": "^1.13.0",
     "@react-native-community/masked-view": "0.1.10",
     "@react-native-community/netinfo": "6.0.0",
@@ -63,7 +66,7 @@
     "react-native-skeleton-placeholder": "^3.0.2",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-svg": "12.1.0",
-    "react-native-tab-view": "^2.15.2",
+    "react-native-tab-view": "^3.0.1",
     "react-native-unimodules": "~0.13.3",
     "react-native-web": "~0.13.12",
     "react-redux": "^7.2.1",
