@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { View } from "react-native";
 import Text from "@app/atoms/Text";
 import { CheckBox as RnCheckbox } from "react-native-elements";
@@ -16,14 +16,16 @@ import { COLOR } from "./config";
 import type { PropsType } from "./types";
 import CartItemStyles from "./styles";
 
-const CartItem: FC<PropsType> = (props) => {
-  var { productImage, productName, productPrice, checked } = props;
-  const [isChecked, setChecked] = useState<boolean>(checked);
+const CartItem: FC<PropsType> = React.memo((props) => {
+  const { productImage, productName, productPrice, checked } = props;
+  const [isChecked, setChecked] = useState<boolean>(false);
+
+  useEffect(() => {
+    setChecked(!checked);
+  }, [checked]);
 
   const onPress = () => {
-    setChecked(!isChecked);    
-    
-    console.log(props);
+    setChecked(!isChecked);
   };
 
   const ItemCheckbox = () => {
@@ -61,6 +63,6 @@ const CartItem: FC<PropsType> = (props) => {
       </View>
     </View>
   );
-};
+});
 
 export default CartItem;

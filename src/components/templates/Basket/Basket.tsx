@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
 import Header from "@app/molecules/Header";
 import { theme } from "@app/styles";
 import BasketItems from "@app/molecules/BasketItems";
@@ -21,23 +21,34 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import type { PropsType } from "./types";
 import BasketStyles from "./styles";
 import { View } from "react-native";
-import { truncate } from "fs/promises";
 
-const Basket: FC<PropsType> = (props) => {
+const Basket: FC<PropsType> = React.memo((props) => {
   const [basketItemProps, setBasketItemProps] = useState(props.basketItemProps);
 
   const [isSelected, setSelection] = useState(false);
 
   const onPress = () => {
     setSelection(!isSelected);
-    var newbasketItemProps : any[] = []
-    basketItemProps.map((storeData) => {
-      storeData.storeProps.checked = !isSelected
-      newbasketItemProps.push(storeData)
-    });
-    console.log(newbasketItemProps)
-    setBasketItemProps(newbasketItemProps);
   };
+
+  useEffect(() => {
+    const newbasketItemProps: any[] = [];
+
+    basketItemProps.forEach((storeData) => {
+      storeData.storeProps.checked = !isSelected;
+      storeData.cartProps.forEach((cart) => {
+        cart.checked = !isSelected;
+      });
+
+      newbasketItemProps.push(storeData);
+    });
+
+    setBasketItemProps(newbasketItemProps);
+  }, [isSelected]);
+
+  const memoizedBasketItems = useMemo(() => {
+    return basketItemProps;
+  }, [isSelected]);
 
   const Checkbox = () => {
     return (
@@ -89,7 +100,7 @@ const Basket: FC<PropsType> = (props) => {
           </View>
         </View>
         <View>
-          {basketItemProps.map((items, index) => {
+          {memoizedBasketItems.map((items, index) => {
             return <BasketItems key={index} {...items} />;
           })}
         </View>
@@ -121,6 +132,6 @@ const Basket: FC<PropsType> = (props) => {
       </View>
     </View>
   );
-};
+});
 
-export default Basket;
+export default React.memo(Basket);

@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { View } from "react-native";
 import { CheckBox as RnCheckbox } from "react-native-elements";
 import Text from "@app/atoms/Text";
@@ -19,10 +19,22 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 const BasketItems: FC<PropsType> = (props) => {
   const { storeProps, cartProps } = props;
 
-  const [isChecked, setChecked] = useState(storeProps.checked);
+  const [isChecked, setChecked] = useState(false);
+
+  useEffect(() => {
+    setChecked(!storeProps.checked);
+
+    cartProps.forEach((cart) => {
+      cart.checked = storeProps.checked;
+    });
+  }, [storeProps.checked]);
 
   const onPress = () => {
     setChecked(!isChecked);
+
+    cartProps.forEach((cart) => {
+      cart.checked = isChecked;
+    });
   };
 
   const StoreCheckbox = () => {
@@ -31,7 +43,7 @@ const BasketItems: FC<PropsType> = (props) => {
         checkedColor={COLOR}
         titleProps={{ style: BasketItemsStyles.text }}
         containerStyle={BasketItemsStyles.container}
-        checked={storeProps.checked}
+        checked={isChecked}
         onPress={onPress}
       />
     );
