@@ -22,7 +22,7 @@ import type { PropsType } from "./types";
 import BasketStyles from "./styles";
 import { View } from "react-native";
 
-const Basket: FC<PropsType> = React.memo((props) => {
+const Basket: FC<PropsType> = (props) => {
   const [basketItemProps, setBasketItemProps] = useState(props.basketItemProps);
 
   const [isSelected, setSelection] = useState(false);
@@ -132,6 +132,6 @@ const Basket: FC<PropsType> = React.memo((props) => {
       </View>
     </View>
   );
-});
+};
 
-export default React.memo(Basket);
+export default Basket;

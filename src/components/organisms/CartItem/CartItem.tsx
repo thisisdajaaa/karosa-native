@@ -16,7 +16,7 @@ import { COLOR } from "./config";
 import type { PropsType } from "./types";
 import CartItemStyles from "./styles";
 
-const CartItem: FC<PropsType> = React.memo((props) => {
+const CartItem: FC<PropsType> = (props) => {
   const { productImage, productName, productPrice, checked } = props;
   const [isChecked, setChecked] = useState<boolean>(false);
 
@@ -63,6 +63,6 @@ const CartItem: FC<PropsType> = React.memo((props) => {
       </View>
     </View>
   );
-});
+};
 
 export default CartItem;
