@@ -8,12 +8,10 @@ import { StyleSheet } from "react-native";
 import { DIMENS, theme } from "@app/styles";
 
 const ImagePickerStyles = StyleSheet.create({
-  // eslint-disable-next-line react-native/no-color-literals
   variationOneContainer: {
     alignItems: "center",
-    backgroundColor: "rgba(196, 196, 196, 0.3)",
-    borderWidth: 1,
-    borderStyle: "dashed",
+    backgroundColor: theme.colors.light15,
+    borderRadius: 5,
     borderColor: theme.colors.dark10,
     height: DIMENS.screenHeight * 0.12,
     justifyContent: "center",
@@ -51,10 +49,10 @@ const ImagePickerStyles = StyleSheet.create({
     position: "absolute",
   },
   txtAddImg: {
-    ...theme.textLight,
+    ...theme.textSmall,
     textAlign: "center",
     fontWeight: "300",
-    color: theme.colors.dark30,
+    color: theme.colors.black,
   },
 });
 

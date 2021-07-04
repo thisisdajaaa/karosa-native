@@ -24,6 +24,9 @@ const ProductNewStyles = StyleSheet.create({
     marginTop: "20%",
     marginBottom: "20%",
   },
+  separator: {
+    marginVertical: 5,
+  },
 });
 
 export default ProductNewStyles;

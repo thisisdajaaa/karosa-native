@@ -18,6 +18,16 @@ import Remove from "./remove.svg";
 import Share from "./share.svg";
 import Sort from "./sort.svg";
 import Warning from "./warning.svg";
+import Harvest from "./harvest.svg";
+import Price from "./price.svg";
+import Stock from "./stocks.svg";
+import ShelfLife from "./shelf-life.svg";
+import Status from "./status.svg";
+import Availability from "./availability.svg";
+import Variation from "./variation.svg";
+import Wholesale from "./wholesale.svg";
+import PreOrder from "./pre-order.svg";
+import ShippingDetails from "./shipping-details.svg";
 
 const ProductsIcon = (
   name: string,
@@ -27,6 +37,20 @@ const ProductsIcon = (
 ) => {
   const icons: { [key: string]: JSX.Element } = {
     add: <Add style={extraStyle} height={height} width={width} />,
+    shippingDetails: (
+      <ShippingDetails style={extraStyle} height={height} width={width} />
+    ),
+    preOrder: <PreOrder style={extraStyle} height={height} width={width} />,
+    wholesale: <Wholesale style={extraStyle} height={height} width={width} />,
+    availability: (
+      <Availability style={extraStyle} height={height} width={width} />
+    ),
+    variation: <Variation style={extraStyle} height={height} width={width} />,
+    status: <Status style={extraStyle} height={height} width={width} />,
+    shelfLife: <ShelfLife style={extraStyle} height={height} width={width} />,
+    stock: <Stock style={extraStyle} height={height} width={width} />,
+    price: <Price style={extraStyle} height={height} width={width} />,
+    harvest: <Harvest style={extraStyle} height={height} width={width} />,
     alert: <Alert style={extraStyle} height={height} width={width} />,
     block: <Block style={extraStyle} height={height} width={width} />,
     chevronDown: (

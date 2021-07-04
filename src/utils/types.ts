@@ -16,3 +16,10 @@ export type Connection = {
   photo: string;
   name: string;
 };
+
+export type WithIcon = {
+  group: string;
+  name: string;
+  height: number;
+  width: number;
+};
