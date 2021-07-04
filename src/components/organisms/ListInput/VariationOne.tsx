@@ -7,8 +7,8 @@
 
 import React, { FC } from "react";
 import { useField } from "formik";
-import { ListItem } from "react-native-elements";
 import { View } from "react-native";
+import { ListItem } from "react-native-elements";
 import { useFieldError } from "@app/hooks";
 import Text from "@app/atoms/Text";
 import FormInput from "@app/molecules/FormInput";
@@ -36,18 +36,16 @@ const VariationOne: FC<PropsType> = (props) => {
   return (
     <ListItem bottomDivider={hasBottomDivider}>
       <ListItem.Content style={ListInputStyles.variationOneContainer}>
-        <View style={ListInputStyles.variationOneLabelContainer}>
-          <ListItem.Content style={ListInputStyles.labelLengthContainer}>
-            <Text text={label} textStyle={ListInputStyles.txtLabel} />
-            <Text
-              text={`(${currentLength}/${maxLen})`}
-              textStyle={ListInputStyles.txtLength}
-            />
-            {required && (
-              <Text text="*" textStyle={ListInputStyles.txtRequired} />
-            )}
-          </ListItem.Content>
-        </View>
+        <ListItem.Content style={ListInputStyles.labelLengthContainer}>
+          <Text text={label} textStyle={ListInputStyles.txtLabel} />
+          <Text
+            text={`(${currentLength}/${maxLen})`}
+            textStyle={ListInputStyles.txtLength}
+          />
+          {required && (
+            <Text text="*" textStyle={ListInputStyles.txtRequired} />
+          )}
+        </ListItem.Content>
         <View style={ListInputStyles.formInputContainer}>
           <FormInput
             name={name}
@@ -55,6 +53,8 @@ const VariationOne: FC<PropsType> = (props) => {
             placeholder={placeholder}
             numberOfLines={NUM_LINES.TEN}
             multiline
+            inputStyle={ListInputStyles.txtValue}
+            containerStyle={ListInputStyles.columnContainer}
             inputContainerStyle={ListInputStyles.columnInputContainer}
           />
         </View>

@@ -21,7 +21,17 @@ const ListSwitchStyles = StyleSheet.create({
     alignItems: "flex-end",
   },
   txtTitle: {
-    ...theme.textRegular,
+    ...theme.textListItem,
+    fontWeight: "400",
+  },
+  icon: {
+    position: "relative",
+    left: 0,
+  },
+  txtWithIcon: {
+    ...theme.textListItem,
+    position: "relative",
+    left: 7,
     fontWeight: "400",
   },
   txtBoldTitle: {

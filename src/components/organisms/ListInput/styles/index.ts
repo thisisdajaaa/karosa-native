@@ -14,10 +14,6 @@ const ListInputStyles = StyleSheet.create({
   variationTwoContainer: {
     flexDirection: "column",
   },
-  variationOneLabelContainer: {
-    height: DIMENS.screenHeight * 0.03,
-    justifyContent: "flex-start",
-  },
   formInputContainer: {
     width: "100%",
     marginLeft: "3%",
@@ -34,13 +30,19 @@ const ListInputStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
   },
+  icon: {
+    position: "relative",
+    left: 0,
+    top: -1,
+  },
   infoContainer: {
     width: "90%",
     height: DIMENS.screenHeight * 0.07,
     flexDirection: "row",
   },
   rowInputContainer: {
-    marginTop: SPACING.sm,
+    position: "relative",
+    top: -3,
   },
   inputContainer: {
     borderWidth: 0,
@@ -54,12 +56,19 @@ const ListInputStyles = StyleSheet.create({
     borderWidth: 0,
     borderBottomWidth: 0,
     padding: 0,
+  },
+  columnContainer: {
     position: "relative",
-    bottom: -30,
-    left: -10,
+    bottom: -12,
+    left: -11,
   },
   txtLabel: {
-    ...theme.textRegular,
+    ...theme.textListItem,
+    color: theme.colors.dark20,
+    fontWeight: "400",
+  },
+  txtValue: {
+    ...theme.textListItem,
     color: theme.colors.dark20,
     fontWeight: "400",
   },
@@ -69,7 +78,7 @@ const ListInputStyles = StyleSheet.create({
     fontWeight: "400",
   },
   txtLength: {
-    ...theme.textRegular,
+    ...theme.textListItem,
     fontWeight: "400",
     color: theme.colors.dark10,
     marginLeft: 2,
@@ -80,8 +89,18 @@ const ListInputStyles = StyleSheet.create({
     color: theme.colors.red5,
     fontWeight: "400",
   },
+  txtWithIcon: {
+    ...theme.textListItem,
+    position: "relative",
+    left: 7,
+    marginRight: 6,
+    fontWeight: "400",
+  },
   txtRowInput: {
+    ...theme.textListItem,
     textAlign: "right",
+    color: theme.colors.dark20,
+    fontWeight: "400",
   },
 });
 

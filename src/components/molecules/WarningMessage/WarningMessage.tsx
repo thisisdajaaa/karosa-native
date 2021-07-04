@@ -24,33 +24,31 @@ const WarningMessage: FC<PropsType> = (props) => {
 
   return (
     <ListItem containerStyle={WarningMessageStyles.container}>
-      <ListItem.Content style={WarningMessageStyles.content}>
-        <Icon
-          group="products"
-          name="warning"
-          width={WARNING_ICON.WIDTH}
-          height={WARNING_ICON.HEIGHT}
-          extraStyle={WarningMessageStyles.warningIcon}
+      <Icon
+        group="products"
+        name="warning"
+        width={WARNING_ICON.WIDTH}
+        height={WARNING_ICON.HEIGHT}
+        extraStyle={WarningMessageStyles.warningIcon}
+      />
+      <ListItem.Content style={WarningMessageStyles.textContainer}>
+        <Text
+          numberOfLines={NUM_LINES}
+          text={message}
+          textStyle={WarningMessageStyles.text}
         />
-        <ListItem.Content style={WarningMessageStyles.textContainer}>
-          <Text
-            numberOfLines={NUM_LINES}
-            text={message}
-            textStyle={WarningMessageStyles.text}
-          />
-        </ListItem.Content>
-        <TouchableWithoutFeedback onPress={() => setHide(true)}>
-          <View>
-            <Icon
-              group="common"
-              name="close"
-              width={CLOSE_ICON}
-              height={CLOSE_ICON}
-              extraStyle={WarningMessageStyles.closeIcon}
-            />
-          </View>
-        </TouchableWithoutFeedback>
       </ListItem.Content>
+      <TouchableWithoutFeedback onPress={() => setHide(true)}>
+        <View>
+          <Icon
+            group="common"
+            name="close"
+            width={CLOSE_ICON}
+            height={CLOSE_ICON}
+            extraStyle={WarningMessageStyles.closeIcon}
+          />
+        </View>
+      </TouchableWithoutFeedback>
     </ListItem>
   );
 };

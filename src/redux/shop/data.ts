@@ -19,6 +19,8 @@ export const initProductForm: ProductForm = {
   price: "",
   weight: "",
   stocks: "",
+  upcomingHarvest: false,
+  estimateDate: "",
   shelfLife: "",
   preOrder: false,
   measurement: "1",
@@ -27,11 +29,7 @@ export const initProductForm: ProductForm = {
 };
 
 export const initVariationForm: VariationForm = {
-  variationImg: "",
-  variationNm: "",
-  price: "",
-  weight: "",
-  stocks: "",
+  variationData: [],
 };
 
 export const initAvailabilityForm: AvailabilityForm = {

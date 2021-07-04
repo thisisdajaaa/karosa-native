@@ -1,6 +1,6 @@
 /**
  *
- * VariantTwo
+ * VariationTwo
  * @format
  *
  */
@@ -18,7 +18,7 @@ import type { PropsType } from "./types";
 import { IMAGE_SIZE, NUM_LINES, RATING_COUNT } from "./config";
 import ProductCardStyles from "./styles";
 
-const VariantTwo: FC<PropsType> = (props) => {
+const VariationTwo: FC<PropsType> = (props) => {
   const {
     name,
     wholesale,
@@ -92,4 +92,4 @@ const VariantTwo: FC<PropsType> = (props) => {
   );
 };
 
-export default VariantTwo;
+export default VariationTwo;

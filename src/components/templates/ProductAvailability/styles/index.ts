@@ -21,7 +21,7 @@ const ProductAvailabilityStyles = StyleSheet.create({
   buttonContainer: {
     marginLeft: "5%",
     marginRight: "5%",
-    marginTop: "5%",
+    marginTop: "15%",
   },
 });
 

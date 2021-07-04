@@ -11,21 +11,29 @@ import type { PropsType as ButtonProps } from "@app/atoms/Button/types";
 import type { Props as ListAvatarProps } from "@app/organisms/ListAvatar/types";
 
 import UserAccountMainStyles from "./styles";
+import { theme } from "@app/styles";
 
 const ProfileHeader: FC = () => {
   const { navigate } = useNavigation();
 
   const myShopButtonProps: ButtonProps = {
-    variation: 2,
     onPress: () => navigate(routes.SHOP_MAIN),
     title: "My Shop",
-    iconVariationTwo: {
-      right: (
-        <AntDesign name="right" style={UserAccountMainStyles.myShopIcon} />
-      ),
+    buttonStyle: {
+      width: 91,
+      height: 31,
     },
-    containerStyle: UserAccountMainStyles.myShopButtonContainer,
-    textStyle: UserAccountMainStyles.txtMyShopButton,
+    titleStyle: {
+      ...theme.textLightBold,
+      position: "relative",
+      top: -1,
+      left: -6,
+    },
+    containerStyle: {
+      width: 91,
+      height: 31,
+    },
+    icon: <AntDesign name="right" style={UserAccountMainStyles.myShopIcon} />,
   };
 
   const buyerProps: ListAvatarProps = {

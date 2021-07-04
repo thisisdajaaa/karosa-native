@@ -9,9 +9,17 @@ const theme = {
     lineHeight: 28,
     fontFamily: "SFProText-Bold",
   },
+  textSmall: {
+    fontSize: 10,
+    lineHeight: 12,
+  },
   textLight: {
     fontSize: 12,
     lineHeight: 14.06,
+  },
+  textListItem: {
+    fontSize: 14,
+    lineHeight: 16,
   },
   textLightBold: {
     fontSize: 11,

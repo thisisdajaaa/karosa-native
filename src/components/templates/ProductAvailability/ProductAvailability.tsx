@@ -33,7 +33,7 @@ const ProductAvailabilityTemplate: FC = () => {
     );
   };
 
-  const getAvailabilityForm = (): React.ReactElement[] => {
+  const getAvailabilityForm = (): ReactElement[] => {
     const items: ReactElement[] = [];
 
     const mon = checkbox("Monday", "monday");
