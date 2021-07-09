@@ -69,7 +69,7 @@ const BasketStyles = StyleSheet.create({
     backgroundColor: "white",
   },
   chevronsize: {
-    width: "95%",
+    width: "89%",
   },
   labeltxt: {
     paddingLeft: 24,
