@@ -28,11 +28,18 @@ export type ProductForm = {
 };
 
 export type VariationForm = {
-  variationImg?: string;
-  variationNm: string;
-  price: string;
-  weight: string;
-  stocks: string;
+  variationData: VariationItem[];
+};
+
+export type VariationItem = {
+  variationName: string;
+  hasImage: boolean;
+  options: VariationOption[];
+};
+
+export type VariationOption = {
+  image?: string;
+  optionName: string;
 };
 
 export type AvailabilityForm = {

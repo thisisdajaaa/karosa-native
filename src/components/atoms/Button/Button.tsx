@@ -21,6 +21,7 @@ const Button: FC<PropsType> = (props) => {
     icon,
     titleStyle,
     buttonStyle,
+    containerStyle,
     onPress,
   } = props;
 
@@ -36,6 +37,7 @@ const Button: FC<PropsType> = (props) => {
       disabled={disabled}
       titleStyle={titleStyle}
       buttonStyle={[ButtonStyles.container, buttonStyle]}
+      containerStyle={containerStyle}
     />
   );
 };

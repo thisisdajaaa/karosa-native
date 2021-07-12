@@ -45,6 +45,9 @@ export const productEntryContext = produce(
       case getType(actions.setVariationForm):
         draft.variationForm = action.payload;
         return draft;
+      case getType(actions.setVariationItem):
+        draft.variationForm = action.payload;
+        return draft;
       case getType(actions.setAvailabilityForm):
         draft.availabilityForm = action.payload;
         return draft;

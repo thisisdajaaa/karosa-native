@@ -50,6 +50,11 @@ export const setVariationForm = createAction(
   (resolve) => (values: models.VariationForm) => resolve(values)
 );
 
+export const setVariationItem = createAction(
+  types.SET_VARIATION_ITEM,
+  (resolve) => (values: models.VariationForm) => resolve(values)
+);
+
 export const setAvailabilityForm = createAction(
   types.SET_AVAILABILITY_FORM,
   (resolve) => (values: models.AvailabilityForm) => resolve(values)
@@ -110,6 +115,7 @@ const actions = {
   setCategory,
   setProductForm,
   setVariationForm,
+  setVariationItem,
   setAvailabilityForm,
   setWholesaleForm,
   setShippingDetailsForm,

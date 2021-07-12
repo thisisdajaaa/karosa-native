@@ -1,6 +1,6 @@
 /**
  *
- * VariantOne
+ * VariationOne
  * @format
  *
  */
@@ -17,7 +17,7 @@ import type { PropsType } from "./types";
 import { NUM_LINES } from "./config";
 import ProductCardStyles from "./styles";
 
-const VariantOne: FC<PropsType> = (props) => {
+const VariationOne: FC<PropsType> = (props) => {
   const {
     name,
     image,
@@ -76,4 +76,4 @@ const VariantOne: FC<PropsType> = (props) => {
   );
 };
 
-export default VariantOne;
+export default VariationOne;

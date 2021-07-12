@@ -28,6 +28,7 @@ import Variation from "./variation.svg";
 import Wholesale from "./wholesale.svg";
 import PreOrder from "./pre-order.svg";
 import ShippingDetails from "./shipping-details.svg";
+import AddVariation from "./add-variation.svg";
 
 const ProductsIcon = (
   name: string,
@@ -41,6 +42,9 @@ const ProductsIcon = (
       <ShippingDetails style={extraStyle} height={height} width={width} />
     ),
     preOrder: <PreOrder style={extraStyle} height={height} width={width} />,
+    addVariation: (
+      <AddVariation style={extraStyle} height={height} width={width} />
+    ),
     wholesale: <Wholesale style={extraStyle} height={height} width={width} />,
     availability: (
       <Availability style={extraStyle} height={height} width={width} />
