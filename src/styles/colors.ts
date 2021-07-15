@@ -27,6 +27,7 @@ const palette = {
   light10: "#ECECEC",
   transparent: "transparent",
   toast: "rgba(64, 64, 64, 0.87)",
+  grey5: "#F2F3F7",
 };
 
 export default palette;

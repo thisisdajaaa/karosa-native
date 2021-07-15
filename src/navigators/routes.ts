@@ -42,4 +42,6 @@ export default Object.freeze({
 
   MY_BASKET: "My Basket",
   NOTIFICATIONS: "Notifications",
+
+  WISHLIST: "Wishlist",
 });
