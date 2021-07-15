@@ -4,8 +4,23 @@
  *
  */
 
-import { Props as ScreenProps } from "@app/components/base-screen/types";
-
+import { WishlistProd } from "@app/redux/api-models/wishlist";
+// import RBSheet from "react-native-raw-bottom-sheet";
 export type PropsType = {
-  screenProps?: ScreenProps;
+  // products: Products[];
+  filteredData: any;
+  // showAll(): void;
+  // showAvailable(): void;
+  products: WishlistProd[];
+  // pickerDisable: PickerDisable;
+  // onBack(): void;
+  // sheetRef: React.RefObject<RBSheet>;
+};
+
+export type HeaderProps = {
+  products: WishlistProd[];
+  statusRef?: any;
+  categoriesRef?: any;
+  filterProd?: any;
+  setFilterProd?: any;
 };

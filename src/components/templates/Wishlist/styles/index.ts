@@ -21,9 +21,6 @@ const WishlistStyles = StyleSheet.create({
   flexRow: {
     flexDirection: "row",
   },
-  searchHeader: {
-    marginRight: 15,
-  },
   row: {
     justifyContent: "space-evenly",
     paddingLeft: 18,
@@ -80,6 +77,39 @@ const WishlistStyles = StyleSheet.create({
   spacer: {
     height: 70,
     backgroundColor: theme.colors.light5,
+  },
+
+  btnGrpViewContainer: {
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: theme.colors.white,
+  },
+  btnContainer: {
+    flex: 1,
+  },
+
+  txtTitle: {
+    ...theme.textTitle,
+    fontWeight: "400",
+  },
+
+  categoriesCard: {
+    margin: 10,
+    alignContent: "center",
+    alignItems: "center",
+  },
+  categoriesText: {
+    width: 75,
+    textAlign: "center",
+  },
+  discountCard: {
+    alignContent: "space-between",
+    margin: 20,
+    paddingLeft: 50,
+    // alignItems: "space-between",
+  },
+  discountText: {
+    fontWeight: "400",
   },
 });
 

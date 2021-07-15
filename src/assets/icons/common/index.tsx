@@ -25,6 +25,7 @@ import ToRate from "./to-rate.svg";
 import ToReceive from "./to-receive.svg";
 import ToShip from "./to-ship.svg";
 import Warning from "./warning.svg";
+import Chevron_Down from "./chevron-down.svg";
 
 const CommonIcons = (
   name: string,
@@ -60,6 +61,9 @@ const CommonIcons = (
     toReceive: <ToReceive style={extraStyle} height={height} width={width} />,
     toShip: <ToShip style={extraStyle} height={height} width={width} />,
     warning: <Warning style={extraStyle} height={height} width={width} />,
+    chevron_down: (
+      <Chevron_Down style={extraStyle} height={height} width={width} />
+    ),
   };
 
   return icons[name];

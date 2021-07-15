@@ -14,7 +14,6 @@ import NotificationScreen from "@app/screens/Notification";
 import ProductListContent from "@app/templates/ProductList/MainContent";
 import HomeScreen from "@app/screens/Home";
 import routes from "@app/navigators/routes";
-
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
 
@@ -73,6 +72,17 @@ const TabNavigator: FC = () => {
             ),
           }}
         />
+        {/* for testing purposes */}
+        <BottomTab.Screen
+          name={routes.WISHLIST}
+          component={Wishlist}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <FontAwesome name="home" size={size} color={color} />
+            ),
+          }}
+        />
+        {/* for testing purposes */}
         <BottomTab.Screen
           name={routes.MY_BASKET}
           component={BasketScreen}
