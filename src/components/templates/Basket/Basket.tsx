@@ -17,7 +17,6 @@ import { COLOR } from "./config";
 import { COMMON } from "src/constants";
 import Text from "@app/atoms/Text";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
 import type { PropsType } from "./types";
 import BasketStyles from "./styles";
 import { View } from "react-native";

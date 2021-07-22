@@ -11,10 +11,10 @@ import Text from "@app/atoms/Text";
 import { CheckBox as RnCheckbox } from "react-native-elements";
 import Quantity from "@app/atoms/Quantity";
 import Image from "@app/atoms/Image";
-
 import { COLOR } from "./config";
 import type { PropsType } from "./types";
 import CartItemStyles from "./styles";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const CartItem: FC<PropsType> = (props) => {
   const { productImage, productName, productPrice, checked } = props;
@@ -60,6 +60,18 @@ const CartItem: FC<PropsType> = (props) => {
           />
         </View>
         <Quantity />
+      </View>
+      <View
+        style={{
+          width: 96,
+          backgroundColor: "#FFFACD",
+          height: "100%",
+          justifyContent: "center",
+        }}>
+        <View style={{ alignItems: "center" }}>
+          <MaterialCommunityIcons name="delete" size={28} color="#0AA351" />
+          <Text textStyle={{ color: "#0AA351" }} text={"Delete"} />
+        </View>
       </View>
     </View>
   );

@@ -8,11 +8,15 @@ import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
 const CartItemStyles = StyleSheet.create({
+  bottomSpacer: {
+    height: 132,
+  },
   itemSection: {
     backgroundColor: "white",
     flexDirection: "row",
-    paddingBottom: 8,
     alignItems: "center",
+    justifyContent: "space-between",
+    height: 132,
   },
   checkBox: {
     flexDirection: "row",
