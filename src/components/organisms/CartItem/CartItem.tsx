@@ -61,7 +61,7 @@ const CartItem: FC<PropsType> = (props) => {
         </View>
         <Quantity />
       </View>
-      <View
+      {/* <View
         style={{
           width: 96,
           backgroundColor: "#FFFACD",
@@ -72,7 +72,7 @@ const CartItem: FC<PropsType> = (props) => {
           <MaterialCommunityIcons name="delete" size={28} color="#0AA351" />
           <Text textStyle={{ color: "#0AA351" }} text={"Delete"} />
         </View>
-      </View>
+      </View> */}
     </View>
   );
 };

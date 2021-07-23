@@ -51,39 +51,19 @@ const BasketItems: FC<PropsType> = (props) => {
     );
   };
 
-  const [listData, setListData] = useState(
-    cartProps.map((items, index) => ({
-      key: `${index}`,
-      productName: items.productName,
-      productPrice: items.productPrice,
-      productImage: items.productImage,
-      checked: items.checked,
-    }))
-  );
-
-  const VisibleItem = () => {
-    const data = props;
-    return cartProps.map((items, index) => {
-      return (
-        <CartItem
-          productName={data.cartProps[index].productName}
-          productPrice={data.cartProps[index].productPrice}
-          productImage={data.cartProps[index].productImage}
-          checked={data.cartProps[index].checked}
-        />
-      );
-    });
-  };
-
-  const renderItem = (data, rowMap) => {
-    return VisibleItem;
-  };
-
-  const renderHiddenItem = () => {};
+  // const [listData, setListData] = useState(
+  //   cartProps.map((items, index) => ({
+  //     key: `${index}`,
+  //     productName: items.productName,
+  //     productPrice: items.productPrice,
+  //     productImage: items.productImage,
+  //     checked: items.checked,
+  //   }))
+  // );
 
   return (
     <View>
-      <SwipeListView data={listData} renderItem={} renderHiddenItem={} />
+      {/* <SwipeListView data={listData} /> */}
       <View style={BasketItemsStyles.gap}>
         <View style={BasketItemsStyles.storeNameBarStyle}>
           <View style={BasketItemsStyles.chevronStyle}>
@@ -99,9 +79,17 @@ const BasketItems: FC<PropsType> = (props) => {
           </View>
           <View style={BasketItemsStyles.edittxt}></View>
         </View>
-        {cartProps.map((items, index) => {
+        <SwipeListView data={cartProps} renderItem={(data) => (
+          <CartItem {...data.item} />
+        )} renderHiddenItem={(_ => (
+          <View style={{ alignItems: "flex-end" }}>
+            <MaterialCommunityIcons name="delete" size={28} color="#0AA351" />
+            <Text textStyle={{ color: "#0AA351" }} text={"Delete"} />
+          </View>
+        ))} />
+        {/* {cartProps.map((items, index) => {
           return <CartItem key={index} {...items} />;
-        })}
+        })} */}
       </View>
     </View>
   );
