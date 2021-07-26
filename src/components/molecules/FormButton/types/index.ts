@@ -4,6 +4,9 @@
  *
  */
 
+/**
+ * Don't use this prop instead Use the type from atoms/Button/types.
+ */
 import { StyleProp, ViewStyle } from "react-native";
 
 export type PropsType = {

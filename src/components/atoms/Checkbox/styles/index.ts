@@ -17,7 +17,6 @@ const CheckboxStyles = StyleSheet.create({
     backgroundColor: theme.colors.transparent,
     borderWidth: 0,
     margin: 0,
-    padding: 0,
   },
 });
 

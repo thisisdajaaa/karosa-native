@@ -9,8 +9,7 @@ import React, { FC } from "react";
 import { isEmpty, equals } from "ramda";
 import { useFormikContext } from "formik";
 import Button from "@app/atoms/Button";
-
-import type { PropsType } from "./types";
+import { PropsType } from "@app/atoms/Button/types";
 
 const FormButton: FC<PropsType> = (props) => {
   const { title, loading, buttonStyle } = props;

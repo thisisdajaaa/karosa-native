@@ -15,7 +15,7 @@ type Icon = {
 
 export type PropsType = {
   title: string;
-  onPress?(): void;
+  onPress?: () => void;
   type?: ButtonType;
   loading?: boolean;
   disabled?: boolean;

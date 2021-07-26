@@ -1,13 +1,12 @@
 import React from "react";
 import { FormikContext, useFormik } from "formik";
 import { View } from "react-native";
-import { BaseText } from "@app/components/base-text";
-import { AppButton } from "@app/components/button";
-import { SubmitButton } from "@app/components/formik/submit-button";
-import { BottomSheet } from "@app/components/bottom-sheet";
-import { FormCheckbox } from "@app/components/formik/form-checkbox";
-import { Props as ButtonProps } from "@app/components/button/types";
-import { Props as SubmitButtonProps } from "@app/components/formik/submit-button/types";
+import Text from "@app/atoms/Text";
+import Button from "@app/atoms/Button";
+import { PropsType as ButtonProps } from "@app/atoms/Button/types";
+import SubmitButton from "@app/molecules/FormButton";
+import BottomSheet from "@app/atoms/BottomSheet";
+import FormCheckbox from "@app/molecules/FormCheckbox";
 
 import { Props } from "./types";
 import { styles } from "./styles";
@@ -23,7 +22,7 @@ const DeleteAccountModal: React.FC<Props> = ({ sheetRef }) => {
     onSubmit: () => console.log("submit form"),
   });
 
-  const deleteButtonProps: SubmitButtonProps = {
+  const deleteButtonProps: ButtonProps = {
     title: "Delete",
   };
 
@@ -32,16 +31,18 @@ const DeleteAccountModal: React.FC<Props> = ({ sheetRef }) => {
     title: "Cancel",
     containerStyle: styles.btnCancelContainer,
     textStyle: styles.txtBtnCancel,
+    variation: 2,
   };
 
   return (
     <FormikContext.Provider value={formikBag}>
       <BottomSheet height={475} ref={sheetRef}>
-        <BaseText style={styles.txtDeleteAcc}>Delete Account</BaseText>
-        <BaseText style={styles.txtDeleteAccPar}>
-          We are sad that you want to leave us, but please note that account
-          deletion is not irreversable. Please tell us your reason for leaving.
-        </BaseText>
+        <Text text="Delete Account" textStyle={styles.txtDeleteAcc} />
+        <Text
+          text="We are sad that you want to leave us, but please note that account
+          deletion is not irreversable. Please tell us your reason for leaving."
+          textStyle={styles.txtDeleteAccPar}
+        />
 
         <View style={styles.checkBoxContainer}>
           <FormCheckbox
@@ -63,7 +64,7 @@ const DeleteAccountModal: React.FC<Props> = ({ sheetRef }) => {
         </View>
         <View style={styles.buttonContainer}>
           <SubmitButton {...deleteButtonProps} />
-          <AppButton {...cancelButtonProps} />
+          <Button {...cancelButtonProps} />
         </View>
       </BottomSheet>
     </FormikContext.Provider>

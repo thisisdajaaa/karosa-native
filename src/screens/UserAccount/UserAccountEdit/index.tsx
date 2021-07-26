@@ -1,14 +1,14 @@
 import React from "react";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Screen } from "@app/components/base-screen";
-import { MultiList } from "@app/components/multi-list";
-import { ListAction } from "@app/components/list/list-action";
-import { ListChevron } from "@app/components/list/list-chevron";
+import BaseScreen from "@app/atoms/BaseScreen";
+import { MultiList } from "@app/components/organisms/MultiList";
+import ListAction from "@app/components/organisms/ListAction";
+import ListChevron from "@app/components/organisms/ListChevron";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
-import { Props as MultiListProps } from "@app/components/multi-list/types";
-import { Props as ListActionProps } from "@app/components/list/list-action/types";
-import { BaseProps as ListChevronProps } from "@app/components/list/list-chevron/types";
+import { Props as MultiListProps } from "@app/components/organisms/MultiList/types";
+import { Props as ListActionProps } from "@app/components/organisms/ListAction/types";
+import { PropsType as ListChevronProps } from "@app/components/organisms/ListChevron/types";
 import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
@@ -93,7 +93,7 @@ const EditProfileScreen: React.FC = () => {
   };
 
   return (
-    <Screen {...screenProps}>
+    <BaseScreen {...screenProps}>
       <View style={styles.multiListContainer}>
         <MultiList {...multiListProps} />
         <ListAction {...passwordProps} />
@@ -106,7 +106,7 @@ const EditProfileScreen: React.FC = () => {
       <View>
         <ListChevron {...socialMediaProps} />
       </View>
-    </Screen>
+    </BaseScreen>
   );
 };
 
