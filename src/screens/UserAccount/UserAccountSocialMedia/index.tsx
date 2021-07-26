@@ -2,10 +2,10 @@ import React from "react";
 import { View } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { Screen } from "@app/components/base-screen";
-import { MultiList } from "@app/components/multi-list";
-import { Props as MultiListProps } from "@app/components/multi-list/types";
-import { Props as ScreenProps } from "@app/components/base-screen/types";
+import BaseScreen from "@app/atoms/BaseScreen";
+import { MultiList } from "@app/components/organisms/MultiList";
+import { Props as MultiListProps } from "@app/components/organisms/MultiList/types";
+import { Props as ScreenProps } from "@app/atoms/BaseScreen/types";
 
 import { styles } from "./styles";
 
@@ -72,11 +72,11 @@ const SocialMediaScreen: React.FC = () => {
   };
 
   return (
-    <Screen {...screenProps}>
+    <BaseScreen {...screenProps}>
       <View style={styles.multiListContainer}>
         <MultiList {...multiListProps} />
       </View>
-    </Screen>
+    </BaseScreen>
   );
 };
 

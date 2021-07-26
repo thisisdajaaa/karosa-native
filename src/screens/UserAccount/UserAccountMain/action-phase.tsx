@@ -10,7 +10,6 @@ import ListChevron from "@app/organisms/ListChevron";
 import { PropsType as ListChevronProps } from "@app/organisms/ListChevron/types";
 import AccountActions from "@app/atoms/AccountActions";
 import { Props as AccountActionProps } from "@app/atoms/AccountActions/types";
-// import { Separator } from "@app/components/separator";
 import Divider from "@app/atoms/Divider";
 import { styles } from "./styles";
 
@@ -55,7 +54,6 @@ const ActionPhase: React.FC = () => {
   return (
     <View style={styles.actionPhaseContainer}>
       <ListChevron {...listChevronProps} />
-      {/* <Separator /> */}
       <Divider />
       <AccountActions {...accountActionsProps} />
     </View>

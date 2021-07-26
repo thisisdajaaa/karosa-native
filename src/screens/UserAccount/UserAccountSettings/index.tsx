@@ -2,12 +2,13 @@ import React, { useRef } from "react";
 import { View } from "react-native";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { useNavigation } from "@react-navigation/native";
-import { Screen } from "@app/components/base-screen";
-import { MultiList } from "@app/components/multi-list";
-import { AppButton } from "@app/components/button";
-import { Props as ButtonProps } from "@app/components/button/types";
-import { Props as MultiListProps } from "@app/components/multi-list/types";
-import { Props as ScreenProps } from "@app/components/base-screen/types";
+import BaseScreen from "@app/atoms/BaseScreen";
+import { MultiList } from "@app/components/organisms/MultiList";
+// import { AppButton } from "@app/components/button";
+import Button from "@app/atoms/Button";
+import { PropsType as ButtonProps } from "@app/atoms/Button/types";
+import { Props as MultiListProps } from "@app/components/organisms/MultiList/types";
+import { Props as ScreenProps } from "@app/atoms/BaseScreen/types";
 import routes from "@app/navigators/routes";
 
 import DeleteAccountModal from "../UserAccountDelete";
@@ -71,19 +72,20 @@ const AccountSettingsScreen: React.FC = () => {
     title: "Logout",
     containerStyle: styles.logoutButtonContainer,
     textStyle: styles.txtLogout,
+    variation: 2,
   };
 
   return (
     <>
-      <Screen {...screenProps}>
+      <BaseScreen {...screenProps}>
         <View style={styles.multiListContainer}>
           <MultiList {...multiListProps} />
         </View>
 
         <View style={styles.buttonContainer}>
-          <AppButton {...logoutButtonProps} />
+          <Button {...logoutButtonProps} />
         </View>
-      </Screen>
+      </BaseScreen>
 
       <DeleteAccountModal sheetRef={deleteAccRef} />
       <LogoutModal sheetRef={logoutRef} />

@@ -5,10 +5,10 @@ import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/auth";
-import { Props as HeaderProps } from "@app/components/base-screen/types";
-import { Screen } from "@app/components/base-screen";
-import { AddressList } from "@app/components/list/list-display";
-import { BaseText } from "@app/components/base-text";
+import BaseScreen from "@app/atoms/BaseScreen";
+import { Props as HeaderProps } from "@app/atoms/BaseScreen/types";
+import { AddressList } from "@app/components/organisms/ListDisplay";
+import Text from "@app/atoms/Text";
 import routes from "@app/navigators/routes";
 
 import { styles } from "./styles";
@@ -38,7 +38,7 @@ const MyAddressScreen: React.FC = () => {
   };
 
   return (
-    <Screen {...headerProps}>
+    <BaseScreen {...headerProps}>
       <View style={styles.addressContainer}>
         {addressResponse &&
           addressResponse.map((value, index) => (
@@ -57,13 +57,13 @@ const MyAddressScreen: React.FC = () => {
       <TouchableWithoutFeedback
         onPress={() => navigate(routes.ACCOUNTS_NEW_ADDRESS)}>
         <View style={styles.touchable}>
-          <BaseText style={styles.txtnewAdd}>Add New Address</BaseText>
+          <Text text="Add New Address" textStyle={styles.txtnewAdd} />
           <View style={styles.forIcon}>
             <MaterialIcons name="add" size={25} style={styles.materialColor} />
           </View>
         </View>
       </TouchableWithoutFeedback>
-    </Screen>
+    </BaseScreen>
   );
 };
 

@@ -4,10 +4,7 @@ import { View } from "react-native";
 import { FormikContext, useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { ScrollView } from "react-native-gesture-handler";
-import { Props as HeaderProps } from "@app/components/base-screen/types";
-import { Screen } from "@app/components/base-screen";
 import { useMemoizedSelector } from "@app/hooks";
-import { Props as ButtonProps } from "@app/components/button/types";
 import { actions } from "@app/redux/auth";
 import {
   actions as regionActions,
@@ -16,11 +13,17 @@ import {
   actions as barangayActions,
   selectors as locationSelector,
 } from "@app/redux/location";
+// import { Props as ButtonProps } from "@app/components/button/types";
+import BaseScreen from "@app/atoms/BaseScreen";
+import { Props as HeaderProps } from "@app/atoms/BaseScreen/types";
 import { ListInput } from "@app/components/list/list-input";
-import { SubmitButton } from "@app/components/formik/submit-button";
+// import { SubmitButton } from "@app/components/formik/submit-button";
+import { SubmitButton } from "@app/atoms/Formik/submit-button";
+import { Props as ButtonProps } from "@app/atoms/Formik/submit-button/types";
 import { NewAddressRequest } from "@app/redux/auth/models";
 import { ListPicker } from "@app/components/list/list-picker";
 import { ListCheckBox } from "@app/components/list/list-checkbox";
+// import ListCheckbox from "@app/organisms/ListCheckbox";
 import { PickerData } from "@app/redux/api-models/common";
 import {
   BarangayRequest,
@@ -306,7 +309,7 @@ const NewAddressScreen: React.FC = () => {
 
   return (
     <FormikContext.Provider value={formikBag}>
-      <Screen {...headerProps}>
+      <BaseScreen {...headerProps}>
         <View style={styles.addressContainer}>
           <ScrollView>
             <React.Fragment>{listDisplay()}</React.Fragment>
@@ -315,7 +318,7 @@ const NewAddressScreen: React.FC = () => {
             </View>
           </ScrollView>
         </View>
-      </Screen>
+      </BaseScreen>
     </FormikContext.Provider>
   );
 };
