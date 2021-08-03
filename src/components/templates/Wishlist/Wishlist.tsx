@@ -8,7 +8,7 @@ import React, { FC, Fragment, useCallback, useRef, useState } from "react";
 
 import { FlatList, StatusBar, TouchableOpacity, View } from "react-native";
 
-import { categories, mockProducts } from "./config";
+import { categories, mockProducts, discounts } from "./config";
 import RBSheet from "react-native-raw-bottom-sheet";
 import WishlistHeader from "./Header";
 import { WishlistProd } from "@app/redux/api-models/wishlist";
@@ -23,11 +23,13 @@ import { BaseText } from "@app/components/base-text";
 import { WishlistCategories } from "@app/redux/api-models/wishlist-categories";
 import Icon from "@app/atoms/Icon";
 import { textElipsis } from "@app/screens/Wishlist/config";
+import { WishlistDiscount } from "@app/redux/api-models/wishlist-discount";
 
 const WishlistTemplate: FC = () => {
   const [filterProd, setFilterProd] = useState("all");
   const [filterCategory, setFilterCategory] = useState(0);
   const [categoryName, setCategoryName] = useState("");
+  const [categoryDiscount, setCategoryDiscount] = useState(0);
   const categoriesRef = useRef<RBSheet>(null);
   const statusRef = useRef<RBSheet>(null);
   const discountRef = useRef<RBSheet>(null);
@@ -35,28 +37,55 @@ const WishlistTemplate: FC = () => {
   const filteredData = (
     prod: WishlistProd[],
     overAllFilter: any,
-    category: number
+    category: number,
+    discount: number
   ) => {
     let list: WishlistProd[] = [];
 
     for (let products of prod) {
       if (overAllFilter == "all") {
         if (category == 0) {
-          list.push(products);
+          if (discount == 0) {
+            list.push(products);
+          } else if (products.discount == discount) {
+            list.push(products);
+          }
         } else if (products.categoryId == category) {
-          list.push(products);
+          if (discount == 0) {
+            list.push(products);
+          } else if (products.discount == discount) {
+            list.push(products);
+          }
         }
       } else if (overAllFilter == "Available") {
         if (products.stocks > 0 && category == 0) {
-          list.push(products);
+          if (discount == 0) {
+            list.push(products);
+          } else if (products.discount == discount) {
+            list.push(products);
+          }
         } else if (products.stocks > 0 && products.categoryId == category) {
-          list.push(products);
+          if (discount == 0) {
+            list.push(products);
+          } else if (products.discount == discount) {
+            list.push(products);
+          }
         }
       } else if (overAllFilter == "Not Available") {
         if (products.stocks <= 0 && category == 0) {
-          list.push(products);
+          // list.push(products);
+          if (discount == 0) {
+            list.push(products);
+          } else if (products.discount == discount) {
+            list.push(products);
+          }
         } else if (products.stocks <= 0 && products.categoryId == category) {
-          list.push(products);
+          // list.push(products);
+          if (discount == 0) {
+            list.push(products);
+          } else if (products.discount == discount) {
+            list.push(products);
+          }
         }
       }
     }
@@ -69,10 +98,16 @@ const WishlistTemplate: FC = () => {
     categoriesRef.current?.close();
   }, []);
 
+  const setDiscount = useCallback((id: number) => {
+    setCategoryDiscount(id);
+    discountRef.current?.close();
+  }, []);
+
   const showAll = useCallback(() => {
     setFilterProd("all");
     setFilterCategory(0);
     setCategoryName("");
+    setCategoryDiscount(0);
   }, []);
 
   const showStatus = useCallback(() => {
@@ -104,7 +139,12 @@ const WishlistTemplate: FC = () => {
       <WishlistHeader products={mockProducts} />
       <FlatList
         numColumns={2}
-        data={filteredData(mockProducts, filterProd, filterCategory)}
+        data={filteredData(
+          mockProducts,
+          filterProd,
+          filterCategory,
+          categoryDiscount
+        )}
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => String(item.id)}
         ListFooterComponent={<View style={WishlistStyles.spacer} />}
@@ -112,7 +152,15 @@ const WishlistTemplate: FC = () => {
         ListHeaderComponent={
           <View style={WishlistStyles.btnGrpViewContainer}>
             <View style={WishlistStyles.btnContainer}>
-              <FilterButton onPress={showAll} title={"All"} />
+              <FilterButton
+                onPress={showAll}
+                title={"All"}
+                buttonStyle={
+                  filterProd == "all"
+                    ? WishlistStyles.filterButtonClicked
+                    : WishlistStyles.filterButtonNeutral
+                }
+              />
             </View>
             <View style={WishlistStyles.btnContainer}>
               <FilterButton
@@ -127,17 +175,29 @@ const WishlistTemplate: FC = () => {
                   type: "font-awesome",
                   size: 10,
                 }}
+                buttonStyle={
+                  filterProd == "Available" || filterProd == "Not Available"
+                    ? WishlistStyles.filterButtonClicked
+                    : WishlistStyles.filterButtonNeutral
+                }
               />
             </View>
             <View style={WishlistStyles.btnContainer}>
               <FilterButton
                 onPress={showDiscount}
-                title={"Discount"}
+                title={
+                  categoryDiscount <= 0 ? "Discount" : categoryDiscount + "%"
+                }
                 icon={{
                   name: "chevron-down",
                   type: "font-awesome",
                   size: 10,
                 }}
+                buttonStyle={
+                  categoryDiscount > 0
+                    ? WishlistStyles.filterButtonClicked
+                    : WishlistStyles.filterButtonNeutral
+                }
               />
             </View>
             <View style={WishlistStyles.btnContainer}>
@@ -153,6 +213,11 @@ const WishlistTemplate: FC = () => {
                   type: "font-awesome",
                   size: 10,
                 }}
+                buttonStyle={
+                  categoryName != ""
+                    ? WishlistStyles.filterButtonClicked
+                    : WishlistStyles.filterButtonNeutral
+                }
               />
             </View>
           </View>
@@ -167,7 +232,7 @@ const WishlistTemplate: FC = () => {
             previousPrice={item.orgnlPrice}
             buttonTitle="Boost Now"
             onButtonClick={() => 0}
-            discount="30"
+            discount={item.discount.toString()}
             rating={item.rating}
             variation={COMMON.VARIATION.TWO}
           />
@@ -181,12 +246,24 @@ const WishlistTemplate: FC = () => {
           }}
         />
         <ListItem onPress={setAvailable}>
+          <Icon
+            group={"wishlist"}
+            name={filterProd != "Available" ? "grayCircle" : "greenCircle"}
+            width={15}
+            height={15}
+          />
           <ListItem.Content>
             <BaseText>Available</BaseText>
           </ListItem.Content>
         </ListItem>
 
         <ListItem onPress={setUnAvailable}>
+          <Icon
+            group={"wishlist"}
+            name={filterProd != "Not Available" ? "grayCircle" : "greenCircle"}
+            width={15}
+            height={15}
+          />
           <ListItem.Content>
             <BaseText>Not Available</BaseText>
           </ListItem.Content>
@@ -224,7 +301,7 @@ const WishlistTemplate: FC = () => {
         />
       </BottomSheet>
 
-      <BottomSheet ref={discountRef} height={500}>
+      <BottomSheet ref={discountRef} height={350}>
         <Header
           centerComponent={{
             text: "Discount",
@@ -233,19 +310,19 @@ const WishlistTemplate: FC = () => {
         />
         <FlatList
           numColumns={1}
-          data={mockProducts}
+          data={discounts}
           showsVerticalScrollIndicator={false}
           keyExtractor={(item) => String(item.id)}
-          // columnWrapperStyle={WishlistStyles.row}
-          renderItem={({ item }: { item: WishlistProd }) => (
-            <TouchableOpacity style={WishlistStyles.discountCard}>
-              <Icon
-                group={"wishlist"}
-                name={"grayCircle"}
-                width={10}
-                height={10}
-              />
-              <BaseText style={WishlistStyles.discountText}>
+          renderItem={({ item }: { item: WishlistDiscount }) => (
+            <TouchableOpacity
+              style={WishlistStyles.discountCard}
+              onPress={() => setDiscount(item.id)}>
+              <BaseText
+                style={
+                  categoryDiscount != item.id
+                    ? WishlistStyles.discountTextNeutral
+                    : WishlistStyles.discountTextActive
+                }>
                 {item.discount}
               </BaseText>
             </TouchableOpacity>
