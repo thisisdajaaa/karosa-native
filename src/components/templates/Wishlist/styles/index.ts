@@ -103,13 +103,32 @@ const WishlistStyles = StyleSheet.create({
     textAlign: "center",
   },
   discountCard: {
-    alignContent: "space-between",
-    margin: 20,
-    paddingLeft: 50,
-    // alignItems: "space-between",
+    alignContent: "center",
+    paddingBottom: 20,
+    alignItems: "center",
+    // backgroundColor: theme.colors.green5,
+    // fontcolor: theme.colors.green5,
   },
-  discountText: {
-    fontWeight: "400",
+  discountTextNeutral: {
+    fontWeight: "500",
+    fontSize: 50,
+  },
+  discountTextActive: {
+    fontWeight: "500",
+    fontSize: 50,
+    color: theme.colors.green5,
+    textDecorationLine: "underline",
+  },
+
+  filterButtonClicked: {
+    borderColor: theme.colors.green5,
+    backgroundColor: theme.colors.grey5,
+    borderWidth: 2,
+  },
+  filterButtonNeutral: {
+    borderColor: theme.colors.grey5,
+    backgroundColor: theme.colors.grey5,
+    borderWidth: 2,
   },
 });
 

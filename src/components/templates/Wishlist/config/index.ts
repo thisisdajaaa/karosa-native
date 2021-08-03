@@ -6,6 +6,7 @@
 
 import { WishlistProd } from "@app/redux/api-models/wishlist";
 import { WishlistCategories } from "@app/redux/api-models/wishlist-categories";
+import { WishlistDiscount } from "@app/redux/api-models/wishlist-discount";
 
 export const mockProducts: WishlistProd[] = [
   {
@@ -20,7 +21,7 @@ export const mockProducts: WishlistProd[] = [
     createdAt: "",
     updatedAt: "",
     discount: 30,
-    stocks: 50,
+    stocks: 20,
   },
   {
     id: 2,
@@ -33,7 +34,7 @@ export const mockProducts: WishlistProd[] = [
     rating: 4,
     createdAt: "",
     updatedAt: "",
-    discount: 50,
+    discount: 10,
     stocks: 0,
   },
   {
@@ -47,7 +48,7 @@ export const mockProducts: WishlistProd[] = [
     rating: 4,
     createdAt: "",
     updatedAt: "",
-    discount: 20,
+    discount: 50,
     stocks: 0,
   },
   {
@@ -61,7 +62,7 @@ export const mockProducts: WishlistProd[] = [
     rating: 3,
     createdAt: "",
     updatedAt: "",
-    discount: 10,
+    discount: 30,
     stocks: 0,
   },
   {
@@ -75,7 +76,7 @@ export const mockProducts: WishlistProd[] = [
     rating: 3,
     createdAt: "",
     updatedAt: "",
-    discount: 10,
+    discount: 5,
     stocks: 0,
   },
   {
@@ -107,4 +108,26 @@ export const categories: WishlistCategories[] = [
   { id: 10, name: "Flowers", code: "flower" },
   { id: 11, name: "Cheese", code: "cheese" },
   { id: 12, name: "Grains", code: "grains" },
+];
+export const discounts: WishlistDiscount[] = [
+  { id: 5, discount: "5%" },
+  { id: 10, discount: "10%" },
+  { id: 15, discount: "15%" },
+  { id: 20, discount: "20%" },
+  { id: 25, discount: "25%" },
+  { id: 30, discount: "30%" },
+  { id: 35, discount: "35%" },
+  { id: 40, discount: "40%" },
+  { id: 45, discount: "45%" },
+  { id: 50, discount: "50%" },
+  { id: 55, discount: "55%" },
+  { id: 60, discount: "60%" },
+  { id: 65, discount: "65%" },
+  { id: 70, discount: "70%" },
+  { id: 75, discount: "75%" },
+  { id: 80, discount: "80%" },
+  { id: 85, discount: "85%" },
+  { id: 90, discount: "90%" },
+  { id: 95, discount: "95%" },
+  { id: 100, discount: "100%" },
 ];
