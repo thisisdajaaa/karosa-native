@@ -10,7 +10,7 @@ import { theme } from "@app/styles";
 const PickerStyles = StyleSheet.create({
   txtPlaceholder: {
     ...theme.textPicker,
-    color: theme.colors.primary,
+    color: "#0AA351",
     fontWeight: "400",
   },
   txtPickerValue: {

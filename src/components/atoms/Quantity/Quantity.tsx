@@ -11,6 +11,7 @@ import type { PropsType } from "./types";
 import QuantityStyles from "./styles";
 import { View, TouchableOpacity } from "react-native";
 import Text from "@app/atoms/Text";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Quantity: FC<PropsType> = (props) => {
   const {} = props;
@@ -29,7 +30,7 @@ const Quantity: FC<PropsType> = (props) => {
     <View style={QuantityStyles.container}>
       <TouchableOpacity onPress={Decrement}>
         <View style={QuantityStyles.buttonDec}>
-          <Text text={"-"} />
+          <MaterialCommunityIcons name="minus" size={24} color="white" />
         </View>
       </TouchableOpacity>
       <View style={QuantityStyles.countStyle}>
@@ -37,7 +38,7 @@ const Quantity: FC<PropsType> = (props) => {
       </View>
       <TouchableOpacity onPress={Increment}>
         <View style={QuantityStyles.buttonInc}>
-          <Text text={"+"} />
+          <MaterialCommunityIcons name="plus" size={24} color="white" />
         </View>
       </TouchableOpacity>
     </View>

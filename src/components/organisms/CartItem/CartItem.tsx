@@ -14,11 +14,20 @@ import Image from "@app/atoms/Image";
 import { COLOR } from "./config";
 import type { PropsType } from "./types";
 import CartItemStyles from "./styles";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Picker from "@app/molecules/Picker";
 
 const CartItem: FC<PropsType> = (props) => {
-  const { productImage, productName, productPrice, checked } = props;
+  const {
+    productImage,
+    productName,
+    productPrice,
+    checked,
+    picker,
+    onCheckChange,
+  } = props;
   const [isChecked, setChecked] = useState<boolean>(false);
+
+  const [currentMetric, setSelectedMetric] = useState(0);
 
   useEffect(() => {
     setChecked(!checked);
@@ -26,6 +35,9 @@ const CartItem: FC<PropsType> = (props) => {
 
   const onPress = () => {
     setChecked(!isChecked);
+    if (onCheckChange != null) {
+      onCheckChange();
+    }
   };
 
   const ItemCheckbox = () => {
@@ -51,28 +63,36 @@ const CartItem: FC<PropsType> = (props) => {
           imageStyle={CartItemStyles.productImage}
         />
       </View>
-      <View>
+      <View style={{ width: "50%" }}>
         <Text text={productName} textStyle={{ marginVertical: 8 }} />
-        <View style={CartItemStyles.priceTxt}>
-          <Text
-            text={" ₱" + productPrice}
-            textStyle={CartItemStyles.currentPricetxt}
+        <View style={{ width: "50%" }}>
+          <Picker
+            onValueChange={(itemValue) => {
+              setSelectedMetric(itemValue);
+            }}
+            data={picker}
+            value={currentMetric}
+            placeholder={"0 Kgms"}
+            disabled={false}
           />
         </View>
-        <Quantity />
-      </View>
-      {/* <View
-        style={{
-          width: 96,
-          backgroundColor: "#FFFACD",
-          height: "100%",
-          justifyContent: "center",
-        }}>
-        <View style={{ alignItems: "center" }}>
-          <MaterialCommunityIcons name="delete" size={28} color="#0AA351" />
-          <Text textStyle={{ color: "#0AA351" }} text={"Delete"} />
+        <View
+          style={{
+            flexDirection: "row",
+            paddingTop: 12,
+            justifyContent: "space-between",
+          }}>
+          <View style={CartItemStyles.priceTxt}>
+            <Text
+              text={" ₱" + productPrice}
+              textStyle={CartItemStyles.currentPricetxt}
+            />
+          </View>
+          <View style={{ alignSelf: "flex-end" }}>
+            <Quantity />
+          </View>
         </View>
-      </View> */}
+      </View>
     </View>
   );
 };

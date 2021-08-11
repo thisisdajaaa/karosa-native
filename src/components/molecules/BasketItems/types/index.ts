@@ -7,9 +7,10 @@ import type { PropsType as ListChevronType } from "@app/organisms/ListChevron/ty
 import { PropsType as CartItemProps } from "@app/organisms/CartItem/types";
 
 export type StoreProps = {
-   checked : boolean;
-   listChevronType : ListChevronType;
-}
+  checked: boolean;
+  listChevronType: ListChevronType;
+  id: number;
+};
 
 export type PropsType = {
   storeProps: StoreProps;

@@ -10,11 +10,12 @@ const QuantityStyles = StyleSheet.create({
   container: {
     justifyContent: "space-between",
     flexDirection: "row",
-    borderColor: "grey",
+    borderColor: "white",
     borderWidth: 0.5,
     width: 100,
   },
   buttonInc: {
+    backgroundColor: "#0AA351",
     justifyContent: "center",
     flexDirection: "row",
     width: 24,
@@ -22,6 +23,7 @@ const QuantityStyles = StyleSheet.create({
     borderLeftWidth: 0.5,
   },
   buttonDec: {
+    backgroundColor: "#0AA351",
     justifyContent: "center",
     flexDirection: "row",
     width: 24,
@@ -29,7 +31,8 @@ const QuantityStyles = StyleSheet.create({
     borderRightWidth: 0.5,
   },
   countStyle: {
-    alignContent: "center",
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 10,
   },
 });

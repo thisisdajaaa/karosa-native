@@ -12,10 +12,10 @@ const CartItemStyles = StyleSheet.create({
     height: 132,
   },
   itemSection: {
+    width: "100%",
     backgroundColor: "white",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
     height: 132,
   },
   checkBox: {
@@ -31,6 +31,8 @@ const CartItemStyles = StyleSheet.create({
   priceTxt: {
     flexDirection: "row",
     marginBottom: 8,
+    paddingRight: 12,
+    marginRight: 24,
   },
   currentPricetxt: {
     ...theme.textBold,

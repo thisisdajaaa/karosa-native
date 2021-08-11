@@ -20,6 +20,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import type { PropsType } from "./types";
 import BasketStyles from "./styles";
 import { View } from "react-native";
+import Swipeable from "react-native-gesture-handler/Swipeable";
 
 const Basket: FC<PropsType> = (props) => {
   const [basketItemProps, setBasketItemProps] = useState(props.basketItemProps);
@@ -80,12 +81,8 @@ const Basket: FC<PropsType> = (props) => {
                 color: theme.colors.primary,
               }}
               centerComponent={{
-                text: "Shopping Cart",
+                text: "My Basket",
                 style: BasketStyles.labeltxt,
-              }}
-              rightComponent={{
-                text: "Edit",
-                onPress: () => console.log("Edit"),
               }}
             />
           </View>
@@ -98,6 +95,7 @@ const Basket: FC<PropsType> = (props) => {
             />
           </View>
         </View>
+
         <View>
           {memoizedBasketItems.map((items, index) => {
             return <BasketItems key={index} {...items} />;
