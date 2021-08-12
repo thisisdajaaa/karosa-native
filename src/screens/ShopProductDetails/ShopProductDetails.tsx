@@ -10,6 +10,7 @@ import { PropsType as CommentProps } from "@app/molecules/Reviews/types";
 import { PropsType as ListChevronProps } from "@app/organisms/ListChevron/types";
 import ProductDetailTemplate from "@app/templates/ProductDetail";
 import { COMMON } from "src/constants";
+import { theme } from "@app/styles";
 
 const rev1Props: CommentProps = {
   avatarPhoto:
@@ -34,18 +35,22 @@ const voucherProps: ListChevronProps = {
   title: "Shop Vouchers",
   variation: COMMON.VARIATION.ONE,
   info: "20% OFF",
+  infoStyle: { color: theme.colors.green5 },
+  chevronColor: theme.colors.green5,
   onPress: () => console.log("20%"),
 };
 
 const shippingProps: ListChevronProps = {
-  title: "Shipping from Cebu City\nShipping Cost: P50",
-  variation: COMMON.VARIATION.ONE,
+  title: "Delivery from Cebu City",
+  variation: COMMON.VARIATION.TWO,
+  chevronColor: theme.colors.green5,
   onPress: () => console.log("pressed"),
 };
 
 const variationProps: ListChevronProps = {
-  title: "Select Variation",
+  title: "Variations",
   variation: COMMON.VARIATION.ONE,
+  chevronColor: theme.colors.green5,
   onPress: () => console.log("variation"),
 };
 
