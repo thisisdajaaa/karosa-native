@@ -53,6 +53,9 @@ const ProductDetailStyles = StyleSheet.create({
   txtBlackRegular: {
     ...theme.textRegular,
   },
+  txtBlackRegularBold: {
+    ...theme.textBold,
+  },
   iconStyleEllipsis: {
     position: "absolute",
     alignSelf: "flex-end",
