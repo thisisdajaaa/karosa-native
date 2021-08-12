@@ -18,28 +18,29 @@ import { PropsType as ButtonProps } from "@app/atoms/Button/types";
 import ProductDetailStyles from "./styles";
 import { ScrollView } from "react-native-gesture-handler";
 import Reviews from "@app/molecules/Reviews/";
+import { Rating } from "react-native-elements";
 
 import type { PropsType } from "./types";
 
-const chatNowButtonProps: ButtonProps = {
-  title: "Chat Now",
-  titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
-  buttonStyle: ProductDetailStyles.button,
-  icon: <FontAwesome name="comments-o" size={25} />,
-};
+// const chatNowButtonProps: ButtonProps = {
+//   title: "Chat Now",
+//   titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
+//   buttonStyle: ProductDetailStyles.button,
+//   icon: <FontAwesome name="comments-o" size={25} />,
+// };
 
-const cartButtonProps: ButtonProps = {
-  title: "Add to Basket",
-  titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
-  buttonStyle: ProductDetailStyles.button,
-  icon: <AntDesign name="shoppingcart" size={25} />,
-};
+// const cartButtonProps: ButtonProps = {
+//   title: "Add to Basket",
+//   titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
+//   buttonStyle: ProductDetailStyles.button,
+//   icon: <AntDesign name="shoppingcart" size={25} />,
+// };
 
-const buyButtonProps: ButtonProps = {
-  title: "Buy Now",
-  titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
-  buttonStyle: [ProductDetailStyles.button, ProductDetailStyles.orangeBox],
-};
+// const buyButtonProps: ButtonProps = {
+//   title: "Buy Now",
+//   titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
+//   buttonStyle: [ProductDetailStyles.button, ProductDetailStyles.orangeBox],
+// };
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
     voucherProps,
@@ -69,58 +70,67 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
             </View>
             <View style={ProductDetailStyles.detailsContainer}>
               <View style={ProductDetailStyles.horizontalContainer}>
-                <View>
+                <Text
+                  text={"Mangosteen Product"}
+                  textStyle={[ProductDetailStyles.txtBlackRegularBold]}
+                />
+              </View>
+              <View style={ProductDetailStyles.horizontalContainer}>
+                <View style={{ flexDirection: "row" }}>
                   <Text
-                    text={"Php 40"}
+                    text={"P40"}
                     textStyle={[
-                      ProductDetailStyles.txtBlackRegular,
+                      ProductDetailStyles.txtBlackRegularBold,
                       ProductDetailStyles.txtGreen,
                     ]}
                   />
                 </View>
                 <View style={{ flexDirection: "row" }}>
+                  <Text
+                    text={"709 Sold"}
+                    textStyle={[
+                      ProductDetailStyles.txtBlackRegular,
+                      ProductDetailStyles.txtSold,
+                    ]}
+                  />
+                </View>
+              </View>
+              <View style={ProductDetailStyles.horizontalContainer}>
+                <View style={{ flexDirection: "row" }}>
+                  <Rating
+                    type="star"
+                    ratingCount={5}
+                    readonly
+                    imageSize={15}
+                    startingValue={5}
+                  />
+                  <Text
+                    text={"5"}
+                    textStyle={ProductDetailStyles.txtBlackRegular}
+                  />
                   <AntDesign
                     name="hearto"
                     size={20}
                     style={ProductDetailStyles.iconStyle}
                   />
-                  <AntDesign
-                    name="sharealt"
-                    size={20}
-                    style={{ marginHorizontal: 8 }}
-                  />
                 </View>
-              </View>
-              <View style={ProductDetailStyles.horizontalContainer}>
-                <Text
-                  text={"Fresh Tomato"}
-                  textStyle={ProductDetailStyles.txtBlackRegular}
-                />
-              </View>
-              <View style={ProductDetailStyles.horizontalContainer}>
-                <View style={ProductDetailStyles.rating}>
-                  <Text
-                    text={"4.1"}
-                    textStyle={ProductDetailStyles.txtBlackRegular}
-                  />
-                </View>
-                <Text
-                  text={"709 Sold"}
-                  textStyle={[
-                    ProductDetailStyles.txtBlackRegular,
-                    ProductDetailStyles.txtSold,
-                  ]}
-                />
               </View>
             </View>
           </View>
-          <ListChevron hasBottomDivider={true} {...shippingtProps} />
-          <ListChevron hasBottomDivider={true} {...voucherProps} />
           <View style={ProductDetailStyles.subContainer}>
-            <ListChevron hasBottomDivider={true} {...variationProps} />
+            <ListChevron {...shippingtProps} />
+          </View>
+          <View style={ProductDetailStyles.subContainer}>
+            <ListChevron hasBottomDivider={true} {...voucherProps} />
+          </View>
+          <View style={ProductDetailStyles.subContainer}>
+            <ListChevron {...variationProps} />
             <View style={ProductDetailStyles.horizontalContainer}>
               <ReviewImages
                 imageSources={[
+                  {
+                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                  },
                   {
                     uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
                   },
@@ -257,7 +267,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           </View>
         </ScrollView>
       </View>
-      <View style={ProductDetailStyles.footer}>
+      {/* <View style={ProductDetailStyles.footer}>
         <View style={ProductDetailStyles.subFooterContainer}>
           <Button {...chatNowButtonProps} />
         </View>
@@ -267,7 +277,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
         <View style={ProductDetailStyles.subFooterContainer}>
           <Button {...buyButtonProps} />
         </View>
-      </View>
+      </View> */}
     </View>
   );
 };
