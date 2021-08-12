@@ -206,6 +206,11 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                     },
                     textContent: "+5",
                   },
+                  {
+                    source: {
+                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    },
+                  },
                 ]}
               />
             </View>
