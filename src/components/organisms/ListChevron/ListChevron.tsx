@@ -8,10 +8,16 @@
 import React, { FC } from "react";
 
 import type { PropsType } from "./types";
+<<<<<<< HEAD
 import VariationOne from "./VariationOne";
 import VariationTwo from "./VariationTwo";
 import VariationThree from "./VariationThree";
 import VariationFour from "./VariationFour";
+=======
+import VariationOne from "./VariantOne";
+import VariationTwo from "./VariantTwo";
+import VariationThree from "./VariantThree";
+>>>>>>> 9464744... style(added shipping icon for product): added shipping icon for product
 
 const ListChevron: FC<PropsType> = (props) => {
   const {
@@ -76,6 +82,7 @@ const ListChevron: FC<PropsType> = (props) => {
           iconWidth={iconWidth}
         />
       );
+<<<<<<< HEAD
     case 4:
       return (
         <VariationFour
@@ -89,6 +96,8 @@ const ListChevron: FC<PropsType> = (props) => {
           infoStyle={infoStyle}
         />
       );
+=======
+>>>>>>> 9464744... style(added shipping icon for product): added shipping icon for product
     default:
       return (
         <VariationOne

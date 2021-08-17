@@ -16,11 +16,7 @@ import ListChevron from "@app/organisms/ListChevron";
 import ProductDetailStyles from "./styles";
 import { ScrollView } from "react-native-gesture-handler";
 import Reviews from "@app/molecules/Reviews/";
-<<<<<<< HEAD
 import { ListItem, Rating } from "react-native-elements";
-=======
-import { Rating } from "react-native-elements";
->>>>>>> b7812eb... feat(initial commit): inital commit on updating the view of the product details
 
 import type { PropsType } from "./types";
 import ImageOverlayReviews from "@app/components/organisms/ImageOverlayReviews";
@@ -30,28 +26,6 @@ import Button from "@app/atoms/Button";
 import { PropsType as ButtonProps } from "@app/atoms/Button/types";
 import { theme } from "@app/styles";
 
-<<<<<<< HEAD
-=======
-// const chatNowButtonProps: ButtonProps = {
-//   title: "Chat Now",
-//   titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
-//   buttonStyle: ProductDetailStyles.button,
-//   icon: <FontAwesome name="comments-o" size={25} />,
-// };
-
-// const cartButtonProps: ButtonProps = {
-//   title: "Add to Basket",
-//   titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
-//   buttonStyle: ProductDetailStyles.button,
-//   icon: <AntDesign name="shoppingcart" size={25} />,
-// };
-
-// const buyButtonProps: ButtonProps = {
-//   title: "Buy Now",
-//   titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
-//   buttonStyle: [ProductDetailStyles.button, ProductDetailStyles.orangeBox],
-// };
->>>>>>> b7812eb... feat(initial commit): inital commit on updating the view of the product details
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
     voucherProps,
@@ -167,7 +141,6 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           <View style={ProductDetailStyles.subContainer}>
             <View style={ProductDetailStyles.detailsContainer}>
               <View style={ProductDetailStyles.horizontalContainer}>
-<<<<<<< HEAD
                 <Text
                   text={"Product Details"}
                   textStyle={[ProductDetailStyles.txtBlackRegularBold]}
@@ -205,36 +178,6 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
             <ListChevron hasBottomDivider={true} {...voucherProps} />
           </View>
           <View style={ProductDetailStyles.subContainer}>
-=======
-                <View style={{ flexDirection: "row" }}>
-                  <Rating
-                    type="star"
-                    ratingCount={5}
-                    readonly
-                    imageSize={15}
-                    startingValue={5}
-                  />
-                  <Text
-                    text={"5"}
-                    textStyle={ProductDetailStyles.txtBlackRegular}
-                  />
-                  <AntDesign
-                    name="hearto"
-                    size={20}
-                    style={ProductDetailStyles.iconStyle}
-                  />
-                </View>
-              </View>
-            </View>
-          </View>
-          <View style={ProductDetailStyles.subContainer}>
-            <ListChevron {...shippingtProps} />
-          </View>
-          <View style={ProductDetailStyles.subContainer}>
-            <ListChevron hasBottomDivider={true} {...voucherProps} />
-          </View>
-          <View style={ProductDetailStyles.subContainer}>
->>>>>>> b7812eb... feat(initial commit): inital commit on updating the view of the product details
             <ListChevron {...variationProps} />
             <View style={ProductDetailStyles.horizontalContainer}>
               <ImageOverlayReviews
@@ -264,7 +207,9 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                     textContent: "+5",
                   },
                   {
-                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    source: {
+                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    },
                   },
                 ]}
               />
@@ -394,7 +339,6 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           </View>
         </ScrollView>
       </View>
-<<<<<<< HEAD
       <View style={ProductDetailStyles.footer}>
         <TouchableOpacity style={ProductDetailStyles.subFooterChat}>
           <View>
@@ -421,19 +365,6 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           />
         </TouchableOpacity>
       </View>
-=======
-      {/* <View style={ProductDetailStyles.footer}>
-        <View style={ProductDetailStyles.subFooterContainer}>
-          <Button {...chatNowButtonProps} />
-        </View>
-        <View style={ProductDetailStyles.subFooterContainer}>
-          <Button {...cartButtonProps} />
-        </View>
-        <View style={ProductDetailStyles.subFooterContainer}>
-          <Button {...buyButtonProps} />
-        </View>
-      </View> */}
->>>>>>> b7812eb... feat(initial commit): inital commit on updating the view of the product details
     </View>
   );
 };

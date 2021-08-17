@@ -107,9 +107,13 @@ const voucherProps: ListChevronProps = {
 };
 
 const shippingProps: ListChevronProps = {
-  title: "Delivery from Cebu City",
-  variation: COMMON.VARIATION.TWO,
+  title: "Delivery from Cebu City\nP50",
+  variation: COMMON.VARIATION.THREE,
   chevronColor: theme.colors.green5,
+  iconGroup: "products",
+  iconName: "shipping",
+  iconHeight: 40,
+  iconWidth: 40,
   onPress: () => console.log("pressed"),
 };
 
