@@ -18,6 +18,7 @@ import Remove from "./remove.svg";
 import Share from "./share.svg";
 import Sort from "./sort.svg";
 import Warning from "./warning.svg";
+import Shipping from "./shipping.svg";
 
 const ProductsIcon = (
   name: string,
@@ -40,6 +41,7 @@ const ProductsIcon = (
     share: <Share style={extraStyle} height={height} width={width} />,
     sort: <Sort style={extraStyle} height={height} width={width} />,
     warning: <Warning style={extraStyle} height={height} width={width} />,
+    shipping: <Shipping style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];
