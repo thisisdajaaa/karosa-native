@@ -4,21 +4,24 @@
  *
  */
 
-import { WithIcon } from "@app/utils";
-import { StyleProp, TextStyle } from "react-native";
+ import { StyleProp, TextStyle } from "react-native";
 
-export type PropsType = {
-  title: string;
-  variation?: number;
-  listColor?: string;
-  subtitle?: string;
-  info?: string;
-  chevronColor?: string;
-  avatar?: string;
-  hasBottomDivider?: boolean;
-  required?: boolean;
-  icon?: WithIcon;
-  infoStyle?: StyleProp<TextStyle>;
-  titleStyle?: StyleProp<TextStyle>;
-  onPress: () => void;
-};
+ export type PropsType = {
+   title: string;
+   variation?: number;
+   listColor?: string;
+   subtitle?: string;
+   info?: string;
+   chevronColor?: string;
+   avatar?: string;
+   hasBottomDivider?: boolean;
+   required?: boolean;
+   infoStyle?: StyleProp<TextStyle>;
+   iconGroup?: string;
+   iconName?: string;
+   iconWidth?: number;
+   iconHeight?: number;
+   onPress: () => void;
+   hasChevron?: boolean;
+ };
+ 

@@ -91,6 +91,10 @@ const ListChevronStyles = StyleSheet.create({
     alignSelf: "flex-start",
     top: 2,
   },
+  infoContainerWithoutChevron: {
+    position: "relative",
+    // left: 9,
+  },
 });
 
 export default ListChevronStyles;
