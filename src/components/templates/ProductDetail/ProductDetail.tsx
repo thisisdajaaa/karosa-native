@@ -21,6 +21,7 @@ import Reviews from "@app/molecules/Reviews/";
 import { Rating } from "react-native-elements";
 
 import type { PropsType } from "./types";
+import Icon from "@app/atoms/Icon";
 
 // const chatNowButtonProps: ButtonProps = {
 //   title: "Chat Now",

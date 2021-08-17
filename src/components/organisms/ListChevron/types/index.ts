@@ -17,5 +17,9 @@ export type PropsType = {
   hasBottomDivider?: boolean;
   required?: boolean;
   infoStyle?: StyleProp<TextStyle>;
+  iconGroup?: string;
+  iconName?: string;
+  iconWidth?: number;
+  iconHeight?: number;
   onPress: () => void;
 };
