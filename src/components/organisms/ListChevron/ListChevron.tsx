@@ -10,6 +10,7 @@ import React, { FC } from "react";
 import type { PropsType } from "./types";
 import VariationOne from "./VariantOne";
 import VariationTwo from "./VariantTwo";
+import VariationThree from "./VariantThree";
 
 const ListChevron: FC<PropsType> = (props) => {
   const {
@@ -24,6 +25,10 @@ const ListChevron: FC<PropsType> = (props) => {
     infoStyle,
     listColor,
     required,
+    iconWidth,
+    iconHeight,
+    iconGroup,
+    iconName,
   } = props;
 
   switch (variation) {
@@ -52,6 +57,22 @@ const ListChevron: FC<PropsType> = (props) => {
           subtitle={subtitle}
           avatar={avatar}
           chevronColor={chevronColor}
+        />
+      );
+    case 3:
+      return (
+        <VariationThree
+          variation={variation}
+          hasBottomDivider={hasBottomDivider}
+          title={title}
+          onPress={onPress}
+          subtitle={subtitle}
+          avatar={avatar}
+          chevronColor={chevronColor}
+          iconName={iconName}
+          iconGroup={iconGroup}
+          iconHeight={iconHeight}
+          iconWidth={iconWidth}
         />
       );
     default:
