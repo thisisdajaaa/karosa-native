@@ -19,6 +19,7 @@ import Remove from "./remove.svg";
 import Share from "./share.svg";
 import Sort from "./sort.svg";
 import Warning from "./warning.svg";
+<<<<<<< HEAD
 import Harvest from "./harvest.svg";
 import Price from "./price.svg";
 import Stock from "./stocks.svg";
@@ -46,6 +47,9 @@ import CategoryVegetables from "./category-vegetables.svg";
 import EstimateDate from "./estimate-date.svg";
 import Shipping from "./shipping.svg";
 import ChatNow from "./chatNow.svg";
+=======
+import Shipping from "./shipping.svg";
+>>>>>>> 321f537... refactor(rebase): rebase
 
 const ProductsIcon = (
   name: string,
@@ -129,7 +133,10 @@ const ProductsIcon = (
     sort: <Sort style={extraStyle} height={height} width={width} />,
     warning: <Warning style={extraStyle} height={height} width={width} />,
     shipping: <Shipping style={extraStyle} height={height} width={width} />,
+<<<<<<< HEAD
     chatNow: <ChatNow style={extraStyle} height={height} width={width} />,
+=======
+>>>>>>> 321f537... refactor(rebase): rebase
   };
 
   return icons[name];
