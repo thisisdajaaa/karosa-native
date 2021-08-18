@@ -13,5 +13,8 @@ export type PropsType = {
   variationProps: ListChevronType;
   reviewsProps: ListChevronType;
   productDetailsProps: ListChevronType[];
+<<<<<<< HEAD
   bottomModalProps?: any;
+=======
+>>>>>>> f20e925... refactor(rebase): rebase
 };
