@@ -10,7 +10,6 @@ import { PropsType as ListChevronProps } from "@app/organisms/ListChevron/types"
 import ProductDetailTemplate from "@app/templates/ProductDetail";
 import { COMMON } from "src/constants";
 import { theme } from "@app/styles";
-<<<<<<< HEAD
 import BottomSheet from "@app/components/molecules/BottomSheet";
 import RBSheet from "react-native-raw-bottom-sheet";
 import Header from "@app/components/molecules/Header";
@@ -25,8 +24,6 @@ import { contentPropsType } from "@app/components/organisms/ImageOverlayReviews/
 import { ListItem } from "react-native-elements";
 import ImageOverlay from "@app/components/molecules/ImageOverlay";
 import Button from "@app/atoms/Button";
-=======
->>>>>>> b7812eb... feat(initial commit): inital commit on updating the view of the product details
 
 const ShopProductDetailsScreen: FC = () => {
   const initialStocks = 50;
@@ -35,7 +32,6 @@ const ShopProductDetailsScreen: FC = () => {
   const [variation1, setVariation1] = useState(0);
   const [variation2, setVariation2] = useState(0);
 
-<<<<<<< HEAD
   const rev1Props: CommentProps = {
     avatarPhoto:
       "http://2.bp.blogspot.com/-wvCP_ff54N4/Ukpp0EjfInI/AAAAAAAAAYI/QR4VOlfCLfg/s1600/index.jpg",
@@ -87,43 +83,6 @@ const ShopProductDetailsScreen: FC = () => {
       onPress: () => console.log("20%"),
     },
   ];
-=======
-const rev2Props: CommentProps = {
-  avatarPhoto:
-    "http://2.bp.blogspot.com/-wvCP_ff54N4/Ukpp0EjfInI/AAAAAAAAAYI/QR4VOlfCLfg/s1600/index.jpg",
-  username: "ValorantNoob213",
-  comments: "spike planted! lorem ipsusm dolo set amet groove street home ",
-  likes: 200,
-  tags: ["nice", "scatter!", "wonderful"],
-  rate: 2,
-};
-const voucherProps: ListChevronProps = {
-  title: "Shop Vouchers",
-  variation: COMMON.VARIATION.ONE,
-  info: "20% OFF",
-  infoStyle: { color: theme.colors.green5 },
-  chevronColor: theme.colors.green5,
-  onPress: () => console.log("20%"),
-};
-
-const shippingProps: ListChevronProps = {
-  title: "Delivery from Cebu City\nP50",
-  variation: COMMON.VARIATION.THREE,
-  chevronColor: theme.colors.green5,
-  iconGroup: "products",
-  iconName: "shipping",
-  iconHeight: 40,
-  iconWidth: 40,
-  onPress: () => console.log("pressed"),
-};
-
-const variationProps: ListChevronProps = {
-  title: "Variations",
-  variation: COMMON.VARIATION.ONE,
-  chevronColor: theme.colors.green5,
-  onPress: () => console.log("variation"),
-};
->>>>>>> b7812eb... feat(initial commit): inital commit on updating the view of the product details
 
   const shippingProps: ListChevronProps = {
     title: "Delivery from Cebu City\nP50",
