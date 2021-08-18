@@ -10,6 +10,7 @@ import { TouchableOpacity, View } from "react-native";
 import Image from "@app/atoms/Image";
 import Text from "@app/atoms/Text";
 
+import ReviewImages from "@app/atoms/ReviewImages";
 import { AntDesign } from "@expo/vector-icons";
 import ListChevron from "@app/organisms/ListChevron";
 
