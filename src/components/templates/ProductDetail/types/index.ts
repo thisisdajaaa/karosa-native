@@ -12,4 +12,5 @@ export type PropsType = {
   voucherProps: ListChevronType;
   variationProps: ListChevronType;
   reviewsProps: ListChevronType;
+  productDetailsProps: ListChevronType[];
 };
