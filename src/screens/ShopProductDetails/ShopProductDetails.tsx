@@ -40,6 +40,33 @@ const voucherProps: ListChevronProps = {
   onPress: () => console.log("20%"),
 };
 
+const productDetailsProps: ListChevronProps[] = [
+  {
+    title: "Stock",
+    variation: COMMON.VARIATION.ONE,
+    info: "50",
+    infoStyle: { color: theme.colors.green5 },
+    chevronColor: theme.colors.green5,
+    onPress: () => console.log("20%"),
+  },
+  {
+    title: "Category",
+    variation: COMMON.VARIATION.ONE,
+    info: "Region's Best",
+    infoStyle: { color: theme.colors.green5 },
+    chevronColor: theme.colors.green5,
+    onPress: () => console.log("20%"),
+  },
+  {
+    title: "Ships From",
+    variation: COMMON.VARIATION.ONE,
+    info: "Cebu Visayas",
+    infoStyle: { color: theme.colors.green5 },
+    chevronColor: theme.colors.green5,
+    onPress: () => console.log("20%"),
+  },
+];
+
 const shippingProps: ListChevronProps = {
   title: "Delivery from Cebu City\nP50",
   variation: COMMON.VARIATION.THREE,
@@ -73,6 +100,7 @@ const ShopProductDetailsScreen: FC = () => {
       commentProps={[rev1Props, rev2Props]}
       variationProps={variationProps}
       reviewsProps={reviewsProps}
+      productDetailsProps={productDetailsProps}
     />
   );
 };
