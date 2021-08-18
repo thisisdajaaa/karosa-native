@@ -10,10 +10,8 @@ import { View } from "react-native";
 import Image from "@app/atoms/Image";
 import Text from "@app/atoms/Text";
 import ReviewImages from "@app/atoms/ReviewImages";
-import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import ListChevron from "@app/organisms/ListChevron";
-import Button from "@app/atoms/Button";
-import { PropsType as ButtonProps } from "@app/atoms/Button/types";
 
 import ProductDetailStyles from "./styles";
 import { ScrollView } from "react-native-gesture-handler";
@@ -21,27 +19,7 @@ import Reviews from "@app/molecules/Reviews/";
 import { Rating } from "react-native-elements";
 
 import type { PropsType } from "./types";
-import Icon from "@app/atoms/Icon";
 
-// const chatNowButtonProps: ButtonProps = {
-//   title: "Chat Now",
-//   titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
-//   buttonStyle: ProductDetailStyles.button,
-//   icon: <FontAwesome name="comments-o" size={25} />,
-// };
-
-// const cartButtonProps: ButtonProps = {
-//   title: "Add to Basket",
-//   titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
-//   buttonStyle: ProductDetailStyles.button,
-//   icon: <AntDesign name="shoppingcart" size={25} />,
-// };
-
-// const buyButtonProps: ButtonProps = {
-//   title: "Buy Now",
-//   titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
-//   buttonStyle: [ProductDetailStyles.button, ProductDetailStyles.orangeBox],
-// };
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
     voucherProps,
@@ -49,6 +27,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
     reviewsProps,
     commentProps,
     shippingtProps,
+    productDetailsProps,
   } = props;
 
   return (
@@ -121,6 +100,43 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           <View style={ProductDetailStyles.subContainer}>
             <ListChevron {...shippingtProps} />
           </View>
+
+          <View style={ProductDetailStyles.subContainer}>
+            <View style={ProductDetailStyles.detailsContainer}>
+              <View style={ProductDetailStyles.horizontalContainer}>
+                <Text
+                  text={"Product Details"}
+                  textStyle={[ProductDetailStyles.txtBlackRegularBold]}
+                />
+              </View>
+            </View>
+
+            {productDetailsProps.map((props, index) => {
+              return (
+                <ListChevron
+                  hasBottomDivider={true}
+                  key={index}
+                  title={props.title}
+                  variation={props.variation}
+                  info={props.info}
+                  infoStyle={props.infoStyle}
+                  chevronColor={props.chevronColor}
+                  onPress={props.onPress}
+                />
+              );
+            })}
+            <View style={ProductDetailStyles.detailsContainer}>
+              <View style={ProductDetailStyles.horizontalContainer}>
+                <Text
+                  text={
+                    "Here’s a sample block of description texts/wordings. Sed ut perspiciatis unde omnis iste natus."
+                  }
+                  textStyle={[ProductDetailStyles.txtBlackRegular]}
+                />
+              </View>
+            </View>
+          </View>
+
           <View style={ProductDetailStyles.subContainer}>
             <ListChevron hasBottomDivider={true} {...voucherProps} />
           </View>
@@ -145,7 +161,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
               />
             </View>
           </View>
-          <View style={ProductDetailStyles.subContainer}>
+          {/* <View style={ProductDetailStyles.subContainer}>
             <View style={ProductDetailStyles.horizontalContainer}>
               <View style={ProductDetailStyles.sellerContainer}>
                 <View>
@@ -215,7 +231,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                 />
               </View>
             </View>
-          </View>
+          </View> */}
 
           <View style={ProductDetailStyles.subContainer}>
             <View style={ProductDetailStyles.productRatingMain}>
