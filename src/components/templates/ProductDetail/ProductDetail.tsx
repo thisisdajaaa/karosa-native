@@ -26,6 +26,7 @@ import Icon from "@app/atoms/Icon";
 import Button from "@app/atoms/Button";
 import { PropsType as ButtonProps } from "@app/atoms/Button/types";
 import { theme } from "@app/styles";
+import ImageOverlay from "@app/components/molecules/ImageOverlay";
 
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
@@ -215,6 +216,11 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                 ]}
               />
             </View>
+            <ImageOverlay
+              source={{
+                uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+              }}
+            />
           </View>
 
           {/* <View style={ProductDetailStyles.subContainer}>

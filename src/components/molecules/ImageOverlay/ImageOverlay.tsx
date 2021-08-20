@@ -7,6 +7,7 @@
 
 import React, { FC } from "react";
 
+<<<<<<< HEAD
 import type { ImageOverlayPropsType } from "./types";
 import ImageOverlayStyles from "./styles";
 import { View, Image, TouchableOpacity } from "react-native";
@@ -14,6 +15,14 @@ import Text from "@app/atoms/Text";
 import { theme } from "@app/styles";
 
 const ImageOverlay: FC<ImageOverlayPropsType> = (props) => {
+=======
+import type { PropsType } from "./types";
+import ImageOverlayStyles from "./styles";
+import { View, Image } from "react-native";
+import Text from "@app/atoms/Text";
+
+const ImageOverlay: FC<PropsType> = (props) => {
+>>>>>>> c416e9e... feat(added new variation in chevronlist and added new component imageoverlay): new Components
   const {
     source,
     textStyle,
@@ -21,6 +30,7 @@ const ImageOverlay: FC<ImageOverlayPropsType> = (props) => {
     textContent,
     viewTextStyle,
     mainContainerStyle,
+<<<<<<< HEAD
     imageHeight,
     imageWidth,
     hasOverlay,
@@ -53,6 +63,26 @@ const ImageOverlay: FC<ImageOverlayPropsType> = (props) => {
         </View>
       </View>
     </TouchableOpacity>
+=======
+  } = props;
+
+  return (
+    <View
+      style={
+        [mainContainerStyle, { flex: 1 }] || ImageOverlayStyles.mainContainer
+      }>
+      <Image
+        source={source}
+        style={imageStyle || ImageOverlayStyles.imageStyle}
+      />
+      <View style={viewTextStyle || ImageOverlayStyles.textViewStyle}>
+        <Text
+          text={textContent || "Sample"}
+          textStyle={textStyle || ImageOverlayStyles.textStyle}
+        />
+      </View>
+    </View>
+>>>>>>> c416e9e... feat(added new variation in chevronlist and added new component imageoverlay): new Components
   );
 };
 

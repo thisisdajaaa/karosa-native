@@ -56,7 +56,6 @@ const ShopProductDetailsScreen: FC = () => {
     variation: COMMON.VARIATION.ONE,
     info: "20% OFF",
     infoStyle: { color: theme.colors.green5 },
-    chevronColor: theme.colors.green5,
     onPress: () => console.log("20%"),
   };
 
