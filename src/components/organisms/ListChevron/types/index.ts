@@ -22,4 +22,5 @@ export type PropsType = {
   iconWidth?: number;
   iconHeight?: number;
   onPress: () => void;
+  hasChevron?: boolean;
 };
