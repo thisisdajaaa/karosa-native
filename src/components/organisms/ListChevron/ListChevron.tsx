@@ -8,10 +8,17 @@
 import React, { FC } from "react";
 
 import type { PropsType } from "./types";
+<<<<<<< HEAD
 import VariationOne from "./VariationOne";
 import VariationTwo from "./VariationTwo";
 import VariationThree from "./VariationThree";
 import VariationFour from "./VariationFour";
+=======
+import VariationOne from "./VariantOne";
+import VariationTwo from "./VariantTwo";
+import VariationThree from "./VariantThree";
+import VariationFour from "./VariantFour";
+>>>>>>> c416e9e... feat(added new variation in chevronlist and added new component imageoverlay): new Components
 
 const ListChevron: FC<PropsType> = (props) => {
   const {
