@@ -59,6 +59,10 @@ const ListChevronStyles = StyleSheet.create({
     position: "relative",
     left: 12,
   },
+  infoContainerWithoutChevron: {
+    position: "relative",
+    // left: 9,
+  },
 });
 
 export default ListChevronStyles;

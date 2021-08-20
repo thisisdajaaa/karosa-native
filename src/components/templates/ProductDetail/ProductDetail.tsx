@@ -19,6 +19,7 @@ import Reviews from "@app/molecules/Reviews/";
 import { Rating } from "react-native-elements";
 
 import type { PropsType } from "./types";
+import ImageOverlay from "@app/components/molecules/ImageOverlay";
 
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
@@ -160,7 +161,13 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                 ]}
               />
             </View>
+            <ImageOverlay
+              source={{
+                uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+              }}
+            />
           </View>
+
           {/* <View style={ProductDetailStyles.subContainer}>
             <View style={ProductDetailStyles.horizontalContainer}>
               <View style={ProductDetailStyles.sellerContainer}>
