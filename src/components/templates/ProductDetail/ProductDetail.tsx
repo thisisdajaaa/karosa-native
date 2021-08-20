@@ -9,6 +9,7 @@ import React, { FC } from "react";
 import { TouchableOpacity, View } from "react-native";
 import Image from "@app/atoms/Image";
 import Text from "@app/atoms/Text";
+
 import { AntDesign } from "@expo/vector-icons";
 import ListChevron from "@app/organisms/ListChevron";
 
