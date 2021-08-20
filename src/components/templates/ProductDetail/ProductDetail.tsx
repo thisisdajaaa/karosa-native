@@ -9,6 +9,7 @@ import React, { FC } from "react";
 import { TouchableOpacity, View } from "react-native";
 import Image from "@app/atoms/Image";
 import Text from "@app/atoms/Text";
+
 import { AntDesign } from "@expo/vector-icons";
 import ListChevron from "@app/organisms/ListChevron";
 
@@ -204,11 +205,6 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                       uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
                     },
                     textContent: "+5",
-                  },
-                  {
-                    source: {
-                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-                    },
                   },
                 ]}
               />
