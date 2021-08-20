@@ -43,26 +43,23 @@ const voucherProps: ListChevronProps = {
 const productDetailsProps: ListChevronProps[] = [
   {
     title: "Stock",
-    variation: COMMON.VARIATION.ONE,
+    variation: COMMON.VARIATION.FOUR,
     info: "50",
     infoStyle: { color: theme.colors.green5 },
-    chevronColor: theme.colors.green5,
     onPress: () => console.log("20%"),
   },
   {
     title: "Category",
-    variation: COMMON.VARIATION.ONE,
+    variation: COMMON.VARIATION.FOUR,
     info: "Region's Best",
     infoStyle: { color: theme.colors.green5 },
-    chevronColor: theme.colors.green5,
     onPress: () => console.log("20%"),
   },
   {
     title: "Ships From",
-    variation: COMMON.VARIATION.ONE,
+    variation: COMMON.VARIATION.FOUR,
     info: "Cebu Visayas",
     infoStyle: { color: theme.colors.green5 },
-    chevronColor: theme.colors.green5,
     onPress: () => console.log("20%"),
   },
 ];

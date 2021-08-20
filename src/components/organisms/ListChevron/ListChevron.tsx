@@ -11,6 +11,7 @@ import type { PropsType } from "./types";
 import VariationOne from "./VariantOne";
 import VariationTwo from "./VariantTwo";
 import VariationThree from "./VariantThree";
+import VariationFour from "./VariantFour";
 
 const VariantTwo: FC<PropsType> = (props) => {
   const {
@@ -75,6 +76,19 @@ const VariantTwo: FC<PropsType> = (props) => {
           iconWidth={iconWidth}
         />
       );
+    case 4:
+      return (
+        <VariationFour
+          variation={variation}
+          hasBottomDivider={hasBottomDivider}
+          listColor={listColor}
+          title={title}
+          onPress={onPress}
+          info={info}
+          required={required}
+          infoStyle={infoStyle}
+        />
+      );
     default:
       return (
         <VariationOne
@@ -86,7 +100,6 @@ const VariantTwo: FC<PropsType> = (props) => {
           info={info}
           required={required}
           infoStyle={infoStyle}
-          chevronColor={chevronColor}
         />
       );
   }
