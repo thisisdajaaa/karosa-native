@@ -27,6 +27,7 @@ import Button from "@app/atoms/Button";
 import { PropsType as ButtonProps } from "@app/atoms/Button/types";
 import { theme } from "@app/styles";
 import ImageOverlay from "@app/components/molecules/ImageOverlay";
+import { theme } from "@app/styles";
 
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
@@ -220,6 +221,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
               source={{
                 uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
               }}
+              textContent={"+5"}
             />
           </View>
 
