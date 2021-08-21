@@ -4,6 +4,7 @@
  *
  */
 
+import { theme } from "@app/styles";
 import { StyleSheet } from "react-native";
 
 const ImageOverlayStyles = StyleSheet.create({
@@ -12,21 +13,14 @@ const ImageOverlayStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  imageStyle: {
-    width: 200,
-    height: 200,
-  },
   textViewStyle: {
     position: "absolute",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "black",
-    width: 200,
-    height: 200,
+    backgroundColor: theme.colors.black,
     opacity: 0.8,
   },
   textStyle: {
-    alignItems: "center",
     color: "white",
   },
 });

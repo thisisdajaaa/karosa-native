@@ -20,6 +20,7 @@ import { Rating } from "react-native-elements";
 
 import type { PropsType } from "./types";
 import ImageOverlay from "@app/components/molecules/ImageOverlay";
+import { theme } from "@app/styles";
 
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
@@ -165,6 +166,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
               source={{
                 uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
               }}
+              textContent={"+5"}
             />
           </View>
 

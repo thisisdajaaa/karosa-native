@@ -20,21 +20,28 @@ const ImageOverlay: FC<PropsType> = (props) => {
     textContent,
     viewTextStyle,
     mainContainerStyle,
+    imageHeight,
+    imageWidth,
   } = props;
 
   return (
-    <View
-      style={
-        [mainContainerStyle, { flex: 1 }] || ImageOverlayStyles.mainContainer
-      }>
+    <View style={[mainContainerStyle, ImageOverlayStyles.mainContainer]}>
       <Image
         source={source}
-        style={imageStyle || ImageOverlayStyles.imageStyle}
+        style={[
+          { width: imageWidth || 75, height: imageHeight || 75 },
+          imageStyle,
+        ]}
       />
-      <View style={viewTextStyle || ImageOverlayStyles.textViewStyle}>
+      <View
+        style={[
+          { width: imageHeight || 75, height: imageHeight || 75 },
+          ImageOverlayStyles.textViewStyle,
+          viewTextStyle,
+        ]}>
         <Text
-          text={textContent || "Sample"}
-          textStyle={textStyle || ImageOverlayStyles.textStyle}
+          text={textContent || ""}
+          textStyle={[ImageOverlayStyles.textStyle, textStyle]}
         />
       </View>
     </View>

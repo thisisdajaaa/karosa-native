@@ -16,6 +16,8 @@ export type PropsType = {
   textStyle?: StyleProp<TextStyle>;
   viewTextStyle?: StyleProp<ViewStyle>;
   imageStyle?: StyleProp<ImageStyle>;
-  textContent: string;
+  textContent?: string;
   mainContainerStyle?: StyleProp<ViewStyle>;
+  imageWidth?: number;
+  imageHeight?: number;
 };
