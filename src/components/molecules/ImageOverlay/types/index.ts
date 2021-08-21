@@ -25,6 +25,7 @@ export type PropsType = {
   viewTextStyle?: StyleProp<ViewStyle>;
   imageStyle?: StyleProp<ImageStyle>;
 <<<<<<< HEAD
+<<<<<<< HEAD
   textContent?: string;
   mainContainerStyle?: StyleProp<ViewStyle>;
   imageWidth?: number;
@@ -35,4 +36,10 @@ export type PropsType = {
   textContent: string;
   mainContainerStyle?: StyleProp<ViewStyle>;
 >>>>>>> c416e9e... feat(added new variation in chevronlist and added new component imageoverlay): new Components
+=======
+  textContent?: string;
+  mainContainerStyle?: StyleProp<ViewStyle>;
+  imageWidth?: number;
+  imageHeight?: number;
+>>>>>>> 07efcee... style(imageoverlay): updated styling of ImageOverlay
 };

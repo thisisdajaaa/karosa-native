@@ -28,3 +28,4 @@ export type contentPropsType = {
 export type PropsType = {
   overlayProps: contentPropsType[];
 };
+
