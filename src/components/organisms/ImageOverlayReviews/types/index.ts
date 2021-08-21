@@ -4,6 +4,7 @@
  *
  */
 
+<<<<<<< HEAD
 import {
   ImageSourcePropType,
   StyleProp,
@@ -28,3 +29,6 @@ export type contentPropsType = {
 export type PropsType = {
   overlayProps: contentPropsType[];
 };
+=======
+export type PropsType = {};
+>>>>>>> 13889a2... fix(imageoverlay merge fixes): fixing merg errors

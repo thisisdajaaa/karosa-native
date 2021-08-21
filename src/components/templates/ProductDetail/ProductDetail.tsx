@@ -19,11 +19,15 @@ import Reviews from "@app/molecules/Reviews/";
 import { ListItem, Rating } from "react-native-elements";
 
 import type { PropsType } from "./types";
+<<<<<<< HEAD
 import ImageOverlayReviews from "@app/components/organisms/ImageOverlayReviews";
 import ListChevronStyles from "@app/components/organisms/ListChevron/styles";
 import Icon from "@app/atoms/Icon";
 import Button from "@app/atoms/Button";
 import { PropsType as ButtonProps } from "@app/atoms/Button/types";
+=======
+import ImageOverlay from "@app/components/molecules/ImageOverlay";
+>>>>>>> 13889a2... fix(imageoverlay merge fixes): fixing merg errors
 import { theme } from "@app/styles";
 
 const ProductDetailTemplate: FC<PropsType> = (props) => {
@@ -209,6 +213,15 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                 ]}
               />
             </View>
+<<<<<<< HEAD
+=======
+            <ImageOverlay
+              source={{
+                uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+              }}
+              textContent={"+5"}
+            />
+>>>>>>> 13889a2... fix(imageoverlay merge fixes): fixing merg errors
           </View>
 
           {/* <View style={ProductDetailStyles.subContainer}>
