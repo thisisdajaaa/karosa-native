@@ -20,4 +20,6 @@ export type PropsType = {
   mainContainerStyle?: StyleProp<ViewStyle>;
   imageWidth?: number;
   imageHeight?: number;
+  hasOverlay?: boolean;
+  onClick?: () => void;
 };
