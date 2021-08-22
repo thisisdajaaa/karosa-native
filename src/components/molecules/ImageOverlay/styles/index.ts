@@ -6,6 +6,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  import { theme } from "@app/styles";
  import { StyleSheet } from "react-native";
  
@@ -29,19 +30,18 @@
 =======
 import { theme } from "@app/styles";
 >>>>>>> 07efcee... style(imageoverlay): updated styling of ImageOverlay
+=======
+>>>>>>> e918c9f... fix(fix layout issues in variation): fix layout issues in variation
 import { StyleSheet } from "react-native";
 
 const ImageOverlayStyles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
   textViewStyle: {
     position: "absolute",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: theme.colors.black,
     opacity: 0.8,
   },
   textStyle: {
