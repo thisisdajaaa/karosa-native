@@ -20,6 +20,7 @@ import type { PropsType } from "./types";
 import ImageOverlayStyles from "./styles";
 import { View, Image } from "react-native";
 import Text from "@app/atoms/Text";
+import { theme } from "@app/styles";
 
 const ImageOverlay: FC<PropsType> = (props) => {
 >>>>>>> c416e9e... feat(added new variation in chevronlist and added new component imageoverlay): new Components
@@ -68,23 +69,30 @@ const ImageOverlay: FC<PropsType> = (props) => {
 =======
     imageHeight,
     imageWidth,
+<<<<<<< HEAD
 >>>>>>> 07efcee... style(imageoverlay): updated styling of ImageOverlay
+=======
+    hasOverlay,
+>>>>>>> e918c9f... fix(fix layout issues in variation): fix layout issues in variation
   } = props;
 
+  const backgroundColorOverlay = hasOverlay == false ? "" : theme.colors.black;
+
   return (
-    <View style={[mainContainerStyle, ImageOverlayStyles.mainContainer]}>
+    <View style={[ImageOverlayStyles.mainContainer, mainContainerStyle]}>
       <Image
         source={source}
         style={[
-          { width: imageWidth || 75, height: imageHeight || 75 },
+          { width: imageWidth || 70, height: imageHeight || 70 },
           imageStyle,
         ]}
       />
       <View
         style={[
-          { width: imageHeight || 75, height: imageHeight || 75 },
+          { width: imageHeight || 70, height: imageHeight || 70 },
           ImageOverlayStyles.textViewStyle,
           viewTextStyle,
+          { backgroundColor: backgroundColorOverlay },
         ]}>
         <Text
           text={textContent || ""}

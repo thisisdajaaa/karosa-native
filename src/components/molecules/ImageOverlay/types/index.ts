@@ -32,6 +32,7 @@ export type PropsType = {
   imageHeight?: number;
   hasOverlay?: boolean;
   onClick?: () => void;
+<<<<<<< HEAD
 =======
   textContent: string;
   mainContainerStyle?: StyleProp<ViewStyle>;
@@ -42,4 +43,6 @@ export type PropsType = {
   imageWidth?: number;
   imageHeight?: number;
 >>>>>>> 07efcee... style(imageoverlay): updated styling of ImageOverlay
+=======
+>>>>>>> e918c9f... fix(fix layout issues in variation): fix layout issues in variation
 };
