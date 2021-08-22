@@ -208,6 +208,37 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                   },
                 ]}
               />
+            </View> */}
+
+            <View style={ProductDetailStyles.horizontalContainer}>
+              <ImageOverlayReviews
+                overlayProps={[
+                  {
+                    source: {
+                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    },
+                    hasOverlay: false,
+                  },
+                  {
+                    source: {
+                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    },
+                    hasOverlay: false,
+                  },
+                  {
+                    source: {
+                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    },
+                    hasOverlay: false,
+                  },
+                  {
+                    source: {
+                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    },
+                    textContent: "+5",
+                  },
+                ]}
+              />
             </View>
           </View>
 
