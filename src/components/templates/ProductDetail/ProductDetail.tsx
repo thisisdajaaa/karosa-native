@@ -9,7 +9,7 @@ import React, { FC } from "react";
 import { View } from "react-native";
 import Image from "@app/atoms/Image";
 import Text from "@app/atoms/Text";
-import ReviewImages from "@app/atoms/ReviewImages";
+
 import { AntDesign } from "@expo/vector-icons";
 import ListChevron from "@app/organisms/ListChevron";
 
@@ -19,8 +19,7 @@ import Reviews from "@app/molecules/Reviews/";
 import { Rating } from "react-native-elements";
 
 import type { PropsType } from "./types";
-import ImageOverlay from "@app/components/molecules/ImageOverlay";
-import { theme } from "@app/styles";
+import ImageOverlayReviews from "@app/components/organisms/ImageOverlayReviews";
 
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
@@ -144,7 +143,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           </View>
           <View style={ProductDetailStyles.subContainer}>
             <ListChevron {...variationProps} />
-            <View style={ProductDetailStyles.horizontalContainer}>
+            {/* <View style={ProductDetailStyles.horizontalContainer}>
               <ReviewImages
                 imageSources={[
                   {
@@ -161,13 +160,38 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                   },
                 ]}
               />
+            </View> */}
+
+            <View style={ProductDetailStyles.horizontalContainer}>
+              <ImageOverlayReviews
+                overlayProps={[
+                  {
+                    source: {
+                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    },
+                    hasOverlay: false,
+                  },
+                  {
+                    source: {
+                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    },
+                    hasOverlay: false,
+                  },
+                  {
+                    source: {
+                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    },
+                    hasOverlay: false,
+                  },
+                  {
+                    source: {
+                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    },
+                    textContent: "+5",
+                  },
+                ]}
+              />
             </View>
-            <ImageOverlay
-              source={{
-                uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-              }}
-              textContent={"+5"}
-            />
           </View>
 
           {/* <View style={ProductDetailStyles.subContainer}>
