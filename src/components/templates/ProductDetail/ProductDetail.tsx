@@ -36,6 +36,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
     commentProps,
     shippingtProps,
     productDetailsProps,
+    bottomModalProps,
   } = props;
 
   const chatNowButtonProps: ButtonProps = {

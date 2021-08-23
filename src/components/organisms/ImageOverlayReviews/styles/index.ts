@@ -18,6 +18,7 @@ const ImageOverlayReviewsStyles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 8,
     alignItems: "center",
+<<<<<<< HEAD
     marginHorizontal: 10,
     marginBottom: 10,
   },
@@ -25,6 +26,8 @@ const ImageOverlayReviewsStyles = StyleSheet.create({
     width: 70,
     height: 70,
     marginRight: 10,
+=======
+>>>>>>> ffdc6f6... fix(imageoverlay): fix props in ImageOverlay and updated modal variation
   },
 });
 

@@ -16,10 +16,14 @@ import {
 } from "react-native";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type ImageOverlayPropsType = {
 =======
 export type PropsType = {
 >>>>>>> c416e9e... feat(added new variation in chevronlist and added new component imageoverlay): new Components
+=======
+export type ImageOverlayPropsType = {
+>>>>>>> ffdc6f6... fix(imageoverlay): fix props in ImageOverlay and updated modal variation
   source: ImageSourcePropType;
   textStyle?: StyleProp<TextStyle>;
   viewTextStyle?: StyleProp<ViewStyle>;
