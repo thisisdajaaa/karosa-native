@@ -155,6 +155,10 @@ const ProductDetailStyles = StyleSheet.create({
   image: {
     flex: 1,
   },
+  modalTitle: {
+    ...theme.textTitle,
+    fontWeight: "400",
+  },
 });
 
 export default ProductDetailStyles;
