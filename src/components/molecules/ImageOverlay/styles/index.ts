@@ -4,6 +4,7 @@
  *
  */
 
+import { theme } from "@app/styles";
 import { StyleSheet } from "react-native";
 
 const ImageOverlayStyles = StyleSheet.create({
@@ -17,7 +18,7 @@ const ImageOverlayStyles = StyleSheet.create({
     opacity: 0.8,
   },
   textStyle: {
-    color: "white",
+    color: theme.colors.white,
   },
 });
 

@@ -11,7 +11,7 @@ import {
   ViewStyle,
 } from "react-native";
 
-export type PropsType = {
+export type ImageOverlayPropsType = {
   source: ImageSourcePropType;
   textStyle?: StyleProp<TextStyle>;
   viewTextStyle?: StyleProp<ViewStyle>;
