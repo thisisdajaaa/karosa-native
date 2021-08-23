@@ -29,6 +29,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
     commentProps,
     shippingtProps,
     productDetailsProps,
+    bottomModalProps,
   } = props;
 
   return (
@@ -143,25 +144,6 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           </View>
           <View style={ProductDetailStyles.subContainer}>
             <ListChevron {...variationProps} />
-            {/* <View style={ProductDetailStyles.horizontalContainer}>
-              <ReviewImages
-                imageSources={[
-                  {
-                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-                  },
-                  {
-                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-                  },
-                  {
-                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-                  },
-                  {
-                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-                  },
-                ]}
-              />
-            </View> */}
-
             <View style={ProductDetailStyles.horizontalContainer}>
               <ImageOverlayReviews
                 overlayProps={[
@@ -329,6 +311,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           <Button {...buyButtonProps} />
         </View>
       </View> */}
+      {bottomModalProps}
     </View>
   );
 };
