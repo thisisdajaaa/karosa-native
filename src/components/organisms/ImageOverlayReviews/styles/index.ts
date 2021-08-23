@@ -4,7 +4,6 @@
  *
  */
 
-<<<<<<< HEAD
  import { theme } from "@app/styles";
  import { StyleSheet } from "react-native";
  
@@ -23,14 +22,3 @@
  });
  
  export default ImageOverlayReviewsStyles;
-=======
-import { StyleSheet } from "react-native";
-
-const ImageOverlayReviewsStyles = StyleSheet.create({
-  rowContainer: {
-    flexDirection: "row",
-  },
-});
-
-export default ImageOverlayReviewsStyles;
->>>>>>> 37062fa... fix(image overlay): merge fix

@@ -185,6 +185,7 @@ const ProductDetailStyles = StyleSheet.create({
     ...theme.textTitle,
     fontWeight: "400",
   },
+<<<<<<< HEAD
   btnGrpViewContainer: {
     flexDirection: "row",
     backgroundColor: theme.colors.white,
@@ -206,6 +207,8 @@ const ProductDetailStyles = StyleSheet.create({
   variationTitle: {
     ...theme.textBold,
   },
+=======
+>>>>>>> b87eabf... fix(imageoverlay): merge fix errors
 });
 
 export default ProductDetailStyles;

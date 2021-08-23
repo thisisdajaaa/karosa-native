@@ -34,6 +34,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
     commentProps,
     shippingtProps,
     productDetailsProps,
+    bottomModalProps,
   } = props;
 
   const chatNowButtonProps: ButtonProps = {
@@ -334,6 +335,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           </View>
         </ScrollView>
       </View>
+<<<<<<< HEAD
       <View style={ProductDetailStyles.footer}>
         <TouchableOpacity style={ProductDetailStyles.subFooterChat}>
           <View>
@@ -360,6 +362,20 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           />
         </TouchableOpacity>
       </View>
+=======
+      {/* <View style={ProductDetailStyles.footer}>
+        <View style={ProductDetailStyles.subFooterContainer}>
+          <Button {...chatNowButtonProps} />
+        </View>
+        <View style={ProductDetailStyles.subFooterContainer}>
+          <Button {...cartButtonProps} />
+        </View>
+        <View style={ProductDetailStyles.subFooterContainer}>
+          <Button {...buyButtonProps} />
+        </View>
+      </View> */}
+      {bottomModalProps}
+>>>>>>> b87eabf... fix(imageoverlay): merge fix errors
     </View>
   );
 };
