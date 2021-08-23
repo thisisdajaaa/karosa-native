@@ -7,6 +7,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
  import { theme } from "@app/styles";
  import { StyleSheet } from "react-native";
  
@@ -32,6 +33,9 @@ import { theme } from "@app/styles";
 >>>>>>> 07efcee... style(imageoverlay): updated styling of ImageOverlay
 =======
 >>>>>>> e918c9f... fix(fix layout issues in variation): fix layout issues in variation
+=======
+import { theme } from "@app/styles";
+>>>>>>> ffdc6f6... fix(imageoverlay): fix props in ImageOverlay and updated modal variation
 import { StyleSheet } from "react-native";
 
 const ImageOverlayStyles = StyleSheet.create({
@@ -45,7 +49,7 @@ const ImageOverlayStyles = StyleSheet.create({
     opacity: 0.8,
   },
   textStyle: {
-    color: "white",
+    color: theme.colors.white,
   },
 });
 

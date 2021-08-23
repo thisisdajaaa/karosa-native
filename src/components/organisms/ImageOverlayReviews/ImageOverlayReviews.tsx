@@ -7,7 +7,6 @@
 
 import React, { FC } from "react";
 
-// import ImageOverlayReviewsConfig from "./config";
 import type { PropsType } from "./types";
 import ImageOverlayReviewsStyles from "./styles";
 import { View } from "react-native";
