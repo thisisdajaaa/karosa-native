@@ -34,6 +34,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
     commentProps,
     shippingtProps,
     productDetailsProps,
+    bottomModalProps,
   } = props;
 
   const chatNowButtonProps: ButtonProps = {
@@ -208,7 +209,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                   },
                 ]}
               />
-            </View> */}
+            </View>
 
             <View style={ProductDetailStyles.horizontalContainer}>
               <ImageOverlayReviews

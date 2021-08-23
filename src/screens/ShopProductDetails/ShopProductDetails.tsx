@@ -4,7 +4,12 @@
  * @format
  *
  */
+<<<<<<< HEAD
 import React, { FC, useRef, useState } from "react";
+=======
+
+import React, { FC, useRef } from "react";
+>>>>>>> ffdc6f6... fix(imageoverlay): fix props in ImageOverlay and updated modal variation
 import { PropsType as CommentProps } from "@app/molecules/Reviews/types";
 import { PropsType as ListChevronProps } from "@app/organisms/ListChevron/types";
 import ProductDetailTemplate from "@app/templates/ProductDetail";
@@ -14,6 +19,7 @@ import BottomSheet from "@app/components/molecules/BottomSheet";
 import RBSheet from "react-native-raw-bottom-sheet";
 import Header from "@app/components/molecules/Header";
 import ProductDetailStyles from "@app/components/templates/ProductDetail/styles";
+<<<<<<< HEAD
 import { ScrollView, TouchableOpacity, View } from "react-native";
 import ImageOverlayReviews from "@app/components/organisms/ImageOverlayReviews";
 import { ImageOverlayPropsType } from "@app/components/molecules/ImageOverlay/types";
@@ -31,6 +37,14 @@ const ShopProductDetailsScreen: FC = () => {
   const [stocks, setStocks] = useState(initialStocks);
   const [variation1, setVariation1] = useState(0);
   const [variation2, setVariation2] = useState(0);
+=======
+import { View } from "react-native";
+import ImageOverlayReviews from "@app/components/organisms/ImageOverlayReviews";
+import { ImageOverlayPropsType } from "@app/components/molecules/ImageOverlay/types";
+
+const ShopProductDetailsScreen: FC = () => {
+  const variationRef = useRef<RBSheet>(null);
+>>>>>>> ffdc6f6... fix(imageoverlay): fix props in ImageOverlay and updated modal variation
 
   const rev1Props: CommentProps = {
     avatarPhoto:
@@ -56,8 +70,10 @@ const ShopProductDetailsScreen: FC = () => {
     variation: COMMON.VARIATION.ONE,
     info: "20% OFF",
     infoStyle: { color: theme.colors.green5 },
+    chevronColor: theme.colors.green5,
     onPress: () => console.log("20%"),
   };
+<<<<<<< HEAD
 
   const productDetailsProps: ListChevronProps[] = [
     {
@@ -94,16 +110,58 @@ const ShopProductDetailsScreen: FC = () => {
     onPress: () => console.log("pressed"),
   };
 
+=======
+
+  const productDetailsProps: ListChevronProps[] = [
+    {
+      title: "Stock",
+      variation: COMMON.VARIATION.FOUR,
+      info: "50",
+      infoStyle: { color: theme.colors.green5 },
+      onPress: () => console.log("20%"),
+    },
+    {
+      title: "Category",
+      variation: COMMON.VARIATION.FOUR,
+      info: "Region's Best",
+      infoStyle: { color: theme.colors.green5 },
+      onPress: () => console.log("20%"),
+    },
+    {
+      title: "Ships From",
+      variation: COMMON.VARIATION.FOUR,
+      info: "Cebu Visayas",
+      infoStyle: { color: theme.colors.green5 },
+      onPress: () => console.log("20%"),
+    },
+  ];
+
+  const shippingProps: ListChevronProps = {
+    title: "Delivery from Cebu City\nP50",
+    variation: COMMON.VARIATION.THREE,
+    chevronColor: theme.colors.green5,
+    iconGroup: "products",
+    iconName: "shipping",
+    iconHeight: 40,
+    iconWidth: 40,
+    onPress: () => console.log("pressed"),
+  };
+
+>>>>>>> ffdc6f6... fix(imageoverlay): fix props in ImageOverlay and updated modal variation
   const variationProps: ListChevronProps = {
     title: "Variations",
     variation: COMMON.VARIATION.ONE,
     chevronColor: theme.colors.green5,
+<<<<<<< HEAD
     onPress: () => [
       variationRef.current?.open(),
       setStocks(0),
       setVariation1(0),
       setVariation2(0),
     ],
+=======
+    onPress: () => variationRef.current?.open(),
+>>>>>>> ffdc6f6... fix(imageoverlay): fix props in ImageOverlay and updated modal variation
   };
 
   const reviewsProps: ListChevronProps = {
@@ -119,6 +177,7 @@ const ShopProductDetailsScreen: FC = () => {
     },
     viewTextStyle: {
       justifyContent: "flex-end",
+<<<<<<< HEAD
       height: "33%",
       bottom: 0,
     },
@@ -524,6 +583,76 @@ const ShopProductDetailsScreen: FC = () => {
         </ScrollView>
       </BottomSheet>
     </>
+=======
+      left: 0,
+      height: 60,
+      top: 50,
+      paddingTop: 10,
+      paddingLeft: 5,
+      paddingRight: 5,
+      paddingBottom: 20,
+    },
+    textStyle: { fontSize: 12, fontWeight: "bold" },
+    imageHeight: 100,
+    imageWidth: 120,
+  };
+
+  return (
+    <ProductDetailTemplate
+      shippingtProps={shippingProps}
+      voucherProps={voucherProps}
+      commentProps={[rev1Props, rev2Props]}
+      variationProps={variationProps}
+      reviewsProps={reviewsProps}
+      productDetailsProps={productDetailsProps}
+      bottomModalProps={
+        <BottomSheet ref={variationRef} height={600}>
+          <Header
+            centerComponent={{
+              text: "Select Variant",
+              style: ProductDetailStyles.modalTitle,
+            }}
+          />
+          <View style={ProductDetailStyles.horizontalContainer}>
+            <ImageOverlayReviews
+              overlayProps={[
+                {
+                  source: {
+                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                  },
+                  textContent: "Variant One",
+                  viewTextStyle: imageOverlayProps.viewTextStyle,
+                  textStyle: imageOverlayProps.textStyle,
+                  imageWidth: imageOverlayProps.imageWidth,
+                  imageHeight: imageOverlayProps.imageHeight,
+                },
+                {
+                  source: {
+                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                  },
+                  textContent: "Variant Two",
+                  viewTextStyle: imageOverlayProps.viewTextStyle,
+                  textStyle: imageOverlayProps.textStyle,
+                  imageWidth: imageOverlayProps.imageWidth,
+                  imageHeight: imageOverlayProps.imageHeight,
+                },
+                {
+                  source: {
+                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                  },
+                  textContent: "Variant Three",
+                  viewTextStyle: imageOverlayProps.viewTextStyle,
+                  textStyle: imageOverlayProps.textStyle,
+                  imageWidth: imageOverlayProps.imageWidth,
+                  imageHeight: imageOverlayProps.imageHeight,
+                },
+              ]}
+            />
+          </View>
+        </BottomSheet>
+      }
+    />
+>>>>>>> ffdc6f6... fix(imageoverlay): fix props in ImageOverlay and updated modal variation
   );
 };
 

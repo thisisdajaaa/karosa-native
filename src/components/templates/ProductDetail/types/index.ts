@@ -27,5 +27,6 @@ export type PropsType = {
   variationProps: ListChevronType;
   reviewsProps: ListChevronType;
   productDetailsProps: ListChevronType[];
+  bottomModalProps: any;
 };
 >>>>>>> fe7bb39... style(updated layout and added missing text from the design): added product details content
