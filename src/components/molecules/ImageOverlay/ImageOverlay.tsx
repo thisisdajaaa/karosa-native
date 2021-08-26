@@ -12,6 +12,7 @@ import React, { FC } from "react";
 import type { ImageOverlayPropsType } from "./types";
 import ImageOverlayStyles from "./styles";
 import { View, Image, TouchableOpacity } from "react-native";
+<<<<<<< HEAD
 import Text from "@app/atoms/Text";
 import { theme } from "@app/styles";
 
@@ -23,9 +24,10 @@ import type { ImageOverlayPropsType } from "./types";
 >>>>>>> ffdc6f6... fix(imageoverlay): fix props in ImageOverlay and updated modal variation
 import ImageOverlayStyles from "./styles";
 import { View, Image } from "react-native";
+=======
+>>>>>>> a331fff... feat(productdetail modal): added some coding to highlight the variations selected
 import Text from "@app/atoms/Text";
 import { theme } from "@app/styles";
-import { TouchableItem } from "react-native-tab-view";
 
 <<<<<<< HEAD
 const ImageOverlay: FC<PropsType> = (props) => {
@@ -92,7 +94,7 @@ const ImageOverlay: FC<ImageOverlayPropsType> = (props) => {
   const backgroundColorOverlay = hasOverlay == false ? "" : theme.colors.black;
 
   return (
-    <TouchableItem onPress={() => onClick}>
+    <TouchableOpacity onPress={onClick}>
       <View style={[ImageOverlayStyles.mainContainer, mainContainerStyle]}>
         <Image
           source={source}
@@ -115,11 +117,15 @@ const ImageOverlay: FC<ImageOverlayPropsType> = (props) => {
         </View>
       </View>
 <<<<<<< HEAD
+<<<<<<< HEAD
     </View>
 >>>>>>> c416e9e... feat(added new variation in chevronlist and added new component imageoverlay): new Components
 =======
     </TouchableItem>
 >>>>>>> ffdc6f6... fix(imageoverlay): fix props in ImageOverlay and updated modal variation
+=======
+    </TouchableOpacity>
+>>>>>>> a331fff... feat(productdetail modal): added some coding to highlight the variations selected
   );
 };
 

@@ -13,6 +13,9 @@ export type PropsType = {
   title: string;
   icon?: IconNode | undefined;
   buttonStyle?: StyleProp<ViewStyle>;
+<<<<<<< HEAD
   titleStyle?: StyleProp<any>;
   containerStyle?: StyleProp<any>;
+=======
+>>>>>>> a331fff... feat(productdetail modal): added some coding to highlight the variations selected
 };
