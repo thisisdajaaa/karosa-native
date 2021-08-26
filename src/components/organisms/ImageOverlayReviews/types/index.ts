@@ -22,6 +22,7 @@ export type contentPropsType = {
   imageWidth?: number;
   imageHeight?: number;
   hasOverlay?: boolean;
+  onPress?: () => void;
 };
 
 export type PropsType = {

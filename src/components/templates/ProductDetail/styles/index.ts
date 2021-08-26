@@ -159,6 +159,16 @@ const ProductDetailStyles = StyleSheet.create({
     ...theme.textTitle,
     fontWeight: "400",
   },
+  btnGrpViewContainer: {
+    flexDirection: "row",
+    backgroundColor: theme.colors.white,
+  },
+  btnContainer: {
+    flex: 1,
+  },
+  txtMuted: {
+    color: theme.colors.dark10,
+  },
 });
 
 export default ProductDetailStyles;
