@@ -12,7 +12,6 @@ import ImageOverlayStyles from "./styles";
 import { View, Image, TouchableOpacity } from "react-native";
 import Text from "@app/atoms/Text";
 import { theme } from "@app/styles";
-import { TouchableItem } from "react-native-tab-view";
 
 const ImageOverlay: FC<ImageOverlayPropsType> = (props) => {
   const {

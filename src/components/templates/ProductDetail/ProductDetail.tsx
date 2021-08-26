@@ -29,7 +29,6 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
     commentProps,
     shippingtProps,
     productDetailsProps,
-    bottomModalProps,
   } = props;
 
   return (
@@ -311,7 +310,6 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           <Button {...buyButtonProps} />
         </View>
       </View> */}
-      {bottomModalProps}
     </View>
   );
 };
