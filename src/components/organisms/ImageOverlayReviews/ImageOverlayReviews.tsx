@@ -26,9 +26,13 @@ const ImageOverlayReviews: FC<PropsType> = (props) => {
             viewTextStyle={props.viewTextStyle}
             imageStyle={[props.imageStyle]}
             hasOverlay={props.hasOverlay}
-            mainContainerStyle={{ flex: 0, marginRight: 10 }}
+            mainContainerStyle={[
+              props.mainContainerStyle,
+              { flex: 0, marginRight: 10, borderColor: "green" },
+            ]}
             imageHeight={props.imageHeight}
             imageWidth={props.imageWidth}
+            onClick={props.onPress}
           />
         );
       })}
