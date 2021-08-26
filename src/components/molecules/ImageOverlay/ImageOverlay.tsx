@@ -31,11 +31,7 @@ const ImageOverlay: FC<ImageOverlayPropsType> = (props) => {
   const backgroundColorOverlay = hasOverlay == false ? "" : theme.colors.black;
 
   return (
-<<<<<<< HEAD
     <TouchableOpacity onPress={onClick}>
-=======
-    <TouchableItem onPress={() => onClick}>
->>>>>>> ffdc6f6... fix(imageoverlay): fix props in ImageOverlay and updated modal variation
       <View style={[ImageOverlayStyles.mainContainer, mainContainerStyle]}>
         <Image
           source={source}
@@ -57,11 +53,7 @@ const ImageOverlay: FC<ImageOverlayPropsType> = (props) => {
           />
         </View>
       </View>
-<<<<<<< HEAD
     </TouchableOpacity>
-=======
-    </TouchableItem>
->>>>>>> ffdc6f6... fix(imageoverlay): fix props in ImageOverlay and updated modal variation
   );
 };
 
