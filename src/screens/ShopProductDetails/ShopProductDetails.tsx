@@ -4,7 +4,6 @@
  * @format
  *
  */
-
 import React, { FC, useRef, useState } from "react";
 import { PropsType as CommentProps } from "@app/molecules/Reviews/types";
 import { PropsType as ListChevronProps } from "@app/organisms/ListChevron/types";
@@ -15,14 +14,16 @@ import BottomSheet from "@app/components/molecules/BottomSheet";
 import RBSheet from "react-native-raw-bottom-sheet";
 import Header from "@app/components/molecules/Header";
 import ProductDetailStyles from "@app/components/templates/ProductDetail/styles";
-import { TouchableOpacity, View } from "react-native";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 import ImageOverlayReviews from "@app/components/organisms/ImageOverlayReviews";
 import { ImageOverlayPropsType } from "@app/components/molecules/ImageOverlay/types";
-import Divider from "@app/atoms/Divider";
 import FilterButton from "@app/atoms/FilterButton";
 import Text from "@app/atoms/Text";
 import { Ionicons } from "@expo/vector-icons";
 import { contentPropsType } from "@app/components/organisms/ImageOverlayReviews/types";
+import { ListItem } from "react-native-elements";
+import ImageOverlay from "@app/components/molecules/ImageOverlay";
+import Button from "@app/atoms/Button";
 
 const ShopProductDetailsScreen: FC = () => {
   const initialStocks = 50;
@@ -153,12 +154,6 @@ const ShopProductDetailsScreen: FC = () => {
     { id: 5, title: "8 kgms" },
   ];
 
-  // //set variation2 chosen
-  // const variation2Picker = useCallback((id) => {
-  //   setVariation2(id);
-  //   console.log("id " + id + " choosen for variation 2");
-  // }, []);
-
   //switches choices from one variation to another
   const switchVariation1 = (id: number, variation: number) => {
     id == variation ? setVariation1(0) : setVariation1(id);
@@ -178,6 +173,8 @@ const ShopProductDetailsScreen: FC = () => {
       textContent: props.title,
       viewTextStyle: imageOverlayProps.viewTextStyle,
       textStyle: imageOverlayProps.textStyle,
+      // imageWidth: imageOverlayProps.imageWidth,
+      // imageHeight: imageOverlayProps.imageHeight,
       imageWidth: imageOverlayProps.imageWidth,
       imageHeight: imageOverlayProps.imageHeight,
       mainContainerStyle:
@@ -209,98 +206,191 @@ const ShopProductDetailsScreen: FC = () => {
             style: ProductDetailStyles.modalTitle,
           }}
         />
-        <View style={ProductDetailStyles.horizontalContainer}>
-          <ImageOverlayReviews overlayProps={firstVariantMap} />
-        </View>
-        <Divider
-          style={{
-            marginTop: 20,
-            marginBottom: 10,
-            alignContent: "center",
-            marginLeft: 15,
-            marginRight: 15,
-          }}
-        />
-        <View style={ProductDetailStyles.btnGrpViewContainer}>
-          {secondVariation.map((props) => {
-            return (
-              <View style={ProductDetailStyles.btnContainer}>
-                <FilterButton
-                  title={props.title}
-                  onPress={() => [switchVariation2(props.id, variation2)]}
-                  key={props.id}
-                  buttonStyle={
-                    props.id == variation2
-                      ? { backgroundColor: theme.colors.green5 }
-                      : {}
-                  }
-                />
+
+        <ScrollView style={{ flex: 1 }}>
+          <ListItem bottomDivider={true} style={{ flex: 1 }}>
+            <ImageOverlayReviews overlayProps={firstVariantMap} />
+          </ListItem>
+
+          <ListItem bottomDivider={true}>
+            {secondVariation.map((props) => {
+              return (
+                <View style={ProductDetailStyles.btnContainer}>
+                  <FilterButton
+                    title={props.title}
+                    onPress={() => [switchVariation2(props.id, variation2)]}
+                    key={props.id}
+                    buttonStyle={
+                      props.id == variation2
+                        ? { backgroundColor: theme.colors.green5 }
+                        : {}
+                    }
+                  />
+                </View>
+              );
+            })}
+          </ListItem>
+
+          {variation1 != 0 && variation2 != 0 ? (
+            <>
+              <View>
+                <ListItem bottomDivider={false}>
+                  <View style={{ flexDirection: "row" }}>
+                    <Text
+                      text={"Quantity"}
+                      textStyle={[ProductDetailStyles.txtBlackRegularBold]}
+                    />
+                    <View style={{ padding: 10 }} />
+                    <Text
+                      text={stocks + " Pcs left"}
+                      textStyle={[
+                        ProductDetailStyles.txtMuted,
+                        { marginRight: 30 },
+                      ]}
+                    />
+
+                    <TouchableOpacity
+                      style={{
+                        backgroundColor: theme.colors.light10,
+                        paddingLeft: 5,
+                        paddingRight: 5,
+                        borderRadius: 8,
+                      }}
+                      onPress={() =>
+                        setStocks(stocks > 0 ? stocks - 1 : stocks)
+                      }>
+                      <Ionicons
+                        name="remove"
+                        size={30}
+                        color={theme.colors.dark10}
+                      />
+                    </TouchableOpacity>
+
+                    <Text
+                      text={stocks.toString()}
+                      textStyle={[
+                        ProductDetailStyles.txtBlackRegularBold,
+                        {
+                          marginRight: 20,
+                          marginLeft: 20,
+                          alignContent: "center",
+                          top: 10,
+                          fontSize: 20,
+                        },
+                      ]}
+                    />
+
+                    <TouchableOpacity
+                      style={{
+                        backgroundColor: theme.colors.green5,
+                        paddingLeft: 5,
+                        paddingRight: 5,
+                        borderRadius: 8,
+                      }}
+                      onPress={() =>
+                        setStocks(
+                          stocks < initialStocks ? stocks + 1 : initialStocks
+                        )
+                      }>
+                      <Ionicons
+                        name="add"
+                        size={30}
+                        color={theme.colors.white}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </ListItem>
+
+                <ListItem bottomDivider={false}>
+                  <ImageOverlay
+                    imageHeight={109}
+                    imageWidth={122}
+                    hasOverlay={false}
+                    source={{
+                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    }}
+                  />
+                  <View style={{ bottom: 28 }}>
+                    <Text
+                      text={"P500"}
+                      textStyle={[
+                        ProductDetailStyles.txtBlackRegularBold,
+                        ProductDetailStyles.txtGreen,
+                      ]}
+                    />
+                    <Text
+                      text={"P800"}
+                      textStyle={[
+                        ProductDetailStyles.txtMuted,
+                        {
+                          textDecorationLine: "line-through",
+                          textDecorationStyle: "double",
+                        },
+                      ]}
+                    />
+
+                    <Text
+                      text={
+                        firstVariation[variation1 - 1].title +
+                        ", " +
+                        secondVariation[variation2 - 1].title
+                      }
+                      textStyle={[ProductDetailStyles.txtBlackRegular]}
+                    />
+                  </View>
+                </ListItem>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    flex: 1,
+                    justifyContent: "center",
+                    margin: 10,
+                    paddingTop: 20,
+                  }}>
+                  <View
+                    style={{
+                      alignItems: "center",
+                      flex: 1,
+                      justifyContent: "center",
+                    }}>
+                    <Button
+                      title="Add to Basket"
+                      titleStyle={{
+                        color: theme.colors.black,
+                        textAlign: "center",
+                      }}
+                      buttonStyle={{
+                        backgroundColor: theme.colors.light10,
+                        paddingRight: 40,
+                        paddingLeft: 40,
+                      }}
+                    />
+                  </View>
+                  <View
+                    style={{
+                      alignItems: "center",
+                      flex: 1,
+                      justifyContent: "center",
+                    }}>
+                    <Button
+                      title="Buy Now"
+                      titleStyle={{
+                        textAlign: "center",
+                      }}
+                      buttonStyle={{
+                        paddingRight: 50,
+                        paddingLeft: 50,
+                      }}
+                    />
+                  </View>
+                </View>
               </View>
-            );
-          })}
-        </View>
-
-        <Divider
-          style={{
-            marginTop: 10,
-            marginBottom: 10,
-            alignContent: "center",
-            marginLeft: 15,
-            marginRight: 15,
-          }}
-        />
-
-        <View style={ProductDetailStyles.horizontalContainer}>
-          <View style={{ flexDirection: "row" }}>
-            <Text
-              text={"Quantity"}
-              textStyle={[ProductDetailStyles.txtBlackRegularBold]}
-            />
-            <View style={{ padding: 10 }} />
-            <Text
-              text={stocks + " Pcs left"}
-              textStyle={[ProductDetailStyles.txtMuted, { marginRight: 30 }]}
-            />
-
-            <TouchableOpacity
-              style={{
-                backgroundColor: theme.colors.light10,
-                paddingLeft: 5,
-                paddingRight: 5,
-                borderRadius: 8,
-              }}
-              onPress={() => setStocks(stocks > 0 ? stocks - 1 : stocks)}>
-              <Ionicons name="remove" size={30} color={theme.colors.dark10} />
-            </TouchableOpacity>
-
-            <Text
-              text={stocks.toString()}
-              textStyle={[
-                ProductDetailStyles.txtBlackRegularBold,
-                {
-                  marginRight: 20,
-                  marginLeft: 20,
-                  alignContent: "center",
-                  top: 10,
-                  fontSize: 20,
-                },
-              ]}
-            />
-
-            <TouchableOpacity
-              style={{
-                backgroundColor: theme.colors.green5,
-                paddingLeft: 5,
-                paddingRight: 5,
-                borderRadius: 8,
-              }}
-              onPress={() =>
-                setStocks(stocks < initialStocks ? stocks + 1 : initialStocks)
-              }>
-              <Ionicons name="add" size={30} color={theme.colors.white} />
-            </TouchableOpacity>
-          </View>
-        </View>
+            </>
+          ) : (
+            <></>
+          )}
+        </ScrollView>
       </BottomSheet>
     </>
   );
