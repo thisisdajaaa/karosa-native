@@ -11,12 +11,8 @@ import type { PropsType } from "./types";
 import FilterButtonStyles from "./styles";
 
 const FilterButton: FC<PropsType> = (props) => {
-<<<<<<< HEAD
   const { onPress, title, icon, buttonStyle, titleStyle, containerStyle } =
     props;
-=======
-  const { onPress, title, icon, buttonStyle } = props;
->>>>>>> a331fff... feat(productdetail modal): added some coding to highlight the variations selected
 
   const onClick = () => {
     onPress();
@@ -30,13 +26,8 @@ const FilterButton: FC<PropsType> = (props) => {
       iconContainerStyle={FilterButtonStyles.iconContainer}
       buttonStyle={buttonStyle || FilterButtonStyles.bgNeutral}
       icon={icon}
-<<<<<<< HEAD
       containerStyle={[FilterButtonStyles.container, containerStyle]}
       titleStyle={[FilterButtonStyles.title, titleStyle]}
-=======
-      containerStyle={FilterButtonStyles.container}
-      titleStyle={FilterButtonStyles.title}
->>>>>>> a331fff... feat(productdetail modal): added some coding to highlight the variations selected
       type={"outline"}
     />
   );
