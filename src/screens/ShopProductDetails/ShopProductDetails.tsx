@@ -115,17 +115,12 @@ const ShopProductDetailsScreen: FC = () => {
     },
     viewTextStyle: {
       justifyContent: "flex-end",
-      left: 0,
-      height: 60,
-      top: 50,
-      paddingTop: 10,
-      paddingLeft: 5,
-      paddingRight: 5,
-      paddingBottom: 20,
+      height: "33%",
+      bottom: 0,
     },
     textStyle: { fontSize: 12, fontWeight: "bold" },
-    imageHeight: 100,
-    imageWidth: 120,
+    imageHeight: 78,
+    imageWidth: 90,
   };
 
   const firstVariation = [
@@ -150,8 +145,8 @@ const ShopProductDetailsScreen: FC = () => {
     { id: 1, title: "2 kgms" },
     { id: 2, title: "10 kgms" },
     { id: 3, title: "5 kgms" },
-    { id: 4, title: "6 kgms" },
-    { id: 5, title: "8 kgms" },
+    // { id: 4, title: "6 kgms" },
+    // { id: 5, title: "8 kgms" },
   ];
 
   //switches choices from one variation to another
@@ -171,12 +166,10 @@ const ShopProductDetailsScreen: FC = () => {
         uri: props.uri,
       },
       textContent: props.title,
-      viewTextStyle: imageOverlayProps.viewTextStyle,
+      viewTextStyle: [imageOverlayProps.viewTextStyle],
       textStyle: imageOverlayProps.textStyle,
-      // imageWidth: imageOverlayProps.imageWidth,
-      // imageHeight: imageOverlayProps.imageHeight,
-      imageWidth: imageOverlayProps.imageWidth,
       imageHeight: imageOverlayProps.imageHeight,
+      imageWidth: imageOverlayProps.imageWidth,
       mainContainerStyle:
         props.id == variation1
           ? {
@@ -215,18 +208,36 @@ const ShopProductDetailsScreen: FC = () => {
           <ListItem bottomDivider={true}>
             {secondVariation.map((props) => {
               return (
-                <View style={ProductDetailStyles.btnContainer}>
-                  <FilterButton
-                    title={props.title}
-                    onPress={() => [switchVariation2(props.id, variation2)]}
-                    key={props.id}
-                    buttonStyle={
-                      props.id == variation2
-                        ? { backgroundColor: theme.colors.green5 }
-                        : {}
-                    }
-                  />
-                </View>
+                // <View style={ProductDetailStyles.btnContainer}>
+                <FilterButton
+                  title={props.title}
+                  onPress={() => [switchVariation2(props.id, variation2)]}
+                  key={props.id}
+                  buttonStyle={
+                    props.id == variation2
+                      ? [
+                          {
+                            borderColor: theme.colors.green5,
+                            borderWidth: 2,
+                            paddingLeft: 20,
+                            paddingRight: 20,
+                          },
+                        ]
+                      : {
+                          borderColor: theme.colors.black,
+                          borderWidth: 2,
+                          paddingLeft: 20,
+                          paddingRight: 20,
+                        }
+                  }
+                  containerStyle={{ margin: 0 }}
+                  titleStyle={
+                    props.id == variation2
+                      ? [{ fontSize: 12, color: theme.colors.green5 }]
+                      : { fontSize: 12, color: theme.colors.black }
+                  }
+                />
+                // </View>
               );
             })}
           </ListItem>
@@ -345,8 +356,9 @@ const ShopProductDetailsScreen: FC = () => {
                     alignItems: "center",
                     flex: 1,
                     justifyContent: "center",
-                    margin: 10,
-                    paddingTop: 20,
+                    // margin: 10,
+                    // paddingTop: 20,
+                    bottom: 0,
                   }}>
                   <View
                     style={{
