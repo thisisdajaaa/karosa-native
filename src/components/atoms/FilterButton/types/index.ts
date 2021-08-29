@@ -13,4 +13,6 @@ export type PropsType = {
   title: string;
   icon?: IconNode | undefined;
   buttonStyle?: StyleProp<ViewStyle>;
+  titleStyle?: StyleProp<any>;
+  containerStyle?: StyleProp<any>;
 };
