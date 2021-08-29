@@ -24,6 +24,7 @@ import { contentPropsType } from "@app/components/organisms/ImageOverlayReviews/
 import { ListItem } from "react-native-elements";
 import ImageOverlay from "@app/components/molecules/ImageOverlay";
 import Button from "@app/atoms/Button";
+import { range } from "ramda";
 
 const ShopProductDetailsScreen: FC = () => {
   const initialStocks = 50;
@@ -139,6 +140,26 @@ const ShopProductDetailsScreen: FC = () => {
       title: "Variant Three",
       uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
     },
+    {
+      id: 4,
+      title: "Variant Four",
+      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+    },
+    {
+      id: 5,
+      title: "Variant Five",
+      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+    },
+    {
+      id: 6,
+      title: "Variant Six",
+      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+    },
+    {
+      id: 7,
+      title: "Variant Seven",
+      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+    },
   ];
 
   const secondVariation = [
@@ -182,6 +203,12 @@ const ShopProductDetailsScreen: FC = () => {
     });
   });
 
+  const maxLength: number = firstVariantMap.length;
+  const colPerRow: number = 3;
+  const noOfRows: number = Math.ceil(maxLength / colPerRow);
+
+  console.log(noOfRows);
+
   return (
     <>
       <ProductDetailTemplate
@@ -202,7 +229,29 @@ const ShopProductDetailsScreen: FC = () => {
 
         <ScrollView style={{ flex: 1 }}>
           <ListItem bottomDivider={true} style={{ flex: 1 }}>
-            <ImageOverlayReviews overlayProps={firstVariantMap} />
+            <View style={{ flexDirection: "column" }}>
+              {Array.from(Array(noOfRows).keys()).map((props) => {
+                let currentPage = (props + colPerRow - 1) * props;
+                return (
+                  <>
+                    <View style={{ flexDirection: "row" }}>
+                      <ImageOverlayReviews
+                        overlayProps={firstVariantMap.slice(
+                          currentPage,
+                          (props + colPerRow) * (props + 1)
+                        )}
+                      />
+                    </View>
+                    <Text
+                      text={
+                        currentPage + "," + (props + colPerRow) * (props + 1)
+                      }
+                      textStyle={[ProductDetailStyles.txtBlackRegularBold]}
+                    />
+                  </>
+                );
+              })}
+            </View>
           </ListItem>
 
           <ListItem bottomDivider={true}>
