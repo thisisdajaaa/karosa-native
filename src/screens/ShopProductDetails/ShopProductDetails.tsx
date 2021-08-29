@@ -160,6 +160,11 @@ const ShopProductDetailsScreen: FC = () => {
     { id: 1, title: "2 kgms" },
     { id: 2, title: "10 kgms" },
     { id: 3, title: "5 kgms" },
+<<<<<<< HEAD
+=======
+    // { id: 4, title: "6 kgms" },
+    // { id: 5, title: "8 kgms" },
+>>>>>>> 3018a6a... style(product details of image layout and buttons): image layout changes and buttons
   ];
 
   //switches choices from one variation to another
@@ -220,6 +225,7 @@ const ShopProductDetailsScreen: FC = () => {
         />
 
         <ScrollView style={{ flex: 1 }}>
+<<<<<<< HEAD
           <TouchableOpacity activeOpacity={1}>
             <ListItem bottomDivider={false}>
               <Text
@@ -233,6 +239,48 @@ const ShopProductDetailsScreen: FC = () => {
                   <>
                     {Array.from(Array(noOfRows).keys()).map((props) => {
                       let currentPage = colPerRow * (props + 1) - colPerRow;
+=======
+          <ListItem bottomDivider={true} style={{ flex: 1 }}>
+            <ImageOverlayReviews overlayProps={firstVariantMap} />
+          </ListItem>
+
+          <ListItem bottomDivider={true}>
+            {secondVariation.map((props) => {
+              return (
+                // <View style={ProductDetailStyles.btnContainer}>
+                <FilterButton
+                  title={props.title}
+                  onPress={() => [switchVariation2(props.id, variation2)]}
+                  key={props.id}
+                  buttonStyle={
+                    props.id == variation2
+                      ? [
+                          {
+                            borderColor: theme.colors.green5,
+                            borderWidth: 2,
+                            paddingLeft: 20,
+                            paddingRight: 20,
+                          },
+                        ]
+                      : {
+                          borderColor: theme.colors.black,
+                          borderWidth: 2,
+                          paddingLeft: 20,
+                          paddingRight: 20,
+                        }
+                  }
+                  containerStyle={{ margin: 0 }}
+                  titleStyle={
+                    props.id == variation2
+                      ? [{ fontSize: 12, color: theme.colors.green5 }]
+                      : { fontSize: 12, color: theme.colors.black }
+                  }
+                />
+                // </View>
+              );
+            })}
+          </ListItem>
+>>>>>>> 3018a6a... style(product details of image layout and buttons): image layout changes and buttons
 
                       return (
                         <>
