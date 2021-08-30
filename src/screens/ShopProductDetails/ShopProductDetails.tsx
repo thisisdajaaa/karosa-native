@@ -24,7 +24,6 @@ import { contentPropsType } from "@app/components/organisms/ImageOverlayReviews/
 import { ListItem } from "react-native-elements";
 import ImageOverlay from "@app/components/molecules/ImageOverlay";
 import Button from "@app/atoms/Button";
-import { range } from "ramda";
 
 const ShopProductDetailsScreen: FC = () => {
   const initialStocks = 50;
@@ -155,29 +154,6 @@ const ShopProductDetailsScreen: FC = () => {
       title: "Variant Five",
       uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
     },
-<<<<<<< HEAD
-=======
-    {
-      id: 6,
-      title: "Variant Six",
-      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-    },
-    {
-      id: 7,
-      title: "Variant Seven",
-      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-    },
-    {
-      id: 8,
-      title: "Variant Eight",
-      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-    },
-    // {
-    //   id: 9,
-    //   title: "Variant Nine",
-    //   uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-    // },
->>>>>>> 4ca5f9d... fix(shopproducdetail): fixed layout of variations
   ];
 
   const secondVariation = [
@@ -225,11 +201,6 @@ const ShopProductDetailsScreen: FC = () => {
   const colPerRow: number = 3;
   const noOfRows: number = Math.ceil(maxLength / colPerRow);
 
-<<<<<<< HEAD
-=======
-  // console.log(noOfRows);
-
->>>>>>> 4ca5f9d... fix(shopproducdetail): fixed layout of variations
   return (
     <>
       <ProductDetailTemplate
@@ -249,7 +220,6 @@ const ShopProductDetailsScreen: FC = () => {
         />
 
         <ScrollView style={{ flex: 1 }}>
-<<<<<<< HEAD
           <TouchableOpacity activeOpacity={1}>
             <ListItem bottomDivider={false}>
               <Text
@@ -388,29 +358,11 @@ const ShopProductDetailsScreen: FC = () => {
                           : { fontSize: 12, color: theme.colors.black }
                       }
                     />
-=======
-          <ListItem bottomDivider={true} style={{ flex: 1 }}>
-            <View style={{ flexDirection: "column" }}>
-              {Array.from(Array(noOfRows).keys()).map((props) => {
-                let currentPage = colPerRow * (props + 1) - colPerRow;
-
-                return (
-                  <>
-                    <View style={{ flexDirection: "row", marginBottom: 20 }}>
-                      <ImageOverlayReviews
-                        overlayProps={firstVariantMap.slice(
-                          currentPage,
-                          currentPage + colPerRow
-                        )}
-                      />
-                    </View>
->>>>>>> 4ca5f9d... fix(shopproducdetail): fixed layout of variations
                   </>
                 );
               })}
             </ListItem>
 
-<<<<<<< HEAD
             {variation1 != 0 && variation2 != 0 ? (
               <>
                 <View>
@@ -427,75 +379,6 @@ const ShopProductDetailsScreen: FC = () => {
                           ProductDetailStyles.txtMuted,
                           { marginRight: 30 },
                         ]}
-=======
-          <ListItem bottomDivider={true}>
-            {secondVariation.map((props) => {
-              return (
-                <FilterButton
-                  title={props.title}
-                  onPress={() => [switchVariation2(props.id, variation2)]}
-                  key={props.id}
-                  buttonStyle={
-                    props.id == variation2
-                      ? [
-                          {
-                            borderColor: theme.colors.green5,
-                            borderWidth: 2,
-                            paddingLeft: 20,
-                            paddingRight: 20,
-                          },
-                        ]
-                      : {
-                          borderColor: theme.colors.black,
-                          borderWidth: 2,
-                          paddingLeft: 20,
-                          paddingRight: 20,
-                        }
-                  }
-                  containerStyle={{ margin: 0 }}
-                  titleStyle={
-                    props.id == variation2
-                      ? [{ fontSize: 12, color: theme.colors.green5 }]
-                      : { fontSize: 12, color: theme.colors.black }
-                  }
-                />
-              );
-            })}
-          </ListItem>
-
-          {variation1 != 0 && variation2 != 0 ? (
-            <>
-              <View>
-                <ListItem bottomDivider={false}>
-                  <View style={{ flexDirection: "row" }}>
-                    <Text
-                      text={"Quantity"}
-                      textStyle={[ProductDetailStyles.txtBlackRegularBold]}
-                    />
-                    <View style={{ padding: 10 }} />
-                    <Text
-                      text={stocks + " Pcs left"}
-                      textStyle={[
-                        ProductDetailStyles.txtMuted,
-                        { marginRight: 30 },
-                      ]}
-                    />
-
-                    <TouchableOpacity
-                      style={{
-                        backgroundColor: theme.colors.light10,
-                        paddingLeft: 5,
-                        paddingRight: 5,
-                        borderRadius: 8,
-                      }}
-                      onPress={() =>
-                        setStocks(stocks > 0 ? stocks - 1 : stocks)
-                      }>
-                      <Ionicons
-                        name="remove"
-                        size={30}
-                        color={theme.colors.dark10}
->>>>>>> 4ca5f9d... fix(shopproducdetail): fixed layout of variations
                       />
 
                       <TouchableOpacity
@@ -550,7 +433,6 @@ const ShopProductDetailsScreen: FC = () => {
                     </View>
                   </ListItem>
 
-<<<<<<< HEAD
                   <ListItem bottomDivider={false}>
                     <ImageOverlay
                       imageHeight={109}
@@ -558,42 +440,6 @@ const ShopProductDetailsScreen: FC = () => {
                       hasOverlay={false}
                       source={{
                         uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-=======
-                    <Text
-                      text={
-                        firstVariation[variation1 - 1].title +
-                        ", " +
-                        secondVariation[variation2 - 1].title
-                      }
-                      textStyle={[ProductDetailStyles.txtBlackRegular]}
-                    />
-                  </View>
-                </ListItem>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    flex: 1,
-                    justifyContent: "center",
-                    bottom: 0,
-                  }}>
-                  <View
-                    style={{
-                      alignItems: "center",
-                      flex: 1,
-                      justifyContent: "center",
-                    }}>
-                    <Button
-                      title="Add to Basket"
-                      titleStyle={{
-                        color: theme.colors.black,
-                        textAlign: "center",
-                      }}
-                      buttonStyle={{
-                        backgroundColor: theme.colors.light10,
-                        paddingRight: 40,
-                        paddingLeft: 40,
->>>>>>> 4ca5f9d... fix(shopproducdetail): fixed layout of variations
                       }}
                     />
                     <View style={{ bottom: 28 }}>
