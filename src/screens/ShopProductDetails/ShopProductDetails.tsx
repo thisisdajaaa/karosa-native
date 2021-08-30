@@ -24,7 +24,6 @@ import { contentPropsType } from "@app/components/organisms/ImageOverlayReviews/
 import { ListItem } from "react-native-elements";
 import ImageOverlay from "@app/components/molecules/ImageOverlay";
 import Button from "@app/atoms/Button";
-import { range } from "ramda";
 
 const ShopProductDetailsScreen: FC = () => {
   const initialStocks = 50;
@@ -100,7 +99,12 @@ const ShopProductDetailsScreen: FC = () => {
     title: "Variations",
     variation: COMMON.VARIATION.ONE,
     chevronColor: theme.colors.green5,
-    onPress: () => variationRef.current?.open(),
+    onPress: () => [
+      variationRef.current?.open(),
+      setStocks(initialStocks),
+      setVariation1(0),
+      setVariation2(0),
+    ],
   };
 
   const reviewsProps: ListChevronProps = {
@@ -150,34 +154,12 @@ const ShopProductDetailsScreen: FC = () => {
       title: "Variant Five",
       uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
     },
-    {
-      id: 6,
-      title: "Variant Six",
-      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-    },
-    {
-      id: 7,
-      title: "Variant Seven",
-      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-    },
-    {
-      id: 8,
-      title: "Variant Eight",
-      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-    },
-    // {
-    //   id: 9,
-    //   title: "Variant Nine",
-    //   uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-    // },
   ];
 
   const secondVariation = [
     { id: 1, title: "2 kgms" },
     { id: 2, title: "10 kgms" },
     { id: 3, title: "5 kgms" },
-    // { id: 4, title: "6 kgms" },
-    // { id: 5, title: "8 kgms" },
   ];
 
   //switches choices from one variation to another
@@ -188,6 +170,8 @@ const ShopProductDetailsScreen: FC = () => {
   const switchVariation2 = (id: number, variation: number) => {
     id == variation ? setVariation2(0) : setVariation2(id);
   };
+
+  const imageVariationFlag = [true, false];
 
   let firstVariantMap: contentPropsType[] = [];
 
@@ -217,8 +201,6 @@ const ShopProductDetailsScreen: FC = () => {
   const colPerRow: number = 3;
   const noOfRows: number = Math.ceil(maxLength / colPerRow);
 
-  // console.log(noOfRows);
-
   return (
     <>
       <ProductDetailTemplate
@@ -238,220 +220,295 @@ const ShopProductDetailsScreen: FC = () => {
         />
 
         <ScrollView style={{ flex: 1 }}>
-          <ListItem bottomDivider={true} style={{ flex: 1 }}>
-            <View style={{ flexDirection: "column" }}>
-              {Array.from(Array(noOfRows).keys()).map((props) => {
-                let currentPage = colPerRow * (props + 1) - colPerRow;
-
-                return (
+          <TouchableOpacity activeOpacity={1}>
+            <ListItem bottomDivider={true} style={{ flex: 1 }}>
+              <View style={{ flexDirection: "column" }}>
+                {imageVariationFlag[0] ? (
                   <>
-                    <View style={{ flexDirection: "row", marginBottom: 20 }}>
-                      <ImageOverlayReviews
-                        overlayProps={firstVariantMap.slice(
-                          currentPage,
-                          currentPage + colPerRow
-                        )}
-                      />
-                    </View>
-                  </>
-                );
-              })}
-            </View>
-          </ListItem>
+                    {Array.from(Array(noOfRows).keys()).map((props) => {
+                      let currentPage = colPerRow * (props + 1) - colPerRow;
 
-          <ListItem bottomDivider={true}>
-            {secondVariation.map((props) => {
-              return (
-                <FilterButton
-                  title={props.title}
-                  onPress={() => [switchVariation2(props.id, variation2)]}
-                  key={props.id}
-                  buttonStyle={
-                    props.id == variation2
-                      ? [
-                          {
-                            borderColor: theme.colors.green5,
+                      return (
+                        <>
+                          <View
+                            style={{
+                              flexDirection: "row",
+                              marginBottom: 20,
+                            }}>
+                            <ImageOverlayReviews
+                              overlayProps={firstVariantMap.slice(
+                                currentPage,
+                                currentPage + colPerRow
+                              )}
+                            />
+                          </View>
+                        </>
+                      );
+                    })}
+                  </>
+                ) : (
+                  Array.from(Array(noOfRows).keys()).map((props) => {
+                    let currentPage = colPerRow * (props + 1) - colPerRow;
+                    let pagination = [currentPage, currentPage + colPerRow];
+                    return (
+                      <>
+                        <View
+                          style={{
+                            flexDirection: "row",
+                            marginBottom: 20,
+                          }}>
+                          {firstVariation.map((elements, index) => {
+                            console.log(elements.title);
+                            return index >= pagination[0] &&
+                              index < pagination[1] ? (
+                              <FilterButton
+                                title={elements.title}
+                                onPress={() => [
+                                  switchVariation1(elements.id, variation1),
+                                ]}
+                                key={elements.id}
+                                buttonStyle={
+                                  elements.id == variation1
+                                    ? [
+                                        {
+                                          borderColor: theme.colors.green5,
+                                          borderWidth: 2,
+                                          paddingLeft: 20,
+                                          paddingRight: 20,
+                                          margin: 5,
+                                        },
+                                      ]
+                                    : {
+                                        borderColor: theme.colors.light10,
+                                        backgroundColor: theme.colors.light10,
+                                        borderWidth: 2,
+                                        paddingLeft: 20,
+                                        paddingRight: 20,
+                                        margin: 5,
+                                      }
+                                }
+                                containerStyle={{ margin: 0 }}
+                                titleStyle={
+                                  elements.id == variation1
+                                    ? [
+                                        {
+                                          fontSize: 12,
+                                          color: theme.colors.green5,
+                                        },
+                                      ]
+                                    : {
+                                        fontSize: 12,
+                                        color: theme.colors.black,
+                                      }
+                                }
+                              />
+                            ) : (
+                              <></>
+                            );
+                          })}
+                        </View>
+                      </>
+                    );
+                  })
+                )}
+              </View>
+            </ListItem>
+
+            <ListItem bottomDivider={true}>
+              {secondVariation.map((props) => {
+                return (
+                  <FilterButton
+                    title={props.title}
+                    onPress={() => [switchVariation2(props.id, variation2)]}
+                    key={props.id}
+                    buttonStyle={
+                      props.id == variation2
+                        ? [
+                            {
+                              borderColor: theme.colors.green5,
+                              borderWidth: 2,
+                              paddingLeft: 20,
+                              paddingRight: 20,
+                            },
+                          ]
+                        : {
+                            borderColor: theme.colors.light10,
+                            backgroundColor: theme.colors.light10,
                             borderWidth: 2,
                             paddingLeft: 20,
                             paddingRight: 20,
-                          },
-                        ]
-                      : {
-                          borderColor: theme.colors.black,
-                          borderWidth: 2,
-                          paddingLeft: 20,
-                          paddingRight: 20,
-                        }
-                  }
-                  containerStyle={{ margin: 0 }}
-                  titleStyle={
-                    props.id == variation2
-                      ? [{ fontSize: 12, color: theme.colors.green5 }]
-                      : { fontSize: 12, color: theme.colors.black }
-                  }
-                />
-              );
-            })}
-          </ListItem>
-
-          {variation1 != 0 && variation2 != 0 ? (
-            <>
-              <View>
-                <ListItem bottomDivider={false}>
-                  <View style={{ flexDirection: "row" }}>
-                    <Text
-                      text={"Quantity"}
-                      textStyle={[ProductDetailStyles.txtBlackRegularBold]}
-                    />
-                    <View style={{ padding: 10 }} />
-                    <Text
-                      text={stocks + " Pcs left"}
-                      textStyle={[
-                        ProductDetailStyles.txtMuted,
-                        { marginRight: 30 },
-                      ]}
-                    />
-
-                    <TouchableOpacity
-                      style={{
-                        backgroundColor: theme.colors.light10,
-                        paddingLeft: 5,
-                        paddingRight: 5,
-                        borderRadius: 8,
-                      }}
-                      onPress={() =>
-                        setStocks(stocks > 0 ? stocks - 1 : stocks)
-                      }>
-                      <Ionicons
-                        name="remove"
-                        size={30}
-                        color={theme.colors.dark10}
-                      />
-                    </TouchableOpacity>
-
-                    <Text
-                      text={stocks.toString()}
-                      textStyle={[
-                        ProductDetailStyles.txtBlackRegularBold,
-                        {
-                          marginRight: 20,
-                          marginLeft: 20,
-                          alignContent: "center",
-                          top: 10,
-                          fontSize: 20,
-                        },
-                      ]}
-                    />
-
-                    <TouchableOpacity
-                      style={{
-                        backgroundColor: theme.colors.green5,
-                        paddingLeft: 5,
-                        paddingRight: 5,
-                        borderRadius: 8,
-                      }}
-                      onPress={() =>
-                        setStocks(
-                          stocks < initialStocks ? stocks + 1 : initialStocks
-                        )
-                      }>
-                      <Ionicons
-                        name="add"
-                        size={30}
-                        color={theme.colors.white}
-                      />
-                    </TouchableOpacity>
-                  </View>
-                </ListItem>
-
-                <ListItem bottomDivider={false}>
-                  <ImageOverlay
-                    imageHeight={109}
-                    imageWidth={122}
-                    hasOverlay={false}
-                    source={{
-                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-                    }}
+                          }
+                    }
+                    containerStyle={{ margin: 0 }}
+                    titleStyle={
+                      props.id == variation2
+                        ? [{ fontSize: 12, color: theme.colors.green5 }]
+                        : { fontSize: 12, color: theme.colors.black }
+                    }
                   />
-                  <View style={{ bottom: 28 }}>
-                    <Text
-                      text={"P500"}
-                      textStyle={[
-                        ProductDetailStyles.txtBlackRegularBold,
-                        ProductDetailStyles.txtGreen,
-                      ]}
-                    />
-                    <Text
-                      text={"P800"}
-                      textStyle={[
-                        ProductDetailStyles.txtMuted,
-                        {
-                          textDecorationLine: "line-through",
-                          textDecorationStyle: "double",
-                        },
-                      ]}
-                    />
+                );
+              })}
+            </ListItem>
 
-                    <Text
-                      text={
-                        firstVariation[variation1 - 1].title +
-                        ", " +
-                        secondVariation[variation2 - 1].title
-                      }
-                      textStyle={[ProductDetailStyles.txtBlackRegular]}
+            {variation1 != 0 && variation2 != 0 ? (
+              <>
+                <View>
+                  <ListItem bottomDivider={false}>
+                    <View style={{ flexDirection: "row" }}>
+                      <Text
+                        text={"Quantity"}
+                        textStyle={[ProductDetailStyles.txtBlackRegularBold]}
+                      />
+                      <View style={{ padding: 10 }} />
+                      <Text
+                        text={stocks + " Pcs left"}
+                        textStyle={[
+                          ProductDetailStyles.txtMuted,
+                          { marginRight: 30 },
+                        ]}
+                      />
+
+                      <TouchableOpacity
+                        style={{
+                          backgroundColor: theme.colors.light10,
+                          paddingLeft: 5,
+                          paddingRight: 5,
+                          borderRadius: 8,
+                        }}
+                        onPress={() =>
+                          setStocks(stocks > 0 ? stocks - 1 : stocks)
+                        }>
+                        <Ionicons
+                          name="remove"
+                          size={30}
+                          color={theme.colors.dark10}
+                        />
+                      </TouchableOpacity>
+
+                      <Text
+                        text={stocks.toString()}
+                        textStyle={[
+                          ProductDetailStyles.txtBlackRegularBold,
+                          {
+                            marginRight: 20,
+                            marginLeft: 20,
+                            alignContent: "center",
+                            top: 10,
+                            fontSize: 20,
+                          },
+                        ]}
+                      />
+
+                      <TouchableOpacity
+                        style={{
+                          backgroundColor: theme.colors.green5,
+                          paddingLeft: 5,
+                          paddingRight: 5,
+                          borderRadius: 8,
+                        }}
+                        onPress={() =>
+                          setStocks(
+                            stocks < initialStocks ? stocks + 1 : initialStocks
+                          )
+                        }>
+                        <Ionicons
+                          name="add"
+                          size={30}
+                          color={theme.colors.white}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                  </ListItem>
+
+                  <ListItem bottomDivider={false}>
+                    <ImageOverlay
+                      imageHeight={109}
+                      imageWidth={122}
+                      hasOverlay={false}
+                      source={{
+                        uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                      }}
                     />
-                  </View>
-                </ListItem>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    flex: 1,
-                    justifyContent: "center",
-                    bottom: 0,
-                  }}>
+                    <View style={{ bottom: 28 }}>
+                      <Text
+                        text={"P500"}
+                        textStyle={[
+                          ProductDetailStyles.txtBlackRegularBold,
+                          ProductDetailStyles.txtGreen,
+                        ]}
+                      />
+                      <Text
+                        text={"P800"}
+                        textStyle={[
+                          ProductDetailStyles.txtMuted,
+                          {
+                            textDecorationLine: "line-through",
+                            textDecorationStyle: "double",
+                          },
+                        ]}
+                      />
+
+                      <Text
+                        text={
+                          firstVariation[variation1 - 1].title +
+                          ", " +
+                          secondVariation[variation2 - 1].title
+                        }
+                        textStyle={[ProductDetailStyles.txtBlackRegular]}
+                      />
+                    </View>
+                  </ListItem>
                   <View
                     style={{
+                      flexDirection: "row",
                       alignItems: "center",
                       flex: 1,
                       justifyContent: "center",
+                      bottom: 0,
                     }}>
-                    <Button
-                      title="Add to Basket"
-                      titleStyle={{
-                        color: theme.colors.black,
-                        textAlign: "center",
-                      }}
-                      buttonStyle={{
-                        backgroundColor: theme.colors.light10,
-                        paddingRight: 40,
-                        paddingLeft: 40,
-                      }}
-                    />
-                  </View>
-                  <View
-                    style={{
-                      alignItems: "center",
-                      flex: 1,
-                      justifyContent: "center",
-                    }}>
-                    <Button
-                      title="Buy Now"
-                      titleStyle={{
-                        textAlign: "center",
-                      }}
-                      buttonStyle={{
-                        paddingRight: 50,
-                        paddingLeft: 50,
-                      }}
-                    />
+                    <View
+                      style={{
+                        alignItems: "center",
+                        flex: 1,
+                        justifyContent: "center",
+                      }}>
+                      <Button
+                        title="Add to Basket"
+                        titleStyle={{
+                          color: theme.colors.black,
+                          textAlign: "center",
+                        }}
+                        buttonStyle={{
+                          backgroundColor: theme.colors.light10,
+                          paddingRight: 40,
+                          paddingLeft: 40,
+                        }}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        alignItems: "center",
+                        flex: 1,
+                        justifyContent: "center",
+                      }}>
+                      <Button
+                        title="Buy Now"
+                        titleStyle={{
+                          textAlign: "center",
+                        }}
+                        buttonStyle={{
+                          paddingRight: 50,
+                          paddingLeft: 50,
+                        }}
+                      />
+                    </View>
                   </View>
                 </View>
-              </View>
-            </>
-          ) : (
-            <></>
-          )}
+              </>
+            ) : (
+              <></>
+            )}
+          </TouchableOpacity>
         </ScrollView>
       </BottomSheet>
     </>
