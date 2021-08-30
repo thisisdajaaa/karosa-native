@@ -24,7 +24,6 @@ import { contentPropsType } from "@app/components/organisms/ImageOverlayReviews/
 import { ListItem } from "react-native-elements";
 import ImageOverlay from "@app/components/molecules/ImageOverlay";
 import Button from "@app/atoms/Button";
-import { range } from "ramda";
 
 const ShopProductDetailsScreen: FC = () => {
   const initialStocks = 50;
