@@ -160,6 +160,16 @@ const ShopProductDetailsScreen: FC = () => {
       title: "Variant Seven",
       uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
     },
+    {
+      id: 8,
+      title: "Variant Eight",
+      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+    },
+    // {
+    //   id: 9,
+    //   title: "Variant Nine",
+    //   uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+    // },
   ];
 
   const secondVariation = [
@@ -207,7 +217,7 @@ const ShopProductDetailsScreen: FC = () => {
   const colPerRow: number = 3;
   const noOfRows: number = Math.ceil(maxLength / colPerRow);
 
-  console.log(noOfRows);
+  // console.log(noOfRows);
 
   return (
     <>
@@ -231,23 +241,18 @@ const ShopProductDetailsScreen: FC = () => {
           <ListItem bottomDivider={true} style={{ flex: 1 }}>
             <View style={{ flexDirection: "column" }}>
               {Array.from(Array(noOfRows).keys()).map((props) => {
-                let currentPage = (props + colPerRow - 1) * props;
+                let currentPage = colPerRow * (props + 1) - colPerRow;
+
                 return (
                   <>
-                    <View style={{ flexDirection: "row" }}>
+                    <View style={{ flexDirection: "row", marginBottom: 20 }}>
                       <ImageOverlayReviews
                         overlayProps={firstVariantMap.slice(
                           currentPage,
-                          (props + colPerRow) * (props + 1)
+                          currentPage + colPerRow
                         )}
                       />
                     </View>
-                    <Text
-                      text={
-                        currentPage + "," + (props + colPerRow) * (props + 1)
-                      }
-                      textStyle={[ProductDetailStyles.txtBlackRegularBold]}
-                    />
                   </>
                 );
               })}
@@ -257,7 +262,6 @@ const ShopProductDetailsScreen: FC = () => {
           <ListItem bottomDivider={true}>
             {secondVariation.map((props) => {
               return (
-                // <View style={ProductDetailStyles.btnContainer}>
                 <FilterButton
                   title={props.title}
                   onPress={() => [switchVariation2(props.id, variation2)]}
@@ -286,7 +290,6 @@ const ShopProductDetailsScreen: FC = () => {
                       : { fontSize: 12, color: theme.colors.black }
                   }
                 />
-                // </View>
               );
             })}
           </ListItem>
@@ -405,8 +408,6 @@ const ShopProductDetailsScreen: FC = () => {
                     alignItems: "center",
                     flex: 1,
                     justifyContent: "center",
-                    // margin: 10,
-                    // paddingTop: 20,
                     bottom: 0,
                   }}>
                   <View
