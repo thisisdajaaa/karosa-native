@@ -9,7 +9,6 @@ import React, { FC } from "react";
 import { SafeAreaView, View } from "react-native";
 
 import Loading from "@app/atoms/Loading";
-// import { Header } from "../header";
 import Header from "@app/atoms/BaseHeader";
 
 import { Props } from "./types";

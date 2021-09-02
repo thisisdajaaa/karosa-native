@@ -4,7 +4,6 @@ import RBSheet from "react-native-raw-bottom-sheet";
 import { useNavigation } from "@react-navigation/native";
 import BaseScreen from "@app/atoms/BaseScreen";
 import { MultiList } from "@app/components/organisms/MultiList";
-// import { AppButton } from "@app/components/button";
 import Button from "@app/atoms/Button";
 import { PropsType as ButtonProps } from "@app/atoms/Button/types";
 import { Props as MultiListProps } from "@app/components/organisms/MultiList/types";

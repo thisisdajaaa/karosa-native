@@ -13,17 +13,14 @@ import {
   actions as barangayActions,
   selectors as locationSelector,
 } from "@app/redux/location";
-// import { Props as ButtonProps } from "@app/components/button/types";
 import BaseScreen from "@app/atoms/BaseScreen";
 import { Props as HeaderProps } from "@app/atoms/BaseScreen/types";
 import { ListInput } from "@app/components/list/list-input";
-// import { SubmitButton } from "@app/components/formik/submit-button";
 import { SubmitButton } from "@app/atoms/Formik/submit-button";
 import { Props as ButtonProps } from "@app/atoms/Formik/submit-button/types";
 import { NewAddressRequest } from "@app/redux/auth/models";
 import { ListPicker } from "@app/components/list/list-picker";
 import { ListCheckBox } from "@app/components/list/list-checkbox";
-// import ListCheckbox from "@app/organisms/ListCheckbox";
 import { PickerData } from "@app/redux/api-models/common";
 import {
   BarangayRequest,
