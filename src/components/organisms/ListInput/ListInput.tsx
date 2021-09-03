@@ -11,6 +11,7 @@ import type { PropsType } from "./types";
 import VariationOne from "./VariationOne";
 import VariationThree from "./VariationThree";
 import VariationTwo from "./VariationTwo";
+import VariationFour from "./VariationFour";
 
 const ListInput: FC<PropsType> = (props) => {
   const {
@@ -63,6 +64,19 @@ const ListInput: FC<PropsType> = (props) => {
           name={name}
           placeholder={placeholder}
           required={required}
+          keyboardType={keyboardType}
+        />
+      );
+    case 4:
+      return (
+        <VariationFour
+          variation={variation}
+          label={label}
+          hasBottomDivider={hasBottomDivider}
+          name={name}
+          placeholder={placeholder}
+          required={required}
+          maxLen={maxLen}
           keyboardType={keyboardType}
         />
       );

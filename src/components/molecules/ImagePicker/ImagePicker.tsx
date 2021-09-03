@@ -14,6 +14,7 @@ import { ASPECT_RATIO, QUALITY } from "./config";
 import VariationOne from "./VariationOne";
 import VariationTwo from "./VariationTwo";
 import VariationThree from "./VariationThree";
+import VariationFour from "./VariationFour";
 
 const ImagePicker: FC<PropsType> = (props) => {
   const { variation, uri, onChange } = props;
@@ -82,6 +83,14 @@ const ImagePicker: FC<PropsType> = (props) => {
         <TouchableWithoutFeedback onPress={handlePress}>
           <View>
             <VariationThree uri={uri} />
+          </View>
+        </TouchableWithoutFeedback>
+      );
+    case 4:
+      return (
+        <TouchableWithoutFeedback onPress={handlePress}>
+          <View>
+            <VariationFour uri={uri} />
           </View>
         </TouchableWithoutFeedback>
       );

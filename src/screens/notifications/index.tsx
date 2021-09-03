@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, View } from "react-native";
+import { FlatList, TouchableOpacity, View } from "react-native";
 import Image from "@app/atoms/Image";
 import { Screen } from "@app/components/base-screen";
 import { Props as ScreenProps } from "@app/components/base-screen/types";
@@ -13,6 +13,12 @@ import ValidationMessage from "@app/components/molecules/ValidationMessage";
 import FormSwitch from "@app/components/molecules/FormSwitch";
 import Button from "@app/atoms/Button";
 import { AntDesign } from "@expo/vector-icons";
+import Icon from "@app/atoms/Icon";
+import ListInput from "@app/components/organisms/ListInput";
+import FormImagePicker from "@app/components/molecules/FormImagePicker";
+import { isEmpty } from "ramda";
+
+const data = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }];
 
 const NotificationScreen: React.FC = () => {
   const screenProps: ScreenProps = {
@@ -24,8 +30,10 @@ const NotificationScreen: React.FC = () => {
     },
   };
 
+  const keyExtractor = React.useCallback((_, index) => index.toString(), []);
+
   const formikBag = useFormik({
-    initialValues: { sample: "", wat: false },
+    initialValues: { sample: "", wat: false, gg: "", img: "" },
     validateOnChange: true,
     validateOnBlur: false,
     onSubmit: () => {},
@@ -121,20 +129,119 @@ const NotificationScreen: React.FC = () => {
         {/** Variation images */}
         <View
           style={{
-            height: 108,
+            height: 150,
             backgroundColor: theme.colors.white,
             paddingHorizontal: 14,
-            justifyContent: "center",
+            paddingTop: 16,
+            justifyContent: "flex-start",
             alignItems: "flex-start",
           }}>
           {/** Variation List */}
           <View style={{ flexDirection: "row" }}>
+            {!isEmpty(data) &&
+              data.length < 3 &&
+              data.map((_, index) => (
+                <View
+                  key={index}
+                  style={{
+                    width: 82,
+                    borderWidth: 0.5,
+                    borderStyle: "solid",
+                    borderColor: theme.colors.primary,
+                    borderRadius: 5,
+                    overflow: "hidden",
+                    justifyContent: "center",
+                    marginRight: 12,
+                  }}>
+                  <Image
+                    source={require("../../../assets/hinata.png")}
+                    imageStyle={{
+                      width: "100%",
+                      height: 70,
+                      flexGrow: 1,
+                      resizeMode: "stretch",
+                      opacity: 0.5,
+                    }}
+                  />
+
+                  <View
+                    style={{
+                      paddingHorizontal: 8,
+                      paddingVertical: 2,
+                      backgroundColor: theme.colors.primary,
+                      borderBottomLeftRadius: 5,
+                      borderBottomRightRadius: 5,
+                    }}>
+                    <Text
+                      text="Add Image"
+                      textStyle={{
+                        color: theme.colors.white,
+                        ...theme.textLight,
+                      }}
+                    />
+                  </View>
+                </View>
+              ))}
+
+            {!isEmpty(data) && data.length >= 3 && (
+              <FlatList
+                keyExtractor={keyExtractor}
+                data={data}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                renderItem={({ item }: any) => (
+                  <View
+                    style={{
+                      width: 82,
+                      borderWidth: 0.5,
+                      borderStyle: "solid",
+                      borderColor: theme.colors.primary,
+                      borderRadius: 5,
+                      overflow: "hidden",
+                      justifyContent: "center",
+                      marginRight: 12,
+                    }}>
+                    <Image
+                      source={require("../../../assets/hinata.png")}
+                      imageStyle={{
+                        width: "100%",
+                        height: 70,
+                        flexGrow: 1,
+                        resizeMode: "stretch",
+                        opacity: 0.5,
+                      }}
+                    />
+
+                    <View
+                      style={{
+                        paddingHorizontal: 8,
+                        paddingVertical: 2,
+                        backgroundColor: theme.colors.primary,
+                        borderBottomLeftRadius: 5,
+                        borderBottomRightRadius: 5,
+                      }}>
+                      <Text
+                        text="Add Image"
+                        textStyle={{
+                          color: theme.colors.white,
+                          ...theme.textLight,
+                        }}
+                      />
+                    </View>
+                  </View>
+                )}
+              />
+            )}
+
             <Button
               title="+ Add"
               type="outline"
               onPress={toggleOverlay}
               containerStyle={{
                 width: 70,
+                marginLeft: !isEmpty(data) ? 12 : 0,
+                height: 50,
+                alignSelf: "center",
               }}
               buttonStyle={{
                 backgroundColor: "white",
@@ -155,6 +262,7 @@ const NotificationScreen: React.FC = () => {
             width: DIMENS.screenWidth,
             position: "absolute",
             top: "20%",
+            padding: 24,
           }}
           onBackdropPress={toggleOverlay}>
           <TouchableOpacity
@@ -162,6 +270,24 @@ const NotificationScreen: React.FC = () => {
             onPress={() => setVisible(false)}>
             <AntDesign name="close" size={24} color="black" />
           </TouchableOpacity>
+
+          {/** Variation Image picker */}
+          <View style={{ alignItems: "flex-start" }}>
+            <FormImagePicker name="img" variation={4} />
+          </View>
+
+          {/** Option Name */}
+          <View style={{ marginTop: 48, flexGrow: 1 }}>
+            <ListInput
+              name="gg"
+              placeholder="Enter Option Name"
+              label="Option Name"
+              maxLen={20}
+              hasBottomDivider={false}
+              required
+              variation={4}
+            />
+          </View>
         </Overlay>
       </FormikProvider>
     </Screen>

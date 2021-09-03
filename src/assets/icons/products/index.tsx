@@ -7,6 +7,7 @@ import React from "react";
 import { ViewStyle, StyleProp } from "react-native";
 
 import Add from "./add.svg";
+import AddImage from "./add-image.svg";
 import Alert from "./alert.svg";
 import Block from "./block.svg";
 import ChevronDown from "./chevron-down.svg";
@@ -38,6 +39,7 @@ const ProductsIcon = (
 ) => {
   const icons: { [key: string]: JSX.Element } = {
     add: <Add style={extraStyle} height={height} width={width} />,
+    addImage: <AddImage style={extraStyle} height={height} width={width} />,
     shippingDetails: (
       <ShippingDetails style={extraStyle} height={height} width={width} />
     ),
