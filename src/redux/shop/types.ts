@@ -7,7 +7,6 @@ export const SET_PRODUCT_MEASUREMENT = "shop/setProductMeasurement" as const;
 export const SET_CATEGORY = "shop/setCategory" as const;
 export const SET_PRODUCT_FORM = "shop/setProductForm" as const;
 export const SET_VARIATION_FORM = "shop/setVariationForm" as const;
-export const SET_VARIATION_ITEM = "shop/setVariationItem" as const;
 export const SET_AVAILABILITY_FORM = "shop/setAvailabilityForm" as const;
 export const SET_WHOLESALE_FORM = "shop/setWholesaleForm" as const;
 export const SET_SHIPPING_DETAILS_FORM = "shop/setShippingDetailsForm" as const;
@@ -44,7 +43,6 @@ export type Types =
   | typeof SET_CATEGORY
   | typeof SET_PRODUCT_FORM
   | typeof SET_VARIATION_FORM
-  | typeof SET_VARIATION_ITEM
   | typeof SET_AVAILABILITY_FORM
   | typeof SET_WHOLESALE_FORM
   | typeof SET_SHIPPING_DETAILS_FORM

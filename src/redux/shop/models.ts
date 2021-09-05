@@ -32,13 +32,15 @@ export type VariationForm = {
 };
 
 export type VariationItem = {
+  id: string | number[];
   variationName: string;
   hasImage: boolean;
   options: VariationOption[];
 };
 
 export type VariationOption = {
-  image?: string;
+  id: string | number[];
+  image: string | null;
   optionName: string;
 };
 

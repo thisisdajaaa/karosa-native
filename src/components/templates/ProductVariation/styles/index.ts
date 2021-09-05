@@ -23,4 +23,6 @@ const ProductVariationStyles = StyleSheet.create({
   },
 });
 
+export const NewVariationstyles = StyleSheet.create({});
+
 export default ProductVariationStyles;

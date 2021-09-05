@@ -30,6 +30,7 @@ import Wholesale from "./wholesale.svg";
 import PreOrder from "./pre-order.svg";
 import ShippingDetails from "./shipping-details.svg";
 import AddVariation from "./add-variation.svg";
+import DeleteVariation from "./delete-variation.svg";
 
 const ProductsIcon = (
   name: string,
@@ -40,6 +41,9 @@ const ProductsIcon = (
   const icons: { [key: string]: JSX.Element } = {
     add: <Add style={extraStyle} height={height} width={width} />,
     addImage: <AddImage style={extraStyle} height={height} width={width} />,
+    deleteVariation: (
+      <DeleteVariation style={extraStyle} height={height} width={width} />
+    ),
     shippingDetails: (
       <ShippingDetails style={extraStyle} height={height} width={width} />
     ),

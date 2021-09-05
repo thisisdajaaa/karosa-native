@@ -11,8 +11,41 @@ import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
-import { VariationForm } from "@app/redux/shop/models";
+import { VariationForm, VariationItem } from "@app/redux/shop/models";
 import ProductVariationTemplate from "@app/templates/ProductVariation";
+
+const data = [
+  // {
+  //   variationName: "Random1",
+  //   hasImage: true,
+  //   options: [
+  //     {
+  //       image: require("../../../assets/hinata.png"),
+  //       optionName: "lmao1",
+  //     },
+  //   ],
+  // },
+  // {
+  //   variationName: "Random2",
+  //   hasImage: true,
+  //   options: [
+  //     {
+  //       image: require("../../../assets/hinata.png"),
+  //       optionName: "lmao12",
+  //     },
+  //   ],
+  // },
+  // {
+  //   variationName: "Random3",
+  //   hasImage: true,
+  //   options: [
+  //     {
+  //       image: require("../../../assets/hinata.png"),
+  //       optionName: "lmao13",
+  //     },
+  //   ],
+  // },
+] as VariationItem[];
 
 const ProductVariationScreen: FC = () => {
   const dispatch = useDispatch();
@@ -32,9 +65,12 @@ const ProductVariationScreen: FC = () => {
   };
 
   const formikBag = useFormik({
-    initialValues: variationForm,
-    onSubmit: handleSubmit,
+    initialValues: { variationData: data },
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    onSubmit: () => {},
   });
+
+  console.log(formikBag.values.variationData);
 
   const handleBack = useCallback(() => {
     goBack();
