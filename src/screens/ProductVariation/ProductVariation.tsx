@@ -70,8 +70,6 @@ const ProductVariationScreen: FC = () => {
     onSubmit: () => {},
   });
 
-  console.log(formikBag.values.variationData);
-
   const handleBack = useCallback(() => {
     goBack();
   }, [goBack]);

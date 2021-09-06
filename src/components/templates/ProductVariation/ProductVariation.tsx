@@ -6,19 +6,19 @@
  */
 
 import React, { FC } from "react";
+import uuid from "react-native-uuid";
+import { ListItem } from "react-native-elements";
+import { useFormikContext } from "formik";
 import { KeyboardAvoidingView, ScrollView, View } from "react-native";
 import { theme } from "@app/styles";
 import { getPlatform } from "@app/utils";
 import Header from "@app/molecules/Header";
 import Text from "@app/atoms/Text";
-import type { PropsType } from "./types";
-import ProductVariationStyles from "./styles";
-import { ListItem } from "react-native-elements";
-import { useFormikContext } from "formik";
 import { VariationForm, VariationItem } from "@app/redux/shop/models";
 import Icon from "@app/atoms/Icon";
+import type { PropsType } from "./types";
 import NewVariation from "./NewVariation";
-import uuid from "react-native-uuid";
+import ProductVariationStyles from "./styles";
 
 const ProductVariationTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
@@ -35,15 +35,16 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
       options: [],
     };
 
-    const newVariationData = [...values.variationData, newVariationItem];
+    const newVariationData: VariationItem[] = [
+      ...values.variationData,
+      newVariationItem,
+    ];
 
     setValues({
       ...values,
       variationData: newVariationData,
     });
   };
-
-  console.log(values.variationData);
 
   const getHeader = () => {
     return (
@@ -71,18 +72,11 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
         <ScrollView showsVerticalScrollIndicator={false}>
           <>
             {values.variationData.map((_, index) => (
-              <>
-                <NewVariation index={index} />
-              </>
+              <NewVariation key={index} index={index} />
             ))}
 
             {values.variationData.length < 2 && (
-              <View
-                style={{
-                  height: 46,
-                  marginVertical: 16,
-                  backgroundColor: theme.colors.white,
-                }}>
+              <View style={ProductVariationStyles.btnAddVariationContainer}>
                 <ListItem onPress={addNewVariation}>
                   <Icon
                     group="products"
@@ -92,10 +86,7 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
                   />
                   <Text
                     text="Add another variation"
-                    textStyle={{
-                      color: theme.colors.dark20,
-                      ...theme.textRegular,
-                    }}
+                    textStyle={ProductVariationStyles.btnAddVariationLbl}
                   />
                 </ListItem>
               </View>

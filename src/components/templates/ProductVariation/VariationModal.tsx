@@ -1,24 +1,18 @@
-import Input from "@app/atoms/Input";
-import ImagePicker from "@app/components/molecules/ImagePicker";
-import { VariationForm } from "@app/redux/shop/models";
-import { DIMENS, theme } from "@app/styles";
-import { AntDesign } from "@expo/vector-icons";
+import React, { FC } from "react";
 import { useFormikContext } from "formik";
-import React, { Dispatch, FC, SetStateAction } from "react";
+import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity, View } from "react-native";
-import { Overlay } from "react-native-elements";
-import Text from "@app/atoms/Text";
-import ListInputStyles from "@app/components/organisms/ListInput/styles";
 import uuid from "react-native-uuid";
+import { Overlay } from "react-native-elements";
+import Input from "@app/atoms/Input";
+import ImagePicker from "@app/molecules/ImagePicker";
+import { VariationForm } from "@app/redux/shop/models";
+import Text from "@app/atoms/Text";
+import ListInputStyles from "@app/organisms/ListInput/styles";
+import type { VariationModalProps } from "./types";
+import { OptionNameStyles, VariationModalStyles } from "./styles";
 
-type Props = {
-  index: number;
-  visible: boolean;
-  toggleOverlay(): void;
-  setVisible: Dispatch<SetStateAction<boolean>>;
-};
-
-const VariationModal: FC<Props> = (props) => {
+const VariationModal: FC<VariationModalProps> = (props) => {
   const { index, setVisible, visible, toggleOverlay } = props;
 
   const { values, setValues } = useFormikContext<VariationForm>();
@@ -69,26 +63,22 @@ const VariationModal: FC<Props> = (props) => {
     setOptionName("");
   };
 
+  const { optionName: optionNameContainer } =
+    OptionNameStyles(imageSwitchEnabled);
+
   return (
     <Overlay
       isVisible={visible}
-      overlayStyle={{
-        height: 250,
-        width: DIMENS.screenWidth,
-        position: "absolute",
-        top: "20%",
-        padding: 24,
-      }}
+      overlayStyle={VariationModalStyles.overlayContainer}
       onBackdropPress={toggleOverlay}>
       <TouchableOpacity
-        style={{ alignItems: "flex-end" }}
+        style={VariationModalStyles.iconContainer}
         onPress={() => setVisible(false)}>
         <AntDesign name="close" size={24} color="black" />
       </TouchableOpacity>
 
-      {/** Variation Image picker */}
       {imageSwitchEnabled && (
-        <View style={{ alignItems: "flex-start" }}>
+        <View style={VariationModalStyles.imagePickerContainer}>
           <ImagePicker
             variation={4}
             uri={imageUrl}
@@ -97,24 +87,18 @@ const VariationModal: FC<Props> = (props) => {
         </View>
       )}
 
-      {/** Option Name */}
-      <View style={{ marginTop: imageSwitchEnabled ? 48 : 0, flexGrow: 1 }}>
-        <View style={{ flexDirection: "row" }}>
+      <View style={optionNameContainer}>
+        <View style={VariationModalStyles.rowContainer}>
           <Text
             text="Option Name"
-            textStyle={{ marginRight: 2, fontSize: 13.33, lineHeight: 16 }}
+            textStyle={VariationModalStyles.txtOptionName}
           />
 
           <Text
             text={`(${optionNameLength}/${MAX_LENGTH})`}
-            textStyle={{
-              ...theme.textListItem,
-              fontWeight: "400",
-              color: theme.colors.dark10,
-              marginLeft: 2,
-            }}
+            textStyle={VariationModalStyles.txtLength}
           />
-          <Text text="*" textStyle={{ color: theme.colors.red5 }} />
+          <Text text="*" textStyle={VariationModalStyles.txtRequired} />
         </View>
 
         <Input

@@ -1,49 +1,44 @@
-import React, { FC } from "react";
-
+import React, { FC, Fragment, useCallback, useState } from "react";
 import { FlatList, View } from "react-native";
-import { DIMENS, theme } from "@app/styles";
+import { useFormikContext } from "formik";
+
+import { isEmpty } from "ramda";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { AntDesign } from "@expo/vector-icons";
+import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
 import Image from "@app/atoms/Image";
 import { ListItem } from "react-native-elements";
-import FormInput from "@app/components/molecules/FormInput";
-import FormSwitch from "@app/components/molecules/FormSwitch";
-import ValidationMessage from "@app/components/molecules/ValidationMessage";
+import FormInput from "@app/molecules/FormInput";
+import FormSwitch from "@app/molecules/FormSwitch";
+import ValidationMessage from "@app/molecules/ValidationMessage";
 import Button from "@app/atoms/Button";
-import { isEmpty } from "ramda";
-import { VariationForm } from "@app/redux/shop/models";
-import VariationModal from "./VariationModal";
 import { ENUM } from "@app/constants";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import Icon from "@app/atoms/Icon";
-import { useFormikContext } from "formik";
-import { AntDesign } from "@expo/vector-icons";
+import { VariationForm, VariationItem } from "@app/redux/shop/models";
+import VariationModal from "./VariationModal";
+import type { NewVariationProps } from "./types";
+import { BtnAddStyles, NewVariationStyles, OptionCardStyles } from "./styles";
 
-type Props = {
-  index: number;
-  values: VariationForm;
-};
-
-const NewVariation: FC<Props> = (props) => {
+const NewVariation: FC<NewVariationProps> = (props) => {
   const { index } = props;
 
-  const keyExtractor = React.useCallback((_, index) => index.toString(), []);
+  const keyExtractor = useCallback((_, key) => key.toString(), []);
 
   const { values, setValues } = useFormikContext<VariationForm>();
 
   const optionsData = values.variationData[index].options;
   const hasImage = values.variationData[index].hasImage;
 
-  const [visible, setVisible] = React.useState<boolean>(false);
-  const [mode, setMode] = React.useState<ENUM.VariationMode>(
-    ENUM.VariationMode.Edit
-  );
+  const [visible, setVisible] = useState<boolean>(false);
+  const [mode, setMode] = useState<ENUM.VariationMode>(ENUM.VariationMode.Edit);
 
   const toggleOverlay = () => {
-    setVisible(!visible);
+    setVisible((prev) => !prev);
   };
 
   const removeVariationItem = () => {
-    const filteredVariationData = values.variationData.filter(
+    const filteredVariationData: VariationItem[] = values.variationData.filter(
       (value) => value.id !== values.variationData[index].id
     );
 
@@ -53,48 +48,83 @@ const NewVariation: FC<Props> = (props) => {
     });
   };
 
-  {
-    /** Remove option */
-  }
-  const removeVariationOption = () => {
-    const newArray = [...values.variationData];
+  const removeVariationOption = (key: number) => {
+    const newVariationData: VariationItem[] = [...values.variationData];
 
-    const filteredVariationData = values.variationData[index].options.filter(
-      (value, key) => value.id !== values.variationData[index].options[key].id
-    );
+    newVariationData.forEach((item) => {
+      item.options = item.options.filter(
+        (option) => option.id !== optionsData[key].id
+      );
+    });
 
     setValues({
       ...values.variationData,
-      variationData: filteredVariationData,
+      variationData: newVariationData,
     });
   };
 
-  return (
-    <>
-      {/** Spacer */}
-      <View
-        style={{
-          marginTop: 16,
-        }}
-      />
+  const { btnAddContainer } = BtnAddStyles(optionsData);
 
-      <ListItem bottomDivider key={index}>
-        <ListItem.Content
-          style={{
-            flexDirection: "column",
-            height: DIMENS.screenHeight * 0.028,
-          }}>
-          <ListItem.Content style={{ flexDirection: "row" }}>
+  const getOptionCard = (
+    key: number,
+    image: string | null,
+    optionName: string
+  ) => {
+    const { optionCard } = OptionCardStyles(image, hasImage);
+
+    return (
+      <View
+        key={key}
+        style={{ ...NewVariationStyles.optionCardContainer, ...optionCard }}>
+        {mode === ENUM.VariationMode.Edit && (
+          <View style={NewVariationStyles.deleteContainer}>
+            <AntDesign
+              onPress={() => removeVariationOption(key)}
+              name="close"
+              color={theme.colors.white}
+            />
+          </View>
+        )}
+
+        {image && hasImage ? (
+          <>
+            <Image
+              source={{ uri: image as string }}
+              imageStyle={NewVariationStyles.optionImage}
+            />
+
+            <View style={NewVariationStyles.optionNamePrimaryContainer}>
+              <Text
+                text={optionName}
+                textStyle={NewVariationStyles.txtOptionPrimaryName}
+              />
+            </View>
+          </>
+        ) : (
+          <View style={NewVariationStyles.optionNameSecondaryContainer}>
+            <Text
+              text={optionName}
+              textStyle={NewVariationStyles.txtOptionSecondaryName}
+            />
+          </View>
+        )}
+      </View>
+    );
+  };
+
+  return (
+    <Fragment key={index}>
+      <View style={NewVariationStyles.spacer} />
+
+      <ListItem bottomDivider>
+        <ListItem.Content style={NewVariationStyles.variationNameContainer}>
+          <ListItem.Content style={NewVariationStyles.rowContainer}>
             <ListItem.Content>
               {mode === ENUM.VariationMode.Edit ? (
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}>
+                <View style={NewVariationStyles.deleteIconContainer}>
                   <TouchableWithoutFeedback
                     onPress={removeVariationItem}
-                    style={{ marginRight: 8 }}>
+                    style={NewVariationStyles.deleteIconMargin}>
                     <Icon
                       group="products"
                       name="deleteVariation"
@@ -108,28 +138,16 @@ const NewVariation: FC<Props> = (props) => {
                     placeholder="Set Variation Name"
                     placeholderColor={theme.colors.dark10}
                     numberOfLines={1}
-                    inputStyle={{
-                      ...theme.textRegular,
-                      textAlign: "left",
-                      color: theme.colors.dark20,
-                      fontWeight: "400",
-                    }}
-                    inputContainerStyle={{
-                      borderWidth: 0,
-                      borderBottomWidth: 0,
-                      padding: 0,
-                      marginBottom: 1,
-                    }}
+                    inputStyle={NewVariationStyles.variationNameInput}
+                    inputContainerStyle={
+                      NewVariationStyles.variationNameInputContainer
+                    }
                   />
                 </View>
               ) : (
                 <Text
                   text={values.variationData[index].variationName}
-                  textStyle={{
-                    ...theme.textRegular,
-                    color: theme.colors.dark20,
-                    fontWeight: "400",
-                  }}
+                  textStyle={NewVariationStyles.lblVariationName}
                 />
               )}
             </ListItem.Content>
@@ -139,11 +157,7 @@ const NewVariation: FC<Props> = (props) => {
                 onPress={() => setMode(ENUM.VariationMode.Done)}>
                 <Text
                   text="Done"
-                  textStyle={{
-                    ...theme.textRegular,
-                    color: theme.colors.primary,
-                    fontWeight: "400",
-                  }}
+                  textStyle={NewVariationStyles.txtDoneOrEdit}
                 />
               </TouchableWithoutFeedback>
             ) : (
@@ -151,11 +165,7 @@ const NewVariation: FC<Props> = (props) => {
                 onPress={() => setMode(ENUM.VariationMode.Edit)}>
                 <Text
                   text="Edit"
-                  textStyle={{
-                    ...theme.textRegular,
-                    color: theme.colors.primary,
-                    fontWeight: "400",
-                  }}
+                  textStyle={NewVariationStyles.txtDoneOrEdit}
                 />
               </TouchableWithoutFeedback>
             )}
@@ -164,35 +174,21 @@ const NewVariation: FC<Props> = (props) => {
         </ListItem.Content>
       </ListItem>
 
-      {/** Variation switch */}
       <ListItem bottomDivider>
-        <ListItem.Content style={{ flexDirection: "column" }}>
-          <View
-            style={{
-              height: DIMENS.screenHeight * 0.028,
-              flexDirection: "row",
-              alignItems: "center",
-            }}>
-            <View style={{ flexDirection: "column" }}>
+        <ListItem.Content style={NewVariationStyles.columnContainer}>
+          <View style={NewVariationStyles.txtSwitchContainer}>
+            <View style={NewVariationStyles.columnContainer}>
               <Text
                 text="Add image to variation"
-                textStyle={{
-                  ...theme.textLight,
-                  color: theme.colors.black,
-                  textAlign: "left",
-                }}
+                textStyle={NewVariationStyles.txtSwitch}
               />
               <Text
                 text="If toggle is on, images are required."
-                textStyle={{
-                  ...theme.textSmall,
-                  color: theme.colors.light20,
-                  textAlign: "left",
-                }}
+                textStyle={NewVariationStyles.txtSubSwitch}
               />
             </View>
 
-            <ListItem.Content style={{ marginTop: 10, alignItems: "flex-end" }}>
+            <ListItem.Content style={NewVariationStyles.switchContainer}>
               <FormSwitch name={`variationData[${index}].hasImage`} />
             </ListItem.Content>
           </View>
@@ -200,111 +196,13 @@ const NewVariation: FC<Props> = (props) => {
         </ListItem.Content>
       </ListItem>
 
-      {/** Variation images */}
-      <View
-        style={{
-          height: 130,
-          backgroundColor: theme.colors.white,
-          paddingHorizontal: 14,
-          justifyContent: "center",
-          alignItems: "flex-start",
-        }}>
-        {/** Variation List */}
-        <View style={{ flexDirection: "row", alignItems: "flex-start" }}>
-          <View
-            style={{
-              paddingVertical: 12,
-              flexDirection: "row",
-              alignItems: "flex-start",
-            }}>
+      <View style={NewVariationStyles.variationImageContainer}>
+        <View style={NewVariationStyles.variationImageRowMain}>
+          <View style={NewVariationStyles.variationImageSub}>
             {optionsData.length < 3 &&
-              optionsData.map(({ image, optionName }, index) => (
-                <View
-                  key={index}
-                  style={{
-                    width: 82,
-                    borderWidth: 0.5,
-                    borderStyle: "solid",
-                    borderColor: theme.colors.primary,
-                    borderRadius: 5,
-                    justifyContent: "center",
-                    position: "relative",
-                    padding: image && hasImage ? 0 : 8,
-                    marginRight: 12,
-                    zIndex: -1,
-                    backgroundColor:
-                      image && hasImage
-                        ? theme.colors.white
-                        : theme.colors.primary,
-                  }}>
-                  {mode === ENUM.VariationMode.Edit && (
-                    <View
-                      style={{
-                        position: "absolute",
-                        padding: 5,
-                        right: -12,
-                        top: -10,
-                        zIndex: 99,
-                        borderRadius: 100,
-                        backgroundColor: theme.colors.red15,
-                      }}>
-                      <AntDesign
-                        name="close"
-                        style={{ color: theme.colors.white }}
-                      />
-                    </View>
-                  )}
-
-                  {image && hasImage ? (
-                    <>
-                      <Image
-                        source={{ uri: image as string }}
-                        imageStyle={{
-                          width: "100%",
-                          height: 70,
-                          flexGrow: 1,
-                          resizeMode: "stretch",
-                          opacity: 0.5,
-                        }}
-                      />
-
-                      <View
-                        style={{
-                          paddingHorizontal: 8,
-                          paddingVertical: 2,
-                          backgroundColor: theme.colors.primary,
-                          borderBottomLeftRadius: 5,
-                          borderBottomRightRadius: 5,
-                        }}>
-                        <Text
-                          text={optionName}
-                          textStyle={{
-                            ...theme.textSmall,
-                            color: theme.colors.white,
-                            textAlign: "center",
-                          }}
-                        />
-                      </View>
-                    </>
-                  ) : (
-                    <View
-                      style={{
-                        paddingHorizontal: 8,
-                        paddingVertical: 2,
-                        backgroundColor: theme.colors.primary,
-                      }}>
-                      <Text
-                        text={optionName}
-                        textStyle={{
-                          ...theme.textLight,
-                          color: theme.colors.white,
-                          textAlign: "center",
-                        }}
-                      />
-                    </View>
-                  )}
-                </View>
-              ))}
+              optionsData.map(({ image, optionName }, key) =>
+                getOptionCard(key, image, optionName)
+              )}
           </View>
 
           {!isEmpty(optionsData) && optionsData.length >= 3 && (
@@ -313,92 +211,10 @@ const NewVariation: FC<Props> = (props) => {
               data={optionsData}
               horizontal
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{ paddingVertical: 12 }}
-              renderItem={({ item }) => (
-                <View
-                  style={{
-                    width: 82,
-                    borderWidth: 0.5,
-                    borderStyle: "solid",
-                    borderColor: theme.colors.primary,
-                    borderRadius: 5,
-                    justifyContent: "center",
-                    padding: item.image && hasImage ? 0 : 8,
-                    marginRight: 12,
-                    alignSelf: "flex-start",
-                    backgroundColor:
-                      item.image && hasImage
-                        ? theme.colors.white
-                        : theme.colors.primary,
-                  }}>
-                  {mode === ENUM.VariationMode.Edit && (
-                    <View
-                      style={{
-                        position: "absolute",
-                        padding: 5,
-                        right: -12,
-                        top: -10,
-                        zIndex: 99,
-                        borderRadius: 100,
-                        backgroundColor: theme.colors.red15,
-                      }}>
-                      <AntDesign
-                        name="close"
-                        style={{ color: theme.colors.white }}
-                      />
-                    </View>
-                  )}
-
-                  {item.image && hasImage ? (
-                    <>
-                      <Image
-                        source={{ uri: item.image as string }}
-                        imageStyle={{
-                          width: "100%",
-                          height: 70,
-                          flexGrow: 1,
-                          resizeMode: "stretch",
-                          opacity: 0.5,
-                        }}
-                      />
-
-                      <View
-                        style={{
-                          paddingHorizontal: 8,
-                          paddingVertical: 2,
-                          backgroundColor: theme.colors.primary,
-                          borderBottomLeftRadius: 5,
-                          borderBottomRightRadius: 5,
-                        }}>
-                        <Text
-                          text={item.optionName}
-                          textStyle={{
-                            ...theme.textSmall,
-                            color: theme.colors.white,
-                            textAlign: "center",
-                          }}
-                        />
-                      </View>
-                    </>
-                  ) : (
-                    <View
-                      style={{
-                        paddingHorizontal: 8,
-                        paddingVertical: 2,
-                        backgroundColor: theme.colors.primary,
-                      }}>
-                      <Text
-                        text={item.optionName}
-                        textStyle={{
-                          ...theme.textLight,
-                          color: theme.colors.white,
-                          textAlign: "center",
-                        }}
-                      />
-                    </View>
-                  )}
-                </View>
-              )}
+              contentContainerStyle={NewVariationStyles.variationImageContent}
+              renderItem={({ item, index: key }) =>
+                getOptionCard(key, item.image, item.optionName)
+              }
             />
           )}
 
@@ -406,21 +222,9 @@ const NewVariation: FC<Props> = (props) => {
             title="+ Add"
             type="outline"
             onPress={toggleOverlay}
-            containerStyle={{
-              width: 70,
-              marginLeft: !isEmpty(optionsData) ? 12 : 0,
-              height: 50,
-              alignSelf: "center",
-            }}
-            buttonStyle={{
-              backgroundColor: "white",
-              borderColor: theme.colors.primary,
-              borderWidth: 1,
-            }}
-            titleStyle={{
-              ...theme.textLight,
-              color: theme.colors.black,
-            }}
+            containerStyle={btnAddContainer}
+            buttonStyle={NewVariationStyles.btnAdd}
+            titleStyle={NewVariationStyles.btnAddLbl}
           />
         </View>
       </View>
@@ -431,7 +235,7 @@ const NewVariation: FC<Props> = (props) => {
         setVisible={setVisible}
         visible={visible}
       />
-    </>
+    </Fragment>
   );
 };
 
