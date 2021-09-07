@@ -19,6 +19,7 @@ import Icon from "@app/atoms/Icon";
 import type { PropsType } from "./types";
 import NewVariation from "./NewVariation";
 import ProductVariationStyles from "./styles";
+import FormButton from "@app/components/molecules/FormButton";
 
 const ProductVariationTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
@@ -93,12 +94,12 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
             )}
           </>
         </ScrollView>
-      </KeyboardAvoidingView>
 
-      {/** Button submit */}
-      {/* <View style={ProductVariationStyles.buttonContainer}>
-        <FormButton title="Set Stock and Price" />
-      </View> */}
+        {/** Button submit */}
+        <View style={ProductVariationStyles.buttonContainer}>
+          <FormButton title="Set Stock and Price" />
+        </View>
+      </KeyboardAvoidingView>
     </>
   );
 };

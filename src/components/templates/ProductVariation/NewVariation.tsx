@@ -1,7 +1,6 @@
 import React, { FC, Fragment, useCallback, useState } from "react";
 import { FlatList, View } from "react-native";
 import { useFormikContext } from "formik";
-
 import { isEmpty } from "ramda";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
@@ -49,18 +48,24 @@ const NewVariation: FC<NewVariationProps> = (props) => {
   };
 
   const removeVariationOption = (key: number) => {
-    const newVariationData: VariationItem[] = [...values.variationData];
+    try {
+      const newVariationData: VariationItem[] = [...values.variationData];
 
-    newVariationData.forEach((item) => {
-      item.options = item.options.filter(
-        (option) => option.id !== optionsData[key].id
-      );
-    });
+      newVariationData.forEach((item) => {
+        item.options = item.options.filter(
+          (option) => option.id !== optionsData[key].id
+        );
+      });
 
-    setValues({
-      ...values.variationData,
-      variationData: newVariationData,
-    });
+      console.log("VALUES ===>", values.variationData);
+
+      setValues({
+        ...values.variationData,
+        variationData: newVariationData,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const { btnAddContainer } = BtnAddStyles(optionsData);

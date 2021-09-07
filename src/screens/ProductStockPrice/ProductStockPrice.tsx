@@ -1,21 +1,21 @@
 /**
  *
- * ProductVariation
+ * ProductStockPrice
  * @format
  *
  */
 
-import React, { FC, useCallback, useEffect } from "react";
+import React, { FC, useCallback } from "react";
 import { useFormik, FormikProvider } from "formik";
 import { useDispatch } from "react-redux";
-import { useIsFocused, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
 import { VariationForm } from "@app/redux/shop/models";
-import ProductVariationTemplate from "@app/templates/ProductVariation";
+import ProductStockPriceTemplate from "@app/templates/ProductStockPrice";
 import routes from "@app/navigators/routes";
 
-const ProductVariationScreen: FC = () => {
+const ProductStockPriceScreen: FC = () => {
   const dispatch = useDispatch();
 
   const { goBack, navigate } = useNavigation();
@@ -31,7 +31,6 @@ const ProductVariationScreen: FC = () => {
 
   const handleSubmit = (values: VariationForm) => {
     setVariationForm({ ...values });
-    navigate(routes.SET_STOCK_PRICE);
   };
 
   const formikBag = useFormik({
@@ -39,20 +38,15 @@ const ProductVariationScreen: FC = () => {
     onSubmit: handleSubmit,
   });
 
-  // const isFocused = useIsFocused();
-
-  // // eslint-disable-next-line @typescript-eslint/no-empty-function
-  // useEffect(() => {}, [isFocused]);
-
   const handleBack = useCallback(() => {
-    goBack();
+    navigate(routes.ADD_VARIATION);
   }, [goBack]);
 
   return (
     <FormikProvider value={formikBag}>
-      <ProductVariationTemplate onBack={handleBack} />
+      <ProductStockPriceTemplate onBack={handleBack} />
     </FormikProvider>
   );
 };
 
-export default ProductVariationScreen;
+export default ProductStockPriceScreen;

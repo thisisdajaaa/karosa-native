@@ -12,6 +12,7 @@ import { VariationOption } from "@app/redux/shop/models";
 const ProductVariationStyles = StyleSheet.create({
   container: {
     flex: 1,
+    position: "relative",
   },
   buttonContainer: {
     position: "absolute",

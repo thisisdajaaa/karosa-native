@@ -28,7 +28,7 @@ const CategoryList = forwardRef<FlatList, any>((props, ref) => {
         showsVerticalScrollIndicator={false}
         data={item.categories}
         showsHorizontalScrollIndicator={false}
-        renderItem={({ item }: any) => (
+        renderItem={({ item }) => (
           <ListChevron
             variation={COMMON.VARIATION.TWO}
             hasBottomDivider

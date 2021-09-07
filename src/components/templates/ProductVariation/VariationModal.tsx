@@ -4,11 +4,12 @@ import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity, View } from "react-native";
 import uuid from "react-native-uuid";
 import { Overlay } from "react-native-elements";
+import { VariationForm } from "@app/redux/shop/models";
 import Input from "@app/atoms/Input";
 import ImagePicker from "@app/molecules/ImagePicker";
-import { VariationForm } from "@app/redux/shop/models";
 import Text from "@app/atoms/Text";
 import ListInputStyles from "@app/organisms/ListInput/styles";
+
 import type { VariationModalProps } from "./types";
 import { OptionNameStyles, VariationModalStyles } from "./styles";
 
@@ -34,19 +35,32 @@ const VariationModal: FC<VariationModalProps> = (props) => {
     setOptionName(text);
   };
 
+  console.log("VALUES ===>", values.variationData);
+
   const setClonedVariationItem = (image: string | null) => {
-    const newArray = [...values.variationData];
+    try {
+      const newArray = values.variationData.slice();
 
-    newArray[index].options.push({
-      id: uuid.v4(),
-      optionName: optionName,
-      image,
-    });
+      const lmao = newArray[index].options.concat([
+        { id: uuid.v4(), optionName, image, price: "", stock: "", weight: "" },
+      ]);
 
-    setValues({
-      ...values.variationData,
-      variationData: newArray,
-    });
+      // newArray[index].options.push({
+      //   id: uuid.v4(),
+      //   optionName,
+      //   image,
+      //   price: "",
+      //   stock: "",
+      //   weight: "",
+      // });
+
+      setValues({
+        ...values.variationData,
+        variationData: lmao,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleSubmit = () => {

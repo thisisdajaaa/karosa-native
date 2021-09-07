@@ -42,6 +42,9 @@ export type VariationOption = {
   id: string | number[];
   image: string | null;
   optionName: string;
+  price: string;
+  stock: string;
+  weight: string;
 };
 
 export type AvailabilityForm = {
