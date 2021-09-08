@@ -26,6 +26,7 @@ import ToReceive from "./to-receive.svg";
 import ToShip from "./to-ship.svg";
 import Warning from "./warning.svg";
 import Chevron_Down from "./chevron-down.svg";
+import RedHeart from "./red-heart.svg";
 
 const CommonIcons = (
   name: string,
@@ -64,6 +65,7 @@ const CommonIcons = (
     chevron_down: (
       <Chevron_Down style={extraStyle} height={height} width={width} />
     ),
+    redHeart: <RedHeart style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];

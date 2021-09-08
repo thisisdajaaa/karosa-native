@@ -15,6 +15,8 @@ export type PropsType = {
   sold?: string;
   buttonTitle?: string;
   onButtonClick?(): void;
+  onHeartClick?(): void;
+  heartFlag?: boolean;
   rating?: number;
   location?: string;
 };

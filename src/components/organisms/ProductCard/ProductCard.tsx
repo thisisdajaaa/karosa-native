@@ -10,6 +10,7 @@ import React, { FC } from "react";
 import type { PropsType } from "./types";
 import VariationOne from "./VariationOne";
 import VariationTwo from "./VariationTwo";
+import VariationThree from "./VariationThree";
 
 const ProductCard: FC<PropsType> = (props) => {
   const {
@@ -25,6 +26,8 @@ const ProductCard: FC<PropsType> = (props) => {
     currentPrice,
     wholesale,
     discount,
+    onHeartClick,
+    heartFlag,
   } = props;
 
   switch (variation) {
@@ -54,6 +57,22 @@ const ProductCard: FC<PropsType> = (props) => {
           previousPrice={previousPrice}
           discount={discount}
           variation={variation}
+        />
+      );
+    case 3:
+      return (
+        <VariationThree
+          name={name}
+          image={image}
+          rating={rating}
+          location={location}
+          sold={sold}
+          currentPrice={currentPrice}
+          previousPrice={previousPrice}
+          discount={discount}
+          variation={variation}
+          onHeartClick={onHeartClick}
+          heartFlag={heartFlag}
         />
       );
     default:
