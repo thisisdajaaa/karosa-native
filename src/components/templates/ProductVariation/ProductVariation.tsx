@@ -16,10 +16,12 @@ import Header from "@app/molecules/Header";
 import Text from "@app/atoms/Text";
 import { VariationForm, VariationItem } from "@app/redux/shop/models";
 import Icon from "@app/atoms/Icon";
+import FormButton from "@app/components/molecules/FormButton";
+
 import type { PropsType } from "./types";
+import { ADD_VARIATION_LENGTH, ICON_SIZE } from "./config";
 import NewVariation from "./NewVariation";
 import ProductVariationStyles from "./styles";
-import FormButton from "@app/components/molecules/FormButton";
 
 const ProductVariationTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
@@ -76,14 +78,14 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
               <NewVariation key={index} index={index} />
             ))}
 
-            {values.variationData.length < 2 && (
+            {values.variationData.length < ADD_VARIATION_LENGTH && (
               <View style={ProductVariationStyles.btnAddVariationContainer}>
                 <ListItem onPress={addNewVariation}>
                   <Icon
                     group="products"
                     name="addVariation"
-                    height={20}
-                    width={20}
+                    height={ICON_SIZE.ADD}
+                    width={ICON_SIZE.ADD}
                   />
                   <Text
                     text="Add another variation"
@@ -95,7 +97,6 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
           </>
         </ScrollView>
 
-        {/** Button submit */}
         <View style={ProductVariationStyles.buttonContainer}>
           <FormButton title="Set Stock and Price" />
         </View>

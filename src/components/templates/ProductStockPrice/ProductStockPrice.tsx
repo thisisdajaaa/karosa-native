@@ -6,17 +6,18 @@
  */
 
 import React, { FC, useCallback } from "react";
-
-import type { PropsType } from "./types";
-import ProductStockPriceStyles from "./styles";
-import { DIMENS, theme } from "@app/styles";
-import Header from "@app/molecules/Header";
-import { FlatList, ScrollView, View, StyleSheet } from "react-native";
-import { VariationForm } from "@app/redux/shop/models";
+import { FlatList, ScrollView, View } from "react-native";
 import { useFormikContext } from "formik";
 import Text from "@app/atoms/Text";
-import FormInput from "@app/components/molecules/FormInput";
-import FormButton from "@app/components/molecules/FormButton";
+import { VariationForm, VariationOption } from "@app/redux/shop/models";
+import { theme } from "@app/styles";
+import Header from "@app/molecules/Header";
+import FormInput from "@app/molecules/FormInput";
+import FormButton from "@app/molecules/FormButton";
+
+import type { PropsType } from "./types";
+import { NUM_COL } from "./config";
+import ProductStockPriceStyles, { OptionRowStyles } from "./styles";
 
 const ProductStockPrice: FC<PropsType> = (props) => {
   const { onBack } = props;
@@ -42,13 +43,19 @@ const ProductStockPrice: FC<PropsType> = (props) => {
     );
   };
 
+  const optionStyle = (index: number, option: VariationOption[]) => {
+    const { optionRowContainer } = OptionRowStyles(index, option);
+
+    return optionRowContainer;
+  };
+
   return (
     <>
       <>{getHeader()}</>
-      <View style={{ flex: 1, position: "relative" }}>
+      <View style={ProductStockPriceStyles.container}>
         <FlatList
           keyExtractor={keyExtractor}
-          numColumns={1}
+          numColumns={NUM_COL}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
           data={values.variationData}
@@ -57,88 +64,58 @@ const ProductStockPrice: FC<PropsType> = (props) => {
               horizontal
               showsHorizontalScrollIndicator={false}
               bounces={false}>
-              {/** Table Head */}
-              <View style={{ flexDirection: "column" }}>
-                <View
-                  style={{
-                    backgroundColor: theme.colors.gold15,
-                    flexDirection: "row",
-                    paddingHorizontal: 12,
-                    paddingVertical: 8,
-                    width: DIMENS.screenWidth * 1.2,
-                    alignItems: "center",
-                  }}>
-                  {/** TH1 */}
-                  <View style={{ flexGrow: 2, flexBasis: 50 }}>
+              <View style={ProductStockPriceStyles.innerContainer}>
+                <View style={ProductStockPriceStyles.tableHeaderContainer}>
+                  <View style={ProductStockPriceStyles.tableColumnPrimary}>
                     <Text
                       text={item.variationName}
                       textStyle={{ ...theme.textListItem }}
                     />
                   </View>
 
-                  {/** TH2 */}
-                  <View
-                    style={{
-                      flexGrow: 1,
-                      flexShrink: 1,
-                      flexBasis: 60,
-                    }}>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                      }}>
+                  <View style={ProductStockPriceStyles.tableColumnSecondary}>
+                    <View style={ProductStockPriceStyles.rowContainer}>
                       <Text
                         text="Price"
-                        textStyle={{ ...theme.textListItem, marginRight: 4 }}
+                        textStyle={ProductStockPriceStyles.txtTableHeader}
                       />
-                      <Text text="*" textStyle={{ color: theme.colors.red5 }} />
+                      <Text
+                        text="*"
+                        textStyle={ProductStockPriceStyles.txtRequired}
+                      />
                     </View>
                   </View>
 
-                  {/** TH3 */}
-                  <View style={{ flexGrow: 1, flexShrink: 1, flexBasis: 60 }}>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                      }}>
+                  <View style={ProductStockPriceStyles.tableColumnSecondary}>
+                    <View style={ProductStockPriceStyles.rowContainer}>
                       <Text
                         text="Stock"
-                        textStyle={{ ...theme.textListItem, marginRight: 4 }}
+                        textStyle={ProductStockPriceStyles.txtTableHeader}
                       />
-                      <Text text="*" textStyle={{ color: theme.colors.red5 }} />
+                      <Text
+                        text="*"
+                        textStyle={ProductStockPriceStyles.txtRequired}
+                      />
                     </View>
                   </View>
 
-                  {/** TH4 */}
-                  <View style={{ flexGrow: 1, flexShrink: 1, flexBasis: 60 }}>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                      }}>
+                  <View style={ProductStockPriceStyles.tableColumnSecondary}>
+                    <View style={ProductStockPriceStyles.rowContainer}>
                       <Text
                         text="Weight"
-                        textStyle={{ ...theme.textListItem, marginRight: 4 }}
+                        textStyle={ProductStockPriceStyles.txtTableHeader}
                       />
-                      <Text text="*" textStyle={{ color: theme.colors.red5 }} />
+                      <Text
+                        text="*"
+                        textStyle={ProductStockPriceStyles.txtRequired}
+                      />
                     </View>
                   </View>
                 </View>
 
-                {/** Table Body */}
                 {item.options.map((option, index) => (
-                  <View
-                    key={index}
-                    style={{
-                      backgroundColor: theme.colors.white,
-                      flexDirection: "row",
-                      padding: 12,
-                      width: DIMENS.screenWidth * 1.2,
-                      alignItems: "center",
-                      marginBottom: index === item.options.length - 1 ? 12 : 0,
-                      borderBottomColor: theme.colors.light10,
-                      borderBottomWidth: StyleSheet.hairlineWidth,
-                    }}>
-                    <View style={{ flexGrow: 2, flexBasis: 50 }}>
+                  <View key={index} style={optionStyle(index, item.options)}>
+                    <View style={ProductStockPriceStyles.tableColumnPrimary}>
                       <Text
                         text={option.optionName}
                         textStyle={{
@@ -147,56 +124,42 @@ const ProductStockPrice: FC<PropsType> = (props) => {
                       />
                     </View>
 
-                    {/** TH2 */}
-                    <View
-                      style={{
-                        flexGrow: 1,
-                        flexShrink: 1,
-                        flexBasis: 60,
-                      }}>
+                    <View style={ProductStockPriceStyles.tableColumnSecondary}>
                       <FormInput
                         name={`variationData[${variationKey}].options[${index}].price`}
                         autoCapitalize="none"
                         autoCompleteType="off"
                         keyboardType="number-pad"
                         autoCorrect={false}
-                        inputContainerStyle={{
-                          padding: 5,
-                          height: 28,
-                          width: 62,
-                        }}
+                        inputContainerStyle={
+                          ProductStockPriceStyles.inputContainer
+                        }
                       />
                     </View>
 
-                    {/** TH3 */}
-                    <View style={{ flexGrow: 1, flexShrink: 1, flexBasis: 60 }}>
+                    <View style={ProductStockPriceStyles.tableColumnSecondary}>
                       <FormInput
                         name={`variationData[${variationKey}].options[${index}].stock`}
                         autoCapitalize="none"
                         autoCompleteType="off"
                         keyboardType="number-pad"
                         autoCorrect={false}
-                        inputContainerStyle={{
-                          padding: 5,
-                          height: 28,
-                          width: 62,
-                        }}
+                        inputContainerStyle={
+                          ProductStockPriceStyles.inputContainer
+                        }
                       />
                     </View>
 
-                    {/** TH4 */}
-                    <View style={{ flexGrow: 1, flexShrink: 1, flexBasis: 60 }}>
+                    <View style={ProductStockPriceStyles.tableColumnSecondary}>
                       <FormInput
                         name={`variationData[${variationKey}].options[${index}].weight`}
                         autoCapitalize="none"
                         autoCompleteType="off"
                         keyboardType="number-pad"
                         autoCorrect={false}
-                        inputContainerStyle={{
-                          padding: 5,
-                          height: 28,
-                          width: 62,
-                        }}
+                        inputContainerStyle={
+                          ProductStockPriceStyles.inputContainer
+                        }
                       />
                     </View>
                   </View>

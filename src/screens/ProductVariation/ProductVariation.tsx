@@ -5,10 +5,10 @@
  *
  */
 
-import React, { FC, useCallback, useEffect } from "react";
+import React, { FC, useCallback } from "react";
 import { useFormik, FormikProvider } from "formik";
 import { useDispatch } from "react-redux";
-import { useIsFocused, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
 import { VariationForm } from "@app/redux/shop/models";
@@ -38,11 +38,6 @@ const ProductVariationScreen: FC = () => {
     initialValues: { variationData },
     onSubmit: handleSubmit,
   });
-
-  // const isFocused = useIsFocused();
-
-  // // eslint-disable-next-line @typescript-eslint/no-empty-function
-  // useEffect(() => {}, [isFocused]);
 
   const handleBack = useCallback(() => {
     goBack();

@@ -15,9 +15,11 @@ import Button from "@app/atoms/Button";
 import { ENUM } from "@app/constants";
 import Icon from "@app/atoms/Icon";
 import { VariationForm, VariationItem } from "@app/redux/shop/models";
-import VariationModal from "./VariationModal";
+
 import type { NewVariationProps } from "./types";
+import { ICON_SIZE, NUM_LINE, OPTIONS_LENGTH } from "./config";
 import { BtnAddStyles, NewVariationStyles, OptionCardStyles } from "./styles";
+import VariationModal from "./VariationModal";
 
 const NewVariation: FC<NewVariationProps> = (props) => {
   const { index } = props;
@@ -48,24 +50,23 @@ const NewVariation: FC<NewVariationProps> = (props) => {
   };
 
   const removeVariationOption = (key: number) => {
-    try {
-      const newVariationData: VariationItem[] = [...values.variationData];
+    const newVariationData: VariationItem[] = values.variationData.map(
+      (value) => {
+        return {
+          id: value.id,
+          hasImage: value.hasImage,
+          variationName: value.variationName,
+          options: value.options.filter(
+            (option) => option.id !== optionsData[key].id
+          ),
+        };
+      }
+    );
 
-      newVariationData.forEach((item) => {
-        item.options = item.options.filter(
-          (option) => option.id !== optionsData[key].id
-        );
-      });
-
-      console.log("VALUES ===>", values.variationData);
-
-      setValues({
-        ...values.variationData,
-        variationData: newVariationData,
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    setValues({
+      ...values.variationData,
+      variationData: newVariationData,
+    });
   };
 
   const { btnAddContainer } = BtnAddStyles(optionsData);
@@ -133,8 +134,8 @@ const NewVariation: FC<NewVariationProps> = (props) => {
                     <Icon
                       group="products"
                       name="deleteVariation"
-                      height={16}
-                      width={16}
+                      height={ICON_SIZE.DELETE}
+                      width={ICON_SIZE.DELETE}
                     />
                   </TouchableWithoutFeedback>
 
@@ -142,7 +143,7 @@ const NewVariation: FC<NewVariationProps> = (props) => {
                     name={`variationData[${index}].variationName`}
                     placeholder="Set Variation Name"
                     placeholderColor={theme.colors.dark10}
-                    numberOfLines={1}
+                    numberOfLines={NUM_LINE}
                     inputStyle={NewVariationStyles.variationNameInput}
                     inputContainerStyle={
                       NewVariationStyles.variationNameInputContainer
@@ -204,13 +205,13 @@ const NewVariation: FC<NewVariationProps> = (props) => {
       <View style={NewVariationStyles.variationImageContainer}>
         <View style={NewVariationStyles.variationImageRowMain}>
           <View style={NewVariationStyles.variationImageSub}>
-            {optionsData.length < 3 &&
+            {optionsData.length < OPTIONS_LENGTH &&
               optionsData.map(({ image, optionName }, key) =>
                 getOptionCard(key, image, optionName)
               )}
           </View>
 
-          {!isEmpty(optionsData) && optionsData.length >= 3 && (
+          {!isEmpty(optionsData) && optionsData.length >= OPTIONS_LENGTH && (
             <FlatList
               keyExtractor={keyExtractor}
               data={optionsData}

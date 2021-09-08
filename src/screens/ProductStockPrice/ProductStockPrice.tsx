@@ -31,6 +31,7 @@ const ProductStockPriceScreen: FC = () => {
 
   const handleSubmit = (values: VariationForm) => {
     setVariationForm({ ...values });
+    navigate(routes.PRODUCT_ADD);
   };
 
   const formikBag = useFormik({
@@ -39,7 +40,7 @@ const ProductStockPriceScreen: FC = () => {
   });
 
   const handleBack = useCallback(() => {
-    navigate(routes.ADD_VARIATION);
+    goBack();
   }, [goBack]);
 
   return (

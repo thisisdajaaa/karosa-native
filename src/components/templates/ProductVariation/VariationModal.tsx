@@ -4,14 +4,16 @@ import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity, View } from "react-native";
 import uuid from "react-native-uuid";
 import { Overlay } from "react-native-elements";
-import { VariationForm } from "@app/redux/shop/models";
+import { VariationForm, VariationItem } from "@app/redux/shop/models";
 import Input from "@app/atoms/Input";
 import ImagePicker from "@app/molecules/ImagePicker";
 import Text from "@app/atoms/Text";
 import ListInputStyles from "@app/organisms/ListInput/styles";
+import { COMMON } from "@app/constants";
 
 import type { VariationModalProps } from "./types";
 import { OptionNameStyles, VariationModalStyles } from "./styles";
+import { ICON_SIZE, NUM_LINE, TOTAL } from "./config";
 
 const VariationModal: FC<VariationModalProps> = (props) => {
   const { index, setVisible, visible, toggleOverlay } = props;
@@ -22,7 +24,6 @@ const VariationModal: FC<VariationModalProps> = (props) => {
   const [optionName, setOptionName] = React.useState<string>("");
 
   const optionNameLength = optionName.length;
-  const MAX_LENGTH = 20;
 
   const imageSwitchEnabled = values.variationData[index].hasImage;
   const hasNoImage = imageSwitchEnabled && !imageUrl;
@@ -35,32 +36,24 @@ const VariationModal: FC<VariationModalProps> = (props) => {
     setOptionName(text);
   };
 
-  console.log("VALUES ===>", values.variationData);
-
   const setClonedVariationItem = (image: string | null) => {
-    try {
-      const newArray = values.variationData.slice();
+    const newArray = [...values.variationData];
 
-      const lmao = newArray[index].options.concat([
-        { id: uuid.v4(), optionName, image, price: "", stock: "", weight: "" },
-      ]);
+    newArray[index].options.push({
+      id: uuid.v4(),
+      optionName,
+      image,
+      price: "",
+      stock: "",
+      weight: "",
+    });
 
-      // newArray[index].options.push({
-      //   id: uuid.v4(),
-      //   optionName,
-      //   image,
-      //   price: "",
-      //   stock: "",
-      //   weight: "",
-      // });
+    const newVariationData: VariationItem[] = [...newArray];
 
-      setValues({
-        ...values.variationData,
-        variationData: lmao,
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    setValues({
+      ...values,
+      variationData: newVariationData,
+    });
   };
 
   const handleSubmit = () => {
@@ -88,13 +81,13 @@ const VariationModal: FC<VariationModalProps> = (props) => {
       <TouchableOpacity
         style={VariationModalStyles.iconContainer}
         onPress={() => setVisible(false)}>
-        <AntDesign name="close" size={24} color="black" />
+        <AntDesign name="close" size={ICON_SIZE.CLOSE} color="black" />
       </TouchableOpacity>
 
       {imageSwitchEnabled && (
         <View style={VariationModalStyles.imagePickerContainer}>
           <ImagePicker
-            variation={4}
+            variation={COMMON.VARIATION.FOUR}
             uri={imageUrl}
             onChange={handleImageChange}
           />
@@ -109,7 +102,7 @@ const VariationModal: FC<VariationModalProps> = (props) => {
           />
 
           <Text
-            text={`(${optionNameLength}/${MAX_LENGTH})`}
+            text={`(${optionNameLength}/${TOTAL})`}
             textStyle={VariationModalStyles.txtLength}
           />
           <Text text="*" textStyle={VariationModalStyles.txtRequired} />
@@ -117,7 +110,7 @@ const VariationModal: FC<VariationModalProps> = (props) => {
 
         <Input
           placeholder="Enter Option Name"
-          numberOfLines={1}
+          numberOfLines={NUM_LINE}
           multiline={false}
           disabled={hasNoImage}
           inputStyle={ListInputStyles.txtValue}
