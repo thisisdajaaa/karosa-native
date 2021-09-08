@@ -32,3 +32,8 @@ export enum OAuth {
   Facebook = "facebook",
   None = "none",
 }
+
+export enum VariationMode {
+  Done = "done",
+  Edit = "edit",
+}

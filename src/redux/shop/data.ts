@@ -27,11 +27,7 @@ export const initProductForm: ProductForm = {
 };
 
 export const initVariationForm: VariationForm = {
-  variationImg: "",
-  variationNm: "",
-  price: "",
-  weight: "",
-  stocks: "",
+  variationData: [],
 };
 
 export const initAvailabilityForm: AvailabilityForm = {

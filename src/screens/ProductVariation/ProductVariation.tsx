@@ -13,13 +13,16 @@ import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
 import { VariationForm } from "@app/redux/shop/models";
 import ProductVariationTemplate from "@app/templates/ProductVariation";
+import routes from "@app/navigators/routes";
 
 const ProductVariationScreen: FC = () => {
   const dispatch = useDispatch();
 
-  const { goBack } = useNavigation();
+  const { goBack, navigate } = useNavigation();
 
   const variationForm = useMemoizedSelector(selectors.getVariationForm);
+
+  const { variationData } = variationForm;
 
   const setVariationForm = useCallback(
     (values: VariationForm) => dispatch(actions.setVariationForm(values)),
@@ -28,11 +31,11 @@ const ProductVariationScreen: FC = () => {
 
   const handleSubmit = (values: VariationForm) => {
     setVariationForm({ ...values });
-    goBack();
+    navigate(routes.SET_STOCK_PRICE);
   };
 
   const formikBag = useFormik({
-    initialValues: variationForm,
+    initialValues: { variationData },
     onSubmit: handleSubmit,
   });
 

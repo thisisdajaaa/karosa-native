@@ -7,6 +7,7 @@ import React from "react";
 import { ViewStyle, StyleProp } from "react-native";
 
 import Add from "./add.svg";
+import AddImage from "./add-image.svg";
 import Alert from "./alert.svg";
 import Block from "./block.svg";
 import ChevronDown from "./chevron-down.svg";
@@ -28,6 +29,8 @@ import Variation from "./variation.svg";
 import Wholesale from "./wholesale.svg";
 import PreOrder from "./pre-order.svg";
 import ShippingDetails from "./shipping-details.svg";
+import AddVariation from "./add-variation.svg";
+import DeleteVariation from "./delete-variation.svg";
 
 const ProductsIcon = (
   name: string,
@@ -37,10 +40,17 @@ const ProductsIcon = (
 ) => {
   const icons: { [key: string]: JSX.Element } = {
     add: <Add style={extraStyle} height={height} width={width} />,
+    addImage: <AddImage style={extraStyle} height={height} width={width} />,
+    deleteVariation: (
+      <DeleteVariation style={extraStyle} height={height} width={width} />
+    ),
     shippingDetails: (
       <ShippingDetails style={extraStyle} height={height} width={width} />
     ),
     preOrder: <PreOrder style={extraStyle} height={height} width={width} />,
+    addVariation: (
+      <AddVariation style={extraStyle} height={height} width={width} />
+    ),
     wholesale: <Wholesale style={extraStyle} height={height} width={width} />,
     availability: (
       <Availability style={extraStyle} height={height} width={width} />

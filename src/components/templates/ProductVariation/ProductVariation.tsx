@@ -5,61 +5,48 @@
  *
  */
 
-import React, { FC, ReactElement } from "react";
+import React, { FC } from "react";
+import uuid from "react-native-uuid";
+import { ListItem } from "react-native-elements";
+import { useFormikContext } from "formik";
 import { KeyboardAvoidingView, ScrollView, View } from "react-native";
 import { theme } from "@app/styles";
-import { COMMON } from "@app/constants";
-import { getPlatform, listIterator } from "@app/utils";
+import { getPlatform } from "@app/utils";
 import Header from "@app/molecules/Header";
-import ListImage from "@app/organisms/ListImage";
-import ListInput from "@app/organisms/ListInput";
-import FormButton from "@app/molecules/FormButton";
+import Text from "@app/atoms/Text";
+import { VariationForm, VariationItem } from "@app/redux/shop/models";
+import Icon from "@app/atoms/Icon";
+import FormButton from "@app/components/molecules/FormButton";
 
 import type { PropsType } from "./types";
+import { ADD_VARIATION_LENGTH, ICON_SIZE } from "./config";
+import NewVariation from "./NewVariation";
 import ProductVariationStyles from "./styles";
 
 const ProductVariationTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
 
+  const { values, setValues } = useFormikContext<VariationForm>();
+
   const isIOS = getPlatform.getInstance() === "ios";
 
-  const listInput = (name: string, label: string, placeholder: string) => {
-    return (
-      <ListInput
-        name={name}
-        label={label}
-        placeholder={placeholder}
-        hasBottomDivider
-        required
-        variation={COMMON.VARIATION.TWO}
-        keyboardType="number-pad"
-      />
-    );
-  };
+  const addNewVariation = () => {
+    const newVariationItem: VariationItem = {
+      id: uuid.v4(),
+      variationName: "",
+      hasImage: false,
+      options: [],
+    };
 
-  const getVariationForm = () => {
-    const elements: ReactElement[] = [];
+    const newVariationData: VariationItem[] = [
+      ...values.variationData,
+      newVariationItem,
+    ];
 
-    const price = listInput("price", "Price", "Set price per variation");
-    const weight = listInput("weight", "Weight per product", "Set Weight");
-    const stocks = listInput("stocks", "Stocks", "Set Stock");
-    const variationImg = <ListImage name="variationImg" hasBottomDivider />;
-
-    const variationNm = (
-      <ListInput
-        name="variationNm"
-        placeholder="Enter Variation Name"
-        label="Name"
-        maxLen={100}
-        hasBottomDivider
-        required
-        variation={COMMON.VARIATION.ONE}
-      />
-    );
-
-    elements.push(variationImg, variationNm, price, weight, stocks);
-
-    return listIterator(elements);
+    setValues({
+      ...values,
+      variationData: newVariationData,
+    });
   };
 
   const getHeader = () => {
@@ -72,7 +59,7 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
           onPress: onBack,
         }}
         centerComponent={{
-          text: "Add Variation",
+          text: "Variation",
           style: ProductVariationStyles.txtHeader,
         }}
       />
@@ -86,12 +73,34 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
         style={ProductVariationStyles.container}
         behavior={isIOS ? "padding" : undefined}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <>{getVariationForm()}</>
+          <>
+            {values.variationData.map((_, index) => (
+              <NewVariation key={index} index={index} />
+            ))}
+
+            {values.variationData.length < ADD_VARIATION_LENGTH && (
+              <View style={ProductVariationStyles.btnAddVariationContainer}>
+                <ListItem onPress={addNewVariation}>
+                  <Icon
+                    group="products"
+                    name="addVariation"
+                    height={ICON_SIZE.ADD}
+                    width={ICON_SIZE.ADD}
+                  />
+                  <Text
+                    text="Add another variation"
+                    textStyle={ProductVariationStyles.btnAddVariationLbl}
+                  />
+                </ListItem>
+              </View>
+            )}
+          </>
         </ScrollView>
+
+        <View style={ProductVariationStyles.buttonContainer}>
+          <FormButton title="Set Stock and Price" />
+        </View>
       </KeyboardAvoidingView>
-      <View style={ProductVariationStyles.buttonContainer}>
-        <FormButton title="Submit" />
-      </View>
     </>
   );
 };

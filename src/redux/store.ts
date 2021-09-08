@@ -17,7 +17,7 @@ const configureStore = (initialState: any) => {
   const sagaMiddleware = createSagaMiddleware();
   const enhancers: Array<any> = [sagaMiddleware];
 
-  enhancers.push(loggerMiddleware);
+  enhancers.push();
 
   const composeEnhancers = composeWithDevTools({
     trace: false,

@@ -5,7 +5,7 @@
  */
 
 import { StyleProp, TextStyle, ViewStyle } from "react-native";
-import { IconNode } from "react-native-elements";
+import { IconNode } from "react-native-elements/dist/icons/Icon";
 
 type ButtonType = "solid" | "clear" | "outline";
 
@@ -17,5 +17,6 @@ export type PropsType = {
   disabled?: boolean;
   titleStyle?: StyleProp<TextStyle>;
   buttonStyle?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
   icon?: IconNode;
 };
