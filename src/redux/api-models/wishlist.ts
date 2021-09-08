@@ -11,6 +11,7 @@ export type WishlistProd = {
   shopId: number;
   stocks: number;
   discount: number;
+  heartFlag: boolean;
 } & Audit;
 
 export type Response = WishlistProd[];

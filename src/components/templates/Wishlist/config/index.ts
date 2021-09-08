@@ -22,6 +22,7 @@ export const mockProducts: WishlistProd[] = [
     updatedAt: "",
     discount: 30,
     stocks: 20,
+    heartFlag: true,
   },
   {
     id: 2,
@@ -36,6 +37,7 @@ export const mockProducts: WishlistProd[] = [
     updatedAt: "",
     discount: 10,
     stocks: 0,
+    heartFlag: true,
   },
   {
     id: 3,
@@ -50,6 +52,7 @@ export const mockProducts: WishlistProd[] = [
     updatedAt: "",
     discount: 50,
     stocks: 0,
+    heartFlag: true,
   },
   {
     id: 4,
@@ -64,6 +67,7 @@ export const mockProducts: WishlistProd[] = [
     updatedAt: "",
     discount: 30,
     stocks: 0,
+    heartFlag: true,
   },
   {
     id: 5,
@@ -78,6 +82,7 @@ export const mockProducts: WishlistProd[] = [
     updatedAt: "",
     discount: 5,
     stocks: 0,
+    heartFlag: true,
   },
   {
     id: 6,
@@ -92,6 +97,7 @@ export const mockProducts: WishlistProd[] = [
     updatedAt: "",
     discount: 10,
     stocks: 1,
+    heartFlag: true,
   },
 ];
 

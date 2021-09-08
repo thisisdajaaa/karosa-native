@@ -73,14 +73,12 @@ const WishlistTemplate: FC = () => {
         }
       } else if (overAllFilter == "Not Available") {
         if (products.stocks <= 0 && category == 0) {
-          // list.push(products);
           if (discount == 0) {
             list.push(products);
           } else if (products.discount == discount) {
             list.push(products);
           }
         } else if (products.stocks <= 0 && products.categoryId == category) {
-          // list.push(products);
           if (discount == 0) {
             list.push(products);
           } else if (products.discount == discount) {
@@ -234,7 +232,8 @@ const WishlistTemplate: FC = () => {
             onButtonClick={() => 0}
             discount={item.discount.toString()}
             rating={item.rating}
-            variation={COMMON.VARIATION.TWO}
+            variation={COMMON.VARIATION.THREE}
+            heartFlag={item.heartFlag}
           />
         )}
       />
