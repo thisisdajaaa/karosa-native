@@ -171,7 +171,7 @@ const ShopProductDetailsScreen: FC = () => {
     id == variation ? setVariation2(0) : setVariation2(id);
   };
 
-  const imageVariationFlag = [true, false];
+  const imageVariationFlag = [false, false];
 
   let firstVariantMap: contentPropsType[] = [];
 

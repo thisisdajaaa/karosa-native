@@ -76,8 +76,17 @@ const ProductDetailStyles = StyleSheet.create({
   button: {
     width: "100%",
     flexDirection: "column",
-    padding: 8,
-    marginHorizontal: 1,
+    padding: 10,
+    marginHorizontal: 2,
+    alignItems: "center",
+  },
+  buttonFooters: {
+    width: "90%",
+    flexDirection: "column",
+    padding: 10,
+    marginTop: 6,
+    marginBottom: 6,
+    marginHorizontal: 5,
     alignItems: "center",
   },
   green: {
@@ -168,6 +177,14 @@ const ProductDetailStyles = StyleSheet.create({
   },
   txtMuted: {
     color: theme.colors.dark10,
+  },
+  subContainerFooter: {
+    backgroundColor: theme.colors.white,
+    marginBottom: 20,
+    height: "100%",
+    // marginEnd:5,
+    // marginHorizontal:10
+    paddingBottom: 100,
   },
 });
 

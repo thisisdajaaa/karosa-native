@@ -11,13 +11,21 @@ import { Screen } from "@app/components/base-screen";
 
 import type { PropsType } from "./types";
 import HomeStyles from "./styles";
+import Button from "@app/atoms/Button";
+import { useNavigation } from "@react-navigation/native";
+import routes from "@app/navigators/routes";
 
 const HomeTemplate: FC<PropsType> = (props) => {
   const { screenProps } = props;
-
+  const { navigate } = useNavigation();
   return (
     <Screen {...screenProps}>
       <BaseText text={"HOME"} />
+
+      <Button
+        title="Testing only"
+        onPress={() => navigate(routes.SHOP_PRODUCT_DETAILS)}
+      />
     </Screen>
   );
 };

@@ -10,7 +10,7 @@ import { View } from "react-native";
 import Image from "@app/atoms/Image";
 import Text from "@app/atoms/Text";
 
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import ListChevron from "@app/organisms/ListChevron";
 
 import ProductDetailStyles from "./styles";
@@ -20,6 +20,9 @@ import { Rating } from "react-native-elements";
 
 import type { PropsType } from "./types";
 import ImageOverlayReviews from "@app/components/organisms/ImageOverlayReviews";
+import Button from "@app/atoms/Button";
+import { PropsType as ButtonProps } from "@app/atoms/Button/types";
+import { theme } from "@app/styles";
 
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
@@ -30,6 +33,37 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
     shippingtProps,
     productDetailsProps,
   } = props;
+
+  const chatNowButtonProps: ButtonProps = {
+    title: "Chat",
+    // titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
+    titleStyle: [ProductDetailStyles.txtLight, { color: theme.colors.grey10 }],
+    buttonStyle: [
+      ProductDetailStyles.button,
+      {
+        backgroundColor: theme.colors.white,
+      },
+    ],
+    icon: <FontAwesome name="comments-o" size={25} />,
+  };
+
+  const cartButtonProps: ButtonProps = {
+    title: "Add to Basket",
+    titleStyle: [ProductDetailStyles.txtLight, { color: theme.colors.black }],
+    buttonStyle: [
+      {
+        borderColor: theme.colors.light10,
+        backgroundColor: theme.colors.light10,
+      },
+      ProductDetailStyles.button,
+    ],
+  };
+
+  const buyButtonProps: ButtonProps = {
+    title: "Buy Now",
+    titleStyle: [ProductDetailStyles.txtLight, ProductDetailStyles.txtWhite],
+    buttonStyle: [ProductDetailStyles.button, ProductDetailStyles.green],
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -298,7 +332,11 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           </View>
         </ScrollView>
       </View>
-      {/* <View style={ProductDetailStyles.footer}>
+      <View
+        style={[
+          ProductDetailStyles.subContainerFooter,
+          ProductDetailStyles.footer,
+        ]}>
         <View style={ProductDetailStyles.subFooterContainer}>
           <Button {...chatNowButtonProps} />
         </View>
@@ -308,7 +346,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
         <View style={ProductDetailStyles.subFooterContainer}>
           <Button {...buyButtonProps} />
         </View>
-      </View> */}
+      </View>
     </View>
   );
 };
