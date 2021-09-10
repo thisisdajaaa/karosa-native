@@ -16,10 +16,12 @@ import ListChevron from "@app/organisms/ListChevron";
 import ProductDetailStyles from "./styles";
 import { ScrollView } from "react-native-gesture-handler";
 import Reviews from "@app/molecules/Reviews/";
-import { Rating } from "react-native-elements";
+import { ListItem, Rating } from "react-native-elements";
 
 import type { PropsType } from "./types";
 import ImageOverlayReviews from "@app/components/organisms/ImageOverlayReviews";
+import ListChevronStyles from "@app/components/organisms/ListChevron/styles";
+import Icon from "@app/atoms/Icon";
 
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
@@ -76,26 +78,30 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                   />
                 </View>
               </View>
-              <View style={ProductDetailStyles.horizontalContainer}>
-                <View style={{ flexDirection: "row" }}>
-                  <Rating
-                    type="star"
-                    ratingCount={5}
-                    readonly
-                    imageSize={15}
-                    startingValue={5}
-                  />
-                  <Text
-                    text={"5"}
-                    textStyle={ProductDetailStyles.txtBlackRegular}
-                  />
-                  <AntDesign
-                    name="hearto"
-                    size={20}
-                    style={ProductDetailStyles.iconStyle}
-                  />
-                </View>
-              </View>
+              <ListItem bottomDivider={false}>
+                <Rating
+                  type="star"
+                  ratingCount={5}
+                  readonly
+                  imageSize={20}
+                  startingValue={5}
+                  style={{ paddingBottom: 5 }}
+                />
+                <ListItem.Content>
+                  <ListItem.Title style={ListChevronStyles.txtSubtitle}>
+                    <Text
+                      text={"5"}
+                      textStyle={ProductDetailStyles.txtBlackRegular}
+                    />
+                  </ListItem.Title>
+                </ListItem.Content>
+                <Icon
+                  group="common"
+                  name={"outlineHeart"}
+                  height={20}
+                  width={20}
+                />
+              </ListItem>
             </View>
           </View>
           <View style={ProductDetailStyles.subContainer}>
