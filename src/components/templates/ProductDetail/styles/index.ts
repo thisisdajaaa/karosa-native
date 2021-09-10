@@ -169,6 +169,17 @@ const ProductDetailStyles = StyleSheet.create({
   txtMuted: {
     color: theme.colors.dark10,
   },
+  horizontalRatingContainer: {
+    backgroundColor: theme.colors.white,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    alignItems: "center",
+  },
+  variationTitle: {
+    ...theme.textBold,
+  },
 });
 
 export default ProductDetailStyles;
