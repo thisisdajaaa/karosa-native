@@ -5,12 +5,12 @@
  *
  */
 
-import React, { FC } from "react";
+import React, { FC, useCallback } from "react";
 import Header from "@app/molecules/Header";
 import { theme } from "@app/styles";
 import { FlatList, View } from "react-native";
 import Category from "@app/atoms/Category";
-import { Categories as CategoryType } from "@app/redux/api-models/category-list";
+import type { PropsType as CategoryType } from "@app/atoms/Category/types";
 
 import type { PropsType } from "./types";
 import { COLS, dummyCategories } from "./config";
@@ -19,8 +19,12 @@ import ProductCategoriesStyles from "./styles";
 const ProductCategoriesTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
 
+  const keyExtractor = useCallback((_, index) => index.toString(), []);
+
   const categoryItem = ({ item }: { item: CategoryType }) => {
-    return <Category name={item.name} onPress={onBack} />;
+    return (
+      <Category iconName={item.iconName} name={item.name} onPress={onBack} />
+    );
   };
 
   const getHeader = () => {
@@ -46,7 +50,7 @@ const ProductCategoriesTemplate: FC<PropsType> = (props) => {
         numColumns={COLS}
         data={dummyCategories as never[]}
         showsVerticalScrollIndicator={false}
-        keyExtractor={(item) => String(item.id)}
+        keyExtractor={keyExtractor}
         renderItem={categoryItem}
         contentContainerStyle={ProductCategoriesStyles.contentContainer}
         columnWrapperStyle={ProductCategoriesStyles.columnWrapper}

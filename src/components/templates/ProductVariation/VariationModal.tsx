@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { useFormikContext } from "formik";
 import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity, View } from "react-native";
@@ -20,8 +20,8 @@ const VariationModal: FC<VariationModalProps> = (props) => {
 
   const { values, setValues } = useFormikContext<VariationForm>();
 
-  const [imageUrl, setImageUrl] = React.useState<string | null>(null);
-  const [optionName, setOptionName] = React.useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [optionName, setOptionName] = useState<string>("");
 
   const optionNameLength = optionName.length;
 

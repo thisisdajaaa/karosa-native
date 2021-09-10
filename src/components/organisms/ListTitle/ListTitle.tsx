@@ -14,7 +14,7 @@ import type { PropsType } from "./types";
 import ListTitleStyles from "./styles";
 
 const ListTitle: FC<PropsType> = (props) => {
-  const { label, hasBottomDivider } = props;
+  const { label, hasBottomDivider, required } = props;
 
   return (
     <ListItem bottomDivider={hasBottomDivider}>
@@ -22,6 +22,10 @@ const ListTitle: FC<PropsType> = (props) => {
         <View style={ListTitleStyles.mainRowContainer}>
           <View style={ListTitleStyles.labelContainer}>
             <Text text={label} textStyle={ListTitleStyles.txtLabel} />
+
+            {required && (
+              <Text text="*" textStyle={ListTitleStyles.txtRequired} />
+            )}
           </View>
         </View>
       </ListItem.Content>

@@ -21,6 +21,8 @@ export type ProductForm = {
   weight: string;
   stocks: string;
   shelfLife: string;
+  estimateDate?: string;
+  upcomingHarvest: boolean;
   preOrder: boolean;
   measurement: string;
   categoryId: number;

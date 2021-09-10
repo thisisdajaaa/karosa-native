@@ -19,6 +19,8 @@ export const initProductForm: ProductForm = {
   price: "",
   weight: "",
   stocks: "",
+  upcomingHarvest: false,
+  estimateDate: "",
   shelfLife: "",
   preOrder: false,
   measurement: "1",

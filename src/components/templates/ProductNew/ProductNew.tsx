@@ -12,6 +12,8 @@ import {
   ScrollView,
   View,
 } from "react-native";
+import { useFormikContext } from "formik";
+import { ProductForm } from "@app/redux/shop/models";
 import { theme } from "@app/styles";
 import { getPlatform, listIterator, WithIcon } from "@app/utils";
 import { COMMON } from "@app/constants";
@@ -27,6 +29,8 @@ import ProductNewStyles from "./styles";
 
 const ProductNewTemplate: FC<PropsType> = (props) => {
   const { navigation, sheetRefs, statusColor, statusValue } = props;
+
+  const { submitForm, values } = useFormikContext<ProductForm>();
 
   const isIOS = getPlatform.getInstance() === "ios";
 
@@ -219,7 +223,7 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
           height: 15,
           width: 20,
         }}
-        name="preOrder"
+        name="upcomingHarvest"
         hasBottomDivider
       />
     );
@@ -238,29 +242,56 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
       />
     );
 
-    elements.push(
-      productImg,
-      separator,
-      productNm,
-      separator,
-      description,
-      separator,
-      upcomingHarvest,
-      separator,
-      categories,
-      price,
-      stocks,
-      shelfLife,
-      status,
-      availability,
-      variation,
-      separator,
-      wholesale,
-      separator,
-      preOrder,
-      separator,
-      shipping
+    const estimateDate = listInput(
+      "estimateDate",
+      "Estimate Available Date",
+      "Select Date",
+      {
+        group: "products",
+        name: "estimateDate",
+        height: 20,
+        width: 20,
+      },
+      "number-pad"
     );
+
+    if (values.upcomingHarvest) {
+      elements.push(
+        productImg,
+        separator,
+        productNm,
+        separator,
+        description,
+        separator,
+        upcomingHarvest,
+        separator,
+        estimateDate
+      );
+    } else {
+      elements.push(
+        productImg,
+        separator,
+        productNm,
+        separator,
+        description,
+        separator,
+        upcomingHarvest,
+        separator,
+        categories,
+        price,
+        stocks,
+        shelfLife,
+        status,
+        availability,
+        variation,
+        separator,
+        wholesale,
+        separator,
+        preOrder,
+        separator,
+        shipping
+      );
+    }
 
     return listIterator(elements);
   };
@@ -281,7 +312,7 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
         rightComponent={{
           text: "Save",
           style: ProductNewStyles.txtSave,
-          onPress: () => 0,
+          onPress: submitForm,
         }}
       />
     );
