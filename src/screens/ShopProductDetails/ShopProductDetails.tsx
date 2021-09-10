@@ -101,7 +101,7 @@ const ShopProductDetailsScreen: FC = () => {
     chevronColor: theme.colors.green5,
     onPress: () => [
       variationRef.current?.open(),
-      setStocks(initialStocks),
+      setStocks(0),
       setVariation1(0),
       setVariation2(0),
     ],
@@ -221,6 +221,12 @@ const ShopProductDetailsScreen: FC = () => {
 
         <ScrollView style={{ flex: 1 }}>
           <TouchableOpacity activeOpacity={1}>
+            <ListItem bottomDivider={false}>
+              <Text
+                text={"Volume"}
+                textStyle={ProductDetailStyles.variationTitle}
+              />
+            </ListItem>
             <ListItem bottomDivider={true} style={{ flex: 1 }}>
               <View style={{ flexDirection: "column" }}>
                 {imageVariationFlag[0] ? (
@@ -313,39 +319,46 @@ const ShopProductDetailsScreen: FC = () => {
                 )}
               </View>
             </ListItem>
-
+            <ListItem bottomDivider={false}>
+              <Text
+                text={"Quantity"}
+                textStyle={ProductDetailStyles.variationTitle}
+              />
+            </ListItem>
             <ListItem bottomDivider={true}>
               {secondVariation.map((props) => {
                 return (
-                  <FilterButton
-                    title={props.title}
-                    onPress={() => [switchVariation2(props.id, variation2)]}
-                    key={props.id}
-                    buttonStyle={
-                      props.id == variation2
-                        ? [
-                            {
-                              borderColor: theme.colors.green5,
+                  <>
+                    <FilterButton
+                      title={props.title}
+                      onPress={() => [switchVariation2(props.id, variation2)]}
+                      key={props.id}
+                      buttonStyle={
+                        props.id == variation2
+                          ? [
+                              {
+                                borderColor: theme.colors.green5,
+                                borderWidth: 2,
+                                paddingLeft: 20,
+                                paddingRight: 20,
+                              },
+                            ]
+                          : {
+                              borderColor: theme.colors.light10,
+                              backgroundColor: theme.colors.light10,
                               borderWidth: 2,
                               paddingLeft: 20,
                               paddingRight: 20,
-                            },
-                          ]
-                        : {
-                            borderColor: theme.colors.light10,
-                            backgroundColor: theme.colors.light10,
-                            borderWidth: 2,
-                            paddingLeft: 20,
-                            paddingRight: 20,
-                          }
-                    }
-                    containerStyle={{ margin: 0 }}
-                    titleStyle={
-                      props.id == variation2
-                        ? [{ fontSize: 12, color: theme.colors.green5 }]
-                        : { fontSize: 12, color: theme.colors.black }
-                    }
-                  />
+                            }
+                      }
+                      containerStyle={{ margin: 0 }}
+                      titleStyle={
+                        props.id == variation2
+                          ? [{ fontSize: 12, color: theme.colors.green5 }]
+                          : { fontSize: 12, color: theme.colors.black }
+                      }
+                    />
+                  </>
                 );
               })}
             </ListItem>
@@ -361,7 +374,7 @@ const ShopProductDetailsScreen: FC = () => {
                       />
                       <View style={{ padding: 10 }} />
                       <Text
-                        text={stocks + " Pcs left"}
+                        text={initialStocks + " Pcs left"}
                         textStyle={[
                           ProductDetailStyles.txtMuted,
                           { marginRight: 30 },
