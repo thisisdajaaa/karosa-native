@@ -15,7 +15,6 @@ import ProductListContent from "@app/templates/ProductList/MainContent";
 import HomeScreen from "@app/screens/Home";
 import routes from "@app/navigators/routes";
 import Home from "@app/screens/Home";
-import ProductDetails from "@app/screens/ShopProductDetails";
 
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -86,18 +85,6 @@ const TabNavigator: FC = () => {
             ),
           }}
         />
-
-        {/* for testing purposes only */}
-        <BottomTab.Screen
-          name={routes.SHOP_PRODUCT_DETAILS}
-          component={ProductDetails}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="md-basket" size={size} color={color} />
-            ),
-          }}
-        />
-        {/* for testing purposes only */}
         <BottomTab.Screen
           name={routes.NOTIFICATIONS}
           component={NotificationScreen}
