@@ -6,7 +6,7 @@
  */
 
 import React, { FC } from "react";
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import Image from "@app/atoms/Image";
 import Text from "@app/atoms/Text";
 
@@ -22,6 +22,9 @@ import type { PropsType } from "./types";
 import ImageOverlayReviews from "@app/components/organisms/ImageOverlayReviews";
 import ListChevronStyles from "@app/components/organisms/ListChevron/styles";
 import Icon from "@app/atoms/Icon";
+import Button from "@app/atoms/Button";
+import { PropsType as ButtonProps } from "@app/atoms/Button/types";
+import { theme } from "@app/styles";
 
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
@@ -32,6 +35,33 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
     shippingtProps,
     productDetailsProps,
   } = props;
+
+  const chatNowButtonProps: ButtonProps = {
+    title: "",
+    type: "clear",
+    titleStyle: [
+      ProductDetailStyles.txtLight,
+      {
+        color: theme.colors.grey10,
+      },
+    ],
+    buttonStyle: [
+      {
+        backgroundColor: theme.colors.white,
+      },
+    ],
+    icon: (
+      <View
+        style={{
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+        <Icon group="products" name="chatNow" width={20} height={20} />
+        <Text text="Chat" textStyle={{ fontSize: 12 }} />
+      </View>
+    ),
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -305,17 +335,32 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           </View>
         </ScrollView>
       </View>
-      {/* <View style={ProductDetailStyles.footer}>
-        <View style={ProductDetailStyles.subFooterContainer}>
-          <Button {...chatNowButtonProps} />
-        </View>
-        <View style={ProductDetailStyles.subFooterContainer}>
-          <Button {...cartButtonProps} />
-        </View>
-        <View style={ProductDetailStyles.subFooterContainer}>
-          <Button {...buyButtonProps} />
-        </View>
-      </View> */}
+      <View style={ProductDetailStyles.footer}>
+        <TouchableOpacity style={ProductDetailStyles.subFooterChat}>
+          <View>
+            <Button {...chatNowButtonProps} />
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={ProductDetailStyles.subFooterCart}>
+          <Text
+            text="Add to Basket"
+            textStyle={[
+              ProductDetailStyles.txtLight,
+              { color: theme.colors.black, fontSize: 12 },
+            ]}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity style={ProductDetailStyles.subFooterBuy}>
+          <Text
+            text="Buy Now"
+            textStyle={[
+              { fontSize: 12 },
+              ProductDetailStyles.txtLight,
+              ProductDetailStyles.txtWhite,
+            ]}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
