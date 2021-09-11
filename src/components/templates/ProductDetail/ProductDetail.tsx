@@ -23,13 +23,11 @@ import type { PropsType } from "./types";
 import ImageOverlayReviews from "@app/components/organisms/ImageOverlayReviews";
 import ListChevronStyles from "@app/components/organisms/ListChevron/styles";
 import Icon from "@app/atoms/Icon";
-<<<<<<< HEAD
+
 import Button from "@app/atoms/Button";
 import { PropsType as ButtonProps } from "@app/atoms/Button/types";
 import { theme } from "@app/styles";
 import ImageOverlay from "@app/components/molecules/ImageOverlay";
-=======
->>>>>>> 70c4055... docs(review points fixes): fixes on layout
 
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
