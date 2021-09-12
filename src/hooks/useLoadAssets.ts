@@ -2,8 +2,9 @@ import { useState } from "react";
 import { Asset } from "expo-asset";
 import * as Font from "expo-font";
 
-import { FontSource } from "../components/load-assets/types";
 import usePromiseAll from "./usePromiseAll";
+
+type FontSource = Parameters<typeof Font.loadAsync>[0];
 
 const useLoadAssets = (assets: number[], fonts: FontSource): boolean => {
   const [ready, setReady] = useState(false);

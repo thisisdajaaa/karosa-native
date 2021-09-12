@@ -6,7 +6,7 @@
  */
 
 import React from "react";
-import renderer from "@app/components/templates/AuthLogin/__tests__/node_modules/react-test-renderer";
+import renderer from "@app/templates/AuthLogin/__tests__/node_modules/react-test-renderer";
 
 import Badge from "../Badge";
 

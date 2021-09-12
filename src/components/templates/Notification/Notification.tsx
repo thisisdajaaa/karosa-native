@@ -1,6 +1,6 @@
 /**
  *
- * Home
+ * Notification
  * @format
  *
  */
@@ -8,20 +8,20 @@
 import React, { FC } from "react";
 import Header from "@app/molecules/Header";
 
-import HomeStyles from "./styles";
+import NotificationStyles from "./styles";
 
-const HomeTemplate: FC = () => {
+const NotificationTemplate: FC = () => {
   return (
     <>
       <Header
         hasBottomDivider
         centerComponent={{
-          text: "Home",
-          style: HomeStyles.txtHeader,
+          text: "Notification",
+          style: NotificationStyles.txtHeader,
         }}
       />
     </>
   );
 };
 
-export default HomeTemplate;
+export default NotificationTemplate;

@@ -1,6 +1,6 @@
 /**
  *
- * Home
+ * Basket
  * @format
  *
  */
@@ -8,20 +8,20 @@
 import React, { FC } from "react";
 import Header from "@app/molecules/Header";
 
-import HomeStyles from "./styles";
+import BasketStyles from "./styles";
 
-const HomeTemplate: FC = () => {
+const BasketTemplate: FC = () => {
   return (
     <>
       <Header
         hasBottomDivider
         centerComponent={{
-          text: "Home",
-          style: HomeStyles.txtHeader,
+          text: "Basket",
+          style: BasketStyles.txtHeader,
         }}
       />
     </>
   );
 };
 
-export default HomeTemplate;
+export default BasketTemplate;

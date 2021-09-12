@@ -1,10 +1,8 @@
 import React, { FC } from "react";
-import HomeLayout from "@app/templates/Home";
+import HomeTemplate from "@app/templates/Home";
 
-import type { PropsType } from "./types";
-
-const Home: FC<PropsType> = () => {
-  return <HomeLayout />;
+const Home: FC = () => {
+  return <HomeTemplate />;
 };
 
 export default Home;
