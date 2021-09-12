@@ -35,9 +35,7 @@ export const AddressList: React.FC<AddressProps> = ({ address, style }) => {
         <BaseText>{address.address}</BaseText>
       </View>
 
-      <BaseText style={[styles.default]}>
-        {address.default && "default"}
-      </BaseText>
+      <BaseText style={styles.default}>{address.default && "default"}</BaseText>
     </View>
   );
 };
