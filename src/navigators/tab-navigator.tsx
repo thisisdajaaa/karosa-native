@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { FC, Fragment, useRef } from "react";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { EventArg } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -7,13 +7,13 @@ import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useAuth, useMemoizedSelector, useUpdateEffect } from "@app/hooks";
 import { theme } from "@app/styles";
 import { selectors } from "@app/redux/auth";
-import UserAccountMainScreen from "@app/screens/UserAccount/UserAccountMain";
+import UserAccountMainScreen from "@app/screens/UserAccountMain";
 import AuthMainScreen from "@app/screens/AuthMain";
-import BasketScreen from "@app/screens/basket";
-import NotificationScreen from "@app/screens/notifications";
+import BasketScreen from "@app/screens/Basket";
+import NotificationScreen from "@app/screens/Notification";
 import ProductListContent from "@app/templates/ProductList/MainContent";
+import HomeScreen from "@app/screens/Home";
 import routes from "@app/navigators/routes";
-import Home from "@app/screens/Home";
 
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -45,7 +45,7 @@ const ProductTabs: React.FC = () => {
   );
 };
 
-const TabNavigator: React.FC = () => {
+const TabNavigator: FC = () => {
   const sheetRef = useRef<RBSheet>(null);
 
   const { isLoggedIn } = useAuth();
@@ -57,7 +57,7 @@ const TabNavigator: React.FC = () => {
   }, [authEntryContext.isBack]);
 
   return (
-    <React.Fragment>
+    <Fragment>
       <BottomTab.Navigator
         lazy
         tabBarOptions={{
@@ -66,7 +66,7 @@ const TabNavigator: React.FC = () => {
         }}>
         <BottomTab.Screen
           name={routes.HOME}
-          component={Home}
+          component={HomeScreen}
           options={{
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name="home" size={size} color={color} />
@@ -111,7 +111,7 @@ const TabNavigator: React.FC = () => {
       </BottomTab.Navigator>
 
       <AuthMainScreen sheetRef={sheetRef} />
-    </React.Fragment>
+    </Fragment>
   );
 };
 

@@ -5,7 +5,7 @@
  *
  */
 
-import React from "react";
+import React, { Fragment, memo, FC } from "react";
 import { View } from "react-native";
 
 import ListAction from "@app/organisms/ListAction";
@@ -15,10 +15,10 @@ import Divider from "@app/atoms/Divider";
 
 import { Props } from "./types";
 
-export const MultiList: React.FC<Props> = React.memo(
+export const MultiList: FC<Props> = memo(
   ({ multiChev, multiDisp, multiAction }) => {
     return (
-      <React.Fragment>
+      <Fragment>
         {multiChev &&
           multiChev.map((item, key) => (
             <View key={key}>
@@ -42,7 +42,7 @@ export const MultiList: React.FC<Props> = React.memo(
               {item.hasSeparator && <Divider />}
             </View>
           ))}
-      </React.Fragment>
+      </Fragment>
     );
   }
 );

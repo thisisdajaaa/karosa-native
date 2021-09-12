@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     fontWeight: "400",
     fontSize: 16,
     lineHeight: 19,
-    color: "#4F4F4F",
+    color: theme.colors.dark30,
     alignSelf: "flex-start",
   },
 });

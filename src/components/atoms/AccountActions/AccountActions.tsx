@@ -7,11 +7,14 @@
 
 import React, { FC } from "react";
 import { View, TouchableOpacity } from "react-native";
+import Text from "@app/atoms/Text";
+
 import type { Props } from "./types";
 import { styles } from "./styles";
-import Text from "../Text";
 
-const AccountActions: FC<Props> = ({ actions }) => {
+const AccountActions: FC<Props> = (props) => {
+  const { actions } = props;
+
   return (
     <View style={styles.container}>
       {actions.map((action, key) => (
