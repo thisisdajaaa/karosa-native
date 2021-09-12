@@ -16,7 +16,7 @@ import Header from "@app/molecules/Header";
 import Text from "@app/atoms/Text";
 import { VariationForm, VariationItem } from "@app/redux/shop/models";
 import Icon from "@app/atoms/Icon";
-import FormButton from "@app/components/molecules/FormButton";
+import FormButton from "@app/molecules/FormButton";
 
 import type { PropsType } from "./types";
 import { ADD_VARIATION_LENGTH, ICON_SIZE } from "./config";
