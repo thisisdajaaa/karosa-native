@@ -7,7 +7,7 @@ import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useAuth, useMemoizedSelector, useUpdateEffect } from "@app/hooks";
 import { theme } from "@app/styles";
 import { selectors } from "@app/redux/auth";
-import UserAccountMainScreen from "@app/screens/UserAccount/UserAccountMain";
+import UserAccountMainScreen from "@app/screens/UserAccountMain";
 import AuthMainScreen from "@app/screens/AuthMain";
 import BasketScreen from "@app/screens/basket";
 import NotificationScreen from "@app/screens/notifications";

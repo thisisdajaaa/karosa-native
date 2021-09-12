@@ -4,17 +4,15 @@ import AuthLoginScreen from "@app/screens/AuthLogin";
 import AuthForgotScreen from "@app/screens/AuthForgot";
 import HelpScreen from "@app/screens/AuthHelp";
 import ProductNewScreen from "@app/screens/ProductNew";
-import AccountSettingsScreen from "@app/screens/UserAccount/UserAccountSettings";
-import EditProfileScreen from "@app/screens/UserAccount/UserAccountEdit";
-import SocialMediaScreen from "@app/screens/UserAccount/UserAccountSocialMedia";
+import AccountSettingsScreen from "@app/screens/UserAccountSettings";
+import EditProfileScreen from "@app/screens/UserAccountEdit";
+import SocialMediaScreen from "@app/screens/UserAccountSocialMedia";
 import MyProductsScreen from "@app/screens/ProductList";
 import SearchMyProductScreen from "@app/screens/ProductSearch";
 import AddVariationScreen from "@app/screens/ProductVariation";
 import AddWholesaleScreen from "@app/screens/ProductWholesale";
 import ChooseCategoryScreen from "@app/screens/ProductCategories";
 import ShippingDetailsScreen from "@app/screens/ProductShipping";
-import NewAddressScreen from "@app/screens/UserAccount/UserAccountNewAddress";
-import MyAddressScreen from "@app/screens/UserAccount/UserAccountMyAddress";
 import ShopMainScreen from "@app/screens/ShopMain";
 import ShopSettingsScreen from "@app/screens/ShopSettings";
 import ShopPaymentScreen from "@app/screens/ShopPayment";
@@ -48,8 +46,6 @@ const StackNavigator: React.FC = () => {
       />
       <Stack.Screen name="SignUp Password" component={AuthPasswordScreen} />
       <Stack.Screen name="SignUp OTP" component={AuthVerificationScreen} />
-      <Stack.Screen name="New Address" component={NewAddressScreen} />
-      <Stack.Screen name="My Address" component={MyAddressScreen} />
       <Stack.Screen name="Shop Main" component={ShopMainScreen} />
       <Stack.Screen name="Shop Settings" component={ShopSettingsScreen} />
       <Stack.Screen name="Shop Payment" component={ShopPaymentScreen} />
