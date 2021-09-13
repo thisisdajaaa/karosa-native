@@ -32,7 +32,7 @@ type AutoCompleteType =
 
 export type PropsType = {
   value: string;
-  placeholder: string;
+  placeholder?: string;
   onChange?(text: string): void;
   onEndEditing?(e: NativeSyntheticEvent<TextInputEndEditingEventData>): void;
   inputStyle?: StyleProp<TextStyle>;

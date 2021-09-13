@@ -6,13 +6,13 @@
  */
 
 import React, { FC, useCallback, useRef } from "react";
-import { batch, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { FormikContext, useFormik } from "formik";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
-import { AddProductRequest, ProductForm } from "@app/redux/shop/models";
+import { ProductForm } from "@app/redux/shop/models";
 import ProductNewTemplate from "@app/templates/ProductNew";
 import routes from "@app/navigators/routes";
 import ProductStatus from "@app/screens/ProductStatus";
@@ -31,12 +31,6 @@ const ProductNewScreen: FC = () => {
 
   const { goBack, navigate } = useNavigation();
 
-  const callAddProductApi = useCallback(
-    (request: AddProductRequest) =>
-      dispatch(actions.callAddProductApi.request(request)),
-    [dispatch]
-  );
-
   const clearProductEntry = useCallback(
     () => dispatch(actions.clearProductEntry()),
     [dispatch]
@@ -51,19 +45,15 @@ const ProductNewScreen: FC = () => {
 
   const { statusValue, statusColor } = statusInformation(productForm.status);
 
+  const handleSubmit = (values: ProductForm) => {
+    setProductForm(values);
+    clearProductEntry();
+    navigate(routes.SHOP_PRODUCTS);
+  };
+
   const formikBag = useFormik({
     initialValues: productForm,
-    onSubmit: (values) => {
-      batch(() => {
-        callAddProductApi({
-          name: values.productNm,
-          categoryId: productForm.categoryId,
-          description: values.description,
-        });
-        setProductForm(values);
-        clearProductEntry();
-      });
-    },
+    onSubmit: handleSubmit,
   });
 
   const navigation: ProductNewNavigation = {

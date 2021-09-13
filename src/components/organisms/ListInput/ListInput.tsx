@@ -22,6 +22,7 @@ const ListInput: FC<PropsType> = (props) => {
     required,
     maxLen,
     keyboardType,
+    icon,
     info,
   } = props;
 
@@ -44,6 +45,7 @@ const ListInput: FC<PropsType> = (props) => {
         <VariationTwo
           variation={variation}
           label={label}
+          icon={icon}
           hasBottomDivider={hasBottomDivider}
           name={name}
           placeholder={placeholder}

@@ -24,8 +24,19 @@ const ListChevronStyles = StyleSheet.create({
     left: 0,
     fontSize: 30,
   },
+  icon: {
+    position: "relative",
+    left: 0,
+  },
   title: {
     ...theme.textRegular,
+    fontWeight: "400",
+  },
+  txtWithIcon: {
+    ...theme.textListItem,
+    position: "relative",
+    left: 7,
+    marginRight: 6,
     fontWeight: "400",
   },
   txtAvatarTitle: {

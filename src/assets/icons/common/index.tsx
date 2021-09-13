@@ -9,6 +9,7 @@ import { ViewStyle, StyleProp } from "react-native";
 import Back from "./back.svg";
 import CameraGray from "./camera-gray.svg";
 import CameraWhite from "./camera-white.svg";
+import CameraGreen from "./camera-green.svg";
 import Chat from "./chat.svg";
 import GreenCircle from "./green-circle.svg";
 import GrayCircle from "./gray-circle.svg";
@@ -37,6 +38,9 @@ const CommonIcons = (
     cameraGray: <CameraGray style={extraStyle} height={height} width={width} />,
     cameraWhite: (
       <CameraWhite style={extraStyle} height={height} width={width} />
+    ),
+    cameraGreen: (
+      <CameraGreen style={extraStyle} height={height} width={width} />
     ),
     chat: <Chat style={extraStyle} height={height} width={width} />,
     greenCircle: (
