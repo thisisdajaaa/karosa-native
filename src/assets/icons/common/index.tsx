@@ -26,6 +26,8 @@ import ToRate from "./to-rate.svg";
 import ToReceive from "./to-receive.svg";
 import ToShip from "./to-ship.svg";
 import Warning from "./warning.svg";
+import Check from "./check.svg";
+import Uncheck from "./uncheck.svg";
 
 const CommonIcons = (
   name: string,
@@ -35,6 +37,8 @@ const CommonIcons = (
 ) => {
   const icons: { [key: string]: JSX.Element } = {
     back: <Back style={extraStyle} height={height} width={width} />,
+    check: <Check style={extraStyle} height={height} width={width} />,
+    uncheck: <Uncheck style={extraStyle} height={height} width={width} />,
     cameraGray: <CameraGray style={extraStyle} height={height} width={width} />,
     cameraWhite: (
       <CameraWhite style={extraStyle} height={height} width={width} />

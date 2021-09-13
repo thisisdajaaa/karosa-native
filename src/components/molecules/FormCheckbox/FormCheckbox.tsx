@@ -13,7 +13,7 @@ import Checkbox from "@app/atoms/Checkbox";
 import type { PropsType } from "./types";
 
 const FormCheckbox: FC<PropsType> = (props) => {
-  const { label, name, uncheckedColor } = props;
+  const { label, name, uncheckedColor, onCheck } = props;
 
   const [, meta, helpers] = useField(name);
 
@@ -28,7 +28,9 @@ const FormCheckbox: FC<PropsType> = (props) => {
   const handlePress = useCallback(() => {
     setCurrentValue((prev: boolean) => !prev);
     helpers.setTouched(true);
-  }, [helpers]);
+
+    if (onCheck) onCheck();
+  }, [helpers, onCheck]);
 
   return (
     <Checkbox

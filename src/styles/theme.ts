@@ -31,6 +31,11 @@ const theme = {
     lineHeight: 18.75,
     fontFamily: "SFProText-Regular",
   },
+  textSemiBold: {
+    fontSize: 16,
+    lineHeight: 18.75,
+    fontFamily: "SFProText-Semibold",
+  },
   textPicker: {
     fontSize: 18,
     lineHeight: 18.75,

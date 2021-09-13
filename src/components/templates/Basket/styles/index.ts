@@ -12,6 +12,10 @@ const BasketStyles = StyleSheet.create({
     ...theme.textBold,
     fontWeight: "700",
   },
+  container: {
+    flex: 1,
+    position: "relative",
+  },
 });
 
 export default BasketStyles;

@@ -2,6 +2,7 @@ import { ENUM } from "@app/constants";
 
 import {
   AvailabilityForm,
+  BasketContext,
   ProductForm,
   ShippingDetailsForm,
   ShopAddressForm,
@@ -82,7 +83,90 @@ export const initShopAddressForm: ShopAddressForm = {
   region: -1,
 };
 
+export const initBasketContext: BasketContext = {
+  storeData: [
+    {
+      id: "1",
+      storeName: "Store Number 1",
+      isChecked: false,
+      items: [
+        {
+          id: "1",
+          image:
+            "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
+          name: "Tomato",
+          price: "200",
+          quantity: "1",
+          isChecked: false,
+          picker: [
+            {
+              key: "1",
+              label: "100 Kgms",
+              value: 100,
+            },
+            {
+              key: "2",
+              label: "200 Kgms",
+              value: 200,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "2",
+      storeName: "Store Number 2",
+      isChecked: false,
+      items: [
+        {
+          id: "1",
+          image:
+            "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
+          name: "Tomato",
+          price: "200",
+          quantity: "1",
+          isChecked: false,
+          picker: [
+            {
+              key: "1",
+              label: "100 Kgms",
+              value: 100,
+            },
+            {
+              key: "2",
+              label: "200 Kgms",
+              value: 200,
+            },
+          ],
+        },
+        {
+          id: "2",
+          image:
+            "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
+          name: "Tomato",
+          price: "300",
+          quantity: "1",
+          isChecked: false,
+          picker: [
+            {
+              key: "1",
+              label: "300 Kgms",
+              value: 300,
+            },
+            {
+              key: "2",
+              label: "400 Kgms",
+              value: 400,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
 export const initShopState: ShopState = {
+  basketContext: initBasketContext,
   shopEntryContext: {
     shopSettings: initShopSettingsForm,
     shopPayment: initShopPaymentForm,
