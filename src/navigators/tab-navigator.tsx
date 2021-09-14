@@ -72,17 +72,7 @@ const TabNavigator: FC = () => {
             ),
           }}
         />
-        {/* for testing purposes */}
-        <BottomTab.Screen
-          name={routes.WISHLIST}
-          component={Wishlist}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <FontAwesome name="home" size={size} color={color} />
-            ),
-          }}
-        />
-        {/* for testing purposes */}
+
         <BottomTab.Screen
           name={routes.MY_BASKET}
           component={BasketScreen}
