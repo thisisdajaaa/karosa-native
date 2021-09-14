@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { FC, useCallback, useMemo, useRef, useState } from "react";
 import type { IToastContext, ToastProps, ToastProviderProps } from "../types";
 import Toast from "../Toast";
 import ToastContext from "./ToastContext";
@@ -15,7 +15,7 @@ const defaultContext: Partial<IToastContext> = {
   },
 };
 
-const ToastProvider: React.FC<ToastProviderProps> = ({
+const ToastProvider: FC<ToastProviderProps> = ({
   defaults,
   customToasts,
   children,

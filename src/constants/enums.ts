@@ -33,7 +33,7 @@ export enum OAuth {
   None = "none",
 }
 
-export enum Wishlist_Filter {
-  All = "all",
-  Filtered = "filtered",
+export enum VariationMode {
+  Done = "done",
+  Edit = "edit",
 }

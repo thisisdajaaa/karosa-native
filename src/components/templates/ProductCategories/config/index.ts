@@ -9,62 +9,62 @@ export const COLS = 3;
 export const dummyCategories = [
   {
     id: "1",
-    name: "Veggies",
+    iconName: "categoryFruits",
+    name: "Fruits",
   },
   {
     id: "2",
-    name: "Veggies",
+    iconName: "categoryVegetables",
+    name: "Vegetables",
   },
   {
     id: "3",
-    name: "Veggies",
+    iconName: "categoryCoffee",
+    name: "Coffee and Cacao",
   },
   {
     id: "4",
-    name: "Veggies",
+    iconName: "categoryRoots",
+    name: "Root Crops",
   },
   {
     id: "5",
-    name: "Veggies",
+    iconName: "categoryMeats",
+    name: "Sea Foods and Meat",
   },
   {
     id: "6",
-    name: "Veggies",
+    iconName: "categoryHerbs",
+    name: "Herbs and Spices",
   },
   {
     id: "7",
-    name: "Veggies",
+    iconName: "categoryGrains",
+    name: "Grains and Cereals",
   },
   {
     id: "8",
-    name: "Veggies",
+    iconName: "categorySeeds",
+    name: "Seeds and Seedlings",
   },
   {
     id: "9",
-    name: "Veggies",
+    iconName: "categorySyrups",
+    name: "Syrups and Beverages",
   },
   {
     id: "10",
-    name: "Veggies",
+    iconName: "categoryPlants",
+    name: "Plants and Flowers",
   },
   {
     id: "11",
-    name: "Veggies",
+    iconName: "categoryDairy",
+    name: "Dairy",
   },
   {
     id: "12",
-    name: "Veggies",
-  },
-  {
-    id: "13",
-    name: "Veggies",
-  },
-  {
-    id: "14",
-    name: "Veggies",
-  },
-  {
-    id: "15",
-    name: "Veggies",
+    iconName: "categoryFeeds",
+    name: "Feeds and Fertilizers",
   },
 ];

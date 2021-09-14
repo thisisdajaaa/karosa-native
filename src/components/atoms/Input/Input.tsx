@@ -55,6 +55,7 @@ const Input: FC<PropsType> = (props) => {
       autoCapitalize={autoCapitalize}
       maxLength={maxLength}
       secureTextEntry={secureTextEntry}
+      errorStyle={InputStyles.txtError}
       containerStyle={[InputStyles.container, containerStyle]}
     />
   );

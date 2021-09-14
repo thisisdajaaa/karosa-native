@@ -4,6 +4,7 @@
  *
  */
 
+import { WithIcon } from "@app/utils";
 import { StyleProp, TextStyle } from "react-native";
 
 export type PropsType = {
@@ -16,6 +17,7 @@ export type PropsType = {
   avatar?: string;
   hasBottomDivider?: boolean;
   required?: boolean;
+  icon?: WithIcon;
   infoStyle?: StyleProp<TextStyle>;
   onPress: () => void;
 };

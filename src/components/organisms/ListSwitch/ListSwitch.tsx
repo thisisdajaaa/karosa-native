@@ -10,13 +10,15 @@ import { ListItem } from "react-native-elements";
 import { View } from "react-native";
 import FormSwitch from "@app/molecules/FormSwitch";
 import Text from "@app/atoms/Text";
+import Icon from "@app/atoms/Icon";
 import ValidationMessage from "@app/molecules/ValidationMessage";
 
 import type { PropsType } from "./types";
 import ListSwitchStyles from "./styles";
 
 const ListSwitch: FC<PropsType> = (props) => {
-  const { name, title, boldTitle, info, disabled, hasBottomDivider } = props;
+  const { name, title, boldTitle, info, disabled, hasBottomDivider, icon } =
+    props;
 
   return (
     <ListItem bottomDivider={hasBottomDivider}>
@@ -25,10 +27,28 @@ const ListSwitch: FC<PropsType> = (props) => {
           {boldTitle && (
             <Text text={boldTitle} textStyle={ListSwitchStyles.txtBoldTitle} />
           )}
-          {title && <Text text={title} textStyle={ListSwitchStyles.txtTitle} />}
+
+          {title && !icon && (
+            <Text text={title} textStyle={ListSwitchStyles.txtTitle} />
+          )}
+
           {info && (
             <Text text={info} textStyle={ListSwitchStyles.txtExtraInfo} />
           )}
+
+          {title && icon && (
+            <>
+              <Icon
+                group={icon.group}
+                name={icon.name}
+                height={icon.height}
+                width={icon.width}
+                extraStyle={ListSwitchStyles.icon}
+              />
+              <Text text={title} textStyle={ListSwitchStyles.txtWithIcon} />
+            </>
+          )}
+
           <ListItem.Content style={ListSwitchStyles.rightContainer}>
             <FormSwitch name={name} disabled={disabled} />
           </ListItem.Content>

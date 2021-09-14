@@ -4,6 +4,8 @@
  *
  */
 
+import { WithIcon } from "@app/utils";
+
 type Icon = "green" | "gray" | "gold" | string;
 
 export type PropsType = {
@@ -13,4 +15,5 @@ export type PropsType = {
   color: Icon;
   required?: boolean;
   onPress(): void;
+  icon?: WithIcon;
 };

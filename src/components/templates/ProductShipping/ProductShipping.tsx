@@ -51,7 +51,7 @@ const ProductShippingTemplate: FC<PropsType> = (props) => {
   ) => {
     return (
       <ListSwitch
-        boldTitle={title}
+        title={title}
         disabled={disabled}
         name={name}
         info={info}
@@ -64,12 +64,16 @@ const ProductShippingTemplate: FC<PropsType> = (props) => {
     const elements: ReactElement[] = [];
 
     const spacer = <View style={ProductShippingStyles.formSpacer} />;
-    const title = <ListTitle label="Packaging Size" hasBottomDivider />;
+    const title = (
+      <ListTitle label="Packaging Size" required hasBottomDivider />
+    );
     const width = listInput("width", "Width (cm)", "Set", false);
     const length = listInput("length", "Length (cm)", "Set", false);
     const height = listInput("height", "Height (cm)", "Set", false);
     const pickUpBuyer = listSwitch("pickUpBuyer", "Pick Up by Buyer", false);
-
+    const deliveryOptions = (
+      <ListTitle label="Delivery Options" required hasBottomDivider />
+    );
     const weight = listInput(
       "weight",
       "Weight per product",
@@ -105,6 +109,7 @@ const ProductShippingTemplate: FC<PropsType> = (props) => {
       length,
       height,
       spacer,
+      deliveryOptions,
       expressDelivery,
       karosaDelivery,
       pickUpBuyer,

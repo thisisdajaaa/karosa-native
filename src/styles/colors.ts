@@ -25,6 +25,8 @@ const palette = {
   dark35: "#323232",
   light5: "#F5F5F5",
   light10: "#ECECEC",
+  light15: "#F2F3F7",
+  light20: "#ACABAB",
   transparent: "transparent",
   toast: "rgba(64, 64, 64, 0.87)",
   grey5: "#F2F3F7",

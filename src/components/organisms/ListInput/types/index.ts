@@ -4,6 +4,7 @@
  *
  */
 
+import { WithIcon } from "@app/utils";
 import { KeyboardTypeOptions } from "react-native";
 
 export type PropsType = {
@@ -16,4 +17,5 @@ export type PropsType = {
   hasBottomDivider?: boolean;
   keyboardType?: KeyboardTypeOptions;
   info?: string;
+  icon?: WithIcon;
 };
