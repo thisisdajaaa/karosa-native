@@ -14,6 +14,7 @@ import NotificationScreen from "@app/screens/Notification";
 import ProductListContent from "@app/templates/ProductList/MainContent";
 import HomeScreen from "@app/screens/Home";
 import routes from "@app/navigators/routes";
+import OrderFullfillment from "@app/screens/OrderFullfillment";
 
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -73,9 +74,18 @@ const TabNavigator: FC = () => {
             ),
           }}
         />
-        <BottomTab.Screen
+        {/* <BottomTab.Screen
           name={routes.MY_BASKET}
           component={BasketScreen}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="md-basket" size={size} color={color} />
+            ),
+          }}
+        /> */}
+        <BottomTab.Screen
+          name={routes.ORDER_FULLFILLMENT}
+          component={OrderFullfillment}
           options={{
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="md-basket" size={size} color={color} />

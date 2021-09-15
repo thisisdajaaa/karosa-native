@@ -13,6 +13,7 @@ import LoginIcons from "./login";
 import ProductsIcons from "./products";
 import BasketIcons from "./basket";
 import CheckoutIcons from "./checkout";
+import OrderFullfillmentIcons from "./order-fullfillment";
 
 const Icons: {
   [key: string]: (
@@ -30,6 +31,7 @@ const Icons: {
   products: ProductsIcons,
   basket: BasketIcons,
   checkout: CheckoutIcons,
+  orderFuillFillment: OrderFullfillmentIcons,
 };
 
 export default Icons;

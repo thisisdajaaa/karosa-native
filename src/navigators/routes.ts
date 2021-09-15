@@ -44,4 +44,5 @@ export default Object.freeze({
   MY_BASKET: "My Basket",
   CHECKOUT: "Checkout",
   NOTIFICATIONS: "Notifications",
+  ORDER_FULLFILLMENT: "Orders",
 });
