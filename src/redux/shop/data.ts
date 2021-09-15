@@ -94,10 +94,11 @@ export const initBasketContext: BasketContext = {
           id: "1",
           image:
             "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
-          name: "Tomato",
+          name: "Mangosteen Product Name sample text...",
           price: "200",
           quantity: "1",
           isChecked: false,
+          selectedPicker: 100,
           picker: [
             {
               key: "1",
@@ -122,10 +123,11 @@ export const initBasketContext: BasketContext = {
           id: "1",
           image:
             "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
-          name: "Tomato",
+          name: "Mangosteen Product Name sample text...",
           price: "200",
           quantity: "1",
           isChecked: false,
+          selectedPicker: 100,
           picker: [
             {
               key: "1",
@@ -143,10 +145,11 @@ export const initBasketContext: BasketContext = {
           id: "2",
           image:
             "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
-          name: "Tomato",
+          name: "Mangosteen Product Name sample text...",
           price: "300",
           quantity: "1",
           isChecked: false,
+          selectedPicker: 300,
           picker: [
             {
               key: "1",

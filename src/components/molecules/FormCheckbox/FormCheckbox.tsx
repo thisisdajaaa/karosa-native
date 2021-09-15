@@ -22,15 +22,20 @@ const FormCheckbox: FC<PropsType> = (props) => {
   );
 
   useUpdateEffect(() => {
-    helpers.setValue(currentValue);
-  }, [currentValue]);
+    setCurrentValue(meta.value);
+  }, [meta.value]);
 
   const handlePress = useCallback(() => {
+    let temp = currentValue;
+
     setCurrentValue((prev: boolean) => !prev);
+    temp = !currentValue;
+
+    helpers.setValue(temp);
     helpers.setTouched(true);
 
     if (onCheck) onCheck();
-  }, [helpers, onCheck]);
+  }, [helpers]);
 
   return (
     <Checkbox

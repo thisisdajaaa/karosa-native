@@ -100,17 +100,18 @@ export type ShopAddressForm = {
 };
 
 export type StoreData = {
-  id: string | number[];
+  id: string;
   storeName: string;
   isChecked: boolean;
   items: StoreItems[];
 };
 
 export type StoreItems = {
-  id: string | number[];
+  id: string;
   image: string;
   isChecked: boolean;
   name: string;
+  selectedPicker: number;
   picker: PickerData[];
   price: string;
   quantity: string;
