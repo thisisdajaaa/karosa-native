@@ -14,7 +14,7 @@ import Quantity from "@app/atoms/Quantity";
 import type { PropsType } from "./types";
 
 const FormQuantity: FC<PropsType> = (props) => {
-  const { name } = props;
+  const { name, onDecrement, onIncrement } = props;
 
   const [, meta, helpers] = useField(name);
 
@@ -34,6 +34,8 @@ const FormQuantity: FC<PropsType> = (props) => {
 
     helpers.setValue(tempValue);
     helpers.setTouched(true);
+
+    if (onIncrement) onIncrement();
   }, [helpers]);
 
   const handleDecrement = useCallback(() => {
@@ -44,14 +46,17 @@ const FormQuantity: FC<PropsType> = (props) => {
       tempValue -= 1;
     };
 
-    Number(currentValue) <= 0 ? 0 : decrease();
+    if (onDecrement) {
+      Number(currentValue) <= 1 ? onDecrement() : decrease();
 
-    helpers.setValue(tempValue);
-    helpers.setTouched(true);
+      helpers.setValue(tempValue);
+      helpers.setTouched(true);
+    }
   }, [helpers]);
 
   return (
     <Quantity
+      {...props}
       onDecrement={handleDecrement}
       onIncrement={handleIncrement}
       value={String(currentValue)}

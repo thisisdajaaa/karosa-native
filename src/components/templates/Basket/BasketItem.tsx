@@ -1,5 +1,5 @@
-import React, { FC, Fragment } from "react";
-import { View } from "react-native";
+import React, { FC, Fragment, useEffect, useState } from "react";
+import { TouchableWithoutFeedback, View } from "react-native";
 import { theme } from "@app/styles";
 import { BasketContext, StoreData } from "@app/redux/shop/models";
 import Text from "@app/atoms/Text";
@@ -11,7 +11,9 @@ import FormCheckbox from "@app/molecules/FormCheckbox";
 import Icon from "@app/atoms/Icon";
 import FormPicker from "@app/molecules/FormPicker";
 import FormQuantity from "@app/molecules/FormQuantity";
-import Price from "./Price";
+import BasketItemPrice from "./BasketItemPrice";
+import { Swipeable } from "react-native-gesture-handler";
+import { isEmpty } from "ramda";
 
 type Props = {
   item: StoreData;
@@ -22,6 +24,8 @@ const BasketItem: FC<Props> = (props) => {
   const { item, storeIndex } = props;
 
   const { values, setValues } = useFormikContext<BasketContext>();
+
+  const [isClicked, setIsClicked] = useState<boolean>(false);
 
   const handleStoreCheck = (index: number) => {
     const newStoreData: StoreData[] = values.storeData.map((store) => {
@@ -49,14 +53,69 @@ const BasketItem: FC<Props> = (props) => {
     });
   };
 
-  const gg: any[] = [];
+  const onToggleStoreCheck = (isChecked: boolean) => {
+    const newStoreData: StoreData[] = values.storeData.map((store) => {
+      if (Number(store.id) === Number(values.storeData[storeIndex].id)) {
+        return {
+          ...store,
+          isChecked,
+        };
+      }
 
-  const handleItemCheck = (storeIndex: number, storeKey: number) => {
-    values.storeData.forEach((store) => {
-      if (!store.items[storeKey].isChecked)
-        gg.push(!store.items[storeKey].isChecked);
+      return {
+        ...store,
+      };
     });
-    console.log(gg);
+
+    setValues({
+      ...values.storeData,
+      storeData: newStoreData,
+    });
+  };
+
+  const handleRemove = (storeKey: number) => {
+    const newStoreData: StoreData[] = values.storeData.map((store) => {
+      if (Number(store.id) === Number(values.storeData[storeIndex].id)) {
+        return {
+          ...store,
+          items: store.items.filter(
+            (item) =>
+              Number(item.id) !==
+              Number(values.storeData[storeIndex].items[storeKey].id)
+          ),
+        };
+      }
+
+      return {
+        ...store,
+      };
+    });
+
+    const filteredStoreData: StoreData[] = newStoreData.filter(
+      (store) => !isEmpty(store.items)
+    );
+
+    setValues({
+      ...values.storeData,
+      storeData: filteredStoreData,
+    });
+  };
+
+  useEffect(() => {
+    const mapStoreCheck = values.storeData[storeIndex].items.map(
+      (item) => item.isChecked
+    );
+
+    const isStoreItemsChecked = mapStoreCheck.every((checked) => checked);
+
+    isStoreItemsChecked ? onToggleStoreCheck(true) : onToggleStoreCheck(false);
+  }, [isClicked]);
+
+  const disableIncrement = (storeKey: number) => {
+    const quantity = values.storeData[storeIndex].items[storeKey].quantity;
+    const stock = values.storeData[storeIndex].items[storeKey].stock;
+
+    return quantity >= stock;
   };
 
   return (
@@ -93,69 +152,93 @@ const BasketItem: FC<Props> = (props) => {
 
       {/** Store Items */}
       {item.items.map((storeItem, storeKey) => (
-        <ListItem
-          key={Number(storeItem.id)}
-          bottomDivider={storeKey === item.items.length - 1}>
-          <View style={{ flexDirection: "column" }}>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "flex-start",
-              }}>
-              <FormCheckbox
-                name={`storeData[${storeIndex}].items[${storeKey}].isChecked`}
-                onCheck={() => handleItemCheck(storeIndex, Number(storeKey))}
-                label={<Fragment />}
-              />
-              <View style={{ marginLeft: 10 }}>
-                <Image
-                  source={{ uri: storeItem.image }}
-                  imageStyle={{ height: 75, width: 75 }}
-                  resizeMode="cover"
-                />
-              </View>
+        <Swipeable
+          renderRightActions={() => (
+            <TouchableWithoutFeedback onPress={() => handleRemove(storeKey)}>
               <View
                 style={{
-                  marginLeft: 10,
-                  flexDirection: "column",
-                  width: "60%",
+                  backgroundColor: theme.colors.gold15,
+                  width: 96,
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}>
+                <Icon group="basket" name="trash" height={24} width={24} />
                 <Text
-                  text={storeItem.name}
-                  numberOfLines={2}
+                  text="Delete"
                   textStyle={{
-                    marginBottom: 8,
+                    ...theme.textRegular,
+                    color: theme.colors.primary,
+                    marginTop: 8,
                   }}
                 />
-                <FormPicker
-                  data={storeItem.picker}
-                  placeholder={""}
-                  name={`storeData[${storeIndex}].items[${storeKey}].selectedPicker`}
+              </View>
+            </TouchableWithoutFeedback>
+          )}
+          key={Number(storeItem.id)}>
+          <ListItem bottomDivider={storeKey === item.items.length - 1}>
+            <View style={{ flexDirection: "column" }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "flex-start",
+                }}>
+                <FormCheckbox
+                  name={`storeData[${storeIndex}].items[${storeKey}].isChecked`}
+                  onCheck={() => setIsClicked((prev) => !prev)}
+                  label={<Fragment />}
+                />
+                <View style={{ marginLeft: 10 }}>
+                  <Image
+                    source={{ uri: storeItem.image }}
+                    imageStyle={{ height: 75, width: 75 }}
+                    resizeMode="cover"
+                  />
+                </View>
+                <View
+                  style={{
+                    marginLeft: 10,
+                    flexDirection: "column",
+                    width: "60%",
+                  }}>
+                  <Text
+                    text={storeItem.name}
+                    numberOfLines={2}
+                    textStyle={{
+                      marginBottom: 8,
+                    }}
+                  />
+                  <FormPicker
+                    data={storeItem.picker}
+                    placeholder={""}
+                    name={`storeData[${storeIndex}].items[${storeKey}].selectedPicker`}
+                  />
+                </View>
+              </View>
+
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginTop: 8,
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}>
+                <View style={{ marginLeft: "auto", marginRight: 68 }}>
+                  <BasketItemPrice
+                    index={storeIndex}
+                    storeItemKey={storeKey}
+                    currentPrice={Number(storeItem.price)}
+                  />
+                </View>
+
+                <FormQuantity
+                  onDecrement={() => alert("G")}
+                  disableIncrement={disableIncrement(storeKey)}
+                  name={`storeData[${storeIndex}].items[${storeKey}].quantity`}
                 />
               </View>
             </View>
-
-            <View
-              style={{
-                flexDirection: "row",
-                marginTop: 8,
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}>
-              <View style={{ marginLeft: "auto", marginRight: 68 }}>
-                <Price
-                  index={storeIndex}
-                  storeItemKey={storeKey}
-                  currentPrice={storeItem.price}
-                />
-              </View>
-
-              <FormQuantity
-                name={`storeData[${storeIndex}].items[${storeKey}].quantity`}
-              />
-            </View>
-          </View>
-        </ListItem>
+          </ListItem>
+        </Swipeable>
       ))}
     </>
   );

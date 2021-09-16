@@ -13,17 +13,18 @@ const QuantityStyles = StyleSheet.create({
     flexDirection: "row",
     width: 100,
   },
-  buttonInc: {
-    backgroundColor: theme.colors.primary,
-    borderRadius: 3,
-  },
-  buttonDec: {
-    backgroundColor: theme.colors.primary,
-    borderRadius: 3,
-  },
   countStyle: {
     justifyContent: "center",
   },
 });
+
+export const ButtonDisabledStyles = (isDisabled: boolean) => {
+  return StyleSheet.create({
+    buttonContainer: {
+      backgroundColor: isDisabled ? theme.colors.dark10 : theme.colors.primary,
+      borderRadius: 3,
+    },
+  });
+};
 
 export default QuantityStyles;

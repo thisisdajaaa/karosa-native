@@ -1,6 +1,6 @@
 /**
  *
- * ListChevron
+ * VariationOne
  * @format
  *
  */
@@ -16,7 +16,7 @@ import Icon from "@app/atoms/Icon";
 import type { PropsType } from "./types";
 import ListChevronStyles from "./styles";
 
-const VariantOne: FC<PropsType> = (props) => {
+const VariationOne: FC<PropsType> = (props) => {
   const {
     hasBottomDivider,
     listColor,
@@ -26,6 +26,7 @@ const VariantOne: FC<PropsType> = (props) => {
     required,
     infoStyle,
     icon,
+    titleStyle,
     chevronColor = theme.colors.dark10,
   } = props;
 
@@ -52,7 +53,10 @@ const VariantOne: FC<PropsType> = (props) => {
               height={icon.height}
               width={icon.width}
             />
-            <Text text={title} textStyle={ListChevronStyles.txtWithIcon} />
+            <Text
+              text={title}
+              textStyle={[ListChevronStyles.txtWithIcon, titleStyle]}
+            />
           </>
         )}
 
@@ -79,4 +83,4 @@ const VariantOne: FC<PropsType> = (props) => {
   );
 };
 
-export default VariantOne;
+export default VariationOne;

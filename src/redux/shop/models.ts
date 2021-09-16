@@ -110,11 +110,12 @@ export type StoreItems = {
   id: string;
   image: string;
   isChecked: boolean;
+  stock: number;
   name: string;
   selectedPicker: number;
   picker: PickerData[];
-  price: string;
-  quantity: string;
+  price: number;
+  quantity: number;
 };
 
 export type BasketContext = {

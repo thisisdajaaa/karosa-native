@@ -1,6 +1,6 @@
 /**
  *
- * VariantTwo
+ * VariationTwo
  * @format
  *
  */
@@ -14,7 +14,7 @@ import type { PropsType } from "./types";
 import { FONT_SIZE } from "./config";
 import ListChevronStyles from "./styles";
 
-const VariantTwo: FC<PropsType> = (props) => {
+const VariationTwo: FC<PropsType> = (props) => {
   const {
     hasBottomDivider,
     title,
@@ -49,4 +49,4 @@ const VariantTwo: FC<PropsType> = (props) => {
   );
 };
 
-export default VariantTwo;
+export default VariationTwo;

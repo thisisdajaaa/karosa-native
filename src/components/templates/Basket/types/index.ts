@@ -4,4 +4,6 @@
  *
  */
 
-export type PropsType = {};
+export type PropsType = {
+  onBack(): void;
+};

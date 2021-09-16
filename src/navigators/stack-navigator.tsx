@@ -25,6 +25,7 @@ import AuthVerificationScreen from "@app/screens/AuthVerification";
 import ProductStockPriceScreen from "@app/screens/ProductStockPrice";
 
 import { TabNavigator } from "./tab-navigator";
+import Basket from "@app/screens/Basket";
 
 const Stack = createStackNavigator();
 
@@ -47,7 +48,8 @@ const StackNavigator: React.FC = () => {
       />
       <Stack.Screen name="SignUp Password" component={AuthPasswordScreen} />
       <Stack.Screen name="SignUp OTP" component={AuthVerificationScreen} />
-      <Stack.Screen name="Shop Main" component={ShopMainScreen} />
+      {/* <Stack.Screen name="Shop Main" component={ShopMainScreen} /> */}
+      <Stack.Screen name="Shop Main" component={Basket} />
       <Stack.Screen name="Shop Settings" component={ShopSettingsScreen} />
       <Stack.Screen name="Shop Payment" component={ShopPaymentScreen} />
       <Stack.Screen name="Shop Address" component={ShopAddressScreen} />
