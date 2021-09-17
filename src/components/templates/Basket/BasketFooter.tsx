@@ -8,9 +8,9 @@
 import React, { FC, useMemo, useState } from "react";
 import { useFormikContext } from "formik";
 import { View } from "react-native";
+import { ListItem } from "react-native-elements";
 import { theme } from "@app/styles";
 import { BasketContext, StoreData } from "@app/redux/shop/models";
-import { ListItem } from "react-native-elements";
 import Text from "@app/atoms/Text";
 import ListChevron from "@app/organisms/ListChevron";
 import Button from "@app/atoms/Button";
