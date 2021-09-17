@@ -7,11 +7,12 @@
 
 import React, { FC } from "react";
 import RNPickerSelect from "react-native-picker-select";
+import Icon from "@app/atoms/Icon";
 import { COMMON } from "@app/constants";
 
 import type { PropsType } from "./types";
+import { ICON_SIZE } from "./config";
 import PickerStyles from "./styles";
-import Icon from "@app/atoms/Icon";
 
 const Picker: FC<PropsType> = (props) => {
   const { data, placeholder, onValueChange, disabled, value } = props;
@@ -25,7 +26,12 @@ const Picker: FC<PropsType> = (props) => {
       }}
       Icon={() => {
         return (
-          <Icon height={16} width={16} group="products" name="chevronDown" />
+          <Icon
+            height={ICON_SIZE}
+            width={ICON_SIZE}
+            group="products"
+            name="chevronDown"
+          />
         );
       }}
       placeholder={{ label: placeholder, key: COMMON.INIT_PICKER_VALUE }}

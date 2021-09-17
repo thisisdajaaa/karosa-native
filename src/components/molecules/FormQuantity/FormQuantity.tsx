@@ -36,7 +36,7 @@ const FormQuantity: FC<PropsType> = (props) => {
     helpers.setTouched(true);
 
     if (onIncrement) onIncrement();
-  }, [helpers]);
+  }, [helpers, onIncrement]);
 
   const handleDecrement = useCallback(() => {
     let tempValue = Number(currentValue);
@@ -52,7 +52,7 @@ const FormQuantity: FC<PropsType> = (props) => {
       helpers.setValue(tempValue);
       helpers.setTouched(true);
     }
-  }, [helpers]);
+  }, [helpers, onDecrement]);
 
   return (
     <Quantity

@@ -9,6 +9,7 @@ import { ViewStyle, StyleProp } from "react-native";
 import Store from "./store.svg";
 import Voucher from "./voucher.svg";
 import Trash from "./trash.svg";
+import Message from "./message.svg";
 
 const BasketIcons = (
   name: string,
@@ -19,6 +20,7 @@ const BasketIcons = (
   const icons: { [key: string]: JSX.Element } = {
     store: <Store style={extraStyle} height={height} width={width} />,
     trash: <Trash style={extraStyle} height={height} width={width} />,
+    message: <Message style={extraStyle} height={height} width={width} />,
     voucher: <Voucher style={extraStyle} height={height} width={width} />,
   };
 

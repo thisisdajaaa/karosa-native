@@ -7,15 +7,18 @@
 
 import React, { FC, useCallback } from "react";
 import { useFormikContext } from "formik";
+import { isEmpty } from "ramda";
 import { FlatList, KeyboardAvoidingView, View } from "react-native";
 import Header from "@app/molecules/Header";
 import { theme } from "@app/styles";
+import Icon from "@app/atoms/Icon";
 import { BasketContext } from "@app/redux/shop/models";
 import { getPlatform } from "@app/utils";
 
+import type { PropsType } from "./types";
+import { ICON_SIZE } from "./config";
 import BasketStyles from "./styles";
 import BasketItem from "./BasketItem";
-import type { PropsType } from "./types";
 import BasketFooter from "./BasketFooter";
 
 const BasketTemplate: FC<PropsType> = (props) => {
@@ -40,6 +43,14 @@ const BasketTemplate: FC<PropsType> = (props) => {
           text: "Basket",
           style: BasketStyles.txtHeader,
         }}
+        rightComponent={
+          <Icon
+            group="basket"
+            name="message"
+            height={ICON_SIZE}
+            width={ICON_SIZE}
+          />
+        }
       />
       <KeyboardAvoidingView
         style={BasketStyles.container}
@@ -48,9 +59,15 @@ const BasketTemplate: FC<PropsType> = (props) => {
           showsVerticalScrollIndicator={false}
           keyExtractor={keyExtractor}
           data={values.storeData}
-          ListFooterComponent={<View style={{ marginVertical: 8 }} />}
+          ListFooterComponent={<View style={BasketStyles.listFooter} />}
           renderItem={({ item, index: storeIndex }) => (
-            <BasketItem key={item.id} item={item} storeIndex={storeIndex} />
+            <>
+              {!isEmpty(item.items) ? (
+                <BasketItem key={item.id} item={item} storeIndex={storeIndex} />
+              ) : (
+                <></>
+              )}
+            </>
           )}
         />
 

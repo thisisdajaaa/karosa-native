@@ -6,11 +6,11 @@
  */
 
 import React, { FC, useCallback } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { FormikProvider, useFormik } from "formik";
-import BasketTemplate from "@app/templates/Basket";
 import { useMemoizedSelector } from "@app/hooks";
 import { selectors } from "@app/redux/shop";
-import { useNavigation } from "@react-navigation/native";
+import BasketTemplate from "@app/templates/Basket";
 
 const BasketScreen: FC = () => {
   const { goBack } = useNavigation();
@@ -23,9 +23,14 @@ const BasketScreen: FC = () => {
     goBack();
   }, [goBack]);
 
+  /** Temporary submit since order array structure is still TBD */
+  const handleSubmit = () => {
+    0;
+  };
+
   const formikBag = useFormik({
     initialValues: { storeData },
-    onSubmit: () => alert("submit"),
+    onSubmit: () => handleSubmit(),
   });
 
   return (

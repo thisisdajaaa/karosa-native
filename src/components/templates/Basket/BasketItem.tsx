@@ -1,31 +1,36 @@
-import React, { FC, Fragment, useEffect, useState } from "react";
+/**
+ *
+ * BasketItem
+ * @format
+ *
+ */
+
+import React, { FC, Fragment, useState } from "react";
 import { TouchableWithoutFeedback, View } from "react-native";
-import { theme } from "@app/styles";
+import { useFormikContext } from "formik";
+import { Swipeable } from "react-native-gesture-handler";
+import { ListItem } from "react-native-elements";
 import { BasketContext, StoreData } from "@app/redux/shop/models";
+import { useUpdateEffect } from "@app/hooks";
 import Text from "@app/atoms/Text";
 import Image from "@app/atoms/Image";
-import { useFormikContext } from "formik";
-
-import { ListItem } from "react-native-elements";
 import FormCheckbox from "@app/molecules/FormCheckbox";
 import Icon from "@app/atoms/Icon";
 import FormPicker from "@app/molecules/FormPicker";
-import FormQuantity from "@app/molecules/FormQuantity";
-import BasketItemPrice from "./BasketItemPrice";
-import { Swipeable } from "react-native-gesture-handler";
-import { isEmpty } from "ramda";
 
-type Props = {
-  item: StoreData;
-  storeIndex: number;
-};
+import type { BasketItemProps } from "./types";
+import { ICON_SIZE, NUM_OF_LINES } from "./config";
+import BasketStyles from "./styles";
+import BasketItemQuantityPrice from "./BasketItemQuantityPrice";
 
-const BasketItem: FC<Props> = (props) => {
+const BasketItem: FC<BasketItemProps> = (props) => {
   const { item, storeIndex } = props;
 
   const { values, setValues } = useFormikContext<BasketContext>();
 
   const [isClicked, setIsClicked] = useState<boolean>(false);
+
+  const storeInfo = values.storeData[storeIndex];
 
   const handleStoreCheck = (index: number) => {
     const newStoreData: StoreData[] = values.storeData.map((store) => {
@@ -55,7 +60,7 @@ const BasketItem: FC<Props> = (props) => {
 
   const onToggleStoreCheck = (isChecked: boolean) => {
     const newStoreData: StoreData[] = values.storeData.map((store) => {
-      if (Number(store.id) === Number(values.storeData[storeIndex].id)) {
+      if (Number(store.id) === Number(storeInfo.id)) {
         return {
           ...store,
           isChecked,
@@ -75,13 +80,11 @@ const BasketItem: FC<Props> = (props) => {
 
   const handleRemove = (storeKey: number) => {
     const newStoreData: StoreData[] = values.storeData.map((store) => {
-      if (Number(store.id) === Number(values.storeData[storeIndex].id)) {
+      if (Number(store.id) === Number(storeInfo.id)) {
         return {
           ...store,
           items: store.items.filter(
-            (item) =>
-              Number(item.id) !==
-              Number(values.storeData[storeIndex].items[storeKey].id)
+            (item) => Number(item.id) !== Number(storeInfo.items[storeKey].id)
           ),
         };
       }
@@ -91,36 +94,22 @@ const BasketItem: FC<Props> = (props) => {
       };
     });
 
-    const filteredStoreData: StoreData[] = newStoreData.filter(
-      (store) => !isEmpty(store.items)
-    );
-
     setValues({
       ...values.storeData,
-      storeData: filteredStoreData,
+      storeData: newStoreData,
     });
   };
 
-  useEffect(() => {
-    const mapStoreCheck = values.storeData[storeIndex].items.map(
-      (item) => item.isChecked
-    );
+  useUpdateEffect(() => {
+    const mapStoreCheck = storeInfo.items.map((item) => item.isChecked);
 
     const isStoreItemsChecked = mapStoreCheck.every((checked) => checked);
 
     isStoreItemsChecked ? onToggleStoreCheck(true) : onToggleStoreCheck(false);
   }, [isClicked]);
 
-  const disableIncrement = (storeKey: number) => {
-    const quantity = values.storeData[storeIndex].items[storeKey].quantity;
-    const stock = values.storeData[storeIndex].items[storeKey].stock;
-
-    return quantity >= stock;
-  };
-
   return (
     <>
-      {/** Store Name */}
       <ListItem>
         <ListItem.Content>
           <FormCheckbox
@@ -131,18 +120,13 @@ const BasketItem: FC<Props> = (props) => {
                 <Icon
                   group="basket"
                   name="store"
-                  height={24}
-                  width={24}
-                  extraStyle={{
-                    marginHorizontal: 8,
-                  }}
+                  height={ICON_SIZE}
+                  width={ICON_SIZE}
+                  extraStyle={BasketStyles.storeIcon}
                 />
                 <Text
                   text={item.storeName}
-                  textStyle={{
-                    ...theme.textSemiBold,
-                    fontWeight: "500",
-                  }}
+                  textStyle={BasketStyles.txtStoreName}
                 />
               </>
             }
@@ -150,62 +134,42 @@ const BasketItem: FC<Props> = (props) => {
         </ListItem.Content>
       </ListItem>
 
-      {/** Store Items */}
       {item.items.map((storeItem, storeKey) => (
         <Swipeable
           renderRightActions={() => (
             <TouchableWithoutFeedback onPress={() => handleRemove(storeKey)}>
-              <View
-                style={{
-                  backgroundColor: theme.colors.gold15,
-                  width: 96,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}>
-                <Icon group="basket" name="trash" height={24} width={24} />
-                <Text
-                  text="Delete"
-                  textStyle={{
-                    ...theme.textRegular,
-                    color: theme.colors.primary,
-                    marginTop: 8,
-                  }}
+              <View style={BasketStyles.btnDeleteContainer}>
+                <Icon
+                  group="basket"
+                  name="trash"
+                  height={ICON_SIZE}
+                  width={ICON_SIZE}
                 />
+                <Text text="Delete" textStyle={BasketStyles.txtDelete} />
               </View>
             </TouchableWithoutFeedback>
           )}
           key={Number(storeItem.id)}>
           <ListItem bottomDivider={storeKey === item.items.length - 1}>
-            <View style={{ flexDirection: "column" }}>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "flex-start",
-                }}>
+            <View style={BasketStyles.flexColumn}>
+              <View style={BasketStyles.basketItemBaseContainer}>
                 <FormCheckbox
                   name={`storeData[${storeIndex}].items[${storeKey}].isChecked`}
                   onCheck={() => setIsClicked((prev) => !prev)}
                   label={<Fragment />}
                 />
-                <View style={{ marginLeft: 10 }}>
+                <View style={BasketStyles.basketImageContainer}>
                   <Image
                     source={{ uri: storeItem.image }}
-                    imageStyle={{ height: 75, width: 75 }}
+                    imageStyle={BasketStyles.basketImage}
                     resizeMode="cover"
                   />
                 </View>
-                <View
-                  style={{
-                    marginLeft: 10,
-                    flexDirection: "column",
-                    width: "60%",
-                  }}>
+                <View style={BasketStyles.basketItemColumnContainer}>
                   <Text
                     text={storeItem.name}
-                    numberOfLines={2}
-                    textStyle={{
-                      marginBottom: 8,
-                    }}
+                    numberOfLines={NUM_OF_LINES}
+                    textStyle={BasketStyles.txtBasketItem}
                   />
                   <FormPicker
                     data={storeItem.picker}
@@ -215,27 +179,11 @@ const BasketItem: FC<Props> = (props) => {
                 </View>
               </View>
 
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginTop: 8,
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}>
-                <View style={{ marginLeft: "auto", marginRight: 68 }}>
-                  <BasketItemPrice
-                    index={storeIndex}
-                    storeItemKey={storeKey}
-                    currentPrice={Number(storeItem.price)}
-                  />
-                </View>
-
-                <FormQuantity
-                  onDecrement={() => alert("G")}
-                  disableIncrement={disableIncrement(storeKey)}
-                  name={`storeData[${storeIndex}].items[${storeKey}].quantity`}
-                />
-              </View>
+              <BasketItemQuantityPrice
+                index={storeIndex}
+                storeItemKey={storeKey}
+                handleRemove={() => handleRemove(storeKey)}
+              />
             </View>
           </ListItem>
         </Swipeable>
