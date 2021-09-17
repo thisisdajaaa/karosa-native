@@ -1,0 +1,132 @@
+/**
+ *
+ * OrderFullfillmentTemplate
+ * @format
+ *
+ */
+
+import React, { FC, useState } from "react";
+// import { useNavigation } from "@react-navigation/native";
+import { View, SafeAreaView, ScrollView } from "react-native";
+import type { PropsType } from "./types";
+import { styles } from "./styles";
+import { getPlatform } from "@app/utils";
+import Icons from "@app/atoms/Icon";
+import Text from "@app/atoms/Text";
+import Button from "@app/atoms/Button";
+import { PropsType as buttonProps } from "@app/atoms/Button/types";
+import ButtonGroup from "@app/atoms/ButtonGroup";
+import { PropsType as btnGroupProps } from "@app/atoms/ButtonGroup/types";
+import { theme } from "@app/styles";
+import { CardsComponent } from "./Cards";
+
+const OrderFullfillmentTemplate: FC<PropsType> = () => {
+  // const { goBack } = useNavigation();
+  const [selectedIndex, setSelectedIndex] = useState<number>(0); // For Button Group
+  const [selectedButton, setSelectedButton] = useState<number>(0); // For Buttons
+
+  const buttonArray = ["My Purchases", "My Shop Orders"];
+  const btnPress = (args: any) => {
+    setSelectedIndex(args);
+  };
+  const btnGroup: btnGroupProps = {
+    selected: selectedIndex,
+    buttons: buttonArray,
+    onPress: btnPress,
+  };
+  const isIOS = getPlatform.getInstance() === "ios";
+  const headerContent = (
+    <React.Fragment>
+      <View style={styles.headerTopNavigation}>
+        <Icons
+          group="orderFuillFillment"
+          name="greenBack"
+          width={24}
+          height={24}
+        />
+        <Text text="My Orders" textStyle={styles.textHeader} />
+        <Icons
+          group="orderFuillFillment"
+          name="greenMessage"
+          width={20}
+          height={20}
+        />
+      </View>
+      <View style={styles.buttonGroupContainer}>
+        <ButtonGroup {...btnGroup} />
+      </View>
+    </React.Fragment>
+  );
+
+  const header = isIOS ? (
+    <SafeAreaView style={styles.headerContainer}>{headerContent}</SafeAreaView>
+  ) : (
+    <View style={styles.headerContainer}>{headerContent}</View>
+  );
+
+  const defaultButtonStyle = (
+    currIndex: number,
+    selectedIndex: number
+  ): PropsType => {
+    const isSelected = currIndex === selectedIndex;
+    const { primary, light15, black, white } = theme.colors;
+    const iconNames = ["Wallet", "Ship", "Box"];
+    const textColor = isSelected ? "white" : "green";
+    const iconColor = isSelected ? primary : light15;
+
+    return {
+      buttonStyle: {
+        width: "auto",
+        height: 36,
+        backgroundColor: iconColor,
+      },
+      containerStyle: { marginRight: 10 },
+      titleStyle: {
+        textTransform: "capitalize",
+        color: isSelected ? white : black,
+      },
+      icon: (
+        <Icons
+          group="orderFuillFillment"
+          name={`${textColor}${iconNames[currIndex]}`}
+          width={20}
+          height={20}
+          extraStyle={styles.iconMargin}
+        />
+      ),
+      onPress: () => setSelectedButton(currIndex),
+    };
+  };
+
+  const buttons: buttonProps[] = [
+    { title: "for confimation" },
+    { title: "to ship" },
+    { title: "to receive" },
+    { title: "completed" },
+    { title: "cancelled" },
+  ];
+
+  const rendereButtons = buttons.map((button, index) => (
+    <Button
+      {...button}
+      {...defaultButtonStyle(index, selectedButton)}
+      key={index}
+    />
+  ));
+
+  return (
+    <ScrollView stickyHeaderIndices={[0]} showsVerticalScrollIndicator={false}>
+      {header}
+      <View>
+        <ScrollView style={styles.buttonsContainer} horizontal>
+          {rendereButtons}
+        </ScrollView>
+        <View style={styles.cardContainer}>
+          <CardsComponent />
+        </View>
+      </View>
+    </ScrollView>
+  );
+};
+
+export default OrderFullfillmentTemplate;
