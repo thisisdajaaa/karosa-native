@@ -11,42 +11,31 @@ import { View } from "react-native";
 import { ListItem } from "react-native-elements";
 import { theme } from "@app/styles";
 import { BasketContext, StoreData } from "@app/redux/shop/models";
+import { useUpdateEffect } from "@app/hooks";
+import { COMMON } from "@app/constants";
 import Text from "@app/atoms/Text";
 import ListChevron from "@app/organisms/ListChevron";
 import Button from "@app/atoms/Button";
-import { useUpdateEffect } from "@app/hooks";
-import { COMMON } from "@app/constants";
 
 import { ICON_SIZE, INITIAL_REDUCE } from "./config";
 import BasketStyles from "./styles";
 
 const BasketFooter: FC = () => {
-  const { values, initialValues } = useFormikContext<BasketContext>();
+  const { values } = useFormikContext<BasketContext>();
 
-  const initialTotal = initialValues.storeData.reduce(
-    (accumulator, { items }) => {
-      items.forEach((item) => {
-        accumulator += item.price;
-      });
-
-      return accumulator;
-    },
-    INITIAL_REDUCE
-  );
-
-  const [subTotal, setSubTotal] = useState<number>(initialTotal);
+  const [subTotal, setSubTotal] = useState<number>(INITIAL_REDUCE);
 
   const memoizedData: StoreData[] = useMemo(() => values.storeData, [values]);
 
   useUpdateEffect(() => {
     const mappedPrice = memoizedData.map((store) =>
-      store.items.map((item) => item.price)
+      store.items.filter((item) => item.isChecked && item.price)
     );
 
     const updatedTotal = mappedPrice
       .flat()
       .reduce(
-        (accumulator, currentValue) => (accumulator += currentValue),
+        (accumulator, currentValue) => (accumulator += currentValue.price),
         INITIAL_REDUCE
       );
 

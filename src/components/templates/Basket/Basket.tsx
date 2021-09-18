@@ -9,11 +9,11 @@ import React, { FC, useCallback } from "react";
 import { useFormikContext } from "formik";
 import { isEmpty } from "ramda";
 import { FlatList, KeyboardAvoidingView, View } from "react-native";
-import Header from "@app/molecules/Header";
 import { theme } from "@app/styles";
-import Icon from "@app/atoms/Icon";
 import { BasketContext } from "@app/redux/shop/models";
 import { getPlatform } from "@app/utils";
+import Icon from "@app/atoms/Icon";
+import Header from "@app/molecules/Header";
 
 import type { PropsType } from "./types";
 import { ICON_SIZE } from "./config";

@@ -8,10 +8,10 @@
 import React, { FC, useState } from "react";
 import { Alert, View } from "react-native";
 import { useFormikContext } from "formik";
-import Text from "@app/atoms/Text";
 import { BasketContext, StoreData } from "@app/redux/shop/models";
 import { useMount, useUpdateEffect } from "@app/hooks";
 import FormQuantity from "@app/molecules/FormQuantity";
+import Text from "@app/atoms/Text";
 
 import type { BasketItemQuantityProps } from "./types";
 import BasketStyles from "./styles";
