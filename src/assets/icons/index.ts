@@ -11,6 +11,7 @@ import CommonIcons from "./common";
 import HomeIcons from "./home";
 import LoginIcons from "./login";
 import ProductsIcons from "./products";
+import WishlistIcons from "./wishlist";
 
 const Icons: {
   [key: string]: (
@@ -26,6 +27,7 @@ const Icons: {
   home: HomeIcons,
   login: LoginIcons,
   products: ProductsIcons,
+  wishlist: WishlistIcons,
 };
 
 export default Icons;

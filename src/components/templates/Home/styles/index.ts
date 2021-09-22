@@ -37,7 +37,7 @@ const HomeStyles = StyleSheet.create({
   },
   categoriesText: {
     width: "100%",
-    fontSize: 9,
+    fontSize: 12,
     textAlign: "center",
   },
 });
