@@ -19,5 +19,6 @@ export type PropsType = {
   required?: boolean;
   icon?: WithIcon;
   infoStyle?: StyleProp<TextStyle>;
+  titleStyle?: StyleProp<TextStyle>;
   onPress: () => void;
 };

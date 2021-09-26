@@ -1,4 +1,4 @@
-import { ResponseState } from "@app/redux/api-models/common";
+import { PickerData, ResponseState } from "@app/redux/api-models/common";
 import { ENUM } from "@app/constants";
 import * as shopInfo from "@app/redux/api-models/shop-info";
 import * as shopDelete from "@app/redux/api-models/shop-delete";
@@ -99,6 +99,29 @@ export type ShopAddressForm = {
   detailedAddress: string;
 };
 
+export type StoreData = {
+  id: string;
+  storeName: string;
+  isChecked: boolean;
+  items: StoreItems[];
+};
+
+export type StoreItems = {
+  id: string;
+  image: string;
+  isChecked: boolean;
+  stock: number;
+  name: string;
+  selectedPicker: number;
+  picker: PickerData[];
+  price: number;
+  quantity: number;
+};
+
+export type BasketContext = {
+  storeData: StoreData[];
+};
+
 export type ShopEntryContext = {
   shopSettings: ShopSettingsForm;
   shopPayment: ShopPaymentForm;
@@ -116,6 +139,7 @@ export type ProductEntryContext = {
 export type ShopState = {
   shopEntryContext: ShopEntryContext;
   productEntryContext: ProductEntryContext;
+  basketContext: BasketContext;
   shopInfoResponse: ResponseState<ShopInfoResponse>;
   shopDeleteResponse: ResponseState<ShopDeleteResponse>;
   shopAddressResponse: ResponseState<ShopAddressResponse>;

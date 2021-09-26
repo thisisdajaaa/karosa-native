@@ -23,6 +23,11 @@ export const getVariationForm = () =>
     );
   });
 
+export const getBasket = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return state.basketContext || initShopState.basketContext;
+  });
+
 export const getAvailabilityForm = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return (
@@ -105,6 +110,7 @@ const selectors = {
   getVariationForm,
   getWholesaleForm,
   getShopPayment,
+  getBasket,
   getShopAddressForm,
   getShopSettings,
   getShippingDetailsForm,

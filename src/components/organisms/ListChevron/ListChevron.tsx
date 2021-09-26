@@ -8,8 +8,8 @@
 import React, { FC } from "react";
 
 import type { PropsType } from "./types";
-import VariationOne from "./VariantOne";
-import VariationTwo from "./VariantTwo";
+import VariationOne from "./VariationOne";
+import VariationTwo from "./VariationTwo";
 
 const ListChevron: FC<PropsType> = (props) => {
   const {
@@ -23,6 +23,7 @@ const ListChevron: FC<PropsType> = (props) => {
     info,
     infoStyle,
     listColor,
+    titleStyle,
     icon,
     required,
   } = props;
@@ -37,6 +38,7 @@ const ListChevron: FC<PropsType> = (props) => {
           title={title}
           onPress={onPress}
           info={info}
+          titleStyle={titleStyle}
           required={required}
           icon={icon}
           infoStyle={infoStyle}

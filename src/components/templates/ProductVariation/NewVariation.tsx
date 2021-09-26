@@ -1,3 +1,10 @@
+/**
+ *
+ * New Variation
+ * @format
+ *
+ */
+
 import React, { FC, Fragment, useCallback, useState } from "react";
 import { FlatList, View } from "react-native";
 import { useFormikContext } from "formik";
