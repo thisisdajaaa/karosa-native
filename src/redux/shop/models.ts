@@ -118,8 +118,32 @@ export type StoreItems = {
   quantity: number;
 };
 
+export type OrderData = {
+  id: string;
+  storeName: string;
+  deliveryOption: string;
+  noOfItems: number;
+  orderTotal: number;
+  items: OrderItem[];
+};
+
+export type OrderItem = {
+  id: string;
+  image: string;
+  selectedPickerLabel: string;
+  selectedPickerValue: number;
+  quantity: number;
+  price: number;
+  name: string;
+};
+
 export type BasketContext = {
   storeData: StoreData[];
+};
+
+export type CheckoutContext = {
+  orderData: OrderData[];
+  paymentMethod: string;
 };
 
 export type ShopEntryContext = {
@@ -140,6 +164,7 @@ export type ShopState = {
   shopEntryContext: ShopEntryContext;
   productEntryContext: ProductEntryContext;
   basketContext: BasketContext;
+  checkoutContext: CheckoutContext;
   shopInfoResponse: ResponseState<ShopInfoResponse>;
   shopDeleteResponse: ResponseState<ShopDeleteResponse>;
   shopAddressResponse: ResponseState<ShopAddressResponse>;

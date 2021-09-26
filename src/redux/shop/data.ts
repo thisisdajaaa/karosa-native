@@ -3,6 +3,7 @@ import { ENUM } from "@app/constants";
 import {
   AvailabilityForm,
   BasketContext,
+  CheckoutContext,
   ProductForm,
   ShippingDetailsForm,
   ShopAddressForm,
@@ -171,8 +172,53 @@ export const initBasketContext: BasketContext = {
   ],
 };
 
+export const initCheckoutContext: CheckoutContext = {
+  orderData: [
+    {
+      id: "1",
+      storeName: "Mang Kanor Fruit Stand",
+      deliveryOption: "Standard Express",
+      noOfItems: 2,
+      orderTotal: 2550,
+      items: [
+        {
+          id: "1",
+          image:
+            "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
+          name: "Mangosteen Product Name sample text...",
+          price: 300,
+          quantity: 1,
+          selectedPickerLabel: "300 Kgms",
+          selectedPickerValue: 300,
+        },
+      ],
+    },
+    {
+      id: "2",
+      storeName: "Mang Kanor Fruit Stand",
+      deliveryOption: "Standard Express",
+      noOfItems: 2,
+      orderTotal: 2550,
+      items: [
+        {
+          id: "2",
+          image:
+            "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
+          name: "Mangosteen Product Name sample text...",
+          price: 300,
+          quantity: 1,
+          selectedPickerLabel: "300 Kgms",
+          selectedPickerValue: 300,
+        },
+      ],
+    },
+  ],
+  paymentMethod: "Cash on Delivery",
+};
+
 export const initShopState: ShopState = {
   basketContext: initBasketContext,
+  checkoutContext: initCheckoutContext,
   shopEntryContext: {
     shopSettings: initShopSettingsForm,
     shopPayment: initShopPaymentForm,

@@ -12,6 +12,7 @@ import HomeIcons from "./home";
 import LoginIcons from "./login";
 import ProductsIcons from "./products";
 import BasketIcons from "./basket";
+import CheckoutIcons from "./checkout";
 
 const Icons: {
   [key: string]: (
@@ -28,6 +29,7 @@ const Icons: {
   login: LoginIcons,
   products: ProductsIcons,
   basket: BasketIcons,
+  checkout: CheckoutIcons,
 };
 
 export default Icons;

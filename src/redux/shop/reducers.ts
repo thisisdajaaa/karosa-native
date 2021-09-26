@@ -46,6 +46,22 @@ export const basketContext = produce(
   data.initShopState.basketContext
 );
 
+export const checkoutContext = produce(
+  (
+    draft: Draft<models.CheckoutContext>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.setCheckoutContext):
+        draft = action.payload;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initShopState.checkoutContext
+);
+
 export const productEntryContext = produce(
   (
     draft: Draft<models.ProductEntryContext>,
@@ -187,6 +203,7 @@ const reducer = combineReducers({
   shopEntryContext,
   productEntryContext,
   basketContext,
+  checkoutContext,
   shopInfoResponse,
   shopAddressResponse,
   addProductResponse,

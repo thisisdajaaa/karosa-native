@@ -28,6 +28,11 @@ export const getBasket = () =>
     return state.basketContext || initShopState.basketContext;
   });
 
+export const getCheckout = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return state.checkoutContext || initShopState.checkoutContext;
+  });
+
 export const getAvailabilityForm = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return (
@@ -111,6 +116,7 @@ const selectors = {
   getWholesaleForm,
   getShopPayment,
   getBasket,
+  getCheckout,
   getShopAddressForm,
   getShopSettings,
   getShippingDetailsForm,
