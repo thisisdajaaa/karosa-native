@@ -7,21 +7,29 @@ import { Keyboard, TouchableOpacity } from "react-native";
 import { theme } from "@app/styles";
 import { Props as ScreenProps } from "@app/components/molecules/Base-Screen/types";
 import { MaterialIcons } from "@expo/vector-icons";
-
+import routes from "@app/navigators/routes";
+import { useNavigation } from "@react-navigation/native";
 const Home: FC = () => {
+  const { goBack, navigate } = useNavigation();
   const screenProps: ScreenProps = {
     customHeader: (
       <Header
-        placement={"left"}
+        // placement={"left"}
         containerStyle={{
-          backgroundColor: "transparent",
+          backgroundColor: theme.colors.white,
           width: "100%",
+        }}
+        hasBottomDivider={true}
+        leftComponent={{
+          icon: "arrow-back",
+          color: theme.colors.primary,
+          onPress: goBack,
         }}
         centerComponent={
           <SearchBar
             placeholder={"Search in My Products"}
             backgroundColor={"primary"}
-            // onTouchStart={(_e) => navigate(routes.SEARCH_PRODUCT)}
+            onTouchStart={(_e) => navigate(routes.HOME_SEARCH)}
             onFocus={Keyboard.dismiss}
           />
         }

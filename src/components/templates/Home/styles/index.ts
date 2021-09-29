@@ -40,6 +40,10 @@ const HomeStyles = StyleSheet.create({
     fontSize: 12,
     textAlign: "center",
   },
+  searchBarContainer: {
+    backgroundColor: theme.colors.light5,
+    paddingTop: 0,
+  },
 });
 
 export default HomeStyles;
