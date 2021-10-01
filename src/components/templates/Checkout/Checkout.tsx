@@ -16,7 +16,9 @@ import Header from "@app/molecules/Header";
 
 import type { PropsType } from "./types";
 import CheckoutStyles from "./styles";
+import CheckoutItem from "./CheckoutItem";
 import Address from "./Address";
+import { isEmpty } from "ramda";
 
 const CheckoutTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
@@ -45,6 +47,25 @@ const CheckoutTemplate: FC<PropsType> = (props) => {
         style={CheckoutStyles.container}
         behavior={isIOS ? "padding" : undefined}>
         <Address />
+
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          keyExtractor={keyExtractor}
+          data={values.orderData}
+          renderItem={({ item, index: storeIndex }) => (
+            <>
+              {!isEmpty(item.items) ? (
+                <CheckoutItem
+                  key={item.id}
+                  item={item}
+                  storeIndex={storeIndex}
+                />
+              ) : (
+                <></>
+              )}
+            </>
+          )}
+        />
       </KeyboardAvoidingView>
     </>
   );
