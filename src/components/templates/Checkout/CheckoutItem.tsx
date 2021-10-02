@@ -8,6 +8,7 @@ import { OrderData } from "@app/redux/shop/models";
 import Image from "@app/atoms/Image";
 import FormCheckbox from "@app/molecules/FormCheckbox";
 import FormPicker from "@app/molecules/FormPicker";
+import ListChevron from "@app/components/organisms/ListChevron";
 
 type Props = {
   item: OrderData;
@@ -16,6 +17,11 @@ type Props = {
 
 const CheckoutItem: FC<Props> = (props) => {
   const { item, storeIndex } = props;
+
+  const orderTotal = item.items.reduce(
+    (accumulator, currentValue) => (accumulator += currentValue.price),
+    0
+  );
 
   return (
     <>
@@ -39,6 +45,7 @@ const CheckoutItem: FC<Props> = (props) => {
           />
         </ListItem.Content>
       </ListItem>
+
       {item.items.map((storeItem, storeKey) => (
         <ListItem
           key={storeItem.id}
@@ -67,33 +74,85 @@ const CheckoutItem: FC<Props> = (props) => {
                     marginBottom: 8,
                   }}
                 />
-                <View style={{ flexDirection: "row" }}>
+                <View style={{ flexDirection: "row", marginBottom: 8 }}>
                   <Text
-                    text={storeItem.selectedPickerLabel}
+                    text={`${storeItem.selectedPickerLabel},`}
                     numberOfLines={2}
                     textStyle={{
                       ...theme.textRegular,
                       fontWeight: "400",
-                      marginBottom: 8,
+                      color: theme.colors.dark30,
+                    }}
+                  />
+                  <Text
+                    text={`Quantity: `}
+                    textStyle={{
+                      ...theme.textRegular,
+                      fontWeight: "400",
+                      marginLeft: 8,
                       color: theme.colors.dark30,
                     }}
                   />
                   <Text
                     text={String(storeItem.quantity)}
-                    numberOfLines={2}
                     textStyle={{
-                      ...theme.textRegular,
+                      ...theme.textSemiBold,
                       fontWeight: "400",
-                      marginBottom: 8,
                       color: theme.colors.dark30,
                     }}
                   />
                 </View>
+
+                <Text
+                  text={`P${storeItem.price}`}
+                  textStyle={{
+                    ...theme.textSemiBold,
+                    color: theme.colors.primary,
+                  }}
+                />
               </View>
             </View>
           </View>
         </ListItem>
       ))}
+
+      <ListChevron
+        title="Standard Express"
+        onPress={() => 0}
+        variation={1}
+        info="Select / Code"
+        subtitle="Via Lalamove"
+        infoStyle={{ ...theme.textRegular, color: theme.colors.dark20 }}
+        titleStyle={{ ...theme.textRegular }}
+        chevronColor={theme.colors.primary}
+        icon={{
+          group: "checkout",
+          name: "delivery",
+          height: 24,
+          width: 24,
+        }}
+        hasBottomDivider
+      />
+      <ListItem style={{ marginBottom: 12 }} bottomDivider>
+        <ListItem.Content
+          style={{ flexDirection: "row", justifyContent: "flex-end" }}>
+          <Text
+            text={`${item.items.length} items, Order Total: `}
+            textStyle={{
+              ...theme.textRegular,
+              fontWeight: "400",
+              marginLeft: 8,
+            }}
+          />
+          <Text
+            text={`PHP ${orderTotal}`}
+            textStyle={{
+              ...theme.textSemiBold,
+              color: theme.colors.primary,
+            }}
+          />
+        </ListItem.Content>
+      </ListItem>
     </>
   );
 };

@@ -191,27 +191,37 @@ export const initCheckoutContext: CheckoutContext = {
           selectedPickerLabel: "300 Kgms",
           selectedPickerValue: 300,
         },
+        {
+          id: "2",
+          image:
+            "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
+          name: "Mangosteen Product Name sample text...",
+          price: 300,
+          quantity: 1,
+          selectedPickerLabel: "300 Kgms",
+          selectedPickerValue: 300,
+        },
       ],
     },
-    // {
-    //   id: "2",
-    //   storeName: "Mang Kanor Fruit Stand",
-    //   deliveryOption: "Standard Express",
-    //   noOfItems: 2,
-    //   orderTotal: 2550,
-    //   items: [
-    //     {
-    //       id: "2",
-    //       image:
-    //         "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
-    //       name: "Mangosteen Product Name sample text...",
-    //       price: 300,
-    //       quantity: 1,
-    //       selectedPickerLabel: "300 Kgms",
-    //       selectedPickerValue: 300,
-    //     },
-    //   ],
-    // },
+    {
+      id: "2",
+      storeName: "Mang Kanor Fruit Stand",
+      deliveryOption: "Standard Express",
+      noOfItems: 2,
+      orderTotal: 2550,
+      items: [
+        {
+          id: "2",
+          image:
+            "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
+          name: "Mangosteen Product Name sample text...",
+          price: 300,
+          quantity: 1,
+          selectedPickerLabel: "300 Kgms",
+          selectedPickerValue: 300,
+        },
+      ],
+    },
   ],
   paymentMethod: "Cash on Delivery",
 };

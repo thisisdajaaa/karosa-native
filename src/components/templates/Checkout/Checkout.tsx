@@ -12,6 +12,7 @@ import { theme } from "@app/styles";
 import { CheckoutContext } from "@app/redux/shop/models";
 import { getPlatform } from "@app/utils";
 import Icon from "@app/atoms/Icon";
+import Chip from "@app/atoms/Chip";
 import Header from "@app/molecules/Header";
 
 import type { PropsType } from "./types";
@@ -19,6 +20,8 @@ import CheckoutStyles from "./styles";
 import CheckoutItem from "./CheckoutItem";
 import Address from "./Address";
 import { isEmpty } from "ramda";
+import { ListItem } from "react-native-elements";
+import Text from "@app/atoms/Text";
 
 const CheckoutTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
@@ -46,7 +49,7 @@ const CheckoutTemplate: FC<PropsType> = (props) => {
       <KeyboardAvoidingView
         style={CheckoutStyles.container}
         behavior={isIOS ? "padding" : undefined}>
-        <Address />
+        {/* <Address /> */}
 
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -65,6 +68,25 @@ const CheckoutTemplate: FC<PropsType> = (props) => {
               )}
             </>
           )}
+          ListFooterComponent={
+            <>
+              <ListItem>
+                <ListItem.Content>
+                  <Text text="Select Payment Method" />
+                </ListItem.Content>
+                <View style={{ left: 12 }}>
+                  <Text
+                    text="See All"
+                    textStyle={{ color: theme.colors.primary }}
+                  />
+                </View>
+                <ListItem.Chevron iconStyle={{ color: theme.colors.primary }} />
+              </ListItem>
+              <ListItem>
+                <Chip selected={false} />
+              </ListItem>
+            </>
+          }
         />
       </KeyboardAvoidingView>
     </>
