@@ -11,6 +11,7 @@ import { ListItem } from "react-native-elements";
 import { useField, useFormikContext } from "formik";
 import { useUpdateEffect } from "@app/hooks";
 import Radio from "@app/atoms/Radio";
+import Text from "@app/atoms/Text";
 
 import type { PropsType } from "./types";
 import FormRadioGroupStyles from "./styles";
@@ -54,6 +55,15 @@ const FormRadioGroup: FC<PropsType> = (props) => {
                 title={option.label}
                 onPress={handlePress(option.id)}
               />
+
+              {option.info && (
+                <View style={FormRadioGroupStyles.infoContainer}>
+                  <Text
+                    text={option.info}
+                    textStyle={FormRadioGroupStyles.txtInfo}
+                  />
+                </View>
+              )}
             </View>
           </ListItem>
         </Fragment>

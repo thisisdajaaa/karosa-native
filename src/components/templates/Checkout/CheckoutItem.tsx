@@ -1,14 +1,14 @@
 import Icon from "@app/atoms/Icon";
-import React, { FC, Fragment } from "react";
+import React, { FC, Fragment, useRef } from "react";
 import { View } from "react-native";
 import { ListItem } from "react-native-elements";
 import Text from "@app/atoms/Text";
 import { theme } from "@app/styles";
 import { OrderData } from "@app/redux/shop/models";
 import Image from "@app/atoms/Image";
-import FormCheckbox from "@app/molecules/FormCheckbox";
-import FormPicker from "@app/molecules/FormPicker";
 import ListChevron from "@app/components/organisms/ListChevron";
+import RBSheet from "react-native-raw-bottom-sheet";
+import CheckoutDelivery from "@app/screens/CheckoutDelivery";
 
 type Props = {
   item: OrderData;
@@ -17,6 +17,8 @@ type Props = {
 
 const CheckoutItem: FC<Props> = (props) => {
   const { item, storeIndex } = props;
+
+  const checkoutDeliveryRef = useRef<RBSheet>(null);
 
   const orderTotal = item.items.reduce(
     (accumulator, currentValue) => (accumulator += currentValue.price),
@@ -118,7 +120,7 @@ const CheckoutItem: FC<Props> = (props) => {
 
       <ListChevron
         title="Standard Express"
-        onPress={() => 0}
+        onPress={() => checkoutDeliveryRef.current?.open()}
         variation={1}
         info="Select / Code"
         subtitle="Via Lalamove"
@@ -153,6 +155,8 @@ const CheckoutItem: FC<Props> = (props) => {
           />
         </ListItem.Content>
       </ListItem>
+
+      <CheckoutDelivery sheetRef={checkoutDeliveryRef} />
     </>
   );
 };
