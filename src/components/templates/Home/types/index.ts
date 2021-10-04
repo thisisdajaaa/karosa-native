@@ -10,3 +10,7 @@ export type PropsType = {
   screenProps: ScreenProps;
   productProps: any[];
 };
+
+export type HeaderProps = Pick<ViewProps, "style"> & {
+  onBack(): void;
+};

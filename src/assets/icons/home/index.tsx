@@ -12,6 +12,9 @@ import Discount from "./discount.svg";
 import DiscountTag from "./discount-tag.svg";
 import Location from "./location.svg";
 import Sale from "./sale.svg";
+import Chat from "./chat_outline.svg";
+import Cart from "./cart_outline.svg";
+import Loop from "./loop.svg";
 
 const HomeIcons = (
   name: string,
@@ -28,6 +31,9 @@ const HomeIcons = (
     ),
     location: <Location style={extraStyle} height={height} width={width} />,
     sale: <Sale style={extraStyle} height={height} width={width} />,
+    chat: <Chat style={extraStyle} height={height} width={width} />,
+    cart: <Cart style={extraStyle} height={height} width={width} />,
+    loop: <Loop style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];

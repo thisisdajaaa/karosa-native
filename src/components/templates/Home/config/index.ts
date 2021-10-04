@@ -25,3 +25,10 @@ export const productCategories: any[] = [
   { id: 11, name: "Cheese", code: "cheese" },
   { id: 12, name: "Grains", code: "grains" },
 ];
+
+export const trendingCategories: any[] = [
+  { id: 1, name: "Fruits", code: "fruits" },
+  { id: 2, name: "Vegetables", code: "vegetables" },
+  { id: 3, name: "Coffee", code: "coffee" },
+  { id: 4, name: "Root Crops", code: "root_crops" },
+];

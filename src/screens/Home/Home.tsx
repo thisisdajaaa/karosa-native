@@ -9,22 +9,17 @@ import { Props as ScreenProps } from "@app/components/molecules/Base-Screen/type
 import { MaterialIcons } from "@expo/vector-icons";
 import routes from "@app/navigators/routes";
 import { useNavigation } from "@react-navigation/native";
+import { HomeStyles as styles } from "../../components/templates/Home/styles";
 const Home: FC = () => {
   const { goBack, navigate } = useNavigation();
   const screenProps: ScreenProps = {
     customHeader: (
       <Header
-        // placement={"left"}
+        placement={"left"}
         containerStyle={{
-          backgroundColor: theme.colors.white,
-          width: "100%",
+          backgroundColor: theme.colors.transparent,
         }}
-        hasBottomDivider={true}
-        leftComponent={{
-          icon: "arrow-back",
-          color: theme.colors.primary,
-          onPress: goBack,
-        }}
+        // hasBottomDivider={true}
         centerComponent={
           <SearchBar
             placeholder={"Search in My Products"}
@@ -40,7 +35,7 @@ const Home: FC = () => {
         }
       />
     ),
-    // subCustomStyles: styles.searchBarContainer,
+    subCustomStyles: styles.searchBarContainer,
   };
   const bannerProps: BannerSlideProps = {
     carouselData: [
@@ -59,14 +54,14 @@ const Home: FC = () => {
   const productData = [
     {
       id: 1,
-      name: "Banana Product two line",
+      name: "Banana",
     },
-    { id: 2, name: "Banana Product two line " },
+    { id: 2, name: "Kape" },
     {
       id: 3,
-      name: "Banana Product two line",
+      name: "Gatas",
     },
-    { id: 4, name: "Banana Product two line " },
+    { id: 4, name: "Melon" },
   ];
   return (
     <HomeTemplate
