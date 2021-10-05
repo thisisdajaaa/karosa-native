@@ -25,12 +25,12 @@ import Image from "@app/atoms/Image";
 import routes from "@app/navigators/routes";
 import { useNavigation } from "@react-navigation/native";
 import Header from "./Header";
+import { ListItem } from "react-native-elements";
 const HomeTemplate: FC<PropsType> = (props) => {
-  const { bannerProps, screenProps, productProps } = props;
+  const { bannerProps, productProps } = props;
   const { goBack, navigate } = useNavigation();
   return (
     <View style={{ flex: 1 }}>
-      {/* <Screen {...screenProps}> */}
       <Header onBack={() => console.log("testing")} />
       <ScrollView>
         <Image
@@ -97,7 +97,14 @@ const HomeTemplate: FC<PropsType> = (props) => {
                       borderRadius: 6,
                     },
                   ]}
-                  onPress={() => console.log("testing")}>
+                  onPress={() =>
+                    navigate("Stack", {
+                      screen: routes.HOME_SEARCH,
+                      params: {
+                        categories: item.code,
+                      },
+                    })
+                  }>
                   <View>
                     <Icon
                       group={"wishlist"}
@@ -149,15 +156,18 @@ const HomeTemplate: FC<PropsType> = (props) => {
         </View>
 
         <View style={HomeStyles.subContainer}>
-          <ListChevron
-            hasBottomDivider={false}
-            title={"Trending Searches"}
-            variation={COMMON.VARIATION.ONE}
-            onPress={() =>
-              navigate(routes.HOME_SEARCH, { item: "Trending Searches" })
-            }
-            chevronColor={theme.colors.green5}
-          />
+          <ListItem bottomDivider={false}>
+            <ListItem.Content>
+              <ListItem.Title>{"Trending Searches"}</ListItem.Title>
+            </ListItem.Content>
+            <Icon
+              group="home"
+              name="loop"
+              height={30}
+              width={30}
+              extraStyle={{ margin: 5 }}
+            />
+          </ListItem>
 
           <FlatList
             numColumns={2}
@@ -173,12 +183,12 @@ const HomeTemplate: FC<PropsType> = (props) => {
                 ]}
                 onPress={() => console.log("testing")}>
                 <View>
+                  <Text text={item.name} textStyle={{ fontWeight: "bold" }} />
                   <Text
-                    text={item.name}
+                    text={"100 products"}
                     textStyle={HomeStyles.categoriesText}
                   />
                 </View>
-
                 <View>
                   <Icon
                     extraStyle={{ marginLeft: 20 }}
@@ -198,7 +208,7 @@ const HomeTemplate: FC<PropsType> = (props) => {
             hasBottomDivider={false}
             title={"Region's Best"}
             variation={COMMON.VARIATION.ONE}
-            onPress={() => console.log("testing")}
+            onPress={() => navigate(routes.HOME_SEARCH)}
             info={"See more"}
             infoStyle={HomeStyles.infoStyle}
             chevronColor={theme.colors.green5}
@@ -311,7 +321,6 @@ const HomeTemplate: FC<PropsType> = (props) => {
           />
         </View>
       </ScrollView>
-      {/* </Screen> */}
     </View>
   );
 };

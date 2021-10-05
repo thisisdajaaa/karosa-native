@@ -14,7 +14,10 @@ import Location from "./location.svg";
 import Sale from "./sale.svg";
 import Chat from "./chat_outline.svg";
 import Cart from "./cart_outline.svg";
+import CartGreen from "./cart_green.svg";
+import ChatGreen from "./chat_green.svg";
 import Loop from "./loop.svg";
+import ArrowBack from "./arrow_back.svg";
 
 const HomeIcons = (
   name: string,
@@ -34,6 +37,9 @@ const HomeIcons = (
     chat: <Chat style={extraStyle} height={height} width={width} />,
     cart: <Cart style={extraStyle} height={height} width={width} />,
     loop: <Loop style={extraStyle} height={height} width={width} />,
+    cart_green: <CartGreen style={extraStyle} height={height} width={width} />,
+    chat_green: <ChatGreen style={extraStyle} height={height} width={width} />,
+    arrow_back: <ArrowBack style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];

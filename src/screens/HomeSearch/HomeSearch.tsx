@@ -14,12 +14,11 @@ import { Props as ScreenProps } from "@app/components/molecules/Base-Screen/type
 // import { useNavigation } from "@react-navigation/native";
 import Header from "@app/components/molecules/Header";
 import SearchBar from "@app/components/molecules/SearchBar";
-import { Keyboard, TouchableOpacity } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
-import { theme } from "@app/styles";
+import { Keyboard, TouchableOpacity, View } from "react-native";
 import styles from "../../components/templates/HomeSearchTemplate/styles";
 import HomeSearchTemplate from "@app/components/templates/HomeSearchTemplate/HomeSearchTemplate";
 import { useNavigation } from "@react-navigation/native";
+import Icon from "@app/atoms/Icon";
 const HomeSearch: FC<PropsType> = (props) => {
   const {} = props;
 
@@ -131,11 +130,17 @@ const HomeSearch: FC<PropsType> = (props) => {
           width: "100%",
         }}
         hasBottomDivider={true}
-        leftComponent={{
-          icon: "arrow-back",
-          color: theme.colors.primary,
-          onPress: goBack,
-        }}
+        leftComponent={
+          <TouchableOpacity onPress={goBack}>
+            <Icon
+              group={"home"}
+              name={"arrow_back"}
+              width={30}
+              height={30}
+              extraStyle={{ margin: 5 }}
+            />
+          </TouchableOpacity>
+        }
         centerComponent={
           <SearchBar
             placeholder={"Test item"}
@@ -144,9 +149,22 @@ const HomeSearch: FC<PropsType> = (props) => {
           />
         }
         rightComponent={
-          <TouchableOpacity onPress={() => console.log("messages")}>
-            <MaterialIcons name="chat" size={24} color={theme.colors.primary} />
-          </TouchableOpacity>
+          <View style={styles.horizontalContainer}>
+            <Icon
+              group={"home"}
+              name={"cart_green"}
+              width={30}
+              height={30}
+              extraStyle={{ margin: 5 }}
+            />
+            <Icon
+              group={"home"}
+              name={"chat_green"}
+              width={30}
+              height={30}
+              extraStyle={{ margin: 5 }}
+            />
+          </View>
         }
       />
     ),

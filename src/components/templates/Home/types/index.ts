@@ -4,10 +4,9 @@
  *
  */
 import { PropsType as BannerSlideProps } from "@app/components/atoms/Banner/types";
-import { Props as ScreenProps } from "@app/components/molecules/Base-Screen/types";
+import { ViewProps } from "react-native";
 export type PropsType = {
   bannerProps: BannerSlideProps;
-  screenProps: ScreenProps;
   productProps: any[];
 };
 
