@@ -55,6 +55,11 @@ export const setBasketContext = createAction(
   (resolve) => (values: models.BasketContext) => resolve(values)
 );
 
+export const setCheckoutContext = createAction(
+  types.SET_CHECKOUT_CONTEXT,
+  (resolve) => (values: models.CheckoutContext) => resolve(values)
+);
+
 export const setAvailabilityForm = createAction(
   types.SET_AVAILABILITY_FORM,
   (resolve) => (values: models.AvailabilityForm) => resolve(values)
@@ -116,6 +121,7 @@ const actions = {
   setProductForm,
   setVariationForm,
   setBasketContext,
+  setCheckoutContext,
   setAvailabilityForm,
   setWholesaleForm,
   setShippingDetailsForm,

@@ -70,6 +70,27 @@ const ListChevronStyles = StyleSheet.create({
     position: "relative",
     left: 12,
   },
+  infoSubtitleContainer: {
+    position: "relative",
+    left: 12,
+    alignSelf: "flex-start",
+  },
+  iconSubtitle: {
+    alignSelf: "flex-start",
+    top: -3,
+  },
+  txtSubtitleVariationOne: {
+    ...theme.textRegular,
+    color: theme.colors.dark30,
+    position: "relative",
+    left: 7,
+    top: 4,
+    fontWeight: "400",
+  },
+  chevronSubtitleContainer: {
+    alignSelf: "flex-start",
+    top: 2,
+  },
 });
 
 export default ListChevronStyles;

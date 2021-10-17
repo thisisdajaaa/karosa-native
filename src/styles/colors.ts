@@ -4,6 +4,7 @@ const palette = {
   white: "#fff",
   green5: "#64C465",
   green10: "#31A14C",
+  green15: "#61D49726",
   orange5: "#F09A36",
   orange10: "#F2994A",
   gold5: "#FFBA00",

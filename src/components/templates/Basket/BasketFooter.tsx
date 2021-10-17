@@ -19,9 +19,10 @@ import Button from "@app/atoms/Button";
 
 import { ICON_SIZE, INITIAL_REDUCE } from "./config";
 import BasketStyles from "./styles";
+import { currencyFormatter } from "@app/utils";
 
 const BasketFooter: FC = () => {
-  const { values } = useFormikContext<BasketContext>();
+  const { values, submitForm } = useFormikContext<BasketContext>();
 
   const [subTotal, setSubTotal] = useState<number>(INITIAL_REDUCE);
 
@@ -63,11 +64,14 @@ const BasketFooter: FC = () => {
       <ListItem containerStyle={BasketStyles.bottomFooterContainer}>
         <View style={BasketStyles.flexColumn}>
           <Text text="Sub-Total:" textStyle={BasketStyles.txtSubTotal} />
-          <Text text={`P${subTotal}`} textStyle={BasketStyles.txtTotal} />
+          <Text
+            text={currencyFormatter(String(subTotal), "₱")}
+            textStyle={BasketStyles.txtTotal}
+          />
         </View>
         <Button
           title="Checkout"
-          onPress={() => 0}
+          onPress={submitForm}
           buttonStyle={BasketStyles.btnCheckout}
           titleStyle={BasketStyles.txtBtnCheckout}
         />

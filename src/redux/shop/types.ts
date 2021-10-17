@@ -11,6 +11,7 @@ export const SET_AVAILABILITY_FORM = "shop/setAvailabilityForm" as const;
 export const SET_WHOLESALE_FORM = "shop/setWholesaleForm" as const;
 export const SET_SHIPPING_DETAILS_FORM = "shop/setShippingDetailsForm" as const;
 export const SET_BASKET_CONTEXT = "shop/setBasketContext" as const;
+export const SET_CHECKOUT_CONTEXT = "shop/setCheckoutContext" as const;
 
 export const CLEAR_PRODUCT_ENTRY = "shop/clearProductEntry" as const;
 
@@ -48,6 +49,7 @@ export type Types =
   | typeof SET_WHOLESALE_FORM
   | typeof SET_SHIPPING_DETAILS_FORM
   | typeof SET_BASKET_CONTEXT
+  | typeof SET_CHECKOUT_CONTEXT
   | typeof CLEAR_PRODUCT_ENTRY
   | typeof ACT_SHOP_INFO_REQUEST
   | typeof ACT_SHOP_INFO_SUCCESS

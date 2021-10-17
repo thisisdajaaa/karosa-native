@@ -10,6 +10,7 @@ import { Alert, View } from "react-native";
 import { useFormikContext } from "formik";
 import { BasketContext, StoreData } from "@app/redux/shop/models";
 import { useMount, useUpdateEffect } from "@app/hooks";
+import { currencyFormatter } from "@app/utils";
 import FormQuantity from "@app/molecules/FormQuantity";
 import Text from "@app/atoms/Text";
 
@@ -84,7 +85,10 @@ const BasketItemQuantityPrice: FC<BasketItemQuantityProps> = (props) => {
   return (
     <View style={BasketStyles.quantityPriceContainer}>
       <View style={BasketStyles.priceContainer}>
-        <Text text={`P${basketItem.price}`} textStyle={BasketStyles.txtPrice} />
+        <Text
+          text={currencyFormatter(String(basketItem.price), "₱")}
+          textStyle={BasketStyles.txtPrice}
+        />
       </View>
 
       <FormQuantity

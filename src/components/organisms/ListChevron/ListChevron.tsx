@@ -38,6 +38,7 @@ const ListChevron: FC<PropsType> = (props) => {
           title={title}
           onPress={onPress}
           info={info}
+          subtitle={subtitle}
           titleStyle={titleStyle}
           required={required}
           icon={icon}

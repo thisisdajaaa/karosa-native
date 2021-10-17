@@ -3,6 +3,7 @@ import { ENUM } from "@app/constants";
 import {
   AvailabilityForm,
   BasketContext,
+  CheckoutContext,
   ProductForm,
   ShippingDetailsForm,
   ShopAddressForm,
@@ -171,8 +172,14 @@ export const initBasketContext: BasketContext = {
   ],
 };
 
+export const initCheckoutContext: CheckoutContext = {
+  orderData: [],
+  paymentMethod: "Cash on Delivery",
+};
+
 export const initShopState: ShopState = {
   basketContext: initBasketContext,
+  checkoutContext: initCheckoutContext,
   shopEntryContext: {
     shopSettings: initShopSettingsForm,
     shopPayment: initShopPaymentForm,

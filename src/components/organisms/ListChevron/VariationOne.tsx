@@ -27,6 +27,7 @@ const VariationOne: FC<PropsType> = (props) => {
     infoStyle,
     icon,
     titleStyle,
+    subtitle,
     chevronColor = theme.colors.dark10,
   } = props;
 
@@ -47,16 +48,41 @@ const VariationOne: FC<PropsType> = (props) => {
 
         {icon && (
           <>
-            <Icon
-              group={icon.group}
-              name={icon.name}
-              height={icon.height}
-              width={icon.width}
-            />
-            <Text
-              text={title}
-              textStyle={[ListChevronStyles.txtWithIcon, titleStyle]}
-            />
+            {subtitle ? (
+              <>
+                <Icon
+                  group={icon.group}
+                  name={icon.name}
+                  height={icon.height}
+                  width={icon.width}
+                  extraStyle={ListChevronStyles.iconSubtitle}
+                />
+                <View>
+                  <Text
+                    text={title}
+                    textStyle={[ListChevronStyles.txtWithIcon, titleStyle]}
+                  />
+
+                  <Text
+                    text={subtitle}
+                    textStyle={ListChevronStyles.txtSubtitleVariationOne}
+                  />
+                </View>
+              </>
+            ) : (
+              <>
+                <Icon
+                  group={icon.group}
+                  name={icon.name}
+                  height={icon.height}
+                  width={icon.width}
+                />
+                <Text
+                  text={title}
+                  textStyle={[ListChevronStyles.txtWithIcon, titleStyle]}
+                />
+              </>
+            )}
           </>
         )}
 
@@ -69,7 +95,16 @@ const VariationOne: FC<PropsType> = (props) => {
         )}
       </ListItem.Content>
 
-      {info && (
+      {info && subtitle && (
+        <View style={ListChevronStyles.infoSubtitleContainer}>
+          <Text
+            text={info}
+            textStyle={[ListChevronStyles.txtInfo, infoStyle]}
+          />
+        </View>
+      )}
+
+      {info && !subtitle && (
         <View style={ListChevronStyles.infoContainer}>
           <Text
             text={info}
@@ -78,7 +113,13 @@ const VariationOne: FC<PropsType> = (props) => {
         </View>
       )}
 
-      <ListItem.Chevron iconStyle={{ color: chevronColor }} />
+      {subtitle ? (
+        <View style={ListChevronStyles.chevronSubtitleContainer}>
+          <ListItem.Chevron iconStyle={{ color: chevronColor }} />
+        </View>
+      ) : (
+        <ListItem.Chevron iconStyle={{ color: chevronColor }} />
+      )}
     </ListItem>
   );
 };
