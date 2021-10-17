@@ -23,7 +23,7 @@ import { OptionNameStyles, VariationModalStyles } from "./styles";
 import { ICON_SIZE, NUM_LINE, TOTAL } from "./config";
 
 const VariationModal: FC<VariationModalProps> = (props) => {
-  const { index, setVisible, visible, toggleOverlay } = props;
+  const { index, variationId, setVisible, visible, toggleOverlay } = props;
 
   const { values, setValues } = useFormikContext<VariationForm>();
 
@@ -46,16 +46,25 @@ const VariationModal: FC<VariationModalProps> = (props) => {
   const setClonedVariationItem = (image: string | null) => {
     const newArray = [...values.variationData];
 
-    newArray[index].options.push({
-      id: uuid.v4(),
-      optionName,
-      image,
-      price: "",
-      stock: "",
-      weight: "",
-    });
+    const newVariationData: VariationItem[] = newArray.map((value) => {
+      if (variationId === value.id) {
+        return {
+          ...value,
+          options: value.options.concat({
+            id: uuid.v4(),
+            optionName,
+            image,
+            price: "",
+            stock: "",
+            weight: "",
+          }),
+        };
+      }
 
-    const newVariationData: VariationItem[] = [...newArray];
+      return {
+        ...value,
+      };
+    });
 
     setValues({
       ...values,

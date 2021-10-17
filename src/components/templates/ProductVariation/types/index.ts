@@ -12,6 +12,7 @@ export type PropsType = {
 
 export type VariationModalProps = {
   index: number;
+  variationId: string;
   visible: boolean;
   toggleOverlay(): void;
   setVisible: Dispatch<SetStateAction<boolean>>;
