@@ -152,6 +152,12 @@ const CheckoutStyles = StyleSheet.create({
     fontWeight: "400",
     color: theme.colors.dark30,
   },
+  txtOrderItemQuantity: {
+    ...theme.textRegular,
+    fontWeight: "400",
+    color: theme.colors.dark30,
+    marginLeft: 32,
+  },
   txtOrderPrice: {
     ...theme.textSemiBold,
     color: theme.colors.primary,

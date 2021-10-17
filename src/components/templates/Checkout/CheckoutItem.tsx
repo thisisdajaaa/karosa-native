@@ -7,7 +7,7 @@ import { currencyFormatter } from "@app/utils";
 import Icon from "@app/atoms/Icon";
 import Text from "@app/atoms/Text";
 import Image from "@app/atoms/Image";
-import ListChevron from "@app/components/organisms/ListChevron";
+import ListChevron from "@app/organisms/ListChevron";
 import CheckoutDelivery from "@app/screens/CheckoutDelivery";
 
 import type { CheckoutItemProps } from "./types";
@@ -28,13 +28,12 @@ const CheckoutItem: FC<CheckoutItemProps> = (props) => {
     switch (item.deliveryOption) {
       case "1":
         return {
-          label: "Standard Express",
+          label: "Lalamove",
           info: currencyFormatter("50", "₱"),
         };
       case "2":
         return {
           label: "Seller own Courier",
-          info: currencyFormatter("50", "₱"),
         };
 
       default:
@@ -81,17 +80,13 @@ const CheckoutItem: FC<CheckoutItemProps> = (props) => {
                 />
                 <View style={CheckoutStyles.pickerLabelContainer}>
                   <Text
-                    text={`${storeItem.selectedPickerLabel},`}
+                    text={`${storeItem.selectedPickerLabel}`}
                     numberOfLines={NUM_OF_LINES}
                     textStyle={CheckoutStyles.txtOrderItem}
                   />
                   <Text
-                    text={`Quantity: `}
-                    textStyle={CheckoutStyles.txtOrderItem}
-                  />
-                  <Text
-                    text={String(storeItem.quantity)}
-                    textStyle={CheckoutStyles.txtOrderItem}
+                    text={`Qty: ${storeItem.quantity}`}
+                    textStyle={CheckoutStyles.txtOrderItemQuantity}
                   />
                 </View>
 
@@ -110,7 +105,6 @@ const CheckoutItem: FC<CheckoutItemProps> = (props) => {
         onPress={() => checkoutDeliveryRef.current?.open()}
         variation={1}
         info={deliveryOption().info}
-        subtitle="Via Lalamove"
         infoStyle={{ ...theme.textRegular, color: theme.colors.dark20 }}
         titleStyle={{ ...theme.textRegular }}
         chevronColor={theme.colors.primary}
@@ -125,7 +119,9 @@ const CheckoutItem: FC<CheckoutItemProps> = (props) => {
       <ListItem style={CheckoutStyles.orderItemTotalContainer} bottomDivider>
         <ListItem.Content style={CheckoutStyles.orderItemTotalRow}>
           <Text
-            text={`${item.items.length} items, Order Total: `}
+            text={`${item.items.length} ${
+              item.items.length === 1 ? "item" : "items"
+            }, Order Total: `}
             textStyle={CheckoutStyles.txtOrderItemTotal}
           />
           <Text

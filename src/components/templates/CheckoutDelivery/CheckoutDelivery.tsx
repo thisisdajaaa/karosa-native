@@ -8,12 +8,12 @@
 import React, { FC } from "react";
 import { View } from "react-native";
 import Text from "@app/atoms/Text";
+import ListRadioGroup from "@app/organisms/ListRadioGroup";
+import Button from "@app/atoms/Button";
 
 import type { PropsType } from "./types";
-import CheckoutDeliveryStyles from "./styles";
-import ListRadioGroup from "@app/components/organisms/ListRadioGroup";
-import Button from "@app/atoms/Button";
 import { OPTIONS } from "./config";
+import CheckoutDeliveryStyles from "./styles";
 
 const CheckoutDeliveryTemplate: FC<PropsType> = (props) => {
   const { storeIndex, sheetRef } = props;

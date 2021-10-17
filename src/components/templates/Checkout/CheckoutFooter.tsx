@@ -23,7 +23,7 @@ const CheckoutFooter: FC = () => {
 
   const getShippingFee = () => {
     const shippingFees: number[] = values.orderData.map((order) => {
-      if (order.deliveryOption === "1" || order.deliveryOption === "2") {
+      if (order.deliveryOption === "1") {
         return 50;
       }
 
