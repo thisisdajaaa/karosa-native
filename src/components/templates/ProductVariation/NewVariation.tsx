@@ -244,6 +244,7 @@ const NewVariation: FC<NewVariationProps> = (props) => {
 
       <VariationModal
         index={index}
+        variationId={String(values.variationData[index].id)}
         toggleOverlay={toggleOverlay}
         setVisible={setVisible}
         visible={visible}
