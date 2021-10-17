@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 /**
  *
  * @format
@@ -6,8 +7,8 @@
 import { StyleProp, ViewStyle } from "react-native";
 
 export type PropsType = {
-  selected: number;
-  buttons: string[];
+  selectedIndex: number;
+  buttons: ReactElement[];
   onPress: ([string]: any) => void;
   userContainerStyle?: StyleProp<ViewStyle>;
   userSelectedButtonStyle?: StyleProp<ViewStyle>;

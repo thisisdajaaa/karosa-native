@@ -14,7 +14,7 @@ import ButtonGroupStyles from "./styles";
 // import { theme } from "@app/styles";
 
 const ButtonGroup: FC<PropsType> = ({
-  selected,
+  selectedIndex,
   buttons,
   onPress,
   userContainerStyle,
@@ -31,7 +31,7 @@ const ButtonGroup: FC<PropsType> = ({
   return (
     <RNButtonGroup
       onPress={onPress}
-      selectedIndex={selected}
+      selectedIndex={selectedIndex}
       buttons={buttons}
       containerStyle={[containerStyle, userContainerStyle]}
       selectedButtonStyle={[selectedButtonStyle, userSelectedButtonStyle]}
