@@ -1,89 +1,54 @@
 import React, { FC } from "react";
 import { TouchableWithoutFeedback, View } from "react-native";
-import { theme } from "@app/styles";
 import Icon from "@app/atoms/Icon";
 import Text from "@app/atoms/Text";
 
+import { ICON_SIZE } from "./config";
+import CheckoutStyles from "./styles";
+
 const Address: FC = () => {
   return (
-    <View
-      style={{
-        backgroundColor: theme.colors.gold15,
-        paddingHorizontal: 24,
-        paddingTop: 16,
-        paddingBottom: 24,
-      }}>
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <Icon group="checkout" name="location" height={24} width={24} />
+    <View style={CheckoutStyles.addressContainer}>
+      <View style={CheckoutStyles.addressRow}>
+        <Icon
+          group="checkout"
+          name="location"
+          height={ICON_SIZE}
+          width={ICON_SIZE}
+        />
         <Text
           text="Delivery Address"
-          textStyle={{
-            ...theme.textSemiBold,
-            position: "relative",
-            left: 10,
-            fontWeight: "400",
-          }}
+          textStyle={CheckoutStyles.txtDeliveryAddress}
         />
 
-        <TouchableWithoutFeedback onPress={() => alert("Pressed")}>
-          <View
-            style={{
-              marginLeft: "auto",
-              flexDirection: "row",
-              alignItems: "center",
-            }}>
-            <Text
-              text="Default"
-              textStyle={{
-                ...theme.textRegular,
-                color: theme.colors.primary,
-              }}
-            />
+        <TouchableWithoutFeedback onPress={() => 0}>
+          <View style={CheckoutStyles.defaultContainer}>
+            <Text text="Default" textStyle={CheckoutStyles.txtDefault} />
 
-            <Icon group="common" name="chevron" height={24} width={24} />
+            <Icon
+              group="common"
+              name="chevron"
+              height={ICON_SIZE}
+              width={ICON_SIZE}
+            />
           </View>
         </TouchableWithoutFeedback>
       </View>
 
-      <View
-        style={{
-          position: "relative",
-          paddingLeft: 34,
-          marginTop: 18,
-        }}>
-        <Text
-          text="DAJA DAJA DAJA"
-          textStyle={{
-            ...theme.textRegular,
-          }}
-        />
-        <Text
-          text="(+63) 998 345 6432"
-          textStyle={{
-            ...theme.textRegular,
-            color: theme.colors.dark30,
-          }}
-        />
+      <View style={CheckoutStyles.addressSubContainer}>
+        <Text text="DAJA DAJA DAJA" textStyle={CheckoutStyles.txtName} />
+        <Text text="(+63) 998 345 6432" textStyle={CheckoutStyles.txtAddress} />
         <Text
           text="St. Michael Drive V. Rama"
-          textStyle={{
-            ...theme.textRegular,
-            color: theme.colors.dark30,
-          }}
+          textStyle={CheckoutStyles.txtAddress}
         />
         <Text
           text="Guadalupe, Cebu City"
-          textStyle={{
-            ...theme.textRegular,
-            color: theme.colors.dark30,
-          }}
+          textStyle={CheckoutStyles.txtAddress}
         />
         <Text
           text="Visayas, Cebu, 6000"
-          textStyle={{
-            ...theme.textRegular,
-            color: theme.colors.dark30,
-          }}
+          textStyle={CheckoutStyles.txtAddress}
         />
       </View>
     </View>

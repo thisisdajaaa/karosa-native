@@ -42,5 +42,6 @@ export default Object.freeze({
   CHOOSE_CATEGORY: "Choose Category",
 
   MY_BASKET: "My Basket",
+  CHECKOUT: "Checkout",
   NOTIFICATIONS: "Notifications",
 });

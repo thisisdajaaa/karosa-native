@@ -13,11 +13,11 @@ import type { PropsType } from "./types";
 import { BTM_SHEET_HEIGHT } from "./config";
 
 const CheckoutDeliveryScreen: FC<PropsType> = (props) => {
-  const { sheetRef } = props;
+  const { sheetRef, storeIndex } = props;
 
   return (
     <BottomSheet ref={sheetRef} height={BTM_SHEET_HEIGHT}>
-      <CheckoutDeliveryTemplate />
+      <CheckoutDeliveryTemplate sheetRef={sheetRef} storeIndex={storeIndex} />
     </BottomSheet>
   );
 };

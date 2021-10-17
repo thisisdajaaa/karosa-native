@@ -7,7 +7,7 @@
 import { StyleSheet } from "react-native";
 import { SPACING, theme } from "@app/styles";
 
-const ProductStatusStyles = StyleSheet.create({
+const CheckoutDeliveryStyles = StyleSheet.create({
   itemContainer: {
     flexDirection: "row",
     height: 27,
@@ -22,19 +22,11 @@ const ProductStatusStyles = StyleSheet.create({
   spacer: {
     marginTop: SPACING.md,
   },
+  buttonContainer: {
+    marginTop: SPACING.md,
+    marginLeft: "5%",
+    marginRight: "5%",
+  },
 });
 
-export const StatusItemStyle = (bgColor: string) => {
-  return StyleSheet.create({
-    circle: {
-      borderRadius: 50,
-      backgroundColor: bgColor,
-      height: 16,
-      width: 16,
-      marginTop: SPACING.xss - 1,
-      marginRight: SPACING.lg,
-    },
-  });
-};
-
-export default ProductStatusStyles;
+export default CheckoutDeliveryStyles;

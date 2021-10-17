@@ -1,100 +1,111 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { ScrollView, View } from "react-native";
-import { theme } from "@app/styles";
-import Chip from "@app/atoms/Chip";
-
 import { ListItem } from "react-native-elements";
+import { useFormikContext } from "formik";
+import { currencyFormatter } from "@app/utils";
+import { CheckoutContext } from "@app/redux/shop/models";
+import Chip from "@app/atoms/Chip";
 import Text from "@app/atoms/Text";
 import Button from "@app/atoms/Button";
 
+import { INITIAL_REDUCE, PAYMENT_METHOD } from "./config";
+import CheckoutStyles from "./styles";
+
 const CheckoutFooter: FC = () => {
+  const { values } = useFormikContext<CheckoutContext>();
+
+  const [paymentMethod, setPaymentMethod] = useState<PAYMENT_METHOD>("cod");
+
+  const checkoutTotal = values.orderData.reduce(
+    (accumulator, currentValue) => (accumulator += currentValue.orderTotal),
+    INITIAL_REDUCE
+  );
+
+  const getShippingFee = () => {
+    const shippingFees: number[] = values.orderData.map((order) => {
+      if (order.deliveryOption === "1" || order.deliveryOption === "2") {
+        return 50;
+      }
+
+      return 0;
+    });
+
+    return shippingFees.reduce(
+      (accumulator, fee) => (accumulator += fee),
+      INITIAL_REDUCE
+    );
+  };
+
+  const finalTotal = getShippingFee() + checkoutTotal;
+
   return (
     <>
       <ListItem>
         <ListItem.Content>
           <Text text="Select Payment Method" />
         </ListItem.Content>
-        <View style={{ left: 12 }}>
-          <Text text="See All" textStyle={{ color: theme.colors.primary }} />
+        <View style={CheckoutStyles.seeAllContainer}>
+          <Text text="See All" textStyle={CheckoutStyles.txtSeeAll} />
         </View>
-        <ListItem.Chevron iconStyle={{ color: theme.colors.primary }} />
+        <ListItem.Chevron iconStyle={CheckoutStyles.txtSeeAll} />
       </ListItem>
-      <ListItem style={{ top: -5, marginBottom: 12 }} bottomDivider>
+      <ListItem style={CheckoutStyles.paymentMethodContainer} bottomDivider>
         <ScrollView showsHorizontalScrollIndicator={false} horizontal>
           <Chip
-            selected={true}
+            selected={paymentMethod === "cod"}
             title="Cash on Delivery"
             iconGroup="checkout"
             iconName="coins"
+            onPress={() => setPaymentMethod("cod")}
           />
           <Chip
-            selected={false}
+            selected={paymentMethod === "gcash"}
             title="GCash"
             iconGroup="basket"
             iconName="store"
+            onPress={() => setPaymentMethod("gcash")}
           />
         </ScrollView>
       </ListItem>
       <ListItem
         bottomDivider
-        style={{ marginBottom: 12 }}
-        containerStyle={{
-          flexDirection: "column",
-          alignItems: "stretch",
-        }}>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginBottom: 8,
-          }}>
+        style={CheckoutStyles.paymentList}
+        containerStyle={CheckoutStyles.paymentListContainer}>
+        <View style={CheckoutStyles.paymentListSubContainer}>
           <Text text="Sub-Total (3 items)" />
-          <Text text="PHP 2700" textStyle={{ ...theme.textSemiBold }} />
+          <Text
+            text={currencyFormatter(String(checkoutTotal), "₱")}
+            textStyle={CheckoutStyles.txtPaymentList}
+          />
         </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginBottom: 8,
-          }}>
+        <View style={CheckoutStyles.paymentListSubContainer}>
           <Text text="Shipping Fee" />
-          <Text text="PHP 100" textStyle={{ ...theme.textSemiBold }} />
+          <Text
+            text={currencyFormatter(String(getShippingFee()), "₱")}
+            textStyle={CheckoutStyles.txtPaymentList}
+          />
         </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}>
+        <View style={CheckoutStyles.paymentListLastContainer}>
           <Text text="Total Payment" />
-          <Text text="PHP 2800" textStyle={{ ...theme.textSemiBold }} />
+          <Text
+            text={currencyFormatter(String(finalTotal), "₱")}
+            textStyle={CheckoutStyles.txtPaymentList}
+          />
         </View>
       </ListItem>
-      <ListItem
-        bottomDivider
-        containerStyle={{ height: 64, justifyContent: "flex-end" }}>
-        <View style={{ flexDirection: "column" }}>
+      <ListItem bottomDivider containerStyle={CheckoutStyles.totalContainer}>
+        <View style={CheckoutStyles.flexColumn}>
+          <Text text="Total:" textStyle={CheckoutStyles.txtTotal} />
           <Text
-            text="Total:"
-            textStyle={{
-              ...theme.textRegular,
-              fontWeight: "700",
-              textAlign: "right",
-            }}
-          />
-          <Text
-            text={`P 1231`}
-            textStyle={{
-              ...theme.textSemiBold,
-              color: theme.colors.primary,
-              textAlign: "right",
-            }}
+            text={currencyFormatter(String(finalTotal), "₱")}
+            textStyle={CheckoutStyles.txtFinalTotal}
           />
         </View>
         <Button
           title="Place Order"
           onPress={() => 0}
-          buttonStyle={{ paddingVertical: 16, paddingHorizontal: 48 }}
-          titleStyle={{ ...theme.textLightBold }}
+          buttonStyle={CheckoutStyles.btnPlaceOrder}
+          titleStyle={CheckoutStyles.txtPlaceOrder}
         />
       </ListItem>
     </>

@@ -65,8 +65,7 @@ const UserAccountSettingsTemplate: React.FC = () => {
     onPress: () => logoutRef.current?.open(),
     title: "Logout",
     containerStyle: UserAccountSettingsStyle.logoutButtonContainer,
-    textStyle: UserAccountSettingsStyle.txtLogout,
-    variation: 2,
+    titleStyle: UserAccountSettingsStyle.txtLogout,
   };
 
   return (

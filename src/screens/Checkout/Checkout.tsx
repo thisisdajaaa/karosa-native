@@ -23,7 +23,7 @@ const CheckoutScreen: FC = () => {
     goBack();
   }, [goBack]);
 
-  /** Temporary submit since order array structure is still TBD */
+  /** Temporary submit since backend wiring still not finalized */
   const handleSubmit = () => {
     0;
   };

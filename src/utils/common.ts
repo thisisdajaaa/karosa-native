@@ -44,3 +44,10 @@ export const internetCheck = () =>
       );
     }
   });
+
+export const currencyFormatter = (amount: string, currency: string) => {
+  return `${currency} ${amount.replace(
+    /(\d)(?=(\d{3})+(\.(\d){0,2})*$)/g,
+    "$1,"
+  )}`;
+};

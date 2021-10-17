@@ -1,50 +1,62 @@
-import Icon from "@app/atoms/Icon";
-import React, { FC, Fragment, useRef } from "react";
+import React, { FC, useRef } from "react";
 import { View } from "react-native";
 import { ListItem } from "react-native-elements";
-import Text from "@app/atoms/Text";
+import RBSheet from "react-native-raw-bottom-sheet";
 import { theme } from "@app/styles";
-import { OrderData } from "@app/redux/shop/models";
+import { currencyFormatter } from "@app/utils";
+import Icon from "@app/atoms/Icon";
+import Text from "@app/atoms/Text";
 import Image from "@app/atoms/Image";
 import ListChevron from "@app/components/organisms/ListChevron";
-import RBSheet from "react-native-raw-bottom-sheet";
 import CheckoutDelivery from "@app/screens/CheckoutDelivery";
 
-type Props = {
-  item: OrderData;
-  storeIndex: number;
-};
+import type { CheckoutItemProps } from "./types";
+import { ICON_SIZE, INITIAL_REDUCE, NUM_OF_LINES } from "./config";
+import CheckoutStyles from "./styles";
 
-const CheckoutItem: FC<Props> = (props) => {
+const CheckoutItem: FC<CheckoutItemProps> = (props) => {
   const { item, storeIndex } = props;
 
   const checkoutDeliveryRef = useRef<RBSheet>(null);
 
   const orderTotal = item.items.reduce(
     (accumulator, currentValue) => (accumulator += currentValue.price),
-    0
+    INITIAL_REDUCE
   );
+
+  const deliveryOption = () => {
+    switch (item.deliveryOption) {
+      case "1":
+        return {
+          label: "Standard Express",
+          info: currencyFormatter("50", "₱"),
+        };
+      case "2":
+        return {
+          label: "Seller own Courier",
+          info: currencyFormatter("50", "₱"),
+        };
+
+      default:
+        return {
+          label: "Pick Up by Buyer",
+          info: " ",
+        };
+    }
+  };
 
   return (
     <>
       <ListItem>
-        <ListItem.Content
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            alignItems: "center",
-          }}>
+        <ListItem.Content style={CheckoutStyles.storeNameContainer}>
           <Icon
             group="basket"
             name="store"
-            height={24}
-            width={24}
-            extraStyle={{ marginHorizontal: 8 }}
+            height={ICON_SIZE}
+            width={ICON_SIZE}
+            extraStyle={CheckoutStyles.basketIcon}
           />
-          <Text
-            text={item.storeName}
-            textStyle={{ ...theme.textSemiBold, fontWeight: "500" }}
-          />
+          <Text text={item.storeName} textStyle={CheckoutStyles.txtStoreName} />
         </ListItem.Content>
       </ListItem>
 
@@ -52,65 +64,40 @@ const CheckoutItem: FC<Props> = (props) => {
         <ListItem
           key={storeItem.id}
           bottomDivider={storeKey === item.items.length - 1}>
-          <View style={{ flexDirection: "column", alignItems: "flex-end" }}>
-            <View style={{ flexDirection: "row", alignItems: "flex-start" }}>
-              <View style={{ marginLeft: 24 }}>
+          <View style={CheckoutStyles.storeItemColumn}>
+            <View style={CheckoutStyles.storeItemRow}>
+              <View style={CheckoutStyles.orderImageContainer}>
                 <Image
                   source={{ uri: storeItem.image }}
-                  imageStyle={{ height: 75, width: 75 }}
+                  imageStyle={CheckoutStyles.orderImage}
                   resizeMode="cover"
                 />
               </View>
-              <View
-                style={{
-                  marginLeft: 10,
-                  flexDirection: "column",
-                  width: "60%",
-                }}>
+              <View style={CheckoutStyles.orderNameContainer}>
                 <Text
                   text={storeItem.name}
-                  numberOfLines={2}
-                  textStyle={{
-                    ...theme.textRegular,
-                    fontWeight: "400",
-                    marginBottom: 8,
-                  }}
+                  numberOfLines={NUM_OF_LINES}
+                  textStyle={CheckoutStyles.txtOrderName}
                 />
-                <View style={{ flexDirection: "row", marginBottom: 8 }}>
+                <View style={CheckoutStyles.pickerLabelContainer}>
                   <Text
                     text={`${storeItem.selectedPickerLabel},`}
-                    numberOfLines={2}
-                    textStyle={{
-                      ...theme.textRegular,
-                      fontWeight: "400",
-                      color: theme.colors.dark30,
-                    }}
+                    numberOfLines={NUM_OF_LINES}
+                    textStyle={CheckoutStyles.txtOrderItem}
                   />
                   <Text
                     text={`Quantity: `}
-                    textStyle={{
-                      ...theme.textRegular,
-                      fontWeight: "400",
-                      marginLeft: 8,
-                      color: theme.colors.dark30,
-                    }}
+                    textStyle={CheckoutStyles.txtOrderItem}
                   />
                   <Text
                     text={String(storeItem.quantity)}
-                    textStyle={{
-                      ...theme.textSemiBold,
-                      fontWeight: "400",
-                      color: theme.colors.dark30,
-                    }}
+                    textStyle={CheckoutStyles.txtOrderItem}
                   />
                 </View>
 
                 <Text
-                  text={`P${storeItem.price}`}
-                  textStyle={{
-                    ...theme.textSemiBold,
-                    color: theme.colors.primary,
-                  }}
+                  text={currencyFormatter(String(storeItem.price), "₱")}
+                  textStyle={CheckoutStyles.txtOrderPrice}
                 />
               </View>
             </View>
@@ -119,10 +106,10 @@ const CheckoutItem: FC<Props> = (props) => {
       ))}
 
       <ListChevron
-        title="Standard Express"
+        title={deliveryOption().label}
         onPress={() => checkoutDeliveryRef.current?.open()}
         variation={1}
-        info="Select / Code"
+        info={deliveryOption().info}
         subtitle="Via Lalamove"
         infoStyle={{ ...theme.textRegular, color: theme.colors.dark20 }}
         titleStyle={{ ...theme.textRegular }}
@@ -130,33 +117,28 @@ const CheckoutItem: FC<Props> = (props) => {
         icon={{
           group: "checkout",
           name: "delivery",
-          height: 24,
-          width: 24,
+          height: ICON_SIZE,
+          width: ICON_SIZE,
         }}
         hasBottomDivider
       />
-      <ListItem style={{ marginBottom: 12 }} bottomDivider>
-        <ListItem.Content
-          style={{ flexDirection: "row", justifyContent: "flex-end" }}>
+      <ListItem style={CheckoutStyles.orderItemTotalContainer} bottomDivider>
+        <ListItem.Content style={CheckoutStyles.orderItemTotalRow}>
           <Text
             text={`${item.items.length} items, Order Total: `}
-            textStyle={{
-              ...theme.textRegular,
-              fontWeight: "400",
-              marginLeft: 8,
-            }}
+            textStyle={CheckoutStyles.txtOrderItemTotal}
           />
           <Text
-            text={`PHP ${orderTotal}`}
-            textStyle={{
-              ...theme.textSemiBold,
-              color: theme.colors.primary,
-            }}
+            text={currencyFormatter(String(orderTotal), "₱")}
+            textStyle={CheckoutStyles.txtOrderItemTotalValue}
           />
         </ListItem.Content>
       </ListItem>
 
-      <CheckoutDelivery sheetRef={checkoutDeliveryRef} />
+      <CheckoutDelivery
+        sheetRef={checkoutDeliveryRef}
+        storeIndex={storeIndex}
+      />
     </>
   );
 };

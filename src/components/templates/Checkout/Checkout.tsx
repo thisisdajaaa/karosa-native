@@ -7,17 +7,18 @@
 
 import React, { FC, useCallback } from "react";
 import { useFormikContext } from "formik";
+import { isEmpty } from "ramda";
 import { FlatList, KeyboardAvoidingView } from "react-native";
-import { theme } from "@app/styles";
 import { CheckoutContext } from "@app/redux/shop/models";
 import { getPlatform } from "@app/utils";
+import { theme } from "@app/styles";
 import Header from "@app/molecules/Header";
 
 import type { PropsType } from "./types";
+import { INITIAL_REDUCE } from "./config";
 import CheckoutStyles from "./styles";
 import CheckoutItem from "./CheckoutItem";
 import Address from "./Address";
-import { isEmpty } from "ramda";
 import CheckoutFooter from "./CheckoutFooter";
 
 const CheckoutTemplate: FC<PropsType> = (props) => {
@@ -34,7 +35,7 @@ const CheckoutTemplate: FC<PropsType> = (props) => {
       accumulator += currentValue.items.length;
       return accumulator;
     },
-    0
+    INITIAL_REDUCE
   );
 
   return (
