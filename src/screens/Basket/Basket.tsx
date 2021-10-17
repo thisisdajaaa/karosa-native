@@ -6,6 +6,7 @@
  */
 
 import React, { FC, useCallback, useMemo } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { FormikProvider, useFormik } from "formik";
 import { useMemoizedSelector } from "@app/hooks";
@@ -18,7 +19,6 @@ import {
   OrderData,
   CheckoutContext,
 } from "@app/redux/shop/models";
-import { useDispatch } from "react-redux";
 import routes from "@app/navigators/routes";
 
 const BasketScreen: FC = () => {
