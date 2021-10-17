@@ -9,13 +9,12 @@ import { Option } from "@app/molecules/FormRadioGroup/types";
 export const OPTIONS: Option[] = [
   {
     id: "1",
-    label: "Standard Express",
+    label: "Lalamove",
     info: "P50",
   },
   {
     id: "2",
     label: "Seller own Courier",
-    info: "P50",
   },
   {
     id: "3",
