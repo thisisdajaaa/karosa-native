@@ -18,6 +18,7 @@ export default Object.freeze({
   ACCOUNTS_SOCIAL_MEDIA: "Social Media Accounts",
   ACCOUNTS_DELETE: "Delete Account",
   ACCOUNTS_LOGOUT: "Logout",
+  ACCOUNTS_SEARCH_ADDRESS: "Search Address",
 
   SHOP_MAIN: "Shop Main",
   SHOP_SETTINGS: "Shop Settings",
