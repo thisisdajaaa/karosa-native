@@ -26,6 +26,7 @@ import ProductStockPriceScreen from "@app/screens/ProductStockPrice";
 import CheckoutScreen from "@app/screens/Checkout";
 import AddressMain from "@app/screens/AddressMain";
 import AddressNew from "@app/screens/AddressNew";
+import AddressSearch from "@app/screens/AddressSearch";
 import BasketScreen from "@app/screens/Basket";
 
 import { TabNavigator } from "./tab-navigator";
@@ -47,6 +48,7 @@ const StackNavigator: React.FC = () => {
       />
       <Stack.Screen name="My Address" component={AddressMain} />
       <Stack.Screen name="New Address" component={AddressNew} />
+      <Stack.Screen name="Search Address" component={AddressSearch} />
       <Stack.Screen
         name="SignUp Phonenumber"
         component={AuthPhoneNumberScreen}
