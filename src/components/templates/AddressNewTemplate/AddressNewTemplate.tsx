@@ -5,106 +5,122 @@
  *
  */
 
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 
 // import AddressNewTemplateConfig from "./config";
 import type { PropsType } from "./types";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Callout, CalloutSubview, Marker } from "react-native-maps";
 import { useNavigation } from "@react-navigation/native";
-import { Keyboard, View } from "react-native";
+import { Animated, Keyboard, TouchableOpacity, View } from "react-native";
 import Header from "@app/components/molecules/Header";
 import SearchBar from "@app/components/molecules/SearchBar";
 
 import * as Location from "expo-location";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import AddressNewTemplateStyles from "./styles";
+import { theme } from "@app/styles";
+import Text from "@app/atoms/Text";
+import Button from "@app/atoms/Button";
+import Icon from "@app/atoms/Icon";
 
 const AddressNewTemplate: FC<PropsType> = (props) => {
   const {} = props;
   const { goBack, navigate } = useNavigation();
+  const mapRef = useRef();
 
-  // console.log();
-
-  // const [location, setLocation] = useState<Location.LocationObject>({
-  //   coords: {
-  //     latitude: 0,
-  //     longitude: 0,
-  //     altitude: null,
-  //     speed: null,
-  //     altitudeAccuracy: null,
-  //     heading: null,
-  //     accuracy: null,
-  //   },
-  //   timestamp: 0,
-  // });
-
-  // useEffect(() => {
-  //   // Update the document title using the browser API
-  //   getLocation();
-  // });
-
-  // const getLocation = async () => {
-  //   let { status } = await Location.requestForegroundPermissionsAsync();
-  //   if (status !== "granted") {
-  //     // console.log("Permission to access location was denied");
-  //     return;
-  //   } else {
-  //     // console.log("Permission to access location was granted");
-  //     let userLocation = await Location.getCurrentPositionAsync();
-  //     setLocation(userLocation);
-  //   }
-  // };
-
-  // console.log(location.coords.latitude);
+  const [region, setRegion] = useState({
+    latitude: 10.265896257138982,
+    longitude: 123.97143821531323,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
 
   const GOOGLE_PLACES_API_KEY = "AIzaSyB2P8TWkc09Z83VZuYz_M_qh62r2s3c-p4"; // never save your real api key in a snack!
 
   return (
-    <View>
-      {/* <Header
-        // containerStyle={ProfileStyles.headerContainer}
+    <View style={{ backgroundColor: theme.colors.white }}>
+      <Header
         barStyle="light-content"
+        placement={"left"}
         leftComponent={{
           icon: "arrow-back",
           color: "green",
           onPress: goBack,
+          style: {
+            paddingTop: 5,
+          },
+        }}
+        containerStyle={{
+          width: "100%",
+          maxWidth: "100%",
+          zIndex: 1,
+          position: "absolute",
         }}
         centerComponent={
-          <SearchBar
-            placeholder={"Search in My Products"}
-            backgroundColor={"primary"}
-            // onTouchStart={(_e) => navigate(routes.HOME_SEARCH)}
-            onFocus={Keyboard.dismiss}
-          />
-        }
-      /> */}
-
-      <View style={{ marginTop: 50, flex: 1 }}>
-        <View>
           <GooglePlacesAutocomplete
-            placeholder={"Search"}
+            placeholder={"Search Address"}
             query={{
               key: GOOGLE_PLACES_API_KEY,
               language: "en",
               components: "country:ph",
+              location: `${region.latitude}, ${region.longitude}`,
             }}
             fetchDetails={true}
             GooglePlacesSearchQuery={{ rankby: "distance" }}
+            onPress={(data, details) => {
+              console.log(data, details);
+              setRegion({
+                latitude: details?.geometry.location.lat || 0,
+                longitude: details?.geometry.location.lng || 0,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              });
+            }}
             styles={{
-              container: {
-                flex: 0,
-                position: "absolute",
+              textInput: {
                 width: "100%",
-                zIndex: 1,
+                backgroundColor: theme.colors.light5,
               },
-              listView: { backgroundColor: "white" },
+              container: {
+                width: "100%",
+                maxWidth: "100%",
+                height: "100%",
+              },
+              listView: { backgroundColor: "white", width: "100%" },
             }}
           />
-        </View>
+        }
+      />
+
+      <View>
         <MapView
           style={AddressNewTemplateStyles.map}
+          region={region}
+          zoomEnabled={true}
           showsUserLocation
-          showsMyLocationButton></MapView>
+          showsCompass>
+          <Marker
+            coordinate={{
+              latitude: region.latitude,
+              longitude: region.longitude,
+            }}
+            draggable={true}
+          />
+        </MapView>
+
+        <View
+          style={{
+            position: "absolute", //use absolute position to show button on top of the map
+            bottom: "1%",
+            alignSelf: "center",
+            width: "100%",
+            padding: "5%",
+          }}>
+          <Button
+            title={"Confirm"}
+            buttonStyle={{ backgroundColor: theme.colors.primary }}
+            titleStyle={{ fontSize: 16 }}></Button>
+        </View>
       </View>
     </View>
   );
