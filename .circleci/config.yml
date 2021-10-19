@@ -1,0 +1,21 @@
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+jobs:
+  publish-to-expo:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: sudo npm install -g expo-cli
+            - run: npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
+            - run: yarn add expo
+            - run: npx expo publish --non-interactive
+
+workflows:
+  build-and-test:
+    jobs:
+      - publish-to-expo
+      - build-and-test
