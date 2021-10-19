@@ -12,6 +12,7 @@ import Chevron from "./chevron.svg";
 import Twitter from "./twitter.svg";
 import Fb from "./fb.svg";
 import Instagram from "./instagram.svg";
+import IllustrationAddress from "./illustration_address.svg";
 
 const AccountSettingsIcons = (
   name: string,
@@ -26,6 +27,9 @@ const AccountSettingsIcons = (
     chevron: <Chevron style={extraStyle} height={height} width={width} />,
     twitter: <Twitter style={extraStyle} height={height} width={width} />,
     instagram: <Instagram style={extraStyle} height={height} width={width} />,
+    illustration_address: (
+      <IllustrationAddress style={extraStyle} height={height} width={width} />
+    ),
   };
 
   return icons[name];

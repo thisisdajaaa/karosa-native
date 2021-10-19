@@ -23,6 +23,8 @@ import AuthPhoneNumberScreen from "@app/screens/AuthPhoneNumber";
 import AuthPasswordScreen from "@app/screens/AuthPassword";
 import AuthVerificationScreen from "@app/screens/AuthVerification";
 import ProductStockPriceScreen from "@app/screens/ProductStockPrice";
+import AddressMain from "@app/screens/AddressMain";
+import AddressNew from "@app/screens/AddressNew";
 import BasketScreen from "@app/screens/Basket";
 
 import { TabNavigator } from "./tab-navigator";
@@ -42,6 +44,8 @@ const StackNavigator: React.FC = () => {
         name="Social Media Accounts"
         component={SocialMediaScreen}
       />
+      <Stack.Screen name="My Address" component={AddressMain} />
+      <Stack.Screen name="New Address" component={AddressNew} />
       <Stack.Screen
         name="SignUp Phonenumber"
         component={AuthPhoneNumberScreen}
