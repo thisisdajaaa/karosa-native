@@ -18,4 +18,3 @@ workflows:
   build-and-test:
     jobs:
       - publish-to-expo
-      - build-and-test
