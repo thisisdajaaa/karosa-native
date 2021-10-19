@@ -12,9 +12,12 @@ import Twitter from "./twitter.svg";
 import Fb from "./fb.svg";
 import Instagram from "./instagram.svg";
 import IllustrationAddress from "./illustration_address.svg";
+<<<<<<< HEAD
 import AddressPointer from "./address_pointer.svg";
 import Edit from "./edit.svg";
 import Arrow from "./back_arrow.svg";
+=======
+>>>>>>> 21ec335... fix(rebasing): rebasing
 
 const AccountSettingsIcons = (
   name: string,
@@ -31,11 +34,14 @@ const AccountSettingsIcons = (
     illustration_address: (
       <IllustrationAddress style={extraStyle} height={height} width={width} />
     ),
+<<<<<<< HEAD
     address_pointer: (
       <AddressPointer style={extraStyle} height={height} width={width} />
     ),
     edit: <Edit style={extraStyle} height={height} width={width} />,
     arrow: <Arrow style={extraStyle} height={height} width={width} />,
+=======
+>>>>>>> 21ec335... fix(rebasing): rebasing
   };
 
   return icons[name];

@@ -4,7 +4,10 @@
  *
  */
 
+<<<<<<< HEAD
 import { theme } from "@app/styles";
+=======
+>>>>>>> 21ec335... fix(rebasing): rebasing
 import Constants from "expo-constants";
 import { Dimensions, StyleSheet } from "react-native";
 
@@ -16,8 +19,13 @@ const AddressNewTemplateStyles = StyleSheet.create({
     justifyContent: "center",
   },
   map: {
+<<<<<<< HEAD
     width: "100%",
     height: "100%",
+=======
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+>>>>>>> 21ec335... fix(rebasing): rebasing
   },
   mapContainer: {
     flex: 1,
@@ -25,6 +33,7 @@ const AddressNewTemplateStyles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight + 10,
     backgroundColor: "#ecf0f1",
   },
+<<<<<<< HEAD
   listContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
@@ -60,6 +69,8 @@ const AddressNewTemplateStyles = StyleSheet.create({
     width: "100%",
   },
   bottomButtonStyle: { fontSize: 16 },
+=======
+>>>>>>> 21ec335... fix(rebasing): rebasing
 });
 
 export default AddressNewTemplateStyles;

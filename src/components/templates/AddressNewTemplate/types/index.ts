@@ -4,6 +4,7 @@
  *
  */
 
+<<<<<<< HEAD
 import { KeyboardTypeOptions } from "react-native";
 
 export type PropsType = {
@@ -21,4 +22,8 @@ export type ListInputPropsType = {
   hasBottomDivider?: boolean;
   keyboardType?: KeyboardTypeOptions;
   numofLines?: number;
+=======
+export type PropsType = {
+  // userLocation : any;
+>>>>>>> 21ec335... fix(rebasing): rebasing
 };

@@ -25,10 +25,9 @@ import AuthVerificationScreen from "@app/screens/AuthVerification";
 import ProductStockPriceScreen from "@app/screens/ProductStockPrice";
 import CheckoutScreen from "@app/screens/Checkout";
 import HomeSearchScreen from "@app/screens/HomeSearch";
+import AddressSearch from "@app/screens/AddressSearch";
 import AddressMain from "@app/screens/AddressMain";
 import AddressNew from "@app/screens/AddressNew";
-import AddressSearch from "@app/screens/AddressSearch";
-
 import { TabNavigator } from "./tab-navigator";
 
 const Stack = createStackNavigator();

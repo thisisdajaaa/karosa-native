@@ -6,6 +6,7 @@
  */
 
 import AddressMainTemplate from "@app/components/templates/AddressMainTemplate";
+<<<<<<< HEAD
 import { actions } from "@app/redux/address";
 import { UserLocation } from "@app/redux/address/models";
 
@@ -37,6 +38,16 @@ const AddressMain: FC<PropsType> = (props) => {
       });
     });
   };
+=======
+import React, { FC } from "react";
+
+// import AddressMainConfig from './config';
+import type { PropsType } from "./types";
+// import AddressMainStyles from './styles';
+
+const AddressMain: FC<PropsType> = (props) => {
+  const {} = props;
+>>>>>>> 21ec335... fix(rebasing): rebasing
 
   return <AddressMainTemplate />;
 };

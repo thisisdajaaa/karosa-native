@@ -4,6 +4,7 @@
  *
  */
 
+<<<<<<< HEAD
 import { theme } from "@app/styles";
 import { Dimensions, StyleSheet } from "react-native";
 
@@ -54,5 +55,10 @@ const AddressMainTemplateStyles = StyleSheet.create({
     width: "100%",
   },
 });
+=======
+import { Dimensions, StyleSheet } from "react-native";
+
+const AddressMainTemplateStyles = StyleSheet.create({});
+>>>>>>> 21ec335... fix(rebasing): rebasing
 
 export default AddressMainTemplateStyles;

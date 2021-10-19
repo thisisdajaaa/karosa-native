@@ -5,6 +5,7 @@
  *
  */
 
+<<<<<<< HEAD
 import React, { FC, useCallback, useEffect, useState } from "react";
 
 // import AddressNewConfig from "./config";
@@ -114,6 +115,20 @@ const AddressNew: FC<PropsType> = (props) => {
       <AddressNewTemplate details={params.details} inputProps={inputProps} />
     </FormikContext.Provider>
   );
+=======
+import React, { FC, useEffect, useState } from "react";
+
+// import AddressNewConfig from "./config";
+import type { PropsType } from "./types";
+// import AddressNewStyles from "./styles";
+
+import AddressNewTemplate from "@app/components/templates/AddressNewTemplate";
+
+const AddressNew: FC<PropsType> = (props) => {
+  const {} = props;
+
+  return <AddressNewTemplate></AddressNewTemplate>;
+>>>>>>> 21ec335... fix(rebasing): rebasing
 };
 
 export default AddressNew;
