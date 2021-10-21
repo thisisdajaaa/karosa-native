@@ -161,7 +161,6 @@ const AddressMainTemplate: FC<PropsType> = (props) => {
   return (
     <View style={{ flex: 1 }}>
       <Header
-        // containerStyle={ProfileStyles.headerContainer}
         barStyle="light-content"
         leftComponent={{
           icon: "arrow-back",

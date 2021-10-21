@@ -16,12 +16,15 @@ export const addressEntryContext = produce(
       case getType(actions.setNewAddress):
         draft.newAddressForm = action.payload;
         return draft;
+<<<<<<< HEAD
       case getType(actions.setUserLocation):
         draft.userLocation = action.payload;
         return draft;
       case getType(actions.setAddressCoordinates):
         draft.newAddressForm.coords = action.payload;
         return draft;
+=======
+>>>>>>> 43c35a3... feat(rebasing from dev): rebase
       default:
         return draft;
     }
