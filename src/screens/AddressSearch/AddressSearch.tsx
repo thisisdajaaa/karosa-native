@@ -17,8 +17,6 @@ const AddressSearch: FC<PropsType> = (props) => {
   const {} = props;
 
   const { params } = useRoute<RouteProp<AddressMainProps, "AddressLocation">>();
-  console.log("latitude test");
-  console.log(params.latitude);
 
   return (
     <AddressSearchTemplate
