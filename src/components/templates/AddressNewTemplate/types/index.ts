@@ -5,5 +5,7 @@
  */
 
 export type PropsType = {
-  // userLocation : any;
+  details: string;
+  latitude: number;
+  longitude: number;
 };

@@ -102,6 +102,19 @@ const ListInputStyles = StyleSheet.create({
     color: theme.colors.dark20,
     fontWeight: "400",
   },
+
+  txtRowInputVariatonFour: {
+    ...theme.textListItem,
+    textAlign: "right",
+    color: theme.colors.dark20,
+    fontWeight: "400",
+  },
+
+  inputContainerVariationFour: {
+    borderWidth: 0,
+    borderBottomWidth: 0,
+    padding: 5,
+  },
 });
 
 export default ListInputStyles;
