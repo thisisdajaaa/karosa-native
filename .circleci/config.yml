@@ -5,6 +5,7 @@ jobs:
   publish-to-expo:
     executor:
       name: node/default
+    resource_class: medium+
     steps:
       - checkout
       - node/with-cache:
