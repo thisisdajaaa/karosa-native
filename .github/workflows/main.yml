@@ -3,11 +3,11 @@ on:
   push:
     branches:
       - development
-      - *KAR-
+      - "*KAR-"
   pull_request:
     branches:
       - development
-  
+
 jobs:
   publish:
     name: Install and publish
