@@ -5,49 +5,124 @@
  *
  */
 
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC } from "react";
 
-// import AddressNewTemplateConfig from "./config";
 import type { PropsType } from "./types";
-import MapView, { Callout, CalloutSubview, Marker } from "react-native-maps";
 import { useNavigation } from "@react-navigation/native";
-import { Animated, Keyboard, TouchableOpacity, View } from "react-native";
+import { KeyboardTypeOptions, View } from "react-native";
 import Header from "@app/components/molecules/Header";
-import SearchBar from "@app/components/molecules/SearchBar";
 
-import * as Location from "expo-location";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import AddressNewTemplateStyles from "./styles";
 import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
-import Button from "@app/atoms/Button";
+import { ListItem } from "react-native-elements";
 import Icon from "@app/atoms/Icon";
+import ListInput from "@app/components/organisms/ListInput";
+import { COMMON } from "@app/constants";
+import Button from "@app/atoms/Button";
+import { useFormikContext } from "formik";
+import { NewAddressForm } from "@app/redux/address/models";
+import { WithIcon } from "@app/utils";
 
 const AddressNewTemplate: FC<PropsType> = (props) => {
-  const {} = props;
+  const { details, latitude, longitude } = props;
   const { goBack, navigate } = useNavigation();
+  const { submitForm, values } = useFormikContext<NewAddressForm>();
+
+  const listInput = (
+    name: string,
+    label: string,
+    placeholder: string,
+    keyboardType?: KeyboardTypeOptions
+  ) => {
+    return (
+      <ListInput
+        name={name}
+        label={label}
+        placeholder={placeholder}
+        hasBottomDivider
+        required
+        variation={COMMON.VARIATION.TWO}
+        keyboardType={keyboardType ? keyboardType : "default"}
+      />
+    );
+  };
 
   return (
-    <View style={{ backgroundColor: theme.colors.white }}>
-      <Header
-        barStyle="light-content"
-        placement={"left"}
-        leftComponent={{
-          icon: "arrow-back",
-          color: "green",
-          onPress: goBack,
-          style: {
-            paddingTop: 5,
-          },
-        }}
-        containerStyle={{
+    <View>
+      <View>
+        <Header
+          barStyle="light-content"
+          leftComponent={{
+            icon: "arrow-back",
+            color: "green",
+            onPress: goBack,
+          }}
+          centerComponent={<Text text={"New Address"}></Text>}
+          hasBottomDivider={true}
+        />
+        <ListItem bottomDivider={true}>
+          <Text text={details} />
+          <Icon group="accountSettings" name={"fb"} width={20} height={20} />
+        </ListItem>
+      </View>
+      <View>
+        <ListInput
+          name={"label"}
+          label={"Label"}
+          placeholder={"e.g. Home / Office"}
+          hasBottomDivider
+          maxLen={10}
+          required
+          variation={COMMON.VARIATION.FOUR}
+        />
+        <ListInput
+          name={"contactName"}
+          label={"Contact Name"}
+          placeholder={"Set Name"}
+          hasBottomDivider
+          required
+          variation={COMMON.VARIATION.FOUR}
+        />
+        <ListInput
+          name={"contactNumber"}
+          label={"Contact Number"}
+          placeholder={"Set Contact"}
+          hasBottomDivider
+          required
+          variation={COMMON.VARIATION.FOUR}
+        />
+        <ListInput
+          name={"addressDetails"}
+          label={"Address Details"}
+          placeholder={"e.g. Floor, Unit, Room Number"}
+          hasBottomDivider
+          required
+          maxLen={20}
+          variation={COMMON.VARIATION.ONE}
+        />
+        <ListInput
+          name={"noteRider"}
+          label={"Note to rider"}
+          placeholder={"e.g. Landmark, Buidling"}
+          hasBottomDivider
+          required
+          maxLen={20}
+          variation={COMMON.VARIATION.ONE}
+        />
+      </View>
+      <View
+        style={{
+          alignContent: "flex-end",
+          bottom: 0,
           width: "100%",
-          maxWidth: "100%",
-          zIndex: 1,
-          position: "absolute",
-        }}
-        centerComponent={<Text text={"New Address"}></Text>}
-      />
+          padding: "5%",
+        }}>
+        <Button
+          title={"Save address"}
+          buttonStyle={{ backgroundColor: theme.colors.primary }}
+          titleStyle={{ fontSize: 16 }}
+          onPress={submitForm}></Button>
+      </View>
     </View>
   );
 };
