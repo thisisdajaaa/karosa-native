@@ -1,5 +1,12 @@
 name: Expo Publish
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - development
+      - "*KAR-"
+  pull_request:
+    branches:
+      - development
 
 jobs:
   publish:
