@@ -10,11 +10,17 @@ export const rootSelector: Selector<StateAll, AddressState> = (
 
 export const getNewAddressForm = () =>
   createSelector([rootSelector], (state: AddressState) => {
-    console.log("For testing");
-    console.log(state.addressEntryContext.newAddressForm);
     return (
       state.addressEntryContext.newAddressForm ||
       initAddressState.addressEntryContext.newAddressForm
+    );
+  });
+
+export const getCoordinates = () =>
+  createSelector([rootSelector], (state: AddressState) => {
+    return (
+      state.addressEntryContext.newAddressForm.coords ||
+      initAddressState.addressEntryContext.newAddressForm.coords
     );
   });
 
@@ -29,6 +35,7 @@ export const getUserLocation = () =>
 const selectors = {
   getNewAddressForm,
   getUserLocation,
+  getCoordinates,
 };
 
 export default selectors;

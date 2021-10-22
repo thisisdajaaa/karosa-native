@@ -13,9 +13,15 @@ export const setUserLocation = createAction(
   (resolve) => (values: models.UserLocation) => resolve(values)
 );
 
+export const setAddressCoordinates = createAction(
+  types.SET_ADDRESS_COORDINATES,
+  (resolve) => (values: models.UserCoordinates) => resolve(values)
+);
+
 const actions = {
   setNewAddress,
   setUserLocation,
+  setAddressCoordinates,
 };
 
 export default actions;

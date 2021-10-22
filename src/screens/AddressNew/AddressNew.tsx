@@ -72,10 +72,17 @@ const AddressNew: FC<PropsType> = (props) => {
   const { params } = useRoute<RouteProp<AddressNewProps, "AddressLocation">>();
 
   const handleSubmit = (values: NewAddressForm) => {
-    console.log("===FORMIK");
-    console.log(values);
-    // setNewAddressForm(values);
-    action.setNewAddressForm({ ...values });
+    action.setNewAddressForm({
+      contactName: values.contactName,
+      contactNumber: Number(values.contactNumber),
+      label: values.label,
+      addressDetails: values.addressDetails,
+      noteRider: values.noteRider,
+      coords: {
+        latitude: params.latitude,
+        longitude: params.longitude,
+      },
+    });
 
     navigate(routes.ACCOUNTS_ADDRESS);
   };
@@ -85,6 +92,9 @@ const AddressNew: FC<PropsType> = (props) => {
     initialValues: newAddressForm,
     onSubmit: handleSubmit,
   });
+
+  console.log("VALUES TESTING");
+  console.log(newAddressForm);
 
   return (
     <FormikContext.Provider value={formikBag}>
