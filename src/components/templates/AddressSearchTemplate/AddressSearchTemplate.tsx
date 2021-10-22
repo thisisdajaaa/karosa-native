@@ -20,9 +20,8 @@ import Button from "@app/atoms/Button";
 import routes from "@app/navigators/routes";
 
 const AddressSearchTemplate: FC<PropsType> = (props) => {
-  const { latitude, longitude } = props;
+  const { latitude, longitude, googleAutoCompleteProps } = props;
   const { goBack, navigate } = useNavigation();
-  const mapRef = useRef();
 
   const [region, setRegion] = useState({
     latitude: latitude,
@@ -60,7 +59,7 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
         }}
         centerComponent={
           <GooglePlacesAutocomplete
-            placeholder={"Search Address"}
+            placeholder={googleAutoCompleteProps?.placeholder || "Search"}
             query={{
               key: GOOGLE_PLACES_API_KEY,
               language: "en",

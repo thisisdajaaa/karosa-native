@@ -4,6 +4,12 @@ export type NewAddressForm = {
   contactNumber: number;
   addressDetails: string;
   noteRider: string;
+  coords: UserCoordinates;
+};
+
+export type UserCoordinates = {
+  latitude: number;
+  longitude: number;
 };
 
 export type UserLocation = {
