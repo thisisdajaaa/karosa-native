@@ -42,11 +42,6 @@ export const initUserLocation: UserLocation = {
   longitude: 0,
 };
 
-export const initUserLocation: UserLocation = {
-  latitude: 0,
-  longitude: 0,
-};
-
 export const initAddressState: AddressState = {
   addressEntryContext: {
     newAddressForm: {
