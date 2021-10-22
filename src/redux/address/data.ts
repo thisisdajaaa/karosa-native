@@ -1,4 +1,4 @@
-import { NewAddressForm, AddressState } from "./models";
+import { NewAddressForm, AddressState, UserLocation } from "./models";
 
 export const initNewAddress: NewAddressForm = {
   label: "",
@@ -8,14 +8,14 @@ export const initNewAddress: NewAddressForm = {
   noteRider: "",
 };
 
+export const initUserLocation: UserLocation = {
+  latitude: 0,
+  longitude: 0,
+};
+
 export const initAddressState: AddressState = {
   addressEntryContext: {
-    newAddressForm: {
-      label: "",
-      contactName: "",
-      contactNumber: 0,
-      addressDetails: "",
-      noteRider: "",
-    },
+    newAddressForm: initNewAddress,
+    userLocation: initUserLocation,
   },
 };
