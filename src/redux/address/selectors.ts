@@ -16,7 +16,6 @@ export const getNewAddressForm = () =>
     );
   });
 
-<<<<<<< HEAD
 export const getCoordinates = () =>
   createSelector([rootSelector], (state: AddressState) => {
     return (
@@ -46,10 +45,6 @@ const selectors = {
   getUserLocation,
   getCoordinates,
   getAddressList,
-=======
-const selectors = {
-  getNewAddressForm,
->>>>>>> 43c35a3... feat(rebasing from dev): rebase
 };
 
 export default selectors;
