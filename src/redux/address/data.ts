@@ -6,6 +6,10 @@ export const initNewAddress: NewAddressForm = {
   contactNumber: 0,
   addressDetails: "",
   noteRider: "",
+  coords: {
+    latitude: 0,
+    longitude: 0,
+  },
 };
 
 export const initUserLocation: UserLocation = {
