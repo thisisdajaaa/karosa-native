@@ -14,30 +14,13 @@ import Text from "@app/atoms/Text";
 import Icon from "@app/atoms/Icon";
 import { useNavigation } from "@react-navigation/core";
 import routes from "@app/navigators/routes";
-import * as Location from "expo-location";
+import { useMemoizedSelector } from "@app/hooks";
+import { selectors } from "@app/redux/address";
 
 const AddressMainTemplate: FC<PropsType> = (props) => {
   const {} = props;
   const { goBack, navigate } = useNavigation();
-  const [userLocation, setUserLocation] = useState({
-    latitude: 0,
-    longitude: 0,
-  });
-
-  useEffect(() => {
-    handlelocation();
-  });
-
-  const handlelocation = () => {
-    Location.installWebGeolocationPolyfill();
-    navigator.geolocation.getCurrentPosition((pos) => {
-      setUserLocation({
-        latitude: pos.coords.latitude,
-        longitude: pos.coords.longitude,
-      });
-    });
-  };
-
+  const userLocationAddress = useMemoizedSelector(selectors.getUserLocation);
   return (
     <View style={{ flex: 1 }}>
       <Header
@@ -70,8 +53,8 @@ const AddressMainTemplate: FC<PropsType> = (props) => {
           navigate("Stack", {
             screen: routes.ACCOUNTS_SEARCH_ADDRESS,
             params: {
-              latitude: userLocation.latitude,
-              longitude: userLocation.longitude,
+              latitude: userLocationAddress.latitude,
+              longitude: userLocationAddress.longitude,
             },
           });
         }}></Button>
