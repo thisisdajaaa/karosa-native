@@ -4,6 +4,7 @@
  *
  */
 
+import { theme } from "@app/styles";
 import Constants from "expo-constants";
 import { Dimensions, StyleSheet } from "react-native";
 
@@ -23,6 +24,18 @@ const AddressNewTemplateStyles = StyleSheet.create({
     padding: 10,
     paddingTop: Constants.statusBarHeight + 10,
     backgroundColor: "#ecf0f1",
+  },
+  listContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  infoContainerWithoutChevron: {
+    position: "relative",
+  },
+  subContainer: {
+    backgroundColor: theme.colors.white,
+    marginBottom: 10,
   },
 });
 

@@ -16,6 +16,9 @@ export const addressEntryContext = produce(
       case getType(actions.setNewAddress):
         draft.newAddressForm = action.payload;
         return draft;
+      case getType(actions.setUserLocation):
+        draft.userLocation = action.payload;
+        return draft;
       default:
         return draft;
     }

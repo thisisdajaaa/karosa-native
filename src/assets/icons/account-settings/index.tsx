@@ -12,6 +12,8 @@ import Twitter from "./twitter.svg";
 import Fb from "./fb.svg";
 import Instagram from "./instagram.svg";
 import IllustrationAddress from "./illustration_address.svg";
+import AddressPointer from "./address_pointer.svg";
+import Edit from "./edit.svg";
 
 const AccountSettingsIcons = (
   name: string,
@@ -28,6 +30,10 @@ const AccountSettingsIcons = (
     illustration_address: (
       <IllustrationAddress style={extraStyle} height={height} width={width} />
     ),
+    address_pointer: (
+      <AddressPointer style={extraStyle} height={height} width={width} />
+    ),
+    edit: <Edit style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];
