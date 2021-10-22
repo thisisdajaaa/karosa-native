@@ -8,8 +8,14 @@ export const setNewAddress = createAction(
   (resolve) => (values: models.NewAddressForm) => resolve(values)
 );
 
+export const setUserLocation = createAction(
+  types.SET_USER_LOCATION,
+  (resolve) => (values: models.UserLocation) => resolve(values)
+);
+
 const actions = {
   setNewAddress,
+  setUserLocation,
 };
 
 export default actions;
