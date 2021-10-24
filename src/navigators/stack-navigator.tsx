@@ -17,6 +17,7 @@ import ShippingDetailsScreen from "@app/screens/products/shipping-details";
 import NewAddressScreen from "@app/screens/user-account/new-address";
 import MyAddressScreen from "@app/screens/user-account/my-address";
 import ShopMainScreen from "@app/screens/ShopMain";
+import BasketEmptyScreen from "@app/components/molecules/BasketEmpty";
 
 import { TabNavigator } from "./tab-navigator";
 
