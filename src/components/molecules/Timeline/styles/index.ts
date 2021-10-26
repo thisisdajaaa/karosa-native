@@ -8,7 +8,7 @@ import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
 const TimelineStyles = StyleSheet.create({
-  circle: {
+  circleActive: {
     top: 0,
     right: -6,
     height: 10,
@@ -16,6 +16,15 @@ const TimelineStyles = StyleSheet.create({
     borderRadius: 5,
     position: "absolute",
     backgroundColor: theme.colors.primary,
+  },
+  circleInActive: {
+    top: 0,
+    right: -6,
+    height: 10,
+    width: 10,
+    borderRadius: 5,
+    position: "absolute",
+    backgroundColor: theme.colors.dark10,
   },
   colorGreen: { color: theme.colors.primary },
   leftContent: {

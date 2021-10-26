@@ -19,7 +19,6 @@ export const styles = StyleSheet.create({
   buttonGroupContainer: {
     width: "100%",
     marginBottom: 0,
-    marginVertical: 15,
   },
   buttonGroupInActive: {
     color: theme.colors.black,
@@ -41,7 +40,7 @@ export const styles = StyleSheet.create({
   },
   cardContainer: { paddingTop: 13, zIndex: 0, paddingBottom: 20 },
   headerContainer: {
-    paddingTop: isIos ? 0 : (StatusBar.currentHeight || 0) + 10,
+    paddingTop: isIos ? 0 : 10,
     backgroundColor: theme.colors.white,
     ...mainPadding,
     paddingBottom: 9,

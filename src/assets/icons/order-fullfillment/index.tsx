@@ -20,6 +20,7 @@ import Peso from "./peso-icon.svg";
 import Time from "./time.svg";
 import DeliveryCompleted from "./delivery_completed.svg";
 import IconCopy from "./icon_copy.svg";
+import FastShip from "./fast-ship.svg";
 
 const OrderFullfillmentIcons = (
   name: string,
@@ -50,6 +51,7 @@ const OrderFullfillmentIcons = (
       <DeliveryCompleted style={extraStyle} height={height} width={width} />
     ),
     iconCopy: <IconCopy style={extraStyle} height={height} width={width} />,
+    fastShip: <FastShip style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];

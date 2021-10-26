@@ -5,14 +5,13 @@
  *
  */
 
-import React, { FC, useState } from "react";
+import React, { FC, useState, useMemo } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, SafeAreaView, ScrollView } from "react-native";
 import type { PropsType, CardPropsType } from "./types";
 import { styles } from "./styles";
 import { getPlatform } from "@app/utils";
 import Icons from "@app/atoms/Icon";
-// import Text from "@app/atoms/Text";
 import Button from "@app/atoms/Button";
 import { PropsType as buttonProps } from "@app/atoms/Button/types";
 import ButtonGroup from "@app/atoms/ButtonGroup";
@@ -27,6 +26,21 @@ const OrderFullfillmentTemplate: FC<PropsType> = () => {
   const { goBack } = useNavigation();
   const [selectedIndex, setSelectedIndex] = useState<number>(0); // For Button Group
   const [selectedButton, setSelectedButton] = useState<number>(0); // For Buttons
+
+  const activeFilter = useMemo(() => {
+    switch (selectedButton) {
+      case 0:
+        return "confirmation";
+      case 1:
+        return "ship";
+      case 2:
+        return "received";
+      case 3:
+        return "completed";
+      default:
+        return "cancelled";
+    }
+  }, [selectedButton]);
 
   const buttonArray = [
     <ButtonGroupContent
@@ -160,6 +174,14 @@ const OrderFullfillmentTemplate: FC<PropsType> = () => {
       total: 12,
       imageUrl: require("../../../assets/images/macao.jpg"),
     },
+    {
+      actionItem: "ship",
+      productName: "Mango",
+      quantity: 2,
+      storeName: "Sari Sari Store",
+      total: 12,
+      imageUrl: require("../../../assets/images/macao.jpg"),
+    },
   ];
 
   const rendereButtons = buttons.map((button, index) => (
@@ -183,9 +205,15 @@ const OrderFullfillmentTemplate: FC<PropsType> = () => {
           {rendereButtons}
         </ScrollView>
         <View style={styles.cardContainer}>
-          {dummyData.map((card, index) => (
-            <CardsComponent {...card} key={index} />
-          ))}
+          {dummyData
+            .filter((card) => {
+              if (card.actionItem === activeFilter) {
+                return card;
+              }
+            })
+            .map((card, index) => (
+              <CardsComponent {...card} key={index} />
+            ))}
         </View>
       </View>
     </ScrollView>

@@ -31,7 +31,7 @@ const Icons: {
   products: ProductsIcons,
   basket: BasketIcons,
   checkout: CheckoutIcons,
-  orderFuillFillment: OrderFullfillmentIcons,
+  orderFullFillment: OrderFullfillmentIcons,
 };
 
 export default Icons;

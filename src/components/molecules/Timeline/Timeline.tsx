@@ -35,7 +35,13 @@ const Timeline: FC<timelineProps> = ({ data }) => {
             }>
             <Text text={item.dateMonth} textStyle={TimelineStyles.colorGreen} />
             <Text text={item.time} textStyle={TimelineStyles.colorGreen} />
-            <View style={TimelineStyles.circle} />
+            <View
+              style={
+                index === 0
+                  ? TimelineStyles.circleActive
+                  : TimelineStyles.circleInActive
+              }
+            />
           </View>
           <Text text={item.description} textStyle={TimelineStyles.padLeft} />
         </View>

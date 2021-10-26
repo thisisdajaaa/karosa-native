@@ -38,9 +38,9 @@ export const CardsComponent: FC<CardPropsType> = ({
         });
       case "ship":
         return (footerDetails = {
-          icon: "fast-ship",
+          icon: "fastShip",
           subtext: "Parcel is out for delivery",
-          btnText: "Track your order",
+          btnText: "Chat Buyer",
         });
       case "completed":
         return (footerDetails = {
