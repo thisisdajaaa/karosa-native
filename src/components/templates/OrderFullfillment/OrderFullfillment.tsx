@@ -6,13 +6,13 @@
  */
 
 import React, { FC, useState } from "react";
-// import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { View, SafeAreaView, ScrollView } from "react-native";
 import type { PropsType, CardPropsType } from "./types";
 import { styles } from "./styles";
 import { getPlatform } from "@app/utils";
 import Icons from "@app/atoms/Icon";
-import Text from "@app/atoms/Text";
+// import Text from "@app/atoms/Text";
 import Button from "@app/atoms/Button";
 import { PropsType as buttonProps } from "@app/atoms/Button/types";
 import ButtonGroup from "@app/atoms/ButtonGroup";
@@ -21,9 +21,10 @@ import { theme } from "@app/styles";
 import { CardsComponent } from "./Cards";
 import Badge from "@app/atoms/Badge";
 import { ButtonGroupContent } from "./ButtonGroupContent";
+import Header from "@app/components/molecules/Header";
 
 const OrderFullfillmentTemplate: FC<PropsType> = () => {
-  // const { goBack } = useNavigation();
+  const { goBack } = useNavigation();
   const [selectedIndex, setSelectedIndex] = useState<number>(0); // For Button Group
   const [selectedButton, setSelectedButton] = useState<number>(0); // For Buttons
 
@@ -60,26 +61,28 @@ const OrderFullfillmentTemplate: FC<PropsType> = () => {
   };
   const isIOS = getPlatform.getInstance() === "ios";
   const headerContent = (
-    <React.Fragment>
-      <View style={styles.headerTopNavigation}>
-        <Icons
-          group="orderFuillFillment"
-          name="greenBack"
-          width={24}
-          height={24}
-        />
-        <Text text="My Orders" textStyle={styles.textHeader} />
-        <Icons
-          group="orderFuillFillment"
-          name="greenMessage"
-          width={20}
-          height={20}
-        />
-      </View>
+    <>
+      <Header
+        leftComponent={{
+          icon: "arrow-back",
+          color: theme.colors.primary,
+          onPress: goBack,
+        }}
+        centerComponent={{
+          text: "My Orders",
+          style: styles.textHeader,
+        }}
+        rightComponent={{
+          type: "antdesign",
+          icon: "message1",
+          color: theme.colors.primary,
+          onPress: () => console.log("Message was clicked"),
+        }}
+      />
       <View style={styles.buttonGroupContainer}>
         <ButtonGroup {...btnGroup} />
       </View>
-    </React.Fragment>
+    </>
   );
 
   const header = isIOS ? (
@@ -113,7 +116,7 @@ const OrderFullfillmentTemplate: FC<PropsType> = () => {
       },
       icon: (
         <Icons
-          group="orderFuillFillment"
+          group="orderFullFillment"
           name={`${textColor}${iconNames[currIndex]}`}
           width={20}
           height={20}

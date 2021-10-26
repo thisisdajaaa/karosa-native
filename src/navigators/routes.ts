@@ -45,4 +45,5 @@ export default Object.freeze({
   CHECKOUT: "Checkout",
   NOTIFICATIONS: "Notifications",
   ORDER_FULLFILLMENT: "Orders",
+  TRACKER: "Tracker",
 });

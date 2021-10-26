@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { CardPropsType } from "./types";
 import { cardStyles } from "./styles";
@@ -9,6 +10,7 @@ import Icons from "@app/atoms/Icon";
 import Image from "@app/atoms/Image";
 import Divider from "@app/atoms/Divider";
 import Button from "@app/atoms/Button";
+import routes from "@app/navigators/routes";
 
 export const CardsComponent: FC<CardPropsType> = ({
   storeName,
@@ -18,7 +20,8 @@ export const CardsComponent: FC<CardPropsType> = ({
   total,
   imageUrl,
 }) => {
-  const iconGroup = "orderFuillFillment";
+  const { navigate } = useNavigation();
+  const iconGroup = "orderFullFillment";
 
   const getFooterDetails = (actionItem: string) => {
     let footerDetails = {
@@ -103,6 +106,7 @@ export const CardsComponent: FC<CardPropsType> = ({
             ]}
             titleStyle={cardStyles.cardFooterSubText}
             type="clear"
+            onPress={() => navigate(routes.TRACKER)}
           />
         </View>
         <Button

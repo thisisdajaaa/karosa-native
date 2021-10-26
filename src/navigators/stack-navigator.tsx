@@ -25,6 +25,7 @@ import AuthVerificationScreen from "@app/screens/AuthVerification";
 import ProductStockPriceScreen from "@app/screens/ProductStockPrice";
 import CheckoutScreen from "@app/screens/Checkout";
 import OrderFullfillment from "@app/screens/OrderFullfillment";
+import Tracker from "@app/screens/Tracker";
 
 import { TabNavigator } from "./tab-navigator";
 
@@ -77,6 +78,7 @@ const StackNavigator: React.FC = () => {
       <Stack.Screen name="Choose Category" component={ChooseCategoryScreen} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} />
       <Stack.Screen name="Orders" component={OrderFullfillment} />
+      <Stack.Screen name="Tracker" component={Tracker} />
     </Stack.Navigator>
   );
 };

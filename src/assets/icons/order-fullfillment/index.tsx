@@ -18,6 +18,8 @@ import Chevron from "./chevron.svg";
 import Store from "./store.svg";
 import Peso from "./peso-icon.svg";
 import Time from "./time.svg";
+import DeliveryCompleted from "./delivery_completed.svg";
+import IconCopy from "./icon_copy.svg";
 
 const OrderFullfillmentIcons = (
   name: string,
@@ -44,6 +46,10 @@ const OrderFullfillmentIcons = (
     store: <Store style={extraStyle} height={height} width={width} />,
     peso: <Peso style={extraStyle} height={height} width={width} />,
     time: <Time style={extraStyle} height={height} width={width} />,
+    deliveryCompleted: (
+      <DeliveryCompleted style={extraStyle} height={height} width={width} />
+    ),
+    iconCopy: <IconCopy style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];
