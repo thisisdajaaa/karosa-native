@@ -132,6 +132,7 @@ import { NewAddressForm } from "@app/redux/address/models";
 import routes from "@app/navigators/routes";
 import { ListInputPropsType } from "@app/components/templates/AddressNewTemplate/types";
 import { COMMON } from "@app/constants";
+import * as yup from "yup";
 
 const AddressNew: FC<PropsType> = (props) => {
   const {} = props;
@@ -161,7 +162,7 @@ const AddressNew: FC<PropsType> = (props) => {
     {
       variation: COMMON.VARIATION.ONE,
       name: "addressDetails",
-      label: "Contact Number",
+      label: "Address Details",
       placeholder: "e.g. Floor, Unit, Room Number",
       maxLen: 50,
     },
@@ -200,14 +201,22 @@ const AddressNew: FC<PropsType> = (props) => {
   };
   const newAddressForm = useMemoizedSelector(selectors.getNewAddressForm);
 
+  const addressNewSchema = yup.object({
+    contactName: yup.string().required("Contact Name is a required field"),
+    contactNumber: yup.number().required("Contact Number is required field"),
+    label: yup.string().required("Label is a required field"),
+    addressDetails: yup
+      .string()
+      .required("Address Details is a required field"),
+  });
+
   const formikBag = useFormik({
     initialValues: newAddressForm,
     onSubmit: handleSubmit,
+    validationSchema: addressNewSchema,
   });
 
-  console.log("VALUES TESTING");
-  console.log(newAddressForm);
-
+  // console.log(formikBag.errors);
   return (
     <FormikContext.Provider value={formikBag}>
       <AddressNewTemplate details={params.details} inputProps={inputProps} />
