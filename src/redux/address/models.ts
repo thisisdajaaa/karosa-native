@@ -20,6 +20,7 @@ export type UserLocation = {
 export type AddressEntryContext = {
   newAddressForm: NewAddressForm;
   userLocation: UserLocation;
+  addressList: NewAddressForm[];
 };
 
 export type AddressState = {

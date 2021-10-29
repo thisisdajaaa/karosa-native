@@ -32,10 +32,19 @@ export const getUserLocation = () =>
     );
   });
 
+export const getAddressList = () =>
+  createSelector([rootSelector], (state: AddressState) => {
+    return (
+      state.addressEntryContext.addressList ||
+      initAddressState.addressEntryContext.addressList
+    );
+  });
+
 const selectors = {
   getNewAddressForm,
   getUserLocation,
   getCoordinates,
+  getAddressList,
 };
 
 export default selectors;
