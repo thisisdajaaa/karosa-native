@@ -22,11 +22,12 @@ import Button from "@app/atoms/Button";
 import { useFormikContext } from "formik";
 import { NewAddressForm } from "@app/redux/address/models";
 import AddressNewTemplateStyles from "./styles";
+import ValidationMessage from "@app/components/molecules/ValidationMessage";
 
 const AddressNewTemplate: FC<PropsType> = (props) => {
   const { details, inputProps } = props;
   const { goBack, navigate } = useNavigation();
-  const { submitForm, values } = useFormikContext<NewAddressForm>();
+  const { submitForm, values, errors } = useFormikContext<NewAddressForm>();
 
   return (
     <View>
@@ -67,16 +68,20 @@ const AddressNewTemplate: FC<PropsType> = (props) => {
       <View style={AddressNewTemplateStyles.subContainer}>
         {inputProps.map((props, index) => {
           return (
-            <ListInput
-              name={props.name}
-              label={props.label}
-              placeholder={props.placeholder}
-              hasBottomDivider
-              required
-              maxLen={props.maxLen}
-              variation={props.variation}
-              keyboardType={props.keyboardType ? props.keyboardType : "default"}
-            />
+            <>
+              <ListInput
+                name={props.name}
+                label={props.label}
+                placeholder={props.placeholder}
+                hasBottomDivider
+                required
+                maxLen={props.maxLen}
+                variation={props.variation}
+                keyboardType={
+                  props.keyboardType ? props.keyboardType : "default"
+                }
+              />
+            </>
           );
         })}
       </View>
@@ -89,7 +94,11 @@ const AddressNewTemplate: FC<PropsType> = (props) => {
         }}>
         <Button
           title={"Save address"}
-          buttonStyle={{ backgroundColor: theme.colors.primary }}
+          buttonStyle={
+            errors.contactName || errors.contactNumber
+              ? { backgroundColor: theme.colors.dark10 }
+              : { backgroundColor: theme.colors.primary }
+          }
           titleStyle={{ fontSize: 16 }}
           onPress={submitForm}></Button>
       </View>
