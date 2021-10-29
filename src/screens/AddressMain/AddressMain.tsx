@@ -21,6 +21,7 @@ const AddressMain: FC<PropsType> = (props) => {
   const {} = props;
   const dispatch = useDispatch();
   const userLocationAddress = useMemoizedSelector(selectors.getUserLocation);
+  const addressList = useMemoizedSelector(selectors.getAddressList);
   const action = {
     setUserLocation: useCallback(
       (values: UserLocation) => dispatch(actions.setUserLocation(values)),
