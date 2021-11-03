@@ -19,6 +19,7 @@ import { selectors } from "@app/redux/address";
 import AddressMainTemplateStyles from "./styles";
 import { ListItem } from "react-native-elements";
 import Button from "@app/atoms/Button";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const AddressMainTemplate: FC<PropsType> = (props) => {
   const {} = props;
@@ -30,11 +31,16 @@ const AddressMainTemplate: FC<PropsType> = (props) => {
     <View style={{ flex: 1 }}>
       <Header
         barStyle="light-content"
-        leftComponent={{
-          icon: "arrow-back",
-          color: "green",
-          onPress: goBack,
-        }}
+        leftComponent={
+          <TouchableWithoutFeedback onPress={goBack}>
+            <Icon
+              group="accountSettings"
+              name={"arrow"}
+              width={20}
+              height={20}
+            />
+          </TouchableWithoutFeedback>
+        }
         hasBottomDivider={true}
         centerComponent={<Text text={"Address"} />}
       />
