@@ -10,7 +10,7 @@ import React, { FC, LegacyRef, useCallback, useRef, useState } from "react";
 // import AddressSearchTemplateConfig from "./config";
 import type { PropsType } from "./types";
 import AddressSearchTemplateStyles from "./styles";
-import { View } from "react-native";
+import { View, Animated } from "react-native";
 import Header from "@app/components/molecules/Header";
 import { theme } from "@app/styles";
 import { useNavigation } from "@react-navigation/native";
