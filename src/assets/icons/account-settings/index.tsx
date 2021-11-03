@@ -14,6 +14,7 @@ import Instagram from "./instagram.svg";
 import IllustrationAddress from "./illustration_address.svg";
 import AddressPointer from "./address_pointer.svg";
 import Edit from "./edit.svg";
+import Arrow from "./back_arrow.svg";
 
 const AccountSettingsIcons = (
   name: string,
@@ -34,6 +35,7 @@ const AccountSettingsIcons = (
       <AddressPointer style={extraStyle} height={height} width={width} />
     ),
     edit: <Edit style={extraStyle} height={height} width={width} />,
+    arrow: <Arrow style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];

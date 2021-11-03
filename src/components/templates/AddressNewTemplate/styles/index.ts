@@ -37,6 +37,18 @@ const AddressNewTemplateStyles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     marginBottom: 10,
   },
+  footer: {
+    flex: 3,
+    flexDirection: "row",
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    margin: 10,
+    justifyContent: "center",
+  },
+  scrollviewContainer: {
+    height: 0.93 * Dimensions.get("window").height,
+  },
 });
 
 export default AddressNewTemplateStyles;

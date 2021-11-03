@@ -5,19 +5,21 @@
  *
  */
 
-import React, { FC, useRef, useState } from "react";
+import React, { FC, LegacyRef, useRef, useState } from "react";
 
 // import AddressSearchTemplateConfig from "./config";
 import type { PropsType } from "./types";
 import AddressSearchTemplateStyles from "./styles";
-import { View } from "react-native";
+import { View, Animated } from "react-native";
 import Header from "@app/components/molecules/Header";
 import { theme } from "@app/styles";
 import { useNavigation } from "@react-navigation/native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Camera, Marker, MarkerAnimated } from "react-native-maps";
 import Button from "@app/atoms/Button";
 import routes from "@app/navigators/routes";
+import Icon from "@app/atoms/Icon";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const AddressSearchTemplate: FC<PropsType> = (props) => {
   const { latitude, longitude, googleAutoCompleteProps } = props;
@@ -35,6 +37,14 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
     longitude: longitude,
     details: "",
   });
+  const mapRef: LegacyRef<MapView> = useRef(null);
+
+  const onZoomInPress = () => {
+    mapRef?.current?.getCamera().then((cam: Camera) => {
+      cam.zoom += 10;
+      mapRef?.current?.animateCamera(cam);
+    });
+  };
 
   const GOOGLE_PLACES_API_KEY = "AIzaSyB2P8TWkc09Z83VZuYz_M_qh62r2s3c-p4";
 
@@ -43,14 +53,16 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
       <Header
         barStyle="light-content"
         placement={"left"}
-        leftComponent={{
-          icon: "arrow-back",
-          color: "green",
-          onPress: goBack,
-          style: {
-            paddingTop: 5,
-          },
-        }}
+        leftComponent={
+          <TouchableWithoutFeedback onPress={goBack} style={{ top: 10 }}>
+            <Icon
+              group="accountSettings"
+              name={"arrow"}
+              width={20}
+              height={20}
+            />
+          </TouchableWithoutFeedback>
+        }
         containerStyle={{
           width: "100%",
           maxWidth: "100%",
@@ -67,16 +79,14 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
               location: `${region.latitude}, ${region.longitude}`,
             }}
             fetchDetails={true}
-            GooglePlacesSearchQuery={{ rankby: "distance" }}
+            // GooglePlacesSearchQuery={{ rankby: "distance" }}
             onPress={(data, details) => {
-              // console.log(data, details);
               setRegion({
                 latitude: details?.geometry.location.lat || 0,
                 longitude: details?.geometry.location.lng || 0,
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
               });
-              // console.log(data);
               setPlace({
                 latitude: details?.geometry.location.lat || 0,
                 longitude: details?.geometry.location.lng || 0,
@@ -87,6 +97,8 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
                   "," +
                   data.description.split(",")[2],
               });
+
+              onZoomInPress();
             }}
             styles={{
               textInput: {
@@ -106,11 +118,13 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
 
       <View>
         <MapView
+          ref={mapRef}
           style={AddressSearchTemplateStyles.map}
           region={region}
           zoomEnabled={true}
           showsUserLocation
-          showsCompass>
+          showsCompass
+          onMapReady={onZoomInPress}>
           <Marker
             coordinate={{
               latitude: region.latitude,
