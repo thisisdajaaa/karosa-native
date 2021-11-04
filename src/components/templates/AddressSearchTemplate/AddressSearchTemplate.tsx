@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, LegacyRef, useRef, useState } from "react";
+import React, { FC, LegacyRef, useCallback, useRef, useState } from "react";
 
 // import AddressSearchTemplateConfig from "./config";
 import type { PropsType } from "./types";
@@ -15,15 +15,19 @@ import Header from "@app/components/molecules/Header";
 import { theme } from "@app/styles";
 import { useNavigation } from "@react-navigation/native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import MapView, { Camera, Marker, MarkerAnimated } from "react-native-maps";
+import MapView, { Camera, Marker } from "react-native-maps";
 import Button from "@app/atoms/Button";
 import routes from "@app/navigators/routes";
 import Icon from "@app/atoms/Icon";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-
+import { useDispatch } from "react-redux";
+import { NewAddressForm } from "@app/redux/address/models";
+import { actions, selectors } from "@app/redux/address";
+import { initNewAddress } from "@app/redux/address/data";
 const AddressSearchTemplate: FC<PropsType> = (props) => {
   const { latitude, longitude, googleAutoCompleteProps } = props;
   const { goBack, navigate } = useNavigation();
+  const dispatch = useDispatch();
 
   const [region, setRegion] = useState({
     latitude: latitude,
@@ -38,6 +42,13 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
     details: "",
   });
   const mapRef: LegacyRef<MapView> = useRef(null);
+
+  const action = {
+    setNewAddressForm: useCallback(
+      (values: NewAddressForm) => dispatch(actions.setNewAddress(values)),
+      [dispatch]
+    ),
+  };
 
   const onZoomInPress = () => {
     mapRef?.current?.getCamera().then((cam: Camera) => {
@@ -79,7 +90,6 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
               location: `${region.latitude}, ${region.longitude}`,
             }}
             fetchDetails={true}
-            // GooglePlacesSearchQuery={{ rankby: "distance" }}
             onPress={(data, details) => {
               setRegion({
                 latitude: details?.geometry.location.lat || 0,
@@ -98,7 +108,9 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
                   data.description.split(",")[2],
               });
 
-              onZoomInPress();
+              if (place.latitude > 0 && place.longitude > 0) {
+                onZoomInPress();
+              }
             }}
             styles={{
               textInput: {
@@ -146,7 +158,9 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
             title={"Confirm"}
             buttonStyle={{ backgroundColor: theme.colors.primary }}
             titleStyle={{ fontSize: 16 }}
+            disabled={place.latitude > 0 && place.longitude > 0 ? false : true}
             onPress={() => {
+              action.setNewAddressForm(initNewAddress);
               navigate("Stack", {
                 screen: routes.ACCOUNTS_NEW_ADDRESS,
                 params: {

@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, useCallback } from "react";
+import React, { FC } from "react";
 
 import type { AddressMainProps, PropsType } from "./types";
 import AddressSearchTemplate from "@app/components/templates/AddressSearchTemplate";
