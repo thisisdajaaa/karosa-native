@@ -9,15 +9,13 @@ import React, { FC } from "react";
 
 import type { PropsType } from "./types";
 import { useNavigation } from "@react-navigation/native";
-import { KeyboardTypeOptions, ScrollView, View } from "react-native";
+import { ScrollView, View } from "react-native";
 import Header from "@app/components/molecules/Header";
 
-import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
 import { ListItem } from "react-native-elements";
 import Icon from "@app/atoms/Icon";
 import ListInput from "@app/components/organisms/ListInput";
-import { COMMON } from "@app/constants";
 import Button from "@app/atoms/Button";
 import { useFormikContext } from "formik";
 import { NewAddressForm } from "@app/redux/address/models";

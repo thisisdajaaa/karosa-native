@@ -59,7 +59,7 @@ const AddressNew: FC<PropsType> = (props) => {
       name: "noteRider",
       label: "Note to rider",
       placeholder: "e.g. Landmark, Buidling",
-      maxLen: 50,
+      maxLen: 10,
     },
   ];
 
@@ -104,7 +104,6 @@ const AddressNew: FC<PropsType> = (props) => {
     validationSchema: addressNewSchema,
   });
 
-  // console.log(formikBag.errors);
   return (
     <FormikContext.Provider value={formikBag}>
       <AddressNewTemplate details={params.details} inputProps={inputProps} />
