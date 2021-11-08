@@ -15,7 +15,7 @@ import {
 } from "./models";
 
 export const initProductForm: ProductForm = {
-  productImg: "",
+  productImages: [],
   productNm: "",
   description: "",
   price: "",

@@ -18,7 +18,6 @@ import { theme } from "@app/styles";
 import { getPlatform, listIterator, WithIcon } from "@app/utils";
 import { COMMON } from "@app/constants";
 import Header from "@app/molecules/Header";
-import ListImage from "@app/organisms/ListImage";
 import ListInput from "@app/organisms/ListInput";
 import ListChevron from "@app/organisms/ListChevron";
 import ListStatus from "@app/organisms/ListStatus";
@@ -26,6 +25,8 @@ import ListSwitch from "@app/organisms/ListSwitch";
 
 import type { PropsType } from "./types";
 import ProductNewStyles from "./styles";
+import ListDatepicker from "@app/components/organisms/ListDatepicker";
+import ProductImages from "./ProductImages";
 
 const ProductNewTemplate: FC<PropsType> = (props) => {
   const { navigation, sheetRefs, statusColor, statusValue } = props;
@@ -97,7 +98,7 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
 
     const separator = <View style={ProductNewStyles.separator} />;
 
-    const productImg = <ListImage name="productImg" hasBottomDivider />;
+    const productImg = <ProductImages />;
 
     const stocks = listInput(
       "stocks",
@@ -172,17 +173,19 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
       "number-pad"
     );
 
-    const shelfLife = listInput(
-      "shelfLife",
-      "Best Before",
-      "Select Date",
-      {
-        group: "products",
-        name: "shelfLife",
-        height: 20,
-        width: 20,
-      },
-      "number-pad"
+    const shelfLife = (
+      <ListDatepicker
+        name="shelfLife"
+        label="Best Before"
+        icon={{
+          group: "products",
+          name: "shelfLife",
+          height: 20,
+          width: 20,
+        }}
+        hasBottomDivider
+        required
+      />
     );
 
     const status = (
@@ -242,17 +245,19 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
       />
     );
 
-    const estimateDate = listInput(
-      "estimateDate",
-      "Estimate Available Date",
-      "Select Date",
-      {
-        group: "products",
-        name: "estimateDate",
-        height: 20,
-        width: 20,
-      },
-      "number-pad"
+    const estimateDate = (
+      <ListDatepicker
+        name="estimateDate"
+        label="Estimate Available Date"
+        icon={{
+          group: "products",
+          name: "estimateDate",
+          height: 20,
+          width: 20,
+        }}
+        hasBottomDivider
+        required
+      />
     );
 
     if (values.upcomingHarvest) {

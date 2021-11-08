@@ -14,7 +14,7 @@ export type AddProductResponse = addProduct.Response;
 export type ProductListResponse = productList.Response;
 
 export type ProductForm = {
-  productImg?: string;
+  productImages: string[];
   productNm: string;
   description: string;
   price: string;
