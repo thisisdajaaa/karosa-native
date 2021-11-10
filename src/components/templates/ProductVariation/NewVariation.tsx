@@ -20,6 +20,7 @@ import FormSwitch from "@app/molecules/FormSwitch";
 import ValidationMessage from "@app/molecules/ValidationMessage";
 import Button from "@app/atoms/Button";
 import { ENUM } from "@app/constants";
+import { useFieldError } from "@app/hooks";
 import Icon from "@app/atoms/Icon";
 import { VariationForm, VariationItem } from "@app/redux/shop/models";
 
@@ -40,6 +41,8 @@ const NewVariation: FC<NewVariationProps> = (props) => {
 
   const [visible, setVisible] = useState<boolean>(false);
   const [mode, setMode] = useState<ENUM.VariationMode>(ENUM.VariationMode.Edit);
+
+  const { isError } = useFieldError(`variationData[${index}].variationName`);
 
   const toggleOverlay = () => {
     setVisible((prev) => !prev);
@@ -183,7 +186,13 @@ const NewVariation: FC<NewVariationProps> = (props) => {
               </TouchableWithoutFeedback>
             )}
           </ListItem.Content>
-          <ValidationMessage name={`variationData[${index}].variationName`} />
+          {isError && (
+            <View style={NewVariationStyles.errorContainer}>
+              <ValidationMessage
+                name={`variationData[${index}].variationName`}
+              />
+            </View>
+          )}
         </ListItem.Content>
       </ListItem>
 

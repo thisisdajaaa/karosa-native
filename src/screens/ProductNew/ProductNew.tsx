@@ -22,6 +22,8 @@ import ProductMeasurement from "@app/screens/ProductMeasurement";
 import type { ProductNewNavigation, ProductNewSheetRefs } from "./types";
 import { statusInformation } from "./config";
 
+import validationSchema from "./validation";
+
 const ProductNewScreen: FC = () => {
   const dispatch = useDispatch();
 
@@ -53,7 +55,10 @@ const ProductNewScreen: FC = () => {
 
   const formikBag = useFormik({
     initialValues: productForm,
+    validateOnBlur: false,
+    validateOnChange: true,
     onSubmit: handleSubmit,
+    validationSchema,
   });
 
   const navigation: ProductNewNavigation = {

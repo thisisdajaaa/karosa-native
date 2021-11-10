@@ -8,6 +8,9 @@ import { StyleSheet } from "react-native";
 import { SPACING, theme } from "@app/styles";
 
 const ListDatepickerStyles = StyleSheet.create({
+  column: {
+    flexDirection: "column",
+  },
   icon: {
     position: "relative",
     left: 0,
@@ -36,9 +39,7 @@ const ListDatepickerStyles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
-  datepicker: {
-    right: -16,
-  },
+  datepicker: { alignSelf: "flex-end" },
 });
 
 export default ListDatepickerStyles;

@@ -42,7 +42,9 @@ const AuthLoginTemplate: FC<PropsType> = (props) => {
   const imageWidth = useRef(new Animated.Value(IMAGE_WIDTH.REGULAR)).current;
 
   const hasFieldError = (key: keyof LoginRequest) => {
-    return touched[key] && errors[key] ? AuthLoginStyles.errorContainer : {};
+    return touched[key] && errors[key]
+      ? AuthLoginStyles.errorContainer
+      : AuthLoginStyles.inputContainer;
   };
 
   useMount(() => {

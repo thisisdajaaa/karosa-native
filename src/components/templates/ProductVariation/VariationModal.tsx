@@ -130,6 +130,7 @@ const VariationModal: FC<VariationModalProps> = (props) => {
           multiline={false}
           disabled={hasNoImage}
           inputStyle={ListInputStyles.txtValue}
+          maxLength={20}
           inputContainerStyle={ListInputStyles.columnInputContainer}
           value={optionName}
           onChange={handleOptionNameChange}

@@ -9,6 +9,7 @@ import React, { FC } from "react";
 import { ListItem } from "react-native-elements";
 import { View } from "react-native";
 import { theme } from "@app/styles";
+import { useFieldError } from "@app/hooks";
 import Text from "@app/atoms/Text";
 import Icon from "@app/atoms/Icon";
 import FormInput from "@app/molecules/FormInput";
@@ -28,6 +29,8 @@ const VariationTwo: FC<PropsType> = (props) => {
     icon,
     keyboardType,
   } = props;
+
+  const { isError } = useFieldError(name);
 
   return (
     <ListItem bottomDivider={hasBottomDivider}>
@@ -65,7 +68,8 @@ const VariationTwo: FC<PropsType> = (props) => {
             />
           </ListItem.Content>
         </ListItem.Content>
-        <ValidationMessage name={name} />
+
+        {isError && <ValidationMessage name={name} />}
       </ListItem.Content>
     </ListItem>
   );

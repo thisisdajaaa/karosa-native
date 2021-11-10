@@ -14,24 +14,23 @@ const LoginForgotStyles = StyleSheet.create({
     padding: SPACING.lg,
     backgroundColor: theme.colors.white,
   },
+  errorContainer: {
+    borderColor: theme.colors.red5,
+  },
+  validationContainer: {
+    marginVertical: 8,
+  },
   txtForgotPass: {
     ...theme.textTitle,
     color: theme.colors.black,
     fontWeight: "500",
     marginVertical: SPACING.sm,
   },
-  errorContainer: {
-    borderColor: theme.colors.red5,
-  },
   txtResetPass: {
     ...theme.textRegular,
     color: theme.colors.black,
     fontWeight: "300",
     marginVertical: SPACING.sm,
-  },
-  validationContainer: {
-    position: "relative",
-    bottom: "2.2%",
   },
   txtHelp: { ...theme.textRegular, color: theme.colors.primary },
 });

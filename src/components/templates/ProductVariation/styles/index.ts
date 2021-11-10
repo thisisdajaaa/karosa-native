@@ -91,10 +91,10 @@ export const NewVariationStyles = StyleSheet.create({
   },
   variationNameContainer: {
     flexDirection: "column",
-    height: DIMENS.screenHeight * 0.028,
   },
   rowContainer: {
     flexDirection: "row",
+    height: DIMENS.screenHeight * 0.028,
   },
   deleteIconContainer: {
     flexDirection: "row",
@@ -102,6 +102,9 @@ export const NewVariationStyles = StyleSheet.create({
   },
   deleteIconMargin: {
     marginRight: 8,
+  },
+  errorContainer: {
+    marginTop: 8,
   },
   variationNameInput: {
     ...theme.textRegular,

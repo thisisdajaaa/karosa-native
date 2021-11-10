@@ -11,9 +11,11 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+import { useFormikContext } from "formik";
 import { getPlatform } from "@app/utils";
 import { theme } from "@app/styles";
 import { useFieldError } from "@app/hooks";
+import type { AuthPassword } from "@app/screens/AuthPhoneNumber/types";
 import ValidationMessage from "@app/molecules/ValidationMessage";
 import FormInput from "@app/molecules/FormInput";
 import FormButton from "@app/molecules/FormButton";
@@ -30,6 +32,14 @@ const AuthPasswordTemplate: FC<PropsType> = (props) => {
   const { isError } = useFieldError("password");
 
   const [securePassword, setSecurePassword] = useState<boolean>(true);
+
+  const { touched, errors } = useFormikContext<AuthPassword>();
+
+  const hasFieldError = () => {
+    return touched.password && errors.password
+      ? AuthPasswordScreenStyles.errorContainer
+      : AuthPasswordScreenStyles.inputContainer;
+  };
 
   const isIOS = getPlatform.getInstance() === "ios";
 
@@ -69,8 +79,15 @@ const AuthPasswordTemplate: FC<PropsType> = (props) => {
             name="password"
             placeholder="Password"
             maxLength={PASSWORD_LENGTH}
+            inputContainerStyle={hasFieldError()}
             secureTextEntry={securePassword}
           />
+
+          {isError && (
+            <View style={AuthPasswordScreenStyles.validationContainer}>
+              <ValidationMessage name="password" />
+            </View>
+          )}
 
           <TouchableWithoutFeedback
             onPress={() => setSecurePassword((value) => !value)}>
@@ -82,12 +99,6 @@ const AuthPasswordTemplate: FC<PropsType> = (props) => {
             </View>
           </TouchableWithoutFeedback>
         </View>
-
-        {isError && (
-          <View style={AuthPasswordScreenStyles.validationContainer}>
-            <ValidationMessage name="password" />
-          </View>
-        )}
 
         <FormButton title="Next" />
       </KeyboardAvoidingView>
