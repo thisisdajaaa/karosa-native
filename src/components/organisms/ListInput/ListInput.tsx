@@ -25,6 +25,7 @@ const ListInput: FC<PropsType> = (props) => {
     keyboardType,
     icon,
     info,
+    numofLines,
   } = props;
 
   switch (variation) {
@@ -38,6 +39,7 @@ const ListInput: FC<PropsType> = (props) => {
           placeholder={placeholder}
           required={required}
           maxLen={maxLen}
+          numofLines={numofLines}
           keyboardType={keyboardType}
         />
       );

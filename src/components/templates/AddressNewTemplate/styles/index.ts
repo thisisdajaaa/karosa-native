@@ -48,7 +48,11 @@ const AddressNewTemplateStyles = StyleSheet.create({
   },
   scrollviewContainer: {
     height: 0.93 * Dimensions.get("window").height,
-    paddingBottom: Dimensions.get("window").height / 5,
+    // paddingBottom: Dimensions.get("window").height / 6,
+  },
+  scrollviewAdjusted: {
+    height: 0.5 * Dimensions.get("window").height,
+    paddingBottom: Dimensions.get("window").height / 8,
   },
 });
 
