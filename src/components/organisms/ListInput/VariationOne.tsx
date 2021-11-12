@@ -27,6 +27,7 @@ const VariationOne: FC<PropsType> = (props) => {
     required,
     maxLen,
     keyboardType,
+    numofLines,
   } = props;
 
   const [, meta] = useField(name);
@@ -51,7 +52,8 @@ const VariationOne: FC<PropsType> = (props) => {
             name={name}
             keyboardType={keyboardType}
             placeholder={placeholder}
-            numberOfLines={NUM_LINES.TEN}
+            // numberOfLines={NUM_LINES.TEN}
+            numberOfLines={numofLines || NUM_LINES.TEN}
             multiline
             inputStyle={ListInputStyles.txtValue}
             containerStyle={ListInputStyles.columnContainer}

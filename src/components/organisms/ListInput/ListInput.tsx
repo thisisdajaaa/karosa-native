@@ -9,6 +9,7 @@ import React, { FC } from "react";
 
 import type { PropsType } from "./types";
 import VariationOne from "./VariationOne";
+import VariationThree from "./VariationThree";
 import VariationTwo from "./VariationTwo";
 import VariationFour from "./VariationFour";
 
@@ -23,6 +24,8 @@ const ListInput: FC<PropsType> = (props) => {
     maxLen,
     keyboardType,
     icon,
+    info,
+    numofLines,
   } = props;
 
   switch (variation) {
@@ -36,6 +39,7 @@ const ListInput: FC<PropsType> = (props) => {
           placeholder={placeholder}
           required={required}
           maxLen={maxLen}
+          numofLines={numofLines}
           keyboardType={keyboardType}
         />
       );
@@ -45,7 +49,19 @@ const ListInput: FC<PropsType> = (props) => {
           variation={variation}
           label={label}
           icon={icon}
-          maxLen={maxLen}
+          hasBottomDivider={hasBottomDivider}
+          name={name}
+          placeholder={placeholder}
+          required={required}
+          keyboardType={keyboardType}
+        />
+      );
+    case 3:
+      return (
+        <VariationThree
+          variation={variation}
+          label={label}
+          info={info}
           hasBottomDivider={hasBottomDivider}
           name={name}
           placeholder={placeholder}

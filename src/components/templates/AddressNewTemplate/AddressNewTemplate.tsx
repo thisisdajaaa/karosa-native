@@ -5,11 +5,11 @@
  *
  */
 
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 import type { PropsType } from "./types";
 import { useNavigation } from "@react-navigation/native";
-import { ScrollView, View } from "react-native";
+import { Keyboard, Dimensions, ScrollView, View } from "react-native";
 import Header from "@app/components/molecules/Header";
 
 import Text from "@app/atoms/Text";
@@ -26,6 +26,28 @@ const AddressNewTemplate: FC<PropsType> = (props) => {
   const { details, inputProps } = props;
   const { goBack, navigate } = useNavigation();
   const { submitForm, values, errors } = useFormikContext<NewAddressForm>();
+
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      () => {
+        setKeyboardVisible(true); // or some other action
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      () => {
+        setKeyboardVisible(false); // or some other action
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
 
   return (
     <View style={{ flex: 1 }}>
@@ -67,12 +89,17 @@ const AddressNewTemplate: FC<PropsType> = (props) => {
         </ListItem>
       </View>
 
-      <View style={AddressNewTemplateStyles.scrollviewContainer}>
+      <View
+        style={
+          isKeyboardVisible
+            ? AddressNewTemplateStyles.scrollviewAdjusted
+            : AddressNewTemplateStyles.scrollviewContainer
+        }>
         <ScrollView style={{ flex: 1 }}>
           <View style={AddressNewTemplateStyles.subContainer}>
             {inputProps.map((props, index) => {
               return (
-                <>
+                <View>
                   <ListInput
                     name={props.name}
                     label={props.label}
@@ -80,12 +107,13 @@ const AddressNewTemplate: FC<PropsType> = (props) => {
                     hasBottomDivider
                     required
                     maxLen={props.maxLen}
+                    numofLines={props.numofLines}
                     variation={props.variation}
                     keyboardType={
                       props.keyboardType ? props.keyboardType : "default"
                     }
                   />
-                </>
+                </View>
               );
             })}
           </View>

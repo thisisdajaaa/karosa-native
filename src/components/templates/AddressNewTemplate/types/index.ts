@@ -20,4 +20,5 @@ export type ListInputPropsType = {
   required?: boolean;
   hasBottomDivider?: boolean;
   keyboardType?: KeyboardTypeOptions;
+  numofLines?: number;
 };
