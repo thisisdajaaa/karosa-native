@@ -18,4 +18,5 @@ export type PropsType = {
   keyboardType?: KeyboardTypeOptions;
   info?: string;
   icon?: WithIcon;
+  numofLines?: number;
 };

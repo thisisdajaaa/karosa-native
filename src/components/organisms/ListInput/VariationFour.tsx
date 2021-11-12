@@ -1,15 +1,16 @@
 /**
  *
- * VariationTwo
+ * VariationOne
  * @format
  *
  */
 
 import React, { FC } from "react";
+import { useField } from "formik";
+import { View } from "react-native";
 import { ListItem } from "react-native-elements";
-import { theme } from "@app/styles";
+import { useFieldError } from "@app/hooks";
 import Text from "@app/atoms/Text";
-import Icon from "@app/atoms/Icon";
 import FormInput from "@app/molecules/FormInput";
 import ValidationMessage from "@app/molecules/ValidationMessage";
 
@@ -20,60 +21,46 @@ import ListInputStyles from "./styles";
 const VariationFour: FC<PropsType> = (props) => {
   const {
     label,
+    hasBottomDivider,
     name,
     placeholder,
     required,
-    hasBottomDivider,
-    icon,
+    maxLen,
     keyboardType,
+    numofLines,
   } = props;
+
+  const [, meta] = useField(name);
+  const { isError } = useFieldError(name);
 
   return (
     <ListItem bottomDivider={hasBottomDivider}>
-      <ListItem.Content
-        style={[
-          {
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            alignItems: "center",
-          },
-        ]}>
-        {icon ? (
-          <>
-            <Icon
-              group={icon.group}
-              name={icon.name}
-              height={icon.height}
-              width={icon.width}
-              extraStyle={ListInputStyles.icon}
-            />
-            <Text text={label} textStyle={ListInputStyles.txtWithIcon} />
-          </>
-        ) : (
+      <ListItem.Content style={ListInputStyles.variationOneContainer}>
+        <ListItem.Content style={ListInputStyles.labelLengthContainer}>
           <Text text={label} textStyle={ListInputStyles.txtLabel} />
-        )}
+          {required && (
+            <Text text="*" textStyle={ListInputStyles.txtRequired} />
+          )}
+        </ListItem.Content>
+        <View style={ListInputStyles.formInputContainer}>
+          <FormInput
+            name={name}
+            keyboardType={keyboardType}
+            placeholder={placeholder}
+            numberOfLines={NUM_LINES.ONE}
+            multiline
+            inputStyle={ListInputStyles.txtValue}
+            containerStyle={ListInputStyles.columnContainer}
+            inputContainerStyle={ListInputStyles.columnInputContainer}
+          />
+        </View>
 
-        {required && <Text text="*" textStyle={ListInputStyles.txtRequired} />}
+        {isError && (
+          <ListItem.Content style={ListInputStyles.errorContainer}>
+            <ValidationMessage name={name} />
+          </ListItem.Content>
+        )}
       </ListItem.Content>
-      <ListItem.Content
-        style={[
-          {
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            alignItems: "center",
-          },
-        ]}>
-        <FormInput
-          keyboardType={keyboardType}
-          name={name}
-          placeholder={placeholder}
-          placeholderColor={theme.colors.primary}
-          numberOfLines={NUM_LINES.ONE}
-          inputStyle={ListInputStyles.txtRowInputVariatonFour}
-          inputContainerStyle={[ListInputStyles.inputContainer]}
-        />
-      </ListItem.Content>
-      <ValidationMessage name={name} />
     </ListItem>
   );
 };
