@@ -24,6 +24,10 @@ const ListInput: FC<PropsType> = (props) => {
     maxLen,
     keyboardType,
     icon,
+<<<<<<< HEAD
+=======
+    info,
+>>>>>>> a227b99... fix(fixing inputs): fixing inputs
     numofLines,
   } = props;
 

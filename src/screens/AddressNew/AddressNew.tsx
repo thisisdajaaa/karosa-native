@@ -144,6 +144,7 @@ const AddressNew: FC<PropsType> = (props) => {
       variation: COMMON.VARIATION.FOUR,
       label: "Label",
       name: "label",
+      numofLines: 1,
       placeholder: "e.g. Home / Office",
     },
     {
@@ -151,11 +152,13 @@ const AddressNew: FC<PropsType> = (props) => {
       name: "contactName",
       label: "Contact Name",
       placeholder: "Set Name",
+      numofLines: 2,
     },
     {
       variation: COMMON.VARIATION.FOUR,
       name: "contactNumber",
       label: "Contact Number",
+      numofLines: 2,
       placeholder: "Set Contact",
       keyboardType: "number-pad",
     },
@@ -164,6 +167,7 @@ const AddressNew: FC<PropsType> = (props) => {
       name: "addressDetails",
       label: "Address Details",
       placeholder: "e.g. Floor, Unit, Room Number",
+      numofLines: 4,
       maxLen: 50,
     },
     {
@@ -171,6 +175,7 @@ const AddressNew: FC<PropsType> = (props) => {
       name: "noteRider",
       label: "Note to rider",
       placeholder: "e.g. Landmark, Buidling",
+      numofLines: 4,
       maxLen: 10,
     },
   ];

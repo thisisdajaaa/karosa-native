@@ -70,14 +70,10 @@
     "react-native-dotenv": "^2.5.5",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "~1.10.2",
-<<<<<<< HEAD
     "react-native-masked-text": "^1.13.0",
     "react-native-google-places-autocomplete": "^2.4.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-keyboard-listener": "^1.1.0",
-=======
-    "react-native-google-places-autocomplete": "^2.4.1",
->>>>>>> 21ec335... fix(rebasing): rebasing
     "react-native-maps": "0.27.1",
     "react-native-picker-select": "^8.0.4",
     "react-native-places-input": "^1.1.7",
