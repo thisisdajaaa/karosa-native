@@ -10,7 +10,6 @@ import { TouchableOpacity, View } from "react-native";
 import Image from "@app/atoms/Image";
 import Text from "@app/atoms/Text";
 
-import ReviewImages from "@app/atoms/ReviewImages";
 import { AntDesign } from "@expo/vector-icons";
 import ListChevron from "@app/organisms/ListChevron";
 
@@ -23,11 +22,9 @@ import type { PropsType } from "./types";
 import ImageOverlayReviews from "@app/components/organisms/ImageOverlayReviews";
 import ListChevronStyles from "@app/components/organisms/ListChevron/styles";
 import Icon from "@app/atoms/Icon";
-
 import Button from "@app/atoms/Button";
 import { PropsType as ButtonProps } from "@app/atoms/Button/types";
 import { theme } from "@app/styles";
-import ImageOverlay from "@app/components/molecules/ImageOverlay";
 
 const ProductDetailTemplate: FC<PropsType> = (props) => {
   const {
@@ -209,117 +206,81 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                     },
                     textContent: "+5",
                   },
-                  {
-                    source: {
-                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-                    },
-                  },
-                ]}
-              />
-            </View>
-
-            <View style={ProductDetailStyles.horizontalContainer}>
-              <ImageOverlayReviews
-                overlayProps={[
-                  {
-                    source: {
-                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-                    },
-                    hasOverlay: false,
-                  },
-                  {
-                    source: {
-                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-                    },
-                    hasOverlay: false,
-                  },
-                  {
-                    source: {
-                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-                    },
-                    hasOverlay: false,
-                  },
-                  {
-                    source: {
-                      uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
-                    },
-                    textContent: "+5",
-                  },
                 ]}
               />
             </View>
           </View>
 
           {/* <View style={ProductDetailStyles.subContainer}>
-            <View style={ProductDetailStyles.horizontalContainer}>
-              <View style={ProductDetailStyles.sellerContainer}>
-                <View>
-                  <Image
-                    source={{
-                      uri: " https://www.pngarts.com/files/3/Cartoon-Farmer-PNG-Photo.png",
-                    }}
-                    imageStyle={ProductDetailStyles.sellerImage}
-                  />
-                </View>
-                <View style={ProductDetailStyles.txtNameAddress}>
-                  <Text
-                    text={" Cathy Smith Shop"}
-                    textStyle={ProductDetailStyles.txtBlackRegular}
-                  />
-                  <View>
-                    <Text
-                      text={"Cebu City"}
-                      textStyle={ProductDetailStyles.txtLight}
-                    />
-                    <AntDesign name="enviromento" size={20} />
-                  </View>
-                </View>
-              </View>
-              <Text
-                text={"Visit Shop"}
-                textStyle={[
-                  ProductDetailStyles.txtBlackRegular,
-                  ProductDetailStyles.txtGreen,
-                ]}
-              />
-            </View>
-            <View
-              style={[
-                ProductDetailStyles.horizontalContainer,
-                ProductDetailStyles.ratingContainer,
-              ]}>
-              <View style={ProductDetailStyles.reviewSeller}>
-                <Text
-                  text={"45"}
-                  textStyle={ProductDetailStyles.txtSellerInfo}
-                />
-                <Text
-                  text={"Products"}
-                  textStyle={ProductDetailStyles.txtLight}
-                />
-              </View>
-              <View style={ProductDetailStyles.reviewSeller}>
-                <Text
-                  text={"4.7"}
-                  textStyle={ProductDetailStyles.txtSellerInfo}
-                />
-                <Text
-                  text={"Rating"}
-                  textStyle={ProductDetailStyles.txtLight}
-                />
-              </View>
-              <View style={ProductDetailStyles.reviewSeller}>
-                <Text
-                  text={"92%"}
-                  textStyle={ProductDetailStyles.txtSellerInfo}
-                />
-                <Text
-                  text={"Chat Performance"}
-                  textStyle={ProductDetailStyles.txtLight}
-                />
-              </View>
-            </View>
-          </View> */}
+             <View style={ProductDetailStyles.horizontalContainer}>
+               <View style={ProductDetailStyles.sellerContainer}>
+                 <View>
+                   <Image
+                     source={{
+                       uri: " https://www.pngarts.com/files/3/Cartoon-Farmer-PNG-Photo.png",
+                     }}
+                     imageStyle={ProductDetailStyles.sellerImage}
+                   />
+                 </View>
+                 <View style={ProductDetailStyles.txtNameAddress}>
+                   <Text
+                     text={" Cathy Smith Shop"}
+                     textStyle={ProductDetailStyles.txtBlackRegular}
+                   />
+                   <View>
+                     <Text
+                       text={"Cebu City"}
+                       textStyle={ProductDetailStyles.txtLight}
+                     />
+                     <AntDesign name="enviromento" size={20} />
+                   </View>
+                 </View>
+               </View>
+               <Text
+                 text={"Visit Shop"}
+                 textStyle={[
+                   ProductDetailStyles.txtBlackRegular,
+                   ProductDetailStyles.txtGreen,
+                 ]}
+               />
+             </View>
+             <View
+               style={[
+                 ProductDetailStyles.horizontalContainer,
+                 ProductDetailStyles.ratingContainer,
+               ]}>
+               <View style={ProductDetailStyles.reviewSeller}>
+                 <Text
+                   text={"45"}
+                   textStyle={ProductDetailStyles.txtSellerInfo}
+                 />
+                 <Text
+                   text={"Products"}
+                   textStyle={ProductDetailStyles.txtLight}
+                 />
+               </View>
+               <View style={ProductDetailStyles.reviewSeller}>
+                 <Text
+                   text={"4.7"}
+                   textStyle={ProductDetailStyles.txtSellerInfo}
+                 />
+                 <Text
+                   text={"Rating"}
+                   textStyle={ProductDetailStyles.txtLight}
+                 />
+               </View>
+               <View style={ProductDetailStyles.reviewSeller}>
+                 <Text
+                   text={"92%"}
+                   textStyle={ProductDetailStyles.txtSellerInfo}
+                 />
+                 <Text
+                   text={"Chat Performance"}
+                   textStyle={ProductDetailStyles.txtLight}
+                 />
+               </View>
+             </View>
+           </View> */}
 
           <View style={ProductDetailStyles.subContainer}>
             <View style={ProductDetailStyles.productRatingMain}>
