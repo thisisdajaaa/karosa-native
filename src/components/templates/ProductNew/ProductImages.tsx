@@ -43,17 +43,20 @@ const ProductImages: FC = () => {
         style={{
           backgroundColor: theme.colors.white,
           alignItems: "flex-start",
-        }}>
+        }}
+      >
         <View
           style={{
             flexDirection: "row",
             alignItems: "flex-start",
-          }}>
+          }}
+        >
           <View
             style={{
               flexDirection: "row",
               alignItems: "flex-start",
-            }}>
+            }}
+          >
             {values.productImages.length < 3 &&
               values.productImages.map((image, index) => (
                 <View
@@ -66,7 +69,8 @@ const ProductImages: FC = () => {
                     justifyContent: "center",
                     overflow: "hidden",
                     width: DIMENS.screenWidth * 0.22,
-                  }}>
+                  }}
+                >
                   <Image
                     source={{ uri: image }}
                     imageStyle={{
@@ -96,7 +100,8 @@ const ProductImages: FC = () => {
                     justifyContent: "center",
                     overflow: "hidden",
                     width: DIMENS.screenWidth * 0.22,
-                  }}>
+                  }}
+                >
                   <Image
                     key={index}
                     source={{ uri: item }}
@@ -112,7 +117,8 @@ const ProductImages: FC = () => {
           )}
 
           <TouchableWithoutFeedback
-            onPress={() => selectImage(handleImagePicker)}>
+            onPress={() => selectImage(handleImagePicker)}
+          >
             <View
               style={{
                 alignItems: "center",
@@ -124,7 +130,8 @@ const ProductImages: FC = () => {
                 justifyContent: "center",
                 overflow: "hidden",
                 width: DIMENS.screenWidth * 0.22,
-              }}>
+              }}
+            >
               <Icon group="common" name="cameraGreen" height={28} width={28} />
               <Text
                 text="Add Photo"

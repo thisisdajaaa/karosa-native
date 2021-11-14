@@ -286,7 +286,8 @@ const ShopViewTemplate: FC<PropsType> = (props) => {
           inactiveTintColor: theme.colors.dark20,
           pressColor: theme.colors.primary,
           indicatorStyle: { backgroundColor: theme.colors.primary },
-        }}>
+        }}
+      >
         <Tab.Screen name="Shop">{renderShop}</Tab.Screen>
         <Tab.Screen name="Products">{renderProducts}</Tab.Screen>
         <Tab.Screen name="Categories">{renderCategories}</Tab.Screen>

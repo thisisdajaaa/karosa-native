@@ -62,7 +62,8 @@ const CheckoutItem: FC<CheckoutItemProps> = (props) => {
       {item.items.map((storeItem, storeKey) => (
         <ListItem
           key={storeItem.id}
-          bottomDivider={storeKey === item.items.length - 1}>
+          bottomDivider={storeKey === item.items.length - 1}
+        >
           <View style={CheckoutStyles.storeItemColumn}>
             <View style={CheckoutStyles.storeItemRow}>
               <View style={CheckoutStyles.orderImageContainer}>

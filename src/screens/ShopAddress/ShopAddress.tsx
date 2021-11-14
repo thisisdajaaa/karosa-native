@@ -17,12 +17,8 @@ import type { ShopAddressNavigation } from "./types";
 const ShopAddressScreen: FC = () => {
   const { goBack, navigate } = useNavigation();
 
-  const {
-    name,
-    isDefaultAddress,
-    detailed_address,
-    phoneNo,
-  } = useMemoizedSelector(selectors.getShopAddressResponse).response;
+  const { name, isDefaultAddress, detailed_address, phoneNo } =
+    useMemoizedSelector(selectors.getShopAddressResponse).response;
 
   const navigation: ShopAddressNavigation = {
     onBack: useCallback(() => {

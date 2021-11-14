@@ -73,7 +73,8 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
       <>{getHeader()}</>
       <KeyboardAvoidingView
         style={ProductVariationStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <ScrollView showsVerticalScrollIndicator={false}>
           <>
             {values.variationData.map((_, index) => (

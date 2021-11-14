@@ -59,7 +59,8 @@ const ProductStockPrice: FC<PropsType> = (props) => {
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              bounces={false}>
+              bounces={false}
+            >
               <View style={ProductStockPriceStyles.innerContainer}>
                 <View style={ProductStockPriceStyles.tableHeaderContainer}>
                   <View style={ProductStockPriceStyles.tableColumnPrimary}>

@@ -49,7 +49,8 @@ const ProfileHeader: FC = () => {
     <View style={UserAccountMainStyles.headerContainer}>
       <TouchableOpacity
         style={UserAccountMainStyles.settingsIconContainer}
-        onPress={() => navigate(routes.ACCOUNTS_SETTINGS)}>
+        onPress={() => navigate(routes.ACCOUNTS_SETTINGS)}
+      >
         <MaterialIcons
           name="settings"
           style={UserAccountMainStyles.commonIconHeader}
@@ -58,7 +59,8 @@ const ProfileHeader: FC = () => {
 
       <TouchableOpacity
         style={UserAccountMainStyles.messageIconContainer}
-        onPress={() => 0}>
+        onPress={() => 0}
+      >
         <MaterialIcons
           name="chat"
           style={UserAccountMainStyles.commonIconHeader}

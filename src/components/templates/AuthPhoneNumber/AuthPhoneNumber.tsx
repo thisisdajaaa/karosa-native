@@ -57,7 +57,8 @@ const AuthPhoneNumberTemplate: FC<PropsType> = (props) => {
       />
       <KeyboardAvoidingView
         style={AuthPhoneNumberStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <Text
           text={"Enter your phone number"}
           textStyle={AuthPhoneNumberStyles.txtEnterPhoneNumber}

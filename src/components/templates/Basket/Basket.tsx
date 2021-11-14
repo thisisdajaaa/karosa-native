@@ -54,7 +54,8 @@ const BasketTemplate: FC<PropsType> = (props) => {
       />
       <KeyboardAvoidingView
         style={BasketStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <FlatList
           showsVerticalScrollIndicator={false}
           keyExtractor={keyExtractor}

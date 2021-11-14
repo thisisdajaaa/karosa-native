@@ -68,7 +68,8 @@ const ListProduct: FC<PropsType> = (props) => {
                     wholesale
                       ? ListProductStyles.discountWithWholesaleContainer
                       : ListProductStyles.discountContainer
-                  }>
+                  }
+                >
                   <Text
                     text={`${discount}%`}
                     textStyle={ListProductStyles.txtBadge}
@@ -116,7 +117,8 @@ const ListProduct: FC<PropsType> = (props) => {
         <ListItem.Content style={ListProductStyles.botContainer}>
           <TouchableOpacity
             style={ListProductStyles.buttonContainer}
-            onPress={onDiscontinue}>
+            onPress={onDiscontinue}
+          >
             <View style={ListProductStyles.removeIcon}>
               <Icon
                 group="products"
@@ -132,7 +134,8 @@ const ListProduct: FC<PropsType> = (props) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={ListProductStyles.buttonContainer}
-            onPress={onEdit}>
+            onPress={onEdit}
+          >
             <View style={ListProductStyles.editIcon}>
               <Icon
                 group="products"

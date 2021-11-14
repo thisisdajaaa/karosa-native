@@ -29,7 +29,8 @@ const Quantity: FC<PropsType> = (props) => {
         <View
           style={
             ButtonDisabledStyles(Boolean(disableDecrement)).buttonContainer
-          }>
+          }
+        >
           <MaterialCommunityIcons name="minus" size={ICON_SIZE} color="white" />
         </View>
       </TouchableOpacity>
@@ -40,7 +41,8 @@ const Quantity: FC<PropsType> = (props) => {
         <View
           style={
             ButtonDisabledStyles(Boolean(disableIncrement)).buttonContainer
-          }>
+          }
+        >
           <MaterialCommunityIcons name="plus" size={ICON_SIZE} color="white" />
         </View>
       </TouchableOpacity>

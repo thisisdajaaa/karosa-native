@@ -63,7 +63,8 @@ const AuthPasswordTemplate: FC<PropsType> = (props) => {
       />
       <KeyboardAvoidingView
         style={AuthPasswordScreenStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <Text
           text={"Set your Password"}
           textStyle={AuthPasswordScreenStyles.txtSetPass}
@@ -90,7 +91,8 @@ const AuthPasswordTemplate: FC<PropsType> = (props) => {
           )}
 
           <TouchableWithoutFeedback
-            onPress={() => setSecurePassword((value) => !value)}>
+            onPress={() => setSecurePassword((value) => !value)}
+          >
             <View style={AuthPasswordScreenStyles.toggleContainer}>
               <Text
                 text={securePassword ? "Show" : "Hide"}

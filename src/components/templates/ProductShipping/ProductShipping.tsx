@@ -135,7 +135,8 @@ const ProductShippingTemplate: FC<PropsType> = (props) => {
       <>{getHeader()}</>
       <KeyboardAvoidingView
         style={ProductShippingStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <ScrollView showsVerticalScrollIndicator={false}>
           <>{getShippingForm()}</>
         </ScrollView>

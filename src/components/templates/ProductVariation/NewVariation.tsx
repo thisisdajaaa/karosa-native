@@ -96,7 +96,8 @@ const NewVariation: FC<NewVariationProps> = (props) => {
     return (
       <View
         key={key}
-        style={{ ...NewVariationStyles.optionCardContainer, ...optionCard }}>
+        style={{ ...NewVariationStyles.optionCardContainer, ...optionCard }}
+      >
         {mode === ENUM.VariationMode.Edit && (
           <View style={NewVariationStyles.deleteContainer}>
             <AntDesign
@@ -145,7 +146,8 @@ const NewVariation: FC<NewVariationProps> = (props) => {
                 <View style={NewVariationStyles.deleteIconContainer}>
                   <TouchableWithoutFeedback
                     onPress={removeVariationItem}
-                    style={NewVariationStyles.deleteIconMargin}>
+                    style={NewVariationStyles.deleteIconMargin}
+                  >
                     <Icon
                       group="products"
                       name="deleteVariation"
@@ -175,7 +177,8 @@ const NewVariation: FC<NewVariationProps> = (props) => {
 
             {mode === ENUM.VariationMode.Edit ? (
               <TouchableWithoutFeedback
-                onPress={() => setMode(ENUM.VariationMode.Done)}>
+                onPress={() => setMode(ENUM.VariationMode.Done)}
+              >
                 <Text
                   text="Done"
                   textStyle={NewVariationStyles.txtDoneOrEdit}
@@ -183,7 +186,8 @@ const NewVariation: FC<NewVariationProps> = (props) => {
               </TouchableWithoutFeedback>
             ) : (
               <TouchableWithoutFeedback
-                onPress={() => setMode(ENUM.VariationMode.Edit)}>
+                onPress={() => setMode(ENUM.VariationMode.Edit)}
+              >
                 <Text
                   text="Edit"
                   textStyle={NewVariationStyles.txtDoneOrEdit}

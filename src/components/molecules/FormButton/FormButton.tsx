@@ -13,14 +13,8 @@ import Button from "@app/atoms/Button";
 
 const FormButton: FC<PropsType> = (props) => {
   const { title, loading, buttonStyle } = props;
-  const {
-    isValid,
-    submitForm,
-    touched,
-    initialValues,
-    values,
-    errors,
-  } = useFormikContext();
+  const { isValid, submitForm, touched, initialValues, values, errors } =
+    useFormikContext();
 
   const invalid =
     !isValid ||

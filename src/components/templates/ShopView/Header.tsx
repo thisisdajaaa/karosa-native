@@ -29,9 +29,9 @@ const Header: FC<HeaderProps> = (props) => {
         style={HeaderStyles.coverPhoto}
         blurRadius={1}
         source={{
-          uri:
-            "https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606613/karosa/shop_ynswwn.jpg",
-        }}>
+          uri: "https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606613/karosa/shop_ynswwn.jpg",
+        }}
+      >
         <StatusBar translucent backgroundColor="transparent" />
         <BaseHeader
           containerStyle={HeaderStyles.headerContainer}
@@ -58,8 +58,7 @@ const Header: FC<HeaderProps> = (props) => {
         <Image
           imageStyle={HeaderStyles.avatarPhoto}
           source={{
-            uri:
-              "https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png",
+            uri: "https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png",
           }}
           resizeMode="contain"
         />

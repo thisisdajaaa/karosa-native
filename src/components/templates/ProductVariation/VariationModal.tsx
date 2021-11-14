@@ -88,18 +88,19 @@ const VariationModal: FC<VariationModalProps> = (props) => {
     setOptionName("");
   };
 
-  const { optionName: optionNameContainer } = OptionNameStyles(
-    imageSwitchEnabled
-  );
+  const { optionName: optionNameContainer } =
+    OptionNameStyles(imageSwitchEnabled);
 
   return (
     <Overlay
       isVisible={visible}
       overlayStyle={VariationModalStyles.overlayContainer}
-      onBackdropPress={toggleOverlay}>
+      onBackdropPress={toggleOverlay}
+    >
       <TouchableOpacity
         style={VariationModalStyles.iconContainer}
-        onPress={() => setVisible(false)}>
+        onPress={() => setVisible(false)}
+      >
         <AntDesign name="close" size={ICON_SIZE.CLOSE} color="black" />
       </TouchableOpacity>
 

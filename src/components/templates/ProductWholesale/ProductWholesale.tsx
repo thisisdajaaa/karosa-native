@@ -95,7 +95,8 @@ const ProductWholesaleTemplate: FC<PropsType> = (props) => {
       <>{getHeader()}</>
       <KeyboardAvoidingView
         style={ProductWholesaleStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <ScrollView showsVerticalScrollIndicator={false}>
           <>{getWholesaleForm()}</>
         </ScrollView>

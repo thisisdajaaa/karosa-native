@@ -328,7 +328,8 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
       <>{getHeader()}</>
       <KeyboardAvoidingView
         style={ProductNewStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <ScrollView showsVerticalScrollIndicator={false}>
           <>{getProductForm()}</>
           <View style={ProductNewStyles.spacer} />

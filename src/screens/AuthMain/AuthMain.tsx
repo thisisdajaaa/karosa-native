@@ -31,9 +31,8 @@ const AuthMainScreen: FC<PropsType> = (props) => {
   const { sheetRef } = props;
   const { navigate } = useNavigation();
 
-  const [isGoogleButtonLoading, setIsGoogleButtonLoading] = useState<boolean>(
-    false
-  );
+  const [isGoogleButtonLoading, setIsGoogleButtonLoading] =
+    useState<boolean>(false);
   const [isFbButtonLoading, setIsFbButtonLoading] = useState<boolean>(false);
 
   const setAuthOpen = useCallback(
@@ -101,7 +100,8 @@ const AuthMainScreen: FC<PropsType> = (props) => {
     <BottomSheet
       ref={sheetRef}
       onClose={() => setAuthOpen(false)}
-      height={BTM_SHEET_HEIGHT}>
+      height={BTM_SHEET_HEIGHT}
+    >
       <AuthMainTemplate
         isGoogleButtonLoading={isGoogleButtonLoading}
         isFbButtonLoading={isFbButtonLoading}

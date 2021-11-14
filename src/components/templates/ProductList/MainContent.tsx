@@ -40,7 +40,8 @@ const MainContent: FC = () => {
         <ListItem.Content style={ProductListStyles.flexRow}>
           <TouchableOpacity
             onPress={() => setView("List")}
-            style={ProductListStyles.listView}>
+            style={ProductListStyles.listView}
+          >
             <Feather
               name="list"
               size={24}
@@ -51,7 +52,8 @@ const MainContent: FC = () => {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setView("Grid")}
-            style={ProductListStyles.gridView}>
+            style={ProductListStyles.gridView}
+          >
             <Feather
               name="grid"
               size={20}

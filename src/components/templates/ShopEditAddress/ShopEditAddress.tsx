@@ -188,7 +188,8 @@ const ShopEditAddressTemplate: FC<PropsType> = (props) => {
     return (
       <KeyboardAvoidingView
         style={ShopEditAddressStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <>{getScrollableForm()}</>
         <View style={ShopEditAddressStyles.buttonContainer}>
           <FormButton title="Submit" />

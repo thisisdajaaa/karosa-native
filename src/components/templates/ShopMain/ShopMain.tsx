@@ -29,14 +29,8 @@ import type { PropsType } from "./types";
 import ShopMainStyles from "./styles";
 
 const ShopMainTemplate: FC<PropsType> = (props) => {
-  const {
-    refreshing,
-    onRefresh,
-    shopName,
-    isActive,
-    navigation,
-    address,
-  } = props;
+  const { refreshing, onRefresh, shopName, isActive, navigation, address } =
+    props;
 
   const action = (onPress: () => void, icon: ReactElement, label: string) => {
     return (
@@ -162,7 +156,8 @@ const ShopMainTemplate: FC<PropsType> = (props) => {
             onRefresh={onRefresh}
             tintColor={theme.colors.primary}
           />
-        }>
+        }
+      >
         <>{getProfile()}</>
         <>{getActions()}</>
         <>{getChevron()}</>

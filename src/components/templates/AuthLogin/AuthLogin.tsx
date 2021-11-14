@@ -176,7 +176,8 @@ const AuthLoginTemplate: FC<PropsType> = (props) => {
       <>{getHeader()}</>
       <KeyboardAvoidingView
         style={AuthLoginStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <>{getAnimatedLogo()}</>
         <>{getLoginForm()}</>
       </KeyboardAvoidingView>

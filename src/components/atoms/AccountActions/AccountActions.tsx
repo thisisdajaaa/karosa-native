@@ -21,7 +21,8 @@ const AccountActions: FC<Props> = (props) => {
         <TouchableOpacity
           key={key}
           style={styles.actionContainer}
-          onPress={action.onPress}>
+          onPress={action.onPress}
+        >
           {action.icon}
           <Text textStyle={styles.label} text={action.label} />
         </TouchableOpacity>
