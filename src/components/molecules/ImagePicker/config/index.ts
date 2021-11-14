@@ -17,8 +17,9 @@ export const SIZE = {
 
 export const checkPermission = async () => {
   if (Platform.OS !== "web") {
-    const { status } =
-      await RnImagePicker.requestMediaLibraryPermissionsAsync();
+    const {
+      status,
+    } = await RnImagePicker.requestMediaLibraryPermissionsAsync();
 
     if (status !== "granted") {
       Alert.alert(

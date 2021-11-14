@@ -20,8 +20,9 @@ import validationSchema from "./validation";
 const AuthPasswordScreen: FC = () => {
   const { navigate, goBack } = useNavigation();
 
-  const { params } =
-    useRoute<RouteProp<AuthRegistrationParams, "AuthPhoneNumber">>();
+  const { params } = useRoute<
+    RouteProp<AuthRegistrationParams, "AuthPhoneNumber">
+  >();
 
   const handleSubmit = () => {
     navigate("Stack", {

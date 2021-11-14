@@ -57,7 +57,8 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
             <View>
               <Image
                 source={{
-                  uri: "https://squadstate.com/wp-content/uploads/2020/03/ancient-apparition.jpg",
+                  uri:
+                    "https://squadstate.com/wp-content/uploads/2020/03/ancient-apparition.jpg",
                 }}
                 imageStyle={ProductDetailStyles.productImage}
               />
@@ -122,13 +123,16 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
               <ReviewImages
                 imageSources={[
                   {
-                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    uri:
+                      "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
                   },
                   {
-                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    uri:
+                      "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
                   },
                   {
-                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    uri:
+                      "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
                   },
                 ]}
               />
@@ -140,7 +144,8 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                 <View>
                   <Image
                     source={{
-                      uri: " https://www.pngarts.com/files/3/Cartoon-Farmer-PNG-Photo.png",
+                      uri:
+                        " https://www.pngarts.com/files/3/Cartoon-Farmer-PNG-Photo.png",
                     }}
                     imageStyle={ProductDetailStyles.sellerImage}
                   />
@@ -227,25 +232,29 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
               <View style={ProductDetailStyles.buyerGallery}>
                 <Image
                   source={{
-                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    uri:
+                      "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
                   }}
                   imageStyle={ProductDetailStyles.varietyImage}
                 />
                 <Image
                   source={{
-                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    uri:
+                      "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
                   }}
                   imageStyle={ProductDetailStyles.varietyImage}
                 />
                 <Image
                   source={{
-                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    uri:
+                      "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
                   }}
                   imageStyle={ProductDetailStyles.varietyImage}
                 />
                 <Image
                   source={{
-                    uri: "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
+                    uri:
+                      "https://www.almanac.com/sites/default/files/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpeg",
                   }}
                   imageStyle={ProductDetailStyles.varietyImage}
                 />

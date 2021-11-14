@@ -17,8 +17,15 @@ import type { PropsType } from "./types";
 import ListSwitchStyles from "./styles";
 
 const ListSwitch: FC<PropsType> = (props) => {
-  const { name, title, boldTitle, info, disabled, hasBottomDivider, icon } =
-    props;
+  const {
+    name,
+    title,
+    boldTitle,
+    info,
+    disabled,
+    hasBottomDivider,
+    icon,
+  } = props;
 
   return (
     <ListItem bottomDivider={hasBottomDivider}>

@@ -31,8 +31,9 @@ const AuthMainScreen: FC<PropsType> = (props) => {
   const { sheetRef } = props;
   const { navigate } = useNavigation();
 
-  const [isGoogleButtonLoading, setIsGoogleButtonLoading] =
-    useState<boolean>(false);
+  const [isGoogleButtonLoading, setIsGoogleButtonLoading] = useState<boolean>(
+    false
+  );
   const [isFbButtonLoading, setIsFbButtonLoading] = useState<boolean>(false);
 
   const setAuthOpen = useCallback(

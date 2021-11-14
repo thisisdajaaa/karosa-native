@@ -44,10 +44,9 @@ const BasketScreen: FC = () => {
     onSubmit: () => handleSubmit(),
   });
 
-  const memoizedData: StoreData[] = useMemo(
-    () => formikBag.values.storeData,
-    [formikBag.values]
-  );
+  const memoizedData: StoreData[] = useMemo(() => formikBag.values.storeData, [
+    formikBag.values,
+  ]);
 
   const getPickerLabel = (value: number, picker: PickerData[]) => {
     const filteredPicker = picker.filter((item) =>

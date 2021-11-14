@@ -22,8 +22,9 @@ import AuthVerificationStyles from "./styles";
 
 const AuthVerificationTemplate: FC<PropsType> = (props) => {
   const { onHelp, onBack, btnRegisterProps } = props;
-  const { params } =
-    useRoute<RouteProp<AuthRegistrationParams, "AuthPassword">>();
+  const { params } = useRoute<
+    RouteProp<AuthRegistrationParams, "AuthPassword">
+  >();
 
   const isIOS = getPlatform.getInstance() === "ios";
 

@@ -24,8 +24,9 @@ const AuthVerificationScreen: FC = () => {
   const dispatch = useDispatch();
 
   const { navigate, goBack } = useNavigation();
-  const { params } =
-    useRoute<RouteProp<AuthRegistrationParams, "AuthPassword">>();
+  const { params } = useRoute<
+    RouteProp<AuthRegistrationParams, "AuthPassword">
+  >();
 
   const { isLoggedIn } = useAuth();
 

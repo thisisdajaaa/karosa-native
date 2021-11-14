@@ -15,8 +15,15 @@ import type { PropsType } from "./types";
 import ListStatusStyles, { StatusItemStyle } from "./styles";
 
 const ListStatus: FC<PropsType> = (props) => {
-  const { label, onPress, value, color, hasBottomDivider, icon, required } =
-    props;
+  const {
+    label,
+    onPress,
+    value,
+    color,
+    hasBottomDivider,
+    icon,
+    required,
+  } = props;
 
   return (
     <ListItem bottomDivider={hasBottomDivider} onPress={onPress}>
