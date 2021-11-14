@@ -8,15 +8,24 @@ import * as Yup from "yup";
 
 const WholesaleValidationSchema = Yup.object().shape({
   min: Yup.string()
-    .matches(/^[1-9]+$/, "Must be a valid number")
+    .matches(/^[1-9]+$/, {
+      excludeEmptyString: true,
+      message: "Must be a valid number",
+    })
     .max(6),
 
   max: Yup.string()
-    .matches(/^[1-9]+$/, "Must be a valid number")
+    .matches(/^[1-9]+$/, {
+      excludeEmptyString: true,
+      message: "Must be a valid number",
+    })
     .max(6),
 
   unit: Yup.string()
-    .matches(/^[1-9]+$/, "Must be a valid number")
+    .matches(/^[1-9]+$/, {
+      excludeEmptyString: true,
+      message: "Must be a valid number",
+    })
     .max(9),
 });
 

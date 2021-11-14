@@ -7,22 +7,28 @@
 
 import React, { FC, ReactElement } from "react";
 import { KeyboardAvoidingView, ScrollView, View } from "react-native";
+import { useFormikContext } from "formik";
+import { ShippingDetailsForm } from "@app/redux/shop/models";
 import { theme } from "@app/styles";
 import { getPlatform, listIterator } from "@app/utils";
 import { COMMON } from "@app/constants";
 import Header from "@app/molecules/Header";
 import ListInput from "@app/organisms/ListInput";
-import FormButton from "@app/molecules/FormButton";
 import ListTitle from "@app/organisms/ListTitle";
 import ListSwitch from "@app/organisms/ListSwitch";
+import Button from "@app/atoms/Button";
+import validationSchema from "@app/screens/ProductShipping/validation";
 
 import type { PropsType } from "./types";
 import ProductShippingStyles from "./styles";
 
 const ProductShippingTemplate: FC<PropsType> = (props) => {
-  const { onBack, disableSwitch } = props;
+  const { onBack } = props;
+
+  const { values, submitForm } = useFormikContext<ShippingDetailsForm>();
 
   const isIOS = getPlatform.getInstance() === "ios";
+  const isFormValid = validationSchema.isValidSync(values);
 
   const listInput = (
     name: string,
@@ -132,10 +138,9 @@ const ProductShippingTemplate: FC<PropsType> = (props) => {
         behavior={isIOS ? "padding" : undefined}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <>{getShippingForm()}</>
-          <View style={ProductShippingStyles.buttonSpacer} />
         </ScrollView>
         <View style={ProductShippingStyles.buttonContainer}>
-          <FormButton title="Submit" />
+          <Button title="Submit" disabled={!isFormValid} onPress={submitForm} />
         </View>
       </KeyboardAvoidingView>
     </>

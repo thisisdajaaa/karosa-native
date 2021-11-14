@@ -24,7 +24,10 @@ const StockPriceValidationSchema = Yup.object().shape({
             .max(7),
 
           weight: Yup.string()
-            .matches(/^[1-9]+$/, "Must be a valid number")
+            .matches(/^[1-9]+$/, {
+              excludeEmptyString: true,
+              message: "Must be a valid number",
+            })
             .max(5),
         })
       ),

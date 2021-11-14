@@ -55,8 +55,8 @@ export const initShippingDetailsForm: ShippingDetailsForm = {
   width: "",
   length: "",
   height: "",
+  hasOneOption: false,
   expressDelivery: false,
-  karosaDelivery: false,
   pickUpBuyer: false,
   sellerCourier: false,
 };
@@ -227,14 +227,8 @@ export const initShopState: ShopState = {
     isLoading: false,
   },
   addProductResponse: {
-    response: {
-      id: 0,
-      shopId: 0,
-      categoryId: 0,
-      name: "",
-      description: "",
-    },
     isLoading: false,
+    response: {},
   },
   productListResponse: {
     response: [],

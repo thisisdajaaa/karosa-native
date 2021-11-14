@@ -25,7 +25,12 @@ import Icon from "@app/atoms/Icon";
 import { VariationForm, VariationItem } from "@app/redux/shop/models";
 
 import type { NewVariationProps } from "./types";
-import { ICON_SIZE, NUM_LINE, OPTIONS_LENGTH } from "./config";
+import {
+  ICON_SIZE,
+  MAX_OPTIONS_LENGTH,
+  NUM_LINE,
+  OPTIONS_LENGTH,
+} from "./config";
 import { BtnAddStyles, NewVariationStyles, OptionCardStyles } from "./styles";
 import VariationModal from "./VariationModal";
 
@@ -248,6 +253,7 @@ const NewVariation: FC<NewVariationProps> = (props) => {
             containerStyle={btnAddContainer}
             buttonStyle={NewVariationStyles.btnAdd}
             titleStyle={NewVariationStyles.btnAddLbl}
+            disabled={optionsData.length === MAX_OPTIONS_LENGTH}
           />
         </View>
       </View>

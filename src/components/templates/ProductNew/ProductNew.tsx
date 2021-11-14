@@ -22,10 +22,10 @@ import ListInput from "@app/organisms/ListInput";
 import ListChevron from "@app/organisms/ListChevron";
 import ListStatus from "@app/organisms/ListStatus";
 import ListSwitch from "@app/organisms/ListSwitch";
+import ListDatepicker from "@app/organisms/ListDatepicker";
 
 import type { PropsType } from "./types";
 import ProductNewStyles from "./styles";
-import ListDatepicker from "@app/components/organisms/ListDatepicker";
 import ProductImages from "./ProductImages";
 
 const ProductNewTemplate: FC<PropsType> = (props) => {

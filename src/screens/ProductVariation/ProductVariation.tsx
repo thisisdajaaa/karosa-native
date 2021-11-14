@@ -36,7 +36,7 @@ const ProductVariationScreen: FC = () => {
     navigate(routes.SET_STOCK_PRICE);
   };
 
-  const formikBag = useFormik({
+  const formikBag = useFormik<VariationForm>({
     initialValues: { variationData },
     onSubmit: handleSubmit,
     validateOnBlur: false,

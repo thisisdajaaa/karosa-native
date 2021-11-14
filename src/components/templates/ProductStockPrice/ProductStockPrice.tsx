@@ -12,7 +12,8 @@ import Text from "@app/atoms/Text";
 import { VariationForm } from "@app/redux/shop/models";
 import { theme } from "@app/styles";
 import Header from "@app/molecules/Header";
-import FormButton from "@app/molecules/FormButton";
+import Button from "@app/atoms/Button";
+import validationSchema from "@app/screens/ProductStockPrice/validation";
 
 import type { PropsType } from "./types";
 import { NUM_COL } from "./config";
@@ -24,7 +25,8 @@ const ProductStockPrice: FC<PropsType> = (props) => {
 
   const keyExtractor = useCallback((_, index) => index.toString(), []);
 
-  const { values } = useFormikContext<VariationForm>();
+  const { values, submitForm } = useFormikContext<VariationForm>();
+  const isFormValid = validationSchema.isValidSync(values);
 
   const getHeader = () => {
     return (
@@ -99,10 +101,6 @@ const ProductStockPrice: FC<PropsType> = (props) => {
                         text="Weight"
                         textStyle={ProductStockPriceStyles.txtTableHeader}
                       />
-                      <Text
-                        text="*"
-                        textStyle={ProductStockPriceStyles.txtRequired}
-                      />
                     </View>
                   </View>
                 </View>
@@ -122,7 +120,7 @@ const ProductStockPrice: FC<PropsType> = (props) => {
         />
 
         <View style={ProductStockPriceStyles.buttonContainer}>
-          <FormButton title="Submit" />
+          <Button title="Submit" disabled={!isFormValid} onPress={submitForm} />
         </View>
       </View>
     </>

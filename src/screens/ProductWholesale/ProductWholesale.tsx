@@ -33,7 +33,7 @@ const ProductWholesaleScreen: FC = () => {
     goBack();
   };
 
-  const formikBag = useFormik({
+  const formikBag = useFormik<WholesaleForm>({
     initialValues: wholesaleForm,
     validateOnBlur: false,
     validateOnChange: true,
