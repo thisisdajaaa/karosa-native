@@ -73,12 +73,14 @@ const VariationModal: FC<VariationModalProps> = (props) => {
   };
 
   const handleSubmit = () => {
-    if (hasNoImage) return;
+    const valid = (imageUrl && optionName) || (!imageUrl && optionName);
 
-    if (imageSwitchEnabled) {
-      setClonedVariationItem(imageUrl);
-    } else {
-      setClonedVariationItem(null);
+    if (valid) {
+      if (imageSwitchEnabled) {
+        setClonedVariationItem(imageUrl);
+      } else {
+        setClonedVariationItem(null);
+      }
     }
 
     setVisible(false);
@@ -86,8 +88,9 @@ const VariationModal: FC<VariationModalProps> = (props) => {
     setOptionName("");
   };
 
-  const { optionName: optionNameContainer } =
-    OptionNameStyles(imageSwitchEnabled);
+  const { optionName: optionNameContainer } = OptionNameStyles(
+    imageSwitchEnabled
+  );
 
   return (
     <Overlay
@@ -130,7 +133,7 @@ const VariationModal: FC<VariationModalProps> = (props) => {
           multiline={false}
           disabled={hasNoImage}
           inputStyle={ListInputStyles.txtValue}
-          maxLength={20}
+          maxLength={TOTAL}
           inputContainerStyle={ListInputStyles.columnInputContainer}
           value={optionName}
           onChange={handleOptionNameChange}

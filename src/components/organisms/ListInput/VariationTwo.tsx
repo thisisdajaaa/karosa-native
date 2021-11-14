@@ -28,6 +28,7 @@ const VariationTwo: FC<PropsType> = (props) => {
     hasBottomDivider,
     icon,
     keyboardType,
+    maxLen,
   } = props;
 
   const { isError } = useFieldError(name);
@@ -63,6 +64,7 @@ const VariationTwo: FC<PropsType> = (props) => {
               placeholder={placeholder}
               placeholderColor={theme.colors.primary}
               numberOfLines={NUM_LINES.ONE}
+              maxLength={maxLen}
               inputStyle={ListInputStyles.txtRowInput}
               inputContainerStyle={ListInputStyles.inputContainer}
             />

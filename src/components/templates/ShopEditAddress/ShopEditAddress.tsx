@@ -65,7 +65,7 @@ const ShopEditAddressTemplate: FC<PropsType> = (props) => {
         placeholder={placeholder}
         hasBottomDivider
         required
-        variation={COMMON.VARIATION.THREE}
+        variation={COMMON.VARIATION.TWO}
         info={info}
       />
     );

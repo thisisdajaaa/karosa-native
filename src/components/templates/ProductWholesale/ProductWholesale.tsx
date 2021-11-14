@@ -16,6 +16,7 @@ import FormButton from "@app/molecules/FormButton";
 import WarningMessage from "@app/molecules/WarningMessage";
 
 import type { PropsType } from "./types";
+import { MAX_LENGTH } from "./config";
 import ProductWholesaleStyles from "./styles";
 
 const ProductWholesaleTemplate: FC<PropsType> = (props) => {
@@ -27,7 +28,7 @@ const ProductWholesaleTemplate: FC<PropsType> = (props) => {
     name: string,
     label: string,
     placeholder: string,
-    required: boolean
+    length: number
   ) => {
     return (
       <ListInput
@@ -35,7 +36,8 @@ const ProductWholesaleTemplate: FC<PropsType> = (props) => {
         label={label}
         placeholder={placeholder}
         hasBottomDivider
-        required={required}
+        required={false}
+        maxLen={length}
         variation={COMMON.VARIATION.TWO}
         keyboardType="number-pad"
       />
@@ -45,9 +47,16 @@ const ProductWholesaleTemplate: FC<PropsType> = (props) => {
   const getWholesaleForm = () => {
     const elements: ReactElement[] = [];
 
-    const min = listInput("min", "Minimum Order", "Set", false);
-    const max = listInput("max", "Maximum Order", "Set", false);
-    const unit = listInput("unit", "Unit Price", "Set Price/Grams", true);
+    const min = listInput("min", "Minimum Order", "Set", MAX_LENGTH.MINMAX);
+
+    const max = listInput("max", "Maximum Order", "Set", MAX_LENGTH.MINMAX);
+
+    const unit = listInput(
+      "unit",
+      "Unit Price",
+      "Set Price/Grams",
+      MAX_LENGTH.UNIT
+    );
 
     const warningMsg = (
       <WarningMessage message="Wholesale price will be hidden when the product is under promotion." />

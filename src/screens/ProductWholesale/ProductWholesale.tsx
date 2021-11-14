@@ -14,6 +14,8 @@ import { actions, selectors } from "@app/redux/shop";
 import { WholesaleForm } from "@app/redux/shop/models";
 import ProductWholesaleTemplate from "@app/templates/ProductWholesale";
 
+import validationSchema from "./validation";
+
 const ProductWholesaleScreen: FC = () => {
   const dispatch = useDispatch();
 
@@ -33,7 +35,10 @@ const ProductWholesaleScreen: FC = () => {
 
   const formikBag = useFormik({
     initialValues: wholesaleForm,
+    validateOnBlur: false,
+    validateOnChange: true,
     onSubmit: handleSubmit,
+    validationSchema,
   });
 
   const handleBack = useCallback(() => {

@@ -71,6 +71,7 @@ const ProductShippingTemplate: FC<PropsType> = (props) => {
     const length = listInput("length", "Length (cm)", "Set", false);
     const height = listInput("height", "Height (cm)", "Set", false);
     const pickUpBuyer = listSwitch("pickUpBuyer", "Pick Up by Buyer", false);
+
     const deliveryOptions = (
       <ListTitle label="Delivery Options" required hasBottomDivider />
     );
@@ -81,19 +82,7 @@ const ProductShippingTemplate: FC<PropsType> = (props) => {
       true
     );
 
-    const expressDelivery = listSwitch(
-      "expressDelivery",
-      "Express Delivery",
-      disableSwitch,
-      "(Weight required)"
-    );
-
-    const karosaDelivery = listSwitch(
-      "karosaDelivery",
-      "Karosa Delivery",
-      disableSwitch,
-      "(Weight required)"
-    );
+    const lalamove = listSwitch("expressDelivery", "Lalamove", false);
 
     const sellerCourier = listSwitch(
       "sellerCourier",
@@ -110,8 +99,7 @@ const ProductShippingTemplate: FC<PropsType> = (props) => {
       height,
       spacer,
       deliveryOptions,
-      expressDelivery,
-      karosaDelivery,
+      lalamove,
       pickUpBuyer,
       sellerCourier
     );
@@ -145,10 +133,10 @@ const ProductShippingTemplate: FC<PropsType> = (props) => {
         <ScrollView showsVerticalScrollIndicator={false}>
           <>{getShippingForm()}</>
           <View style={ProductShippingStyles.buttonSpacer} />
-          <View style={ProductShippingStyles.buttonContainer}>
-            <FormButton title="Submit" />
-          </View>
         </ScrollView>
+        <View style={ProductShippingStyles.buttonContainer}>
+          <FormButton title="Submit" />
+        </View>
       </KeyboardAvoidingView>
     </>
   );

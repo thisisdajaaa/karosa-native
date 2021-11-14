@@ -186,6 +186,7 @@ const NewVariation: FC<NewVariationProps> = (props) => {
               </TouchableWithoutFeedback>
             )}
           </ListItem.Content>
+
           {isError && (
             <View style={NewVariationStyles.errorContainer}>
               <ValidationMessage
