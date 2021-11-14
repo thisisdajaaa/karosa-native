@@ -1,5 +1,5 @@
 import { SagaIterator } from "@redux-saga/core";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { getType } from "typesafe-actions";
 import { baseAxios } from "@app/config/axios/instance";
@@ -17,7 +17,7 @@ export function* callCategoryListApi(): SagaIterator {
 
     yield put(actions.callCategoryListApi.success(response.data));
   } catch (error) {
-    yield put(actions.callCategoryListApi.failure(error));
+    yield put(actions.callCategoryListApi.failure(error as AxiosError));
   }
 }
 

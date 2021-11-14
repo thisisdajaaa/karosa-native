@@ -1,5 +1,5 @@
 import { SagaIterator } from "@redux-saga/core";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { getType } from "typesafe-actions";
 import { baseAxios } from "@app/config/axios/instance";
@@ -17,7 +17,7 @@ export function* callShopInfoApi(): SagaIterator {
 
     yield put(actions.callShopInfoApi.success(response.data));
   } catch (error) {
-    yield put(actions.callShopInfoApi.failure(error));
+    yield put(actions.callShopInfoApi.failure(error as AxiosError));
   }
 }
 
@@ -30,7 +30,7 @@ export function* callShopDeleteApi(): SagaIterator {
 
     yield put(actions.callShopDeleteApi.success(response.data));
   } catch (error) {
-    yield put(actions.callShopInfoApi.failure(error));
+    yield put(actions.callShopInfoApi.failure(error as AxiosError));
   }
 }
 
@@ -43,7 +43,7 @@ export function* callShopAddressApi(): SagaIterator {
 
     yield put(actions.callShopAddressApi.success(response.data));
   } catch (error) {
-    yield put(actions.callShopAddressApi.failure(error));
+    yield put(actions.callShopAddressApi.failure(error as AxiosError));
   }
 }
 
@@ -59,7 +59,7 @@ export function* callAddProductApi(
 
     yield put(actions.callAddProductApi.success(response.data));
   } catch (error) {
-    yield put(actions.callAddProductApi.failure(error));
+    yield put(actions.callAddProductApi.failure(error as AxiosError));
   }
 }
 
@@ -72,7 +72,7 @@ export function* callProductListApi(): SagaIterator {
 
     yield put(actions.callProductListApi.success(response.data));
   } catch (error) {
-    yield put(actions.callProductListApi.failure(error));
+    yield put(actions.callProductListApi.failure(error as AxiosError));
   }
 }
 

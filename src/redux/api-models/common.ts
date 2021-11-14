@@ -1,15 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { AxiosError } from "axios";
 import { Item } from "react-native-picker-select";
 
-export type ResponseError = {
-  code: any;
-  message: string;
-};
+export type ResponseError = AxiosError;
 
 export type ResponseState<T> = {
   response: T;
   isLoading: boolean;
-  error?: ResponseError[] | any;
+  error?: AxiosError;
 };
 
 export type Audit = {

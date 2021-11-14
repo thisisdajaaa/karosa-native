@@ -1,5 +1,5 @@
 import { SagaIterator } from "@redux-saga/core";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { getType } from "typesafe-actions";
 import { baseAxios } from "@app/config/axios/instance";
@@ -17,7 +17,7 @@ export function* callRegionApi(): SagaIterator {
 
     yield put(actions.callRegionApi.success(response.data));
   } catch (error) {
-    yield put(actions.callRegionApi.failure(error));
+    yield put(actions.callRegionApi.failure(error as AxiosError));
   }
 }
 
@@ -34,7 +34,7 @@ export function* callProvinceApi(
     );
     yield put(actions.callProvinceApi.success(response.data));
   } catch (error) {
-    yield put(actions.callProvinceApi.failure(error));
+    yield put(actions.callProvinceApi.failure(error as AxiosError));
   }
 }
 
@@ -52,7 +52,7 @@ export function* callCitiesApi(
 
     yield put(actions.callCitiesApi.success(response.data));
   } catch (error) {
-    yield put(actions.callCitiesApi.failure(error));
+    yield put(actions.callCitiesApi.failure(error as AxiosError));
   }
 }
 
@@ -67,7 +67,7 @@ export function* callBarangayApi(
 
     yield put(actions.callBarangayApi.success(response.data));
   } catch (error) {
-    yield put(actions.callBarangayApi.failure(error));
+    yield put(actions.callBarangayApi.failure(error as AxiosError));
   }
 }
 
