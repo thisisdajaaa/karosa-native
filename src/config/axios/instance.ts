@@ -1,10 +1,9 @@
 import axios, { AxiosInstance } from "axios";
 import { API_URL } from "@env";
 
-const localhost = API_URL;
-
 const baseAxios: AxiosInstance = axios.create({
-  baseURL: localhost,
+  baseURL: API_URL,
+  withCredentials: true,
 });
 
 export { baseAxios };

@@ -1,10 +1,10 @@
 import React, { FC, useCallback, useMemo, useRef, useState } from "react";
+import { errorHandlers } from "@app/config/axios/error-handler";
+import { baseAxios } from "@app/config/axios/instance";
 
-import axios from "axios";
 import type { IToastContext, ToastProps, ToastProviderProps } from "../types";
 import Toast from "../Toast";
 import ToastContext from "./ToastContext";
-import { errorHandlers } from "@app/config/axios/error-handler";
 
 const defaultContext: Partial<IToastContext> = {
   defaults: {
@@ -85,10 +85,22 @@ const ToastProvider: FC<ToastProviderProps> = ({
 
   // Intercept axios errors
   useMemo(() => {
-    axios.interceptors.response.use(undefined, timeoutHandler());
-    axios.interceptors.response.use(undefined, sessionTimeoutHandler());
-    axios.interceptors.response.use(undefined, networkErrorHandler());
-    axios.interceptors.response.use(undefined, systemErrorHandler());
+    baseAxios.interceptors.response.use(
+      (response) => response,
+      timeoutHandler()
+    );
+    baseAxios.interceptors.response.use(
+      (response) => response,
+      sessionTimeoutHandler()
+    );
+    baseAxios.interceptors.response.use(
+      (response) => response,
+      networkErrorHandler()
+    );
+    baseAxios.interceptors.response.use(
+      (response) => response,
+      systemErrorHandler()
+    );
   }, [showToast]);
 
   return (

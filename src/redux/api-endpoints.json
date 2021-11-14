@@ -5,7 +5,7 @@
   "regions": "/v1/addresses/regions",
   "shopInfo": "/v1/users/shop",
   "shopAddress": "/v1/shops/address",
-  "products": "/v1/shops/products",
+  "products": "/api/products",
   "categories": "/v1/categories",
   "province": "/v1/addresses/{regionId}/provinces",
   "cities": "/v1/addresses/{provinceId}/cities",

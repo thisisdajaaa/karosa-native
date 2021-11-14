@@ -5,14 +5,13 @@ import * as shopDelete from "@app/redux/api-models/shop-delete";
 import * as shopAddress from "@app/redux/api-models/shop-address";
 import * as addProduct from "@app/redux/api-models/add-product";
 import * as productList from "@app/redux/api-models/product-list";
-import { AxiosResponse } from "axios";
 
 export type ShopInfoResponse = shopInfo.Response;
 export type ShopDeleteResponse = shopDelete.Response;
 export type ShopAddressResponse = shopAddress.Response;
 export type ProductListResponse = productList.Response;
 export type AddProductRequest = addProduct.Request;
-export type AddProductResponse = AxiosResponse<unknown>;
+export type AddProductResponse = addProduct.Response;
 
 export type ProductForm = {
   productImages: string[];

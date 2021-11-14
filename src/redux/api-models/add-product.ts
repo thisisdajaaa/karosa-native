@@ -22,3 +22,5 @@ export type Request = {
   variationOptions: VariationOption[];
   variations: Variation[];
 };
+
+export type Response = { status: number };

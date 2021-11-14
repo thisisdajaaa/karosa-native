@@ -43,13 +43,70 @@ const ProductNewScreen: FC = () => {
     [dispatch]
   );
 
-  const productForm = useMemoizedSelector(selectors.getProductForm);
+  const callAddProductApi = useCallback(() => {
+    dispatch(
+      actions.callAddProductApi.request({
+        name: "Sample Product",
+        categoryId: 1,
+        upComingHarvest: true,
+        estimatedAvailableDate: "2021-02-02",
+        bestBefore: "2021-02-02",
+        productStatus: 1,
+        description: "This is a sample product",
+        variationOptions: [
+          {
+            name: "Color",
+            options: ["Blue", "Red"],
+          },
+          {
+            name: "Size",
+            options: ["Small", "Large"],
+          },
+        ],
+        variations: [
+          {
+            name: "Color",
+            option: "Blue",
+            price: 10,
+            stock: 10,
+            weight: 10,
+          },
+          {
+            name: "Color",
+            option: "Red",
+            price: 20,
+            stock: 20,
+            weight: 20,
+          },
+          {
+            name: "Size",
+            option: "Small",
+            price: 30,
+            stock: 30,
+            weight: 30,
+          },
+          {
+            name: "Size",
+            option: "Large",
+            price: 40,
+            stock: 40,
+            weight: 40,
+          },
+        ],
+      })
+    );
+  }, [dispatch]);
 
+  const productForm = useMemoizedSelector(selectors.getProductForm);
+  const asd = useMemoizedSelector(selectors.getAddProductResponse);
+
+  console.log(asd.response.status);
   const { statusValue, statusColor } = statusInformation(productForm.status);
 
   const handleSubmit = (values: ProductForm) => {
     setProductForm(values);
-    clearProductEntry();
+    callAddProductApi();
+    // clearProductEntry();
     navigate(routes.SHOP_PRODUCTS);
   };
 

@@ -228,7 +228,9 @@ export const initShopState: ShopState = {
   },
   addProductResponse: {
     isLoading: false,
-    response: {},
+    response: {
+      status: 0,
+    },
   },
   productListResponse: {
     response: [],

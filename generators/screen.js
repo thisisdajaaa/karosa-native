@@ -5,6 +5,7 @@
  *
  */
 
+/* eslint-disable @typescript-eslint/no-var-requires */
 const screenGenerator = require("./screen/index.js");
 
 module.exports = (plop) => {

@@ -161,6 +161,7 @@ export const addProductResponse = produce(
         draft.isLoading = true;
         return draft;
       case getType(actions.callAddProductApi.success):
+        alert("naksdnaksnl;kn");
         draft.response = action.payload;
         draft.isLoading = false;
         return draft;

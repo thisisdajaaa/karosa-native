@@ -57,8 +57,10 @@ export function* callAddProductApi(
       action.payload
     );
 
-    yield put(actions.callAddProductApi.success(response.data));
+    yield put(actions.callAddProductApi.success({ status: response.status }));
   } catch (error) {
+    const g = error as AxiosError;
+    console.log(g.message);
     yield put(actions.callAddProductApi.failure(error as AxiosError));
   }
 }
