@@ -6,24 +6,29 @@
  */
 
 import React, { FC, useCallback } from "react";
+import { FlatList, View } from "react-native";
 import Header from "@app/molecules/Header";
 import { theme } from "@app/styles";
-import { FlatList, View } from "react-native";
-import Category from "@app/atoms/Category";
 import type { PropsType as CategoryType } from "@app/atoms/Category/types";
+import Category from "@app/atoms/Category";
 
 import type { PropsType } from "./types";
-import { COLS, dummyCategories } from "./config";
+import { COLS, transformCategories } from "./config";
 import ProductCategoriesStyles from "./styles";
 
 const ProductCategoriesTemplate: FC<PropsType> = (props) => {
-  const { onBack } = props;
+  const { onBack, categoryList, onCategory } = props;
 
   const keyExtractor = useCallback((_, index) => index.toString(), []);
 
   const categoryItem = ({ item }: { item: CategoryType }) => {
     return (
-      <Category iconName={item.iconName} name={item.name} onPress={onBack} />
+      <Category
+        id={item.id}
+        iconName={item.iconName}
+        name={item.name}
+        onPress={() => onCategory(item.id)}
+      />
     );
   };
 
@@ -48,7 +53,7 @@ const ProductCategoriesTemplate: FC<PropsType> = (props) => {
     return (
       <FlatList
         numColumns={COLS}
-        data={dummyCategories as never[]}
+        data={transformCategories(categoryList)}
         showsVerticalScrollIndicator={false}
         keyExtractor={keyExtractor}
         renderItem={categoryItem}

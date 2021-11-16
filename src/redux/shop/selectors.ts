@@ -109,6 +109,11 @@ export const getProductListResponse = () =>
     return state.productListResponse || initShopState.productListResponse;
   });
 
+export const getCategoryListResponse = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return state.categoryListResponse || initShopState.categoryListResponse;
+  });
+
 const selectors = {
   getAvailabilityForm,
   getProductForm,
@@ -123,6 +128,7 @@ const selectors = {
   getProductMeasurement,
   getShopInfoResponse,
   getShopAddressResponse,
+  getCategoryListResponse,
   getAddProductResponse,
   getProductListResponse,
 };

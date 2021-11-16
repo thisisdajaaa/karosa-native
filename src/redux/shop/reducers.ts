@@ -80,6 +80,9 @@ export const productEntryContext = produce(
       case getType(actions.setWholesaleForm):
         draft.wholesaleForm = action.payload;
         return draft;
+      case getType(actions.setShippingData):
+        draft.productForm.hasShippingData = action.payload;
+        return draft;
       case getType(actions.setShippingDetailsForm):
         draft.shippingDetailsForm = action.payload;
         return draft;
@@ -161,7 +164,6 @@ export const addProductResponse = produce(
         draft.isLoading = true;
         return draft;
       case getType(actions.callAddProductApi.success):
-        alert("naksdnaksnl;kn");
         draft.response = action.payload;
         draft.isLoading = false;
         return draft;
@@ -174,6 +176,30 @@ export const addProductResponse = produce(
     }
   },
   data.initShopState.addProductResponse
+);
+
+export const categoryListResponse = produce(
+  (
+    draft: Draft<ResponseState<models.CategoryListResponse>>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.callCategoryListApi.request):
+        draft.isLoading = true;
+        return draft;
+      case getType(actions.callCategoryListApi.success):
+        draft.response = action.payload;
+        draft.isLoading = false;
+        return draft;
+      case getType(actions.callCategoryListApi.failure):
+        draft.error = action.payload;
+        draft.isLoading = false;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initShopState.categoryListResponse
 );
 
 export const productListResponse = produce(
@@ -209,6 +235,7 @@ const reducer = combineReducers({
   shopAddressResponse,
   addProductResponse,
   productListResponse,
+  categoryListResponse,
 });
 
 export default reducer;

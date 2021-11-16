@@ -7,8 +7,6 @@
 import * as Yup from "yup";
 import moment from "moment";
 
-// TODO categories
-
 const ProductNewValidationSchema = Yup.object().shape({
   productImages: Yup.array().of(Yup.string()).max(10),
 
@@ -119,6 +117,18 @@ const ProductNewValidationSchema = Yup.object().shape({
         .oneOf(["available", "planting", "harvesting"])
         .required(),
     }),
+
+  hasShippingData: Yup.boolean().when("upcomingHarvest", {
+    is: true,
+    then: Yup.boolean().oneOf([true]).required(),
+    otherwise: Yup.boolean(),
+  }),
+
+  categoryId: Yup.number().when("upcomingHarvest", {
+    is: true,
+    then: Yup.number().required(),
+    otherwise: Yup.number(),
+  }),
 });
 
 export default ProductNewValidationSchema;

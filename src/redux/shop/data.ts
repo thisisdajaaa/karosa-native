@@ -26,8 +26,9 @@ export const initProductForm: ProductForm = {
   shelfLife: "",
   preOrder: false,
   measurement: "1",
-  categoryId: 1,
+  categoryId: null,
   status: ENUM.Product_Status.Available,
+  hasShippingData: false,
 };
 
 export const initVariationForm: VariationForm = {
@@ -209,6 +210,10 @@ export const initShopState: ShopState = {
   },
   shopDeleteResponse: {
     response: false,
+    isLoading: false,
+  },
+  categoryListResponse: {
+    response: [],
     isLoading: false,
   },
   shopAddressResponse: {

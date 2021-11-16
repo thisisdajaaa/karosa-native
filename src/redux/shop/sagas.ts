@@ -59,8 +59,6 @@ export function* callAddProductApi(
 
     yield put(actions.callAddProductApi.success({ status: response.status }));
   } catch (error) {
-    const g = error as AxiosError;
-    console.log(g.message);
     yield put(actions.callAddProductApi.failure(error as AxiosError));
   }
 }
@@ -76,6 +74,26 @@ export function* callProductListApi(): SagaIterator {
   } catch (error) {
     yield put(actions.callProductListApi.failure(error as AxiosError));
   }
+}
+
+export function* callCategoryListApi(): SagaIterator {
+  try {
+    const response: AxiosResponse<models.CategoryListResponse> = yield call(
+      baseAxios.get,
+      apiEndpoints.categories
+    );
+
+    yield put(actions.callCategoryListApi.success(response.data));
+  } catch (error) {
+    yield put(actions.callCategoryListApi.failure(error as AxiosError));
+  }
+}
+
+export function* onCallCategoryListSaga() {
+  yield takeLatest(
+    getType(actions.callCategoryListApi.request),
+    callCategoryListApi
+  );
 }
 
 export function* onAddProductSaga() {
@@ -117,5 +135,6 @@ export default function* () {
     call(onShopInfoSaga),
     call(onShopDeleteSaga),
     call(onShopAddressSaga),
+    call(onCallCategoryListSaga),
   ]);
 }

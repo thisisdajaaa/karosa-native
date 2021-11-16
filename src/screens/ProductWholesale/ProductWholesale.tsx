@@ -13,13 +13,14 @@ import { useMemoizedSelector } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
 import { WholesaleForm } from "@app/redux/shop/models";
 import ProductWholesaleTemplate from "@app/templates/ProductWholesale";
+import routes from "@app/navigators/routes";
 
 import validationSchema from "./validation";
 
 const ProductWholesaleScreen: FC = () => {
   const dispatch = useDispatch();
 
-  const { goBack } = useNavigation();
+  const { goBack, navigate } = useNavigation();
 
   const wholesaleForm = useMemoizedSelector(selectors.getWholesaleForm);
 
@@ -30,7 +31,7 @@ const ProductWholesaleScreen: FC = () => {
 
   const handleSubmit = (values: WholesaleForm) => {
     setWholesaleForm({ ...values });
-    goBack();
+    navigate(routes.PRODUCT_ADD);
   };
 
   const formikBag = useFormik<WholesaleForm>({

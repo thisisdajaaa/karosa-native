@@ -10,9 +10,9 @@ import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { FormikContext, useFormik } from "formik";
 import RBSheet from "react-native-raw-bottom-sheet";
-import { useMemoizedSelector } from "@app/hooks";
+import { useMemoizedSelector, useMount, useUpdateEffect } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
-import { ProductForm } from "@app/redux/shop/models";
+import { AddProductRequest, ProductForm } from "@app/redux/shop/models";
 import ProductNewTemplate from "@app/templates/ProductNew";
 import routes from "@app/navigators/routes";
 import ProductStatus from "@app/screens/ProductStatus";
@@ -20,7 +20,11 @@ import ProductAvailability from "@app/screens/ProductAvailability";
 import ProductMeasurement from "@app/screens/ProductMeasurement";
 
 import type { ProductNewNavigation, ProductNewSheetRefs } from "./types";
-import { statusInformation } from "./config";
+import {
+  addProductRequest,
+  RESPONSE_SUCCESS,
+  statusInformation,
+} from "./config";
 
 import validationSchema from "./validation";
 
@@ -33,6 +37,12 @@ const ProductNewScreen: FC = () => {
 
   const { goBack, navigate } = useNavigation();
 
+  const productForm = useMemoizedSelector(selectors.getProductForm);
+  const variationForm = useMemoizedSelector(selectors.getVariationForm);
+  const getAddProductResponse = useMemoizedSelector(
+    selectors.getAddProductResponse
+  );
+
   const clearProductEntry = useCallback(
     () => dispatch(actions.clearProductEntry()),
     [dispatch]
@@ -43,80 +53,50 @@ const ProductNewScreen: FC = () => {
     [dispatch]
   );
 
-  const callAddProductApi = useCallback(() => {
-    dispatch(
-      actions.callAddProductApi.request({
-        name: "Sample Product",
-        categoryId: 1,
-        upComingHarvest: true,
-        estimatedAvailableDate: "2021-02-02",
-        bestBefore: "2021-02-02",
-        productStatus: 1,
-        description: "This is a sample product",
-        variationOptions: [
-          {
-            name: "Color",
-            options: ["Blue", "Red"],
-          },
-          {
-            name: "Size",
-            options: ["Small", "Large"],
-          },
-        ],
-        variations: [
-          {
-            name: "Color",
-            option: "Blue",
-            price: 10,
-            stock: 10,
-            weight: 10,
-          },
-          {
-            name: "Color",
-            option: "Red",
-            price: 20,
-            stock: 20,
-            weight: 20,
-          },
-          {
-            name: "Size",
-            option: "Small",
-            price: 30,
-            stock: 30,
-            weight: 30,
-          },
-          {
-            name: "Size",
-            option: "Large",
-            price: 40,
-            stock: 40,
-            weight: 40,
-          },
-        ],
-      })
-    );
+  const callCategoryListApi = useCallback(() => {
+    dispatch(actions.callCategoryListApi.request());
   }, [dispatch]);
 
-  const productForm = useMemoizedSelector(selectors.getProductForm);
-  const asd = useMemoizedSelector(selectors.getAddProductResponse);
+  const callAddProductApi = useCallback(
+    (values: AddProductRequest) => {
+      dispatch(actions.callAddProductApi.request(values));
+    },
+    [dispatch]
+  );
 
-  console.log(asd.response.status);
   const { statusValue, statusColor } = statusInformation(productForm.status);
 
   const handleSubmit = (values: ProductForm) => {
+    const payload = addProductRequest(values, variationForm.variationData);
+
     setProductForm(values);
-    callAddProductApi();
-    // clearProductEntry();
-    navigate(routes.SHOP_PRODUCTS);
+    callAddProductApi(payload);
   };
 
-  const formikBag = useFormik({
+  const formikBag = useFormik<ProductForm>({
     initialValues: productForm,
     validateOnBlur: false,
     validateOnChange: true,
     onSubmit: handleSubmit,
     validationSchema,
   });
+
+  useMount(callCategoryListApi);
+
+  useUpdateEffect(() => {
+    if (getAddProductResponse.response.status === RESPONSE_SUCCESS) {
+      clearProductEntry();
+      navigate(routes.SHOP_PRODUCTS);
+    }
+  }, [getAddProductResponse.response.status]);
+
+  useUpdateEffect(() => {
+    if (productForm.hasShippingData)
+      formikBag.setFieldValue("hasShippingData", true);
+
+    if (productForm.categoryId)
+      formikBag.setFieldValue("categoryId", productForm.categoryId);
+  }, [productForm.hasShippingData, productForm.categoryId]);
 
   const navigation: ProductNewNavigation = {
     onBack: useCallback(() => {

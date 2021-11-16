@@ -12,6 +12,7 @@ export const SET_WHOLESALE_FORM = "shop/setWholesaleForm" as const;
 export const SET_SHIPPING_DETAILS_FORM = "shop/setShippingDetailsForm" as const;
 export const SET_BASKET_CONTEXT = "shop/setBasketContext" as const;
 export const SET_CHECKOUT_CONTEXT = "shop/setCheckoutContext" as const;
+export const SET_SHIPPING_DATA = "shop/setShippingData" as const;
 
 export const CLEAR_PRODUCT_ENTRY = "shop/clearProductEntry" as const;
 
@@ -35,12 +36,17 @@ export const ACT_PRODUCT_LIST_REQUEST = "shop/actProductListRequest" as const;
 export const ACT_PRODUCT_LIST_SUCCESS = "shop/actProductListSuccess" as const;
 export const ACT_PRODUCT_LIST_FAILURE = "shop/actProductListFailure" as const;
 
+export const ACT_CATEGORY_LIST_REQUEST = "shop/actCategoryListRequest" as const;
+export const ACT_CATEGORY_LIST_SUCCESS = "shop/actCategoryListSuccess" as const;
+export const ACT_CATEGORY_LIST_FAILURE = "shop/actCategoryListFailure" as const;
+
 export type Types =
   | typeof SET_SHOP_STATUS
   | typeof SET_SHOP_PAYMENT
   | typeof SET_SHOP_SETTINGS
   | typeof SET_SHOP_ADDRESS
   | typeof SET_PRODUCT_STATUS
+  | typeof SET_SHIPPING_DATA
   | typeof SET_PRODUCT_MEASUREMENT
   | typeof SET_CATEGORY
   | typeof SET_PRODUCT_FORM
@@ -65,4 +71,7 @@ export type Types =
   | typeof ACT_ADD_PRODUCT_FAILURE
   | typeof ACT_PRODUCT_LIST_REQUEST
   | typeof ACT_PRODUCT_LIST_SUCCESS
-  | typeof ACT_PRODUCT_LIST_FAILURE;
+  | typeof ACT_PRODUCT_LIST_FAILURE
+  | typeof ACT_CATEGORY_LIST_REQUEST
+  | typeof ACT_CATEGORY_LIST_SUCCESS
+  | typeof ACT_CATEGORY_LIST_FAILURE;
