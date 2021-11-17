@@ -110,7 +110,7 @@ export const addProductRequest = (
 
   return {
     name: product.productNm,
-    categoryId: Number(product.categoryId),
+    categoryId: product.categoryId as number,
     description: product.description,
     upComingHarvest: isUpcomingHarvest,
     estimatedAvailableDate: formatDatePayload(estimatedDate) as string,

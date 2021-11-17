@@ -85,6 +85,8 @@ const ProductNewScreen: FC = () => {
     validationSchema,
   });
 
+  useMount(callCategoryListApi);
+
   useUpdateEffect(() => {
     if (formikBag.isSubmitting && !formikBag.isValidating) {
       for (const path of Object.keys(flatten(formikBag.errors))) {
@@ -97,8 +99,6 @@ const ProductNewScreen: FC = () => {
     formikBag.isValidating,
     formikBag.setFieldTouched,
   ]);
-
-  useMount(callCategoryListApi);
 
   useUpdateEffect(() => {
     if (getAddProductResponse.response.status === RESPONSE_SUCCESS) {

@@ -24,12 +24,12 @@ import ListChevron from "@app/organisms/ListChevron";
 import ListStatus from "@app/organisms/ListStatus";
 import ListSwitch from "@app/organisms/ListSwitch";
 import ListDatepicker from "@app/organisms/ListDatepicker";
+import validationSchema from "@app/screens/ProductNew/validation";
+import Text from "@app/atoms/Text";
 
 import type { PropsType } from "./types";
 import ProductNewStyles from "./styles";
 import ProductImages from "./ProductImages";
-import validationSchema from "@app/screens/ProductNew/validation";
-import Text from "@app/atoms/Text";
 
 const ProductNewTemplate: FC<PropsType> = (props) => {
   const { navigation, sheetRefs, statusColor, statusValue } = props;
