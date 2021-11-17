@@ -22,7 +22,8 @@ const BottomSheet = forwardRef((props: PropsType, ref: Ref<RBSheet>) => {
       onClose={onClose}
       closeOnDragDown={true}
       closeOnPressMask={false}
-      customStyles={{ container: BottomSheetStyles.container }}>
+      customStyles={{ container: BottomSheetStyles.container }}
+    >
       {children}
     </RBSheet>
   );

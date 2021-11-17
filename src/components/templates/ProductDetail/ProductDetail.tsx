@@ -171,7 +171,8 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
               style={[
                 ProductDetailStyles.horizontalContainer,
                 ProductDetailStyles.ratingContainer,
-              ]}>
+              ]}
+            >
               <View style={ProductDetailStyles.reviewSeller}>
                 <Text
                   text={"45"}

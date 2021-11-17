@@ -8,7 +8,7 @@
 import React, { FC, Fragment, useState, useCallback } from "react";
 import { View } from "react-native";
 import { ListItem } from "react-native-elements";
-import { useField, useFormikContext } from "formik";
+import { useField } from "formik";
 import { useUpdateEffect } from "@app/hooks";
 import Radio from "@app/atoms/Radio";
 import Text from "@app/atoms/Text";
@@ -19,7 +19,6 @@ import FormRadioGroupStyles from "./styles";
 const FormRadioGroup: FC<PropsType> = (props) => {
   const { name, options } = props;
   const [, meta, helpers] = useField(name);
-  const { validateOnChange } = useFormikContext();
 
   const [check, setCheck] = useState({
     value: meta.value || meta.initialValue,
@@ -37,11 +36,9 @@ const FormRadioGroup: FC<PropsType> = (props) => {
 
       helpers.setValue(val);
 
-      if (validateOnChange) {
-        helpers.setTouched(true);
-      }
+      helpers.setTouched(true);
     },
-    [helpers, validateOnChange]
+    [helpers]
   );
 
   return (

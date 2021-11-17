@@ -1,4 +1,5 @@
 import NetInfo from "@react-native-community/netinfo";
+import { isNil } from "ramda";
 import { Alert, BackHandler } from "react-native";
 
 export const formatPhoneNumber = (phoneNumber: string) => {
@@ -27,6 +28,7 @@ export const generateRandomUsername = (length: number) => {
 };
 
 export const internetCheck = () =>
+  // eslint-disable-next-line import/no-named-as-default-member
   NetInfo.fetch().then((state) => {
     if (!state.isConnected) {
       Alert.alert(
@@ -50,4 +52,10 @@ export const currencyFormatter = (amount: string, currency: string) => {
     /(\d)(?=(\d{3})+(\.(\d){0,2})*$)/g,
     "$1,"
   )}`;
+};
+
+export const formatDatePayload = (date: string | null) => {
+  if (isNil(date)) return;
+
+  return date.split("/").join("-");
 };

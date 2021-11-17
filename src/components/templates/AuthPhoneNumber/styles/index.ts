@@ -14,6 +14,15 @@ const AuthPhoneNumberStyles = StyleSheet.create({
     padding: SPACING.lg,
     backgroundColor: theme.colors.white,
   },
+  inputContainer: {
+    marginBottom: 16,
+  },
+  errorContainer: {
+    borderColor: theme.colors.red5,
+  },
+  validationContainer: {
+    marginVertical: 8,
+  },
   txtHeader: {
     ...theme.textBold,
     fontWeight: "700",
@@ -30,10 +39,6 @@ const AuthPhoneNumberStyles = StyleSheet.create({
     fontWeight: "300",
     marginTop: 10,
     marginBottom: 24,
-  },
-  validationContainer: {
-    position: "relative",
-    bottom: "2.2%",
   },
 });
 

@@ -14,6 +14,7 @@ import actions from "@app/redux/auth/actions";
 import routes from "@app/navigators/routes";
 import AuthPhoneNumberTemplate from "@app/templates/AuthPhoneNumber";
 
+import type { AuthPhoneNumber } from "./types";
 import validationSchema from "./validation";
 
 const AuthPhoneNumberScreen: FC = () => {
@@ -27,7 +28,7 @@ const AuthPhoneNumberScreen: FC = () => {
 
   useMount(() => setAuthBack(false));
 
-  const formikBag = useFormik({
+  const formikBag = useFormik<AuthPhoneNumber>({
     initialValues: { identifier: "" },
     validateOnChange: true,
     validateOnBlur: false,

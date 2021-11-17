@@ -20,11 +20,17 @@ import FormSwitch from "@app/molecules/FormSwitch";
 import ValidationMessage from "@app/molecules/ValidationMessage";
 import Button from "@app/atoms/Button";
 import { ENUM } from "@app/constants";
+import { useFieldError } from "@app/hooks";
 import Icon from "@app/atoms/Icon";
 import { VariationForm, VariationItem } from "@app/redux/shop/models";
 
 import type { NewVariationProps } from "./types";
-import { ICON_SIZE, NUM_LINE, OPTIONS_LENGTH } from "./config";
+import {
+  ICON_SIZE,
+  MAX_OPTIONS_LENGTH,
+  NUM_LINE,
+  OPTIONS_LENGTH,
+} from "./config";
 import { BtnAddStyles, NewVariationStyles, OptionCardStyles } from "./styles";
 import VariationModal from "./VariationModal";
 
@@ -40,6 +46,8 @@ const NewVariation: FC<NewVariationProps> = (props) => {
 
   const [visible, setVisible] = useState<boolean>(false);
   const [mode, setMode] = useState<ENUM.VariationMode>(ENUM.VariationMode.Edit);
+
+  const { isError } = useFieldError(`variationData[${index}].variationName`);
 
   const toggleOverlay = () => {
     setVisible((prev) => !prev);
@@ -88,7 +96,8 @@ const NewVariation: FC<NewVariationProps> = (props) => {
     return (
       <View
         key={key}
-        style={{ ...NewVariationStyles.optionCardContainer, ...optionCard }}>
+        style={{ ...NewVariationStyles.optionCardContainer, ...optionCard }}
+      >
         {mode === ENUM.VariationMode.Edit && (
           <View style={NewVariationStyles.deleteContainer}>
             <AntDesign
@@ -137,7 +146,8 @@ const NewVariation: FC<NewVariationProps> = (props) => {
                 <View style={NewVariationStyles.deleteIconContainer}>
                   <TouchableWithoutFeedback
                     onPress={removeVariationItem}
-                    style={NewVariationStyles.deleteIconMargin}>
+                    style={NewVariationStyles.deleteIconMargin}
+                  >
                     <Icon
                       group="products"
                       name="deleteVariation"
@@ -167,7 +177,8 @@ const NewVariation: FC<NewVariationProps> = (props) => {
 
             {mode === ENUM.VariationMode.Edit ? (
               <TouchableWithoutFeedback
-                onPress={() => setMode(ENUM.VariationMode.Done)}>
+                onPress={() => setMode(ENUM.VariationMode.Done)}
+              >
                 <Text
                   text="Done"
                   textStyle={NewVariationStyles.txtDoneOrEdit}
@@ -175,7 +186,8 @@ const NewVariation: FC<NewVariationProps> = (props) => {
               </TouchableWithoutFeedback>
             ) : (
               <TouchableWithoutFeedback
-                onPress={() => setMode(ENUM.VariationMode.Edit)}>
+                onPress={() => setMode(ENUM.VariationMode.Edit)}
+              >
                 <Text
                   text="Edit"
                   textStyle={NewVariationStyles.txtDoneOrEdit}
@@ -183,7 +195,14 @@ const NewVariation: FC<NewVariationProps> = (props) => {
               </TouchableWithoutFeedback>
             )}
           </ListItem.Content>
-          <ValidationMessage name={`variationData[${index}].variationName`} />
+
+          {isError && (
+            <View style={NewVariationStyles.errorContainer}>
+              <ValidationMessage
+                name={`variationData[${index}].variationName`}
+              />
+            </View>
+          )}
         </ListItem.Content>
       </ListItem>
 
@@ -238,6 +257,7 @@ const NewVariation: FC<NewVariationProps> = (props) => {
             containerStyle={btnAddContainer}
             buttonStyle={NewVariationStyles.btnAdd}
             titleStyle={NewVariationStyles.btnAddLbl}
+            disabled={optionsData.length === MAX_OPTIONS_LENGTH}
           />
         </View>
       </View>

@@ -70,7 +70,8 @@ const CheckoutFooter: FC = () => {
       <ListItem
         bottomDivider
         style={CheckoutStyles.paymentList}
-        containerStyle={CheckoutStyles.paymentListContainer}>
+        containerStyle={CheckoutStyles.paymentListContainer}
+      >
         <View style={CheckoutStyles.paymentListSubContainer}>
           <Text text="Sub-Total (3 items)" />
           <Text

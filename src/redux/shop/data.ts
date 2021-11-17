@@ -15,19 +15,19 @@ import {
 } from "./models";
 
 export const initProductForm: ProductForm = {
-  productImg: "",
+  productImages: [],
   productNm: "",
   description: "",
   price: "",
   weight: "",
   stocks: "",
   upcomingHarvest: false,
-  estimateDate: "",
-  shelfLife: "",
+  estimateDate: null,
+  shelfLife: null,
   preOrder: false,
-  measurement: "1",
-  categoryId: 1,
+  categoryId: null,
   status: ENUM.Product_Status.Available,
+  hasShippingData: false,
 };
 
 export const initVariationForm: VariationForm = {
@@ -55,8 +55,8 @@ export const initShippingDetailsForm: ShippingDetailsForm = {
   width: "",
   length: "",
   height: "",
+  hasOneOption: false,
   expressDelivery: false,
-  karosaDelivery: false,
   pickUpBuyer: false,
   sellerCourier: false,
 };
@@ -211,6 +211,10 @@ export const initShopState: ShopState = {
     response: false,
     isLoading: false,
   },
+  categoryListResponse: {
+    response: [],
+    isLoading: false,
+  },
   shopAddressResponse: {
     response: {
       id: 0,
@@ -227,14 +231,10 @@ export const initShopState: ShopState = {
     isLoading: false,
   },
   addProductResponse: {
-    response: {
-      id: 0,
-      shopId: 0,
-      categoryId: 0,
-      name: "",
-      description: "",
-    },
     isLoading: false,
+    response: {
+      status: 0,
+    },
   },
   productListResponse: {
     response: [],

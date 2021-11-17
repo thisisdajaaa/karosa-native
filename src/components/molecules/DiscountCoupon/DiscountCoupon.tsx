@@ -22,7 +22,8 @@ const DiscountCoupon: FC<PropsType> = (props) => {
     <TouchableOpacity
       onPress={onCoupon}
       activeOpacity={COUPON_OPACITY}
-      style={DiscountCouponStyles.container}>
+      style={DiscountCouponStyles.container}
+    >
       <Icon
         group="products"
         name="coupon"

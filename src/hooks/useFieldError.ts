@@ -4,7 +4,7 @@ import { useField } from "formik";
 const useFieldError = (name: string) => {
   const [, meta] = useField(name);
 
-  const isError = useMemo(
+  const isError: boolean = useMemo(
     () => meta.touched && meta.error !== undefined,
     [meta.error, meta.touched]
   );

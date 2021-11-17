@@ -30,7 +30,8 @@ const VariationOne: FC<PropsType> = (props) => {
       {onDelete && (
         <TouchableOpacity
           style={ItemOptionStyles.deleteIcon}
-          onPress={() => onDelete}>
+          onPress={() => onDelete}
+        >
           <Text text="x" textStyle={ItemOptionStyles.txtIcon} />
         </TouchableOpacity>
       )}

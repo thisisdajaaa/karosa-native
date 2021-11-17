@@ -13,3 +13,12 @@ export type AuthRegistrationParams = {
     password: string;
   };
 };
+
+export type AuthPhoneNumber = {
+  identifier: string;
+};
+
+export type AuthPassword = {
+  identifier: string;
+  password: string;
+};

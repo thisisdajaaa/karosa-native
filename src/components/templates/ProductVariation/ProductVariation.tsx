@@ -16,7 +16,8 @@ import Header from "@app/molecules/Header";
 import Text from "@app/atoms/Text";
 import { VariationForm, VariationItem } from "@app/redux/shop/models";
 import Icon from "@app/atoms/Icon";
-import FormButton from "@app/molecules/FormButton";
+import Button from "@app/atoms/Button";
+import validationSchema from "@app/screens/ProductVariation/validation";
 
 import type { PropsType } from "./types";
 import { ADD_VARIATION_LENGTH, ICON_SIZE } from "./config";
@@ -26,9 +27,10 @@ import ProductVariationStyles from "./styles";
 const ProductVariationTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
 
-  const { values, setValues } = useFormikContext<VariationForm>();
+  const { values, setValues, submitForm } = useFormikContext<VariationForm>();
 
   const isIOS = getPlatform.getInstance() === "ios";
+  const isFormValid = validationSchema.isValidSync(values);
 
   const addNewVariation = () => {
     const newVariationItem: VariationItem = {
@@ -71,7 +73,8 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
       <>{getHeader()}</>
       <KeyboardAvoidingView
         style={ProductVariationStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <ScrollView showsVerticalScrollIndicator={false}>
           <>
             {values.variationData.map((_, index) => (
@@ -98,7 +101,11 @@ const ProductVariationTemplate: FC<PropsType> = (props) => {
         </ScrollView>
 
         <View style={ProductVariationStyles.buttonContainer}>
-          <FormButton title="Set Stock and Price" />
+          <Button
+            title="Set Stock and Price"
+            disabled={!isFormValid}
+            onPress={submitForm}
+          />
         </View>
       </KeyboardAvoidingView>
     </>

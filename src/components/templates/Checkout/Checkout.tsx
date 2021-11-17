@@ -54,7 +54,8 @@ const CheckoutTemplate: FC<PropsType> = (props) => {
       />
       <KeyboardAvoidingView
         style={CheckoutStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <FlatList
           showsVerticalScrollIndicator={false}
           keyExtractor={keyExtractor}

@@ -6,7 +6,7 @@
  */
 
 import React, { FC, useState, useCallback } from "react";
-import { useField, useFormikContext } from "formik";
+import { useField } from "formik";
 import { useUpdateEffect } from "@app/hooks";
 import OTP from "@app/atoms/OTP";
 import type { PropsType } from "./types";
@@ -14,7 +14,6 @@ import type { PropsType } from "./types";
 const FormOTP: FC<PropsType> = (props) => {
   const { inputLength, name } = props;
   const [, meta, helpers] = useField(name);
-  const { validateOnChange } = useFormikContext();
 
   const [currentValue, setCurrentValue] = useState(
     meta.value || meta.initialValue
@@ -26,13 +25,11 @@ const FormOTP: FC<PropsType> = (props) => {
 
   const handleChange = useCallback(
     (text: string) => {
-      if (validateOnChange) {
-        setCurrentValue(text);
-        helpers.setValue(text);
-        helpers.setTouched(true);
-      }
+      setCurrentValue(text);
+      helpers.setValue(text);
+      helpers.setTouched(true);
     },
-    [helpers, validateOnChange]
+    [helpers]
   );
   return (
     <OTP

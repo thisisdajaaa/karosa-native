@@ -38,7 +38,8 @@ const ImageOverlay: FC<PropsType> = (props) => {
           { width: imageHeight || 75, height: imageHeight || 75 },
           ImageOverlayStyles.textViewStyle,
           viewTextStyle,
-        ]}>
+        ]}
+      >
         <Text
           text={textContent || ""}
           textStyle={[ImageOverlayStyles.textStyle, textStyle]}

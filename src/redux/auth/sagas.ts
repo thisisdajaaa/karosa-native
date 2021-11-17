@@ -1,5 +1,5 @@
 import { SagaIterator } from "@redux-saga/core";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { getType } from "typesafe-actions";
 import { baseAxios } from "@app/config/axios/instance";
@@ -17,10 +17,9 @@ export function* callLoginApi(
       apiEndpoints.login,
       action.payload
     );
-
     yield put(actions.callLoginApi.success(response.data));
   } catch (error) {
-    yield put(actions.callLoginApi.failure(error.response.status));
+    yield put(actions.callLoginApi.failure(error as AxiosError));
   }
 }
 
@@ -36,7 +35,7 @@ export function* callRegisterApi(
 
     yield put(actions.callRegisterApi.success(response.data));
   } catch (error) {
-    yield put(actions.callRegisterApi.failure(error.response.data));
+    yield put(actions.callRegisterApi.failure(error as AxiosError));
   }
 }
 
@@ -49,7 +48,7 @@ export function* callForgotApi(): SagaIterator {
 
     yield put(actions.callForgotApi.success(mockRes));
   } catch (error) {
-    yield put(actions.callLoginApi.failure(error));
+    yield put(actions.callLoginApi.failure(error as AxiosError));
   }
 }
 
@@ -62,7 +61,7 @@ export function* callMyAddressApi(): SagaIterator {
 
     yield put(actions.callMyAddressApi.success(response.data));
   } catch (error) {
-    yield put(actions.callMyAddressApi.failure(error));
+    yield put(actions.callMyAddressApi.failure(error as AxiosError));
   }
 }
 
@@ -78,7 +77,7 @@ export function* callNewAddressApi(
 
     yield put(actions.callNewAddressApi.success(response.data));
   } catch (error) {
-    yield put(actions.callNewAddressApi.failure(error));
+    yield put(actions.callNewAddressApi.failure(error as AxiosError));
   }
 }
 

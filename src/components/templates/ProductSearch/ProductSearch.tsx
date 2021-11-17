@@ -44,7 +44,8 @@ const ProductSearchTemplate: FC<PropsType> = (props) => {
       <TouchableOpacity
         key={index}
         onPress={() => setValue(item.title)}
-        style={ProductSearchStyles.item}>
+        style={ProductSearchStyles.item}
+      >
         <Text
           textStyle={ProductSearchStyles.txtSearchTitle}
           text={item.title}
@@ -64,7 +65,8 @@ const ProductSearchTemplate: FC<PropsType> = (props) => {
 
         <ScrollView
           contentContainerStyle={ProductSearchStyles.flatListContainer}
-          showsVerticalScrollIndicator={false}>
+          showsVerticalScrollIndicator={false}
+        >
           <>{getContent()}</>
         </ScrollView>
       </View>

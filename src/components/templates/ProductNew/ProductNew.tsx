@@ -9,6 +9,7 @@ import React, { FC, ReactElement } from "react";
 import {
   KeyboardAvoidingView,
   KeyboardTypeOptions,
+  Pressable,
   ScrollView,
   View,
 } from "react-native";
@@ -18,19 +19,24 @@ import { theme } from "@app/styles";
 import { getPlatform, listIterator, WithIcon } from "@app/utils";
 import { COMMON } from "@app/constants";
 import Header from "@app/molecules/Header";
-import ListImage from "@app/organisms/ListImage";
 import ListInput from "@app/organisms/ListInput";
 import ListChevron from "@app/organisms/ListChevron";
 import ListStatus from "@app/organisms/ListStatus";
 import ListSwitch from "@app/organisms/ListSwitch";
+import ListDatepicker from "@app/organisms/ListDatepicker";
+import validationSchema from "@app/screens/ProductNew/validation";
+import Text from "@app/atoms/Text";
 
 import type { PropsType } from "./types";
 import ProductNewStyles from "./styles";
+import ProductImages from "./ProductImages";
 
 const ProductNewTemplate: FC<PropsType> = (props) => {
   const { navigation, sheetRefs, statusColor, statusValue } = props;
 
   const { submitForm, values } = useFormikContext<ProductForm>();
+
+  const isValid = validationSchema.isValidSync(values);
 
   const isIOS = getPlatform.getInstance() === "ios";
 
@@ -97,7 +103,7 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
 
     const separator = <View style={ProductNewStyles.separator} />;
 
-    const productImg = <ListImage name="productImg" hasBottomDivider />;
+    const productImg = <ProductImages />;
 
     const stocks = listInput(
       "stocks",
@@ -119,14 +125,14 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
       width: 20,
     });
 
-    const variation = listChevron("Variation", navigation.onVariation, true, {
+    const variation = listChevron("Variation", navigation.onVariation, false, {
       group: "products",
       name: "variation",
       height: 20,
       width: 20,
     });
 
-    const wholesale = listChevron("Wholesale", navigation.onWholesale, true, {
+    const wholesale = listChevron("Wholesale", navigation.onWholesale, false, {
       group: "products",
       name: "wholesale",
       height: 20,
@@ -172,17 +178,19 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
       "number-pad"
     );
 
-    const shelfLife = listInput(
-      "shelfLife",
-      "Best Before",
-      "Select Date",
-      {
-        group: "products",
-        name: "shelfLife",
-        height: 20,
-        width: 20,
-      },
-      "number-pad"
+    const shelfLife = (
+      <ListDatepicker
+        name="shelfLife"
+        label="Best Before"
+        icon={{
+          group: "products",
+          name: "shelfLife",
+          height: 20,
+          width: 20,
+        }}
+        hasBottomDivider
+        required
+      />
     );
 
     const status = (
@@ -242,17 +250,19 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
       />
     );
 
-    const estimateDate = listInput(
-      "estimateDate",
-      "Estimate Available Date",
-      "Select Date",
-      {
-        group: "products",
-        name: "estimateDate",
-        height: 20,
-        width: 20,
-      },
-      "number-pad"
+    const estimateDate = (
+      <ListDatepicker
+        name="estimateDate"
+        label="Estimate Available Date"
+        icon={{
+          group: "products",
+          name: "estimateDate",
+          height: 20,
+          width: 20,
+        }}
+        hasBottomDivider
+        required
+      />
     );
 
     if (values.upcomingHarvest) {
@@ -263,6 +273,7 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
         separator,
         description,
         separator,
+        categories,
         upcomingHarvest,
         separator,
         estimateDate
@@ -275,9 +286,9 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
         separator,
         description,
         separator,
+        categories,
         upcomingHarvest,
         separator,
-        categories,
         price,
         stocks,
         shelfLife,
@@ -309,11 +320,18 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
           text: "Add Product",
           style: ProductNewStyles.txtHeader,
         }}
-        rightComponent={{
-          text: "Save",
-          style: ProductNewStyles.txtSave,
-          onPress: submitForm,
-        }}
+        rightComponent={
+          <Pressable onPress={submitForm} disabled={!isValid}>
+            <Text
+              text="Save"
+              textStyle={
+                !isValid
+                  ? ProductNewStyles.txtSaveDisabled
+                  : ProductNewStyles.txtSave
+              }
+            />
+          </Pressable>
+        }
       />
     );
   };
@@ -323,7 +341,8 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
       <>{getHeader()}</>
       <KeyboardAvoidingView
         style={ProductNewStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <ScrollView showsVerticalScrollIndicator={false}>
           <>{getProductForm()}</>
           <View style={ProductNewStyles.spacer} />

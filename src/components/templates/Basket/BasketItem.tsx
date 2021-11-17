@@ -149,7 +149,8 @@ const BasketItem: FC<BasketItemProps> = (props) => {
               </View>
             </TouchableWithoutFeedback>
           )}
-          key={Number(storeItem.id)}>
+          key={Number(storeItem.id)}
+        >
           <ListItem bottomDivider={storeKey === item.items.length - 1}>
             <View style={BasketStyles.flexColumn}>
               <View style={BasketStyles.basketItemBaseContainer}>

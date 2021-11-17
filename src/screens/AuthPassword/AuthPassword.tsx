@@ -8,7 +8,10 @@
 import React, { FC, useCallback } from "react";
 import { FormikContext, useFormik } from "formik";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import { AuthRegistrationParams } from "@app/screens/AuthPhoneNumber/types";
+import type {
+  AuthPassword,
+  AuthRegistrationParams,
+} from "@app/screens/AuthPhoneNumber/types";
 import routes from "@app/navigators/routes";
 import AuthPasswordTemplate from "@app/templates/AuthPassword";
 
@@ -30,10 +33,10 @@ const AuthPasswordScreen: FC = () => {
     });
   };
 
-  const formikBag = useFormik({
+  const formikBag = useFormik<AuthPassword>({
     initialValues: { identifier: params.identifier, password: "" },
     validateOnChange: true,
-    validateOnBlur: true,
+    validateOnBlur: false,
     onSubmit: handleSubmit,
     validationSchema,
   });

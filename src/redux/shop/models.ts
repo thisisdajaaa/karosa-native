@@ -5,28 +5,30 @@ import * as shopDelete from "@app/redux/api-models/shop-delete";
 import * as shopAddress from "@app/redux/api-models/shop-address";
 import * as addProduct from "@app/redux/api-models/add-product";
 import * as productList from "@app/redux/api-models/product-list";
+import * as category from "@app/redux/api-models/category-list";
 
 export type ShopInfoResponse = shopInfo.Response;
 export type ShopDeleteResponse = shopDelete.Response;
 export type ShopAddressResponse = shopAddress.Response;
+export type ProductListResponse = productList.Response;
 export type AddProductRequest = addProduct.Request;
 export type AddProductResponse = addProduct.Response;
-export type ProductListResponse = productList.Response;
+export type CategoryListResponse = category.Response;
 
 export type ProductForm = {
-  productImg?: string;
+  productImages: string[];
   productNm: string;
   description: string;
   price: string;
   weight: string;
   stocks: string;
-  shelfLife: string;
-  estimateDate?: string;
+  shelfLife: string | null;
+  estimateDate?: string | null;
   upcomingHarvest: boolean;
   preOrder: boolean;
-  measurement: string;
-  categoryId: number;
+  categoryId: number | null;
   status: ENUM.Product_Status;
+  hasShippingData: boolean;
 };
 
 export type VariationForm = {
@@ -70,8 +72,8 @@ export type ShippingDetailsForm = {
   width: string;
   length: string;
   height: string;
+  hasOneOption: boolean;
   expressDelivery: boolean;
-  karosaDelivery: boolean;
   pickUpBuyer: boolean;
   sellerCourier: boolean;
 };
@@ -170,6 +172,7 @@ export type ShopState = {
   shopAddressResponse: ResponseState<ShopAddressResponse>;
   addProductResponse: ResponseState<AddProductResponse>;
   productListResponse: ResponseState<ProductListResponse>;
+  categoryListResponse: ResponseState<CategoryListResponse>;
 };
 
 declare module "../types" {

@@ -9,22 +9,24 @@ import React, { FC, useCallback } from "react";
 import { FlatList, ScrollView, View } from "react-native";
 import { useFormikContext } from "formik";
 import Text from "@app/atoms/Text";
-import { VariationForm, VariationOption } from "@app/redux/shop/models";
+import { VariationForm } from "@app/redux/shop/models";
 import { theme } from "@app/styles";
 import Header from "@app/molecules/Header";
-import FormInput from "@app/molecules/FormInput";
-import FormButton from "@app/molecules/FormButton";
+import Button from "@app/atoms/Button";
+import validationSchema from "@app/screens/ProductStockPrice/validation";
 
 import type { PropsType } from "./types";
 import { NUM_COL } from "./config";
-import ProductStockPriceStyles, { OptionRowStyles } from "./styles";
+import ProductStockPriceStyles from "./styles";
+import InputItems from "./InputItems";
 
 const ProductStockPrice: FC<PropsType> = (props) => {
   const { onBack } = props;
 
   const keyExtractor = useCallback((_, index) => index.toString(), []);
 
-  const { values } = useFormikContext<VariationForm>();
+  const { values, submitForm } = useFormikContext<VariationForm>();
+  const isFormValid = validationSchema.isValidSync(values);
 
   const getHeader = () => {
     return (
@@ -43,12 +45,6 @@ const ProductStockPrice: FC<PropsType> = (props) => {
     );
   };
 
-  const optionStyle = (index: number, option: VariationOption[]) => {
-    const { optionRowContainer } = OptionRowStyles(index, option);
-
-    return optionRowContainer;
-  };
-
   return (
     <>
       <>{getHeader()}</>
@@ -63,7 +59,8 @@ const ProductStockPrice: FC<PropsType> = (props) => {
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              bounces={false}>
+              bounces={false}
+            >
               <View style={ProductStockPriceStyles.innerContainer}>
                 <View style={ProductStockPriceStyles.tableHeaderContainer}>
                   <View style={ProductStockPriceStyles.tableColumnPrimary}>
@@ -105,64 +102,18 @@ const ProductStockPrice: FC<PropsType> = (props) => {
                         text="Weight"
                         textStyle={ProductStockPriceStyles.txtTableHeader}
                       />
-                      <Text
-                        text="*"
-                        textStyle={ProductStockPriceStyles.txtRequired}
-                      />
                     </View>
                   </View>
                 </View>
 
                 {item.options.map((option, index) => (
-                  <View key={index} style={optionStyle(index, item.options)}>
-                    <View style={ProductStockPriceStyles.tableColumnPrimary}>
-                      <Text
-                        text={option.optionName}
-                        textStyle={{
-                          ...theme.textListItem,
-                        }}
-                      />
-                    </View>
-
-                    <View style={ProductStockPriceStyles.tableColumnSecondary}>
-                      <FormInput
-                        name={`variationData[${variationKey}].options[${index}].price`}
-                        autoCapitalize="none"
-                        autoCompleteType="off"
-                        keyboardType="number-pad"
-                        autoCorrect={false}
-                        inputContainerStyle={
-                          ProductStockPriceStyles.inputContainer
-                        }
-                      />
-                    </View>
-
-                    <View style={ProductStockPriceStyles.tableColumnSecondary}>
-                      <FormInput
-                        name={`variationData[${variationKey}].options[${index}].stock`}
-                        autoCapitalize="none"
-                        autoCompleteType="off"
-                        keyboardType="number-pad"
-                        autoCorrect={false}
-                        inputContainerStyle={
-                          ProductStockPriceStyles.inputContainer
-                        }
-                      />
-                    </View>
-
-                    <View style={ProductStockPriceStyles.tableColumnSecondary}>
-                      <FormInput
-                        name={`variationData[${variationKey}].options[${index}].weight`}
-                        autoCapitalize="none"
-                        autoCompleteType="off"
-                        keyboardType="number-pad"
-                        autoCorrect={false}
-                        inputContainerStyle={
-                          ProductStockPriceStyles.inputContainer
-                        }
-                      />
-                    </View>
-                  </View>
+                  <InputItems
+                    key={index}
+                    item={item}
+                    variationKey={variationKey}
+                    option={option}
+                    index={index}
+                  />
                 ))}
               </View>
             </ScrollView>
@@ -170,7 +121,7 @@ const ProductStockPrice: FC<PropsType> = (props) => {
         />
 
         <View style={ProductStockPriceStyles.buttonContainer}>
-          <FormButton title="Submit" />
+          <Button title="Submit" disabled={!isFormValid} onPress={submitForm} />
         </View>
       </View>
     </>

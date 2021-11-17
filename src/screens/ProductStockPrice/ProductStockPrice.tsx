@@ -15,6 +15,8 @@ import { VariationForm } from "@app/redux/shop/models";
 import ProductStockPriceTemplate from "@app/templates/ProductStockPrice";
 import routes from "@app/navigators/routes";
 
+import validationSchema from "./validation";
+
 const ProductStockPriceScreen: FC = () => {
   const dispatch = useDispatch();
 
@@ -34,9 +36,12 @@ const ProductStockPriceScreen: FC = () => {
     navigate(routes.PRODUCT_ADD);
   };
 
-  const formikBag = useFormik({
+  const formikBag = useFormik<VariationForm>({
     initialValues: { variationData },
     onSubmit: handleSubmit,
+    validateOnBlur: false,
+    validateOnChange: true,
+    validationSchema,
   });
 
   const handleBack = useCallback(() => {

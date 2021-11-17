@@ -73,12 +73,14 @@ const VariationModal: FC<VariationModalProps> = (props) => {
   };
 
   const handleSubmit = () => {
-    if (hasNoImage) return;
+    const valid = (imageUrl && optionName) || (!imageUrl && optionName);
 
-    if (imageSwitchEnabled) {
-      setClonedVariationItem(imageUrl);
-    } else {
-      setClonedVariationItem(null);
+    if (valid) {
+      if (imageSwitchEnabled) {
+        setClonedVariationItem(imageUrl);
+      } else {
+        setClonedVariationItem(null);
+      }
     }
 
     setVisible(false);
@@ -93,10 +95,12 @@ const VariationModal: FC<VariationModalProps> = (props) => {
     <Overlay
       isVisible={visible}
       overlayStyle={VariationModalStyles.overlayContainer}
-      onBackdropPress={toggleOverlay}>
+      onBackdropPress={toggleOverlay}
+    >
       <TouchableOpacity
         style={VariationModalStyles.iconContainer}
-        onPress={() => setVisible(false)}>
+        onPress={() => setVisible(false)}
+      >
         <AntDesign name="close" size={ICON_SIZE.CLOSE} color="black" />
       </TouchableOpacity>
 
@@ -130,6 +134,7 @@ const VariationModal: FC<VariationModalProps> = (props) => {
           multiline={false}
           disabled={hasNoImage}
           inputStyle={ListInputStyles.txtValue}
+          maxLength={TOTAL}
           inputContainerStyle={ListInputStyles.columnInputContainer}
           value={optionName}
           onChange={handleOptionNameChange}

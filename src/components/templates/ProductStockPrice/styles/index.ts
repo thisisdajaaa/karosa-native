@@ -52,11 +52,15 @@ const ProductStockPriceStyles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 1,
     flexBasis: 60,
+    flexDirection: "column",
   },
   inputContainer: {
     padding: 5,
     height: 28,
     width: 62,
+  },
+  errorContainer: {
+    marginTop: 8,
   },
 });
 

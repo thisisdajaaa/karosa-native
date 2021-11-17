@@ -35,7 +35,8 @@ const ProductTabs: React.FC = () => {
         pressColor: theme.colors.primary,
         indicatorStyle: { backgroundColor: theme.colors.primary },
         scrollEnabled: true,
-      }}>
+      }}
+    >
       {mockTopTab.map((tabName, index) => (
         <React.Fragment key={index}>
           <TopTab.Screen name={tabName} component={ProductListContent} />
@@ -63,7 +64,8 @@ const TabNavigator: FC = () => {
         tabBarOptions={{
           activeTintColor: theme.colors.primary,
           labelStyle: { position: "relative", bottom: 4 },
-        }}>
+        }}
+      >
         <BottomTab.Screen
           name={routes.HOME}
           component={HomeScreen}
