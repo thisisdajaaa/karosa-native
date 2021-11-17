@@ -30,11 +30,6 @@ export const setShippingData = createAction(
   (resolve) => (values: boolean) => resolve(values)
 );
 
-export const setProductMeasurement = createAction(
-  types.SET_PRODUCT_MEASUREMENT,
-  (resolve) => (value: string) => resolve(value)
-);
-
 export const setCategory = createAction(
   types.SET_CATEGORY,
   (resolve) => (value: number) => resolve(value)
@@ -127,7 +122,6 @@ const actions = {
   setShopAddressForm,
   setShopPayment,
   setProductStatus,
-  setProductMeasurement,
   setCategory,
   setProductForm,
   setVariationForm,

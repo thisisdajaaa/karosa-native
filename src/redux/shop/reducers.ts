@@ -89,9 +89,6 @@ export const productEntryContext = produce(
       case getType(actions.setProductStatus):
         draft.productForm.status = action.payload;
         return draft;
-      case getType(actions.setProductMeasurement):
-        draft.productForm.measurement = action.payload;
-        return draft;
       case getType(actions.setCategory):
         draft.productForm.categoryId = action.payload;
         return draft;

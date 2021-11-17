@@ -9,6 +9,7 @@ import React, { FC, ReactElement } from "react";
 import {
   KeyboardAvoidingView,
   KeyboardTypeOptions,
+  Pressable,
   ScrollView,
   View,
 } from "react-native";
@@ -27,11 +28,15 @@ import ListDatepicker from "@app/organisms/ListDatepicker";
 import type { PropsType } from "./types";
 import ProductNewStyles from "./styles";
 import ProductImages from "./ProductImages";
+import validationSchema from "@app/screens/ProductNew/validation";
+import Text from "@app/atoms/Text";
 
 const ProductNewTemplate: FC<PropsType> = (props) => {
   const { navigation, sheetRefs, statusColor, statusValue } = props;
 
   const { submitForm, values } = useFormikContext<ProductForm>();
+
+  const isValid = validationSchema.isValidSync(values);
 
   const isIOS = getPlatform.getInstance() === "ios";
 
@@ -120,14 +125,14 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
       width: 20,
     });
 
-    const variation = listChevron("Variation", navigation.onVariation, true, {
+    const variation = listChevron("Variation", navigation.onVariation, false, {
       group: "products",
       name: "variation",
       height: 20,
       width: 20,
     });
 
-    const wholesale = listChevron("Wholesale", navigation.onWholesale, true, {
+    const wholesale = listChevron("Wholesale", navigation.onWholesale, false, {
       group: "products",
       name: "wholesale",
       height: 20,
@@ -268,6 +273,7 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
         separator,
         description,
         separator,
+        categories,
         upcomingHarvest,
         separator,
         estimateDate
@@ -280,9 +286,9 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
         separator,
         description,
         separator,
+        categories,
         upcomingHarvest,
         separator,
-        categories,
         price,
         stocks,
         shelfLife,
@@ -314,11 +320,18 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
           text: "Add Product",
           style: ProductNewStyles.txtHeader,
         }}
-        rightComponent={{
-          text: "Save",
-          style: ProductNewStyles.txtSave,
-          onPress: submitForm,
-        }}
+        rightComponent={
+          <Pressable onPress={submitForm} disabled={!isValid}>
+            <Text
+              text="Save"
+              textStyle={
+                !isValid
+                  ? ProductNewStyles.txtSaveDisabled
+                  : ProductNewStyles.txtSave
+              }
+            />
+          </Pressable>
+        }
       />
     );
   };

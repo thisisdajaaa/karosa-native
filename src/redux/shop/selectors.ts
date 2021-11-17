@@ -81,14 +81,6 @@ export const getShopPayment = () =>
     );
   });
 
-export const getProductMeasurement = () =>
-  createSelector([rootSelector], (state: ShopState) => {
-    return (
-      state.productEntryContext.productForm.measurement ||
-      initShopState.productEntryContext.productForm.measurement
-    );
-  });
-
 export const getShopInfoResponse = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return state.shopInfoResponse || initShopState.shopInfoResponse;
@@ -125,7 +117,6 @@ const selectors = {
   getShopAddressForm,
   getShopSettings,
   getShippingDetailsForm,
-  getProductMeasurement,
   getShopInfoResponse,
   getShopAddressResponse,
   getCategoryListResponse,

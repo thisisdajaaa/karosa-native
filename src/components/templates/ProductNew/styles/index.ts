@@ -42,6 +42,11 @@ const ProductNewStyles = StyleSheet.create({
   },
   txtSave: {
     ...theme.textRegular,
+    color: theme.colors.primary,
+    fontWeight: "400",
+  },
+  txtSaveDisabled: {
+    ...theme.textRegular,
     color: theme.colors.dark10,
     fontWeight: "400",
   },

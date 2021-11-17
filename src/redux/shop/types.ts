@@ -3,7 +3,6 @@ export const SET_SHOP_SETTINGS = "shop/setShopSettings" as const;
 export const SET_SHOP_PAYMENT = "shop/setShopPayment" as const;
 export const SET_SHOP_ADDRESS = "shop/setShopAddress" as const;
 export const SET_PRODUCT_STATUS = "shop/setProductStatus" as const;
-export const SET_PRODUCT_MEASUREMENT = "shop/setProductMeasurement" as const;
 export const SET_CATEGORY = "shop/setCategory" as const;
 export const SET_PRODUCT_FORM = "shop/setProductForm" as const;
 export const SET_VARIATION_FORM = "shop/setVariationForm" as const;
@@ -47,7 +46,6 @@ export type Types =
   | typeof SET_SHOP_ADDRESS
   | typeof SET_PRODUCT_STATUS
   | typeof SET_SHIPPING_DATA
-  | typeof SET_PRODUCT_MEASUREMENT
   | typeof SET_CATEGORY
   | typeof SET_PRODUCT_FORM
   | typeof SET_VARIATION_FORM

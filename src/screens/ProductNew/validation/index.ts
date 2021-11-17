@@ -55,11 +55,11 @@ const ProductNewValidationSchema = Yup.object().shape({
     }),
 
   shelfLife: Yup.date()
+    .nullable()
     .label("Best Before")
     .when("upcomingHarvest", {
-      is: true,
-      then: Yup.date().nullable(true),
-      otherwise: Yup.date()
+      is: false,
+      then: Yup.date()
         .required()
         .typeError("Invalid Date")
         .transform(function (value, originalValue) {
@@ -70,6 +70,7 @@ const ProductNewValidationSchema = Yup.object().shape({
           originalValue = [splitValue[2], splitValue[1], splitValue[0]].join(
             "-"
           );
+
           value = moment(originalValue, "YYYY-MM-DD");
 
           return value.isValid() ? value.toDate() : new Date("");
@@ -82,6 +83,7 @@ const ProductNewValidationSchema = Yup.object().shape({
     }),
 
   estimateDate: Yup.date()
+    .nullable()
     .label("Upcoming Harvest")
     .when("upcomingHarvest", {
       is: true,
@@ -96,6 +98,7 @@ const ProductNewValidationSchema = Yup.object().shape({
           originalValue = [splitValue[2], splitValue[1], splitValue[0]].join(
             "-"
           );
+
           value = moment(originalValue, "YYYY-MM-DD");
 
           return value.isValid() ? value.toDate() : new Date("");
@@ -105,7 +108,6 @@ const ProductNewValidationSchema = Yup.object().shape({
           "Invalid Date",
           (value) => !moment(value).isBefore()
         ),
-      otherwise: Yup.date().nullable(true),
     }),
 
   status: Yup.string()
@@ -120,15 +122,11 @@ const ProductNewValidationSchema = Yup.object().shape({
 
   hasShippingData: Yup.boolean().when("upcomingHarvest", {
     is: true,
-    then: Yup.boolean().oneOf([true]).required(),
-    otherwise: Yup.boolean(),
+    then: Yup.boolean(),
+    otherwise: Yup.boolean().oneOf([true]).required(),
   }),
 
-  categoryId: Yup.number().when("upcomingHarvest", {
-    is: true,
-    then: Yup.number().required(),
-    otherwise: Yup.number(),
-  }),
+  categoryId: Yup.number().required(),
 });
 
 export default ProductNewValidationSchema;

@@ -15,12 +15,13 @@ export type Request = {
   name: string;
   categoryId: number;
   upComingHarvest: boolean;
-  estimatedAvailableDate: string;
-  bestBefore: string;
-  productStatus: number;
-  description: string;
-  variationOptions: VariationOption[];
-  variations: Variation[];
+  estimatedAvailableDate: string | null;
+  bestBefore: string | null;
+  productStatus: string | null;
+  description: string | null;
+  availability: string[] | null;
+  variationOptions: VariationOption[] | null;
+  variations: Variation[] | null;
 };
 
 export type Response = { status: number };

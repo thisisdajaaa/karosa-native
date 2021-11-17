@@ -22,11 +22,10 @@ export type ProductForm = {
   price: string;
   weight: string;
   stocks: string;
-  shelfLife: string;
-  estimateDate?: string;
+  shelfLife: string | null;
+  estimateDate?: string | null;
   upcomingHarvest: boolean;
   preOrder: boolean;
-  measurement: string;
   categoryId: number | null;
   status: ENUM.Product_Status;
   hasShippingData: boolean;

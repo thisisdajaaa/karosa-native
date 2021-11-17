@@ -6,6 +6,7 @@
  */
 
 import React, { FC, useCallback, useRef } from "react";
+import flatten from "flat";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { FormikContext, useFormik } from "formik";
@@ -17,7 +18,6 @@ import ProductNewTemplate from "@app/templates/ProductNew";
 import routes from "@app/navigators/routes";
 import ProductStatus from "@app/screens/ProductStatus";
 import ProductAvailability from "@app/screens/ProductAvailability";
-import ProductMeasurement from "@app/screens/ProductMeasurement";
 
 import type { ProductNewNavigation, ProductNewSheetRefs } from "./types";
 import {
@@ -33,12 +33,12 @@ const ProductNewScreen: FC = () => {
 
   const productStatusRef = useRef<RBSheet>(null);
   const availabilityRef = useRef<RBSheet>(null);
-  const measurementRef = useRef<RBSheet>(null);
 
   const { goBack, navigate } = useNavigation();
 
   const productForm = useMemoizedSelector(selectors.getProductForm);
   const variationForm = useMemoizedSelector(selectors.getVariationForm);
+  const availabilityForm = useMemoizedSelector(selectors.getAvailabilityForm);
   const getAddProductResponse = useMemoizedSelector(
     selectors.getAddProductResponse
   );
@@ -67,7 +67,11 @@ const ProductNewScreen: FC = () => {
   const { statusValue, statusColor } = statusInformation(productForm.status);
 
   const handleSubmit = (values: ProductForm) => {
-    const payload = addProductRequest(values, variationForm.variationData);
+    const payload = addProductRequest(
+      values,
+      availabilityForm,
+      variationForm.variationData
+    );
 
     setProductForm(values);
     callAddProductApi(payload);
@@ -80,6 +84,19 @@ const ProductNewScreen: FC = () => {
     onSubmit: handleSubmit,
     validationSchema,
   });
+
+  useUpdateEffect(() => {
+    if (formikBag.isSubmitting && !formikBag.isValidating) {
+      for (const path of Object.keys(flatten(formikBag.errors))) {
+        formikBag.setFieldTouched(path, false, false);
+      }
+    }
+  }, [
+    formikBag.errors,
+    formikBag.isSubmitting,
+    formikBag.isValidating,
+    formikBag.setFieldTouched,
+  ]);
 
   useMount(callCategoryListApi);
 
@@ -119,7 +136,6 @@ const ProductNewScreen: FC = () => {
   const sheetRefs: ProductNewSheetRefs = {
     status: () => productStatusRef.current?.open(),
     availability: () => availabilityRef.current?.open(),
-    measurement: () => measurementRef.current?.open(),
   };
 
   return (
@@ -133,7 +149,6 @@ const ProductNewScreen: FC = () => {
 
       <ProductStatus sheetRef={productStatusRef} />
       <ProductAvailability sheetRef={availabilityRef} />
-      <ProductMeasurement sheetRef={measurementRef} />
     </FormikContext.Provider>
   );
 };
