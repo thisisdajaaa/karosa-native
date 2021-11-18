@@ -70,7 +70,6 @@ const ListChevronStyles = StyleSheet.create({
     position: "relative",
     left: 12,
   },
-<<<<<<< HEAD
   infoSubtitleContainer: {
     position: "relative",
     left: 12,
@@ -92,8 +91,6 @@ const ListChevronStyles = StyleSheet.create({
     alignSelf: "flex-start",
     top: 2,
   },
-=======
->>>>>>> c416e9e... feat(added new variation in chevronlist and added new component imageoverlay): new Components
   infoContainerWithoutChevron: {
     position: "relative",
     // left: 9,

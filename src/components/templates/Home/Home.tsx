@@ -13,7 +13,6 @@ import routes from "@app/navigators/routes";
 import Button from "@app/atoms/Button";
 import { useNavigation } from "@react-navigation/native";
 
-<<<<<<< HEAD
 const HomeTemplate: FC = () => {
   return (
     <>
@@ -25,20 +24,6 @@ const HomeTemplate: FC = () => {
         }}
       />
     </>
-=======
-const HomeTemplate: FC<PropsType> = (props) => {
-  const { screenProps } = props;
-  const { navigate } = useNavigation();
-  return (
-    <Screen {...screenProps}>
-      <BaseText text={"HOME"} />
-
-      <Button
-        title="Testing only"
-        onPress={() => navigate(routes.SHOP_PRODUCT_DETAILS)}
-      />
-    </Screen>
->>>>>>> 9e2ca53... feat(bug fix on footer): bug fix on footer
   );
 };
 
