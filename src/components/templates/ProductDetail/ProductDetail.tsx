@@ -64,9 +64,9 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={ProductDetailStyles.flexView}>
       <View style={ProductDetailStyles.scrollviewContainer}>
-        <ScrollView style={{ flex: 1 }}>
+        <ScrollView style={ProductDetailStyles.flexView}>
           <View style={ProductDetailStyles.subContainer}>
             <View>
               <Image
@@ -241,77 +241,6 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
               />
             </View>
           </View>
-
-          {/* <View style={ProductDetailStyles.subContainer}>
-              <View style={ProductDetailStyles.horizontalContainer}>
-                <View style={ProductDetailStyles.sellerContainer}>
-                  <View>
-                    <Image
-                      source={{
-                        uri: " https://www.pngarts.com/files/3/Cartoon-Farmer-PNG-Photo.png",
-                      }}
-                      imageStyle={ProductDetailStyles.sellerImage}
-                    />
-                  </View>
-                  <View style={ProductDetailStyles.txtNameAddress}>
-                    <Text
-                      text={" Cathy Smith Shop"}
-                      textStyle={ProductDetailStyles.txtBlackRegular}
-                    />
-                    <View>
-                      <Text
-                        text={"Cebu City"}
-                        textStyle={ProductDetailStyles.txtLight}
-                      />
-                      <AntDesign name="enviromento" size={20} />
-                    </View>
-                  </View>
-                </View>
-                <Text
-                  text={"Visit Shop"}
-                  textStyle={[
-                    ProductDetailStyles.txtBlackRegular,
-                    ProductDetailStyles.txtGreen,
-                  ]}
-                />
-              </View>
-              <View
-                style={[
-                  ProductDetailStyles.horizontalContainer,
-                  ProductDetailStyles.ratingContainer,
-                ]}>
-                <View style={ProductDetailStyles.reviewSeller}>
-                  <Text
-                    text={"45"}
-                    textStyle={ProductDetailStyles.txtSellerInfo}
-                  />
-                  <Text
-                    text={"Products"}
-                    textStyle={ProductDetailStyles.txtLight}
-                  />
-                </View>
-                <View style={ProductDetailStyles.reviewSeller}>
-                  <Text
-                    text={"4.7"}
-                    textStyle={ProductDetailStyles.txtSellerInfo}
-                  />
-                  <Text
-                    text={"Rating"}
-                    textStyle={ProductDetailStyles.txtLight}
-                  />
-                </View>
-                <View style={ProductDetailStyles.reviewSeller}>
-                  <Text
-                    text={"92%"}
-                    textStyle={ProductDetailStyles.txtSellerInfo}
-                  />
-                  <Text
-                    text={"Chat Performance"}
-                    textStyle={ProductDetailStyles.txtLight}
-                  />
-                </View>
-              </View>
-            </View> */}
 
           <View style={ProductDetailStyles.subContainer}>
             <View style={ProductDetailStyles.productRatingMain}>

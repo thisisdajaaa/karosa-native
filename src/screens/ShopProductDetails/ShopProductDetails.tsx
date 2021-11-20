@@ -118,12 +118,8 @@ const ShopProductDetailsScreen: FC = () => {
     source: {
       uri: "",
     },
-    viewTextStyle: {
-      justifyContent: "flex-end",
-      height: "33%",
-      bottom: 0,
-    },
-    textStyle: { fontSize: 12, fontWeight: "bold" },
+    viewTextStyle: ProductDetailStyles.viewTextStyle,
+    textStyle: ProductDetailStyles.textStyle,
     imageHeight: 78,
     imageWidth: 90,
   };
@@ -186,13 +182,7 @@ const ShopProductDetailsScreen: FC = () => {
       imageHeight: imageOverlayProps.imageHeight,
       imageWidth: imageOverlayProps.imageWidth,
       mainContainerStyle:
-        props.id == variation1
-          ? {
-              borderWidth: 3,
-              borderColor: theme.colors.green5,
-              borderRadius: 3,
-            }
-          : {},
+        props.id == variation1 ? ProductDetailStyles.mainContainerStyle : {},
       onPress: () => [switchVariation1(props.id, variation1)],
     });
   });
@@ -275,37 +265,14 @@ const ShopProductDetailsScreen: FC = () => {
                                 key={elements.id}
                                 buttonStyle={
                                   elements.id == variation1
-                                    ? [
-                                        {
-                                          borderColor: theme.colors.green5,
-                                          borderWidth: 2,
-                                          paddingLeft: 20,
-                                          paddingRight: 20,
-                                          margin: 5,
-                                        },
-                                      ]
-                                    : {
-                                        borderColor: theme.colors.light10,
-                                        backgroundColor: theme.colors.light10,
-                                        borderWidth: 2,
-                                        paddingLeft: 20,
-                                        paddingRight: 20,
-                                        margin: 5,
-                                      }
+                                    ? ProductDetailStyles.variatonContainerStyle1
+                                    : ProductDetailStyles.variatonContainerStyle2
                                 }
                                 containerStyle={{ margin: 0 }}
                                 titleStyle={
                                   elements.id == variation1
-                                    ? [
-                                        {
-                                          fontSize: 12,
-                                          color: theme.colors.green5,
-                                        },
-                                      ]
-                                    : {
-                                        fontSize: 12,
-                                        color: theme.colors.black,
-                                      }
+                                    ? ProductDetailStyles.buttonTitleStyleDefault
+                                    : ProductDetailStyles.buttonTitleStyleSelected
                                 }
                               />
                             ) : (
@@ -335,27 +302,14 @@ const ShopProductDetailsScreen: FC = () => {
                       key={props.id}
                       buttonStyle={
                         props.id == variation2
-                          ? [
-                              {
-                                borderColor: theme.colors.green5,
-                                borderWidth: 2,
-                                paddingLeft: 20,
-                                paddingRight: 20,
-                              },
-                            ]
-                          : {
-                              borderColor: theme.colors.light10,
-                              backgroundColor: theme.colors.light10,
-                              borderWidth: 2,
-                              paddingLeft: 20,
-                              paddingRight: 20,
-                            }
+                          ? ProductDetailStyles.filterButtonBorder1
+                          : ProductDetailStyles.filterButtonBorder2
                       }
                       containerStyle={{ margin: 0 }}
                       titleStyle={
                         props.id == variation2
-                          ? [{ fontSize: 12, color: theme.colors.green5 }]
-                          : { fontSize: 12, color: theme.colors.black }
+                          ? ProductDetailStyles.buttonTitleStyleSelected
+                          : ProductDetailStyles.buttonTitleStyleDefault
                       }
                     />
                   </>
@@ -372,22 +326,17 @@ const ShopProductDetailsScreen: FC = () => {
                         text={"Quantity"}
                         textStyle={[ProductDetailStyles.txtBlackRegularBold]}
                       />
-                      <View style={{ padding: 10 }} />
+                      <View style={ProductDetailStyles.padding10} />
                       <Text
                         text={initialStocks + " Pcs left"}
                         textStyle={[
                           ProductDetailStyles.txtMuted,
-                          { marginRight: 30 },
+                          ProductDetailStyles.textMargin,
                         ]}
                       />
 
                       <TouchableOpacity
-                        style={{
-                          backgroundColor: theme.colors.light10,
-                          paddingLeft: 5,
-                          paddingRight: 5,
-                          borderRadius: 8,
-                        }}
+                        style={ProductDetailStyles.customButtonStyle1}
                         onPress={() =>
                           setStocks(stocks > 0 ? stocks - 1 : stocks)
                         }>
@@ -402,23 +351,12 @@ const ShopProductDetailsScreen: FC = () => {
                         text={stocks.toString()}
                         textStyle={[
                           ProductDetailStyles.txtBlackRegularBold,
-                          {
-                            marginRight: 20,
-                            marginLeft: 20,
-                            alignContent: "center",
-                            top: 10,
-                            fontSize: 20,
-                          },
+                          ProductDetailStyles.stockText,
                         ]}
                       />
 
                       <TouchableOpacity
-                        style={{
-                          backgroundColor: theme.colors.green5,
-                          paddingLeft: 5,
-                          paddingRight: 5,
-                          borderRadius: 8,
-                        }}
+                        style={ProductDetailStyles.customButtonStyle2}
                         onPress={() =>
                           setStocks(
                             stocks < initialStocks ? stocks + 1 : initialStocks
@@ -454,10 +392,7 @@ const ShopProductDetailsScreen: FC = () => {
                         text={"P800"}
                         textStyle={[
                           ProductDetailStyles.txtMuted,
-                          {
-                            textDecorationLine: "line-through",
-                            textDecorationStyle: "double",
-                          },
+                          ProductDetailStyles.priceText,
                         ]}
                       />
 
@@ -479,40 +414,18 @@ const ShopProductDetailsScreen: FC = () => {
                       justifyContent: "center",
                       bottom: 0,
                     }}>
-                    <View
-                      style={{
-                        alignItems: "center",
-                        flex: 1,
-                        justifyContent: "center",
-                      }}>
+                    <View style={ProductDetailStyles.modalContainerStyle}>
                       <Button
                         title="Add to Basket"
-                        titleStyle={{
-                          color: theme.colors.black,
-                          textAlign: "center",
-                        }}
-                        buttonStyle={{
-                          backgroundColor: theme.colors.light10,
-                          paddingRight: 40,
-                          paddingLeft: 40,
-                        }}
+                        titleStyle={ProductDetailStyles.modalTitleStyle}
+                        buttonStyle={ProductDetailStyles.modalButtonStyle}
                       />
                     </View>
-                    <View
-                      style={{
-                        alignItems: "center",
-                        flex: 1,
-                        justifyContent: "center",
-                      }}>
+                    <View style={ProductDetailStyles.modalContainerStyle}>
                       <Button
                         title="Buy Now"
-                        titleStyle={{
-                          textAlign: "center",
-                        }}
-                        buttonStyle={{
-                          paddingRight: 50,
-                          paddingLeft: 50,
-                        }}
+                        titleStyle={ProductDetailStyles.titleCenter}
+                        buttonStyle={ProductDetailStyles.buttonPadding}
                       />
                     </View>
                   </View>
