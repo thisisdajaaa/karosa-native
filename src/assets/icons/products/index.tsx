@@ -44,6 +44,8 @@ import CategorySeeds from "./category-seeds.svg";
 import CategorySyrups from "./category-syrups.svg";
 import CategoryVegetables from "./category-vegetables.svg";
 import EstimateDate from "./estimate-date.svg";
+import Shipping from "./shipping.svg";
+import ChatNow from "./chatNow.svg";
 
 const ProductsIcon = (
   name: string,
@@ -126,6 +128,8 @@ const ProductsIcon = (
     share: <Share style={extraStyle} height={height} width={width} />,
     sort: <Sort style={extraStyle} height={height} width={width} />,
     warning: <Warning style={extraStyle} height={height} width={width} />,
+    shipping: <Shipping style={extraStyle} height={height} width={width} />,
+    chatNow: <ChatNow style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];

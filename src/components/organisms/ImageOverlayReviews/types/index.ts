@@ -3,15 +3,16 @@
  * @format
  *
  */
+
  import {
-  StyleProp,
-  ImageStyle,
   ImageSourcePropType,
+  StyleProp,
   TextStyle,
   ViewStyle,
+  ImageStyle,
 } from "react-native";
 
-export type ImageOverlayPropsType = {
+export type contentPropsType = {
   source: ImageSourcePropType;
   textStyle?: StyleProp<TextStyle>;
   viewTextStyle?: StyleProp<ViewStyle>;
@@ -21,5 +22,9 @@ export type ImageOverlayPropsType = {
   imageWidth?: number;
   imageHeight?: number;
   hasOverlay?: boolean;
-  onClick?: () => void;
+  onPress?: () => void;
+};
+
+export type PropsType = {
+  overlayProps: contentPropsType[];
 };

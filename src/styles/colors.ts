@@ -2,6 +2,8 @@ const palette = {
   primary: "#0AA351",
   black: "#000",
   white: "#fff",
+  white5: "#FFFFFF",
+
   green5: "#64C465",
   green10: "#31A14C",
   green15: "#61D49726",
@@ -30,6 +32,8 @@ const palette = {
   light20: "#ACABAB",
   transparent: "transparent",
   toast: "rgba(64, 64, 64, 0.87)",
+  grey5: "#F2F3F7",
+  grey10: "#4F4F4F",
 };
 
 export default palette;

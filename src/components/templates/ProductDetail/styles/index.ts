@@ -53,6 +53,9 @@ const ProductDetailStyles = StyleSheet.create({
   txtBlackRegular: {
     ...theme.textRegular,
   },
+  txtBlackRegularBold: {
+    ...theme.textBold,
+  },
   iconStyleEllipsis: {
     position: "absolute",
     alignSelf: "flex-end",
@@ -63,12 +66,38 @@ const ProductDetailStyles = StyleSheet.create({
     height: 15,
   },
   footer: {
-    flex: 3,
-    flexDirection: "row",
-  },
-  subFooterContainer: {
     flex: 1,
-    width: "100%",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    flexDirection: "row",
+    backgroundColor: theme.colors.white5,
+  },
+  subFooterCart: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 8,
+    backgroundColor: theme.colors.grey5,
+    borderRadius: 5,
+  },
+  subFooterChat: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 8,
+    backgroundColor: theme.colors.white5,
+  },
+  subFooterBuy: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 8,
+    borderRadius: 5,
+    backgroundColor: theme.colors.green10,
   },
   button: {
     width: "100%",
@@ -140,6 +169,138 @@ const ProductDetailStyles = StyleSheet.create({
   },
   buyerGallerySection: {
     marginHorizontal: 8,
+  },
+
+  imageWrapper: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+  },
+  image: {
+    flex: 1,
+  },
+  modalTitle: {
+    ...theme.textTitle,
+    fontWeight: "400",
+  },
+  btnGrpViewContainer: {
+    flexDirection: "row",
+    backgroundColor: theme.colors.white,
+  },
+  btnContainer: {
+    flex: 1,
+  },
+  txtMuted: {
+    color: theme.colors.dark10,
+  },
+  horizontalRatingContainer: {
+    backgroundColor: theme.colors.white,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    alignItems: "center",
+  },
+  variationTitle: {
+    ...theme.textBold,
+  },
+  flexView: {
+    flex: 1,
+  },
+  viewTextStyle: {
+    justifyContent: "flex-end",
+    height: "33%",
+    bottom: 0,
+  },
+  textStyle: { fontSize: 12, fontWeight: "bold" },
+  mainContainerStyle: {
+    borderWidth: 3,
+    borderColor: theme.colors.green5,
+    borderRadius: 3,
+  },
+  variatonContainerStyle1: {
+    borderColor: theme.colors.green5,
+    borderWidth: 2,
+    paddingLeft: 20,
+    paddingRight: 20,
+    margin: 5,
+  },
+  variatonContainerStyle2: {
+    borderColor: theme.colors.light10,
+    backgroundColor: theme.colors.light10,
+    borderWidth: 2,
+    paddingLeft: 20,
+    paddingRight: 20,
+    margin: 5,
+  },
+  buttonTitleStyleDefault: {
+    fontSize: 12,
+    color: theme.colors.black,
+  },
+  buttonTitleStyleSelected: {
+    fontSize: 12,
+    color: theme.colors.green5,
+  },
+  filterButtonBorder1: {
+    borderColor: theme.colors.green5,
+    borderWidth: 2,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  filterButtonBorder2: {
+    borderColor: theme.colors.light10,
+    backgroundColor: theme.colors.light10,
+    borderWidth: 2,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  padding10: { padding: 10 },
+  textMargin: { marginRight: 30 },
+  customButtonStyle1: {
+    backgroundColor: theme.colors.light10,
+    paddingLeft: 5,
+    paddingRight: 5,
+    borderRadius: 8,
+  },
+  stockText: {
+    marginRight: 20,
+    marginLeft: 20,
+    alignContent: "center",
+    top: 10,
+    fontSize: 20,
+  },
+  customButtonStyle2: {
+    backgroundColor: theme.colors.light10,
+    paddingLeft: 5,
+    paddingRight: 5,
+    borderRadius: 8,
+  },
+  priceText: {
+    textDecorationLine: "line-through",
+    textDecorationStyle: "double",
+  },
+  modalContainerStyle: {
+    alignItems: "center",
+    flex: 1,
+    justifyContent: "center",
+  },
+  modalButtonStyle: {
+    backgroundColor: theme.colors.light10,
+    paddingRight: 40,
+    paddingLeft: 40,
+  },
+  modalTitleStyle: {
+    color: theme.colors.black,
+    textAlign: "center",
+  },
+  buttonPadding: {
+    paddingRight: 50,
+    paddingLeft: 50,
+  },
+  titleCenter: {
+    textAlign: "center",
   },
 });
 
