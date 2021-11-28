@@ -7,20 +7,27 @@
 
 import React, { FC, ReactElement } from "react";
 import { View } from "react-native";
+import { useFormikContext } from "formik";
+import { ShopPaymentForm } from "@app/redux/shop/models";
 import { theme } from "@app/styles";
 import { listIterator } from "@app/utils";
+import Button from "@app/atoms/Button";
 import Header from "@app/molecules/Header";
 import ListSwitch from "@app/organisms/ListSwitch";
-import FormButton from "@app/molecules/FormButton";
+import validationSchema from "@app/screens/ShopPayment/validation";
 
 import type { PropsType } from "./types";
 import ShopPaymentStyles from "./styles";
 
 const ShopPaymentTemplate: FC<PropsType> = (props) => {
-  const { onBack, paymentButtonProps } = props;
+  const { onBack } = props;
+
+  const { values, submitForm } = useFormikContext<ShopPaymentForm>();
+
+  const isFormValid = validationSchema.isValidSync(values);
 
   const listSwitch = (title: string, name: string) => {
-    return <ListSwitch boldTitle={title} name={name} hasBottomDivider />;
+    return <ListSwitch title={title} name={name} hasBottomDivider />;
   };
 
   const getPaymentForm = () => {
@@ -38,7 +45,7 @@ const ShopPaymentTemplate: FC<PropsType> = (props) => {
   const getPaymentButton = () => {
     return (
       <View style={ShopPaymentStyles.buttonContainer}>
-        <FormButton {...paymentButtonProps} />
+        <Button title="Submit" disabled={!isFormValid} onPress={submitForm} />
       </View>
     );
   };

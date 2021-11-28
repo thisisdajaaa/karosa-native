@@ -79,16 +79,19 @@ export type ShippingDetailsForm = {
 };
 
 export type ShopSettingsForm = {
-  coverPhoto?: string;
-  avatarPhoto?: string;
+  coverPhoto: string;
+  avatarPhoto: string;
   shopName: string;
+  email: string;
   status: ENUM.Shop_Status;
+  hasPayment: boolean;
 };
 
 export type ShopPaymentForm = {
   cod: boolean;
   gcash: boolean;
   creditCard: boolean;
+  hasOneOption: boolean;
 };
 
 export type ShopAddressForm = {

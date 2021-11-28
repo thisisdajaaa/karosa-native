@@ -20,6 +20,9 @@ export const shopEntryContext = produce(
       case getType(actions.setShopSettings):
         draft.shopSettings = action.payload;
         return draft;
+      case getType(actions.setShopPaymentOption):
+        draft.shopSettings.hasPayment = action.payload;
+        return draft;
       case getType(actions.setShopPayment):
         draft.shopPayment = action.payload;
         return draft;

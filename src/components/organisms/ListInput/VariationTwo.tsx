@@ -7,7 +7,6 @@
 
 import React, { FC } from "react";
 import { ListItem } from "react-native-elements";
-import { View } from "react-native";
 import { theme } from "@app/styles";
 import { useFieldError } from "@app/hooks";
 import Text from "@app/atoms/Text";
@@ -18,6 +17,7 @@ import ValidationMessage from "@app/molecules/ValidationMessage";
 import type { PropsType } from "./types";
 import { NUM_LINES } from "./config";
 import ListInputStyles from "./styles";
+import { View } from "react-native";
 
 const VariationTwo: FC<PropsType> = (props) => {
   const {
@@ -36,42 +36,45 @@ const VariationTwo: FC<PropsType> = (props) => {
   return (
     <ListItem bottomDivider={hasBottomDivider}>
       <ListItem.Content style={ListInputStyles.variationTwoContainer}>
-        <ListItem.Content style={ListInputStyles.mainRowContainer}>
-          <View style={ListInputStyles.labelContainer}>
-            {icon ? (
-              <>
-                <Icon
-                  group={icon.group}
-                  name={icon.name}
-                  height={icon.height}
-                  width={icon.width}
-                  extraStyle={ListInputStyles.icon}
-                />
-                <Text text={label} textStyle={ListInputStyles.txtWithIcon} />
-              </>
-            ) : (
-              <Text text={label} textStyle={ListInputStyles.txtLabel} />
-            )}
+        <View style={ListInputStyles.labelLengthContainer}>
+          {icon ? (
+            <>
+              <Icon
+                group={icon.group}
+                name={icon.name}
+                height={icon.height}
+                width={icon.width}
+                extraStyle={ListInputStyles.icon}
+              />
+              <Text text={label} textStyle={ListInputStyles.txtWithIcon} />
+            </>
+          ) : (
+            <Text text={label} textStyle={ListInputStyles.txtLabel} />
+          )}
 
-            {required && (
-              <Text text="*" textStyle={ListInputStyles.txtRequired} />
-            )}
-          </View>
-          <ListItem.Content style={ListInputStyles.rowInputContainer}>
-            <FormInput
-              keyboardType={keyboardType}
-              name={name}
-              placeholder={placeholder}
-              placeholderColor={theme.colors.primary}
-              numberOfLines={NUM_LINES.ONE}
-              maxLength={maxLen}
-              inputStyle={ListInputStyles.txtRowInput}
-              inputContainerStyle={ListInputStyles.inputContainer}
-            />
+          {required && (
+            <Text text="*" textStyle={ListInputStyles.txtRequired} />
+          )}
+        </View>
+
+        {isError && (
+          <ListItem.Content style={ListInputStyles.errorContainer}>
+            <ValidationMessage name={name} />
           </ListItem.Content>
-        </ListItem.Content>
+        )}
+      </ListItem.Content>
 
-        {isError && <ValidationMessage name={name} />}
+      <ListItem.Content style={ListInputStyles.rowInputContainer}>
+        <FormInput
+          keyboardType={keyboardType}
+          name={name}
+          placeholder={placeholder}
+          placeholderColor={theme.colors.primary}
+          numberOfLines={NUM_LINES.ONE}
+          maxLength={maxLen}
+          inputStyle={ListInputStyles.txtRowInput}
+          inputContainerStyle={ListInputStyles.inputContainer}
+        />
       </ListItem.Content>
     </ListItem>
   );

@@ -4,7 +4,8 @@
  *
  */
 
- import { StyleProp, TextStyle } from "react-native";
+import { WithIcon } from "@app/utils";
+import { StyleProp, TextStyle } from "react-native";
 
 export type PropsType = {
   title: string;
@@ -23,4 +24,6 @@ export type PropsType = {
   iconHeight?: number;
   onPress: () => void;
   hasChevron?: boolean;
+  icon?: WithIcon;
+  titleStyle?: StyleProp<TextStyle>;
 };

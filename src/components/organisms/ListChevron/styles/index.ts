@@ -14,7 +14,7 @@ const ListChevronStyles = StyleSheet.create({
     alignItems: "center",
   },
   txtListColor: {
-    ...theme.textRegular,
+    ...theme.textListItem,
     position: "absolute",
     left: 35,
     fontWeight: "400",
@@ -29,7 +29,7 @@ const ListChevronStyles = StyleSheet.create({
     left: 0,
   },
   title: {
-    ...theme.textRegular,
+    ...theme.textListItem,
     fontWeight: "400",
   },
   txtWithIcon: {
@@ -93,7 +93,6 @@ const ListChevronStyles = StyleSheet.create({
   },
   infoContainerWithoutChevron: {
     position: "relative",
-    // left: 9,
   },
 });
 
