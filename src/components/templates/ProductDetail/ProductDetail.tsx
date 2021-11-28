@@ -56,7 +56,8 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-        }}>
+        }}
+      >
         <Icon group="products" name="chatNow" width={20} height={20} />
         <Text text="Chat" textStyle={{ fontSize: 12 }} />
       </View>
