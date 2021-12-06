@@ -27,9 +27,9 @@ export const signInWithGoogle = async (
         accessToken,
         user,
       };
-    } else {
-      return { cancelled: true };
     }
+
+    return Promise.reject();
   } catch (error) {
     setIsGoogleButtonLoading(false);
     return { error };
@@ -62,9 +62,9 @@ export const signInWithFb = async (
       setIsFbuttonLoading(false);
 
       return { token };
-    } else {
-      return { cancelled: true };
     }
+
+    return Promise.reject();
   } catch (error) {
     setIsFbuttonLoading(false);
     return { error };
