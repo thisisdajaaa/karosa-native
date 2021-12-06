@@ -7,6 +7,7 @@
 
 import React, { FC } from "react";
 import { KeyboardAvoidingView, View } from "react-native";
+import { useFormikContext } from "formik";
 import { theme } from "@app/styles";
 import { getPlatform } from "@app/utils";
 import { useFieldError } from "@app/hooks";
@@ -17,6 +18,7 @@ import Text from "@app/atoms/Text";
 import Header from "@app/molecules/Header";
 
 import type { PropsType } from "./types";
+import type { AuthPhoneNumber } from "@app/screens/AuthPhoneNumber/types";
 import { PHONE_NUMBER_LENGTH } from "./config";
 import AuthPhoneNumberStyles from "./styles";
 
@@ -25,7 +27,15 @@ const AuthPhoneNumberTemplate: FC<PropsType> = (props) => {
 
   const { isError } = useFieldError("identifier");
 
+  const { touched, errors } = useFormikContext<AuthPhoneNumber>();
+
   const isIOS = getPlatform.getInstance() === "ios";
+
+  const hasFieldError = () => {
+    return touched.identifier && errors.identifier
+      ? AuthPhoneNumberStyles.errorContainer
+      : AuthPhoneNumberStyles.inputContainer;
+  };
 
   return (
     <>
@@ -47,7 +57,8 @@ const AuthPhoneNumberTemplate: FC<PropsType> = (props) => {
       />
       <KeyboardAvoidingView
         style={AuthPhoneNumberStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <Text
           text={"Enter your phone number"}
           textStyle={AuthPhoneNumberStyles.txtEnterPhoneNumber}
@@ -61,6 +72,7 @@ const AuthPhoneNumberTemplate: FC<PropsType> = (props) => {
           placeholder="Phone number"
           keyboardType="number-pad"
           maxLength={PHONE_NUMBER_LENGTH}
+          inputContainerStyle={hasFieldError()}
         />
 
         {isError && (

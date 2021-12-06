@@ -1,9 +1,6 @@
-import { Audit } from "./common";
-
-export type Categories = {
+export type Category = {
   id: number;
   name: string;
-  description: string;
-} & Audit;
+};
 
-export type Response = Categories[];
+export type Response = Category[];

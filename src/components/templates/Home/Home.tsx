@@ -13,10 +13,8 @@ import { categories, productCategories, trendingCategories } from "./config";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Text from "@app/atoms/Text";
 import Icon from "@app/atoms/Icon";
-// import { Header } from "react-native-elements";
 import type { PropsType } from "./types";
 import Banner from "@app/atoms/Banner";
-// import { Screen } from "@app/components/molecules/Base-Screen";
 import { theme } from "@app/styles";
 import ProductCard from "@app/components/organisms/ProductCard";
 import { COMMON } from "@app/constants";
@@ -30,8 +28,8 @@ const HomeTemplate: FC<PropsType> = (props) => {
   const { bannerProps, productProps } = props;
   const { goBack, navigate } = useNavigation();
   return (
-    <View style={{ flex: 1 }}>
-      <Header onBack={() => console.log("testing")} />
+    <View style={HomeStyles.flexHome}>
+      <Header onBack={() => console.log("testing")} style={undefined} />
       <ScrollView>
         <Image
           source={{
@@ -41,7 +39,7 @@ const HomeTemplate: FC<PropsType> = (props) => {
         />
 
         <View style={HomeStyles.subContainer}>
-          <View style={{ height: "15%" }}>
+          <View style={HomeStyles.subContainerView}>
             <FlatList
               numColumns={1}
               data={categories}
@@ -71,13 +69,7 @@ const HomeTemplate: FC<PropsType> = (props) => {
           <View>
             <Text
               text={"Categories"}
-              textStyle={{
-                paddingLeft: 15,
-                paddingTop: 15,
-                fontSize: 16,
-                lineHeight: 18.75,
-                fontWeight: "400",
-              }}
+              textStyle={HomeStyles.categoryTextStyle}
             />
 
             <FlatList
@@ -89,13 +81,7 @@ const HomeTemplate: FC<PropsType> = (props) => {
                 <TouchableOpacity
                   style={[
                     HomeStyles.categoriesCard,
-                    {
-                      backgroundColor: theme.colors.light15,
-                      width: 100,
-                      height: 100,
-                      paddingTop: 10,
-                      borderRadius: 6,
-                    },
+                    HomeStyles.categoryCardStyle,
                   ]}
                   onPress={() =>
                     navigate("Stack", {
@@ -183,7 +169,7 @@ const HomeTemplate: FC<PropsType> = (props) => {
                 ]}
                 onPress={() => console.log("testing")}>
                 <View>
-                  <Text text={item.name} textStyle={{ fontWeight: "bold" }} />
+                  <Text text={item.name} textStyle={HomeStyles.fontBold} />
                   <Text
                     text={"100 products"}
                     textStyle={HomeStyles.categoriesText}

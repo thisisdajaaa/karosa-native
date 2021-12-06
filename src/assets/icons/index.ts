@@ -11,6 +11,8 @@ import CommonIcons from "./common";
 import HomeIcons from "./home";
 import LoginIcons from "./login";
 import ProductsIcons from "./products";
+import BasketIcons from "./basket";
+import CheckoutIcons from "./checkout";
 import WishlistIcons from "./wishlist";
 
 const Icons: {
@@ -27,6 +29,8 @@ const Icons: {
   home: HomeIcons,
   login: LoginIcons,
   products: ProductsIcons,
+  basket: BasketIcons,
+  checkout: CheckoutIcons,
   wishlist: WishlistIcons,
 };
 

@@ -30,7 +30,8 @@ const Header: FC<HeaderProps> = (props) => {
         blurRadius={1}
         source={{
           uri: "https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606613/karosa/shop_ynswwn.jpg",
-        }}>
+        }}
+      >
         <StatusBar translucent backgroundColor="transparent" />
         <BaseHeader
           containerStyle={HeaderStyles.headerContainer}

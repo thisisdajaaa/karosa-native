@@ -25,10 +25,6 @@ const ProductShippingStyles = StyleSheet.create({
     marginTop: "3%",
     marginBottom: "3%",
   },
-  buttonSpacer: {
-    marginTop: "12%",
-    marginBottom: "12%",
-  },
 });
 
 export default ProductShippingStyles;

@@ -25,9 +25,9 @@ export const setProductStatus = createAction(
   (resolve) => (values: ENUM.Product_Status) => resolve(values)
 );
 
-export const setProductMeasurement = createAction(
-  types.SET_PRODUCT_MEASUREMENT,
-  (resolve) => (value: string) => resolve(value)
+export const setShippingData = createAction(
+  types.SET_SHIPPING_DATA,
+  (resolve) => (values: boolean) => resolve(values)
 );
 
 export const setCategory = createAction(
@@ -48,6 +48,16 @@ export const setShopAddressForm = createAction(
 export const setVariationForm = createAction(
   types.SET_VARIATION_FORM,
   (resolve) => (values: models.VariationForm) => resolve(values)
+);
+
+export const setBasketContext = createAction(
+  types.SET_BASKET_CONTEXT,
+  (resolve) => (values: models.BasketContext) => resolve(values)
+);
+
+export const setCheckoutContext = createAction(
+  types.SET_CHECKOUT_CONTEXT,
+  (resolve) => (values: models.CheckoutContext) => resolve(values)
 );
 
 export const setAvailabilityForm = createAction(
@@ -100,21 +110,30 @@ export const callProductListApi = createAsyncAction(
   types.ACT_PRODUCT_LIST_FAILURE
 )<undefined, models.ProductListResponse, ResponseError>();
 
+export const callCategoryListApi = createAsyncAction(
+  types.ACT_CATEGORY_LIST_REQUEST,
+  types.ACT_CATEGORY_LIST_SUCCESS,
+  types.ACT_CATEGORY_LIST_FAILURE
+)<undefined, models.CategoryListResponse, ResponseError>();
+
 const actions = {
   setShopStatus,
   setShopSettings,
   setShopAddressForm,
   setShopPayment,
   setProductStatus,
-  setProductMeasurement,
   setCategory,
   setProductForm,
   setVariationForm,
+  setBasketContext,
+  setCheckoutContext,
   setAvailabilityForm,
   setWholesaleForm,
+  setShippingData,
   setShippingDetailsForm,
   callShopInfoApi,
   callShopDeleteApi,
+  callCategoryListApi,
   callShopAddressApi,
   callAddProductApi,
   callProductListApi,

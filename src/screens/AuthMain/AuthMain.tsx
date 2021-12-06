@@ -100,7 +100,8 @@ const AuthMainScreen: FC<PropsType> = (props) => {
     <BottomSheet
       ref={sheetRef}
       onClose={() => setAuthOpen(false)}
-      height={BTM_SHEET_HEIGHT}>
+      height={BTM_SHEET_HEIGHT}
+    >
       <AuthMainTemplate
         isGoogleButtonLoading={isGoogleButtonLoading}
         isFbButtonLoading={isFbButtonLoading}

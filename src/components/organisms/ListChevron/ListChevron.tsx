@@ -8,8 +8,10 @@
 import React, { FC } from "react";
 
 import type { PropsType } from "./types";
-import VariationOne from "./VariantOne";
-import VariationTwo from "./VariantTwo";
+import VariationOne from "./VariationOne";
+import VariationTwo from "./VariationTwo";
+import VariationThree from "./VariationThree";
+import VariationFour from "./VariationFour";
 
 const ListChevron: FC<PropsType> = (props) => {
   const {
@@ -24,6 +26,10 @@ const ListChevron: FC<PropsType> = (props) => {
     infoStyle,
     listColor,
     required,
+    iconWidth,
+    iconHeight,
+    iconGroup,
+    iconName,
   } = props;
 
   switch (variation) {
@@ -54,6 +60,35 @@ const ListChevron: FC<PropsType> = (props) => {
           chevronColor={chevronColor}
         />
       );
+    case 3:
+      return (
+        <VariationThree
+          variation={variation}
+          hasBottomDivider={hasBottomDivider}
+          title={title}
+          onPress={onPress}
+          subtitle={subtitle}
+          avatar={avatar}
+          chevronColor={chevronColor}
+          iconName={iconName}
+          iconGroup={iconGroup}
+          iconHeight={iconHeight}
+          iconWidth={iconWidth}
+        />
+      );
+    case 4:
+      return (
+        <VariationFour
+          variation={variation}
+          hasBottomDivider={hasBottomDivider}
+          listColor={listColor}
+          title={title}
+          onPress={onPress}
+          info={info}
+          required={required}
+          infoStyle={infoStyle}
+        />
+      );
     default:
       return (
         <VariationOne
@@ -65,7 +100,6 @@ const ListChevron: FC<PropsType> = (props) => {
           info={info}
           required={required}
           infoStyle={infoStyle}
-          chevronColor={chevronColor}
         />
       );
   }

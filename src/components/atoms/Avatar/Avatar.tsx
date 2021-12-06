@@ -32,7 +32,8 @@ const Avatar: FC<PropsType> = (props) => {
       activeOpacity={activeOpacity}
       title={title}
       overlayContainerStyle={overlayContainerStyle}
-      containerStyle={containerStyle}>
+      containerStyle={containerStyle}
+    >
       {children}
     </RnAvatar>
   );

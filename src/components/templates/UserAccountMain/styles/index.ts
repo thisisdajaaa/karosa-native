@@ -28,10 +28,8 @@ const UserAccountMainStyles = StyleSheet.create({
     backgroundColor: theme.colors.white,
   },
   myShopButtonContainer: {
-    backgroundColor: theme.colors.primary,
-    height: 10,
-    width: 88,
-    marginTop: 6,
+    width: 91,
+    height: 31,
   },
   firstInfoContainer: {
     width: 50,
@@ -57,10 +55,10 @@ const UserAccountMainStyles = StyleSheet.create({
     marginBottom: 7,
   },
   txtMyShopButton: {
-    ...theme.textLight,
-    alignSelf: "center",
-    position: "absolute",
-    left: 10,
+    ...theme.textLightBold,
+    position: "relative",
+    top: -1,
+    left: -6,
   },
   txtInfo: {
     ...theme.textLight,

@@ -156,7 +156,8 @@ const ShopMainTemplate: FC<PropsType> = (props) => {
             onRefresh={onRefresh}
             tintColor={theme.colors.primary}
           />
-        }>
+        }
+      >
         <>{getProfile()}</>
         <>{getActions()}</>
         <>{getChevron()}</>

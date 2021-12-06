@@ -5,6 +5,7 @@
  *
  */
 
+/* eslint-disable @typescript-eslint/no-var-requires */
 const componentGenerator = require("./component/index.js");
 
 module.exports = (plop) => {

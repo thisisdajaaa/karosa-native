@@ -139,7 +139,8 @@ const ShopSettingsTemplate: FC<PropsType> = (props) => {
     return (
       <KeyboardAvoidingView
         style={ShopSettingsStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
           <>{getImageForm()}</>
           <>{getListForm()}</>

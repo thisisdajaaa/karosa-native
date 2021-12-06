@@ -18,14 +18,19 @@ const AuthPasswordStyles = StyleSheet.create({
     position: "relative",
     overflow: "hidden",
   },
+  inputContainer: {
+    marginBottom: 16,
+  },
+  errorContainer: {
+    borderColor: theme.colors.red5,
+  },
+  validationContainer: {
+    marginVertical: 8,
+  },
   toggleContainer: {
     position: "absolute",
     right: "5%",
-    top: "25%",
-  },
-  validationContainer: {
-    position: "relative",
-    bottom: "2.2%",
+    top: "20%",
   },
   txtToggle: {
     ...theme.textLightBold,

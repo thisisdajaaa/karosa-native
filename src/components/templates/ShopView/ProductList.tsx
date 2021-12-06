@@ -93,7 +93,8 @@ const ProductList = forwardRef<FlatList, any>((props, ref) => {
                 <TouchableWithoutFeedback
                   onPress={() => {
                     setSortAsc(!sortAsc);
-                  }}>
+                  }}
+                >
                   <AntDesign name="down" style={dropdown} />
                 </TouchableWithoutFeedback>
               </ListItem.Content>

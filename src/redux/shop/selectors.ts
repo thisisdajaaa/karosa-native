@@ -23,6 +23,16 @@ export const getVariationForm = () =>
     );
   });
 
+export const getBasket = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return state.basketContext || initShopState.basketContext;
+  });
+
+export const getCheckout = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return state.checkoutContext || initShopState.checkoutContext;
+  });
+
 export const getAvailabilityForm = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return (
@@ -71,14 +81,6 @@ export const getShopPayment = () =>
     );
   });
 
-export const getProductMeasurement = () =>
-  createSelector([rootSelector], (state: ShopState) => {
-    return (
-      state.productEntryContext.productForm.measurement ||
-      initShopState.productEntryContext.productForm.measurement
-    );
-  });
-
 export const getShopInfoResponse = () =>
   createSelector([rootSelector], (state: ShopState) => {
     return state.shopInfoResponse || initShopState.shopInfoResponse;
@@ -99,18 +101,25 @@ export const getProductListResponse = () =>
     return state.productListResponse || initShopState.productListResponse;
   });
 
+export const getCategoryListResponse = () =>
+  createSelector([rootSelector], (state: ShopState) => {
+    return state.categoryListResponse || initShopState.categoryListResponse;
+  });
+
 const selectors = {
   getAvailabilityForm,
   getProductForm,
   getVariationForm,
   getWholesaleForm,
   getShopPayment,
+  getBasket,
+  getCheckout,
   getShopAddressForm,
   getShopSettings,
   getShippingDetailsForm,
-  getProductMeasurement,
   getShopInfoResponse,
   getShopAddressResponse,
+  getCategoryListResponse,
   getAddProductResponse,
   getProductListResponse,
 };

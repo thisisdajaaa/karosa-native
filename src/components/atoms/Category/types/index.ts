@@ -5,6 +5,8 @@
  */
 
 export type PropsType = {
+  id: number;
   name: string;
-  onPress(): void;
+  iconName: string;
+  onPress?(): void;
 };

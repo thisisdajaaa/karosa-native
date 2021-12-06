@@ -51,7 +51,8 @@ const AuthForgotTemplate: FC<PropsType> = (props) => {
     return (
       <KeyboardAvoidingView
         style={AuthForgotStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <Text
           text="Forgot Password?"
           textStyle={AuthForgotStyles.txtForgotPass}

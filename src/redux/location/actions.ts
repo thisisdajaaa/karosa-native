@@ -1,4 +1,5 @@
 import { createAsyncAction } from "typesafe-actions";
+import { ResponseError } from "@app/redux/api-models/common";
 
 import * as types from "./types";
 import {
@@ -15,25 +16,25 @@ export const callRegionApi = createAsyncAction(
   types.ACT_REGION_REQUEST,
   types.ACT_REGION_SUCCESS,
   types.ACT_REGION_FAILURE
-)<undefined, RegionResponse, Error>();
+)<undefined, RegionResponse, ResponseError>();
 
 export const callProvinceApi = createAsyncAction(
   types.ACT_PROVINCE_REQUEST,
   types.ACT_PROVINCE_SUCCESS,
   types.ACT_PROVINCE_FAILURE
-)<ProvinceRequest, ProvinceResponse, Error>();
+)<ProvinceRequest, ProvinceResponse, ResponseError>();
 
 export const callCitiesApi = createAsyncAction(
   types.ACT_CITIES_REQUEST,
   types.ACT_CITIES_SUCCESS,
   types.ACT_CITIES_FAILURE
-)<CitiesRequest, CitiesResponse, Error>();
+)<CitiesRequest, CitiesResponse, ResponseError>();
 
 export const callBarangayApi = createAsyncAction(
   types.ACT_BARANGAY_REQUEST,
   types.ACT_BARANGAY_SUCCESS,
   types.ACT_BARANGAY_FAILURE
-)<BarangayRequest, BarangayResponse, Error>();
+)<BarangayRequest, BarangayResponse, ResponseError>();
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {

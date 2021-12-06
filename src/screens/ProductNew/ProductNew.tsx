@@ -6,35 +6,41 @@
  */
 
 import React, { FC, useCallback, useRef } from "react";
-import { batch, useDispatch } from "react-redux";
+import flatten from "flat";
+import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { FormikContext, useFormik } from "formik";
 import RBSheet from "react-native-raw-bottom-sheet";
-import { useMemoizedSelector } from "@app/hooks";
+import { useMemoizedSelector, useMount, useUpdateEffect } from "@app/hooks";
 import { actions, selectors } from "@app/redux/shop";
 import { AddProductRequest, ProductForm } from "@app/redux/shop/models";
 import ProductNewTemplate from "@app/templates/ProductNew";
 import routes from "@app/navigators/routes";
 import ProductStatus from "@app/screens/ProductStatus";
 import ProductAvailability from "@app/screens/ProductAvailability";
-import ProductMeasurement from "@app/screens/ProductMeasurement";
 
 import type { ProductNewNavigation, ProductNewSheetRefs } from "./types";
-import { statusInformation } from "./config";
+import {
+  addProductRequest,
+  RESPONSE_SUCCESS,
+  statusInformation,
+} from "./config";
+
+import validationSchema from "./validation";
 
 const ProductNewScreen: FC = () => {
   const dispatch = useDispatch();
 
   const productStatusRef = useRef<RBSheet>(null);
   const availabilityRef = useRef<RBSheet>(null);
-  const measurementRef = useRef<RBSheet>(null);
 
   const { goBack, navigate } = useNavigation();
 
-  const callAddProductApi = useCallback(
-    (request: AddProductRequest) =>
-      dispatch(actions.callAddProductApi.request(request)),
-    [dispatch]
+  const productForm = useMemoizedSelector(selectors.getProductForm);
+  const variationForm = useMemoizedSelector(selectors.getVariationForm);
+  const availabilityForm = useMemoizedSelector(selectors.getAvailabilityForm);
+  const getAddProductResponse = useMemoizedSelector(
+    selectors.getAddProductResponse
   );
 
   const clearProductEntry = useCallback(
@@ -47,24 +53,67 @@ const ProductNewScreen: FC = () => {
     [dispatch]
   );
 
-  const productForm = useMemoizedSelector(selectors.getProductForm);
+  const callCategoryListApi = useCallback(() => {
+    dispatch(actions.callCategoryListApi.request());
+  }, [dispatch]);
+
+  const callAddProductApi = useCallback(
+    (values: AddProductRequest) => {
+      dispatch(actions.callAddProductApi.request(values));
+    },
+    [dispatch]
+  );
 
   const { statusValue, statusColor } = statusInformation(productForm.status);
 
-  const formikBag = useFormik({
+  const handleSubmit = (values: ProductForm) => {
+    const payload = addProductRequest(
+      values,
+      availabilityForm,
+      variationForm.variationData
+    );
+
+    setProductForm(values);
+    callAddProductApi(payload);
+  };
+
+  const formikBag = useFormik<ProductForm>({
     initialValues: productForm,
-    onSubmit: (values) => {
-      batch(() => {
-        callAddProductApi({
-          name: values.productNm,
-          categoryId: productForm.categoryId,
-          description: values.description,
-        });
-        setProductForm(values);
-        clearProductEntry();
-      });
-    },
+    validateOnBlur: false,
+    validateOnChange: true,
+    onSubmit: handleSubmit,
+    validationSchema,
   });
+
+  useMount(callCategoryListApi);
+
+  useUpdateEffect(() => {
+    if (formikBag.isSubmitting && !formikBag.isValidating) {
+      for (const path of Object.keys(flatten(formikBag.errors))) {
+        formikBag.setFieldTouched(path, false, false);
+      }
+    }
+  }, [
+    formikBag.errors,
+    formikBag.isSubmitting,
+    formikBag.isValidating,
+    formikBag.setFieldTouched,
+  ]);
+
+  useUpdateEffect(() => {
+    if (getAddProductResponse.response.status === RESPONSE_SUCCESS) {
+      clearProductEntry();
+      navigate(routes.SHOP_PRODUCTS);
+    }
+  }, [getAddProductResponse.response.status]);
+
+  useUpdateEffect(() => {
+    if (productForm.hasShippingData)
+      formikBag.setFieldValue("hasShippingData", true);
+
+    if (productForm.categoryId)
+      formikBag.setFieldValue("categoryId", productForm.categoryId);
+  }, [productForm.hasShippingData, productForm.categoryId]);
 
   const navigation: ProductNewNavigation = {
     onBack: useCallback(() => {
@@ -87,7 +136,6 @@ const ProductNewScreen: FC = () => {
   const sheetRefs: ProductNewSheetRefs = {
     status: () => productStatusRef.current?.open(),
     availability: () => availabilityRef.current?.open(),
-    measurement: () => measurementRef.current?.open(),
   };
 
   return (
@@ -101,7 +149,6 @@ const ProductNewScreen: FC = () => {
 
       <ProductStatus sheetRef={productStatusRef} />
       <ProductAvailability sheetRef={availabilityRef} />
-      <ProductMeasurement sheetRef={measurementRef} />
     </FormikContext.Provider>
   );
 };

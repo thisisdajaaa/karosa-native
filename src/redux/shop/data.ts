@@ -2,6 +2,8 @@ import { ENUM } from "@app/constants";
 
 import {
   AvailabilityForm,
+  BasketContext,
+  CheckoutContext,
   ProductForm,
   ShippingDetailsForm,
   ShopAddressForm,
@@ -13,25 +15,23 @@ import {
 } from "./models";
 
 export const initProductForm: ProductForm = {
-  productImg: "",
+  productImages: [],
   productNm: "",
   description: "",
   price: "",
   weight: "",
   stocks: "",
-  shelfLife: "",
+  upcomingHarvest: false,
+  estimateDate: null,
+  shelfLife: null,
   preOrder: false,
-  measurement: "1",
-  categoryId: 1,
+  categoryId: null,
   status: ENUM.Product_Status.Available,
+  hasShippingData: false,
 };
 
 export const initVariationForm: VariationForm = {
-  variationImg: "",
-  variationNm: "",
-  price: "",
-  weight: "",
-  stocks: "",
+  variationData: [],
 };
 
 export const initAvailabilityForm: AvailabilityForm = {
@@ -55,8 +55,8 @@ export const initShippingDetailsForm: ShippingDetailsForm = {
   width: "",
   length: "",
   height: "",
+  hasOneOption: false,
   expressDelivery: false,
-  karosaDelivery: false,
   pickUpBuyer: false,
   sellerCourier: false,
 };
@@ -84,7 +84,102 @@ export const initShopAddressForm: ShopAddressForm = {
   region: -1,
 };
 
+export const initBasketContext: BasketContext = {
+  storeData: [
+    {
+      id: "1",
+      storeName: "Store Number 1",
+      isChecked: false,
+      items: [
+        {
+          id: "1",
+          image:
+            "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
+          name: "Mangosteen Product Name sample text...",
+          price: 200,
+          quantity: 1,
+          isChecked: false,
+          stock: 4,
+          selectedPicker: 100,
+          picker: [
+            {
+              key: "1",
+              label: "100 Kgms",
+              value: 100,
+            },
+            {
+              key: "2",
+              label: "200 Kgms",
+              value: 200,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      id: "2",
+      storeName: "Store Number 2",
+      isChecked: false,
+      items: [
+        {
+          id: "1",
+          image:
+            "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
+          name: "Mangosteen Product Name sample text...",
+          price: 200,
+          stock: 3,
+          quantity: 1,
+          isChecked: false,
+          selectedPicker: 100,
+          picker: [
+            {
+              key: "1",
+              label: "100 Kgms",
+              value: 100,
+            },
+            {
+              key: "2",
+              label: "200 Kgms",
+              value: 200,
+            },
+          ],
+        },
+        {
+          id: "2",
+          image:
+            "https://cdn.britannica.com/s:800x1000/16/187216-050-CB57A09B/tomatoes-tomato-plant-Fruit-vegetable.jpg",
+          name: "Mangosteen Product Name sample text...",
+          price: 300,
+          quantity: 1,
+          stock: 5,
+          isChecked: false,
+          selectedPicker: 300,
+          picker: [
+            {
+              key: "1",
+              label: "300 Kgms",
+              value: 300,
+            },
+            {
+              key: "2",
+              label: "400 Kgms",
+              value: 400,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+export const initCheckoutContext: CheckoutContext = {
+  orderData: [],
+  paymentMethod: "Cash on Delivery",
+};
+
 export const initShopState: ShopState = {
+  basketContext: initBasketContext,
+  checkoutContext: initCheckoutContext,
   shopEntryContext: {
     shopSettings: initShopSettingsForm,
     shopPayment: initShopPaymentForm,
@@ -116,6 +211,10 @@ export const initShopState: ShopState = {
     response: false,
     isLoading: false,
   },
+  categoryListResponse: {
+    response: [],
+    isLoading: false,
+  },
   shopAddressResponse: {
     response: {
       id: 0,
@@ -132,14 +231,10 @@ export const initShopState: ShopState = {
     isLoading: false,
   },
   addProductResponse: {
-    response: {
-      id: 0,
-      shopId: 0,
-      categoryId: 0,
-      name: "",
-      description: "",
-    },
     isLoading: false,
+    response: {
+      status: 0,
+    },
   },
   productListResponse: {
     response: [],

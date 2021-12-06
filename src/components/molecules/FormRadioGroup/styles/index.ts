@@ -5,20 +5,28 @@
  */
 
 import { StyleSheet } from "react-native";
-import { DIMENS } from "@app/styles";
+import { DIMENS, theme } from "@app/styles";
 
 const FormRadioGroupStyles = StyleSheet.create({
   container: {
     width: "95%",
-    marginLeft: "2%",
   },
   radioContainer: {
+    flex: 1,
     position: "relative",
-    left: "-8.5%",
+    left: "-5.5%",
     flexDirection: "row",
     height: DIMENS.screenWidth * 0.08,
-    justifyContent: "flex-start",
     alignItems: "center",
+    justifyContent: "space-between",
+  },
+  infoContainer: {
+    position: "relative",
+    left: "70.5%",
+  },
+  txtInfo: {
+    ...theme.textSemiBold,
+    fontWeight: "500",
   },
 });
 

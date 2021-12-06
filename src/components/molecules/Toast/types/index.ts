@@ -7,7 +7,7 @@
 
 export interface ToastProps {
   /**
-   * Use predefined types for standard colors/icons, or configure your own types on the provider and use them here. Defaults to 'info'
+   * Use predefined types for standard colors/icons, or configure your own types on the provider and use them here. Defaults to 'error'
    */
   type?: "info" | "success" | "error" | "warning" | string; // TODO: type-safe the custom config values with generics. (this is hard)
 

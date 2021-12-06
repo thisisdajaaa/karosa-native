@@ -18,7 +18,8 @@ const Text: FC<PropsType> = (props) => {
     <RnText
       style={[TextStyles.text, textStyle]}
       numberOfLines={numberOfLines}
-      ellipsizeMode={ellipsizeMode}>
+      ellipsizeMode={ellipsizeMode}
+    >
       {text}
     </RnText>
   );

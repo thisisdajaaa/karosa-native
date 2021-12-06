@@ -11,14 +11,9 @@ import type { PropsType } from "./types";
 import FilterButtonStyles from "./styles";
 
 const FilterButton: FC<PropsType> = (props) => {
-  const { onPress, title, icon, buttonStyle } = props;
+  const { onPress, title, icon, buttonStyle, titleStyle, containerStyle } =
+    props;
 
-  // const [isBlur, setBlur] = useState(false);
-  // let buttonStyle: any = FilterButtonStyles.bgNeutral;
-
-  /*
-    Trigger on click action
-  */
   const onClick = () => {
     onPress();
   };
@@ -31,8 +26,8 @@ const FilterButton: FC<PropsType> = (props) => {
       iconContainerStyle={FilterButtonStyles.iconContainer}
       buttonStyle={buttonStyle || FilterButtonStyles.bgNeutral}
       icon={icon}
-      containerStyle={FilterButtonStyles.container}
-      titleStyle={FilterButtonStyles.title}
+      containerStyle={[FilterButtonStyles.container, containerStyle]}
+      titleStyle={[FilterButtonStyles.title, titleStyle]}
       type={"outline"}
     />
   );

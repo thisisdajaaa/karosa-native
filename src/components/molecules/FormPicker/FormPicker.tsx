@@ -6,7 +6,7 @@
  */
 
 import React, { FC, useState, useCallback, useEffect } from "react";
-import { useField, useFormikContext } from "formik";
+import { useField } from "formik";
 import { useUpdateEffect } from "@app/hooks";
 import Picker from "@app/molecules/Picker";
 
@@ -16,7 +16,6 @@ const FormPicker: FC<PropsType> = (props) => {
   const { name, data, placeholder, disabled } = props;
 
   const [, meta, helpers] = useField(name);
-  const { validateOnChange } = useFormikContext();
 
   const [currentValue, setCurrentValue] = useState<number>(
     meta.value || meta.initialValue
@@ -33,13 +32,11 @@ const FormPicker: FC<PropsType> = (props) => {
   }, [meta.value]);
 
   const handleChange = useCallback((itemValue: number) => {
-    if (validateOnChange) {
-      setCurrentValue(itemValue);
+    setCurrentValue(itemValue);
 
-      if (itemValue !== undefined && Date.now() - mountedOn > 100) {
-        helpers.setValue(itemValue);
-        helpers.setTouched(true);
-      }
+    if (itemValue !== undefined && Date.now() - mountedOn > 100) {
+      helpers.setValue(itemValue);
+      helpers.setTouched(true);
     }
   }, []);
 

@@ -10,7 +10,6 @@ import { theme } from "@app/styles";
 const CategoryStyles = StyleSheet.create({
   categoryContainer: {
     alignItems: "center",
-    width: 100,
     marginBottom: 10,
   },
   categoryCircle: {
@@ -21,7 +20,7 @@ const CategoryStyles = StyleSheet.create({
   },
   nameContainer: {
     marginTop: 4,
-    width: 50,
+    width: 100,
   },
   txtName: {
     ...theme.textLight,

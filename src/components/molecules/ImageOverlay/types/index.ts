@@ -3,7 +3,7 @@
  * @format
  *
  */
-import {
+ import {
   StyleProp,
   ImageStyle,
   ImageSourcePropType,
@@ -11,7 +11,7 @@ import {
   ViewStyle,
 } from "react-native";
 
-export type PropsType = {
+export type ImageOverlayPropsType = {
   source: ImageSourcePropType;
   textStyle?: StyleProp<TextStyle>;
   viewTextStyle?: StyleProp<ViewStyle>;
@@ -20,4 +20,6 @@ export type PropsType = {
   mainContainerStyle?: StyleProp<ViewStyle>;
   imageWidth?: number;
   imageHeight?: number;
+  hasOverlay?: boolean;
+  onClick?: () => void;
 };

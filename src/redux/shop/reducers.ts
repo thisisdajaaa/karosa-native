@@ -33,6 +33,35 @@ export const shopEntryContext = produce(
   data.initShopState.shopEntryContext
 );
 
+export const basketContext = produce(
+  (draft: Draft<models.BasketContext>, action: ActionType<typeof actions>) => {
+    switch (action.type) {
+      case getType(actions.setBasketContext):
+        draft = action.payload;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initShopState.basketContext
+);
+
+export const checkoutContext = produce(
+  (
+    draft: Draft<models.CheckoutContext>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.setCheckoutContext):
+        draft = action.payload;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initShopState.checkoutContext
+);
+
 export const productEntryContext = produce(
   (
     draft: Draft<models.ProductEntryContext>,
@@ -51,14 +80,14 @@ export const productEntryContext = produce(
       case getType(actions.setWholesaleForm):
         draft.wholesaleForm = action.payload;
         return draft;
+      case getType(actions.setShippingData):
+        draft.productForm.hasShippingData = action.payload;
+        return draft;
       case getType(actions.setShippingDetailsForm):
         draft.shippingDetailsForm = action.payload;
         return draft;
       case getType(actions.setProductStatus):
         draft.productForm.status = action.payload;
-        return draft;
-      case getType(actions.setProductMeasurement):
-        draft.productForm.measurement = action.payload;
         return draft;
       case getType(actions.setCategory):
         draft.productForm.categoryId = action.payload;
@@ -146,6 +175,30 @@ export const addProductResponse = produce(
   data.initShopState.addProductResponse
 );
 
+export const categoryListResponse = produce(
+  (
+    draft: Draft<ResponseState<models.CategoryListResponse>>,
+    action: ActionType<typeof actions>
+  ) => {
+    switch (action.type) {
+      case getType(actions.callCategoryListApi.request):
+        draft.isLoading = true;
+        return draft;
+      case getType(actions.callCategoryListApi.success):
+        draft.response = action.payload;
+        draft.isLoading = false;
+        return draft;
+      case getType(actions.callCategoryListApi.failure):
+        draft.error = action.payload;
+        draft.isLoading = false;
+        return draft;
+      default:
+        return draft;
+    }
+  },
+  data.initShopState.categoryListResponse
+);
+
 export const productListResponse = produce(
   (
     draft: Draft<ResponseState<models.ProductListResponse>>,
@@ -173,10 +226,13 @@ export const productListResponse = produce(
 const reducer = combineReducers({
   shopEntryContext,
   productEntryContext,
+  basketContext,
+  checkoutContext,
   shopInfoResponse,
   shopAddressResponse,
   addProductResponse,
   productListResponse,
+  categoryListResponse,
 });
 
 export default reducer;

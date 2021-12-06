@@ -19,6 +19,9 @@ const InputStyles = StyleSheet.create({
     borderStyle: "solid",
     borderColor: theme.colors.dark30,
   },
+  txtError: {
+    display: "none",
+  },
 });
 
 export default InputStyles;

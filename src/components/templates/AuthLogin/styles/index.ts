@@ -15,12 +15,14 @@ const AuthLoginStyles = StyleSheet.create({
     position: "relative",
     backgroundColor: theme.colors.white,
   },
+  inputContainer: {
+    marginBottom: 16,
+  },
   errorContainer: {
     borderColor: theme.colors.red5,
   },
   validationContainer: {
-    position: "relative",
-    bottom: "2.2%",
+    marginVertical: 8,
   },
   logoContainer: {
     position: "absolute",

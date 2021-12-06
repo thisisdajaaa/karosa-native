@@ -7,6 +7,7 @@
 
 "use strict";
 
+/* eslint-disable @typescript-eslint/no-var-requires */
 const screenExists = require("../utils/screenExists");
 
 module.exports = {

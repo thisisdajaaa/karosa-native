@@ -37,7 +37,8 @@ const VariationTwo: FC<PropsType> = (props) => {
       <ImageBackground
         style={ProfileStyles.coverPhoto}
         blurRadius={BLUR_RADIUS}
-        source={{ uri: coverPhoto }}>
+        source={{ uri: coverPhoto }}
+      >
         <StatusBar translucent backgroundColor="transparent" />
         <View style={ProfileStyles.statusBarSpacer} />
         <Header

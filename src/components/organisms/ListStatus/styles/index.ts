@@ -5,13 +5,25 @@
  */
 
 import { StyleSheet } from "react-native";
-import { DIMENS, SPACING, theme } from "@app/styles";
+import { SPACING, theme } from "@app/styles";
 
 const ListStatusStyles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
+  },
+  icon: {
+    position: "relative",
+    left: 0,
+    top: -1,
+  },
+  txtWithIcon: {
+    ...theme.textListItem,
+    position: "relative",
+    left: 7,
+    marginRight: 6,
+    fontWeight: "400",
   },
   txtLabel: {
     ...theme.textRegular,
@@ -25,7 +37,7 @@ const ListStatusStyles = StyleSheet.create({
   },
   valueContainer: { flexDirection: "row", justifyContent: "flex-end" },
   txtValue: {
-    ...theme.textRegular,
+    ...theme.textListItem,
     fontWeight: "700",
   },
 });
@@ -35,8 +47,8 @@ export const StatusItemStyle = (bgColor: string) => {
     circle: {
       borderRadius: 50,
       backgroundColor: bgColor,
-      height: 16,
-      width: 16,
+      height: 13,
+      width: 13,
       marginRight: SPACING.sm,
       marginTop: SPACING.xss - 1,
     },

@@ -47,7 +47,8 @@ const AuthVerificationTemplate: FC<PropsType> = (props) => {
       />
       <KeyboardAvoidingView
         style={AuthVerificationStyles.container}
-        behavior={isIOS ? "padding" : undefined}>
+        behavior={isIOS ? "padding" : undefined}
+      >
         <Text
           text={"Enter verification code"}
           textStyle={AuthVerificationStyles.txtVerificationCode}

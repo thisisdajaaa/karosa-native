@@ -23,6 +23,7 @@ const SearchBarStyles = (
       paddingBottom: 0,
       height: 40,
       position: "relative",
+      flexGrow: 1,
       top: -5,
     },
   });
