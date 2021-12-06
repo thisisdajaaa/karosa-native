@@ -5,6 +5,7 @@ export const SET_SHOP_PAYMENT_OPTION = "shop/setShopPaymentOption" as const;
 export const SET_SHOP_ADDRESS = "shop/setShopAddress" as const;
 export const SET_PRODUCT_STATUS = "shop/setProductStatus" as const;
 export const SET_CATEGORY = "shop/setCategory" as const;
+export const SET_CATEGORY_NAME = "shop/setCategoryName" as const;
 export const SET_PRODUCT_FORM = "shop/setProductForm" as const;
 export const SET_VARIATION_FORM = "shop/setVariationForm" as const;
 export const SET_AVAILABILITY_FORM = "shop/setAvailabilityForm" as const;
@@ -49,6 +50,7 @@ export type Types =
   | typeof SET_PRODUCT_STATUS
   | typeof SET_SHIPPING_DATA
   | typeof SET_CATEGORY
+  | typeof SET_CATEGORY_NAME
   | typeof SET_PRODUCT_FORM
   | typeof SET_VARIATION_FORM
   | typeof SET_AVAILABILITY_FORM

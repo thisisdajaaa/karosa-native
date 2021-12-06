@@ -40,6 +40,11 @@ export const setCategory = createAction(
   (resolve) => (value: number) => resolve(value)
 );
 
+export const setCategoryName = createAction(
+  types.SET_CATEGORY_NAME,
+  (resolve) => (value: string) => resolve(value)
+);
+
 export const setProductForm = createAction(
   types.SET_PRODUCT_FORM,
   (resolve) => (values: models.ProductForm) => resolve(values)
@@ -128,6 +133,7 @@ const actions = {
   setShopPayment,
   setProductStatus,
   setCategory,
+  setCategoryName,
   setProductForm,
   setVariationForm,
   setBasketContext,

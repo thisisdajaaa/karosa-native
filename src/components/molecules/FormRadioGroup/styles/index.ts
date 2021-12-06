@@ -5,7 +5,7 @@
  */
 
 import { StyleSheet } from "react-native";
-import { DIMENS, theme } from "@app/styles";
+import { theme } from "@app/styles";
 
 const FormRadioGroupStyles = StyleSheet.create({
   container: {
@@ -16,7 +16,7 @@ const FormRadioGroupStyles = StyleSheet.create({
     position: "relative",
     left: "-5.5%",
     flexDirection: "row",
-    height: DIMENS.screenWidth * 0.08,
+    height: 30,
     alignItems: "center",
     justifyContent: "space-between",
   },

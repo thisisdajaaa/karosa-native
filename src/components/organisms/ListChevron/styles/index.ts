@@ -13,6 +13,9 @@ const ListChevronStyles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
+  flexRow: {
+    flexDirection: "row",
+  },
   txtListColor: {
     ...theme.textListItem,
     position: "absolute",
@@ -69,23 +72,26 @@ const ListChevronStyles = StyleSheet.create({
   infoContainer: {
     position: "relative",
     left: 12,
+    flexBasis: "40%",
   },
   infoSubtitleContainer: {
     position: "relative",
     left: 12,
+    top: 3,
     alignSelf: "flex-start",
+    flexBasis: "40%",
   },
   iconSubtitle: {
     alignSelf: "flex-start",
     top: -3,
   },
   txtSubtitleVariationOne: {
-    ...theme.textRegular,
+    ...theme.textLight,
     color: theme.colors.dark30,
+    fontWeight: "300",
     position: "relative",
     left: 7,
     top: 4,
-    fontWeight: "400",
   },
   chevronSubtitleContainer: {
     alignSelf: "flex-start",

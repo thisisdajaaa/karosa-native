@@ -50,9 +50,6 @@ const ListInputStyles = StyleSheet.create({
     marginBottom: 0,
     height: 0,
   },
-  errorContainer: {
-    marginTop: SPACING.md,
-  },
   columnInputContainer: {
     borderWidth: 0,
     borderBottomWidth: 0,

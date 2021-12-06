@@ -47,6 +47,7 @@ const ListChevron: FC<PropsType> = (props) => {
           required={required}
           infoStyle={infoStyle}
           chevronColor={chevronColor}
+          subtitle={subtitle}
           icon={icon}
           titleStyle={titleStyle}
         />

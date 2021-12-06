@@ -26,6 +26,7 @@ export const initProductForm: ProductForm = {
   shelfLife: null,
   preOrder: false,
   categoryId: null,
+  categoryName: null,
   status: ENUM.Product_Status.Available,
   hasShippingData: false,
 };
@@ -65,6 +66,8 @@ export const initShopSettingsForm: ShopSettingsForm = {
   shopName: "",
   coverPhoto: "",
   avatarPhoto: "",
+  email: "",
+  hasPayment: false,
   status: ENUM.Shop_Status.Active,
 };
 
@@ -72,6 +75,7 @@ export const initShopPaymentForm: ShopPaymentForm = {
   cod: false,
   gcash: false,
   creditCard: false,
+  hasOneOption: false,
 };
 
 export const initShopAddressForm: ShopAddressForm = {

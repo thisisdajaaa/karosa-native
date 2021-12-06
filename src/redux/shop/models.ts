@@ -27,6 +27,7 @@ export type ProductForm = {
   upcomingHarvest: boolean;
   preOrder: boolean;
   categoryId: number | null;
+  categoryName: string | null;
   status: ENUM.Product_Status;
   hasShippingData: boolean;
 };

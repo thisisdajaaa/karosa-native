@@ -58,7 +58,7 @@ const VariationTwo: FC<PropsType> = (props) => {
         </View>
 
         {isError && (
-          <ListItem.Content style={ListInputStyles.errorContainer}>
+          <ListItem.Content>
             <ValidationMessage name={name} />
           </ListItem.Content>
         )}

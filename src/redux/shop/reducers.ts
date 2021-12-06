@@ -95,6 +95,9 @@ export const productEntryContext = produce(
       case getType(actions.setCategory):
         draft.productForm.categoryId = action.payload;
         return draft;
+      case getType(actions.setCategoryName):
+        draft.productForm.categoryName = action.payload;
+        return draft;
       case getType(actions.clearProductEntry):
         draft = data.initShopState.productEntryContext;
         return draft;
