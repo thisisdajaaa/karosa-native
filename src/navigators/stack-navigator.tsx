@@ -24,6 +24,7 @@ import AuthPasswordScreen from "@app/screens/AuthPassword";
 import AuthVerificationScreen from "@app/screens/AuthVerification";
 import ProductStockPriceScreen from "@app/screens/ProductStockPrice";
 import CheckoutScreen from "@app/screens/Checkout";
+import HomeSearchScreen from "@app/screens/HomeSearch";
 
 import { TabNavigator } from "./tab-navigator";
 
@@ -61,6 +62,7 @@ const StackNavigator: React.FC = () => {
         name="Search My Product"
         component={SearchMyProductScreen}
       />
+      <Stack.Screen name="Home Search" component={HomeSearchScreen} />
       <Stack.Screen
         name="Shop Product Details"
         component={ProductDetailScreen}
