@@ -14,7 +14,7 @@ import NotificationScreen from "@app/screens/Notification";
 import ProductListContent from "@app/templates/ProductList/MainContent";
 import HomeScreen from "@app/screens/Home";
 import routes from "@app/navigators/routes";
-import Home from "@app/screens/Home";
+import ShopView from "@app/screens/ShopView";
 
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -69,7 +69,7 @@ const TabNavigator: FC = () => {
       >
         <BottomTab.Screen
           name={routes.HOME}
-          component={HomeScreen}
+          component={ShopView}
           options={{
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name="home" size={size} color={color} />

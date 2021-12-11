@@ -5,7 +5,7 @@
  */
 
 import { StyleSheet } from "react-native";
-import { theme, DIMENS, SPACING } from "@app/styles";
+import { theme, SPACING } from "@app/styles";
 
 const ListChevronStyles = StyleSheet.create({
   container: {
@@ -65,9 +65,9 @@ const ListChevronStyles = StyleSheet.create({
     fontWeight: "400",
   },
   avatarImg: {
-    width: DIMENS.screenWidth * 0.1,
-    height: DIMENS.screenHeight * 0.056,
-    borderRadius: 50,
+    width: 32,
+    height: 32,
+    borderRadius: 100,
   },
   infoContainer: {
     position: "relative",

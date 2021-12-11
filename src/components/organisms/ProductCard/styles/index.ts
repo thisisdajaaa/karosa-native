@@ -9,13 +9,15 @@ import { theme, DIMENS, SPACING } from "@app/styles";
 
 const ProductCardStyles = StyleSheet.create({
   mainContainer: {
-    height: DIMENS.screenHeight * 0.4,
+    height: 300,
     width: DIMENS.screenWidth * 0.45,
     padding: 0,
     shadowOpacity: 0.03,
     shadowOffset: { height: 2, width: 1 },
     shadowColor: theme.colors.black,
     borderRadius: 3,
+    position: "relative",
+    overflow: "hidden",
   },
   wholesaleContainer: {
     backgroundColor: theme.colors.primary,
@@ -33,11 +35,15 @@ const ProductCardStyles = StyleSheet.create({
     zIndex: 1,
   },
   bottomContentContainer: {
-    paddingTop: SPACING.xss,
+    paddingTop: SPACING.md,
     paddingLeft: SPACING.sm,
     paddingRight: SPACING.sm,
   },
   rowContainer: {
+    flexDirection: "row",
+    marginVertical: SPACING.sm,
+  },
+  lastRowContainer: {
     flexDirection: "row",
     marginVertical: SPACING.xs,
   },
@@ -100,10 +106,7 @@ const ProductCardStyles = StyleSheet.create({
     fontWeight: "400",
     fontStyle: "normal",
   },
-  image: {
-    width: "100%",
-    height: DIMENS.screenHeight * 0.22,
-  },
+  image: { width: "100%", height: undefined, aspectRatio: 1.1 },
 });
 
 export default ProductCardStyles;

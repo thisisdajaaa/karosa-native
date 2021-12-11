@@ -41,7 +41,7 @@ export const HeaderStyles = StyleSheet.create({
   container: {
     flexDirection: "column",
     backgroundColor: theme.colors.white,
-    height: 300,
+    paddingBottom: 12,
   },
   avatarPhoto: {
     width: DIMENS.screenHeight * 0.15,

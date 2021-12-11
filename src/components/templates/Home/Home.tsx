@@ -24,9 +24,11 @@ import routes from "@app/navigators/routes";
 import { useNavigation } from "@react-navigation/native";
 import Header from "./Header";
 import { ListItem } from "react-native-elements";
+
 const HomeTemplate: FC<PropsType> = (props) => {
   const { bannerProps, productProps } = props;
-  const { goBack, navigate } = useNavigation();
+  const { navigate } = useNavigation();
+
   return (
     <View style={HomeStyles.flexHome}>
       <Header onBack={() => console.log("testing")} style={undefined} />
@@ -48,7 +50,8 @@ const HomeTemplate: FC<PropsType> = (props) => {
               renderItem={({ item }: { item: any }) => (
                 <TouchableOpacity
                   style={HomeStyles.categoriesCard}
-                  onPress={() => console.log("testing")}>
+                  onPress={() => console.log("testing")}
+                >
                   <Icon
                     group={"home"}
                     name={item.code}
@@ -90,7 +93,8 @@ const HomeTemplate: FC<PropsType> = (props) => {
                         categories: item.code,
                       },
                     })
-                  }>
+                  }
+                >
                   <View>
                     <Icon
                       group={"wishlist"}
@@ -167,7 +171,8 @@ const HomeTemplate: FC<PropsType> = (props) => {
                   HomeStyles.trendingCard,
                   HomeStyles.horizontalContainer,
                 ]}
-                onPress={() => console.log("testing")}>
+                onPress={() => console.log("testing")}
+              >
                 <View>
                   <Text text={item.name} textStyle={HomeStyles.fontBold} />
                   <Text
@@ -267,6 +272,7 @@ const HomeTemplate: FC<PropsType> = (props) => {
           <FlatList
             numColumns={1}
             data={productProps}
+            showsHorizontalScrollIndicator={false}
             horizontal={true}
             windowSize={300}
             renderItem={({ item }: { item: any }) => (

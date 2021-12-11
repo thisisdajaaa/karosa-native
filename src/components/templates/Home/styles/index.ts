@@ -4,14 +4,16 @@
  *
  */
 
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { DIMENS, SPACING, theme } from "@app/styles";
-import { Dimensions } from "react-native";
 
 export const HomeStyles = StyleSheet.create({
   txtHeader: {
     ...theme.textBold,
     fontWeight: "700",
+  },
+  flexHome: {
+    flex: 1,
   },
   scrollviewContainer: {
     height: 0.93 * Dimensions.get("window").height,

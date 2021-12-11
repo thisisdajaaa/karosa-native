@@ -10,6 +10,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import routes from "@app/navigators/routes";
 import { useNavigation } from "@react-navigation/native";
 import { HomeStyles as styles } from "../../components/templates/Home/styles";
+
 const Home: FC = () => {
   const { goBack, navigate } = useNavigation();
   const screenProps: ScreenProps = {
