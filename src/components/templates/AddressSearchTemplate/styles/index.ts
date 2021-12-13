@@ -3,8 +3,6 @@
  * @format
  *
  */
-
-// import Constants from 'expo-constants';
 import { theme } from "@app/styles";
 import { StyleSheet } from "react-native";
 
