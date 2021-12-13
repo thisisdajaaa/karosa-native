@@ -39,6 +39,20 @@ const AddressMainTemplateStyles = StyleSheet.create({
   scrollviewContainer: {
     height: 0.93 * Dimensions.get("window").height,
   },
+  viewFlex: {
+    flex: 1,
+  },
+  noAddressView: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 100,
+  },
+  noAddressTextStyle: {
+    marginTop: 20,
+  },
+  fullWidth: {
+    width: "100%",
+  },
 });
 
 export default AddressMainTemplateStyles;

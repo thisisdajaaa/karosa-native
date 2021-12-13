@@ -48,12 +48,18 @@ const AddressNewTemplateStyles = StyleSheet.create({
   },
   scrollviewContainer: {
     height: 0.93 * Dimensions.get("window").height,
-    // paddingBottom: Dimensions.get("window").height / 6,
   },
   scrollviewAdjusted: {
     height: 0.5 * Dimensions.get("window").height,
     paddingBottom: Dimensions.get("window").height / 8,
   },
+  viewFlex: {
+    flex: 1,
+  },
+  fullWidth: {
+    width: "100%",
+  },
+  bottomButtonStyle: { fontSize: 16 },
 });
 
 export default AddressNewTemplateStyles;

@@ -10,7 +10,7 @@ import React, { FC, LegacyRef, useCallback, useRef, useState } from "react";
 // import AddressSearchTemplateConfig from "./config";
 import type { PropsType } from "./types";
 import AddressSearchTemplateStyles from "./styles";
-import { View, Animated } from "react-native";
+import { View } from "react-native";
 import Header from "@app/components/molecules/Header";
 import { theme } from "@app/styles";
 import { useNavigation } from "@react-navigation/native";
@@ -22,7 +22,7 @@ import Icon from "@app/atoms/Icon";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { useDispatch } from "react-redux";
 import { NewAddressForm } from "@app/redux/address/models";
-import { actions, selectors } from "@app/redux/address";
+import { actions } from "@app/redux/address";
 import { initNewAddress } from "@app/redux/address/data";
 const AddressSearchTemplate: FC<PropsType> = (props) => {
   const { latitude, longitude, googleAutoCompleteProps } = props;
@@ -60,12 +60,14 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
   const GOOGLE_PLACES_API_KEY = "AIzaSyB2P8TWkc09Z83VZuYz_M_qh62r2s3c-p4";
 
   return (
-    <View style={{ backgroundColor: theme.colors.white }}>
+    <View style={AddressSearchTemplateStyles.mainContainer}>
       <Header
         barStyle="light-content"
         placement={"left"}
         leftComponent={
-          <TouchableWithoutFeedback onPress={goBack} style={{ top: 10 }}>
+          <TouchableWithoutFeedback
+            onPress={goBack}
+            style={AddressSearchTemplateStyles.touchableStyle}>
             <Icon
               group="accountSettings"
               name={"arrow"}
@@ -74,12 +76,7 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
             />
           </TouchableWithoutFeedback>
         }
-        containerStyle={{
-          width: "100%",
-          maxWidth: "100%",
-          zIndex: 1,
-          position: "absolute",
-        }}
+        containerStyle={AddressSearchTemplateStyles.headerContainer}
         centerComponent={
           <GooglePlacesAutocomplete
             placeholder={googleAutoCompleteProps?.placeholder || "Search"}
@@ -146,17 +143,10 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
           />
         </MapView>
 
-        <View
-          style={{
-            position: "absolute", //use absolute position to show button on top of the map
-            bottom: "1%",
-            alignSelf: "center",
-            width: "100%",
-            padding: "5%",
-          }}>
+        <View style={AddressSearchTemplateStyles.buttonBottomView}>
           <Button
             title={"Confirm"}
-            buttonStyle={{ backgroundColor: theme.colors.primary }}
+            buttonStyle={AddressSearchTemplateStyles.buttonPrimary}
             titleStyle={{ fontSize: 16 }}
             disabled={place.latitude > 0 && place.longitude > 0 ? false : true}
             onPress={() => {
