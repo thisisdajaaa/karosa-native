@@ -9,7 +9,7 @@ import React, { FC, useEffect, useState } from "react";
 
 import type { PropsType } from "./types";
 import { useNavigation } from "@react-navigation/native";
-import { Keyboard, Dimensions, ScrollView, View } from "react-native";
+import { Keyboard, ScrollView, View } from "react-native";
 import Header from "@app/components/molecules/Header";
 
 import Text from "@app/atoms/Text";
@@ -24,8 +24,8 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const AddressNewTemplate: FC<PropsType> = (props) => {
   const { details, inputProps } = props;
-  const { goBack, navigate } = useNavigation();
-  const { submitForm, values, errors } = useFormikContext<NewAddressForm>();
+  const { goBack } = useNavigation();
+  const { submitForm } = useFormikContext<NewAddressForm>();
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
@@ -50,7 +50,7 @@ const AddressNewTemplate: FC<PropsType> = (props) => {
   }, []);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={AddressNewTemplateStyles.viewFlex}>
       <Header
         barStyle="light-content"
         leftComponent={
@@ -95,9 +95,9 @@ const AddressNewTemplate: FC<PropsType> = (props) => {
             ? AddressNewTemplateStyles.scrollviewAdjusted
             : AddressNewTemplateStyles.scrollviewContainer
         }>
-        <ScrollView style={{ flex: 1 }}>
+        <ScrollView style={AddressNewTemplateStyles.viewFlex}>
           <View style={AddressNewTemplateStyles.subContainer}>
-            {inputProps.map((props, index) => {
+            {inputProps.map((props) => {
               return (
                 <View>
                   <ListInput
@@ -122,8 +122,8 @@ const AddressNewTemplate: FC<PropsType> = (props) => {
       <View style={AddressNewTemplateStyles.footer}>
         <Button
           title={"Save address"}
-          buttonStyle={{ width: "100%" }}
-          titleStyle={{ fontSize: 16 }}
+          buttonStyle={AddressNewTemplateStyles.fullWidth}
+          titleStyle={AddressNewTemplateStyles.bottomButtonStyle}
           onPress={submitForm}></Button>
       </View>
     </View>

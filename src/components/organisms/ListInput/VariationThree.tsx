@@ -18,7 +18,7 @@ import type { PropsType } from "./types";
 import { NUM_LINES } from "./config";
 import ListInputStyles from "./styles";
 
-const VariationFour: FC<PropsType> = (props) => {
+const VariationThree: FC<PropsType> = (props) => {
   const {
     label,
     hasBottomDivider,
@@ -65,4 +65,4 @@ const VariationFour: FC<PropsType> = (props) => {
   );
 };
 
-export default VariationFour;
+export default VariationThree;

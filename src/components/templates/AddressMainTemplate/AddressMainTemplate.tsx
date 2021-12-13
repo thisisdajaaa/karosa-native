@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 
 import type { PropsType } from "./types";
 import { ScrollView, View } from "react-native";
@@ -28,7 +28,7 @@ const AddressMainTemplate: FC<PropsType> = (props) => {
 
   const addressList = useMemoizedSelector(selectors.getAddressList);
   return (
-    <View style={{ flex: 1 }}>
+    <View style={AddressMainTemplateStyles.viewFlex}>
       <Header
         barStyle="light-content"
         leftComponent={
@@ -47,7 +47,7 @@ const AddressMainTemplate: FC<PropsType> = (props) => {
       <View style={AddressMainTemplateStyles.scrollviewContainer}>
         <ScrollView style={{ flex: 1 }}>
           {addressList.length > 0 ? (
-            addressList.map((props, index) => {
+            addressList.map((props) => {
               return (
                 <ListItem bottomDivider={true}>
                   <View
@@ -92,12 +92,7 @@ const AddressMainTemplate: FC<PropsType> = (props) => {
               );
             })
           ) : (
-            <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: 100,
-              }}>
+            <View style={AddressMainTemplateStyles.noAddressView}>
               <Icon
                 group={"accountSettings"}
                 name={"illustration_address"}
@@ -106,7 +101,7 @@ const AddressMainTemplate: FC<PropsType> = (props) => {
               />
               <Text
                 text={"No added address yet"}
-                textStyle={{ marginTop: 20 }}
+                textStyle={AddressMainTemplateStyles.noAddressTextStyle}
               />
             </View>
           )}
@@ -125,7 +120,7 @@ const AddressMainTemplate: FC<PropsType> = (props) => {
               },
             });
           }}
-          buttonStyle={{ width: "100%" }}
+          buttonStyle={AddressMainTemplateStyles.fullWidth}
         />
       </View>
     </View>

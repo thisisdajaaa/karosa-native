@@ -29,21 +29,21 @@ const AddressNew: FC<PropsType> = (props) => {
 
   const inputProps: ListInputPropsType[] = [
     {
-      variation: COMMON.VARIATION.FOUR,
+      variation: COMMON.VARIATION.THREE,
       label: "Label",
       name: "label",
       numofLines: 1,
       placeholder: "e.g. Home / Office",
     },
     {
-      variation: COMMON.VARIATION.FOUR,
+      variation: COMMON.VARIATION.THREE,
       name: "contactName",
       label: "Contact Name",
       placeholder: "Set Name",
       numofLines: 2,
     },
     {
-      variation: COMMON.VARIATION.FOUR,
+      variation: COMMON.VARIATION.THREE,
       name: "contactNumber",
       label: "Contact Number",
       numofLines: 2,
