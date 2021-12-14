@@ -65,6 +65,29 @@ export const HomeStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
   },
+  flexHome: {
+    flex: 1,
+  },
+  subContainerView: {
+    height: "15%",
+  },
+  categoryTextStyle: {
+    paddingLeft: 15,
+    paddingTop: 15,
+    fontSize: 16,
+    lineHeight: 18.75,
+    fontWeight: "400",
+  },
+  categoryCardStyle: {
+    backgroundColor: theme.colors.light15,
+    width: 100,
+    height: 100,
+    paddingTop: 10,
+    borderRadius: 6,
+  },
+  fontBold: {
+    fontWeight: "bold",
+  },
 });
 
 export const HeaderStyles = StyleSheet.create({

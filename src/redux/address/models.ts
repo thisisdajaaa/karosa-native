@@ -16,6 +16,7 @@ export type UserLocation = {
   latitude: number;
   longitude: number;
 };
+
 export type AddressEntryContext = {
   newAddressForm: NewAddressForm;
   userLocation: UserLocation;

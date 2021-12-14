@@ -7,7 +7,6 @@
 
 import React, { FC } from "react";
 
-<<<<<<< HEAD
 import { HomeStyles } from "./styles/index";
 import { FlatList, ScrollView, View } from "react-native";
 import { categories, productCategories, trendingCategories } from "./config";
@@ -49,7 +48,8 @@ const HomeTemplate: FC<PropsType> = (props) => {
               renderItem={({ item }: { item: any }) => (
                 <TouchableOpacity
                   style={HomeStyles.categoriesCard}
-                  onPress={() => console.log("testing")}>
+                  onPress={() => console.log("testing")}
+                >
                   <Icon
                     group={"home"}
                     name={item.code}
@@ -91,7 +91,8 @@ const HomeTemplate: FC<PropsType> = (props) => {
                         categories: item.code,
                       },
                     })
-                  }>
+                  }
+                >
                   <View>
                     <Icon
                       group={"wishlist"}
@@ -168,7 +169,8 @@ const HomeTemplate: FC<PropsType> = (props) => {
                   HomeStyles.trendingCard,
                   HomeStyles.horizontalContainer,
                 ]}
-                onPress={() => console.log("testing")}>
+                onPress={() => console.log("testing")}
+              >
                 <View>
                   <Text text={item.name} textStyle={HomeStyles.fontBold} />
                   <Text
@@ -309,37 +311,6 @@ const HomeTemplate: FC<PropsType> = (props) => {
         </View>
       </ScrollView>
     </View>
-=======
-import HomeStyles from "./styles";
-import Button from "@app/atoms/Button";
-import { useNavigation } from "@react-navigation/native";
-import routes from "@app/navigators/routes";
-
-const HomeTemplate: FC = () => {
-  const { goBack, navigate } = useNavigation();
-  return (
-    <>
-      <Header
-        hasBottomDivider
-        centerComponent={{
-          text: "Home",
-          style: HomeStyles.txtHeader,
-        }}
-      />
-
-      <Button
-        title="Redirect for testing"
-        onPress={() => {
-          navigate("Stack", {
-            screen: routes.ACCOUNTS_ADDRESS,
-            params: {
-              map: "test",
-            },
-          });
-        }}
-      />
-    </>
->>>>>>> 21ec335... fix(rebasing): rebasing
   );
 };
 
