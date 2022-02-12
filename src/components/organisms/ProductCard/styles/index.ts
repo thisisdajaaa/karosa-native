@@ -9,24 +9,36 @@ import { theme, DIMENS, SPACING } from "@app/styles";
 
 const ProductCardStyles = StyleSheet.create({
   mainContainer: {
-    height: 300,
+    height: 285,
     width: DIMENS.screenWidth * 0.45,
+    margin: 0,
     padding: 0,
     shadowOpacity: 0.03,
     shadowOffset: { height: 2, width: 1 },
     shadowColor: theme.colors.black,
     borderRadius: 3,
     position: "relative",
-    overflow: "hidden",
+    zIndex: 1,
+  },
+  variationThreeCard: {
+    height: 200,
+    width: DIMENS.screenWidth * 0.4,
+    margin: 0,
+    padding: 0,
+    shadowOpacity: 0.08,
+    shadowOffset: { height: 3.4, width: 0 },
+    shadowColor: theme.colors.black,
+    borderRadius: 3,
+    position: "relative",
+    zIndex: 1,
   },
   wholesaleContainer: {
     backgroundColor: theme.colors.primary,
-    height: DIMENS.screenHeight * 0.028,
-    width: DIMENS.screenWidth * 0.18,
     position: "absolute",
-    zIndex: 1,
+    padding: 2,
+    zIndex: 99,
     top: 3,
-    right: 93,
+    left: -4,
   },
   ribbonContainer: {
     position: "absolute",
@@ -75,6 +87,11 @@ const ProductCardStyles = StyleSheet.create({
     fontWeight: "500",
     fontStyle: "normal",
   },
+  txtVariationThreePrice: {
+    ...theme.textLight,
+    fontWeight: "400",
+    fontStyle: "normal",
+  },
   txtLocation: {
     ...theme.textLight,
     color: theme.colors.dark30,
@@ -104,6 +121,11 @@ const ProductCardStyles = StyleSheet.create({
   txtName: {
     ...theme.textRegular,
     fontWeight: "400",
+    fontStyle: "normal",
+  },
+  txtVariationThreeName: {
+    ...theme.textLightBold,
+    fontWeight: "700",
     fontStyle: "normal",
   },
   image: { width: "100%", height: undefined, aspectRatio: 1.1 },

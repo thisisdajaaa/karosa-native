@@ -45,13 +45,11 @@ const VariationTwo: FC<PropsType> = (props) => {
         </View>
       )}
 
-      <View style={{ height: 155 }}>
-        <Image
-          source={{ uri: image }}
-          imageStyle={ProductCardStyles.image}
-          resizeMode="cover"
-        />
-      </View>
+      <Image
+        source={{ uri: image }}
+        imageStyle={ProductCardStyles.image}
+        resizeMode="cover"
+      />
 
       <View style={ProductCardStyles.bottomContentContainer}>
         <Text
@@ -64,12 +62,15 @@ const VariationTwo: FC<PropsType> = (props) => {
             textStyle={ProductCardStyles.txtPrice}
             text={`P${currentPrice}`}
           />
-          <View style={ProductCardStyles.prevPriceContainer}>
-            <Text
-              textStyle={ProductCardStyles.txtPrevPrice}
-              text={`P${previousPrice}`}
-            />
-          </View>
+
+          {previousPrice && (
+            <View style={ProductCardStyles.prevPriceContainer}>
+              <Text
+                textStyle={ProductCardStyles.txtPrevPrice}
+                text={`P${previousPrice}`}
+              />
+            </View>
+          )}
         </View>
         <View style={ProductCardStyles.rowContainer}>
           <Rating

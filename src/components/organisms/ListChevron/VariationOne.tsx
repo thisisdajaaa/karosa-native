@@ -99,7 +99,10 @@ const VariationOne: FC<PropsType> = (props) => {
 
         {!listColor && !icon && (
           <>
-            <Text text={title} textStyle={ListChevronStyles.title} />
+            <Text
+              text={title}
+              textStyle={[ListChevronStyles.title, titleStyle]}
+            />
 
             {required && (
               <Text text={"*"} textStyle={ListChevronStyles.txtRequired} />

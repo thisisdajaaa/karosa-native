@@ -4,7 +4,7 @@
  *
  */
 
-import { DIMENS } from "@app/styles";
+import { DIMENS, theme } from "@app/styles";
 import { StyleSheet } from "react-native";
 
 export const SLIDER_WIDTH = DIMENS.screenWidth;
@@ -13,14 +13,16 @@ export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
 const BannerStyles = StyleSheet.create({
   image: {
     width: "100%",
-    height: 300,
+    height: 180,
+    borderRadius: 10,
   },
+  bannerContainer: { position: "relative", overflow: "hidden" },
   carouselItem: {
-    backgroundColor: "white",
+    backgroundColor: theme.colors.white,
     borderRadius: 8,
     width: ITEM_WIDTH,
     paddingBottom: 40,
-    shadowColor: "#000",
+    shadowColor: theme.colors.black,
     shadowOffset: {
       width: 0,
       height: 3,
@@ -43,7 +45,7 @@ const BannerStyles = StyleSheet.create({
     height: 10,
     borderRadius: 5,
     marginHorizontal: 0,
-    backgroundColor: "white",
+    backgroundColor: theme.colors.white,
   },
 });
 
