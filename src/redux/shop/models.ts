@@ -27,6 +27,7 @@ export type ProductForm = {
   upcomingHarvest: boolean;
   preOrder: boolean;
   categoryId: number | null;
+  categoryName: string | null;
   status: ENUM.Product_Status;
   hasShippingData: boolean;
 };
@@ -79,16 +80,19 @@ export type ShippingDetailsForm = {
 };
 
 export type ShopSettingsForm = {
-  coverPhoto?: string;
-  avatarPhoto?: string;
+  coverPhoto: string;
+  avatarPhoto: string;
   shopName: string;
+  email: string;
   status: ENUM.Shop_Status;
+  hasPayment: boolean;
 };
 
 export type ShopPaymentForm = {
   cod: boolean;
   gcash: boolean;
   creditCard: boolean;
+  hasOneOption: boolean;
 };
 
 export type ShopAddressForm = {

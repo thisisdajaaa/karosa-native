@@ -4,14 +4,16 @@
  *
  */
 
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { DIMENS, SPACING, theme } from "@app/styles";
-import { Dimensions } from "react-native";
 
 export const HomeStyles = StyleSheet.create({
   txtHeader: {
     ...theme.textBold,
     fontWeight: "700",
+  },
+  flexHome: {
+    flex: 1,
   },
   scrollviewContainer: {
     height: 0.93 * Dimensions.get("window").height,
@@ -20,6 +22,15 @@ export const HomeStyles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     flex: 1,
     marginBottom: 10,
+  },
+  lastSectionContainer: {
+    flex: 1,
+    marginBottom: 10,
+  },
+  categoryTextStyle: {
+    ...theme.textRegular,
+    color: theme.colors.dark20,
+    fontWeight: "400",
   },
   productImage: {
     width: 300,
@@ -34,20 +45,33 @@ export const HomeStyles = StyleSheet.create({
   },
   categoriesCard: {
     margin: 10,
-    alignContent: "center",
     alignItems: "center",
   },
+  categoryCardStyle: {
+    backgroundColor: theme.colors.light15,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    marginLeft: 0,
+    marginRight: 14,
+    marginBottom: 18,
+    borderRadius: 10,
+  },
   categoriesText: {
-    width: "100%",
-    fontSize: 12,
-    textAlign: "center",
+    ...theme.textLight,
+    marginTop: 8,
   },
   searchBarContainer: {
     backgroundColor: theme.colors.light5,
     paddingTop: 0,
   },
+  titleStyle: {
+    ...theme.textRegular,
+    width: DIMENS.screenWidth,
+    fontWeight: "400",
+  },
   infoStyle: {
-    color: theme.colors.green5,
+    ...theme.textRegular,
+    color: theme.colors.primary,
     fontWeight: "400",
   },
   row: {
@@ -58,12 +82,53 @@ export const HomeStyles = StyleSheet.create({
     alignItems: "center",
   },
   trendingCard: {
-    margin: 10,
-    backgroundColor: theme.colors.light15,
-    width: 180,
-    height: 80,
+    backgroundColor: theme.colors.white,
+    padding: 16,
     flexDirection: "row",
     justifyContent: "center",
+    borderRadius: 3,
+    borderWidth: 0.2,
+    marginBottom: 12,
+    borderColor: theme.colors.shadow,
+    shadowOpacity: 0.2,
+    shadowOffset: { height: 3.4, width: 0 },
+  },
+  txtTrendingSearch: {
+    ...theme.textLightBold,
+    fontWeight: "700",
+  },
+  txtTrendingProducts: {
+    ...theme.textLight,
+    fontWeight: "300",
+    marginTop: 4,
+  },
+  contentContainer: {
+    marginBottom: 24,
+    paddingHorizontal: 16,
+  },
+  productContainer: {
+    marginRight: 8,
+  },
+  categoryContent: {
+    padding: 8,
+  },
+  bannerContainer: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    marginBottom: 18,
+  },
+  mainCategories: {
+    paddingHorizontal: 16,
+  },
+  wishlistIcon: {
+    marginLeft: 20,
+  },
+  lastSection: {
+    justifyContent: "space-between",
+    marginBottom: 8,
+    paddingHorizontal: 16,
   },
 });
 
@@ -71,7 +136,7 @@ export const HeaderStyles = StyleSheet.create({
   container: {
     flexDirection: "column",
     backgroundColor: theme.colors.white,
-    height: 150,
+    height: 180,
   },
   avatarPhoto: {
     width: DIMENS.screenHeight * 0.15,
@@ -88,12 +153,15 @@ export const HeaderStyles = StyleSheet.create({
   },
   coverPhoto: {
     // height: DIMENS.screenHeight * 0.22,
-    height: 200,
+    height: 180,
   },
   headerContainer: { backgroundColor: theme.colors.transparent },
   chatIcon: {
     position: "absolute",
     left: 25,
+  },
+  cartIcon: {
+    marginRight: 10,
   },
   txtChat: {
     ...theme.textLight,

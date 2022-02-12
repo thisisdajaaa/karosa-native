@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 import { ShopSettingsForm } from "@app/redux/shop/models";
 import { useNavigation } from "@react-navigation/native";
 import { selectors, actions } from "@app/redux/shop";
-import { useMemoizedSelector } from "@app/hooks";
+import { useMemoizedSelector, useUpdateEffect } from "@app/hooks";
 import ShopSettingsTemplate from "@app/templates/ShopSettings";
 import ShopStatus from "@app/screens/ShopStatus";
 import ShopDelete from "@app/screens/ShopDelete";
@@ -46,13 +46,18 @@ const ShopSettingsScreen: FC = () => {
     navigate(routes.SHOP_MAIN);
   };
 
-  const formikBag = useFormik({
+  const formikBag = useFormik<ShopSettingsForm>({
     initialValues: shopSettingsForm,
     validateOnChange: true,
-    validateOnBlur: true,
+    validateOnBlur: false,
     validationSchema: ShopSettingsValidationSchema,
     onSubmit: handleSubmit,
   });
+
+  useUpdateEffect(() => {
+    if (shopSettingsForm.hasPayment)
+      formikBag.setFieldValue("hasPayment", true);
+  }, [shopSettingsForm.hasPayment]);
 
   const navigation: ShopSettingsNavigation = {
     onBack: useCallback(() => {

@@ -20,9 +20,7 @@ import BannerStyles from "./styles";
 
 const Banner: FC<PropsType> = (props) => {
   const { carouselData } = props;
-  const SLIDER_WIDTH = DIMENS.screenWidth;
-
-  const ITEM_WIDTH = SLIDER_WIDTH;
+  const SLIDER_WIDTH = DIMENS.screenWidth * 0.9;
 
   const renderImage = (item: { item: CarouselData }) => {
     return (
@@ -33,26 +31,24 @@ const Banner: FC<PropsType> = (props) => {
   };
 
   const [index, setIndex] = useState(0);
-  const isCarousel = useRef(null);
+  const carouselRef = useRef<Carousel<CarouselData>>(null);
+
   return (
-    <View>
-      <View>
-        <Carousel
-          layout={"stack"}
-          data={carouselData}
-          ref={isCarousel}
-          renderItem={renderImage}
-          sliderWidth={SLIDER_WIDTH}
-          itemWidth={ITEM_WIDTH}
-          layoutCardOffset={LAYOUTCARDOFFSET}
-          onSnapToItem={(value) => setIndex(value)}
-        />
-      </View>
+    <View style={BannerStyles.bannerContainer}>
+      <Carousel
+        layout="stack"
+        data={carouselData}
+        ref={carouselRef}
+        renderItem={renderImage}
+        sliderWidth={SLIDER_WIDTH}
+        itemWidth={SLIDER_WIDTH}
+        layoutCardOffset={LAYOUTCARDOFFSET}
+        onSnapToItem={(value) => setIndex(value)}
+      />
       <View style={BannerStyles.paginationStyle}>
         <Pagination
           dotsLength={carouselData.length}
           activeDotIndex={index}
-          tappableDots={true}
           dotStyle={BannerStyles.dotStyle}
           inactiveDotOpacity={INACTIVEDOTOPACITY}
           inactiveDotScale={INACTIVESCALEDOT}

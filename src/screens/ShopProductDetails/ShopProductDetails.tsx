@@ -230,7 +230,8 @@ const ShopProductDetailsScreen: FC = () => {
                             style={{
                               flexDirection: "row",
                               marginBottom: 20,
-                            }}>
+                            }}
+                          >
                             <ImageOverlayReviews
                               overlayProps={firstVariantMap.slice(
                                 currentPage,
@@ -252,7 +253,8 @@ const ShopProductDetailsScreen: FC = () => {
                           style={{
                             flexDirection: "row",
                             marginBottom: 20,
-                          }}>
+                          }}
+                        >
                           {firstVariation.map((elements, index) => {
                             console.log(elements.title);
                             return index >= pagination[0] &&
@@ -339,7 +341,8 @@ const ShopProductDetailsScreen: FC = () => {
                         style={ProductDetailStyles.customButtonStyle1}
                         onPress={() =>
                           setStocks(stocks > 0 ? stocks - 1 : stocks)
-                        }>
+                        }
+                      >
                         <Ionicons
                           name="remove"
                           size={30}
@@ -361,7 +364,8 @@ const ShopProductDetailsScreen: FC = () => {
                           setStocks(
                             stocks < initialStocks ? stocks + 1 : initialStocks
                           )
-                        }>
+                        }
+                      >
                         <Ionicons
                           name="add"
                           size={30}
@@ -413,7 +417,8 @@ const ShopProductDetailsScreen: FC = () => {
                       flex: 1,
                       justifyContent: "center",
                       bottom: 0,
-                    }}>
+                    }}
+                  >
                     <View style={ProductDetailStyles.modalContainerStyle}>
                       <Button
                         title="Add to Basket"

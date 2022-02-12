@@ -4,7 +4,7 @@
  *
  */
 
-import { DIMENS, theme } from "@app/styles";
+import { theme } from "@app/styles";
 import { StyleSheet } from "react-native";
 
 const ListSwitchStyles = StyleSheet.create({
@@ -12,13 +12,13 @@ const ListSwitchStyles = StyleSheet.create({
     flexDirection: "column",
   },
   switchContainer: {
-    height: DIMENS.screenHeight * 0.028,
     flexDirection: "row",
     alignItems: "center",
   },
   rightContainer: {
-    marginTop: 10,
+    justifyContent: "center",
     alignItems: "flex-end",
+    height: 0,
   },
   txtTitle: {
     ...theme.textListItem,

@@ -45,7 +45,8 @@ const ImageOverlay: FC<ImageOverlayPropsType> = (props) => {
             ImageOverlayStyles.textViewStyle,
             viewTextStyle,
             { backgroundColor: backgroundColorOverlay },
-          ]}>
+          ]}
+        >
           <Text
             text={textContent || ""}
             textStyle={[ImageOverlayStyles.textStyle, textStyle]}

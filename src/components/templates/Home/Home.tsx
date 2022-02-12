@@ -5,308 +5,242 @@
  *
  */
 
-import React, { FC } from "react";
-
-import { HomeStyles } from "./styles/index";
-import { FlatList, ScrollView, View } from "react-native";
-import { categories, productCategories, trendingCategories } from "./config";
+import React, { FC, useCallback } from "react";
+import { FlatList, View } from "react-native";
+import { ListItem } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
+
+import { COMMON } from "@app/constants";
+import { theme } from "@app/styles";
 import Text from "@app/atoms/Text";
 import Icon from "@app/atoms/Icon";
-import type { PropsType } from "./types";
 import Banner from "@app/atoms/Banner";
-import { theme } from "@app/styles";
-import ProductCard from "@app/components/organisms/ProductCard";
-import { COMMON } from "@app/constants";
-import ListChevron from "@app/components/organisms/ListChevron";
-import Image from "@app/atoms/Image";
+import ProductCard from "@app/organisms/ProductCard";
+import ListChevron from "@app/organisms/ListChevron";
 import routes from "@app/navigators/routes";
-import { useNavigation } from "@react-navigation/native";
+
+import type { Product } from "./types";
+import { HomeStyles } from "./styles";
+import { data, ICON_SIZE, NUM_COLUMNS_ONE, NUM_COLUMNS_TWO } from "./config";
 import Header from "./Header";
-import { ListItem } from "react-native-elements";
-const HomeTemplate: FC<PropsType> = (props) => {
-  const { bannerProps, productProps } = props;
-  const { goBack, navigate } = useNavigation();
+
+const HomeTemplate: FC = () => {
+  const { navigate } = useNavigation();
+
+  const keyExtractor = useCallback((_, index) => index.toString(), []);
+
+  const displayCommonProducts = (
+    products: Product[],
+    title: string,
+    sold?: boolean
+  ) => (
+    <View style={HomeStyles.subContainer}>
+      <ListChevron
+        hasBottomDivider={false}
+        title={title}
+        variation={COMMON.VARIATION.ONE}
+        onPress={() => 0}
+        info="See more"
+        titleStyle={HomeStyles.titleStyle}
+        infoStyle={HomeStyles.infoStyle}
+        chevronColor={theme.colors.primary}
+      />
+
+      <FlatList
+        numColumns={NUM_COLUMNS_ONE}
+        data={products}
+        horizontal={true}
+        keyExtractor={keyExtractor}
+        windowSize={300}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={HomeStyles.contentContainer}
+        renderItem={({ item }) => (
+          <View style={HomeStyles.productContainer}>
+            <ProductCard
+              name={item.name}
+              image="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
+              sold={sold ? "30" : undefined}
+              location={!sold ? "Cebu" : undefined}
+              currentPrice="50"
+              wholesale
+              discount="30"
+              variation={COMMON.VARIATION.THREE}
+            />
+          </View>
+        )}
+      />
+    </View>
+  );
+
   return (
     <View style={HomeStyles.flexHome}>
-      <Header onBack={() => console.log("testing")} style={undefined} />
-      <ScrollView>
-        <Image
-          source={{
-            uri: "https://squadstate.com/wp-content/uploads/2020/03/ancient-apparition.jpg",
-          }}
-          imageStyle={HomeStyles.productImage}
-        />
+      <Header />
 
-        <View style={HomeStyles.subContainer}>
-          <View style={HomeStyles.subContainerView}>
-            <FlatList
-              numColumns={1}
-              data={categories}
-              horizontal={true}
-              windowSize={200}
-              renderItem={({ item }: { item: any }) => (
-                <TouchableOpacity
-                  style={HomeStyles.categoriesCard}
-                  onPress={() => console.log("testing")}>
-                  <Icon
-                    group={"home"}
-                    name={item.code}
-                    width={50}
-                    height={50}
-                  />
-                  <Text
-                    text={item.name}
-                    textStyle={HomeStyles.categoriesText}
-                  />
-                </TouchableOpacity>
-              )}
-            />
-          </View>
-          <View>
-            <Banner {...bannerProps} />
-          </View>
-          <View>
-            <Text
-              text={"Categories"}
-              textStyle={HomeStyles.categoryTextStyle}
-            />
-
-            <FlatList
-              numColumns={1}
-              data={productCategories}
-              horizontal={true}
-              windowSize={300}
-              renderItem={({ item }: { item: any }) => (
-                <TouchableOpacity
-                  style={[
-                    HomeStyles.categoriesCard,
-                    HomeStyles.categoryCardStyle,
-                  ]}
-                  onPress={() =>
-                    navigate("Stack", {
-                      screen: routes.HOME_SEARCH,
-                      params: {
-                        categories: item.code,
-                      },
-                    })
-                  }>
-                  <View>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={data}
+        keyExtractor={keyExtractor}
+        renderItem={({ item }) => (
+          <>
+            <View style={HomeStyles.subContainer}>
+              <FlatList
+                numColumns={NUM_COLUMNS_ONE}
+                data={item.categories}
+                horizontal={true}
+                keyExtractor={keyExtractor}
+                windowSize={200}
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={HomeStyles.categoryContent}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    style={HomeStyles.categoriesCard}
+                    onPress={() => 0}
+                  >
                     <Icon
-                      group={"wishlist"}
+                      group="home"
                       name={item.code}
-                      width={50}
-                      height={50}
+                      width={ICON_SIZE.category}
+                      height={ICON_SIZE.category}
                     />
-                  </View>
-                  <Text
-                    text={item.name}
-                    textStyle={HomeStyles.categoriesText}
+                    <Text
+                      text={item.name}
+                      textStyle={HomeStyles.categoriesText}
+                    />
+                  </TouchableOpacity>
+                )}
+              />
+              <View style={HomeStyles.bannerContainer}>
+                <Banner carouselData={item.carousel} />
+              </View>
+              <View style={HomeStyles.mainCategories}>
+                <Text
+                  text="Categories"
+                  textStyle={HomeStyles.categoryTextStyle}
+                />
+
+                <FlatList
+                  data={item.productCategories}
+                  horizontal={true}
+                  keyExtractor={keyExtractor}
+                  showsHorizontalScrollIndicator={false}
+                  windowSize={300}
+                  renderItem={({ item }) => (
+                    <TouchableOpacity
+                      style={[
+                        HomeStyles.categoriesCard,
+                        HomeStyles.categoryCardStyle,
+                      ]}
+                      onPress={() =>
+                        navigate("Stack", {
+                          screen: routes.HOME_SEARCH,
+                          params: {
+                            categories: item.code,
+                          },
+                        })
+                      }
+                    >
+                      <View>
+                        <Icon
+                          group="wishlist"
+                          name={item.code}
+                          width={ICON_SIZE.wishlist}
+                          height={ICON_SIZE.wishlist}
+                        />
+                      </View>
+                      <Text
+                        text={item.name}
+                        textStyle={HomeStyles.categoriesText}
+                      />
+                    </TouchableOpacity>
+                  )}
+                />
+              </View>
+            </View>
+
+            {displayCommonProducts(item.products, "Flash Deals", true)}
+
+            <View style={HomeStyles.subContainer}>
+              <ListItem bottomDivider={false}>
+                <ListItem.Content>
+                  <Text text="Trending Searches" />
+                </ListItem.Content>
+                <Icon group="home" name="loop" height={30} width={30} />
+              </ListItem>
+
+              <FlatList
+                numColumns={NUM_COLUMNS_TWO}
+                data={item.trendingCategories}
+                horizontal={false}
+                windowSize={300}
+                keyExtractor={keyExtractor}
+                showsVerticalScrollIndicator={false}
+                columnWrapperStyle={HomeStyles.row}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    style={[
+                      HomeStyles.trendingCard,
+                      HomeStyles.horizontalContainer,
+                    ]}
+                    onPress={() => 0}
+                  >
+                    <View>
+                      <Text
+                        text={item.name}
+                        textStyle={HomeStyles.txtTrendingSearch}
+                      />
+                      <Text
+                        text="100 products"
+                        textStyle={HomeStyles.txtTrendingProducts}
+                      />
+                    </View>
+                    <Icon
+                      extraStyle={HomeStyles.wishlistIcon}
+                      group="wishlist"
+                      name={item.code}
+                      width={ICON_SIZE.category}
+                      height={ICON_SIZE.category}
+                    />
+                  </TouchableOpacity>
+                )}
+              />
+            </View>
+
+            {displayCommonProducts(item.products, "Region's Best", true)}
+
+            {displayCommonProducts(
+              item.products,
+              "Upcoming Harvest/Supplies",
+              true
+            )}
+
+            {displayCommonProducts(item.products, "Products Near You")}
+
+            <View style={HomeStyles.lastSectionContainer}>
+              <FlatList
+                numColumns={NUM_COLUMNS_TWO}
+                data={item.products}
+                listKey={String(keyExtractor)}
+                columnWrapperStyle={HomeStyles.lastSection}
+                renderItem={({ item }) => (
+                  <ProductCard
+                    name={item.name}
+                    image="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
+                    sold="30"
+                    currentPrice="50"
+                    previousPrice="100"
+                    discount="20"
+                    location="Cebu"
+                    wholesale
+                    rating={2}
+                    variation={COMMON.VARIATION.TWO}
                   />
-                </TouchableOpacity>
-              )}
-            />
-          </View>
-        </View>
-
-        <View style={HomeStyles.subContainer}>
-          <ListChevron
-            hasBottomDivider={false}
-            title={"Flash Deals"}
-            variation={COMMON.VARIATION.ONE}
-            onPress={() => console.log("testing")}
-            info={"See more"}
-            infoStyle={HomeStyles.infoStyle}
-            chevronColor={theme.colors.green5}
-          />
-
-          <FlatList
-            numColumns={1}
-            data={productProps}
-            horizontal={true}
-            windowSize={300}
-            renderItem={({ item }: { item: any }) => (
-              <ProductCard
-                name={item.name}
-                image="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
-                sold="30"
-                currentPrice={"50"}
-                previousPrice={"100"}
-                onButtonClick={() => 0}
-                discount={"20"}
-                rating={item.rating}
-                variation={COMMON.VARIATION.TWO}
+                )}
               />
-            )}
-          />
-        </View>
-
-        <View style={HomeStyles.subContainer}>
-          <ListItem bottomDivider={false}>
-            <ListItem.Content>
-              <ListItem.Title>{"Trending Searches"}</ListItem.Title>
-            </ListItem.Content>
-            <Icon
-              group="home"
-              name="loop"
-              height={30}
-              width={30}
-              extraStyle={{ margin: 5 }}
-            />
-          </ListItem>
-
-          <FlatList
-            numColumns={2}
-            data={trendingCategories}
-            horizontal={false}
-            windowSize={300}
-            columnWrapperStyle={HomeStyles.row}
-            renderItem={({ item }: { item: any }) => (
-              <TouchableOpacity
-                style={[
-                  HomeStyles.trendingCard,
-                  HomeStyles.horizontalContainer,
-                ]}
-                onPress={() => console.log("testing")}>
-                <View>
-                  <Text text={item.name} textStyle={HomeStyles.fontBold} />
-                  <Text
-                    text={"100 products"}
-                    textStyle={HomeStyles.categoriesText}
-                  />
-                </View>
-                <View>
-                  <Icon
-                    extraStyle={{ marginLeft: 20 }}
-                    group={"wishlist"}
-                    name={item.code}
-                    width={50}
-                    height={50}
-                  />
-                </View>
-              </TouchableOpacity>
-            )}
-          />
-        </View>
-
-        <View style={HomeStyles.subContainer}>
-          <ListChevron
-            hasBottomDivider={false}
-            title={"Region's Best"}
-            variation={COMMON.VARIATION.ONE}
-            onPress={() => navigate(routes.HOME_SEARCH)}
-            info={"See more"}
-            infoStyle={HomeStyles.infoStyle}
-            chevronColor={theme.colors.green5}
-          />
-
-          <FlatList
-            numColumns={1}
-            data={productProps}
-            horizontal={true}
-            windowSize={300}
-            renderItem={({ item }: { item: any }) => (
-              <ProductCard
-                name={item.name}
-                image="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
-                sold="30"
-                currentPrice={"50"}
-                previousPrice={"100"}
-                onButtonClick={() => 0}
-                discount={"20"}
-                rating={item.rating}
-                variation={COMMON.VARIATION.TWO}
-              />
-            )}
-          />
-        </View>
-
-        <View style={HomeStyles.subContainer}>
-          <ListChevron
-            hasBottomDivider={false}
-            title={"Upcoming Harvest/Supplies"}
-            variation={COMMON.VARIATION.ONE}
-            onPress={() => console.log("testing")}
-            info={"See more"}
-            infoStyle={HomeStyles.infoStyle}
-            chevronColor={theme.colors.green5}
-          />
-
-          <FlatList
-            numColumns={1}
-            data={productProps}
-            horizontal={true}
-            windowSize={300}
-            renderItem={({ item }: { item: any }) => (
-              <ProductCard
-                name={item.name}
-                image="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
-                sold="30"
-                currentPrice={"50"}
-                previousPrice={"100"}
-                onButtonClick={() => 0}
-                discount={"20"}
-                rating={item.rating}
-                variation={COMMON.VARIATION.TWO}
-              />
-            )}
-          />
-        </View>
-
-        <View style={HomeStyles.subContainer}>
-          <ListChevron
-            hasBottomDivider={false}
-            title={"Products Near You"}
-            variation={COMMON.VARIATION.ONE}
-            onPress={() => console.log("testing")}
-            info={"See more"}
-            infoStyle={HomeStyles.infoStyle}
-            chevronColor={theme.colors.green5}
-          />
-
-          <FlatList
-            numColumns={1}
-            data={productProps}
-            horizontal={true}
-            windowSize={300}
-            renderItem={({ item }: { item: any }) => (
-              <ProductCard
-                name={item.name}
-                image="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
-                sold="30"
-                currentPrice={"50"}
-                previousPrice={"100"}
-                buttonTitle="Boost Now"
-                onButtonClick={() => 0}
-                discount={"20"}
-                rating={item.rating}
-                variation={COMMON.VARIATION.TWO}
-              />
-            )}
-          />
-        </View>
-
-        <View style={HomeStyles.subContainer}>
-          <FlatList
-            numColumns={2}
-            data={productProps}
-            horizontal={false}
-            renderItem={({ item }: { item: any }) => (
-              <ProductCard
-                name={item.name}
-                image="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
-                sold="30"
-                currentPrice={"50"}
-                previousPrice={"100"}
-                onButtonClick={() => 0}
-                discount={"20"}
-                rating={item.rating}
-                variation={COMMON.VARIATION.TWO}
-              />
-            )}
-          />
-        </View>
-      </ScrollView>
+            </View>
+          </>
+        )}
+      />
     </View>
   );
 };

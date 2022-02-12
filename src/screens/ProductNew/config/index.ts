@@ -11,6 +11,7 @@ import {
   VariationItem,
   AddProductRequest,
   AvailabilityForm,
+  ShippingDetailsForm,
 } from "@app/redux/shop/models";
 import { theme } from "@app/styles";
 import { formatDatePayload } from "@app/utils";
@@ -61,6 +62,30 @@ const getStatus = (status: ENUM.Product_Status) => {
   }
 };
 
+export const getAvailabilityData = (availability: AvailabilityForm) =>
+  Object.keys(availability)
+    .filter((item) => availability[item as keyof AvailabilityForm])
+    .map(
+      (item) =>
+        item.charAt(FIRST_CHARACTER).toUpperCase() +
+        item.slice(SLICED_CHARACTER)
+    );
+
+export const getVariationNames = (variationData: VariationItem[]) =>
+  variationData.map((item) => item.variationName);
+
+export const getShippingOption = (shippingForm: ShippingDetailsForm) => {
+  const options: string[] = [];
+
+  const { expressDelivery, pickUpBuyer, sellerCourier } = shippingForm;
+
+  if (expressDelivery) options.push("Lalamove");
+  if (pickUpBuyer) options.push("Pick Up by Buyer");
+  if (sellerCourier) options.push("Seller Own Courier");
+
+  return options.join(", ");
+};
+
 export const addProductRequest = (
   product: ProductForm,
   availability: AvailabilityForm,
@@ -87,13 +112,7 @@ export const addProductRequest = (
     };
   });
 
-  const availabilityData = Object.keys(availability)
-    .filter((item) => availability[item as keyof AvailabilityForm])
-    .map(
-      (item) =>
-        item.charAt(FIRST_CHARACTER).toUpperCase() +
-        item.slice(SLICED_CHARACTER)
-    );
+  const availabilityData = getAvailabilityData(availability);
 
   const isUpcomingHarvest = product.upcomingHarvest;
 

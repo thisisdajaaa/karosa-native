@@ -27,7 +27,7 @@ const ProductCategoriesTemplate: FC<PropsType> = (props) => {
         id={item.id}
         iconName={item.iconName}
         name={item.name}
-        onPress={() => onCategory(item.id)}
+        onPress={() => onCategory(item.id, item.name)}
       />
     );
   };

@@ -30,6 +30,8 @@ const ListChevron: FC<PropsType> = (props) => {
     iconHeight,
     iconGroup,
     iconName,
+    icon,
+    titleStyle,
   } = props;
 
   switch (variation) {
@@ -45,6 +47,9 @@ const ListChevron: FC<PropsType> = (props) => {
           required={required}
           infoStyle={infoStyle}
           chevronColor={chevronColor}
+          subtitle={subtitle}
+          icon={icon}
+          titleStyle={titleStyle}
         />
       );
 

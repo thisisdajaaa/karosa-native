@@ -32,6 +32,7 @@ const palette = {
   light20: "#ACABAB",
   transparent: "transparent",
   toast: "rgba(64, 64, 64, 0.87)",
+  shadow: "rgba(0, 0, 0, 0.15)",
   grey5: "#F2F3F7",
   grey10: "#4F4F4F",
 };

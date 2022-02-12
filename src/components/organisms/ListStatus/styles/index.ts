@@ -26,11 +26,11 @@ const ListStatusStyles = StyleSheet.create({
     fontWeight: "400",
   },
   txtLabel: {
-    ...theme.textRegular,
+    ...theme.textListItem,
     fontWeight: "400",
   },
   txtRequired: {
-    ...theme.textRegular,
+    ...theme.textListItem,
     marginLeft: SPACING.xs,
     color: theme.colors.red5,
     fontWeight: "400",

@@ -18,6 +18,7 @@ import CartGreen from "./cart_green.svg";
 import ChatGreen from "./chat_green.svg";
 import Loop from "./loop.svg";
 import ArrowBack from "./arrow_back.svg";
+import Header from "./header.svg";
 
 const HomeIcons = (
   name: string,
@@ -40,6 +41,7 @@ const HomeIcons = (
     cart_green: <CartGreen style={extraStyle} height={height} width={width} />,
     chat_green: <ChatGreen style={extraStyle} height={height} width={width} />,
     arrow_back: <ArrowBack style={extraStyle} height={height} width={width} />,
+    header: <Header style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];

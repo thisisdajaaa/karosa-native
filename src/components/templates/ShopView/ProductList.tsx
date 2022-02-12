@@ -62,7 +62,7 @@ const ProductList = forwardRef<FlatList, any>((props, ref) => {
     []
   );
 
-  const renderProductTabs = () => {
+  const renderProductTabs = useCallback(() => {
     return (
       <Animated.View style={props.productsTabStyle}>
         <ListItem>
@@ -103,10 +103,11 @@ const ProductList = forwardRef<FlatList, any>((props, ref) => {
         </ListItem>
       </Animated.View>
     );
-  };
+  }, [props.productsTabStyle]);
 
   return (
     <>
+      <>{renderProductTabs()}</>
       <AnimatedFlatList
         ref={ref}
         style={ProductListStyles.container}
@@ -116,7 +117,6 @@ const ProductList = forwardRef<FlatList, any>((props, ref) => {
         renderItem={renderContent}
         {...props}
       />
-      <>{renderProductTabs()}</>
     </>
   );
 });

@@ -20,6 +20,11 @@ export const setShopPayment = createAction(
   (resolve) => (values: models.ShopPaymentForm) => resolve(values)
 );
 
+export const setShopPaymentOption = createAction(
+  types.SET_SHOP_PAYMENT_OPTION,
+  (resolve) => (values: boolean) => resolve(values)
+);
+
 export const setProductStatus = createAction(
   types.SET_PRODUCT_STATUS,
   (resolve) => (values: ENUM.Product_Status) => resolve(values)
@@ -33,6 +38,11 @@ export const setShippingData = createAction(
 export const setCategory = createAction(
   types.SET_CATEGORY,
   (resolve) => (value: number) => resolve(value)
+);
+
+export const setCategoryName = createAction(
+  types.SET_CATEGORY_NAME,
+  (resolve) => (value: string) => resolve(value)
 );
 
 export const setProductForm = createAction(
@@ -123,11 +133,13 @@ const actions = {
   setShopPayment,
   setProductStatus,
   setCategory,
+  setCategoryName,
   setProductForm,
   setVariationForm,
   setBasketContext,
   setCheckoutContext,
   setAvailabilityForm,
+  setShopPaymentOption,
   setWholesaleForm,
   setShippingData,
   setShippingDetailsForm,

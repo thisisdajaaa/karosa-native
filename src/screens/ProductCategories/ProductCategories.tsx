@@ -25,8 +25,14 @@ const ProductCategoriesScreen: FC = () => {
     [dispatch]
   );
 
-  const handleCategory = (value: number) => {
+  const setCategoryName = useCallback(
+    (values: string) => dispatch(actions.setCategoryName(values)),
+    [dispatch]
+  );
+
+  const handleCategory = (value: number, name: string) => {
     setCategory(value);
+    setCategoryName(name);
     navigate(routes.PRODUCT_ADD);
   };
 

@@ -26,7 +26,6 @@ const ListInputStyles = StyleSheet.create({
     flexDirection: "row",
   },
   labelContainer: {
-    marginTop: SPACING.xss - 4,
     flexDirection: "row",
     justifyContent: "flex-start",
   },
@@ -42,15 +41,14 @@ const ListInputStyles = StyleSheet.create({
   },
   rowInputContainer: {
     position: "relative",
-    top: -3,
   },
   inputContainer: {
     borderWidth: 0,
     borderBottomWidth: 0,
     padding: 0,
-  },
-  errorContainer: {
-    marginTop: SPACING.md,
+    marginTop: 0,
+    marginBottom: 0,
+    height: 0,
   },
   columnInputContainer: {
     borderWidth: 0,

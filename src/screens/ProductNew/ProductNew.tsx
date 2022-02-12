@@ -22,6 +22,9 @@ import ProductAvailability from "@app/screens/ProductAvailability";
 import type { ProductNewNavigation, ProductNewSheetRefs } from "./types";
 import {
   addProductRequest,
+  getAvailabilityData,
+  getVariationNames,
+  getShippingOption,
   RESPONSE_SUCCESS,
   statusInformation,
 } from "./config";
@@ -39,6 +42,7 @@ const ProductNewScreen: FC = () => {
   const productForm = useMemoizedSelector(selectors.getProductForm);
   const variationForm = useMemoizedSelector(selectors.getVariationForm);
   const availabilityForm = useMemoizedSelector(selectors.getAvailabilityForm);
+  const shippingForm = useMemoizedSelector(selectors.getShippingDetailsForm);
   const getAddProductResponse = useMemoizedSelector(
     selectors.getAddProductResponse
   );
@@ -138,6 +142,14 @@ const ProductNewScreen: FC = () => {
     availability: () => availabilityRef.current?.open(),
   };
 
+  const information = {
+    availability: getAvailabilityData(availabilityForm).join(", "),
+    variation: getVariationNames(variationForm.variationData).join(", "),
+    shipping: getShippingOption(shippingForm),
+    showShippingPrice: shippingForm.expressDelivery,
+    category: productForm.categoryName ?? "",
+  };
+
   return (
     <FormikContext.Provider value={formikBag}>
       <ProductNewTemplate
@@ -145,6 +157,7 @@ const ProductNewScreen: FC = () => {
         sheetRefs={sheetRefs}
         statusColor={statusColor}
         statusValue={statusValue}
+        information={information}
       />
 
       <ProductStatus sheetRef={productStatusRef} />

@@ -32,7 +32,16 @@ import ProductNewStyles from "./styles";
 import ProductImages from "./ProductImages";
 
 const ProductNewTemplate: FC<PropsType> = (props) => {
-  const { navigation, sheetRefs, statusColor, statusValue } = props;
+  const { navigation, sheetRefs, statusColor, statusValue, information } =
+    props;
+
+  const {
+    availability: availabilityInfo,
+    variation: variationInfo,
+    shipping: shippingInfo,
+    showShippingPrice,
+    category,
+  } = information;
 
   const { submitForm, values } = useFormikContext<ProductForm>();
 
@@ -84,7 +93,9 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
     title: string,
     onPress: () => void,
     required: boolean,
-    icon: WithIcon
+    icon: WithIcon,
+    info = "",
+    subtitle = ""
   ) => {
     return (
       <ListChevron
@@ -93,6 +104,8 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
         required={required}
         variation={COMMON.VARIATION.ONE}
         icon={icon}
+        info={info}
+        subtitle={subtitle}
         hasBottomDivider
       />
     );
@@ -118,19 +131,31 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
       "number-pad"
     );
 
-    const categories = listChevron("Categories", navigation.onCategory, true, {
-      group: "products",
-      name: "listBullet",
-      height: 20,
-      width: 20,
-    });
+    const categories = listChevron(
+      "Categories",
+      navigation.onCategory,
+      true,
+      {
+        group: "products",
+        name: "listBullet",
+        height: 20,
+        width: 20,
+      },
+      category
+    );
 
-    const variation = listChevron("Variation", navigation.onVariation, false, {
-      group: "products",
-      name: "variation",
-      height: 20,
-      width: 20,
-    });
+    const variation = listChevron(
+      "Variation",
+      navigation.onVariation,
+      false,
+      {
+        group: "products",
+        name: "variation",
+        height: 20,
+        width: 20,
+      },
+      variationInfo
+    );
 
     const wholesale = listChevron("Wholesale", navigation.onWholesale, false, {
       group: "products",
@@ -148,7 +173,9 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
         name: "shippingDetails",
         height: 20,
         width: 20,
-      }
+      },
+      showShippingPrice ? "P50 - P80" : "",
+      shippingInfo
     );
 
     const productNm = listInputArea(
@@ -219,7 +246,8 @@ const ProductNewTemplate: FC<PropsType> = (props) => {
         name: "availability",
         height: 20,
         width: 20,
-      }
+      },
+      availabilityInfo
     );
 
     const upcomingHarvest = (

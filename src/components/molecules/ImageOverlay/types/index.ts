@@ -3,7 +3,7 @@
  * @format
  *
  */
- import {
+import {
   StyleProp,
   ImageStyle,
   ImageSourcePropType,

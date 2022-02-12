@@ -5,7 +5,7 @@
  */
 
 import { StyleSheet } from "react-native";
-import { theme, DIMENS, SPACING } from "@app/styles";
+import { theme, SPACING } from "@app/styles";
 
 const ListChevronStyles = StyleSheet.create({
   container: {
@@ -13,8 +13,11 @@ const ListChevronStyles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
+  flexRow: {
+    flexDirection: "row",
+  },
   txtListColor: {
-    ...theme.textRegular,
+    ...theme.textListItem,
     position: "absolute",
     left: 35,
     fontWeight: "400",
@@ -29,7 +32,7 @@ const ListChevronStyles = StyleSheet.create({
     left: 0,
   },
   title: {
-    ...theme.textRegular,
+    ...theme.textListItem,
     fontWeight: "400",
   },
   txtWithIcon: {
@@ -62,30 +65,33 @@ const ListChevronStyles = StyleSheet.create({
     fontWeight: "400",
   },
   avatarImg: {
-    width: DIMENS.screenWidth * 0.1,
-    height: DIMENS.screenHeight * 0.056,
-    borderRadius: 50,
+    width: 32,
+    height: 32,
+    borderRadius: 100,
   },
   infoContainer: {
     position: "relative",
     left: 12,
+    flexBasis: "40%",
   },
   infoSubtitleContainer: {
     position: "relative",
     left: 12,
+    top: 3,
     alignSelf: "flex-start",
+    flexBasis: "40%",
   },
   iconSubtitle: {
     alignSelf: "flex-start",
     top: -3,
   },
   txtSubtitleVariationOne: {
-    ...theme.textRegular,
+    ...theme.textLight,
     color: theme.colors.dark30,
+    fontWeight: "300",
     position: "relative",
     left: 7,
     top: 4,
-    fontWeight: "400",
   },
   chevronSubtitleContainer: {
     alignSelf: "flex-start",
@@ -93,7 +99,6 @@ const ListChevronStyles = StyleSheet.create({
   },
   infoContainerWithoutChevron: {
     position: "relative",
-    // left: 9,
   },
 });
 

@@ -43,6 +43,16 @@ const ShopSettingsStyles = StyleSheet.create({
   subButtonContainer: {
     backgroundColor: theme.colors.light10,
   },
+  txtSave: {
+    ...theme.textRegular,
+    color: theme.colors.primary,
+    fontWeight: "400",
+  },
+  txtSaveDisabled: {
+    ...theme.textRegular,
+    color: theme.colors.dark10,
+    fontWeight: "400",
+  },
 });
 
 export default ShopSettingsStyles;

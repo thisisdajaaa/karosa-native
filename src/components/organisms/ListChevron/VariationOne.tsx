@@ -15,6 +15,7 @@ import Icon from "@app/atoms/Icon";
 
 import type { PropsType } from "./types";
 import ListChevronStyles from "./styles";
+import { NUM_LINE } from "./config";
 
 const VariationOne: FC<PropsType> = (props) => {
   const {
@@ -58,10 +59,20 @@ const VariationOne: FC<PropsType> = (props) => {
                   extraStyle={ListChevronStyles.iconSubtitle}
                 />
                 <View>
-                  <Text
-                    text={title}
-                    textStyle={[ListChevronStyles.txtWithIcon, titleStyle]}
-                  />
+                  <View style={ListChevronStyles.flexRow}>
+                    <Text
+                      text={title}
+                      numberOfLines={NUM_LINE}
+                      textStyle={[ListChevronStyles.txtWithIcon, titleStyle]}
+                    />
+
+                    {required && (
+                      <Text
+                        text={"*"}
+                        textStyle={ListChevronStyles.txtRequired}
+                      />
+                    )}
+                  </View>
 
                   <Text
                     text={subtitle}
@@ -87,31 +98,37 @@ const VariationOne: FC<PropsType> = (props) => {
         )}
 
         {!listColor && !icon && (
-          <Text text={title} textStyle={ListChevronStyles.title} />
-        )}
+          <>
+            <Text
+              text={title}
+              textStyle={[ListChevronStyles.title, titleStyle]}
+            />
 
-        {required && (
-          <Text text={"*"} textStyle={ListChevronStyles.txtRequired} />
+            {required && (
+              <Text text={"*"} textStyle={ListChevronStyles.txtRequired} />
+            )}
+          </>
         )}
       </ListItem.Content>
 
-      {info && subtitle && (
+      {info && subtitle ? (
         <View style={ListChevronStyles.infoSubtitleContainer}>
           <Text
             text={info}
             textStyle={[ListChevronStyles.txtInfo, infoStyle]}
           />
         </View>
-      )}
+      ) : null}
 
-      {info && !subtitle && (
+      {info && !subtitle ? (
         <View style={ListChevronStyles.infoContainer}>
           <Text
             text={info}
+            numberOfLines={NUM_LINE}
             textStyle={[ListChevronStyles.txtInfo, infoStyle]}
           />
         </View>
-      )}
+      ) : null}
 
       {subtitle ? (
         <View style={ListChevronStyles.chevronSubtitleContainer}>

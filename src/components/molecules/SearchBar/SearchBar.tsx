@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /**
  *
  * SearchBar
@@ -18,7 +19,6 @@ const SearchBar: FC<PropsType> = (props) => {
     size = "lg",
     autoCorrect,
     autoFocus,
-    onChangeText,
     onCancel,
     onFocus,
     onTouchStart,
@@ -42,10 +42,21 @@ const SearchBar: FC<PropsType> = (props) => {
       accessibilityRole="search"
       autoFocus={autoFocus}
       onTouchStart={onTouchStart}
-      onCancel={onCancel}
-      onFocus={onFocus}
-      onChangeText={onChangeText}
-      value={value}
+      onCancel={onCancel ? onCancel : () => {}}
+      onFocus={onFocus ? onFocus : () => {}}
+      onChangeText={() => {}}
+      value={value ?? ""}
+      onBlur={() => {}}
+      onClear={() => {}}
+      loadingProps={{}}
+      lightTheme={false}
+      round={false}
+      clearIcon={{ name: "remove" }}
+      searchIcon={{ name: "search" }}
+      showLoading={false}
+      cancelButtonTitle={""}
+      cancelButtonProps={{}}
+      showCancel={false}
     />
   );
 };
