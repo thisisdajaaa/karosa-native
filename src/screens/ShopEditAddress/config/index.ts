@@ -4,7 +4,7 @@
  *
  */
 
-import { isEmpty } from "ramda";
+import { isEmpty } from "lodash";
 import { PickerData } from "@app/redux/api-models/common";
 import { Locations } from "../types";
 

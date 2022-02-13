@@ -6,7 +6,7 @@
  */
 
 import React, { FC } from "react";
-import { isEmpty } from "ramda";
+import { isEmpty } from "lodash";
 import { ListItem } from "react-native-elements";
 import { useFormikContext } from "formik";
 import { FlatList, TouchableWithoutFeedback, View } from "react-native";

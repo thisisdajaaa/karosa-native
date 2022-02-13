@@ -4,7 +4,7 @@
  *
  */
 
-import { isNil } from "ramda";
+import { isNil } from "lodash";
 import * as Yup from "yup";
 
 import { PHONE_NUM_LENGTH } from "../config";

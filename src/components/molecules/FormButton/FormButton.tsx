@@ -6,7 +6,7 @@
  */
 
 import React, { FC } from "react";
-import { isEmpty, equals } from "ramda";
+import { isEqual, isEmpty } from "lodash";
 import { useFormikContext } from "formik";
 import type { PropsType } from "@app/atoms/Button/types";
 import Button from "@app/atoms/Button";
@@ -19,7 +19,7 @@ const FormButton: FC<PropsType> = (props) => {
   const invalid =
     !isValid ||
     isEmpty(touched) ||
-    equals(values, initialValues) ||
+    isEqual(values, initialValues) ||
     !isEmpty(Object.values(errors));
 
   return (

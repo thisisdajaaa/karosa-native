@@ -1,5 +1,5 @@
 import NetInfo from "@react-native-community/netinfo";
-import { isNil } from "ramda";
+import { isNil } from "lodash";
 import { Alert, BackHandler } from "react-native";
 
 export const formatPhoneNumber = (phoneNumber: string) => {
