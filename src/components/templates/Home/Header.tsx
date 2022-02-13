@@ -6,7 +6,7 @@
  */
 
 import React, { FC, memo, useMemo } from "react";
-import { ImageBackground, StatusBar, View } from "react-native";
+import { ImageBackground, View } from "react-native";
 import BaseHeader from "@app/molecules/Header";
 import Searchbar from "@app/molecules/SearchBar";
 import Icon from "@app/atoms/Icon";
@@ -26,7 +26,6 @@ const Header: FC = () => {
           uri: "https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606613/karosa/shop_ynswwn.jpg",
         }}
       >
-        <StatusBar translucent backgroundColor="transparent" />
         <BaseHeader
           containerStyle={HeaderStyles.headerContainer}
           barStyle="light-content"
