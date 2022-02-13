@@ -13,10 +13,8 @@ import HeaderStyles from "./styles";
 
 const Header: FC<PropsType> = (props) => {
   const {
-    children,
     centerComponent,
     containerStyle,
-    isCustom,
     leftComponent,
     placement,
     rightComponent,
@@ -24,14 +22,14 @@ const Header: FC<PropsType> = (props) => {
     hasBottomDivider,
   } = props;
 
-  if (isCustom) {
-    return <RnHeader>{children}</RnHeader>;
-  }
-
   return (
     <RnHeader
+      statusBarProps={{
+        backgroundColor: "transparent",
+        translucent: true,
+      }}
       placement={placement}
-      barStyle={barStyle}
+      barStyle={barStyle ?? "dark-content"}
       containerStyle={
         hasBottomDivider
           ? HeaderStyles.dividerContainer

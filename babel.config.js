@@ -47,5 +47,6 @@ module.exports = function (api) {
       "transform-inline-environment-variables",
     ],
     retainLines: true,
+    compact: true,
   };
 };

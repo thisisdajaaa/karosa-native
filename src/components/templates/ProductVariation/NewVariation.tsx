@@ -8,7 +8,7 @@
 import React, { FC, Fragment, useCallback, useState } from "react";
 import { FlatList, View } from "react-native";
 import { useFormikContext } from "formik";
-import { isEmpty } from "ramda";
+import { isEmpty } from "lodash";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
 import { theme } from "@app/styles";

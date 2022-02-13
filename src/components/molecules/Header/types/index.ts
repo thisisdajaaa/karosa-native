@@ -22,7 +22,6 @@ type Placement = "left" | "center" | "right";
 type BarStyle = "default" | "light-content" | "dark-content";
 
 export type PropsType = {
-  isCustom?: boolean;
   hasBottomDivider?: boolean;
   barStyle?: BarStyle;
   placement?: Placement;

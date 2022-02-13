@@ -5,7 +5,7 @@
  */
 
 import { StyleSheet } from "react-native";
-import { isEmpty } from "ramda";
+import { isEmpty } from "lodash";
 import { DIMENS, theme } from "@app/styles";
 import { VariationOption } from "@app/redux/shop/models";
 

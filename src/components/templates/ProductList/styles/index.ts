@@ -26,8 +26,7 @@ const ProductListStyles = StyleSheet.create({
   },
   row: {
     justifyContent: "space-evenly",
-    paddingLeft: 18,
-    paddingRight: 18,
+    marginVertical: 8,
   },
   buttonContainer: {
     position: "absolute",

@@ -10,6 +10,10 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "androidStatusBar": {
+      "backgroundColor": "#ffffff",
+      "translucent": false
+    },
     "facebookScheme": "fb1091360418020555",
     "facebookAppId": "1091360418020555",
     "facebookDisplayName": "karosa",

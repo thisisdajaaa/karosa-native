@@ -9,7 +9,6 @@ import { theme, DIMENS, SPACING } from "@app/styles";
 
 const ProductCardStyles = StyleSheet.create({
   mainContainer: {
-    height: 285,
     width: DIMENS.screenWidth * 0.45,
     margin: 0,
     padding: 0,
@@ -21,7 +20,6 @@ const ProductCardStyles = StyleSheet.create({
     zIndex: 1,
   },
   variationThreeCard: {
-    height: 200,
     width: DIMENS.screenWidth * 0.4,
     margin: 0,
     padding: 0,
@@ -60,8 +58,8 @@ const ProductCardStyles = StyleSheet.create({
     marginVertical: SPACING.xs,
   },
   buttonContainer: {
-    position: "absolute",
-    bottom: -43,
+    marginTop: 16,
+    marginBottom: 8,
     alignSelf: "center",
   },
   prevPriceContainer: {
@@ -72,7 +70,7 @@ const ProductCardStyles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     borderColor: theme.colors.primary,
     minWidth: 124,
-    width: 91,
+    width: "100%",
     height: 32,
     padding: 0,
     borderWidth: 2,

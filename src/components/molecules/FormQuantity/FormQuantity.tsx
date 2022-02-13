@@ -7,7 +7,7 @@
 
 import React, { FC, useState, useCallback } from "react";
 import { useField } from "formik";
-import { isNil } from "ramda";
+import { isNil } from "lodash";
 import { useUpdateEffect } from "@app/hooks";
 import Quantity from "@app/atoms/Quantity";
 

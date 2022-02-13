@@ -5,7 +5,7 @@
  */
 
 import { StyleSheet } from "react-native";
-import { isEmpty } from "ramda";
+import { isEmpty } from "lodash";
 import { theme, DIMENS } from "@app/styles";
 
 const ProductNewStyles = StyleSheet.create({

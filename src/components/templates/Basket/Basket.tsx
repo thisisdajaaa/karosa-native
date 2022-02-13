@@ -7,7 +7,7 @@
 
 import React, { FC, useCallback } from "react";
 import { useFormikContext } from "formik";
-import { isEmpty } from "ramda";
+import { isEmpty } from "lodash";
 import { FlatList, KeyboardAvoidingView, View } from "react-native";
 import { theme } from "@app/styles";
 import { BasketContext } from "@app/redux/shop/models";
