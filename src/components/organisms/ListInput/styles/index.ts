@@ -45,7 +45,6 @@ const ListInputStyles = StyleSheet.create({
   inputContainer: {
     borderWidth: 0,
     borderBottomWidth: 0,
-    padding: 0,
     marginTop: 0,
     marginBottom: 0,
     height: 0,
@@ -54,6 +53,7 @@ const ListInputStyles = StyleSheet.create({
     borderWidth: 0,
     borderBottomWidth: 0,
     padding: 0,
+    marginBottom: 6,
   },
   columnContainer: {
     position: "relative",

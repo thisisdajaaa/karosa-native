@@ -25,6 +25,9 @@ import AuthVerificationScreen from "@app/screens/AuthVerification";
 import ProductStockPriceScreen from "@app/screens/ProductStockPrice";
 import CheckoutScreen from "@app/screens/Checkout";
 import HomeSearchScreen from "@app/screens/HomeSearch";
+import AddressMain from "@app/screens/AddressMain";
+import AddressSearch from "@app/screens/AddressSearch";
+import AddressEdit from "@app/screens/AddressEdit";
 
 import { TabNavigator } from "./tab-navigator";
 
@@ -77,6 +80,9 @@ const StackNavigator: React.FC = () => {
       <Stack.Screen name="Shipping Details" component={ShippingDetailsScreen} />
       <Stack.Screen name="Choose Category" component={ChooseCategoryScreen} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} />
+      <Stack.Screen name="My Address" component={AddressMain} />
+      <Stack.Screen name="Search Address" component={AddressSearch} />
+      <Stack.Screen name="Edit Address" component={AddressEdit} />
     </Stack.Navigator>
   );
 };

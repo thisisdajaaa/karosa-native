@@ -6,7 +6,7 @@
  */
 
 import React, { FC, memo, useMemo } from "react";
-import { ImageBackground, View } from "react-native";
+import { ImageBackground, View, StatusBar } from "react-native";
 import BaseHeader from "@app/molecules/Header";
 import Searchbar from "@app/molecules/SearchBar";
 import Icon from "@app/atoms/Icon";
@@ -19,6 +19,8 @@ const Header: FC = () => {
 
   return (
     <View style={containerStyle}>
+      <StatusBar barStyle="light-content" />
+
       <ImageBackground
         style={HeaderStyles.coverPhoto}
         blurRadius={BLUR_RADIUS}

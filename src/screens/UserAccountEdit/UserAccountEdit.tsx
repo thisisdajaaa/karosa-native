@@ -14,10 +14,12 @@ const UserAccountEditScreen: FC = () => {
   const { goBack, navigate } = useNavigation();
 
   const handleSocialMedia = () => navigate(routes.ACCOUNTS_SOCIAL_MEDIA);
+  const handleAddress = () => navigate(routes.ACCOUNTS_ADDRESS);
 
   return (
     <UserAccountEditTemplate
-      handleSocialMedia={handleSocialMedia}
+      onSocialMedia={handleSocialMedia}
+      onAddress={handleAddress}
       goBack={goBack}
     />
   );
