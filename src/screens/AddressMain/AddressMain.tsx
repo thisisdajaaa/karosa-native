@@ -7,20 +7,23 @@
 
 import AddressMainTemplate from "@app/templates/AddressMain";
 import { actions } from "@app/redux/address";
-import { UserLocation } from "@app/redux/address/models";
+import { UserCoordinates } from "@app/redux/address/models";
 
 import React, { FC, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import * as Location from "expo-location";
-import { useMount } from "@app/hooks";
+import { useMount, useToast } from "@app/hooks";
 import { Alert } from "react-native";
+import { isEmpty } from "lodash";
 
 const AddressMain: FC = () => {
   const dispatch = useDispatch();
 
+  const { showToast, clearToastQueue } = useToast();
+
   const action = {
-    setUserLocation: useCallback(
-      (values: UserLocation) => dispatch(actions.setUserLocation(values)),
+    setUserCoordinates: useCallback(
+      (values: UserCoordinates) => dispatch(actions.setUserCoordinates(values)),
       [dispatch]
     ),
   };
@@ -28,20 +31,45 @@ const AddressMain: FC = () => {
   const handleLocation = async () => {
     const { status } = await Location.requestForegroundPermissionsAsync();
 
-    if (status !== "granted") return;
+    clearToastQueue();
 
-    Location.installWebGeolocationPolyfill();
+    if (status !== "granted") {
+      Alert.alert(
+        "Permission not granted",
+        "Allow the app to use location service.",
+        [{ text: "OK" }],
+        { cancelable: false }
+      );
+    }
 
-    navigator.geolocation.getCurrentPosition(
-      ({ coords }) => {
-        action.setUserLocation({
-          latitude: coords.latitude,
-          longitude: coords.longitude,
+    try {
+      const { coords } = await Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.BestForNavigation,
+      });
+
+      const { longitude, latitude } = coords;
+
+      if (!isEmpty(coords)) {
+        const response = await Location.reverseGeocodeAsync({
+          latitude,
+          longitude,
         });
-      },
-      (error) => Alert.alert(error.message),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );
+
+        const { city, country } = response[0];
+
+        action.setUserCoordinates({
+          latitude,
+          longitude,
+          location: `${city}, ${country}`,
+        });
+      }
+    } catch (error) {
+      showToast({
+        message: String(error),
+        autoHideDuration: 3000,
+        type: "error",
+      });
+    }
   };
 
   useMount(handleLocation);

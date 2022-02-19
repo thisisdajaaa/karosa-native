@@ -104,7 +104,6 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
   return (
     <>
       <Header
-        barStyle="light-content"
         leftComponent={{
           icon: "arrow-back",
           color: theme.colors.primary,

@@ -1,4 +1,5 @@
-import { createAction } from "typesafe-actions";
+import { createAction, createAsyncAction } from "typesafe-actions";
+import { ResponseError } from "@app/redux/api-models/common";
 
 import * as types from "./types";
 import * as models from "./models";
@@ -8,9 +9,9 @@ export const setNewAddress = createAction(
   (resolve) => (values: models.NewAddressForm) => resolve(values)
 );
 
-export const setUserLocation = createAction(
-  types.SET_USER_LOCATION,
-  (resolve) => (values: models.UserLocation) => resolve(values)
+export const setUserCoordinates = createAction(
+  types.SET_USER_COORDINATES,
+  (resolve) => (values: models.UserCoordinates) => resolve(values)
 );
 
 export const setAddressCoordinates = createAction(
@@ -18,10 +19,17 @@ export const setAddressCoordinates = createAction(
   (resolve) => (values: models.UserCoordinates) => resolve(values)
 );
 
+export const callGeocoderApi = createAsyncAction(
+  types.ACT_GEOCODER_REQUEST,
+  types.ACT_GEOCODER_SUCCESS,
+  types.ACT_GEOCODER_FAILURE
+)<models.GeocoderRequest, models.GeocoderResponse, ResponseError>();
+
 const actions = {
   setNewAddress,
-  setUserLocation,
+  setUserCoordinates,
   setAddressCoordinates,
+  callGeocoderApi,
 };
 
 export default actions;

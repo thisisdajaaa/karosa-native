@@ -1,4 +1,9 @@
-import { NewAddressForm, AddressState, UserLocation } from "./models";
+import {
+  NewAddressForm,
+  AddressState,
+  UserCoordinates,
+  GeocoderResponse,
+} from "./models";
 
 export const initNewAddress: NewAddressForm = {
   label: "",
@@ -40,9 +45,19 @@ export const initAddressList: NewAddressForm[] = [
   },
 ];
 
-export const initUserLocation: UserLocation = {
+export const initGeocoderResponse: GeocoderResponse = {
+  plus_code: {
+    compound_code: "",
+    global_code: "",
+  },
+  results: [],
+  status: "",
+};
+
+export const initUserCoordinates: UserCoordinates = {
   latitude: 0,
   longitude: 0,
+  location: "",
 };
 
 export const initAddressState: AddressState = {
@@ -53,16 +68,15 @@ export const initAddressState: AddressState = {
       contactNumber: "",
       addressDetails: "",
       noteRider: "",
-      coords: {
-        latitude: 0,
-        longitude: 0,
-        location: "",
-      },
+      coords: { ...initUserCoordinates },
     },
-    userLocation: {
-      latitude: 0,
-      longitude: 0,
-    },
+    userCoordinates: { ...initUserCoordinates },
     addressList: initAddressList,
+  },
+  geocoderResponse: {
+    isLoading: false,
+    response: {
+      ...initGeocoderResponse,
+    },
   },
 };

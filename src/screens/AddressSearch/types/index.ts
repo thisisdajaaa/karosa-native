@@ -8,5 +8,6 @@ export type AddressMainProps = {
   AddressLocation: {
     latitude: number;
     longitude: number;
+    location: string;
   };
 };

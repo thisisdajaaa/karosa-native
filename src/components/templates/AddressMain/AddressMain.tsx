@@ -22,14 +22,13 @@ import { theme } from "@app/styles";
 
 const AddressMainTemplate: FC = () => {
   const { goBack, navigate } = useNavigation();
-  const userLocationAddress = useMemoizedSelector(selectors.getUserLocation);
+  const userCoordinates = useMemoizedSelector(selectors.getUserCoordinates);
 
   const addressList = useMemoizedSelector(selectors.getAddressList);
 
   return (
     <View style={AddressMainStyles.viewFlex}>
       <Header
-        barStyle="light-content"
         hasBottomDivider
         leftComponent={{
           icon: "arrow-back",
@@ -111,8 +110,9 @@ const AddressMainTemplate: FC = () => {
             navigate("Stack", {
               screen: routes.ACCOUNTS_SEARCH_ADDRESS,
               params: {
-                latitude: userLocationAddress.latitude,
-                longitude: userLocationAddress.longitude,
+                latitude: userCoordinates.latitude,
+                longitude: userCoordinates.longitude,
+                location: userCoordinates.location,
               },
             });
           }}

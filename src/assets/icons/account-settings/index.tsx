@@ -14,6 +14,8 @@ import Instagram from "./instagram.svg";
 import AddressPin from "./address-pin.svg";
 import EmptyAddress from "./empty-address.svg";
 import Edit from "./edit.svg";
+import OutlineAddress from "./outline-address.svg";
+import MapPin from "./map-pin.svg";
 
 const AccountSettingsIcons = (
   name: string,
@@ -29,6 +31,10 @@ const AccountSettingsIcons = (
     instagram: <Instagram style={extraStyle} height={height} width={width} />,
     addressPin: <AddressPin style={extraStyle} height={height} width={width} />,
     edit: <Edit style={extraStyle} height={height} width={width} />,
+    mapPin: <MapPin style={extraStyle} height={height} width={width} />,
+    outlineAddress: (
+      <OutlineAddress style={extraStyle} height={height} width={width} />
+    ),
     emptyAddress: (
       <EmptyAddress style={extraStyle} height={height} width={width} />
     ),

@@ -85,5 +85,4 @@ module.exports = {
       rules: {},
     },
   ],
-  compact: false, // false for development
 };

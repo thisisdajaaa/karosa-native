@@ -18,6 +18,7 @@ const AddressSearch: FC = () => {
     <AddressSearchTemplate
       latitude={params.latitude}
       longitude={params.longitude}
+      location={params.location}
     />
   );
 };

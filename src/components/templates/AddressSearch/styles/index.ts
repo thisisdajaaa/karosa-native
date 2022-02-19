@@ -25,7 +25,6 @@ const AddressSearchTemplateStyles = StyleSheet.create({
     bottom: "2%",
     width: "90%",
     alignSelf: "center",
-    zIndex: 99,
   },
   buttonPrimary: {
     backgroundColor: theme.colors.primary,

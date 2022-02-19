@@ -8,11 +8,13 @@ import apiEndpoints from "@app/redux/api-endpoints.json";
 import * as actions from "./actions";
 import * as models from "./models";
 
+const { get, delete: axiosDelete, post } = baseAxios();
+
 export function* callShopInfoApi(): SagaIterator {
   try {
     const response: AxiosResponse<models.ShopInfoResponse> = yield call(
-      baseAxios.get,
-      apiEndpoints.shopInfo
+      get,
+      apiEndpoints.geocoder
     );
 
     yield put(actions.callShopInfoApi.success(response.data));
@@ -24,7 +26,7 @@ export function* callShopInfoApi(): SagaIterator {
 export function* callShopDeleteApi(): SagaIterator {
   try {
     const response: AxiosResponse<models.ShopDeleteResponse> = yield call(
-      baseAxios.delete,
+      axiosDelete,
       apiEndpoints.shopInfo
     );
 
@@ -37,7 +39,7 @@ export function* callShopDeleteApi(): SagaIterator {
 export function* callShopAddressApi(): SagaIterator {
   try {
     const response: AxiosResponse<models.ShopAddressResponse> = yield call(
-      baseAxios.get,
+      get,
       apiEndpoints.shopAddress
     );
 
@@ -52,7 +54,7 @@ export function* callAddProductApi(
 ): SagaIterator {
   try {
     const response: AxiosResponse<models.AddProductResponse> = yield call(
-      baseAxios.post,
+      post,
       apiEndpoints.products,
       action.payload
     );
@@ -66,7 +68,7 @@ export function* callAddProductApi(
 export function* callProductListApi(): SagaIterator {
   try {
     const response: AxiosResponse<models.ProductListResponse> = yield call(
-      baseAxios.get,
+      get,
       apiEndpoints.products
     );
 
@@ -79,7 +81,7 @@ export function* callProductListApi(): SagaIterator {
 export function* callCategoryListApi(): SagaIterator {
   try {
     const response: AxiosResponse<models.CategoryListResponse> = yield call(
-      baseAxios.get,
+      get,
       apiEndpoints.categories
     );
 

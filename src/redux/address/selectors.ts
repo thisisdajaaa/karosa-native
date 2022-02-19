@@ -24,11 +24,11 @@ export const getCoordinates = () =>
     );
   });
 
-export const getUserLocation = () =>
+export const getUserCoordinates = () =>
   createSelector([rootSelector], (state: AddressState) => {
     return (
-      state.addressEntryContext.userLocation ||
-      initAddressState.addressEntryContext.userLocation
+      state.addressEntryContext.userCoordinates ||
+      initAddressState.addressEntryContext.userCoordinates
     );
   });
 
@@ -42,7 +42,7 @@ export const getAddressList = () =>
 
 const selectors = {
   getNewAddressForm,
-  getUserLocation,
+  getUserCoordinates,
   getCoordinates,
   getAddressList,
 };

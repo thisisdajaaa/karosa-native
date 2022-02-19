@@ -1,12 +1,13 @@
+import { ResponseState } from "@app/redux/api-models/common";
+import * as geocoder from "@app/redux/api-models/geocoder";
+
+export type GeocoderRequest = geocoder.Request;
+export type GeocoderResponse = geocoder.Response;
+
 export type UserCoordinates = {
   latitude: number;
   longitude: number;
   location: string;
-};
-
-export type UserLocation = {
-  latitude: number;
-  longitude: number;
 };
 
 export type NewAddressForm = {
@@ -20,12 +21,13 @@ export type NewAddressForm = {
 
 export type AddressEntryContext = {
   newAddressForm: NewAddressForm;
-  userLocation: UserLocation;
+  userCoordinates: UserCoordinates;
   addressList: NewAddressForm[];
 };
 
 export type AddressState = {
   addressEntryContext: AddressEntryContext;
+  geocoderResponse: ResponseState<GeocoderResponse>;
 };
 
 declare module "../types" {
