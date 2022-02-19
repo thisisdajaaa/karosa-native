@@ -5,18 +5,11 @@
  *
  */
 
-import React, {
-  FC,
-  LegacyRef,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { FC, LegacyRef, useRef, useState } from "react";
 
 import type { PropsType } from "./types";
 import AddressSearchTemplateStyles from "./styles";
-import { Platform, SafeAreaView, View } from "react-native";
+import { Platform, View } from "react-native";
 import Header from "@app/molecules/Header";
 import { DIMENS, theme } from "@app/styles";
 import { useNavigation } from "@react-navigation/native";
@@ -24,17 +17,19 @@ import {
   GooglePlacesAutocomplete,
   GooglePlacesAutocompleteRef,
 } from "react-native-google-places-autocomplete";
-import MapView, { Camera, Marker, Region } from "react-native-maps";
-import Image from "@app/atoms/Image";
+import MapView, { Camera, Region } from "react-native-maps";
 import Button from "@app/atoms/Button";
 import routes from "@app/navigators/routes";
-import { useMount } from "@app/hooks";
+import { useMount, useUpdateEffect } from "@app/hooks";
 import Text from "@app/atoms/Text";
 import { GOOGLE_PLACES_API_KEY } from "@env";
 import Icon from "@app/atoms/Icon";
+import { debounce } from "lodash";
+import { GeocoderRequest } from "@app/redux/address/models";
 
 const AddressSearchTemplate: FC<PropsType> = (props) => {
-  const { latitude, longitude, location } = props;
+  const { routeParams, handleGeocoder, formattedAddress } = props;
+  const { latitude, longitude, location } = routeParams;
   const { goBack, navigate } = useNavigation();
 
   const ASPECT_RATIO = DIMENS.screenWidth / DIMENS.screenHeight;
@@ -49,6 +44,7 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
   };
 
   const [region, setRegion] = useState<Region>(initialRegion);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const [place, setPlace] = useState({
     latitude: latitude,
@@ -63,13 +59,32 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
     autocompleteRef.current?.setAddressText(location);
   });
 
-  const onInitialMapReady = (region: Region) => {
+  useUpdateEffect(() => {
+    if (!isFocused) autocompleteRef.current?.setAddressText(formattedAddress);
+  }, [formattedAddress, isFocused]);
+
+  const onInitialMapReady = (_region: Region) => {
     Platform.OS === "ios"
-      ? () => mapRef?.current?.animateToRegion(region, 1000)
+      ? () => mapRef?.current?.animateToRegion(_region, 1000)
       : mapRef?.current?.getCamera().then((cam: Camera) => {
           cam.zoom += 6;
           mapRef?.current?.animateCamera(cam, { duration: 1000 });
         });
+  };
+
+  const debouncedGeocoder = debounce((_region: Region) => {
+    const params: GeocoderRequest = {
+      key: GOOGLE_PLACES_API_KEY,
+      latlng: `${_region.latitude},${_region.longitude}`,
+    };
+
+    handleGeocoder({ ...params });
+  }, 500);
+
+  const handleRegionChange = (_region: Region) => {
+    setRegion(_region);
+
+    debouncedGeocoder(_region);
   };
 
   return (
@@ -91,6 +106,12 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
               components: "country:ph",
               location: `${region.latitude}, ${region.longitude}`,
             }}
+            textInputProps={{
+              selectTextOnFocus: true,
+              onFocus: () => setIsFocused(true),
+              onBlur: () => setIsFocused(false),
+            }}
+            debounce={200}
             fetchDetails
             onPress={(data, details) => {
               const latlng = {
@@ -109,6 +130,8 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
                 ...latlng,
                 details: data.description.split(",").join(","),
               });
+
+              setIsFocused(false);
 
               mapRef?.current?.animateToRegion(_region, 1000);
             }}
@@ -161,10 +184,7 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
             zoomEnabled
             minZoomLevel={19}
             onMapReady={() => onInitialMapReady(initialRegion)}
-            onRegionChangeComplete={async (_region) => {
-              setRegion(_region);
-              console.log(_region);
-            }}
+            onRegionChangeComplete={handleRegionChange}
           />
           <View
             style={{

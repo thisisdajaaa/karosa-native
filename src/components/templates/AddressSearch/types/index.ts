@@ -4,8 +4,10 @@
  *
  */
 
+import { GeocoderRequest, UserCoordinates } from "@app/redux/address/models";
+
 export type PropsType = {
-  latitude: number;
-  longitude: number;
-  location: string;
+  routeParams: Readonly<UserCoordinates>;
+  handleGeocoder: (values: GeocoderRequest) => void;
+  formattedAddress: string;
 };

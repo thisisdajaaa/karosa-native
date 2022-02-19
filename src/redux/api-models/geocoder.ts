@@ -46,6 +46,7 @@ export type Result = {
 
 export type Request = {
   latlng: string;
+  key: string;
 };
 
 export type Response = {

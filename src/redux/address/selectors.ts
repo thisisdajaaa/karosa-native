@@ -40,11 +40,17 @@ export const getAddressList = () =>
     );
   });
 
+export const getGeocoderResponse = () =>
+  createSelector([rootSelector], (state: AddressState) => {
+    return state.geocoderResponse || initAddressState.geocoderResponse;
+  });
+
 const selectors = {
   getNewAddressForm,
   getUserCoordinates,
   getCoordinates,
   getAddressList,
+  getGeocoderResponse,
 };
 
 export default selectors;
