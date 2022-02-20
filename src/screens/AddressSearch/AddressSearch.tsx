@@ -7,16 +7,18 @@
 
 import React, { FC, useCallback } from "react";
 
-import type { AddressMainProps } from "./types";
+import type { AddressMainParams } from "./types";
 import { actions, selectors } from "@app/redux/address";
 import AddressSearchTemplate from "@app/templates/AddressSearch";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { GeocoderRequest } from "@app/redux/address/models";
 import { useDispatch } from "react-redux";
-import { useMemoizedSelector } from "@app/hooks";
+import { useMemoizedSelector, useMount } from "@app/hooks";
+import { GOOGLE_PLACES_API_KEY } from "@env";
 
 const AddressSearch: FC = () => {
-  const { params } = useRoute<RouteProp<AddressMainProps, "AddressLocation">>();
+  const { params } =
+    useRoute<RouteProp<AddressMainParams, "AddressLocation">>();
 
   const dispatch = useDispatch();
 
@@ -29,6 +31,15 @@ const AddressSearch: FC = () => {
       dispatch(actions.callGeocoderApi.request(values)),
     [dispatch]
   );
+
+  useMount(() => {
+    const queryParams: GeocoderRequest = {
+      latlng: `${params.latitude},${params.location}`,
+      key: GOOGLE_PLACES_API_KEY,
+    };
+
+    callGeocoderApi({ ...queryParams });
+  });
 
   return (
     <AddressSearchTemplate

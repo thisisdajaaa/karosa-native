@@ -11,39 +11,13 @@ export const initNewAddress: NewAddressForm = {
   contactNumber: "0",
   addressDetails: "",
   noteRider: "",
+  hasLatLng: false,
   coords: {
     latitude: 0,
     longitude: 0,
     location: "",
   },
 };
-
-export const initAddressList: NewAddressForm[] = [
-  {
-    label: "Work",
-    contactName: "Daja",
-    contactNumber: "890008",
-    addressDetails: "Test address 10101",
-    noteRider: "To be noted",
-    coords: {
-      latitude: 0,
-      longitude: 0,
-      location: "",
-    },
-  },
-  {
-    label: "Home",
-    contactName: "Test User",
-    contactNumber: "8900011",
-    addressDetails: "Test address 10101",
-    noteRider: "To be noted",
-    coords: {
-      latitude: 0,
-      longitude: 0,
-      location: "",
-    },
-  },
-];
 
 export const initGeocoderResponse: GeocoderResponse = {
   plus_code: {
@@ -57,7 +31,6 @@ export const initGeocoderResponse: GeocoderResponse = {
 export const initUserCoordinates: UserCoordinates = {
   latitude: 0,
   longitude: 0,
-  location: "",
 };
 
 export const initAddressState: AddressState = {
@@ -68,10 +41,15 @@ export const initAddressState: AddressState = {
       contactNumber: "",
       addressDetails: "",
       noteRider: "",
-      coords: { ...initUserCoordinates },
+      hasLatLng: false,
+      coords: {
+        latitude: 0,
+        longitude: 0,
+        location: "",
+      },
     },
     userCoordinates: { ...initUserCoordinates },
-    addressList: initAddressList,
+    userAddressList: [],
   },
   geocoderResponse: {
     isLoading: false,

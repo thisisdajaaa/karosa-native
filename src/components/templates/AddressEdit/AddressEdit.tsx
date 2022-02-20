@@ -10,10 +10,8 @@ import React, { FC, ReactElement } from "react";
 import type { PropsType } from "./types";
 import { useNavigation } from "@react-navigation/native";
 import {
-  Keyboard,
   ScrollView,
   View,
-  TouchableWithoutFeedback,
   Pressable,
   KeyboardAvoidingView,
 } from "react-native";
@@ -30,13 +28,16 @@ import AddressEditStyles from "./styles";
 import { theme } from "@app/styles";
 import { getPlatform, listIterator } from "@app/utils";
 import { COMMON } from "@app/constants";
+import validationSchema from "@app/screens/AddressEdit/validation";
 
 const AddressEditTemplate: FC<PropsType> = (props) => {
   const { details } = props;
   const { goBack } = useNavigation();
-  const { submitForm } = useFormikContext<NewAddressForm>();
+  const { submitForm, values } = useFormikContext<NewAddressForm>();
 
   const isIOS = getPlatform.getInstance() === "ios";
+
+  const isValid = validationSchema.isValidSync(values);
 
   const listInputArea = (
     name: string,
@@ -51,13 +52,18 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
         label={label}
         hasBottomDivider
         required={required}
-        maxLen={100}
+        maxLen={200}
         variation={COMMON.VARIATION.ONE}
       />
     );
   };
 
-  const listInput = (name: string, label: string, placeholder: string) => {
+  const listInput = (
+    name: string,
+    label: string,
+    placeholder: string,
+    maxLen?: number
+  ) => {
     return (
       <ListInput
         name={name}
@@ -65,6 +71,7 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
         placeholder={placeholder}
         hasBottomDivider
         required
+        maxLen={maxLen}
         variation={COMMON.VARIATION.TWO}
       />
     );
@@ -73,9 +80,14 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
   const getAddressEdit = () => {
     const elements: ReactElement[] = [];
 
-    const label = listInput("label", "Label", "e.g Home / Office");
+    const label = listInput("label", "Label", "e.g Home / Office", 20);
 
-    const contactName = listInput("contactName", "Contact Name", "Set Name");
+    const contactName = listInput(
+      "contactName",
+      "Contact Name",
+      "Set Name",
+      30
+    );
 
     const contactNumber = listInput(
       "contactNumber",
@@ -148,7 +160,11 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
         </ScrollView>
 
         <View style={AddressEditStyles.buttonContainer}>
-          <Button title="Save Address" onPress={() => alert("saved")} />
+          <Button
+            title="Save Address"
+            disabled={!isValid}
+            onPress={submitForm}
+          />
         </View>
       </KeyboardAvoidingView>
     </>

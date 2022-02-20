@@ -21,7 +21,7 @@ const AddressMain: FC = () => {
 
   const { showToast, clearToastQueue } = useToast();
 
-  const action = {
+  const addressMainActions = {
     setUserCoordinates: useCallback(
       (values: UserCoordinates) => dispatch(actions.setUserCoordinates(values)),
       [dispatch]
@@ -50,17 +50,9 @@ const AddressMain: FC = () => {
       const { longitude, latitude } = coords;
 
       if (!isEmpty(coords)) {
-        const response = await Location.reverseGeocodeAsync({
+        addressMainActions.setUserCoordinates({
           latitude,
           longitude,
-        });
-
-        const { city, country } = response[0];
-
-        action.setUserCoordinates({
-          latitude,
-          longitude,
-          location: `${city}, ${country}`,
         });
       }
     } catch (error) {

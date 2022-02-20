@@ -4,10 +4,13 @@
  *
  */
 
-export type AddressMainProps = {
-  AddressLocation: {
-    latitude: number;
-    longitude: number;
-    location: string;
-  };
+export type AddressLocation = {
+  id?: string | number[];
+  latitude: number;
+  longitude: number;
+  location: string;
+};
+
+export type AddressMainParams = {
+  AddressLocation: AddressLocation;
 };

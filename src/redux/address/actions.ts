@@ -14,9 +14,9 @@ export const setUserCoordinates = createAction(
   (resolve) => (values: models.UserCoordinates) => resolve(values)
 );
 
-export const setAddressCoordinates = createAction(
-  types.SET_ADDRESS_COORDINATES,
-  (resolve) => (values: models.UserCoordinates) => resolve(values)
+export const setUserAddressList = createAction(
+  types.SET_USER_ADDRESS_LIST,
+  (resolve) => (values: models.NewAddressForm[]) => resolve(values)
 );
 
 export const callGeocoderApi = createAsyncAction(
@@ -28,7 +28,7 @@ export const callGeocoderApi = createAsyncAction(
 const actions = {
   setNewAddress,
   setUserCoordinates,
-  setAddressCoordinates,
+  setUserAddressList,
   callGeocoderApi,
 };
 

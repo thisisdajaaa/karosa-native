@@ -55,7 +55,7 @@ const VariationOne: FC<PropsType> = (props) => {
             numberOfLines={NUM_LINES.FIVE}
             multiline
             maxLength={maxLen}
-            placeholderColor={theme.colors.primary}
+            placeholderColor={theme.colors.dark10}
             inputStyle={ListInputStyles.txtValue}
             containerStyle={ListInputStyles.columnContainer}
             inputContainerStyle={ListInputStyles.columnInputContainer}

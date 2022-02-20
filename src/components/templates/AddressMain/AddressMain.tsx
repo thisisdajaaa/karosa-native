@@ -7,7 +7,7 @@
 
 import React, { FC } from "react";
 
-import { ScrollView, View } from "react-native";
+import { Pressable, ScrollView, View } from "react-native";
 import Header from "@app/molecules/Header";
 import Text from "@app/atoms/Text";
 import Icon from "@app/atoms/Icon";
@@ -24,7 +24,7 @@ const AddressMainTemplate: FC = () => {
   const { goBack, navigate } = useNavigation();
   const userCoordinates = useMemoizedSelector(selectors.getUserCoordinates);
 
-  const addressList = useMemoizedSelector(selectors.getAddressList);
+  const addressList = useMemoizedSelector(selectors.getUserAddressList);
 
   return (
     <View style={AddressMainStyles.viewFlex}>
@@ -68,21 +68,37 @@ const AddressMainTemplate: FC = () => {
                       textStyle={AddressMainStyles.txtSubAddress}
                     />
                     <Text
-                      text={props.addressDetails}
+                      text={props.coords.location}
                       textStyle={AddressMainStyles.txtSubAddress}
                     />
                     <Text
-                      text={props.noteRider}
+                      text={`Note to rider: ${
+                        props.noteRider ? props.noteRider : "None"
+                      }`}
                       textStyle={AddressMainStyles.txtSubAddress}
                     />
                   </ListItem.Content>
 
-                  <Icon
-                    group="accountSettings"
-                    name={"edit"}
-                    width={20}
-                    height={20}
-                  />
+                  <Pressable
+                    onPress={() => {
+                      navigate("Stack", {
+                        screen: routes.ACCOUNTS_SEARCH_ADDRESS,
+                        params: {
+                          id: props.id,
+                          latitude: props.coords.latitude,
+                          longitude: props.coords.longitude,
+                          location: props.coords.location,
+                        },
+                      });
+                    }}
+                  >
+                    <Icon
+                      group="accountSettings"
+                      name={"edit"}
+                      width={20}
+                      height={20}
+                    />
+                  </Pressable>
                 </ListItem>
               );
             })
@@ -112,7 +128,6 @@ const AddressMainTemplate: FC = () => {
               params: {
                 latitude: userCoordinates.latitude,
                 longitude: userCoordinates.longitude,
-                location: userCoordinates.location,
               },
             });
           }}

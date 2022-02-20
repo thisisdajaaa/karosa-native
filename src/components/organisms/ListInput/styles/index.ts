@@ -67,7 +67,7 @@ const ListInputStyles = StyleSheet.create({
   },
   txtValue: {
     ...theme.textListItem,
-    color: theme.colors.dark20,
+    color: theme.colors.primary,
     fontWeight: "400",
   },
   txtInfo: {
@@ -97,7 +97,7 @@ const ListInputStyles = StyleSheet.create({
   txtRowInput: {
     ...theme.textListItem,
     textAlign: "right",
-    color: theme.colors.dark20,
+    color: theme.colors.primary,
     fontWeight: "400",
   },
 });

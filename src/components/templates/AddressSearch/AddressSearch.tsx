@@ -29,7 +29,7 @@ import { GeocoderRequest } from "@app/redux/address/models";
 
 const AddressSearchTemplate: FC<PropsType> = (props) => {
   const { routeParams, handleGeocoder, formattedAddress } = props;
-  const { latitude, longitude, location } = routeParams;
+  const { latitude, longitude, id } = routeParams;
   const { goBack, navigate } = useNavigation();
 
   const ASPECT_RATIO = DIMENS.screenWidth / DIMENS.screenHeight;
@@ -55,12 +55,28 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
   const mapRef: LegacyRef<MapView> = useRef(null);
   const autocompleteRef = useRef<GooglePlacesAutocompleteRef>(null);
 
-  useMount(() => {
-    autocompleteRef.current?.setAddressText(location);
-  });
+  const onGeocode = (_latitutde: number, _longitutude: number) => {
+    const params: GeocoderRequest = {
+      key: GOOGLE_PLACES_API_KEY,
+      latlng: `${_latitutde},${_longitutude}`,
+    };
+
+    handleGeocoder({ ...params });
+  };
+
+  useMount(() => onGeocode(latitude, longitude));
 
   useUpdateEffect(() => {
-    if (!isFocused) autocompleteRef.current?.setAddressText(formattedAddress);
+    if (!isFocused && formattedAddress) {
+      autocompleteRef.current?.setAddressText(formattedAddress);
+
+      setPlace((prev) => {
+        return {
+          ...prev,
+          details: formattedAddress,
+        };
+      });
+    }
   }, [formattedAddress, isFocused]);
 
   const onInitialMapReady = (_region: Region) => {
@@ -72,14 +88,10 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
         });
   };
 
-  const debouncedGeocoder = debounce((_region: Region) => {
-    const params: GeocoderRequest = {
-      key: GOOGLE_PLACES_API_KEY,
-      latlng: `${_region.latitude},${_region.longitude}`,
-    };
-
-    handleGeocoder({ ...params });
-  }, 500);
+  const debouncedGeocoder = debounce(
+    (_region: Region) => onGeocode(_region.latitude, _region.longitude),
+    500
+  );
 
   const handleRegionChange = (_region: Region) => {
     setRegion(_region);
@@ -209,14 +221,15 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
             title="Confirm"
             buttonStyle={AddressSearchTemplateStyles.buttonPrimary}
             titleStyle={{ fontSize: 16 }}
-            disabled={!(place.latitude > 0 && place.longitude > 0)}
+            disabled={!formattedAddress || isFocused}
             onPress={() => {
               navigate("Stack", {
                 screen: routes.ACCOUNTS_EDIT_ADDRESS,
                 params: {
-                  latitude: place.latitude,
-                  longitude: place.longitude,
-                  details: place.details ? place.details : location,
+                  id,
+                  latitude: region.latitude,
+                  longitude: region.longitude,
+                  location: place.details ? place.details : formattedAddress,
                 },
               });
             }}

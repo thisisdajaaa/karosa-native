@@ -16,14 +16,6 @@ export const getNewAddressForm = () =>
     );
   });
 
-export const getCoordinates = () =>
-  createSelector([rootSelector], (state: AddressState) => {
-    return (
-      state.addressEntryContext.newAddressForm.coords ||
-      initAddressState.addressEntryContext.newAddressForm.coords
-    );
-  });
-
 export const getUserCoordinates = () =>
   createSelector([rootSelector], (state: AddressState) => {
     return (
@@ -32,11 +24,11 @@ export const getUserCoordinates = () =>
     );
   });
 
-export const getAddressList = () =>
+export const getUserAddressList = () =>
   createSelector([rootSelector], (state: AddressState) => {
     return (
-      state.addressEntryContext.addressList ||
-      initAddressState.addressEntryContext.addressList
+      state.addressEntryContext.userAddressList ||
+      initAddressState.addressEntryContext.userAddressList
     );
   });
 
@@ -48,8 +40,7 @@ export const getGeocoderResponse = () =>
 const selectors = {
   getNewAddressForm,
   getUserCoordinates,
-  getCoordinates,
-  getAddressList,
+  getUserAddressList,
   getGeocoderResponse,
 };
 
