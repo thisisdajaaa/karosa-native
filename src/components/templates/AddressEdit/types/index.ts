@@ -5,9 +5,12 @@
  */
 
 import { KeyboardTypeOptions } from "react-native";
+import { AddressLocation } from "@app/screens/AddressSearch/types";
 
 export type PropsType = {
-  details: string;
+  routeParams: Readonly<AddressLocation>;
+  handleEditAddress: () => void;
+  handleBack: () => void;
 };
 
 export type ListInputPropsType = {

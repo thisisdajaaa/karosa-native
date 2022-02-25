@@ -6,22 +6,21 @@
  */
 
 import React, { FC, useCallback } from "react";
-
-// import AddressNewConfig from "./config";
-import uuid from "react-native-uuid";
 import { useDispatch } from "react-redux";
-import AddressNewTemplate from "@app/components/templates/AddressEdit";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { FormikContext, useFormik } from "formik";
+import uuid from "react-native-uuid";
+import AddressEditTemplate from "@app/templates/AddressEdit";
+import { AddressMainParams } from "@app/screens/AddressSearch/types";
 import { useMemoizedSelector, useMount } from "@app/hooks";
 import { actions, selectors } from "@app/redux/address";
 import { NewAddressForm } from "@app/redux/address/models";
 import routes from "@app/navigators/routes";
+
 import validationSchema from "./validation";
-import { AddressMainParams } from "@app/screens/AddressSearch/types";
 
 const AddressEdit: FC = () => {
-  const { navigate } = useNavigation();
+  const { goBack, navigate } = useNavigation();
   const dispatch = useDispatch();
 
   const setUserAddressList = useCallback(
@@ -34,6 +33,18 @@ const AddressEdit: FC = () => {
 
   const newAddressForm = useMemoizedSelector(selectors.getNewAddressForm);
   const getUserAddressList = useMemoizedSelector(selectors.getUserAddressList);
+
+  const onEditAddress = () => {
+    if (!params.id) goBack();
+
+    navigate("Stack", {
+      screen: routes.ACCOUNTS_SEARCH_ADDRESS,
+      id: params.id,
+      latitude: params.latitude,
+      longitude: params.longitude,
+      location: params.location,
+    });
+  };
 
   const getInitialValues = (): NewAddressForm => {
     const foundAddress = getUserAddressList.find(
@@ -70,6 +81,7 @@ const AddressEdit: FC = () => {
 
       return {
         ...value,
+        isDefault: values.isDefault && false,
       };
     });
 
@@ -87,7 +99,18 @@ const AddressEdit: FC = () => {
       },
     };
 
-    const addressList: NewAddressForm[] = [...getUserAddressList, newAddress];
+    let clonedAddressList: NewAddressForm[] = [...getUserAddressList];
+
+    if (values.isDefault) {
+      clonedAddressList = [...getUserAddressList].map((value) => {
+        return {
+          ...value,
+          isDefault: false,
+        };
+      });
+    }
+
+    const addressList: NewAddressForm[] = [...clonedAddressList, newAddress];
 
     setUserAddressList(addressList);
   };
@@ -108,7 +131,11 @@ const AddressEdit: FC = () => {
 
   return (
     <FormikContext.Provider value={formikBag}>
-      <AddressNewTemplate details={params.location} />
+      <AddressEditTemplate
+        routeParams={params}
+        handleEditAddress={onEditAddress}
+        handleBack={goBack}
+      />
     </FormikContext.Provider>
   );
 };

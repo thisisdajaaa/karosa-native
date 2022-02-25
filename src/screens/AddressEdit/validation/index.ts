@@ -31,6 +31,8 @@ const AddressNewSchema = yup.object({
   noteRider: yup.string().max(200).label("Address Details"),
 
   hasLatLng: yup.boolean().oneOf([true]).required(),
+
+  isDefault: yup.boolean(),
 });
 
 export default AddressNewSchema;

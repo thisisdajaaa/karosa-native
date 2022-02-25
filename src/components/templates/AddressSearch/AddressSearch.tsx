@@ -8,12 +8,14 @@
 import React, { FC, LegacyRef, useRef, useState } from "react";
 
 import type { PropsType } from "./types";
-import AddressSearchTemplateStyles from "./styles";
+import AddressSearchStyles from "./styles";
 import { Platform, View } from "react-native";
 import Header from "@app/molecules/Header";
-import { DIMENS, theme } from "@app/styles";
+import { theme } from "@app/styles";
 import { useNavigation } from "@react-navigation/native";
 import {
+  GooglePlaceData,
+  GooglePlaceDetail,
   GooglePlacesAutocomplete,
   GooglePlacesAutocompleteRef,
 } from "react-native-google-places-autocomplete";
@@ -26,15 +28,18 @@ import { GOOGLE_PLACES_API_KEY } from "@env";
 import Icon from "@app/atoms/Icon";
 import { debounce } from "lodash";
 import { GeocoderRequest } from "@app/redux/address/models";
+import {
+  DURATION,
+  ICON_SIZE,
+  LATITUDE_DELTA,
+  LONGITUDE_DELTA,
+  MIN_ZOOM_LVL,
+} from "./config";
 
 const AddressSearchTemplate: FC<PropsType> = (props) => {
   const { routeParams, handleGeocoder, formattedAddress } = props;
   const { latitude, longitude, id } = routeParams;
   const { goBack, navigate } = useNavigation();
-
-  const ASPECT_RATIO = DIMENS.screenWidth / DIMENS.screenHeight;
-  const LATITUDE_DELTA = 0.0922;
-  const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
   const initialRegion = {
     latitude,
@@ -81,22 +86,65 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
 
   const onInitialMapReady = (_region: Region) => {
     Platform.OS === "ios"
-      ? () => mapRef?.current?.animateToRegion(_region, 1000)
+      ? () => mapRef?.current?.animateToRegion(_region, DURATION.HIGH)
       : mapRef?.current?.getCamera().then((cam: Camera) => {
           cam.zoom += 6;
-          mapRef?.current?.animateCamera(cam, { duration: 1000 });
+          mapRef?.current?.animateCamera(cam, { duration: DURATION.HIGH });
         });
   };
 
   const debouncedGeocoder = debounce(
     (_region: Region) => onGeocode(_region.latitude, _region.longitude),
-    500
+    DURATION.MID
   );
 
   const handleRegionChange = (_region: Region) => {
     setRegion(_region);
 
     debouncedGeocoder(_region);
+  };
+
+  const onSearchPress = (
+    data: GooglePlaceData,
+    details: GooglePlaceDetail | null
+  ) => {
+    const latlng = {
+      latitude: details?.geometry.location.lat || 0,
+      longitude: details?.geometry.location.lng || 0,
+    };
+    const _region = {
+      ...latlng,
+      latitudeDelta: LATITUDE_DELTA,
+      longitudeDelta: LONGITUDE_DELTA,
+    };
+
+    setRegion(_region);
+
+    setPlace({
+      ...latlng,
+      details: data.description.split(",").join(","),
+    });
+
+    setIsFocused(false);
+
+    mapRef?.current?.animateToRegion(_region, DURATION.HIGH);
+  };
+
+  const displaySearchRow = (rowData: GooglePlaceData) => {
+    const { main_text, secondary_text } = rowData.structured_formatting;
+
+    return (
+      <View style={AddressSearchStyles.flexRow}>
+        <Icon
+          group="accountSettings"
+          name="outlineAddress"
+          width={ICON_SIZE.SM}
+          height={ICON_SIZE.SM}
+          extraStyle={AddressSearchStyles.outlineAddress}
+        />
+        <Text text={`${main_text}, ${secondary_text}`} />
+      </View>
+    );
   };
 
   return (
@@ -123,104 +171,47 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
               onFocus: () => setIsFocused(true),
               onBlur: () => setIsFocused(false),
             }}
-            debounce={200}
+            debounce={DURATION.LOW}
             fetchDetails
-            onPress={(data, details) => {
-              const latlng = {
-                latitude: details?.geometry.location.lat || 0,
-                longitude: details?.geometry.location.lng || 0,
-              };
-              const _region = {
-                ...latlng,
-                latitudeDelta: LATITUDE_DELTA,
-                longitudeDelta: LONGITUDE_DELTA,
-              };
-
-              setRegion(_region);
-
-              setPlace({
-                ...latlng,
-                details: data.description.split(",").join(","),
-              });
-
-              setIsFocused(false);
-
-              mapRef?.current?.animateToRegion(_region, 1000);
-            }}
-            renderRow={(rowData) => {
-              const { main_text, secondary_text } =
-                rowData.structured_formatting;
-
-              return (
-                <View style={{ flexDirection: "row" }}>
-                  <Icon
-                    group="accountSettings"
-                    name="outlineAddress"
-                    width={20}
-                    height={20}
-                    extraStyle={{ marginRight: 8 }}
-                  />
-                  <Text text={`${main_text}, ${secondary_text}`} />
-                </View>
-              );
-            }}
+            onPress={onSearchPress}
+            renderRow={displaySearchRow}
             enablePoweredByContainer={false}
             styles={{
-              textInput: {
-                width: "100%",
-                backgroundColor: theme.colors.light5,
-              },
-              container: {
-                flex: 0,
-                width: "100%",
-                top: -8,
-              },
-              listView: {
-                backgroundColor: "white",
-                borderWidth: 1,
-                borderColor: "#ECECEC",
-              },
+              textInput: AddressSearchStyles.searchInput,
+              container: AddressSearchStyles.searchContainer,
+              listView: AddressSearchStyles.searchList,
             }}
           />
         }
       />
 
-      <View style={{ flex: 1 }}>
-        <View style={AddressSearchTemplateStyles.mainContainer}>
+      <View style={AddressSearchStyles.container}>
+        <View style={AddressSearchStyles.subContainer}>
           <MapView
             ref={mapRef}
-            style={AddressSearchTemplateStyles.map}
+            style={AddressSearchStyles.map}
             initialRegion={region}
             provider="google"
             showsUserLocation
             zoomEnabled
-            minZoomLevel={19}
+            minZoomLevel={MIN_ZOOM_LVL}
             onMapReady={() => onInitialMapReady(initialRegion)}
             onRegionChangeComplete={handleRegionChange}
           />
-          <View
-            style={{
-              left: "50%",
-              marginLeft: -24,
-              marginTop: -48,
-              position: "absolute",
-              zIndex: 3,
-              top: "50%",
-            }}
-          >
+          <View style={AddressSearchStyles.pinContainer}>
             <Icon
               group="accountSettings"
               name="mapPin"
-              width={48}
-              height={48}
+              width={ICON_SIZE.MD}
+              height={ICON_SIZE.MD}
             />
           </View>
         </View>
-        <View style={AddressSearchTemplateStyles.buttonContainer}>
+        <View style={AddressSearchStyles.buttonContainer}>
           <Button
             title="Confirm"
-            buttonStyle={AddressSearchTemplateStyles.buttonPrimary}
-            titleStyle={{ fontSize: 16 }}
+            buttonStyle={AddressSearchStyles.buttonPrimary}
+            titleStyle={AddressSearchStyles.txtButton}
             disabled={!formattedAddress || isFocused}
             onPress={() => {
               navigate("Stack", {

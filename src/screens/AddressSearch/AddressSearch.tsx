@@ -6,15 +6,15 @@
  */
 
 import React, { FC, useCallback } from "react";
-
-import type { AddressMainParams } from "./types";
+import { GOOGLE_PLACES_API_KEY } from "@env";
+import { useDispatch } from "react-redux";
 import { actions, selectors } from "@app/redux/address";
-import AddressSearchTemplate from "@app/templates/AddressSearch";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { GeocoderRequest } from "@app/redux/address/models";
-import { useDispatch } from "react-redux";
 import { useMemoizedSelector, useMount } from "@app/hooks";
-import { GOOGLE_PLACES_API_KEY } from "@env";
+import AddressSearchTemplate from "@app/templates/AddressSearch";
+
+import type { AddressMainParams } from "./types";
 
 const AddressSearch: FC = () => {
   const { params } =

@@ -17,6 +17,7 @@ export type NewAddressForm = {
   contactNumber: string;
   addressDetails: string;
   noteRider: string;
+  isDefault: boolean;
   coords: UserCoordinates & {
     location: string;
   };

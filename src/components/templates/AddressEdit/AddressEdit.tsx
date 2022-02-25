@@ -8,7 +8,6 @@
 import React, { FC, ReactElement } from "react";
 
 import type { PropsType } from "./types";
-import { useNavigation } from "@react-navigation/native";
 import {
   ScrollView,
   View,
@@ -29,10 +28,12 @@ import { theme } from "@app/styles";
 import { getPlatform, listIterator } from "@app/utils";
 import { COMMON } from "@app/constants";
 import validationSchema from "@app/screens/AddressEdit/validation";
+import ListSwitch from "@app/components/organisms/ListSwitch";
 
 const AddressEditTemplate: FC<PropsType> = (props) => {
-  const { details } = props;
-  const { goBack } = useNavigation();
+  const { routeParams, handleEditAddress, handleBack } = props;
+  const { location } = routeParams;
+
   const { submitForm, values } = useFormikContext<NewAddressForm>();
 
   const isIOS = getPlatform.getInstance() === "ios";
@@ -108,7 +109,24 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
       "e.g. Landmark, Buidling"
     );
 
-    elements.push(label, contactName, contactNumber, addressDetails, noteRider);
+    const isDefault = (
+      <View style={{ marginTop: 12 }}>
+        <ListSwitch
+          title="Set as Default Address"
+          name="isDefault"
+          hasBottomDivider
+        />
+      </View>
+    );
+
+    elements.push(
+      label,
+      contactName,
+      contactNumber,
+      addressDetails,
+      noteRider,
+      isDefault
+    );
 
     return listIterator(elements);
   };
@@ -119,7 +137,7 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
         leftComponent={{
           icon: "arrow-back",
           color: theme.colors.primary,
-          onPress: goBack,
+          onPress: handleBack,
         }}
         centerComponent={{
           text: "Edit Address",
@@ -142,10 +160,13 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
                   height={20}
                   extraStyle={{ marginRight: 12 }}
                 />
-                <Text text={details} textStyle={{ paddingRight: 18 }} />
+                <Text text={location} textStyle={{ paddingRight: 18 }} />
               </ListItem.Content>
 
-              <Pressable onPress={goBack} style={{ marginLeft: "auto" }}>
+              <Pressable
+                onPress={handleEditAddress}
+                style={{ marginLeft: "auto" }}
+              >
                 <Icon
                   group="accountSettings"
                   name={"edit"}

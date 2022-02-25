@@ -5,20 +5,22 @@
  *
  */
 
-import AddressMainTemplate from "@app/templates/AddressMain";
-import { actions } from "@app/redux/address";
-import { UserCoordinates } from "@app/redux/address/models";
-
 import React, { FC, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import * as Location from "expo-location";
-import { useMount, useToast } from "@app/hooks";
 import { Alert } from "react-native";
 import { isEmpty } from "lodash";
+import { useNavigation } from "@react-navigation/native";
+import * as Location from "expo-location";
+import { actions, selectors } from "@app/redux/address";
+import { NewAddressForm, UserCoordinates } from "@app/redux/address/models";
+import { useMemoizedSelector, useMount, useToast } from "@app/hooks";
+import AddressMainTemplate from "@app/templates/AddressMain";
+import routes from "@app/navigators/routes";
 
 const AddressMain: FC = () => {
   const dispatch = useDispatch();
 
+  const { goBack, navigate } = useNavigation();
   const { showToast, clearToastQueue } = useToast();
 
   const addressMainActions = {
@@ -26,6 +28,31 @@ const AddressMain: FC = () => {
       (values: UserCoordinates) => dispatch(actions.setUserCoordinates(values)),
       [dispatch]
     ),
+  };
+
+  const userCoordinates = useMemoizedSelector(selectors.getUserCoordinates);
+  const addressList = useMemoizedSelector(selectors.getUserAddressList);
+
+  const handleEditAddress = (address: NewAddressForm) => {
+    navigate("Stack", {
+      screen: routes.ACCOUNTS_EDIT_ADDRESS,
+      params: {
+        id: address.id,
+        latitude: address.coords.latitude,
+        longitude: address.coords.longitude,
+        location: address.coords.location,
+      },
+    });
+  };
+
+  const handleNewAddress = () => {
+    navigate("Stack", {
+      screen: routes.ACCOUNTS_SEARCH_ADDRESS,
+      params: {
+        latitude: userCoordinates.latitude,
+        longitude: userCoordinates.longitude,
+      },
+    });
   };
 
   const handleLocation = async () => {
@@ -66,7 +93,14 @@ const AddressMain: FC = () => {
 
   useMount(handleLocation);
 
-  return <AddressMainTemplate />;
+  return (
+    <AddressMainTemplate
+      addressList={addressList}
+      handleBack={goBack}
+      handleEditAddress={handleEditAddress}
+      handleNewAddress={handleNewAddress}
+    />
+  );
 };
 
 export default AddressMain;

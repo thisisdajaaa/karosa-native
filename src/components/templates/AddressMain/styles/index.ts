@@ -12,16 +12,6 @@ const AddressMainTemplateStyles = StyleSheet.create({
     ...theme.textBold,
     fontWeight: "700",
   },
-  subContainer: {
-    backgroundColor: theme.colors.white,
-    marginBottom: 10,
-  },
-  listContainer: {
-    alignItems: "center",
-  },
-  infoContainerWithoutChevron: {
-    flexDirection: "row",
-  },
   addressLabel: {
     ...theme.textBold,
     fontWeight: "500",
@@ -32,8 +22,11 @@ const AddressMainTemplateStyles = StyleSheet.create({
     fontWeight: "400",
     marginBottom: 4,
   },
-  addressDetailsContainer: {
-    marginTop: 5,
+  txtDefault: {
+    ...theme.textBold,
+    color: theme.colors.gold5,
+    fontWeight: "500",
+    marginLeft: 4,
   },
   footer: {
     position: "absolute",
@@ -41,22 +34,27 @@ const AddressMainTemplateStyles = StyleSheet.create({
     width: "90%",
     alignSelf: "center",
   },
-  scrollviewContainer: {
-    height: DIMENS.screenHeight * 0.93,
-  },
-  viewFlex: {
+  container: {
     flex: 1,
+    position: "relative",
   },
   noAddressView: {
-    justifyContent: "center",
+    height: DIMENS.screenHeight / 1.5,
     alignItems: "center",
-    marginTop: 100,
+    justifyContent: "center",
   },
   noAddressTextStyle: {
+    ...theme.textRegular,
     marginTop: 20,
   },
   fullWidth: {
     width: "100%",
+  },
+  listStart: {
+    alignItems: "flex-start",
+  },
+  flexRow: {
+    flexDirection: "row",
   },
 });
 

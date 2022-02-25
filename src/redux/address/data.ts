@@ -8,9 +8,10 @@ import {
 export const initNewAddress: NewAddressForm = {
   label: "",
   contactName: "",
-  contactNumber: "0",
+  contactNumber: "",
   addressDetails: "",
   noteRider: "",
+  isDefault: false,
   hasLatLng: false,
   coords: {
     latitude: 0,
@@ -35,19 +36,7 @@ export const initUserCoordinates: UserCoordinates = {
 
 export const initAddressState: AddressState = {
   addressEntryContext: {
-    newAddressForm: {
-      label: "",
-      contactName: "",
-      contactNumber: "",
-      addressDetails: "",
-      noteRider: "",
-      hasLatLng: false,
-      coords: {
-        latitude: 0,
-        longitude: 0,
-        location: "",
-      },
-    },
+    newAddressForm: { ...initNewAddress },
     userCoordinates: { ...initUserCoordinates },
     userAddressList: [],
   },
