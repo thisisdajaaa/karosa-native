@@ -69,7 +69,7 @@ const VariationTwo: FC<PropsType> = (props) => {
           keyboardType={keyboardType}
           name={name}
           placeholder={placeholder}
-          placeholderColor={theme.colors.primary}
+          placeholderColor={theme.colors.dark10}
           numberOfLines={NUM_LINES.ONE}
           maxLength={maxLen}
           inputStyle={ListInputStyles.txtRowInput}

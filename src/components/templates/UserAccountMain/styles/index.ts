@@ -17,6 +17,7 @@ const UserAccountMainStyles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     height: 180,
     justifyContent: "flex-end",
+    marginTop: 12,
   },
   infoContainer: {
     height: 40,

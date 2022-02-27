@@ -8,12 +8,14 @@ import apiEndpoints from "@app/redux/api-endpoints.json";
 import * as actions from "./actions";
 import * as models from "./models";
 
+const { get, post } = baseAxios();
+
 export function* callLoginApi(
   action: ReturnType<typeof actions.callLoginApi.request>
 ): SagaIterator {
   try {
     const response: AxiosResponse<models.LoggedInResponse> = yield call(
-      baseAxios.post,
+      post,
       apiEndpoints.login,
       action.payload
     );
@@ -28,7 +30,7 @@ export function* callRegisterApi(
 ): SagaIterator {
   try {
     const response: AxiosResponse<models.LoggedInResponse> = yield call(
-      baseAxios.post,
+      post,
       apiEndpoints.register,
       action.payload
     );
@@ -55,7 +57,7 @@ export function* callForgotApi(): SagaIterator {
 export function* callMyAddressApi(): SagaIterator {
   try {
     const response: AxiosResponse<models.MyAddressResponse> = yield call(
-      baseAxios.get,
+      get,
       apiEndpoints.addresses
     );
 
@@ -70,7 +72,7 @@ export function* callNewAddressApi(
 ): SagaIterator {
   try {
     const response: AxiosResponse<models.NewAddressResponse> = yield call(
-      baseAxios.post,
+      post,
       apiEndpoints.addresses,
       action.payload
     );

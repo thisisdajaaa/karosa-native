@@ -5,6 +5,7 @@ module.exports = function (api) {
     env: {
       development: {
         plugins: ["inline-dotenv"],
+        compact: false,
       },
     },
     plugins: [
@@ -47,6 +48,5 @@ module.exports = function (api) {
       "transform-inline-environment-variables",
     ],
     retainLines: true,
-    compact: true,
   };
 };

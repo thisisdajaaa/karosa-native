@@ -9,6 +9,7 @@ import React, { FC } from "react";
 import { useField } from "formik";
 import { View } from "react-native";
 import { ListItem } from "react-native-elements";
+import { theme } from "@app/styles";
 import { useFieldError } from "@app/hooks";
 import Text from "@app/atoms/Text";
 import FormInput from "@app/molecules/FormInput";
@@ -51,19 +52,17 @@ const VariationOne: FC<PropsType> = (props) => {
             name={name}
             keyboardType={keyboardType}
             placeholder={placeholder}
-            numberOfLines={NUM_LINES.TEN}
+            numberOfLines={NUM_LINES.FIVE}
             multiline
+            maxLength={maxLen}
+            placeholderColor={theme.colors.dark10}
             inputStyle={ListInputStyles.txtValue}
             containerStyle={ListInputStyles.columnContainer}
             inputContainerStyle={ListInputStyles.columnInputContainer}
           />
         </View>
 
-        {isError && (
-          <ListItem.Content style={ListInputStyles.errorContainer}>
-            <ValidationMessage name={name} />
-          </ListItem.Content>
-        )}
+        {isError && <ValidationMessage name={name} />}
       </ListItem.Content>
     </ListItem>
   );

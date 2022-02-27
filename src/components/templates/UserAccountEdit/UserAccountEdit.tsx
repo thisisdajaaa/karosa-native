@@ -20,7 +20,7 @@ import UserAccountEditStyles from "./styles";
 import { theme } from "@app/styles";
 
 const UserAccountEditTemplate: FC<PropsType> = (props) => {
-  const { handleSocialMedia, goBack } = props;
+  const { onAddress, onSocialMedia, goBack } = props;
 
   const multiListProps: MultiListProps = {
     multiDisp: [
@@ -72,12 +72,12 @@ const UserAccountEditTemplate: FC<PropsType> = (props) => {
 
   const addressProps: ListChevronProps = {
     title: "Addresses",
-    onPress: () => 0,
+    onPress: onAddress,
   };
 
   const socialMediaProps: ListChevronProps = {
     title: "Social Media Accounts",
-    onPress: handleSocialMedia,
+    onPress: onSocialMedia,
   };
 
   return (

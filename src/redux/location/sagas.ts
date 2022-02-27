@@ -8,10 +8,12 @@ import apiEndpoints from "@app/redux/api-endpoints.json";
 import * as actions from "./actions";
 import * as models from "./models";
 
+const { get } = baseAxios();
+
 export function* callRegionApi(): SagaIterator {
   try {
     const response: AxiosResponse<models.RegionResponse> = yield call(
-      baseAxios.get,
+      get,
       apiEndpoints.regions
     );
 
@@ -26,7 +28,7 @@ export function* callProvinceApi(
 ): SagaIterator {
   try {
     const response: AxiosResponse<models.ProvinceResponse> = yield call(
-      baseAxios.get,
+      get,
       apiEndpoints.province.replace(
         "{regionId}",
         String(action.payload.regionId)
@@ -43,7 +45,7 @@ export function* callCitiesApi(
 ): SagaIterator {
   try {
     const response: AxiosResponse<models.CitiesResponse> = yield call(
-      baseAxios.get,
+      get,
       apiEndpoints.cities.replace(
         "{provinceId}",
         String(action.payload.provinceId)
@@ -61,7 +63,7 @@ export function* callBarangayApi(
 ): SagaIterator {
   try {
     const response: AxiosResponse<models.BarangayResponse> = yield call(
-      baseAxios.get,
+      get,
       apiEndpoints.barangay.replace("{cityId}", String(action.payload.cityId))
     );
 

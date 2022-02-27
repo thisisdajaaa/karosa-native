@@ -5,6 +5,7 @@
  */
 
 export type PropsType = {
-  handleSocialMedia(): void;
+  onSocialMedia(): void;
+  onAddress(): void;
   goBack(): void;
 };

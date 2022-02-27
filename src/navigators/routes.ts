@@ -14,10 +14,11 @@ export default Object.freeze({
   ACCOUNTS_SETTINGS: "Account Settings",
   ACCOUNTS_EDT_PRFL: "Edit Profile",
   ACCOUNTS_ADDRESS: "My Address",
-  ACCOUNTS_NEW_ADDRESS: "New Address",
+  ACCOUNTS_EDIT_ADDRESS: "Edit Address",
   ACCOUNTS_SOCIAL_MEDIA: "Social Media Accounts",
   ACCOUNTS_DELETE: "Delete Account",
   ACCOUNTS_LOGOUT: "Logout",
+  ACCOUNTS_SEARCH_ADDRESS: "Search Address",
 
   SHOP_MAIN: "Shop Main",
   SHOP_SETTINGS: "Shop Settings",

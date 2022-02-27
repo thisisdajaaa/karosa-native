@@ -59,3 +59,12 @@ export const formatDatePayload = (date: string | null) => {
 
   return date.split("/").join("-");
 };
+
+export const replaceAll = (obj: { [key: string]: string }, text: string) => {
+  return Object.entries(obj).reduce((accumulator, currentValue) => {
+    const find = `{${currentValue[0]}}`;
+    const regExp = new RegExp(find, "g");
+
+    return accumulator.replace(regExp, accumulator[1]);
+  }, text);
+};
