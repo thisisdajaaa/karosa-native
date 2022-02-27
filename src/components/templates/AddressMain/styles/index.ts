@@ -56,6 +56,17 @@ const AddressMainTemplateStyles = StyleSheet.create({
   flexRow: {
     flexDirection: "row",
   },
+  txtDelete: {
+    ...theme.textRegular,
+    color: theme.colors.white,
+    marginTop: 8,
+  },
+  btnDeleteContainer: {
+    backgroundColor: theme.colors.red5,
+    padding: 24,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 export default AddressMainTemplateStyles;

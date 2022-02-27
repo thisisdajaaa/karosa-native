@@ -9,6 +9,8 @@ import { AddressLocation } from "@app/screens/AddressSearch/types";
 
 export type PropsType = {
   routeParams: Readonly<AddressLocation>;
-  handleGeocoder: (values: GeocoderRequest) => void;
   formattedAddress: string;
+  handleGeocoder: (values: GeocoderRequest) => void;
+  handleSaveAddress: (address: AddressLocation) => void;
+  handleBack: () => void;
 };

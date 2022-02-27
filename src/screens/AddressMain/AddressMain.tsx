@@ -28,6 +28,11 @@ const AddressMain: FC = () => {
       (values: UserCoordinates) => dispatch(actions.setUserCoordinates(values)),
       [dispatch]
     ),
+    setDeletedAddress: useCallback(
+      (id: string | number[] | undefined) =>
+        dispatch(actions.setDeletedAddress(id)),
+      [dispatch]
+    ),
   };
 
   const userCoordinates = useMemoizedSelector(selectors.getUserCoordinates);
@@ -99,6 +104,7 @@ const AddressMain: FC = () => {
       handleBack={goBack}
       handleEditAddress={handleEditAddress}
       handleNewAddress={handleNewAddress}
+      handleDelete={addressMainActions.setDeletedAddress}
     />
   );
 };

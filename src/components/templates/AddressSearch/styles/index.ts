@@ -17,7 +17,6 @@ const AddressSearchTemplateStyles = StyleSheet.create({
     flex: 1,
   },
   subContainer: { backgroundColor: theme.colors.white, flex: 2 },
-  touchableStyle: { top: 15 },
   buttonContainer: {
     position: "absolute",
     bottom: "2%",

@@ -11,4 +11,5 @@ export type PropsType = {
   handleBack: () => void;
   handleNewAddress: () => void;
   handleEditAddress: (address: NewAddressForm) => void;
+  handleDelete: (id: string | number[] | undefined) => void;
 };

@@ -4,8 +4,8 @@
  *
  */
 
-import { theme } from "@app/styles";
 import { StyleSheet } from "react-native";
+import { theme } from "@app/styles";
 
 const AddressNewTemplateStyles = StyleSheet.create({
   container: {
@@ -28,6 +28,18 @@ const AddressNewTemplateStyles = StyleSheet.create({
     bottom: "2%",
     width: "90%",
     alignSelf: "center",
+  },
+  defaultContainer: {
+    marginTop: 12,
+  },
+  addressPin: {
+    marginRight: 12,
+  },
+  txtLocation: {
+    paddingRight: 18,
+  },
+  accountSettings: {
+    marginLeft: "auto",
   },
 });
 

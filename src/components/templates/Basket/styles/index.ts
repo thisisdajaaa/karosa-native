@@ -61,7 +61,7 @@ const BasketStyles = StyleSheet.create({
   },
   btnDeleteContainer: {
     backgroundColor: theme.colors.red5,
-    width: 96,
+    padding: 24,
     justifyContent: "center",
     alignItems: "center",
   },

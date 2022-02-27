@@ -6,29 +6,29 @@
  */
 
 import React, { FC, ReactElement } from "react";
-
-import type { PropsType } from "./types";
 import {
   ScrollView,
   View,
   Pressable,
   KeyboardAvoidingView,
 } from "react-native";
-import Header from "@app/components/molecules/Header";
-
-import Text from "@app/atoms/Text";
 import { ListItem } from "react-native-elements";
-import Icon from "@app/atoms/Icon";
-import ListInput from "@app/components/organisms/ListInput";
-import Button from "@app/atoms/Button";
 import { useFormikContext } from "formik";
+import { COMMON } from "@app/constants";
 import { NewAddressForm } from "@app/redux/address/models";
-import AddressEditStyles from "./styles";
 import { theme } from "@app/styles";
 import { getPlatform, listIterator } from "@app/utils";
-import { COMMON } from "@app/constants";
+import Header from "@app/molecules/Header";
+import Icon from "@app/atoms/Icon";
+import Text from "@app/atoms/Text";
+import ListInput from "@app/organisms/ListInput";
+import Button from "@app/atoms/Button";
 import validationSchema from "@app/screens/AddressEdit/validation";
-import ListSwitch from "@app/components/organisms/ListSwitch";
+import ListSwitch from "@app/organisms/ListSwitch";
+
+import type { PropsType } from "./types";
+import { ICON_SIZE, INPUT_LENGTH } from "./config";
+import AddressEditStyles from "./styles";
 
 const AddressEditTemplate: FC<PropsType> = (props) => {
   const { routeParams, handleEditAddress, handleBack } = props;
@@ -53,7 +53,7 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
         label={label}
         hasBottomDivider
         required={required}
-        maxLen={200}
+        maxLen={INPUT_LENGTH.TEXT_AREA}
         variation={COMMON.VARIATION.ONE}
       />
     );
@@ -81,13 +81,18 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
   const getAddressEdit = () => {
     const elements: ReactElement[] = [];
 
-    const label = listInput("label", "Label", "e.g Home / Office", 20);
+    const label = listInput(
+      "label",
+      "Label",
+      "e.g Home / Office",
+      INPUT_LENGTH.LABEL
+    );
 
     const contactName = listInput(
       "contactName",
       "Contact Name",
       "Set Name",
-      30
+      INPUT_LENGTH.NAME
     );
 
     const contactNumber = listInput(
@@ -110,7 +115,7 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
     );
 
     const isDefault = (
-      <View style={{ marginTop: 12 }}>
+      <View style={AddressEditStyles.defaultContainer}>
         <ListSwitch
           title="Set as Default Address"
           name="isDefault"
@@ -151,27 +156,30 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
       >
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={AddressEditStyles.subContainer}>
-            <ListItem bottomDivider={true}>
+            <ListItem bottomDivider>
               <ListItem.Content style={AddressEditStyles.listContainer}>
                 <Icon
                   group="accountSettings"
                   name="addressPin"
-                  width={20}
-                  height={20}
-                  extraStyle={{ marginRight: 12 }}
+                  width={ICON_SIZE}
+                  height={ICON_SIZE}
+                  extraStyle={AddressEditStyles.addressPin}
                 />
-                <Text text={location} textStyle={{ paddingRight: 18 }} />
+                <Text
+                  text={location}
+                  textStyle={AddressEditStyles.txtLocation}
+                />
               </ListItem.Content>
 
               <Pressable
                 onPress={handleEditAddress}
-                style={{ marginLeft: "auto" }}
+                style={AddressEditStyles.accountSettings}
               >
                 <Icon
                   group="accountSettings"
-                  name={"edit"}
-                  width={20}
-                  height={20}
+                  name="edit"
+                  width={ICON_SIZE}
+                  height={ICON_SIZE}
                 />
               </Pressable>
             </ListItem>
@@ -191,4 +199,5 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
     </>
   );
 };
+
 export default AddressEditTemplate;

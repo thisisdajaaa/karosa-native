@@ -9,10 +9,9 @@ import React, { FC, LegacyRef, useRef, useState } from "react";
 
 import type { PropsType } from "./types";
 import AddressSearchStyles from "./styles";
-import { Platform, View } from "react-native";
+import { View } from "react-native";
 import Header from "@app/molecules/Header";
 import { theme } from "@app/styles";
-import { useNavigation } from "@react-navigation/native";
 import {
   GooglePlaceData,
   GooglePlaceDetail,
@@ -21,7 +20,6 @@ import {
 } from "react-native-google-places-autocomplete";
 import MapView, { Camera, Region } from "react-native-maps";
 import Button from "@app/atoms/Button";
-import routes from "@app/navigators/routes";
 import { useMount, useUpdateEffect } from "@app/hooks";
 import Text from "@app/atoms/Text";
 import { GOOGLE_PLACES_API_KEY } from "@env";
@@ -35,11 +33,19 @@ import {
   LONGITUDE_DELTA,
   MIN_ZOOM_LVL,
 } from "./config";
+import type { AddressLocation } from "@app/screens/AddressSearch/types";
+import { getPlatform } from "@app/utils";
 
 const AddressSearchTemplate: FC<PropsType> = (props) => {
-  const { routeParams, handleGeocoder, formattedAddress } = props;
+  const {
+    routeParams,
+    handleGeocoder,
+    handleBack,
+    handleSaveAddress,
+    formattedAddress,
+  } = props;
+
   const { latitude, longitude, id } = routeParams;
-  const { goBack, navigate } = useNavigation();
 
   const initialRegion = {
     latitude,
@@ -59,6 +65,8 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
 
   const mapRef: LegacyRef<MapView> = useRef(null);
   const autocompleteRef = useRef<GooglePlacesAutocompleteRef>(null);
+
+  const isIOS = getPlatform.getInstance() === "ios";
 
   const onGeocode = (_latitutde: number, _longitutude: number) => {
     const params: GeocoderRequest = {
@@ -85,7 +93,7 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
   }, [formattedAddress, isFocused]);
 
   const onInitialMapReady = (_region: Region) => {
-    Platform.OS === "ios"
+    isIOS
       ? () => mapRef?.current?.animateToRegion(_region, DURATION.HIGH)
       : mapRef?.current?.getCamera().then((cam: Camera) => {
           cam.zoom += 6;
@@ -112,6 +120,7 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
       latitude: details?.geometry.location.lat || 0,
       longitude: details?.geometry.location.lng || 0,
     };
+
     const _region = {
       ...latlng,
       latitudeDelta: LATITUDE_DELTA,
@@ -128,6 +137,17 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
     setIsFocused(false);
 
     mapRef?.current?.animateToRegion(_region, DURATION.HIGH);
+  };
+
+  const onConfirm = () => {
+    const address: AddressLocation = {
+      id,
+      latitude: region.latitude,
+      longitude: region.longitude,
+      location: place.details ? place.details : formattedAddress,
+    };
+
+    handleSaveAddress(address);
   };
 
   const displaySearchRow = (rowData: GooglePlaceData) => {
@@ -154,7 +174,7 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
         leftComponent={{
           icon: "arrow-back",
           color: theme.colors.primary,
-          onPress: goBack,
+          onPress: handleBack,
         }}
         centerComponent={
           <GooglePlacesAutocomplete
@@ -213,17 +233,7 @@ const AddressSearchTemplate: FC<PropsType> = (props) => {
             buttonStyle={AddressSearchStyles.buttonPrimary}
             titleStyle={AddressSearchStyles.txtButton}
             disabled={!formattedAddress || isFocused}
-            onPress={() => {
-              navigate("Stack", {
-                screen: routes.ACCOUNTS_EDIT_ADDRESS,
-                params: {
-                  id,
-                  latitude: region.latitude,
-                  longitude: region.longitude,
-                  location: place.details ? place.details : formattedAddress,
-                },
-              });
-            }}
+            onPress={onConfirm}
           />
         </View>
       </View>

@@ -23,6 +23,11 @@ export const addressEntryContext = produce(
       case getType(actions.setUserAddressList):
         draft.userAddressList = action.payload;
         return draft;
+      case getType(actions.setDeletedAddress):
+        draft.userAddressList = draft.userAddressList.filter(
+          (value) => value.id !== action.payload
+        );
+        return draft;
       default:
         return draft;
     }

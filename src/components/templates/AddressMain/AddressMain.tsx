@@ -6,8 +6,14 @@
  */
 
 import React, { FC } from "react";
-import { Pressable, ScrollView, View } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import { ListItem } from "react-native-elements";
+import { Swipeable } from "react-native-gesture-handler";
 import { isEmpty } from "lodash";
 import { theme } from "@app/styles";
 import Header from "@app/molecules/Header";
@@ -20,8 +26,13 @@ import { ICON_SIZE } from "./config";
 import AddressMainStyles from "./styles";
 
 const AddressMainTemplate: FC<PropsType> = (props) => {
-  const { addressList, handleBack, handleEditAddress, handleNewAddress } =
-    props;
+  const {
+    addressList,
+    handleBack,
+    handleEditAddress,
+    handleNewAddress,
+    handleDelete,
+  } = props;
 
   return (
     <>
@@ -42,57 +53,78 @@ const AddressMainTemplate: FC<PropsType> = (props) => {
           {!isEmpty(addressList) ? (
             addressList.map((address, index) => {
               return (
-                <ListItem
-                  bottomDivider={true}
+                <Swipeable
                   key={index}
-                  containerStyle={AddressMainStyles.listStart}
-                >
-                  <Icon
-                    group="accountSettings"
-                    name="addressPin"
-                    width={ICON_SIZE.SM}
-                    height={ICON_SIZE.SM}
-                  />
-                  <ListItem.Content style={AddressMainStyles.listStart}>
-                    <View style={AddressMainStyles.flexRow}>
-                      <Text
-                        text={address.label}
-                        textStyle={AddressMainStyles.addressLabel}
-                      />
-
-                      {address.isDefault && (
-                        <Text
-                          text="[Default]"
-                          textStyle={AddressMainStyles.txtDefault}
+                  renderRightActions={() => (
+                    <TouchableWithoutFeedback
+                      onPress={() => handleDelete(address.id)}
+                    >
+                      <View style={AddressMainStyles.btnDeleteContainer}>
+                        <Icon
+                          group="basket"
+                          name="trash"
+                          height={ICON_SIZE.MD}
+                          width={ICON_SIZE.MD}
                         />
-                      )}
-                    </View>
-
-                    <Text
-                      text={`${address.contactName}, ${address.contactNumber}`}
-                      textStyle={AddressMainStyles.txtSubAddress}
-                    />
-                    <Text
-                      text={address.coords.location}
-                      textStyle={AddressMainStyles.txtSubAddress}
-                    />
-                    <Text
-                      text={`Note to rider: ${
-                        address.noteRider ? address.noteRider : "None"
-                      }`}
-                      textStyle={AddressMainStyles.txtSubAddress}
-                    />
-                  </ListItem.Content>
-
-                  <Pressable onPress={() => handleEditAddress(address)}>
+                        <Text
+                          text="Delete"
+                          textStyle={AddressMainStyles.txtDelete}
+                        />
+                      </View>
+                    </TouchableWithoutFeedback>
+                  )}
+                >
+                  <ListItem
+                    bottomDivider={true}
+                    containerStyle={AddressMainStyles.listStart}
+                  >
                     <Icon
                       group="accountSettings"
-                      name={"edit"}
+                      name="addressPin"
                       width={ICON_SIZE.SM}
                       height={ICON_SIZE.SM}
                     />
-                  </Pressable>
-                </ListItem>
+                    <ListItem.Content style={AddressMainStyles.listStart}>
+                      <View style={AddressMainStyles.flexRow}>
+                        <Text
+                          text={address.label}
+                          textStyle={AddressMainStyles.addressLabel}
+                        />
+
+                        {address.isDefault && (
+                          <Text
+                            text="[Default]"
+                            textStyle={AddressMainStyles.txtDefault}
+                          />
+                        )}
+                      </View>
+
+                      <Text
+                        text={`${address.contactName}, ${address.contactNumber}`}
+                        textStyle={AddressMainStyles.txtSubAddress}
+                      />
+                      <Text
+                        text={address.coords.location}
+                        textStyle={AddressMainStyles.txtSubAddress}
+                      />
+                      <Text
+                        text={`Note to rider: ${
+                          address.noteRider ? address.noteRider : "None"
+                        }`}
+                        textStyle={AddressMainStyles.txtSubAddress}
+                      />
+                    </ListItem.Content>
+
+                    <Pressable onPress={() => handleEditAddress(address)}>
+                      <Icon
+                        group="accountSettings"
+                        name={"edit"}
+                        width={ICON_SIZE.SM}
+                        height={ICON_SIZE.SM}
+                      />
+                    </Pressable>
+                  </ListItem>
+                </Swipeable>
               );
             })
           ) : (
