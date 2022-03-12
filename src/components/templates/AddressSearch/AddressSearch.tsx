@@ -6,12 +6,6 @@
  */
 
 import React, { FC, LegacyRef, useRef, useState } from "react";
-
-import type { PropsType } from "./types";
-import AddressSearchStyles from "./styles";
-import { View } from "react-native";
-import Header from "@app/molecules/Header";
-import { theme } from "@app/styles";
 import {
   GooglePlaceData,
   GooglePlaceDetail,
@@ -19,13 +13,20 @@ import {
   GooglePlacesAutocompleteRef,
 } from "react-native-google-places-autocomplete";
 import MapView, { Camera, Region } from "react-native-maps";
-import Button from "@app/atoms/Button";
-import { useMount, useUpdateEffect } from "@app/hooks";
-import Text from "@app/atoms/Text";
-import { GOOGLE_PLACES_API_KEY } from "@env";
-import Icon from "@app/atoms/Icon";
 import { debounce } from "lodash";
+import { View } from "react-native";
+import { theme } from "@app/styles";
+import { useMount, useUpdateEffect } from "@app/hooks";
+import { GOOGLE_PLACES_API_KEY } from "@env";
 import { GeocoderRequest } from "@app/redux/address/models";
+import { getPlatform } from "@app/utils";
+import type { AddressLocation } from "@app/screens/AddressSearch/types";
+import Header from "@app/molecules/Header";
+import Button from "@app/atoms/Button";
+import Text from "@app/atoms/Text";
+import Icon from "@app/atoms/Icon";
+
+import type { PropsType } from "./types";
 import {
   DURATION,
   ICON_SIZE,
@@ -33,8 +34,7 @@ import {
   LONGITUDE_DELTA,
   MIN_ZOOM_LVL,
 } from "./config";
-import type { AddressLocation } from "@app/screens/AddressSearch/types";
-import { getPlatform } from "@app/utils";
+import AddressSearchStyles from "./styles";
 
 const AddressSearchTemplate: FC<PropsType> = (props) => {
   const {

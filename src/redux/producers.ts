@@ -8,6 +8,7 @@ import * as actions from "./actions";
  * @param draft - draft.
  * @param action - action type.
  */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export const reset = produce(
   (draft: Draft<any>, action: ActionType<typeof actions>): StateAll => {
     if (action.type === getType(actions.resetState)) {

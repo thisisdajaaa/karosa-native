@@ -5,6 +5,7 @@
  */
 
 import { GestureResponderEvent } from "react-native";
+import { ChangeText } from "@app/utils";
 
 export type SizeType = "sm" | "md" | "lg";
 
@@ -17,7 +18,7 @@ export type PropsType = {
   size?: SizeType;
   autoFocus?: boolean;
   backgroundColor?: BackgroundColorType;
-  onChangeText?: (text: string) => void;
+  onChangeText?: ChangeText;
   onFocus?(): void;
   onCancel?(): void;
   onTouchStart?: (event: GestureResponderEvent) => void;

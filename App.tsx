@@ -42,9 +42,7 @@ const App = () => {
 
   useEffect(() => {
     (async () => {
-      if (ready) {
-        await SplashScreen.hideAsync();
-      }
+      if (ready) await SplashScreen.hideAsync();
     })();
   }, [isNavigationReady, ready]);
 

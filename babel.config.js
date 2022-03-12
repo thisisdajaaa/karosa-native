@@ -7,9 +7,11 @@ module.exports = function (api) {
         plugins: ["inline-dotenv"],
         compact: false,
       },
+      production: {
+        compact: true,
+      },
     },
     plugins: [
-      "react-native-reanimated/plugin",
       [
         "module-resolver",
         {
@@ -46,6 +48,7 @@ module.exports = function (api) {
         },
       ],
       "transform-inline-environment-variables",
+      "react-native-reanimated/plugin",
     ],
     retainLines: true,
   };

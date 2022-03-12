@@ -23,3 +23,5 @@ export type WithIcon = {
   height: number;
   width: number;
 };
+
+export type ChangeText = (text: string) => void;

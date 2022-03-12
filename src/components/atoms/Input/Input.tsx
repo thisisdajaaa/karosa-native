@@ -21,7 +21,7 @@ const Input: FC<PropsType> = (props) => {
     numberOfLines,
     onChange,
     multiline,
-    autoCapitalize,
+    autoCapitalize = "none",
     secureTextEntry,
     inputStyle,
     placeholderColor,

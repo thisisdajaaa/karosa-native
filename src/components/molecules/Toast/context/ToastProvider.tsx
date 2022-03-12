@@ -6,8 +6,6 @@ import type { IToastContext, ToastProps, ToastProviderProps } from "../types";
 import Toast from "../Toast";
 import ToastContext from "./ToastContext";
 
-const { interceptors } = baseAxios();
-
 const defaultContext: Partial<IToastContext> = {
   defaults: {
     position: "top",
@@ -87,10 +85,25 @@ const ToastProvider: FC<ToastProviderProps> = ({
 
   // Intercept axios errors
   useMemo(() => {
-    interceptors.response.use((response) => response, timeoutHandler());
-    interceptors.response.use((response) => response, sessionTimeoutHandler());
-    interceptors.response.use((response) => response, networkErrorHandler());
-    interceptors.response.use((response) => response, systemErrorHandler());
+    baseAxios.interceptors.response.use(
+      (response) => response,
+      timeoutHandler()
+    );
+
+    baseAxios.interceptors.response.use(
+      (response) => response,
+      sessionTimeoutHandler()
+    );
+
+    baseAxios.interceptors.response.use(
+      (response) => response,
+      networkErrorHandler()
+    );
+
+    baseAxios.interceptors.response.use(
+      (response) => response,
+      systemErrorHandler()
+    );
   }, [showToast]);
 
   return (

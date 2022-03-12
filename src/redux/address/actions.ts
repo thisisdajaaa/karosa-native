@@ -9,8 +9,8 @@ export const setNewAddress = createAction(
   (resolve) => (values: models.NewAddressForm) => resolve(values)
 );
 
-export const setDeletedAddress = createAction(
-  types.SET_DELETED_ADDRESS,
+export const deleteAddress = createAction(
+  types.DELETE_ADDRESS,
   (resolve) => (id: string | number[] | undefined) => resolve(id)
 );
 
@@ -31,8 +31,8 @@ export const callGeocoderApi = createAsyncAction(
 )<models.GeocoderRequest, models.GeocoderResponse, ResponseError>();
 
 const actions = {
+  deleteAddress,
   setNewAddress,
-  setDeletedAddress,
   setUserCoordinates,
   setUserAddressList,
   callGeocoderApi,

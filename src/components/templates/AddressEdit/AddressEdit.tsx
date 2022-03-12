@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, ReactElement } from "react";
+import React, { FC, Fragment, ReactElement } from "react";
 import {
   ScrollView,
   View,
@@ -114,15 +114,18 @@ const AddressEditTemplate: FC<PropsType> = (props) => {
       "e.g. Landmark, Buidling"
     );
 
-    const isDefault = (
-      <View style={AddressEditStyles.defaultContainer}>
-        <ListSwitch
-          title="Set as Default Address"
-          name="isDefault"
-          hasBottomDivider
-        />
-      </View>
-    );
+    const isDefault =
+      routeParams.mode === "User" ? (
+        <View style={AddressEditStyles.defaultContainer}>
+          <ListSwitch
+            title="Set as Default Address"
+            name="isDefault"
+            hasBottomDivider
+          />
+        </View>
+      ) : (
+        <Fragment />
+      );
 
     elements.push(
       label,

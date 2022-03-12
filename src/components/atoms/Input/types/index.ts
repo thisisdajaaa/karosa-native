@@ -12,6 +12,7 @@ import {
   NativeSyntheticEvent,
   TextInputEndEditingEventData,
 } from "react-native";
+import { ChangeText } from "@app/utils";
 
 type InputOptions = "none" | "sentences" | "words" | "characters";
 
@@ -33,7 +34,7 @@ type AutoCompleteType =
 export type PropsType = {
   value: string;
   placeholder?: string;
-  onChange?(text: string): void;
+  onChange?: ChangeText;
   onEndEditing?(e: NativeSyntheticEvent<TextInputEndEditingEventData>): void;
   inputStyle?: StyleProp<TextStyle>;
   inputContainerStyle?: StyleProp<ViewStyle>;

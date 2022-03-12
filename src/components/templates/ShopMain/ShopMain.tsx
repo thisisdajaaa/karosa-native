@@ -89,12 +89,12 @@ const ShopMainTemplate: FC<PropsType> = (props) => {
     const elements: ReactElement[] = [];
 
     const toShip = action(() => navigation.onToShip, icons.ship, "To Ship");
+    const returns = action(() => navigation.onReturns, icons.return, "Returns");
     const cancelled = action(
       () => navigation.onCancelled,
       icons.cancel,
       "Cancelled"
     );
-    const returns = action(() => navigation.onReturns, icons.return, "Returns");
 
     elements.push(toShip, cancelled, returns);
 

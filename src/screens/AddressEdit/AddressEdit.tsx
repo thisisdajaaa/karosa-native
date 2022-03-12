@@ -14,6 +14,10 @@ import AddressEditTemplate from "@app/templates/AddressEdit";
 import { AddressMainParams } from "@app/screens/AddressSearch/types";
 import { useMemoizedSelector, useMount } from "@app/hooks";
 import { actions, selectors } from "@app/redux/address";
+import {
+  actions as shopActions,
+  selectors as shopSelectors,
+} from "@app/redux/shop";
 import { NewAddressForm } from "@app/redux/address/models";
 import routes from "@app/navigators/routes";
 
@@ -28,11 +32,18 @@ const AddressEdit: FC = () => {
     [dispatch]
   );
 
+  const setShopAddressForm = useCallback(
+    (values: NewAddressForm) =>
+      dispatch(shopActions.setShopAddressForm(values)),
+    [dispatch]
+  );
+
   const { params } =
     useRoute<RouteProp<AddressMainParams, "AddressLocation">>();
 
   const newAddressForm = useMemoizedSelector(selectors.getNewAddressForm);
   const getUserAddressList = useMemoizedSelector(selectors.getUserAddressList);
+  const shopAddressForm = useMemoizedSelector(shopSelectors.getShopAddressForm);
 
   const onEditAddress = () => {
     if (!params.id) goBack();
@@ -40,13 +51,14 @@ const AddressEdit: FC = () => {
     navigate("Stack", {
       screen: routes.ACCOUNTS_SEARCH_ADDRESS,
       id: params.id,
+      mode: params.mode,
       latitude: params.latitude,
       longitude: params.longitude,
       location: params.location,
     });
   };
 
-  const getInitialValues = (): NewAddressForm => {
+  const getUserValues = (): NewAddressForm => {
     const foundAddress = getUserAddressList.find(
       (value) => value.id === params.id
     );
@@ -58,6 +70,15 @@ const AddressEdit: FC = () => {
     };
   };
 
+  const getShopValues = (): NewAddressForm => {
+    return {
+      ...shopAddressForm,
+    };
+  };
+
+  const initialValues =
+    params.mode === "User" ? getUserValues() : getShopValues();
+
   useMount(() => {
     const hasLatLng = params.latitude && params.longitude && params.location;
 
@@ -66,8 +87,8 @@ const AddressEdit: FC = () => {
       : formikBag.setFieldValue("hasLatLng", false);
   });
 
-  const onUpdateAddress = (values: NewAddressForm) => {
-    const updatedAddress = getUserAddressList.map((value) => {
+  const onUpdateUserAddress = (values: NewAddressForm) => {
+    const updatedAddress: NewAddressForm[] = getUserAddressList.map((value) => {
       if (value.id === params.id) {
         return {
           ...values,
@@ -88,7 +109,7 @@ const AddressEdit: FC = () => {
     setUserAddressList(updatedAddress);
   };
 
-  const onAddAddress = (values: NewAddressForm) => {
+  const onAddUserAddress = (values: NewAddressForm) => {
     const newAddress: NewAddressForm = {
       ...values,
       id: uuid.v4(),
@@ -115,14 +136,39 @@ const AddressEdit: FC = () => {
     setUserAddressList(addressList);
   };
 
-  const handleSubmit = (values: NewAddressForm) => {
-    params.id ? onUpdateAddress(values) : onAddAddress(values);
+  const onAddShopAddress = (values: NewAddressForm) => {
+    const newAddress: NewAddressForm = {
+      ...values,
+      id: uuid.v4(),
+      coords: {
+        latitude: params.latitude,
+        longitude: params.longitude,
+        location: params.location,
+      },
+    };
 
-    navigate(routes.ACCOUNTS_ADDRESS);
+    setShopAddressForm(newAddress);
+  };
+
+  console.log(params);
+
+  const handleSubmit = (values: NewAddressForm) => {
+    switch (params.mode) {
+      case "User":
+        params.id ? onUpdateUserAddress(values) : onAddUserAddress(values);
+        navigate(routes.ACCOUNTS_ADDRESS);
+        break;
+      case "Shop":
+        onAddShopAddress(values);
+        navigate(routes.SHOP_SETTINGS);
+        break;
+      default:
+        break;
+    }
   };
 
   const formikBag = useFormik({
-    initialValues: getInitialValues(),
+    initialValues,
     onSubmit: handleSubmit,
     validateOnBlur: false,
     validateOnChange: true,

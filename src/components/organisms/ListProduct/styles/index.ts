@@ -40,8 +40,8 @@ const ListProductStyles = StyleSheet.create({
   },
   wholesaleContainer: {
     backgroundColor: theme.colors.primary,
-    height: DIMENS.screenHeight * 0.03,
-    width: DIMENS.screenWidth * 0.2,
+    paddingVertical: 2,
+    paddingHorizontal: 4,
     borderRadius: 3,
   },
   txtBadge: {
@@ -53,14 +53,14 @@ const ListProductStyles = StyleSheet.create({
   },
   discountContainer: {
     backgroundColor: theme.colors.orange10,
-    height: DIMENS.screenHeight * 0.03,
-    width: DIMENS.screenWidth * 0.12,
+    paddingVertical: 2,
+    paddingHorizontal: 4,
     borderRadius: 3,
   },
   discountWithWholesaleContainer: {
     backgroundColor: theme.colors.orange10,
-    height: DIMENS.screenHeight * 0.03,
-    width: DIMENS.screenWidth * 0.12,
+    paddingVertical: 2,
+    paddingHorizontal: 4,
     borderRadius: 3,
     marginLeft: SPACING.sm,
   },

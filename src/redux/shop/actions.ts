@@ -1,6 +1,7 @@
 import { ENUM } from "@app/constants";
 import { createAction, createAsyncAction } from "typesafe-actions";
 import { ResponseError } from "@app/redux/api-models/common";
+import { NewAddressForm } from "@app/redux/address/models";
 
 import * as types from "./types";
 import * as models from "./models";
@@ -52,7 +53,7 @@ export const setProductForm = createAction(
 
 export const setShopAddressForm = createAction(
   types.SET_SHOP_ADDRESS,
-  (resolve) => (values: models.ShopAddressForm) => resolve(values)
+  (resolve) => (values: NewAddressForm) => resolve(values)
 );
 
 export const setVariationForm = createAction(
@@ -102,12 +103,6 @@ export const callShopDeleteApi = createAsyncAction(
   types.ACT_SHOP_DELETE_FAILURE
 )<undefined, models.ShopDeleteResponse, ResponseError>();
 
-export const callShopAddressApi = createAsyncAction(
-  types.ACT_SHOP_ADDRESS_REQUEST,
-  types.ACT_SHOP_ADDRESS_SUCCESS,
-  types.ACT_SHOP_ADDRESS_FAILURE
-)<undefined, models.ShopAddressResponse, ResponseError>();
-
 export const callAddProductApi = createAsyncAction(
   types.ACT_ADD_PRODUCT_REQUEST,
   types.ACT_ADD_PRODUCT_SUCCESS,
@@ -146,7 +141,6 @@ const actions = {
   callShopInfoApi,
   callShopDeleteApi,
   callCategoryListApi,
-  callShopAddressApi,
   callAddProductApi,
   callProductListApi,
   clearProductEntry,

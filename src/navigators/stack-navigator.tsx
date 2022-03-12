@@ -16,8 +16,6 @@ import ShippingDetailsScreen from "@app/screens/ProductShipping";
 import ShopMainScreen from "@app/screens/ShopMain";
 import ShopSettingsScreen from "@app/screens/ShopSettings";
 import ShopPaymentScreen from "@app/screens/ShopPayment";
-import ShopAddressScreen from "@app/screens/ShopAddress";
-import ShopEditAddressScreen from "@app/screens/ShopEditAddress";
 import ProductDetailScreen from "@app/screens/ShopProductDetails";
 import AuthPhoneNumberScreen from "@app/screens/AuthPhoneNumber";
 import AuthPasswordScreen from "@app/screens/AuthPassword";
@@ -55,11 +53,6 @@ const StackNavigator: React.FC = () => {
       <Stack.Screen name="Shop Main" component={ShopMainScreen} />
       <Stack.Screen name="Shop Settings" component={ShopSettingsScreen} />
       <Stack.Screen name="Shop Payment" component={ShopPaymentScreen} />
-      <Stack.Screen name="Shop Address" component={ShopAddressScreen} />
-      <Stack.Screen
-        name="Shop Edit Address"
-        component={ShopEditAddressScreen}
-      />
       <Stack.Screen name="Shop Products" component={MyProductsScreen} />
       <Stack.Screen
         name="Search My Product"
