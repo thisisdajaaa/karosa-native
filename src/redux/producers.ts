@@ -3,6 +3,7 @@ import { ActionType, getType } from "typesafe-actions";
 
 import { StateAll } from "./types";
 import * as actions from "./actions";
+
 /**
  * reset store with the specified key.
  * @param draft - draft.

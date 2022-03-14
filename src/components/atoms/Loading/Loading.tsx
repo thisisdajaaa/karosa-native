@@ -7,7 +7,7 @@
 
 import React, { FC } from "react";
 import { View } from "react-native";
-import { Spinner } from "./spinner";
+import { Spinner } from "./Spinner";
 import { styles } from "./styles";
 
 const Loading: FC = () => {

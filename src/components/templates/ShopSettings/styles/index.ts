@@ -72,6 +72,12 @@ const ShopSettingsStyles = StyleSheet.create({
     fontWeight: "400",
     marginBottom: 4,
   },
+  btnSpacer: {
+    marginVertical: 4,
+  },
+  addressMargin: {
+    marginTop: 8,
+  },
 });
 
 export default ShopSettingsStyles;

@@ -94,7 +94,7 @@ const CheckoutFooter: FC = () => {
           />
         </View>
       </ListItem>
-      <ListItem bottomDivider containerStyle={CheckoutStyles.totalContainer}>
+      <ListItem containerStyle={CheckoutStyles.totalContainer}>
         <View style={CheckoutStyles.flexColumn}>
           <Text text="Total:" textStyle={CheckoutStyles.txtTotal} />
           <Text

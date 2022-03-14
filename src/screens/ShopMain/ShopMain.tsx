@@ -27,11 +27,6 @@ const ShopMainScreen: FC = () => {
     [dispatch]
   );
 
-  const callShopAddressApi = useCallback(
-    () => dispatch(actions.callShopAddressApi.request()),
-    [dispatch]
-  );
-
   const shopInfoResponse = useMemoizedSelector(selectors.getShopInfoResponse);
   const shopAddressResponse = useMemoizedSelector(
     selectors.getShopAddressResponse
@@ -40,7 +35,6 @@ const ShopMainScreen: FC = () => {
   const batchShopApiProcess = () => {
     batch(() => {
       callShopInfoApi();
-      callShopAddressApi();
     });
   };
 

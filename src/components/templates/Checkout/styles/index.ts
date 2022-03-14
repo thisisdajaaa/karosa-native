@@ -100,11 +100,12 @@ const CheckoutStyles = StyleSheet.create({
     textAlign: "right",
   },
   btnPlaceOrder: {
-    paddingVertical: 16,
-    paddingHorizontal: 48,
+    paddingVertical: 24,
+    paddingHorizontal: 64,
   },
   txtPlaceOrder: {
     ...theme.textLightBold,
+    position: "absolute",
   },
   storeNameContainer: {
     flexDirection: "row",

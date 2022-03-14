@@ -139,7 +139,7 @@ const ShopSettingsTemplate: FC<PropsType> = (props) => {
     <ListItem
       bottomDivider={true}
       containerStyle={ShopSettingsStyles.listStart}
-      style={{ marginTop: 8 }}
+      style={ShopSettingsStyles.addressMargin}
     >
       <Icon
         group="accountSettings"
@@ -223,7 +223,7 @@ const ShopSettingsTemplate: FC<PropsType> = (props) => {
               titleStyle={ShopSettingsStyles.txtBtnAddShop}
             />
 
-            <View style={{ marginVertical: 8 }} />
+            <View style={ShopSettingsStyles.btnSpacer} />
           </>
         )}
 

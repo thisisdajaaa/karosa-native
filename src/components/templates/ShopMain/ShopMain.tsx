@@ -116,8 +116,12 @@ const ShopMainTemplate: FC<PropsType> = (props) => {
         onBack={navigation.onBack}
         onChat={navigation.onChat}
         onSettings={navigation.onSettings}
-        shopName={shopName}
-        address={address}
+        shopName={
+          shopName
+            ? shopName
+            : "Mercado de Karosa Shop Long Characters up to two lines"
+        }
+        address={address ? address : "Apas Lahug Cebu"}
         rating="4.8"
         followers="4.3K"
         chatPerf="89%"

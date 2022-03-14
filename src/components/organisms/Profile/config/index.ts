@@ -11,4 +11,6 @@ export const ADDRESS_LINE_NO = 2;
 export const ICON = {
   BUTTON: 16,
   ACTIVITY: 8,
+  HEADING: 24,
+  ADDRESS: 13,
 };

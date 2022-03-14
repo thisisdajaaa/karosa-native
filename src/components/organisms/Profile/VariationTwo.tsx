@@ -5,10 +5,9 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
-import { ImageBackground, StatusBar, View } from "react-native";
+import React, { FC } from "react";
+import { ImageBackground, Pressable, StatusBar, View } from "react-native";
 import Image from "@app/atoms/Image";
-import Button from "@app/atoms/Button";
 import Header from "@app/molecules/Header";
 import Icon from "@app/atoms/Icon";
 import Text from "@app/atoms/Text";
@@ -33,7 +32,7 @@ const VariationTwo: FC<PropsType> = (props) => {
   } = props;
 
   return (
-    <Fragment>
+    <View style={ProfileStyles.container}>
       <ImageBackground
         style={ProfileStyles.coverPhoto}
         blurRadius={BLUR_RADIUS}
@@ -49,11 +48,28 @@ const VariationTwo: FC<PropsType> = (props) => {
             color: "white",
             onPress: onBack,
           }}
-          rightComponent={{
-            icon: "chat",
-            color: "white",
-            onPress: onChat,
-          }}
+          rightComponent={
+            <View style={ProfileStyles.flexRow}>
+              <Pressable onPress={onSettings}>
+                <Icon
+                  group="common"
+                  name="outlineSetting"
+                  height={ICON.HEADING}
+                  width={ICON.HEADING}
+                  extraStyle={ProfileStyles.headingIcon}
+                />
+              </Pressable>
+
+              <Pressable onPress={onChat}>
+                <Icon
+                  group="products"
+                  name="whiteMessage"
+                  height={ICON.HEADING}
+                  width={ICON.HEADING}
+                />
+              </Pressable>
+            </View>
+          }
         />
       </ImageBackground>
       <View style={ProfileStyles.avatarContainer}>
@@ -62,47 +78,44 @@ const VariationTwo: FC<PropsType> = (props) => {
           source={{ uri: avatarPhoto }}
         />
       </View>
-      <View style={ProfileStyles.profileInfoContainer}>
-        <Button
-          icon={
-            <Icon
-              group="common"
-              name="settingsWhite"
-              width={ICON.BUTTON}
-              height={ICON.BUTTON}
-              extraStyle={ProfileStyles.settingsIcon}
-            />
-          }
-          onPress={onSettings}
-          titleStyle={ProfileStyles.txtPerson}
-          buttonStyle={ProfileStyles.btnPerson}
-          title={"Settings"}
-        />
-        <View style={ProfileStyles.shopNameContainer}>
+
+      <View style={ProfileStyles.profileContainer}>
+        <View style={ProfileStyles.spacer} />
+
+        <View style={ProfileStyles.nameContainer}>
           <Text text={shopName} textStyle={ProfileStyles.txtShopName} />
         </View>
-        <View style={ProfileStyles.shopAddrContainer}>
-          <View style={ProfileStyles.shopAddressSubContainer}>
+
+        <View style={ProfileStyles.shopAddressSubContainer}>
+          <View style={ProfileStyles.iconContainer}>
+            <Icon
+              group="common"
+              name="grayAddress"
+              height={ICON.ADDRESS}
+              width={ICON.ADDRESS}
+              extraStyle={ProfileStyles.profileIcon}
+            />
             <Text
               text={address}
               numberOfLines={ADDRESS_LINE_NO}
               textStyle={ProfileStyles.txtShopAddr}
             />
-            <View style={ProfileStyles.activeContainer}>
-              <Icon
-                group="common"
-                name={isActive ? "greenCircle" : "grayCircle"}
-                height={ICON.ACTIVITY}
-                width={ICON.ACTIVITY}
-                extraStyle={ProfileStyles.activeIcon}
-              />
-              <Text
-                text={isActive ? "Active" : "Inactive"}
-                textStyle={ProfileStyles.txtIcon}
-              />
-            </View>
+          </View>
+          <View style={ProfileStyles.activeContainer}>
+            <Icon
+              group="common"
+              name={isActive ? "greenCircle" : "grayCircle"}
+              height={ICON.ACTIVITY}
+              width={ICON.ACTIVITY}
+              extraStyle={ProfileStyles.profileIcon}
+            />
+            <Text
+              text={isActive ? "Active" : "Inactive"}
+              textStyle={ProfileStyles.txtIcon}
+            />
           </View>
         </View>
+
         <View style={ProfileStyles.bottomInfoContainer}>
           <View style={ProfileStyles.ratingContainer}>
             <Text
@@ -126,7 +139,7 @@ const VariationTwo: FC<PropsType> = (props) => {
           </View>
         </View>
       </View>
-    </Fragment>
+    </View>
   );
 };
 

@@ -13,13 +13,13 @@ import { theme } from "@app/styles";
 import { BasketContext, StoreData } from "@app/redux/shop/models";
 import { useUpdateEffect } from "@app/hooks";
 import { COMMON } from "@app/constants";
+import { currencyFormatter } from "@app/utils";
 import Text from "@app/atoms/Text";
 import ListChevron from "@app/organisms/ListChevron";
 import Button from "@app/atoms/Button";
 
 import { ICON_SIZE, INITIAL_REDUCE } from "./config";
 import BasketStyles from "./styles";
-import { currencyFormatter } from "@app/utils";
 
 const BasketFooter: FC = () => {
   const { values, submitForm } = useFormikContext<BasketContext>();

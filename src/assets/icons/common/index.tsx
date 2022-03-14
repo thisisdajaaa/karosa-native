@@ -29,6 +29,8 @@ import Warning from "./warning.svg";
 import Check from "./check.svg";
 import Uncheck from "./uncheck.svg";
 import Chevron from "./chevron.svg";
+import GrayAddress from "./gray-address.svg";
+import OutlineSetting from "./outline-settings.svg";
 
 const CommonIcons = (
   name: string,
@@ -70,6 +72,12 @@ const CommonIcons = (
     toReceive: <ToReceive style={extraStyle} height={height} width={width} />,
     toShip: <ToShip style={extraStyle} height={height} width={width} />,
     warning: <Warning style={extraStyle} height={height} width={width} />,
+    outlineSetting: (
+      <OutlineSetting style={extraStyle} height={height} width={width} />
+    ),
+    grayAddress: (
+      <GrayAddress style={extraStyle} height={height} width={width} />
+    ),
   };
 
   return icons[name];

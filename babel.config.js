@@ -1,14 +1,11 @@
 module.exports = function (api) {
   api.cache(true);
   return {
+    compact: false,
     presets: ["babel-preset-expo"],
     env: {
       development: {
         plugins: ["inline-dotenv"],
-        compact: false,
-      },
-      production: {
-        compact: true,
       },
     },
     plugins: [
