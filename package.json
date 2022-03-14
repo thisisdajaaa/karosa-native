@@ -11,13 +11,14 @@
     "ci": "yarn lint && yarn tsc",
     "generateComponent": "plop --plopfile generators/component.js",
     "generateScreen": "plop --plopfile generators/screen.js",
-    "lint": "eslint --ignore-path .gitignore \"src/**/**/*.+(ts|js|tsx)\"",
+    "lint": "eslint --ignore-path .gitignore \"src/**/**/*.+(ts|js|tsx)\" --max-warnings=0",
     "format": "prettier --ignore-path .gitignore \"src/**/**/*.+(ts|js|tsx)\" --write",
     "postinstall": "husky install"
   },
   "lint-staged": {
     "./src/**/**/*.{ts,js,jsx,tsx}": [
-      "yarn format"
+      "yarn format",
+      "yarn lint"
     ]
   },
   "dependencies": {
