@@ -150,8 +150,6 @@ const AddressEdit: FC = () => {
     setShopAddressForm(newAddress);
   };
 
-  console.log(params);
-
   const handleSubmit = (values: NewAddressForm) => {
     switch (params.mode) {
       case "User":

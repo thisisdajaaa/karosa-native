@@ -4,10 +4,14 @@
  *
  */
 
-import { theme } from "@app/styles";
 import { StyleSheet } from "react-native";
+import { theme } from "@app/styles";
 
 const styles = StyleSheet.create({
+  headerContainer: {
+    backgroundColor: theme.colors.transparent,
+    width: "100%",
+  },
   btnGrpViewContainer: {
     flex: 1,
     flexDirection: "row",

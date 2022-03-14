@@ -28,7 +28,7 @@ const ImageOverlayReviews: FC<PropsType> = (props) => {
             hasOverlay={props.hasOverlay}
             mainContainerStyle={[
               props.mainContainerStyle,
-              { flex: 0, marginRight: 10 },
+              ImageOverlayReviewsStyles.mainContainer,
             ]}
             imageHeight={props.imageHeight}
             imageWidth={props.imageWidth}

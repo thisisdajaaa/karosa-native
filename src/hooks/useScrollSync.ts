@@ -5,7 +5,7 @@ const useScrollSync = (
   scrollPairs: ScrollPair[],
   headerConfig: HeaderConfig
 ) => {
-  const sync: NonNullable<FlatListProps<any>["onMomentumScrollEnd"]> = (
+  const sync: NonNullable<FlatListProps<unknown>["onMomentumScrollEnd"]> = (
     event
   ) => {
     const { y } = event.nativeEvent.contentOffset;

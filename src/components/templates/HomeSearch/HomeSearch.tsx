@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  *
  * HomeSearchTemplate
@@ -7,29 +8,29 @@
 
 import React, { FC, useState } from "react";
 
-// import HomeSearchTemplateConfig from "./config";
 import type { PropsType } from "./types";
 import styles from "./styles";
-import { Screen } from "@app/components/molecules/Base-Screen";
-import { FlatList, View } from "react-native";
+import { FlatList, Keyboard, TouchableOpacity, View } from "react-native";
 import ProductCard from "@app/components/organisms/ProductCard";
 import { COMMON } from "@app/constants";
 import FilterButton from "@app/atoms/FilterButton";
+import Icon from "@app/atoms/Icon";
+import Header from "@app/molecules/Header";
+import SearchBar from "@app/molecules/SearchBar";
+
 const HomeSearchTemplate: FC<PropsType> = (props) => {
-  const { screenProps, productProps } = props;
+  const { productProps, handleBack } = props;
   const [filterProd, setFilterProd] = useState("all");
-  // const [filterCategory, setFilterCategory] = useState(0);
-  //const [categoryDiscount, setCategoryDiscount] = useState(0);
 
   const filteredData = (prod: any[], overAllFilter: any) => {
-    let list: any[] = [];
+    const list: any[] = [];
 
-    for (let products of prod) {
-      if (overAllFilter == "all") {
+    for (const products of prod) {
+      if (overAllFilter === "all") {
         list.push(products);
       }
-      if (overAllFilter == "latest") {
-        if (products.latestFlag == "1") {
+      if (overAllFilter === "latest") {
+        if (products.latestFlag === "1") {
           list.push(products);
         }
       }
@@ -39,7 +40,30 @@ const HomeSearchTemplate: FC<PropsType> = (props) => {
   };
 
   return (
-    <Screen {...screenProps}>
+    <View>
+      <Header
+        placement={"left"}
+        containerStyle={styles.headerContainer}
+        hasBottomDivider
+        leftComponent={
+          <TouchableOpacity onPress={handleBack}>
+            <Icon group={"home"} name={"arrow-back"} width={30} height={30} />
+          </TouchableOpacity>
+        }
+        centerComponent={
+          <SearchBar
+            placeholder={"Test item"}
+            backgroundColor="primary"
+            onFocus={Keyboard.dismiss}
+          />
+        }
+        rightComponent={
+          <View style={styles.horizontalContainer}>
+            <Icon group={"home"} name={"cartGreen"} width={30} height={30} />
+            <Icon group={"home"} name={"chatGreen"} width={30} height={30} />
+          </View>
+        }
+      />
       <FlatList
         numColumns={2}
         data={filteredData(productProps, filterProd)}
@@ -56,7 +80,7 @@ const HomeSearchTemplate: FC<PropsType> = (props) => {
                 onPress={() => setFilterProd("all")}
                 title={"All"}
                 buttonStyle={
-                  filterProd == "all"
+                  filterProd === "all"
                     ? styles.filterButtonClicked
                     : styles.filterButtonNeutral
                 }
@@ -70,7 +94,7 @@ const HomeSearchTemplate: FC<PropsType> = (props) => {
                 ]}
                 title={"Latest"}
                 buttonStyle={
-                  filterProd == "latest"
+                  filterProd === "latest"
                     ? styles.filterButtonClicked
                     : styles.filterButtonNeutral
                 }
@@ -78,7 +102,7 @@ const HomeSearchTemplate: FC<PropsType> = (props) => {
             </View>
             <View style={styles.btnContainer}>
               <FilterButton
-                onPress={() => console.log("Testing")}
+                onPress={() => 0}
                 title={"Discount"}
                 buttonStyle={styles.filterButtonNeutral}
                 icon={{
@@ -90,7 +114,7 @@ const HomeSearchTemplate: FC<PropsType> = (props) => {
             </View>
             <View style={styles.btnContainer}>
               <FilterButton
-                onPress={() => console.log("Testing")}
+                onPress={() => 0}
                 title={"Price"}
                 buttonStyle={styles.filterButtonNeutral}
                 icon={{
@@ -115,7 +139,7 @@ const HomeSearchTemplate: FC<PropsType> = (props) => {
           />
         )}
       />
-    </Screen>
+    </View>
   );
 };
 

@@ -12,12 +12,12 @@ import Discount from "./discount.svg";
 import DiscountTag from "./discount-tag.svg";
 import Location from "./location.svg";
 import Sale from "./sale.svg";
-import Chat from "./chat_outline.svg";
-import Cart from "./cart_outline.svg";
-import CartGreen from "./cart_green.svg";
-import ChatGreen from "./chat_green.svg";
+import Chat from "./chat-outline.svg";
+import Cart from "./cart-outline.svg";
+import CartGreen from "./cart-green.svg";
+import ChatGreen from "./chat-green.svg";
 import Loop from "./loop.svg";
-import ArrowBack from "./arrow_back.svg";
+import ArrowBack from "./arrow-back.svg";
 import Header from "./header.svg";
 
 const HomeIcons = (
@@ -38,8 +38,8 @@ const HomeIcons = (
     chat: <Chat style={extraStyle} height={height} width={width} />,
     cart: <Cart style={extraStyle} height={height} width={width} />,
     loop: <Loop style={extraStyle} height={height} width={width} />,
-    cart_green: <CartGreen style={extraStyle} height={height} width={width} />,
-    chat_green: <ChatGreen style={extraStyle} height={height} width={width} />,
+    cartGreen: <CartGreen style={extraStyle} height={height} width={width} />,
+    chatGreen: <ChatGreen style={extraStyle} height={height} width={width} />,
     arrow_back: <ArrowBack style={extraStyle} height={height} width={width} />,
     header: <Header style={extraStyle} height={height} width={width} />,
   };

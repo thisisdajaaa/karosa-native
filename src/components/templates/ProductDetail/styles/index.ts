@@ -3,11 +3,21 @@
  * @format
  *
  */
-import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
-import { Dimensions } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 const ProductDetailStyles = StyleSheet.create({
+  iconContainer: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  txtChat: {
+    ...theme.textLight,
+  },
+  flexRow: {
+    flexDirection: "row",
+  },
   varietyImage: {
     width: 70,
     height: 70,
@@ -208,6 +218,13 @@ const ProductDetailStyles = StyleSheet.create({
   },
   flexView: {
     flex: 1,
+  },
+  ratingPad: {
+    paddingBottom: 5,
+  },
+  txtAddBasket: {
+    ...theme.textLight,
+    color: theme.colors.black,
   },
   viewTextStyle: {
     justifyContent: "flex-end",

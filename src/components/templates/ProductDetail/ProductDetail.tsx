@@ -51,15 +51,9 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
       },
     ],
     icon: (
-      <View
-        style={{
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <View style={ProductDetailStyles.iconContainer}>
         <Icon group="products" name="chatNow" width={20} height={20} />
-        <Text text="Chat" textStyle={{ fontSize: 12 }} />
+        <Text text="Chat" textStyle={ProductDetailStyles.txtChat} />
       </View>
     ),
   };
@@ -90,7 +84,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                 />
               </View>
               <View style={ProductDetailStyles.horizontalContainer}>
-                <View style={{ flexDirection: "row" }}>
+                <View style={ProductDetailStyles.flexRow}>
                   <Text
                     text={"P40"}
                     textStyle={[
@@ -99,7 +93,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                     ]}
                   />
                 </View>
-                <View style={{ flexDirection: "row" }}>
+                <View style={ProductDetailStyles.flexRow}>
                   <Text
                     text={"709 Sold"}
                     textStyle={[
@@ -116,7 +110,7 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
                   readonly
                   imageSize={20}
                   startingValue={5}
-                  style={{ paddingBottom: 5 }}
+                  style={ProductDetailStyles.ratingPad}
                 />
                 <ListItem.Content>
                   <ListItem.Title style={ListChevronStyles.txtSubtitle}>
@@ -302,19 +296,12 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
           </View>
         </TouchableOpacity>
         <TouchableOpacity style={ProductDetailStyles.subFooterCart}>
-          <Text
-            text="Add to Basket"
-            textStyle={[
-              ProductDetailStyles.txtLight,
-              { color: theme.colors.black, fontSize: 12 },
-            ]}
-          />
+          <Text text="Add to Basket" textStyle={ProductDetailStyles.txtLight} />
         </TouchableOpacity>
         <TouchableOpacity style={ProductDetailStyles.subFooterBuy}>
           <Text
             text="Buy Now"
             textStyle={[
-              { fontSize: 12 },
               ProductDetailStyles.txtLight,
               ProductDetailStyles.txtWhite,
             ]}

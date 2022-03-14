@@ -47,36 +47,25 @@ module.exports = {
       },
       {
         type: "add",
-        path:
-          "../src/components/{{ folder }}/{{properCase name}}/{{properCase name}}.tsx",
+        path: "../src/components/{{ folder }}/{{properCase name}}/{{properCase name}}.tsx",
         templateFile: "./component/stateless.js.hbs",
         abortOnFail: true,
       },
       {
         type: "add",
-        path:
-          "../src/components/{{ folder }}/{{properCase name}}/__tests__/{{properCase name}}-test.ts",
-        templateFile: "./component/test.js.hbs",
-        abortOnFail: true,
-      },
-      {
-        type: "add",
-        path:
-          "../src/components/{{ folder }}/{{properCase name}}/config/index.ts",
+        path: "../src/components/{{ folder }}/{{properCase name}}/config/index.ts",
         templateFile: "./component/config.js.hbs",
         abortOnFail: true,
       },
       {
         type: "add",
-        path:
-          "../src/components/{{ folder }}/{{properCase name}}/styles/index.ts",
+        path: "../src/components/{{ folder }}/{{properCase name}}/styles/index.ts",
         templateFile: "./component/style.js.hbs",
         abortOnFail: true,
       },
       {
         type: "add",
-        path:
-          "../src/components/{{ folder }}/{{properCase name}}/types/index.ts",
+        path: "../src/components/{{ folder }}/{{properCase name}}/types/index.ts",
         templateFile: "./component/types.js.hbs",
         abortOnFail: true,
       },

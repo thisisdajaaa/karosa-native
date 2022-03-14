@@ -7,21 +7,10 @@
 
 import React, { FC } from "react";
 
-// import HomeSearchConfig from "./config";
-import type { PropsType } from "./types";
-// import HomeSearchStyles from "./styles";
-import { Props as ScreenProps } from "@app/components/molecules/Base-Screen/types";
-// import { useNavigation } from "@react-navigation/native";
-import Header from "@app/components/molecules/Header";
-import SearchBar from "@app/components/molecules/SearchBar";
-import { Keyboard, TouchableOpacity, View } from "react-native";
-import styles from "../../components/templates/HomeSearchTemplate/styles";
-import HomeSearchTemplate from "@app/components/templates/HomeSearchTemplate/HomeSearchTemplate";
+import HomeSearchTemplate from "@app/components/templates/HomeSearch";
 import { useNavigation } from "@react-navigation/native";
-import Icon from "@app/atoms/Icon";
-const HomeSearch: FC<PropsType> = (props) => {
-  const {} = props;
 
+const HomeSearch: FC = () => {
   const { goBack } = useNavigation();
   const productData = [
     {
@@ -121,59 +110,8 @@ const HomeSearch: FC<PropsType> = (props) => {
       heartFlag: true,
     },
   ];
-  const screenProps: ScreenProps = {
-    customHeader: (
-      <Header
-        placement={"left"}
-        containerStyle={{
-          backgroundColor: "transparent",
-          width: "100%",
-        }}
-        hasBottomDivider={true}
-        leftComponent={
-          <TouchableOpacity onPress={goBack}>
-            <Icon
-              group={"home"}
-              name={"arrow_back"}
-              width={30}
-              height={30}
-              extraStyle={{ margin: 5 }}
-            />
-          </TouchableOpacity>
-        }
-        centerComponent={
-          <SearchBar
-            placeholder={"Test item"}
-            backgroundColor={"primary"}
-            onFocus={Keyboard.dismiss}
-          />
-        }
-        rightComponent={
-          <View style={styles.horizontalContainer}>
-            <Icon
-              group={"home"}
-              name={"cart_green"}
-              width={30}
-              height={30}
-              extraStyle={{ margin: 5 }}
-            />
-            <Icon
-              group={"home"}
-              name={"chat_green"}
-              width={30}
-              height={30}
-              extraStyle={{ margin: 5 }}
-            />
-          </View>
-        }
-      />
-    ),
-    subCustomStyles: styles.searchBarContainer,
-  };
 
-  return (
-    <HomeSearchTemplate screenProps={screenProps} productProps={productData} />
-  );
+  return <HomeSearchTemplate productProps={productData} handleBack={goBack} />;
 };
 
 export default HomeSearch;

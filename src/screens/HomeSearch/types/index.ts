@@ -1,7 +1,0 @@
-/**
- *
- * @format
- *
- */
-
-export type PropsType = {};

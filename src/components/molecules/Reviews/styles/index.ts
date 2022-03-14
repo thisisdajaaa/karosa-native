@@ -13,6 +13,9 @@ const ReviewsStyles = StyleSheet.create({
     height: 70,
     marginRight: 10,
   },
+  ellipsisMargin: {
+    marginLeft: 16,
+  },
   sellerImage: {
     height: 50,
     width: 50,

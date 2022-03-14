@@ -13,5 +13,4 @@ export type PropsType = {
   variationProps: ListChevronType;
   reviewsProps: ListChevronType;
   productDetailsProps: ListChevronType[];
-  bottomModalProps?: any;
 };
