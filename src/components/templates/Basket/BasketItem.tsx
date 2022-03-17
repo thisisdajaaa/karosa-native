@@ -22,6 +22,7 @@ import type { BasketItemProps } from "./types";
 import { ICON_SIZE, NUM_OF_LINES } from "./config";
 import BasketStyles from "./styles";
 import BasketItemQuantityPrice from "./BasketItemQuantityPrice";
+import { isEmpty } from "lodash";
 
 const BasketItem: FC<BasketItemProps> = (props) => {
   const { item, storeIndex } = props;
@@ -79,23 +80,24 @@ const BasketItem: FC<BasketItemProps> = (props) => {
   };
 
   const handleRemove = (storeKey: number) => {
-    const newStoreData: StoreData[] = values.storeData.map((store) => {
-      if (Number(store.id) === Number(storeInfo.id)) {
+    const newStoreData: StoreData[] = values.storeData
+      .map((store) => {
+        if (Number(store.id) === Number(storeInfo.id)) {
+          return {
+            ...store,
+            items: store.items.filter(
+              (item) => Number(item.id) !== Number(storeInfo.items[storeKey].id)
+            ),
+          };
+        }
+
         return {
           ...store,
-          items: store.items.filter(
-            (item) => Number(item.id) !== Number(storeInfo.items[storeKey].id)
-          ),
         };
-      }
-
-      return {
-        ...store,
-      };
-    });
+      })
+      .filter((store) => !isEmpty(store.items));
 
     setValues({
-      ...values.storeData,
       storeData: newStoreData,
     });
   };

@@ -10,6 +10,7 @@ import Store from "./store.svg";
 import Voucher from "./voucher.svg";
 import Trash from "./trash.svg";
 import Message from "./message.svg";
+import Empty from "./empty.svg";
 
 const BasketIcons = (
   name: string,
@@ -22,6 +23,7 @@ const BasketIcons = (
     trash: <Trash style={extraStyle} height={height} width={width} />,
     message: <Message style={extraStyle} height={height} width={width} />,
     voucher: <Voucher style={extraStyle} height={height} width={width} />,
+    empty: <Empty style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];
