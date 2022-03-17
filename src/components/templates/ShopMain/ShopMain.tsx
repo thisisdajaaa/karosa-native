@@ -12,20 +12,17 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-import {
-  AntDesign,
-  MaterialCommunityIcons,
-  MaterialIcons,
-} from "@expo/vector-icons";
 import { listIterator } from "@app/utils";
 import { theme } from "@app/styles";
 import { COMMON } from "@app/constants";
 import type { PropsType as ListChevronType } from "@app/organisms/ListChevron/types";
 import Text from "@app/atoms/Text";
+import Icon from "@app/atoms/Icon";
 import Profile from "@app/organisms/Profile";
 import ListChevron from "@app/organisms/ListChevron";
 
 import type { PropsType } from "./types";
+import { ICON_SIZE } from "./config";
 import ShopMainStyles from "./styles";
 
 const ShopMainTemplate: FC<PropsType> = (props) => {
@@ -36,7 +33,7 @@ const ShopMainTemplate: FC<PropsType> = (props) => {
     return (
       <TouchableWithoutFeedback onPress={onPress}>
         <View style={ShopMainStyles.actionSubContainer}>
-          {icon}
+          <View style={ShopMainStyles.actionIcon}>{icon}</View>
           <Text text={label} textStyle={ShopMainStyles.actionLabel} />
         </View>
       </TouchableWithoutFeedback>
@@ -45,17 +42,29 @@ const ShopMainTemplate: FC<PropsType> = (props) => {
 
   const icons = {
     ship: (
-      <MaterialIcons name="local-shipping" style={ShopMainStyles.commonIcon} />
+      <Icon
+        group="shop"
+        name="completed"
+        height={ICON_SIZE}
+        width={ICON_SIZE}
+      />
     ),
     cancel: (
-      <MaterialCommunityIcons name="cancel" style={ShopMainStyles.commonIcon} />
+      <Icon
+        group="shop"
+        name="cancelled"
+        height={ICON_SIZE}
+        width={ICON_SIZE}
+      />
     ),
-    return: <AntDesign name="inbox" style={ShopMainStyles.inboxIcon} />,
+    return: (
+      <Icon group="shop" name="returned" height={ICON_SIZE} width={ICON_SIZE} />
+    ),
   };
 
   const myProductsProps: ListChevronType = {
     title: "My Products",
-    info: "80 Products",
+    info: "80 items",
     listColor: theme.colors.orange5,
     variation: COMMON.VARIATION.ONE,
     hasBottomDivider: true,
@@ -88,21 +97,25 @@ const ShopMainTemplate: FC<PropsType> = (props) => {
   const getActions = () => {
     const elements: ReactElement[] = [];
 
-    const toShip = action(() => navigation.onToShip, icons.ship, "To Ship");
-    const returns = action(() => navigation.onReturns, icons.return, "Returns");
+    const toShip = action(() => navigation.onToShip, icons.ship, "Completed");
+
     const cancelled = action(
       () => navigation.onCancelled,
       icons.cancel,
       "Cancelled"
     );
 
+    const returns = action(
+      () => navigation.onReturns,
+      icons.return,
+      "Returned"
+    );
+
     elements.push(toShip, cancelled, returns);
 
     return (
       <View style={ShopMainStyles.actionPhaseContainer}>
-        <View style={ShopMainStyles.actionMainContainer}>
-          {listIterator(elements)}
-        </View>
+        {listIterator(elements)}
       </View>
     );
   };

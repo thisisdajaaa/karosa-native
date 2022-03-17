@@ -16,10 +16,10 @@ const ProfileStyles = StyleSheet.create({
   },
   profileContainer: {
     backgroundColor: theme.colors.white,
-    paddingHorizontal: 16,
+    paddingHorizontal: 22,
   },
   spacer: {
-    marginVertical: 34,
+    marginVertical: 32,
   },
   nameContainer: {
     maxWidth: 320,

@@ -85,7 +85,7 @@ export type ShopSettingsForm = {
   avatarPhoto: string;
   shopName: string;
   email: string;
-  status: ENUM.Shop_Status;
+  status: ENUM.Product_Status;
   hasPayment: boolean;
   hasShopAddress: boolean;
   startTime: string;

@@ -1,10 +1,3 @@
-export enum Shop_Status {
-  Active = "active",
-  OnVacation = "on vacation",
-  Planting = "planting",
-  Harvesting = "harvesting",
-}
-
 export enum Product_Status {
   Available = "available",
   Planting = "planting",

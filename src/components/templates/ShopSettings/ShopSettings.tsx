@@ -13,8 +13,11 @@ import {
   StatusBar,
   View,
 } from "react-native";
+import { ListItem } from "react-native-elements";
+import { useFormikContext } from "formik";
 import { theme } from "@app/styles";
-import { COMMON } from "src/constants";
+import { COMMON } from "@app/constants";
+import Icon from "@app/atoms/Icon";
 import { getPlatform, listIterator } from "@app/utils";
 import type { PropsType as ListChevronType } from "@app/organisms/ListChevron/types";
 import type { PropsType as ListInputType } from "@app/organisms/ListInput/types";
@@ -31,11 +34,8 @@ import ListTimeRange from "@app/organisms/ListTimeRange";
 import validationSchema from "@app/screens/ShopSettings/validation";
 
 import type { PropsType } from "./types";
-import ShopSettingsStyles from "./styles";
-import { useFormikContext } from "formik";
-import { ListItem } from "react-native-elements";
-import Icon from "@app/atoms/Icon";
 import { ICON_SIZE } from "./config";
+import ShopSettingsStyles from "./styles";
 
 const ShopSettingsTemplate: FC<PropsType> = (props) => {
   const {

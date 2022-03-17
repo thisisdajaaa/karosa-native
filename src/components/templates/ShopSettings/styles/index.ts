@@ -35,8 +35,7 @@ const ShopSettingsStyles = StyleSheet.create({
     marginTop: SPACING.xl * 2.5,
   },
   mainButtonContainer: {
-    position: "absolute",
-    bottom: "4%",
+    marginVertical: 16,
     width: "90%",
     alignSelf: "center",
   },
@@ -73,7 +72,7 @@ const ShopSettingsStyles = StyleSheet.create({
     marginBottom: 4,
   },
   btnSpacer: {
-    marginVertical: 4,
+    marginVertical: 8,
   },
   addressMargin: {
     marginTop: 8,

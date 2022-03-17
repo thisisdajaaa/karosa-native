@@ -70,7 +70,7 @@ export const initShopSettingsForm: ShopSettingsForm = {
   email: "",
   hasPayment: false,
   hasShopAddress: false,
-  status: ENUM.Shop_Status.Active,
+  status: ENUM.Product_Status.Available,
   startTime: "",
   endTime: "",
 };
@@ -202,7 +202,7 @@ export const initShopState: ShopState = {
         id: 0,
         name: "",
         isActive: false,
-        status: ENUM.Shop_Status.Active,
+        status: ENUM.Product_Status.Available,
         createdAt: "",
         updatedAt: "",
       },

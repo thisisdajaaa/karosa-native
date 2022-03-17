@@ -8,7 +8,7 @@ import * as models from "./models";
 
 export const setShopStatus = createAction(
   types.SET_SHOP_STATUS,
-  (resolve) => (values: ENUM.Shop_Status) => resolve(values)
+  (resolve) => (values: ENUM.Product_Status) => resolve(values)
 );
 
 export const setShopSettings = createAction(

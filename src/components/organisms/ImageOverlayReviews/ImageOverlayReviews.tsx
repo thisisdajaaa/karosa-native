@@ -10,7 +10,7 @@ import React, { FC } from "react";
 import type { PropsType } from "./types";
 import ImageOverlayReviewsStyles from "./styles";
 import { View } from "react-native";
-import ImageOverlay from "@app/components/molecules/ImageOverlay";
+import ImageOverlay from "@app/molecules/ImageOverlay";
 
 const ImageOverlayReviews: FC<PropsType> = (props) => {
   const { overlayProps } = props;
