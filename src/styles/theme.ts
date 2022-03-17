@@ -22,7 +22,7 @@ const theme = {
     lineHeight: 16,
   },
   textLightBold: {
-    fontSize: 11,
+    fontSize: 12,
     lineHeight: 14.06,
     fontFamily: "SFProText-Bold",
   },

@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Karosa",
-    "slug": "Karosa",
+    "slug": "karosa",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,16 +22,19 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.karosa.bundle",
+      "buildNumber": "1.0.0"
     },
     "android": {
-      "package": "host.exp.exponent"
+      "package": "host.exp.exponent",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "experiments": {
-      "turboModules": true
+      "turboModules": false 
     },
     "packagerOpts": {
       "config": "metro.config.js",

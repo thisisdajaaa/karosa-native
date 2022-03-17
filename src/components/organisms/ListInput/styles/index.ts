@@ -8,19 +8,12 @@ import { StyleSheet } from "react-native";
 import { DIMENS, SPACING, theme } from "@app/styles";
 
 const ListInputStyles = StyleSheet.create({
-  variationOneContainer: {
-    flexDirection: "column",
-  },
-  variationTwoContainer: {
+  inputColumn: {
     flexDirection: "column",
   },
   formInputContainer: {
     width: "100%",
     marginLeft: "3%",
-  },
-  mainRowContainer: {
-    flexDirection: "row",
-    height: DIMENS.screenHeight * 0.028,
   },
   labelLengthContainer: {
     flexDirection: "row",
@@ -28,6 +21,10 @@ const ListInputStyles = StyleSheet.create({
   labelContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
+  },
+  contentContainer: {
+    flexDirection: "row",
+    alignItems: "center",
   },
   icon: {
     position: "relative",
@@ -45,8 +42,7 @@ const ListInputStyles = StyleSheet.create({
   inputContainer: {
     borderWidth: 0,
     borderBottomWidth: 0,
-    marginTop: 0,
-    marginBottom: 0,
+    padding: 0,
     height: 0,
   },
   columnInputContainer: {
@@ -67,7 +63,7 @@ const ListInputStyles = StyleSheet.create({
   },
   txtValue: {
     ...theme.textListItem,
-    color: theme.colors.primary,
+    color: theme.colors.dark20,
     fontWeight: "400",
   },
   txtInfo: {
@@ -97,7 +93,7 @@ const ListInputStyles = StyleSheet.create({
   txtRowInput: {
     ...theme.textListItem,
     textAlign: "right",
-    color: theme.colors.primary,
+    color: theme.colors.dark20,
     fontWeight: "400",
   },
 });

@@ -1,5 +1,6 @@
 import { PickerData, ResponseState } from "@app/redux/api-models/common";
 import { ENUM } from "@app/constants";
+import { NewAddressForm } from "@app/redux/address/models";
 import * as shopInfo from "@app/redux/api-models/shop-info";
 import * as shopDelete from "@app/redux/api-models/shop-delete";
 import * as shopAddress from "@app/redux/api-models/shop-address";
@@ -84,8 +85,11 @@ export type ShopSettingsForm = {
   avatarPhoto: string;
   shopName: string;
   email: string;
-  status: ENUM.Shop_Status;
+  status: ENUM.Product_Status;
   hasPayment: boolean;
+  hasShopAddress: boolean;
+  startTime: string;
+  endTime: string;
 };
 
 export type ShopPaymentForm = {
@@ -93,16 +97,6 @@ export type ShopPaymentForm = {
   gcash: boolean;
   creditCard: boolean;
   hasOneOption: boolean;
-};
-
-export type ShopAddressForm = {
-  fullName: string;
-  phoneNumber: string;
-  region: number;
-  province: number;
-  cities: number;
-  barangay: number;
-  detailedAddress: string;
 };
 
 export type StoreData = {
@@ -155,7 +149,7 @@ export type CheckoutContext = {
 export type ShopEntryContext = {
   shopSettings: ShopSettingsForm;
   shopPayment: ShopPaymentForm;
-  shopAddress: ShopAddressForm;
+  shopAddress: NewAddressForm;
 };
 
 export type ProductEntryContext = {

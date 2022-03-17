@@ -38,6 +38,7 @@ const ListStatus: FC<PropsType> = (props) => {
 
         {required && <Text text="*" textStyle={ListStatusStyles.txtRequired} />}
       </ListItem.Content>
+
       <ListItem.Content style={ListStatusStyles.valueContainer}>
         <View style={StatusItemStyle(color).circle} />
         <Text text={value} textStyle={ListStatusStyles.txtValue} />

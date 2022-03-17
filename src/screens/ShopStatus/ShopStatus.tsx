@@ -21,12 +21,12 @@ const ShopStatusScreen: FC<PropsType> = (props) => {
   const dispatch = useDispatch();
 
   const setShopStatus = useCallback(
-    (value: ENUM.Shop_Status) => dispatch(actions.setShopStatus(value)),
+    (value: ENUM.Product_Status) => dispatch(actions.setShopStatus(value)),
     [dispatch]
   );
 
   const setStatusValue = useCallback(
-    (value: ENUM.Shop_Status) => {
+    (value: ENUM.Product_Status) => {
       setShopStatus(value);
       sheetRef.current?.close();
     },

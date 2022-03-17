@@ -36,7 +36,7 @@ const VariationOne: FC<PropsType> = (props) => {
 
   return (
     <ListItem bottomDivider={hasBottomDivider}>
-      <ListItem.Content style={ListInputStyles.variationOneContainer}>
+      <ListItem.Content style={ListInputStyles.inputColumn}>
         <ListItem.Content style={ListInputStyles.labelLengthContainer}>
           <Text text={label} textStyle={ListInputStyles.txtLabel} />
           <Text
@@ -55,7 +55,7 @@ const VariationOne: FC<PropsType> = (props) => {
             numberOfLines={NUM_LINES.FIVE}
             multiline
             maxLength={maxLen}
-            placeholderColor={theme.colors.dark10}
+            placeholderColor={theme.colors.primary}
             inputStyle={ListInputStyles.txtValue}
             containerStyle={ListInputStyles.columnContainer}
             inputContainerStyle={ListInputStyles.columnInputContainer}

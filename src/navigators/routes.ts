@@ -31,8 +31,6 @@ export default Object.freeze({
   SHOP_MARKETING: "Shop Marketing",
   SHOP_FINANCE: "Shop Finance",
   SHOP_REPORTS: "Shop Reports",
-  SHOP_ADDRESS: "Shop Address",
-  SHOP_EDIT_ADDRESS: "Shop Edit Address",
   SHOP_PAYMENT: "Shop Payment",
 
   SEARCH_MY_PRODUCT: "Search My Product",

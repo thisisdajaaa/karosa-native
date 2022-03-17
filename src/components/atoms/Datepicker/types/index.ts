@@ -5,10 +5,11 @@
  */
 
 import { StyleProp, TextStyle } from "react-native";
+import { ChangeText } from "@app/utils";
 
 export type PropsType = {
   value: string;
-  onChange(text: string): void;
+  onChange: ChangeText;
   placeholderColor?: string;
   style?: StyleProp<TextStyle>;
 };

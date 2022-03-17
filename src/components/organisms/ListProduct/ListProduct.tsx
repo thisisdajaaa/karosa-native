@@ -71,7 +71,7 @@ const ListProduct: FC<PropsType> = (props) => {
                   }
                 >
                   <Text
-                    text={`${discount}%`}
+                    text={`-${discount}%`}
                     textStyle={ListProductStyles.txtBadge}
                   />
                 </View>

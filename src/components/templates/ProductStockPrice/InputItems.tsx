@@ -54,7 +54,6 @@ const InputItems: FC<InputItemsProps> = (props) => {
         <View style={ProductStockPriceStyles.tableColumnSecondary}>
           <FormInput
             name={`variationData[${variationKey}].options[${index}].price`}
-            autoCapitalize="none"
             autoCompleteType="off"
             keyboardType="number-pad"
             autoCorrect={false}
@@ -74,7 +73,6 @@ const InputItems: FC<InputItemsProps> = (props) => {
         <View style={ProductStockPriceStyles.tableColumnSecondary}>
           <FormInput
             name={`variationData[${variationKey}].options[${index}].stock`}
-            autoCapitalize="none"
             autoCompleteType="off"
             keyboardType="number-pad"
             autoCorrect={false}
@@ -94,7 +92,6 @@ const InputItems: FC<InputItemsProps> = (props) => {
         <View style={ProductStockPriceStyles.tableColumnSecondary}>
           <FormInput
             name={`variationData[${variationKey}].options[${index}].weight`}
-            autoCapitalize="none"
             autoCompleteType="off"
             keyboardType="number-pad"
             autoCorrect={false}

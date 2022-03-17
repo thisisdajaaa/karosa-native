@@ -27,7 +27,7 @@ const ImageOverlay: FC<ImageOverlayPropsType> = (props) => {
     onClick,
   } = props;
 
-  const backgroundColorOverlay = hasOverlay == false ? "" : theme.colors.black;
+  const backgroundColorOverlay = hasOverlay === false ? "" : theme.colors.black;
 
   return (
     <TouchableOpacity onPress={onClick}>

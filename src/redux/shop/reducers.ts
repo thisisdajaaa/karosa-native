@@ -132,30 +132,6 @@ export const shopInfoResponse = produce(
   data.initShopState.shopInfoResponse
 );
 
-export const shopAddressResponse = produce(
-  (
-    draft: Draft<ResponseState<models.ShopAddressResponse>>,
-    action: ActionType<typeof actions>
-  ) => {
-    switch (action.type) {
-      case getType(actions.callShopAddressApi.request):
-        draft.isLoading = true;
-        return draft;
-      case getType(actions.callShopAddressApi.success):
-        draft.response = action.payload;
-        draft.isLoading = false;
-        return draft;
-      case getType(actions.callShopAddressApi.failure):
-        draft.error = action.payload;
-        draft.isLoading = false;
-        return draft;
-      default:
-        return draft;
-    }
-  },
-  data.initShopState.shopAddressResponse
-);
-
 export const addProductResponse = produce(
   (
     draft: Draft<ResponseState<models.AddProductResponse>>,
@@ -235,7 +211,6 @@ const reducer = combineReducers({
   basketContext,
   checkoutContext,
   shopInfoResponse,
-  shopAddressResponse,
   addProductResponse,
   productListResponse,
   categoryListResponse,

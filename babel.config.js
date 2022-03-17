@@ -1,15 +1,14 @@
 module.exports = function (api) {
   api.cache(true);
   return {
+    compact: false,
     presets: ["babel-preset-expo"],
     env: {
       development: {
         plugins: ["inline-dotenv"],
-        compact: false,
       },
     },
     plugins: [
-      "react-native-reanimated/plugin",
       [
         "module-resolver",
         {
@@ -46,6 +45,7 @@ module.exports = function (api) {
         },
       ],
       "transform-inline-environment-variables",
+      "react-native-reanimated/plugin",
     ],
     retainLines: true,
   };

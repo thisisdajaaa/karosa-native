@@ -3,5 +3,3 @@
  * @format
  *
  */
-
-export type PropsType = {};

@@ -110,7 +110,7 @@ const VariationOne: FC<PropsType> = (props) => {
                 name={isActive ? "greenCircle" : "grayCircle"}
                 height={ICON.ACTIVITY}
                 width={ICON.ACTIVITY}
-                extraStyle={ProfileStyles.activeIcon}
+                extraStyle={ProfileStyles.profileIcon}
               />
               <Text
                 text={isActive ? "Active" : "Inactive"}

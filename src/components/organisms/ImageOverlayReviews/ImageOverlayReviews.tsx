@@ -10,7 +10,7 @@ import React, { FC } from "react";
 import type { PropsType } from "./types";
 import ImageOverlayReviewsStyles from "./styles";
 import { View } from "react-native";
-import ImageOverlay from "@app/components/molecules/ImageOverlay";
+import ImageOverlay from "@app/molecules/ImageOverlay";
 
 const ImageOverlayReviews: FC<PropsType> = (props) => {
   const { overlayProps } = props;
@@ -28,7 +28,7 @@ const ImageOverlayReviews: FC<PropsType> = (props) => {
             hasOverlay={props.hasOverlay}
             mainContainerStyle={[
               props.mainContainerStyle,
-              { flex: 0, marginRight: 10 },
+              ImageOverlayReviewsStyles.mainContainer,
             ]}
             imageHeight={props.imageHeight}
             imageWidth={props.imageWidth}

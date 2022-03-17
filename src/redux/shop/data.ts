@@ -1,4 +1,6 @@
 import { ENUM } from "@app/constants";
+import { initNewAddress } from "@app/redux/address/data";
+import { NewAddressForm } from "@app/redux/address/models";
 
 import {
   AvailabilityForm,
@@ -6,7 +8,6 @@ import {
   CheckoutContext,
   ProductForm,
   ShippingDetailsForm,
-  ShopAddressForm,
   ShopPaymentForm,
   ShopSettingsForm,
   ShopState,
@@ -68,7 +69,10 @@ export const initShopSettingsForm: ShopSettingsForm = {
   avatarPhoto: "",
   email: "",
   hasPayment: false,
-  status: ENUM.Shop_Status.Active,
+  hasShopAddress: false,
+  status: ENUM.Product_Status.Available,
+  startTime: "",
+  endTime: "",
 };
 
 export const initShopPaymentForm: ShopPaymentForm = {
@@ -78,14 +82,8 @@ export const initShopPaymentForm: ShopPaymentForm = {
   hasOneOption: false,
 };
 
-export const initShopAddressForm: ShopAddressForm = {
-  fullName: "",
-  detailedAddress: "",
-  phoneNumber: "",
-  cities: -1,
-  barangay: -1,
-  province: -1,
-  region: -1,
+export const initShopAddressForm: NewAddressForm = {
+  ...initNewAddress,
 };
 
 export const initBasketContext: BasketContext = {
@@ -204,7 +202,7 @@ export const initShopState: ShopState = {
         id: 0,
         name: "",
         isActive: false,
-        status: ENUM.Shop_Status.Active,
+        status: ENUM.Product_Status.Available,
         createdAt: "",
         updatedAt: "",
       },

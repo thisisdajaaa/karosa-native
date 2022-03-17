@@ -3,6 +3,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#8CDBA9",
+    "titleBar.activeForeground": "#03045e"
+  },
   "path-intellisense.mappings": {
     "@app/assets": "${workspaceRoot}/src/assets",
     "@app/atoms": "${workspaceRoot}/src/components/atoms",

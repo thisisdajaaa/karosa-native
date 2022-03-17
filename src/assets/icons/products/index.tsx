@@ -46,6 +46,7 @@ import CategoryVegetables from "./category-vegetables.svg";
 import EstimateDate from "./estimate-date.svg";
 import Shipping from "./shipping.svg";
 import ChatNow from "./chatNow.svg";
+import WhiteMessage from "./white-message.svg";
 
 const ProductsIcon = (
   name: string,
@@ -111,6 +112,9 @@ const ProductsIcon = (
     ),
     variation: <Variation style={extraStyle} height={height} width={width} />,
     status: <Status style={extraStyle} height={height} width={width} />,
+    whiteMessage: (
+      <WhiteMessage style={extraStyle} height={height} width={width} />
+    ),
     shelfLife: <ShelfLife style={extraStyle} height={height} width={width} />,
     stock: <Stock style={extraStyle} height={height} width={width} />,
     price: <Price style={extraStyle} height={height} width={width} />,

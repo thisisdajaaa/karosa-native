@@ -9,7 +9,7 @@ import React, { FC, useCallback, useState } from "react";
 import { batch, useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import { actions, selectors } from "@app/redux/shop";
-import { useMemoizedSelector, useMount } from "@app/hooks";
+import { useMemoizedSelector } from "@app/hooks";
 import ShopMainTemplate from "@app/templates/ShopMain";
 import routes from "@app/navigators/routes";
 
@@ -27,11 +27,6 @@ const ShopMainScreen: FC = () => {
     [dispatch]
   );
 
-  const callShopAddressApi = useCallback(
-    () => dispatch(actions.callShopAddressApi.request()),
-    [dispatch]
-  );
-
   const shopInfoResponse = useMemoizedSelector(selectors.getShopInfoResponse);
   const shopAddressResponse = useMemoizedSelector(
     selectors.getShopAddressResponse
@@ -40,11 +35,10 @@ const ShopMainScreen: FC = () => {
   const batchShopApiProcess = () => {
     batch(() => {
       callShopInfoApi();
-      callShopAddressApi();
     });
   };
 
-  useMount(batchShopApiProcess);
+  // useMount(batchShopApiProcess); no api yet
 
   const onRefresh = useCallback(() => {
     setIsRefreshDragged(true);
@@ -89,7 +83,7 @@ const ShopMainScreen: FC = () => {
       refreshing={isRefreshDragged && shopInfoResponse.isLoading}
       shopName={shopInfoResponse.response.shop.name}
       address={shopAddressResponse.response.detailed_address}
-      isActive={shopInfoResponse.response.shop.isActive}
+      isActive={shopInfoResponse.response?.shop.isActive}
       navigation={navigation}
       onRefresh={onRefresh}
     />

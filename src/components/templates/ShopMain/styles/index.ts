@@ -10,29 +10,33 @@ import { SPACING, theme } from "@app/styles";
 const ShopMainStyles = StyleSheet.create({
   actionPhaseContainer: {
     marginTop: SPACING.lg + 2,
-    height: 115,
     backgroundColor: theme.colors.white,
     marginBottom: SPACING.lg + 4,
+    flexDirection: "row",
+    paddingVertical: 16,
+    paddingHorizontal: 28,
   },
   choicesContainer: {
     backgroundColor: theme.colors.white,
   },
-  actionMainContainer: {
-    justifyContent: "flex-start",
-    flexDirection: "row",
-    padding: SPACING.sm,
+  actionIcon: {
+    height: 60,
+    width: 60,
+    backgroundColor: theme.colors.grey5,
+    borderRadius: 50,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   actionSubContainer: {
-    flexDirection: "column",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
   actionLabel: {
-    ...theme.textLightBold,
-    fontWeight: "700",
-    position: "absolute",
-    top: "78%",
+    ...theme.textLight,
+    fontWeight: "400",
+    marginTop: 4,
   },
   commonIcon: {
     fontSize: 72,

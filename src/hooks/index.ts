@@ -11,3 +11,4 @@ export { default as useInterval } from "./useInterval";
 export { default as useToastContext } from "./useToastContext";
 export { default as useToast } from "./useToast";
 export { default as useFieldError } from "./useFieldError";
+export { default as useFetchCoordinates } from "./useFetchCoordinates";

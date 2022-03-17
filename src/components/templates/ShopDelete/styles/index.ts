@@ -10,8 +10,7 @@ import { SPACING, theme } from "@app/styles";
 const ShopDeleteStyles = StyleSheet.create({
   container: {
     flex: 1,
-    marginLeft: "5%",
-    marginRight: "5%",
+    position: "relative",
   },
   btnCancelColor: {
     backgroundColor: theme.colors.light10,
@@ -20,11 +19,22 @@ const ShopDeleteStyles = StyleSheet.create({
     marginTop: SPACING.md,
   },
   buttonContainer: {
-    position: "relative",
-    top: 55,
+    flexGrow: 1,
+    justifyContent: "flex-end",
+    marginBottom: 16,
+    width: "90%",
+    alignSelf: "center",
+  },
+  illustration: {
+    alignItems: "center",
+    marginBottom: 24,
+  },
+  txtDelete: {
+    ...theme.textBold,
   },
   txtDeleteShop: {
     ...theme.textBold,
+    marginVertical: SPACING.md,
     textAlign: "center",
     fontWeight: "500",
   },
@@ -35,7 +45,7 @@ const ShopDeleteStyles = StyleSheet.create({
   },
   txtDeleteShopPar: {
     ...theme.textRegular,
-    paddingHorizontal: SPACING.sm,
+    paddingHorizontal: 14,
     textAlign: "center",
     color: theme.colors.dark30,
     fontWeight: "400",

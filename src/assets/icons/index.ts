@@ -14,6 +14,7 @@ import ProductsIcons from "./products";
 import BasketIcons from "./basket";
 import CheckoutIcons from "./checkout";
 import WishlistIcons from "./wishlist";
+import ShopIcons from "./shop";
 
 const Icons: {
   [key: string]: (
@@ -32,6 +33,7 @@ const Icons: {
   basket: BasketIcons,
   checkout: CheckoutIcons,
   wishlist: WishlistIcons,
+  shop: ShopIcons,
 };
 
 export default Icons;

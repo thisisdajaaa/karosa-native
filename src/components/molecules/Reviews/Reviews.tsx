@@ -47,7 +47,11 @@ const Reviews: FC<PropsType> = (props) => {
         <View>
           <AntDesign name="like2" size={20} style={ReviewsStyles.likedIcon} />
           <Text text={likes.toString()} />
-          <AntDesign name="ellipsis1" size={20} style={{ marginLeft: 16 }} />
+          <AntDesign
+            name="ellipsis1"
+            size={20}
+            style={ReviewsStyles.ellipsisMargin}
+          />
         </View>
       </View>
       <View style={ReviewsStyles.commentContainer}>

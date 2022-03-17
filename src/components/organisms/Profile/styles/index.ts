@@ -8,8 +8,33 @@ import { StyleSheet } from "react-native";
 import { DIMENS, SPACING, theme } from "@app/styles";
 
 const ProfileStyles = StyleSheet.create({
+  container: {
+    position: "relative",
+  },
+  flexRow: {
+    flexDirection: "row",
+  },
+  profileContainer: {
+    backgroundColor: theme.colors.white,
+    paddingHorizontal: 22,
+  },
+  spacer: {
+    marginVertical: 32,
+  },
+  nameContainer: {
+    maxWidth: 320,
+    marginBottom: 10,
+  },
+  iconContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginLeft: -1,
+  },
   coverPhoto: {
     height: DIMENS.screenHeight * 0.22,
+  },
+  headingIcon: {
+    marginRight: 14,
   },
   headerContainer: { backgroundColor: theme.colors.transparent },
   avatarContainer: {
@@ -81,12 +106,14 @@ const ProfileStyles = StyleSheet.create({
   },
   shopNameContainer: {
     position: "relative",
+    paddingRight: 18,
     top: DIMENS.screenHeight * 0.085,
     left: DIMENS.screenWidth * 0.045,
   },
   shopAddressSubContainer: {
     width: "70%",
     flexDirection: "row",
+    marginBottom: 10,
   },
   txtShopName: {
     ...theme.textBold,
@@ -105,9 +132,10 @@ const ProfileStyles = StyleSheet.create({
   activeContainer: {
     flexDirection: "row",
     marginLeft: SPACING.md,
+    alignItems: "center",
   },
-  activeIcon: {
-    marginTop: SPACING.xs - 1,
+  profileIcon: {
+    marginRight: 4,
   },
   txtIcon: {
     ...theme.textLightBold,
@@ -115,11 +143,10 @@ const ProfileStyles = StyleSheet.create({
     fontWeight: "700",
   },
   bottomInfoContainer: {
+    marginLeft: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-    position: "absolute",
-    bottom: DIMENS.screenHeight * 0.01,
-    left: DIMENS.screenWidth * 0.045,
+    marginBottom: 16,
   },
   ratingContainer: {
     flexDirection: "column",
@@ -134,13 +161,9 @@ const ProfileStyles = StyleSheet.create({
   },
   followersContainer: {
     flexDirection: "column",
-    position: "absolute",
-    left: DIMENS.screenWidth * 0.32,
   },
   chatPerformanceContainer: {
     flexDirection: "column",
-    position: "absolute",
-    left: DIMENS.screenWidth * 0.6,
   },
   chatPerfSubContainer: {
     marginLeft: SPACING.xs,

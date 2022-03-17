@@ -12,10 +12,10 @@ import { actions, selectors } from "@app/redux/address";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { GeocoderRequest } from "@app/redux/address/models";
 import { useMemoizedSelector, useMount } from "@app/hooks";
+import routes from "@app/navigators/routes";
 import AddressSearchTemplate from "@app/templates/AddressSearch";
 
 import type { AddressLocation, AddressMainParams } from "./types";
-import routes from "@app/navigators/routes";
 
 const AddressSearch: FC = () => {
   const { params } =
@@ -36,7 +36,7 @@ const AddressSearch: FC = () => {
 
   useMount(() => {
     const queryParams: GeocoderRequest = {
-      latlng: `${params.latitude},${params.location}`,
+      latlng: `${params.latitude},${params.longitude}`,
       key: GOOGLE_PLACES_API_KEY,
     };
 
@@ -50,6 +50,7 @@ const AddressSearch: FC = () => {
       screen: routes.ACCOUNTS_EDIT_ADDRESS,
       params: {
         id,
+        mode: params.mode,
         latitude,
         longitude,
         location,

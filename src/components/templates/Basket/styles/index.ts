@@ -46,11 +46,12 @@ const BasketStyles = StyleSheet.create({
     textAlign: "right",
   },
   btnCheckout: {
-    paddingVertical: 16,
-    paddingHorizontal: 48,
+    paddingVertical: 24,
+    paddingHorizontal: 64,
   },
   txtBtnCheckout: {
     ...theme.textLightBold,
+    position: "absolute",
   },
   storeIcon: {
     marginHorizontal: 8,

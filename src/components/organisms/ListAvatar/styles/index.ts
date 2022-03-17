@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   imageContainer: {
-    shadowColor: "rgba(0, 0, 0, 0.25)",
+    shadowColor: theme.colors.shadow,
     shadowOffset: { height: 5, width: 1 },
     shadowOpacity: 0.8,
     shadowRadius: 4,

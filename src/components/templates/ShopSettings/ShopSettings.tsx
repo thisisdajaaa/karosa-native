@@ -5,7 +5,7 @@
  *
  */
 
-import React, { FC, ReactElement } from "react";
+import React, { FC, Fragment, ReactElement } from "react";
 import {
   KeyboardAvoidingView,
   Pressable,
@@ -13,8 +13,11 @@ import {
   StatusBar,
   View,
 } from "react-native";
+import { ListItem } from "react-native-elements";
+import { useFormikContext } from "formik";
 import { theme } from "@app/styles";
-import { COMMON } from "src/constants";
+import { COMMON } from "@app/constants";
+import Icon from "@app/atoms/Icon";
 import { getPlatform, listIterator } from "@app/utils";
 import type { PropsType as ListChevronType } from "@app/organisms/ListChevron/types";
 import type { PropsType as ListInputType } from "@app/organisms/ListInput/types";
@@ -27,21 +30,25 @@ import ListStatus from "@app/organisms/ListStatus";
 import ListChevron from "@app/organisms/ListChevron";
 import Button from "@app/atoms/Button";
 import Text from "@app/atoms/Text";
+import ListTimeRange from "@app/organisms/ListTimeRange";
 import validationSchema from "@app/screens/ShopSettings/validation";
 
 import type { PropsType } from "./types";
+import { ICON_SIZE } from "./config";
 import ShopSettingsStyles from "./styles";
-import { useFormikContext } from "formik";
 
 const ShopSettingsTemplate: FC<PropsType> = (props) => {
   const {
-    shopStatusRef,
-    shopDeleteRef,
-    statusColor,
-    statusValue,
+    shopSettingRefs,
+    shopFieldsData,
     navigation,
     submitForm,
+    handleNewAddress,
   } = props;
+
+  const { shopStatusRef, shopDeleteRef } = shopSettingRefs;
+  const { statusColor, statusValue, addressDetails, hasAddress } =
+    shopFieldsData;
 
   const { values } = useFormikContext<ShopSettingsForm>();
 
@@ -71,13 +78,6 @@ const ShopSettingsTemplate: FC<PropsType> = (props) => {
     hasBottomDivider: true,
     color: statusColor,
     value: statusValue,
-  };
-
-  const shopAddressProps: ListChevronType = {
-    title: "Shop Address",
-    variation: COMMON.VARIATION.ONE,
-    hasBottomDivider: true,
-    onPress: navigation.onAddress,
   };
 
   const shopPaymentProps: ListChevronType = {
@@ -133,16 +133,80 @@ const ShopSettingsTemplate: FC<PropsType> = (props) => {
     );
   };
 
+  const shopAddress = !hasAddress ? (
+    <Fragment />
+  ) : (
+    <ListItem
+      bottomDivider={true}
+      containerStyle={ShopSettingsStyles.listStart}
+      style={ShopSettingsStyles.addressMargin}
+    >
+      <Icon
+        group="accountSettings"
+        name="addressPin"
+        width={ICON_SIZE.SM}
+        height={ICON_SIZE.SM}
+      />
+      <ListItem.Content style={ShopSettingsStyles.listStart}>
+        <View style={ShopSettingsStyles.flexRow}>
+          <Text
+            text={addressDetails.label}
+            textStyle={ShopSettingsStyles.addressLabel}
+          />
+        </View>
+
+        <Text
+          text={`${addressDetails.contactName}, ${addressDetails.contactNumber}`}
+          textStyle={ShopSettingsStyles.txtSubAddress}
+        />
+        <Text
+          text={addressDetails.coords.location}
+          textStyle={ShopSettingsStyles.txtSubAddress}
+        />
+        <Text
+          text={`Note to rider: ${
+            addressDetails.noteRider ? addressDetails.noteRider : "None"
+          }`}
+          textStyle={ShopSettingsStyles.txtSubAddress}
+        />
+      </ListItem.Content>
+
+      <Pressable onPress={navigation.onAddress}>
+        <Icon
+          group="accountSettings"
+          name={"edit"}
+          width={ICON_SIZE.SM}
+          height={ICON_SIZE.SM}
+        />
+      </Pressable>
+    </ListItem>
+  );
+
   const getListForm = () => {
     const elements: ReactElement[] = [];
 
     const shopName = <ListInput {...shopNameProps} />;
     const email = <ListInput {...emailProps} />;
     const shopStatus = <ListStatus {...shopStatusProps} />;
-    const shopAddress = <ListChevron {...shopAddressProps} />;
     const shopPayment = <ListChevron {...shopPaymentProps} />;
 
-    elements.push(shopName, email, shopStatus, shopAddress, shopPayment);
+    const shopTime = (
+      <ListTimeRange
+        label="Shop Hours"
+        startName="startTime"
+        endName="endTime"
+        hasBottomDivider
+      />
+    );
+
+    elements.push(
+      shopName,
+      email,
+      shopStatus,
+      shopTime,
+      shopPayment,
+      shopAddress
+    );
 
     return listIterator(elements);
   };
@@ -150,6 +214,19 @@ const ShopSettingsTemplate: FC<PropsType> = (props) => {
   const getBtnDeleteShop = () => {
     return (
       <View style={ShopSettingsStyles.mainButtonContainer}>
+        {!hasAddress && (
+          <>
+            <Button
+              onPress={handleNewAddress}
+              title="Add Shop Address"
+              buttonStyle={ShopSettingsStyles.btnAddShop}
+              titleStyle={ShopSettingsStyles.txtBtnAddShop}
+            />
+
+            <View style={ShopSettingsStyles.btnSpacer} />
+          </>
+        )}
+
         <Button
           onPress={() => shopDeleteRef.current?.open()}
           title="Delete Shop"

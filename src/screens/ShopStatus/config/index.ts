@@ -4,6 +4,4 @@
  *
  */
 
-import { DIMENS } from "@app/styles";
-
-export const BTM_SHEET_HEIGHT = DIMENS.screenHeight * 0.5;
+export const BTM_SHEET_HEIGHT = 300;

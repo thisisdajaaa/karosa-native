@@ -27,28 +27,10 @@ export const getForgotResponse = () =>
     return state.forgotResponse || initAuthState.forgotResponse;
   });
 
-export const getMyAddressResponse = () =>
-  createSelector(rootSelector, (state: AuthState) => {
-    return (
-      state.myAddressResponse.response ||
-      initAuthState.myAddressResponse.response
-    );
-  });
-
-export const getNewAddressResponse = () =>
-  createSelector(rootSelector, (state: AuthState) => {
-    return (
-      state.newAddressResponse.response ||
-      initAuthState.newAddressResponse.response
-    );
-  });
-
 const selectors = {
   getAuthEntryContext,
   getLoginResponse,
   getForgotResponse,
-  getMyAddressResponse,
-  getNewAddressResponse,
   getRegisterResponse,
 };
 

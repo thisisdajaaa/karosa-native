@@ -26,19 +26,21 @@ const ShopSettingsStyles = StyleSheet.create({
     fontWeight: "700",
     color: theme.colors.dark20,
   },
-  txtSave: {
+  txtBtnAddShop: {
     ...theme.textRegular,
-    color: theme.colors.dark10,
-    fontWeight: "400",
+    fontWeight: "700",
+    color: theme.colors.white,
   },
   spacer: {
     marginTop: SPACING.xl * 2.5,
   },
   mainButtonContainer: {
-    position: "absolute",
-    bottom: "4%",
+    marginVertical: 16,
     width: "90%",
     alignSelf: "center",
+  },
+  btnAddShop: {
+    backgroundColor: theme.colors.primary,
   },
   subButtonContainer: {
     backgroundColor: theme.colors.light10,
@@ -52,6 +54,28 @@ const ShopSettingsStyles = StyleSheet.create({
     ...theme.textRegular,
     color: theme.colors.dark10,
     fontWeight: "400",
+  },
+  listStart: {
+    alignItems: "flex-start",
+  },
+  flexRow: {
+    flexDirection: "row",
+  },
+  addressLabel: {
+    ...theme.textBold,
+    fontWeight: "500",
+    marginBottom: 4,
+  },
+  txtSubAddress: {
+    ...theme.textLight,
+    fontWeight: "400",
+    marginBottom: 4,
+  },
+  btnSpacer: {
+    marginVertical: 8,
+  },
+  addressMargin: {
+    marginTop: 8,
   },
 });
 

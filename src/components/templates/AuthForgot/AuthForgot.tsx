@@ -65,7 +65,6 @@ const AuthForgotTemplate: FC<PropsType> = (props) => {
         <FormInput
           name="identifier"
           placeholder="Email / Phone"
-          autoCapitalize="none"
           autoCompleteType="off"
           inputContainerStyle={hasFieldError("identifier")}
           autoCorrect={false}

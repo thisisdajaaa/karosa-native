@@ -45,7 +45,7 @@ const ShopPaymentTemplate: FC<PropsType> = (props) => {
   const getPaymentButton = () => {
     return (
       <View style={ShopPaymentStyles.buttonContainer}>
-        <Button title="Submit" disabled={!isFormValid} onPress={submitForm} />
+        <Button title="Save" disabled={!isFormValid} onPress={submitForm} />
       </View>
     );
   };

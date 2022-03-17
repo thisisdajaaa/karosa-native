@@ -22,7 +22,7 @@ const ShopStatusTemplate: FC<PropsType> = (props) => {
   const statusItem = (
     color: string,
     text: string,
-    status: ENUM.Shop_Status
+    status: ENUM.Product_Status
   ) => {
     return (
       <View style={ShopStatusStyles.statusContainer}>
@@ -52,26 +52,21 @@ const ShopStatusTemplate: FC<PropsType> = (props) => {
 
     const active = statusItem(
       theme.colors.primary,
-      "Active",
-      ENUM.Shop_Status.Active
-    );
-    const vacation = statusItem(
-      theme.colors.orange5,
-      "On Vacation",
-      ENUM.Shop_Status.OnVacation
+      "Available",
+      ENUM.Product_Status.Available
     );
     const harvesting = statusItem(
       theme.colors.gold5,
       "Harvesting Season",
-      ENUM.Shop_Status.Harvesting
+      ENUM.Product_Status.Harvesting
     );
     const planting = statusItem(
-      theme.colors.blue10,
+      theme.colors.dark5,
       "Planting Season",
-      ENUM.Shop_Status.Planting
+      ENUM.Product_Status.Planting
     );
 
-    elements.push(active, vacation, harvesting, planting);
+    elements.push(active, harvesting, planting);
 
     return listIterator(elements);
   };

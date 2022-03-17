@@ -25,10 +25,6 @@ export const ACT_SHOP_DELETE_REQUEST = "shop/actShopDeleteRequest" as const;
 export const ACT_SHOP_DELETE_SUCCESS = "shop/actShopDeleteSuccess" as const;
 export const ACT_SHOP_DELETE_FAILURE = "shop/actShopDeleteFailure" as const;
 
-export const ACT_SHOP_ADDRESS_REQUEST = "shop/actShopAddressRequest" as const;
-export const ACT_SHOP_ADDRESS_SUCCESS = "shop/actShopAddressSuccess" as const;
-export const ACT_SHOP_ADDRESS_FAILURE = "shop/actShopAddressFailure" as const;
-
 export const ACT_ADD_PRODUCT_REQUEST = "shop/actAddProductRequest" as const;
 export const ACT_ADD_PRODUCT_SUCCESS = "shop/actAddProductSuccess" as const;
 export const ACT_ADD_PRODUCT_FAILURE = "shop/actAddProductFailure" as const;
@@ -65,9 +61,6 @@ export type Types =
   | typeof ACT_SHOP_DELETE_REQUEST
   | typeof ACT_SHOP_DELETE_SUCCESS
   | typeof ACT_SHOP_DELETE_FAILURE
-  | typeof ACT_SHOP_ADDRESS_REQUEST
-  | typeof ACT_SHOP_ADDRESS_SUCCESS
-  | typeof ACT_SHOP_ADDRESS_FAILURE
   | typeof ACT_ADD_PRODUCT_REQUEST
   | typeof ACT_ADD_PRODUCT_SUCCESS
   | typeof ACT_ADD_PRODUCT_FAILURE

@@ -77,7 +77,7 @@ module.exports = {
         allowObject: false,
       },
     ],
-    "prettier/prettier": ["error", { jsxBracketSameLine: false }],
+    "prettier/prettier": ["error", { bracketSameLine: false }],
   },
   overrides: [
     {

@@ -132,7 +132,6 @@ const AuthLoginTemplate: FC<PropsType> = (props) => {
         <FormInput
           name="identifier"
           placeholder="Phone number / Username / Email"
-          autoCapitalize="none"
           autoCompleteType="off"
           autoCorrect={false}
           inputContainerStyle={hasFieldError("identifier")}
@@ -147,7 +146,6 @@ const AuthLoginTemplate: FC<PropsType> = (props) => {
         <FormInput
           name="password"
           placeholder="Password"
-          autoCapitalize="none"
           autoCompleteType="off"
           secureTextEntry={true}
           autoCorrect={false}

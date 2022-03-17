@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /**
  *
  * ShopProductDetails
@@ -57,7 +58,7 @@ const ShopProductDetailsScreen: FC = () => {
     info: "20% OFF",
     infoStyle: { color: theme.colors.green5 },
     chevronColor: theme.colors.green5,
-    onPress: () => console.log("20%"),
+    onPress: () => 0,
   };
 
   const productDetailsProps: ListChevronProps[] = [
@@ -66,21 +67,21 @@ const ShopProductDetailsScreen: FC = () => {
       variation: COMMON.VARIATION.FOUR,
       info: "50",
       infoStyle: { color: theme.colors.green5 },
-      onPress: () => console.log("20%"),
+      onPress: () => 0,
     },
     {
       title: "Category",
       variation: COMMON.VARIATION.FOUR,
       info: "Region's Best",
       infoStyle: { color: theme.colors.green5 },
-      onPress: () => console.log("20%"),
+      onPress: () => 0,
     },
     {
       title: "Ships From",
       variation: COMMON.VARIATION.FOUR,
       info: "Cebu Visayas",
       infoStyle: { color: theme.colors.green5 },
-      onPress: () => console.log("20%"),
+      onPress: () => 0,
     },
   ];
 
@@ -92,7 +93,7 @@ const ShopProductDetailsScreen: FC = () => {
     iconName: "shipping",
     iconHeight: 40,
     iconWidth: 40,
-    onPress: () => console.log("pressed"),
+    onPress: () => 0,
   };
 
   const variationProps: ListChevronProps = {
@@ -111,7 +112,7 @@ const ShopProductDetailsScreen: FC = () => {
     title: "",
     variation: COMMON.VARIATION.ONE,
     info: "See All",
-    onPress: () => console.log("variation"),
+    onPress: () => 0,
   };
 
   const imageOverlayProps: ImageOverlayPropsType = {
@@ -160,16 +161,16 @@ const ShopProductDetailsScreen: FC = () => {
 
   //switches choices from one variation to another
   const switchVariation1 = (id: number, variation: number) => {
-    id == variation ? setVariation1(0) : setVariation1(id);
+    id === variation ? setVariation1(0) : setVariation1(id);
   };
 
   const switchVariation2 = (id: number, variation: number) => {
-    id == variation ? setVariation2(0) : setVariation2(id);
+    id === variation ? setVariation2(0) : setVariation2(id);
   };
 
   const imageVariationFlag = [true, false];
 
-  let firstVariantMap: contentPropsType[] = [];
+  const firstVariantMap: contentPropsType[] = [];
 
   firstVariation.map((props) => {
     firstVariantMap.push({
@@ -182,13 +183,13 @@ const ShopProductDetailsScreen: FC = () => {
       imageHeight: imageOverlayProps.imageHeight,
       imageWidth: imageOverlayProps.imageWidth,
       mainContainerStyle:
-        props.id == variation1 ? ProductDetailStyles.mainContainerStyle : {},
+        props.id === variation1 ? ProductDetailStyles.mainContainerStyle : {},
       onPress: () => [switchVariation1(props.id, variation1)],
     });
   });
 
   const maxLength: number = firstVariantMap.length;
-  const colPerRow: number = 3;
+  const colPerRow = 3;
   const noOfRows: number = Math.ceil(maxLength / colPerRow);
 
   return (
@@ -222,7 +223,7 @@ const ShopProductDetailsScreen: FC = () => {
                 {imageVariationFlag[0] ? (
                   <>
                     {Array.from(Array(noOfRows).keys()).map((props) => {
-                      let currentPage = colPerRow * (props + 1) - colPerRow;
+                      const currentPage = colPerRow * (props + 1) - colPerRow;
 
                       return (
                         <>
@@ -245,8 +246,8 @@ const ShopProductDetailsScreen: FC = () => {
                   </>
                 ) : (
                   Array.from(Array(noOfRows).keys()).map((props) => {
-                    let currentPage = colPerRow * (props + 1) - colPerRow;
-                    let pagination = [currentPage, currentPage + colPerRow];
+                    const currentPage = colPerRow * (props + 1) - colPerRow;
+                    const pagination = [currentPage, currentPage + colPerRow];
                     return (
                       <>
                         <View
@@ -256,7 +257,6 @@ const ShopProductDetailsScreen: FC = () => {
                           }}
                         >
                           {firstVariation.map((elements, index) => {
-                            console.log(elements.title);
                             return index >= pagination[0] &&
                               index < pagination[1] ? (
                               <FilterButton
@@ -266,13 +266,13 @@ const ShopProductDetailsScreen: FC = () => {
                                 ]}
                                 key={elements.id}
                                 buttonStyle={
-                                  elements.id == variation1
+                                  elements.id === variation1
                                     ? ProductDetailStyles.variatonContainerStyle1
                                     : ProductDetailStyles.variatonContainerStyle2
                                 }
                                 containerStyle={{ margin: 0 }}
                                 titleStyle={
-                                  elements.id == variation1
+                                  elements.id === variation1
                                     ? ProductDetailStyles.buttonTitleStyleDefault
                                     : ProductDetailStyles.buttonTitleStyleSelected
                                 }
@@ -303,13 +303,13 @@ const ShopProductDetailsScreen: FC = () => {
                       onPress={() => [switchVariation2(props.id, variation2)]}
                       key={props.id}
                       buttonStyle={
-                        props.id == variation2
+                        props.id === variation2
                           ? ProductDetailStyles.filterButtonBorder1
                           : ProductDetailStyles.filterButtonBorder2
                       }
                       containerStyle={{ margin: 0 }}
                       titleStyle={
-                        props.id == variation2
+                        props.id === variation2
                           ? ProductDetailStyles.buttonTitleStyleSelected
                           : ProductDetailStyles.buttonTitleStyleDefault
                       }
@@ -319,7 +319,7 @@ const ShopProductDetailsScreen: FC = () => {
               })}
             </ListItem>
 
-            {variation1 != 0 && variation2 != 0 ? (
+            {variation1 !== 0 && variation2 !== 0 ? (
               <>
                 <View>
                   <ListItem bottomDivider={false}>

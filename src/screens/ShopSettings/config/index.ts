@@ -7,29 +7,25 @@
 import { ENUM } from "@app/constants";
 import { theme } from "@app/styles";
 
-export const statusInformation = (status: ENUM.Shop_Status) => {
+export const statusInformation = (status: ENUM.Product_Status) => {
   let statusValue = "";
   let statusColor = "";
 
   switch (status) {
-    case ENUM.Shop_Status.Active:
-      statusValue = "Active";
+    case ENUM.Product_Status.Available:
+      statusValue = "Available";
       statusColor = theme.colors.primary;
       break;
-    case ENUM.Shop_Status.OnVacation:
-      statusValue = "On Vacation";
-      statusColor = theme.colors.orange5;
-      break;
-    case ENUM.Shop_Status.Harvesting:
+    case ENUM.Product_Status.Harvesting:
       statusValue = "Harvesting Season";
       statusColor = theme.colors.gold5;
       break;
-    case ENUM.Shop_Status.Planting:
+    case ENUM.Product_Status.Planting:
       statusValue = "Planting Season";
-      statusColor = theme.colors.blue10;
+      statusColor = theme.colors.dark5;
       break;
     default:
-      statusValue = "Active";
+      statusValue = "Available";
       break;
   }
 

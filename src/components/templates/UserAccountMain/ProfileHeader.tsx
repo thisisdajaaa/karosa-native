@@ -26,8 +26,7 @@ const ProfileHeader: FC = () => {
     titleStyle: {
       ...theme.textLightBold,
       position: "relative",
-      top: -1,
-      left: -6,
+      textAlign: "center",
     },
     containerStyle: {
       width: 91,
