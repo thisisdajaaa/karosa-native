@@ -10,6 +10,7 @@ import { TouchableWithoutFeedback, View } from "react-native";
 import { useFormikContext } from "formik";
 import { Swipeable } from "react-native-gesture-handler";
 import { ListItem } from "react-native-elements";
+import { isEmpty } from "lodash";
 import { BasketContext, StoreData } from "@app/redux/shop/models";
 import { useUpdateEffect } from "@app/hooks";
 import Text from "@app/atoms/Text";
@@ -22,7 +23,6 @@ import type { BasketItemProps } from "./types";
 import { ICON_SIZE, NUM_OF_LINES } from "./config";
 import BasketStyles from "./styles";
 import BasketItemQuantityPrice from "./BasketItemQuantityPrice";
-import { isEmpty } from "lodash";
 
 const BasketItem: FC<BasketItemProps> = (props) => {
   const { item, storeIndex } = props;

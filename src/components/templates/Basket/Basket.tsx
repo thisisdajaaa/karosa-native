@@ -15,13 +15,13 @@ import { getPlatform } from "@app/utils";
 import Icon from "@app/atoms/Icon";
 import Text from "@app/atoms/Text";
 import Header from "@app/molecules/Header";
+import Button from "@app/atoms/Button";
 
 import type { PropsType } from "./types";
 import { EMPTY_ICON, ICON_SIZE } from "./config";
 import BasketStyles from "./styles";
 import BasketItem from "./BasketItem";
 import BasketFooter from "./BasketFooter";
-import Button from "@app/atoms/Button";
 
 const BasketTemplate: FC<PropsType> = (props) => {
   const { onBack } = props;
