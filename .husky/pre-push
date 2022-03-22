@@ -3,3 +3,4 @@
 . "$(dirname "$0")/common.sh"
 
 # To add unit test build here
+yarn validate-branch-name
