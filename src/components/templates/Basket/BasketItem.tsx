@@ -10,6 +10,7 @@ import { TouchableWithoutFeedback, View } from "react-native";
 import { useFormikContext } from "formik";
 import { Swipeable } from "react-native-gesture-handler";
 import { ListItem } from "react-native-elements";
+import { isEmpty } from "lodash";
 import { BasketContext, StoreData } from "@app/redux/shop/models";
 import { useUpdateEffect } from "@app/hooks";
 import Text from "@app/atoms/Text";
@@ -79,23 +80,24 @@ const BasketItem: FC<BasketItemProps> = (props) => {
   };
 
   const handleRemove = (storeKey: number) => {
-    const newStoreData: StoreData[] = values.storeData.map((store) => {
-      if (Number(store.id) === Number(storeInfo.id)) {
+    const newStoreData: StoreData[] = values.storeData
+      .map((store) => {
+        if (Number(store.id) === Number(storeInfo.id)) {
+          return {
+            ...store,
+            items: store.items.filter(
+              (item) => Number(item.id) !== Number(storeInfo.items[storeKey].id)
+            ),
+          };
+        }
+
         return {
           ...store,
-          items: store.items.filter(
-            (item) => Number(item.id) !== Number(storeInfo.items[storeKey].id)
-          ),
         };
-      }
-
-      return {
-        ...store,
-      };
-    });
+      })
+      .filter((store) => !isEmpty(store.items));
 
     setValues({
-      ...values.storeData,
       storeData: newStoreData,
     });
   };

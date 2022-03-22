@@ -123,11 +123,16 @@
     "prettier": "^2.2.1",
     "react-native-svg-transformer": "^0.14.3",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "~4.0.0"
+    "typescript": "~4.0.0",
+    "validate-branch-name": "^1.3.0"
   },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "validate-branch-name": {
+    "pattern": "^(master|development){1}$|^(bugfix|hotfix|release)\/|^(KAR)-.+$",
+    "errorMsg": "Incorrect branch name set. Branches should follow the format (master|development) or (KAR|bugfix|hotfix|release)- \n Rename your branch using `git branch -m <<new-name>>`"
   }
 }

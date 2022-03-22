@@ -106,6 +106,33 @@ const BasketStyles = StyleSheet.create({
     ...theme.textSemiBold,
     color: theme.colors.primary,
   },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    marginTop: "20%",
+    paddingHorizontal: 64,
+  },
+  empty: {
+    marginBottom: 32,
+  },
+  txtEmpty: {
+    ...theme.textRegular,
+    textAlign: "center",
+    fontWeight: "400",
+  },
+  btnShopping: {
+    borderRadius: 100,
+  },
+  shoppingContainer: {
+    width: "100%",
+    borderRadius: 100,
+    marginTop: 32,
+  },
+  txtShopping: {
+    ...theme.textBold,
+    fontWeight: "700",
+  },
 });
 
 export default BasketStyles;
