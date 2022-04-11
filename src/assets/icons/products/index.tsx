@@ -47,6 +47,8 @@ import EstimateDate from "./estimate-date.svg";
 import Shipping from "./shipping.svg";
 import ChatNow from "./chatNow.svg";
 import WhiteMessage from "./white-message.svg";
+import WhiteBasket from "./white-basket.svg";
+import DarkOutlineHeart from "./dark-outline-heart.svg";
 
 const ProductsIcon = (
   name: string,
@@ -96,6 +98,12 @@ const ProductsIcon = (
     ),
     add: <Add style={extraStyle} height={height} width={width} />,
     addImage: <AddImage style={extraStyle} height={height} width={width} />,
+    darkOutlineHeart: (
+      <DarkOutlineHeart style={extraStyle} height={height} width={width} />
+    ),
+    whiteBasket: (
+      <WhiteBasket style={extraStyle} height={height} width={width} />
+    ),
     deleteVariation: (
       <DeleteVariation style={extraStyle} height={height} width={width} />
     ),

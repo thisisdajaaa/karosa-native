@@ -58,7 +58,7 @@ const ProfileHeader: FC = () => {
 
       <TouchableOpacity
         style={UserAccountMainStyles.messageIconContainer}
-        onPress={() => 0}
+        onPress={() => navigate(routes.PRODUCT_DETAILS)}
       >
         <MaterialIcons
           name="chat"
