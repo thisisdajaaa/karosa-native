@@ -45,9 +45,13 @@ import CategorySyrups from "./category-syrups.svg";
 import CategoryVegetables from "./category-vegetables.svg";
 import EstimateDate from "./estimate-date.svg";
 import Shipping from "./shipping.svg";
-import ChatNow from "./chatNow.svg";
+import ChatNow from "./chat-now.svg";
 import WhiteMessage from "./white-message.svg";
 import WhiteBasket from "./white-basket.svg";
+import GreenBasket from "./green-basket.svg";
+import GreenShare from "./green-share.svg";
+import GrayDelivery from "./gray-delivery.svg";
+import GreenMore from "./green-more.svg";
 import DarkOutlineHeart from "./dark-outline-heart.svg";
 
 const ProductsIcon = (
@@ -104,6 +108,14 @@ const ProductsIcon = (
     whiteBasket: (
       <WhiteBasket style={extraStyle} height={height} width={width} />
     ),
+    greenBasket: (
+      <GreenBasket style={extraStyle} height={height} width={width} />
+    ),
+    grayDelivery: (
+      <GrayDelivery style={extraStyle} height={height} width={width} />
+    ),
+    greenShare: <GreenShare style={extraStyle} height={height} width={width} />,
+    greenMore: <GreenMore style={extraStyle} height={height} width={width} />,
     deleteVariation: (
       <DeleteVariation style={extraStyle} height={height} width={width} />
     ),

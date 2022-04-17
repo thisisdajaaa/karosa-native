@@ -12,7 +12,7 @@ import {
   ImageStyle,
 } from "react-native";
 
-export type contentPropsType = {
+export type OverlayPropsType = {
   source: ImageSourcePropType;
   textStyle?: StyleProp<TextStyle>;
   viewTextStyle?: StyleProp<ViewStyle>;
@@ -26,5 +26,5 @@ export type contentPropsType = {
 };
 
 export type PropsType = {
-  overlayProps: contentPropsType[];
+  overlayProps: OverlayPropsType[];
 };

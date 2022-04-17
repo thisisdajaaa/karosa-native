@@ -4,7 +4,12 @@
  *
  */
 
-import { StyleProp, TextStyle } from "react-native";
+import {
+  NativeSyntheticEvent,
+  StyleProp,
+  TextLayoutEventData,
+  TextStyle,
+} from "react-native";
 
 type EllipsizeMode = "head" | "middle" | "tail" | "clip";
 
@@ -13,4 +18,6 @@ export type PropsType = {
   textStyle?: StyleProp<TextStyle>;
   numberOfLines?: number;
   ellipsizeMode?: EllipsizeMode;
+  onPress?: () => void;
+  onTextLayout?: (event: NativeSyntheticEvent<TextLayoutEventData>) => void;
 };

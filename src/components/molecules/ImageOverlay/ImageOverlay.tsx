@@ -9,8 +9,9 @@ import React, { FC } from "react";
 
 import type { ImageOverlayPropsType } from "./types";
 import ImageOverlayStyles from "./styles";
-import { View, Image, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import Text from "@app/atoms/Text";
+import Image from "@app/atoms/Image";
 import { theme } from "@app/styles";
 
 const ImageOverlay: FC<ImageOverlayPropsType> = (props) => {
@@ -27,14 +28,15 @@ const ImageOverlay: FC<ImageOverlayPropsType> = (props) => {
     onClick,
   } = props;
 
-  const backgroundColorOverlay = hasOverlay === false ? "" : theme.colors.black;
+  const backgroundColorOverlay =
+    hasOverlay === false ? "" : theme.colors.dark20;
 
   return (
     <TouchableOpacity onPress={onClick}>
       <View style={[ImageOverlayStyles.mainContainer, mainContainerStyle]}>
         <Image
           source={source}
-          style={[
+          imageStyle={[
             { width: imageWidth || 70, height: imageHeight || 70 },
             imageStyle,
           ]}

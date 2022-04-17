@@ -10,6 +10,7 @@ import { Image as RnImage } from "react-native-elements";
 
 import type { PropsType } from "./types";
 import ImageStyles from "./styles";
+import Loading from "../Loading";
 
 const Image: FC<PropsType> = (props) => {
   const { source, imageStyle, resizeMode, onLoadEnd } = props;
@@ -20,6 +21,7 @@ const Image: FC<PropsType> = (props) => {
       source={source}
       resizeMode={resizeMode}
       onLoadEnd={onLoadEnd}
+      PlaceholderContent={<Loading />}
     />
   );
 };

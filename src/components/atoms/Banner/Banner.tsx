@@ -25,7 +25,11 @@ const Banner: FC<PropsType> = (props) => {
   const renderImage = (item: { item: CarouselData }) => {
     return (
       <View>
-        <Image source={{ uri: item.item.source }} style={BannerStyles.image} />
+        <Image
+          source={{ uri: item.item.source }}
+          resizeMode="cover"
+          style={BannerStyles.image}
+        />
       </View>
     );
   };
