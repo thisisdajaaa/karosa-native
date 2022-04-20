@@ -31,8 +31,11 @@ import ProductRatings from "./ProductRatings";
 import { productList } from "./config";
 import ProductCard from "@app/components/organisms/ProductCard";
 import ProductFooter from "./ProductFooter";
+import type { PropsType } from "./types";
 
-const ProductDetailTemplate: FC = () => {
+const ProductDetailTemplate: FC<PropsType> = (props) => {
+  const { onBack, onReviews } = props;
+
   const { top, bottom } = useSafeAreaInsets();
 
   const {
@@ -171,7 +174,7 @@ const ProductDetailTemplate: FC = () => {
   return (
     <View style={{ flex: 1 }}>
       <Animated.View onLayout={handleHeaderLayout} style={headerContainerStyle}>
-        <ProductHeader />
+        <ProductHeader onBack={onBack} />
       </Animated.View>
       <Animated.View style={collapsedOverlayStyle}>
         <Header
@@ -180,7 +183,7 @@ const ProductDetailTemplate: FC = () => {
           leftComponent={{
             icon: "arrow-back",
             color: theme.colors.primary,
-            onPress: () => alert("gg"),
+            onPress: onBack,
           }}
           rightComponent={
             <View
@@ -213,7 +216,7 @@ const ProductDetailTemplate: FC = () => {
 
         <ProductInformation />
 
-        <ProductRatings />
+        <ProductRatings onReviews={onReviews} />
 
         <View
           style={{

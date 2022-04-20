@@ -1,16 +1,17 @@
 import { View } from "react-native";
 import React from "react";
-import ListChevron from "@app/components/organisms/ListChevron";
+import ListChevron from "@app/organisms/ListChevron";
 import { theme } from "@app/styles";
 import { ListItem } from "react-native-elements";
 import Text from "@app/atoms/Text";
-import ImageOverlayReviews from "@app/components/organisms/ImageOverlayReviews";
+import ImageOverlayReviews from "@app/organisms/ImageOverlayReviews";
+import { noop } from "lodash";
 
 const ProductActions = () => {
   return (
     <View>
       <ListChevron
-        onPress={() => alert("g")}
+        onPress={noop}
         chevronColor={theme.colors.primary}
         icon={{
           group: "products",
@@ -27,7 +28,7 @@ const ProductActions = () => {
       <View style={{ marginVertical: 6 }} />
 
       <ListChevron
-        onPress={() => alert("g")}
+        onPress={noop}
         chevronColor={theme.colors.primary}
         variation={1}
         info="30% OFF"
@@ -41,7 +42,7 @@ const ProductActions = () => {
       />
 
       <ListItem
-        onPress={() => alert("g")}
+        onPress={noop}
         containerStyle={{ flexDirection: "column", alignItems: "stretch" }}
         bottomDivider
       >

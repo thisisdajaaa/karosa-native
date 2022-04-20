@@ -17,6 +17,7 @@ import ShopMainScreen from "@app/screens/ShopMain";
 import ShopSettingsScreen from "@app/screens/ShopSettings";
 import ShopPaymentScreen from "@app/screens/ShopPayment";
 import ProductDetailScreen from "@app/screens/ProductDetail";
+import ProductReviewsScreen from "@app/screens/ProductReviews";
 import AuthPhoneNumberScreen from "@app/screens/AuthPhoneNumber";
 import AuthPasswordScreen from "@app/screens/AuthPassword";
 import AuthVerificationScreen from "@app/screens/AuthVerification";
@@ -61,6 +62,7 @@ const StackNavigator: React.FC = () => {
       <Stack.Screen name="Home Search" component={HomeSearchScreen} />
       <Stack.Screen name="Add Product" component={ProductNewScreen} />
       <Stack.Screen name="Product Details" component={ProductDetailScreen} />
+      <Stack.Screen name="Product Reviews" component={ProductReviewsScreen} />
       <Stack.Screen name="Add Variation" component={AddVariationScreen} />
       <Stack.Screen
         name="Set Stock and Price"

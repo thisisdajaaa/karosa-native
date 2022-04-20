@@ -15,9 +15,12 @@ import Header from "@app/components/molecules/Header";
 import Icon from "@app/atoms/Icon";
 import Text from "@app/atoms/Text";
 import Rating from "@app/atoms/Rating";
+import type { ProductHeaderProps } from "./types";
 
-const ProductHeader: FC = () => {
-  const [index, setIndex] = useState(0);
+const ProductHeader: FC<ProductHeaderProps> = (props) => {
+  const { onBack } = props;
+
+  const [index, setIndex] = useState<number>(0);
 
   const carouselRef = useRef<Carousel<CarouselData>>(null);
 
@@ -58,7 +61,11 @@ const ProductHeader: FC = () => {
             backgroundColor: "transparent",
             zIndex: 1,
           }}
-          leftComponent={{ icon: "arrow-back", color: theme.colors.white }}
+          leftComponent={{
+            icon: "arrow-back",
+            color: theme.colors.white,
+            onPress: onBack,
+          }}
           rightComponent={
             <View
               style={{

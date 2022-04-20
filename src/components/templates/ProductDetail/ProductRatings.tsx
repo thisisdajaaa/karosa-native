@@ -1,4 +1,4 @@
-import { Pressable, View } from "react-native";
+import { View } from "react-native";
 import React, { FC } from "react";
 import Text from "@app/atoms/Text";
 import { ListItem } from "react-native-elements";
@@ -6,13 +6,15 @@ import { theme } from "@app/styles";
 import Rating from "@app/atoms/Rating";
 import Reviews from "@app/molecules/Reviews";
 import { DUMMY_REVIEWS } from "./config";
-import { MaterialIcons } from "@expo/vector-icons";
+import type { ProductRatingsProps } from "./types";
 
-const ProductRatings: FC = () => {
+const ProductRatings: FC<ProductRatingsProps> = (props) => {
+  const { onReviews } = props;
+
   return (
     <View style={{ marginTop: 12 }}>
       <ListItem
-        onPress={() => alert("g")}
+        onPress={onReviews}
         containerStyle={{ flexDirection: "column", alignItems: "stretch" }}
         bottomDivider
       >
@@ -62,29 +64,6 @@ const ProductRatings: FC = () => {
           avatarPhoto={review.avatarPhoto}
         />
       ))}
-
-      <View
-        style={{
-          backgroundColor: theme.colors.white,
-          padding: 14,
-          alignItems: "flex-end",
-        }}
-      >
-        <Pressable
-          onPress={() => alert("g")}
-          style={{ flexDirection: "row", alignItems: "center" }}
-        >
-          <Text
-            text="See All Reviews (60)"
-            textStyle={{ ...theme.textRegular, color: theme.colors.primary }}
-          />
-          <MaterialIcons
-            name="navigate-next"
-            size={20}
-            color={theme.colors.primary}
-          />
-        </Pressable>
-      </View>
     </View>
   );
 };

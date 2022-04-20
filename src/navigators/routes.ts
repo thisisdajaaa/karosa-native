@@ -36,6 +36,7 @@ export default Object.freeze({
   PRODUCT_ADD: "Add Product",
   ADD_VARIATION: "Add Variation",
   PRODUCT_DETAILS: "Product Details",
+  PRODUCT_REVIEWS: "Product Reviews",
   ADD_WHOLESALE: "Add Wholesale",
   SET_STOCK_PRICE: "Set Stock and Price",
   SHIPPING_DETAILS: "Shipping Details",

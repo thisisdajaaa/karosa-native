@@ -26,13 +26,15 @@ const Chip: FC<PropsType> = (props) => {
       titleStyle={selected ? ChipStyles.txtSelected : ChipStyles.txtUnselected}
       type="outline"
       icon={
-        <Icon
-          group={iconGroup}
-          name={iconName}
-          height={ICON_SIZE}
-          width={ICON_SIZE}
-          extraStyle={ChipStyles.iconContainer}
-        />
+        iconGroup && iconName ? (
+          <Icon
+            group={iconGroup}
+            name={iconName}
+            height={ICON_SIZE}
+            width={ICON_SIZE}
+            extraStyle={ChipStyles.iconContainer}
+          />
+        ) : undefined
       }
     />
   );
