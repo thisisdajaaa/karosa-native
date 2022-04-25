@@ -132,7 +132,7 @@
     }
   },
   "validate-branch-name": {
-    "pattern": "^(master|development){1}$|^(bugfix|hotfix|release)\/|^(KAR)-.+$",
+    "pattern": "^(master|development){1}$|^(bugfix|hotfix|release|feature)\/|^(KAR)-.+$",
     "errorMsg": "Incorrect branch name set. Branches should follow the format (master|development) or (KAR|bugfix|hotfix|release)- \n Rename your branch using `git branch -m <<new-name>>`"
   }
 }
