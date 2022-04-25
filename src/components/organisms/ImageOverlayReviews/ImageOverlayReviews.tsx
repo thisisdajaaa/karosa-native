@@ -17,9 +17,10 @@ const ImageOverlayReviews: FC<PropsType> = (props) => {
 
   return (
     <View style={ImageOverlayReviewsStyles.rowContainer}>
-      {overlayProps.map((props) => {
+      {overlayProps.map((props, index) => {
         return (
           <ImageOverlay
+            key={index}
             source={props.source}
             textContent={props.textContent}
             textStyle={props.textStyle}

@@ -6,14 +6,17 @@
  */
 
 import React, { FC } from "react";
-import { View } from "react-native";
-import { Spinner } from "./Spinner";
+import { ActivityIndicator, View } from "react-native";
+import type { PropsType } from "./types";
 import { styles } from "./styles";
+import { theme } from "@app/styles";
 
-const Loading: FC = () => {
+const Loading: FC<PropsType> = (props) => {
+  const { color = theme.colors.dark20, size = "small" } = props;
+
   return (
     <View style={styles.container}>
-      <Spinner />
+      <ActivityIndicator size={size} color={color} />
     </View>
   );
 };

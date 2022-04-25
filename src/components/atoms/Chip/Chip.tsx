@@ -14,25 +14,29 @@ import { ICON_SIZE } from "./config";
 import ChipStyles from "./styles";
 
 const Chip: FC<PropsType> = (props) => {
-  const { selected, onPress, title, iconName, iconGroup } = props;
+  const { selected, onPress, title, iconName, iconGroup, width } = props;
 
   return (
     <RnChip
       onPress={onPress}
       title={title}
       buttonStyle={
-        selected ? ChipStyles.selectedContainer : ChipStyles.unselectedContainer
+        selected
+          ? { ...ChipStyles.selectedContainer, width }
+          : { ...ChipStyles.unselectedContainer, width }
       }
       titleStyle={selected ? ChipStyles.txtSelected : ChipStyles.txtUnselected}
       type="outline"
       icon={
-        <Icon
-          group={iconGroup}
-          name={iconName}
-          height={ICON_SIZE}
-          width={ICON_SIZE}
-          extraStyle={ChipStyles.iconContainer}
-        />
+        iconGroup && iconName ? (
+          <Icon
+            group={iconGroup}
+            name={iconName}
+            height={ICON_SIZE}
+            width={ICON_SIZE}
+            extraStyle={ChipStyles.iconContainer}
+          />
+        ) : undefined
       }
     />
   );

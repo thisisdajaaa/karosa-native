@@ -23,7 +23,7 @@ const UserAccountSettingsStyles = StyleSheet.create({
   },
   txtLogout: {
     ...theme.textRegular,
-    color: theme.colors.dark20,
+    color: theme.colors.white,
   },
   buttonContainer: { position: "absolute", bottom: 20, alignSelf: "center" },
   multiListContainer: { height: 266, marginVertical: 18 },

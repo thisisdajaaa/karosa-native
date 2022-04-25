@@ -31,6 +31,8 @@ import Uncheck from "./uncheck.svg";
 import Chevron from "./chevron.svg";
 import GrayAddress from "./gray-address.svg";
 import OutlineSetting from "./outline-settings.svg";
+import EmptyStar from "./empty-star.svg";
+import Star from "./star.svg";
 
 const CommonIcons = (
   name: string,
@@ -40,6 +42,8 @@ const CommonIcons = (
 ) => {
   const icons: { [key: string]: JSX.Element } = {
     back: <Back style={extraStyle} height={height} width={width} />,
+    emptyStar: <EmptyStar style={extraStyle} height={height} width={width} />,
+    star: <Star style={extraStyle} height={height} width={width} />,
     chevron: <Chevron style={extraStyle} height={height} width={width} />,
     check: <Check style={extraStyle} height={height} width={width} />,
     uncheck: <Uncheck style={extraStyle} height={height} width={width} />,

@@ -3,322 +3,249 @@
  * @format
  *
  */
-import { theme } from "@app/styles";
-import { Dimensions, StyleSheet } from "react-native";
 
-const ProductDetailStyles = StyleSheet.create({
-  iconContainer: {
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+import { StyleSheet } from "react-native";
+import { DIMENS, theme } from "@app/styles";
+
+export const ProductActionStyles = StyleSheet.create({
+  spacer: {
+    marginVertical: 6,
   },
-  txtChat: {
-    ...theme.textLight,
+  discountInfo: {
+    ...theme.textRegular,
+    color: theme.colors.primary,
+  },
+  txtSemiBold: {
+    ...theme.textSemiBold,
+  },
+  variationContainer: { flexDirection: "column", alignItems: "stretch" },
+  txtVariationContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  chevron: {
+    color: theme.colors.primary,
+  },
+  overlayContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    flexWrap: "wrap",
+    paddingTop: 14,
+    paddingBottom: 4,
+  },
+});
+
+export const ProductDetailStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  header: {
+    backgroundColor: theme.colors.transparent,
   },
   flexRow: {
     flexDirection: "row",
   },
-  varietyImage: {
-    width: 70,
-    height: 70,
-    marginRight: 10,
+  iconMargin: {
+    marginRight: 16,
   },
-  scrollviewContainer: {
-    height: 0.93 * Dimensions.get("window").height,
+  recommendationsContainer: {
+    backgroundColor: theme.colors.white,
+    marginVertical: 12,
+    padding: 14,
   },
-  rowContainer: {
-    flexDirection: "row",
-    marginHorizontal: 10,
-    marginBottom: 10,
+  txtRecommendations: { ...theme.textSemiBold, marginBottom: 16 },
+  productListContainer: {
+    marginBottom: 24,
+    paddingHorizontal: 4,
   },
-  sellerImage: {
+  itemContainer: {
+    marginRight: 8,
+  },
+  spacer: {
     height: 50,
-    width: 50,
-    borderRadius: 30,
-  },
-  rating: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  txtSellerInfo: {
-    ...theme.textRegular,
-    color: theme.colors.orange10,
-  },
-  txtLight: {
-    ...theme.textLight,
-    color: theme.colors.black,
-  },
-  horizontalContainer: {
-    backgroundColor: theme.colors.white,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    alignItems: "center",
-  },
-  ratingContainer: {
-    paddingHorizontal: 16,
-    flex: 3,
-  },
-  txtBlackRegular: {
-    ...theme.textRegular,
-  },
-  txtBlackRegularBold: {
-    ...theme.textBold,
-  },
-  iconStyleEllipsis: {
-    position: "absolute",
-    alignSelf: "flex-end",
-    marginHorizontal: 10,
-  },
-  ratingIconStyle: {
-    width: 15,
-    height: 15,
-  },
-  footer: {
-    flex: 1,
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: 0,
-    flexDirection: "row",
-    backgroundColor: theme.colors.white5,
-  },
-  subFooterCart: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 8,
-    backgroundColor: theme.colors.grey5,
-    borderRadius: 5,
-  },
-  subFooterChat: {
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 8,
-    backgroundColor: theme.colors.white5,
-  },
-  subFooterBuy: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 8,
-    borderRadius: 5,
-    backgroundColor: theme.colors.green10,
-  },
-  button: {
-    width: "100%",
-    flexDirection: "column",
-    padding: 8,
-    marginHorizontal: 1,
-    alignItems: "center",
-  },
-  green: {
-    backgroundColor: theme.colors.green10,
-  },
-  orangeBox: {
-    backgroundColor: theme.colors.orange10,
-    justifyContent: "center",
-  },
-  subContainer: {
-    backgroundColor: theme.colors.white,
-    flex: 1,
-    marginBottom: 10,
-  },
-  productImage: {
-    width: "100%",
-    height: 200,
-  },
-  detailsContainer: {
-    backgroundColor: theme.colors.white,
-    flex: 1,
-  },
-  txtPrice: {
-    ...theme.textRegular,
-    color: theme.colors.green10,
-  },
-  sellerContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  txtNameAddress: {
-    flexDirection: "column",
-    justifyContent: "center",
-    marginLeft: 8,
-  },
-  reviewSeller: {
-    alignItems: "center",
-    flex: 1,
-  },
-  txtSold: {
-    margin: 10,
-  },
-  txtGreen: {
-    color: theme.colors.green10,
-  },
-  txtWhite: {
-    color: theme.colors.white,
-  },
-  iconStyle: {
-    height: 16,
-  },
-  buyerGallery: {
-    flexDirection: "row",
-    margin: 8,
-  },
-  productRatingMain: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  productRatingSub: {
-    justifyContent: "center",
-    marginHorizontal: 8,
-  },
-  buyerGallerySection: {
-    marginHorizontal: 8,
-  },
-
-  imageWrapper: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-  },
-  image: {
-    flex: 1,
-  },
-  modalTitle: {
-    ...theme.textTitle,
-    fontWeight: "400",
-  },
-  btnGrpViewContainer: {
-    flexDirection: "row",
-    backgroundColor: theme.colors.white,
-  },
-  btnContainer: {
-    flex: 1,
-  },
-  txtMuted: {
-    color: theme.colors.dark10,
-  },
-  horizontalRatingContainer: {
-    backgroundColor: theme.colors.white,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    alignItems: "center",
-  },
-  variationTitle: {
-    ...theme.textBold,
-  },
-  flexView: {
-    flex: 1,
-  },
-  ratingPad: {
-    paddingBottom: 5,
-  },
-  txtAddBasket: {
-    ...theme.textLight,
-    color: theme.colors.black,
-  },
-  viewTextStyle: {
-    justifyContent: "flex-end",
-    height: "33%",
-    bottom: 0,
-  },
-  textStyle: { fontSize: 12, fontWeight: "bold" },
-  mainContainerStyle: {
-    borderWidth: 3,
-    borderColor: theme.colors.green5,
-    borderRadius: 3,
-  },
-  variatonContainerStyle1: {
-    borderColor: theme.colors.green5,
-    borderWidth: 2,
-    paddingLeft: 20,
-    paddingRight: 20,
-    margin: 5,
-  },
-  variatonContainerStyle2: {
-    borderColor: theme.colors.light10,
-    backgroundColor: theme.colors.light10,
-    borderWidth: 2,
-    paddingLeft: 20,
-    paddingRight: 20,
-    margin: 5,
-  },
-  buttonTitleStyleDefault: {
-    fontSize: 12,
-    color: theme.colors.black,
-  },
-  buttonTitleStyleSelected: {
-    fontSize: 12,
-    color: theme.colors.green5,
-  },
-  filterButtonBorder1: {
-    borderColor: theme.colors.green5,
-    borderWidth: 2,
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  filterButtonBorder2: {
-    borderColor: theme.colors.light10,
-    backgroundColor: theme.colors.light10,
-    borderWidth: 2,
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  padding10: { padding: 10 },
-  textMargin: { marginRight: 30 },
-  customButtonStyle1: {
-    backgroundColor: theme.colors.light10,
-    paddingLeft: 5,
-    paddingRight: 5,
-    borderRadius: 8,
-  },
-  stockText: {
-    marginRight: 20,
-    marginLeft: 20,
-    alignContent: "center",
-    top: 10,
-    fontSize: 20,
-  },
-  customButtonStyle2: {
-    backgroundColor: theme.colors.light10,
-    paddingLeft: 5,
-    paddingRight: 5,
-    borderRadius: 8,
-  },
-  priceText: {
-    textDecorationLine: "line-through",
-    textDecorationStyle: "double",
-  },
-  modalContainerStyle: {
-    alignItems: "center",
-    flex: 1,
-    justifyContent: "center",
-  },
-  modalButtonStyle: {
-    backgroundColor: theme.colors.light10,
-    paddingRight: 40,
-    paddingLeft: 40,
-  },
-  modalTitleStyle: {
-    color: theme.colors.black,
-    textAlign: "center",
-  },
-  buttonPadding: {
-    paddingRight: 50,
-    paddingLeft: 50,
-  },
-  titleCenter: {
-    textAlign: "center",
   },
 });
 
-export default ProductDetailStyles;
+export const ProductFooterStyles = StyleSheet.create({
+  container: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+  listContainer: {
+    justifyContent: "flex-end",
+    flexDirection: "row",
+    paddingBottom: 22,
+  },
+  leftContainer: {
+    marginRight: "auto",
+    paddingLeft: 14,
+  },
+  chat: {
+    marginLeft: "8%",
+  },
+  txtChat: {
+    ...theme.textLight,
+    color: theme.colors.dark30,
+  },
+  btnAddBasket: {
+    paddingVertical: 24,
+    paddingHorizontal: 64,
+    backgroundColor: theme.colors.light10,
+  },
+  txtAddBasket: {
+    ...theme.textLightBold,
+    color: theme.colors.black,
+    position: "absolute",
+  },
+  btnBuyNow: {
+    paddingVertical: 24,
+    paddingHorizontal: 64,
+  },
+  txtBuyNow: {
+    ...theme.textLightBold,
+    position: "absolute",
+  },
+});
+
+export const ProductHeaderStyles = StyleSheet.create({
+  image: {
+    width: DIMENS.screenWidth,
+    height: 320,
+    resizeMode: "cover",
+  },
+  container: {
+    position: "relative",
+    overflow: "hidden",
+  },
+  header: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    backgroundColor: theme.colors.transparent,
+    zIndex: 1,
+  },
+  flexRow: {
+    flexDirection: "row",
+  },
+  icon: {
+    marginRight: 16,
+  },
+  paginationContainer: {
+    position: "absolute",
+    flexDirection: "column-reverse",
+    height: "100%",
+    alignSelf: "center",
+  },
+  paginationDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginHorizontal: 0,
+    backgroundColor: theme.colors.white,
+  },
+  infoContainer: {
+    backgroundColor: theme.colors.white,
+    padding: 16,
+  },
+  txtName: { ...theme.textTitle, fontWeight: "500" },
+  priceContainer: {
+    flexDirection: "row",
+    marginTop: 24,
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  txtPrice: {
+    ...theme.textTitle,
+    fontWeight: "500",
+    color: theme.colors.primary,
+  },
+  txtSold: {
+    ...theme.textRegular,
+    fontWeight: "400",
+    color: theme.colors.dark30,
+  },
+  bottomContainer: {
+    flexDirection: "row",
+    marginTop: 20,
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  ratingsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  txtRating: {
+    ...theme.textRegular,
+    marginLeft: 8,
+    fontWeight: "400",
+    color: theme.colors.dark30,
+  },
+});
+
+export const ProductInformationStyles = StyleSheet.create({
+  container: {
+    backgroundColor: theme.colors.white,
+    padding: 14,
+    marginTop: 12,
+  },
+  txtDetails: {
+    ...theme.textSemiBold,
+    marginBottom: 18,
+  },
+  listContainer: {
+    paddingHorizontal: 0,
+  },
+  txtRegular: {
+    ...theme.textRegular,
+  },
+  txtValue: {
+    ...theme.textRegular,
+    color: theme.colors.primary,
+  },
+  info: { ...theme.textRegular, color: theme.colors.primary },
+  expandableContainer: {
+    paddingHorizontal: 0,
+    paddingBottom: 0,
+  },
+  txtReadMore: {
+    ...theme.textRegular,
+    color: theme.colors.primary,
+  },
+});
+
+export const ProductRatingsStyles = StyleSheet.create({
+  container: {
+    marginTop: 12,
+  },
+  listContainer: {
+    flexDirection: "column",
+    alignItems: "stretch",
+  },
+  firstContent: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  txtRatings: {
+    ...theme.textSemiBold,
+    marginRight: 4,
+  },
+  txtRatingValue: {
+    ...theme.textSemiBold,
+    color: theme.colors.dark30,
+  },
+  txtSee: {
+    ...theme.textRegular,
+    color: theme.colors.primary,
+    marginLeft: "auto",
+  },
+  chevron: {
+    color: theme.colors.primary,
+  },
+  secondContent: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    paddingTop: 8,
+  },
+});

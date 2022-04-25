@@ -29,11 +29,16 @@ const VariationOne: FC<PropsType> = (props) => {
     icon,
     titleStyle,
     subtitle,
+    containerStyle,
     chevronColor = theme.colors.dark10,
   } = props;
 
   return (
-    <ListItem bottomDivider={hasBottomDivider} onPress={onPress}>
+    <ListItem
+      containerStyle={containerStyle}
+      bottomDivider={hasBottomDivider}
+      onPress={onPress}
+    >
       <ListItem.Content style={ListChevronStyles.container}>
         {listColor && (
           <>

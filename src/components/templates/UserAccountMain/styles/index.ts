@@ -15,9 +15,8 @@ const UserAccountMainStyles = StyleSheet.create({
   },
   headerContainer: {
     backgroundColor: theme.colors.white,
-    height: 180,
+    minHeight: 180,
     justifyContent: "flex-end",
-    marginTop: 12,
   },
   infoContainer: {
     height: 40,
@@ -102,16 +101,21 @@ const UserAccountMainStyles = StyleSheet.create({
   },
   myShopIcon: {
     fontSize: 16,
+    fontWeight: "bold",
     color: theme.colors.white,
     position: "absolute",
-    right: 10,
+    right: 6,
   },
   commonIconHeader: {
     fontSize: 24,
     color: theme.colors.primary,
-    position: "absolute",
-    top: 10,
-    right: 0,
+    marginRight: 12,
+  },
+  iconContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    flex: 1,
+    marginTop: 36,
   },
   peopleIcon: {
     position: "absolute",
@@ -128,8 +132,6 @@ const UserAccountMainStyles = StyleSheet.create({
     color: theme.colors.primary,
   },
   mainContainer: { backgroundColor: theme.colors.light5, flex: 1 },
-  settingsIconContainer: { position: "absolute", right: 54, top: 7 },
-  messageIconContainer: { position: "absolute", right: 17, top: 7 },
 });
 
 export default UserAccountMainStyles;

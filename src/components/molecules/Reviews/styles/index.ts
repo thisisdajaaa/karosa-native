@@ -8,77 +8,49 @@ import { StyleSheet } from "react-native";
 import { theme } from "@app/styles";
 
 const ReviewsStyles = StyleSheet.create({
-  varietyImage: {
-    width: 70,
-    height: 70,
-    marginRight: 10,
+  container: {
+    flexDirection: "row",
+    paddingVertical: 18,
+    paddingLeft: 14,
+    backgroundColor: theme.colors.white,
   },
-  ellipsisMargin: {
-    marginLeft: 16,
+  divider: {
+    borderBottomWidth: 1,
+    borderBottomColor: theme.colors.light10,
   },
-  sellerImage: {
+  column: {
+    flexDirection: "column",
+  },
+  avatar: {
     height: 50,
     width: 50,
-    borderRadius: 30,
+    borderRadius: 100,
   },
-
-  txtBlackRegular: {
-    ...theme.textRegular,
-  },
-  txtReviewParagraph: {
-    ...theme.textRegular,
-    marginHorizontal: 16,
-  },
-  tagsStyle: {
-    backgroundColor: theme.colors.dark5,
-    margin: 3,
-    padding: 8,
-    borderRadius: 16,
-    ...theme.textLight,
-    color: theme.colors.dark15,
-  },
-
-  subContainer: {
-    backgroundColor: theme.colors.white,
-    flex: 1,
-    marginBottom: 10,
-  },
-
-  reviewContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    margin: 8,
-  },
-  txtNameAddress: {
+  details: {
     flexDirection: "column",
-    justifyContent: "center",
-    marginLeft: 8,
+    marginLeft: 14,
+    alignItems: "flex-start",
+    width: "80%",
   },
-
-  iconStyle: {
-    width: "100%",
-    height: 30,
+  txtUsername: {
+    ...theme.textRegular,
+    color: theme.colors.dark30,
+    marginBottom: 14,
   },
-  buyerContainer: {
-    flexDirection: "row",
+  primaryMargin: {
+    marginBottom: 14,
   },
-  likedIcon: {
-    marginLeft: 10,
+  secondaryMargin: {
+    marginBottom: 8,
   },
-  tagsContainer: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    margin: 8,
+  readMore: {
+    ...theme.textLight,
+    fontWeight: "300",
+    color: theme.colors.dark30,
   },
-  buyerGallery: {
-    flexDirection: "row",
-    margin: 8,
-  },
-  commentContainer: {
-    marginHorizontal: 25,
-  },
-  ratingContainer: {
-    width: 80,
+  txtVariation: {
+    ...theme.textLight,
+    color: theme.colors.dark30,
   },
 });
 

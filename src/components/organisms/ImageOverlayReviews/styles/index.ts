@@ -11,7 +11,7 @@ const ImageOverlayReviewsStyles = StyleSheet.create({
   rowContainer: {
     flexDirection: "row",
   },
-  mainContainer: { flex: 0, marginRight: 10 },
+  mainContainer: { marginRight: 8 },
   horizontalContainer: {
     backgroundColor: theme.colors.white,
     flexDirection: "row",

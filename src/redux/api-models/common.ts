@@ -21,4 +21,9 @@ export type CommonLocation = {
   name: string;
 };
 
+export type Product = {
+  id: number;
+  name: string;
+};
+
 export type ResponseWithAudit<T> = T & Audit;

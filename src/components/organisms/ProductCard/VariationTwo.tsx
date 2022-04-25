@@ -29,10 +29,11 @@ const VariationTwo: FC<PropsType> = (props) => {
     currentPrice,
     discount,
     previousPrice,
+    onPress,
   } = props;
 
   return (
-    <Card containerStyle={ProductCardStyles.mainContainer}>
+    <Card containerStyle={ProductCardStyles.mainContainer} onPress={onPress}>
       {wholesale && (
         <View style={ProductCardStyles.wholesaleContainer}>
           <Text textStyle={ProductCardStyles.txtWholesale} text={"Wholesale"} />

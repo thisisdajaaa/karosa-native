@@ -31,6 +31,7 @@ const ListChevron: FC<PropsType> = (props) => {
     iconGroup,
     iconName,
     icon,
+    containerStyle,
     titleStyle,
   } = props;
 
@@ -43,6 +44,7 @@ const ListChevron: FC<PropsType> = (props) => {
           listColor={listColor}
           title={title}
           onPress={onPress}
+          containerStyle={containerStyle}
           info={info}
           required={required}
           infoStyle={infoStyle}
