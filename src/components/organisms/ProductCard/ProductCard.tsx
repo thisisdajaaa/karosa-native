@@ -26,6 +26,7 @@ const ProductCard: FC<PropsType> = (props) => {
     currentPrice,
     wholesale,
     discount,
+    onPress,
   } = props;
 
   switch (variation) {
@@ -41,6 +42,7 @@ const ProductCard: FC<PropsType> = (props) => {
           currentPrice={currentPrice}
           discount={discount}
           variation={variation}
+          onPress={onPress}
         />
       );
     case 2:
@@ -56,6 +58,7 @@ const ProductCard: FC<PropsType> = (props) => {
           previousPrice={previousPrice}
           discount={discount}
           variation={variation}
+          onPress={onPress}
         />
       );
     case 3:
@@ -69,6 +72,7 @@ const ProductCard: FC<PropsType> = (props) => {
           currentPrice={currentPrice}
           discount={discount}
           variation={variation}
+          onPress={onPress}
         />
       );
     default:
@@ -82,6 +86,7 @@ const ProductCard: FC<PropsType> = (props) => {
           currentPrice={currentPrice}
           discount={discount}
           variation={variation}
+          onPress={onPress}
         />
       );
   }

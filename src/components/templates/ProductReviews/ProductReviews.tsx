@@ -5,15 +5,15 @@
  *
  */
 
-import Header from "@app/components/molecules/Header";
-import Reviews from "@app/components/molecules/Reviews";
-import { theme } from "@app/styles";
 import React, { FC, useCallback, useState } from "react";
 import { FlatList, View } from "react-native";
-import { DUMMY_FILTERS, DUMMY_REVIEWS } from "./config";
+import { theme } from "@app/styles";
+import Header from "@app/molecules/Header";
+import Reviews from "@app/molecules/Reviews";
 
-import ProductReviewsStyles from "./styles";
 import type { FilterType, PropsType } from "./types";
+import { DUMMY_FILTERS, DUMMY_REVIEWS } from "./config";
+import ProductReviewsStyles from "./styles";
 import FilterChip from "./FilterChip";
 
 const ProductReviews: FC<PropsType> = (props) => {
@@ -43,18 +43,10 @@ const ProductReviews: FC<PropsType> = (props) => {
         keyExtractor={keyExtractor}
         data={DUMMY_REVIEWS}
         ListHeaderComponent={
-          <View
-            style={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              padding: 14,
-              backgroundColor: theme.colors.white,
-              borderBottomWidth: 1,
-              borderBottomColor: theme.colors.light10,
-            }}
-          >
-            {DUMMY_FILTERS.map((item) => (
+          <View style={ProductReviewsStyles.listHeader}>
+            {DUMMY_FILTERS.map((item, index) => (
               <FilterChip
+                key={index}
                 text={item.rating ? undefined : item.text}
                 rating={item.rating}
                 total={item.total}

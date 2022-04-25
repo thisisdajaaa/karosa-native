@@ -1,52 +1,43 @@
-import { View } from "react-native";
+/**
+ *
+ * ProductRatings
+ * @format
+ *
+ */
+
 import React, { FC } from "react";
-import Text from "@app/atoms/Text";
+import { View } from "react-native";
 import { ListItem } from "react-native-elements";
-import { theme } from "@app/styles";
 import Rating from "@app/atoms/Rating";
+import Text from "@app/atoms/Text";
 import Reviews from "@app/molecules/Reviews";
-import { DUMMY_REVIEWS } from "./config";
+
 import type { ProductRatingsProps } from "./types";
+import { DUMMY_REVIEWS } from "./config";
+import { ProductRatingsStyles } from "./styles";
 
 const ProductRatings: FC<ProductRatingsProps> = (props) => {
   const { onReviews } = props;
 
   return (
-    <View style={{ marginTop: 12 }}>
+    <View style={ProductRatingsStyles.container}>
       <ListItem
         onPress={onReviews}
-        containerStyle={{ flexDirection: "column", alignItems: "stretch" }}
+        containerStyle={ProductRatingsStyles.listContainer}
         bottomDivider
       >
-        <ListItem.Content
-          style={{ flexDirection: "row", justifyContent: "space-between" }}
-        >
+        <ListItem.Content style={ProductRatingsStyles.firstContent}>
           <Text
             text="Ratings and Reviews"
-            textStyle={{ ...theme.textSemiBold, marginRight: 4 }}
+            textStyle={ProductRatingsStyles.txtRatings}
           />
-          <Text
-            text="(60)"
-            textStyle={{ ...theme.textSemiBold, color: theme.colors.dark30 }}
-          />
+          <Text text="(60)" textStyle={ProductRatingsStyles.txtRatingValue} />
 
-          <Text
-            text="See All"
-            textStyle={{
-              ...theme.textRegular,
-              color: theme.colors.primary,
-              marginLeft: "auto",
-            }}
-          />
-          <ListItem.Chevron iconStyle={{ color: theme.colors.primary }} />
+          <Text text="See All" textStyle={ProductRatingsStyles.txtSee} />
+          <ListItem.Chevron iconStyle={ProductRatingsStyles.chevron} />
         </ListItem.Content>
-        <ListItem.Content
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            paddingTop: 8,
-          }}
-        >
+
+        <ListItem.Content style={ProductRatingsStyles.secondContent}>
           <Rating ratingCount={5} readonly imageSize={10} startingValue={5} />
         </ListItem.Content>
       </ListItem>

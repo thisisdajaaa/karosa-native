@@ -1,13 +1,26 @@
+/**
+ *
+ * ProductActions
+ * @format
+ *
+ */
+
+import React, { FC } from "react";
 import { View } from "react-native";
-import React from "react";
-import ListChevron from "@app/organisms/ListChevron";
-import { theme } from "@app/styles";
+import { noop } from "lodash";
 import { ListItem } from "react-native-elements";
+import { theme } from "@app/styles";
+import { COMMON } from "@app/constants";
+import ListChevron from "@app/organisms/ListChevron";
 import Text from "@app/atoms/Text";
 import ImageOverlayReviews from "@app/organisms/ImageOverlayReviews";
-import { noop } from "lodash";
 
-const ProductActions = () => {
+import type { ProductActionProps } from "./types";
+import { ProductActionStyles } from "./styles";
+
+const ProductActions: FC<ProductActionProps> = (props) => {
+  const { onVariations } = props;
+
   return (
     <View>
       <ListChevron
@@ -19,48 +32,35 @@ const ProductActions = () => {
           height: 22,
           width: 22,
         }}
-        variation={1}
+        variation={COMMON.VARIATION.ONE}
         subtitle="Cost: P50"
         title="Delivery from Cebu City"
         hasBottomDivider
       />
 
-      <View style={{ marginVertical: 6 }} />
+      <View style={ProductActionStyles.spacer} />
 
       <ListChevron
         onPress={noop}
         chevronColor={theme.colors.primary}
-        variation={1}
+        variation={COMMON.VARIATION.ONE}
         info="30% OFF"
-        infoStyle={{
-          ...theme.textRegular,
-          color: theme.colors.primary,
-        }}
+        infoStyle={ProductActionStyles.discountInfo}
         hasBottomDivider
         title="Shop Vouchers"
-        titleStyle={{ ...theme.textSemiBold }}
+        titleStyle={ProductActionStyles.txtSemiBold}
       />
 
       <ListItem
-        onPress={noop}
-        containerStyle={{ flexDirection: "column", alignItems: "stretch" }}
+        onPress={onVariations}
+        containerStyle={ProductActionStyles.variationContainer}
         bottomDivider
       >
-        <ListItem.Content
-          style={{ flexDirection: "row", justifyContent: "space-between" }}
-        >
-          <Text text="Variations" textStyle={{ ...theme.textSemiBold }} />
-          <ListItem.Chevron iconStyle={{ color: theme.colors.primary }} />
+        <ListItem.Content style={ProductActionStyles.txtVariationContainer}>
+          <Text text="Variations" textStyle={ProductActionStyles.txtSemiBold} />
+          <ListItem.Chevron iconStyle={ProductActionStyles.chevron} />
         </ListItem.Content>
-        <ListItem.Content
-          style={{
-            flexDirection: "row",
-            justifyContent: "flex-start",
-            flexWrap: "wrap",
-            paddingTop: 14,
-            paddingBottom: 4,
-          }}
-        >
+        <ListItem.Content style={ProductActionStyles.overlayContainer}>
           <ImageOverlayReviews
             overlayProps={[
               {

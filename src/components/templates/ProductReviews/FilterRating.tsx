@@ -1,5 +1,13 @@
+/**
+ *
+ * FilterRating
+ * @format
+ *
+ */
+
 import React, { FC, ReactElement } from "react";
 import Icon from "@app/atoms/Icon";
+
 import type { FilterRatingProps } from "./types";
 
 const FilterRating: FC<FilterRatingProps> = (props) => {

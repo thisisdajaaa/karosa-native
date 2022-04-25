@@ -6,14 +6,10 @@
  */
 
 import React, { FC } from "react";
-
-import type { PropsType } from "./types";
 import ProductReviewsTemplate from "@app/templates/ProductReviews";
 import { useNavigation } from "@react-navigation/native";
 
-const ProductReviews: FC<PropsType> = (props) => {
-  const {} = props;
-
+const ProductReviews: FC = () => {
   const { goBack } = useNavigation();
 
   const handleBack = () => {

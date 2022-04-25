@@ -83,7 +83,8 @@ const CheckoutStyles = StyleSheet.create({
     ...theme.textSemiBold,
   },
   totalContainer: {
-    height: 64,
+    paddingTop: 16,
+    paddingBottom: 24,
     justifyContent: "flex-end",
   },
   flexColumn: {

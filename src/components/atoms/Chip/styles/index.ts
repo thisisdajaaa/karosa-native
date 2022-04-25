@@ -12,14 +12,14 @@ const ChipStyles = StyleSheet.create({
     borderRadius: 3,
     borderColor: theme.colors.primary,
     backgroundColor: theme.colors.green15,
-    width: 200,
     marginRight: 8,
+    marginTop: 8,
   },
   unselectedContainer: {
     borderRadius: 3,
     borderColor: theme.colors.dark30,
-    width: 200,
     marginRight: 8,
+    marginTop: 8,
   },
   txtSelected: {
     fontWeight: "700",

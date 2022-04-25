@@ -5,19 +5,31 @@
  *
  */
 
-import React, { FC } from "react";
+import React from "react";
 import ProductDetailTemplate from "@app/templates/ProductDetail";
 
-import type { PropsType } from "./types";
-import { useNavigation } from "@react-navigation/native";
+import type { ProductDetailParams } from "./types";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import routes from "@app/navigators/routes";
+import { Product } from "@app/redux/api-models/common";
 
-const ProductDetailScreen: FC<PropsType> = (props) => {
-  const {} = props;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const ProductDetailScreen = ({ navigation }: any) => {
   const { goBack, navigate } = useNavigation();
+
+  const { params } = useRoute<RouteProp<ProductDetailParams, "Item">>();
 
   const handleReviews = () => {
     navigate(routes.PRODUCT_REVIEWS);
+  };
+
+  const handleRecommended = (item: Product) => {
+    navigation.push("Stack", {
+      screen: routes.PRODUCT_DETAILS,
+      params: {
+        ...item,
+      },
+    });
   };
 
   const handleBack = () => {
@@ -25,7 +37,12 @@ const ProductDetailScreen: FC<PropsType> = (props) => {
   };
 
   return (
-    <ProductDetailTemplate onReviews={handleReviews} onBack={handleBack} />
+    <ProductDetailTemplate
+      routeParams={params}
+      onReviews={handleReviews}
+      onRecommended={handleRecommended}
+      onBack={handleBack}
+    />
   );
 };
 

@@ -17,11 +17,22 @@ import { NUM_LINES } from "./config";
 import ProductCardStyles from "./styles";
 
 const VariationThree: FC<PropsType> = (props) => {
-  const { name, wholesale, image, location, sold, currentPrice, discount } =
-    props;
+  const {
+    name,
+    wholesale,
+    image,
+    location,
+    sold,
+    currentPrice,
+    discount,
+    onPress,
+  } = props;
 
   return (
-    <Card containerStyle={ProductCardStyles.variationThreeCard}>
+    <Card
+      containerStyle={ProductCardStyles.variationThreeCard}
+      onPress={onPress}
+    >
       {wholesale && (
         <View style={ProductCardStyles.wholesaleContainer}>
           <Text textStyle={ProductCardStyles.txtWholesale} text={"Wholesale"} />

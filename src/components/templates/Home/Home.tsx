@@ -13,6 +13,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import { COMMON } from "@app/constants";
 import { theme } from "@app/styles";
+import { Product } from "@app/redux/api-models/common";
 import Text from "@app/atoms/Text";
 import Icon from "@app/atoms/Icon";
 import Banner from "@app/atoms/Banner";
@@ -20,7 +21,6 @@ import ProductCard from "@app/organisms/ProductCard";
 import ListChevron from "@app/organisms/ListChevron";
 import routes from "@app/navigators/routes";
 
-import type { Product } from "./types";
 import { HomeStyles } from "./styles";
 import { data, ICON_SIZE, NUM_COLUMNS_ONE, NUM_COLUMNS_TWO } from "./config";
 import Header from "./Header";
@@ -59,6 +59,14 @@ const HomeTemplate: FC = () => {
           <View style={HomeStyles.productContainer}>
             <ProductCard
               name={item.name}
+              onPress={() =>
+                navigate("Stack", {
+                  screen: routes.PRODUCT_DETAILS,
+                  params: {
+                    ...item,
+                  },
+                })
+              }
               image="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
               sold={sold ? "30" : undefined}
               location={!sold ? "Cebu" : undefined}
@@ -234,6 +242,14 @@ const HomeTemplate: FC = () => {
                     wholesale
                     rating={2}
                     variation={COMMON.VARIATION.TWO}
+                    onPress={() =>
+                      navigate("Stack", {
+                        screen: routes.PRODUCT_DETAILS,
+                        params: {
+                          ...item,
+                        },
+                      })
+                    }
                   />
                 )}
               />

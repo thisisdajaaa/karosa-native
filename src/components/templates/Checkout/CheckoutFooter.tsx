@@ -56,6 +56,7 @@ const CheckoutFooter: FC = () => {
             title="Cash on Delivery"
             iconGroup="checkout"
             iconName="coins"
+            width={200}
             onPress={() => setPaymentMethod("cod")}
           />
           <Chip
@@ -63,6 +64,7 @@ const CheckoutFooter: FC = () => {
             title="GCash"
             iconGroup="basket"
             iconName="store"
+            width={200}
             onPress={() => setPaymentMethod("gcash")}
           />
         </ScrollView>

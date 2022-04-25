@@ -1,9 +1,17 @@
-import { View, TouchableWithoutFeedback } from "react-native";
+/**
+ *
+ * FilterChip
+ * @format
+ *
+ */
+
 import React, { FC } from "react";
+import { View, TouchableWithoutFeedback } from "react-native";
 import Text from "@app/atoms/Text";
+
+import type { FilterChipProps } from "./types";
 import { FilterChipStyles } from "./styles";
 import FilterRating from "./FilterRating";
-import type { FilterChipProps } from "./types";
 
 const FilterChip: FC<FilterChipProps> = (props) => {
   const { selected, onPress, text, rating, total } = props;

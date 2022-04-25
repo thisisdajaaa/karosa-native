@@ -20,16 +20,17 @@ const ProfileHeader: FC = () => {
     onPress: () => navigate(routes.SHOP_MAIN),
     title: "My Shop",
     buttonStyle: {
-      width: 91,
+      width: 95,
       height: 31,
     },
     titleStyle: {
       ...theme.textLightBold,
-      position: "relative",
+      position: "absolute",
       textAlign: "center",
+      left: 15,
     },
     containerStyle: {
-      width: 91,
+      width: 95,
       height: 31,
     },
     icon: <AntDesign name="right" style={UserAccountMainStyles.myShopIcon} />,
@@ -46,25 +47,21 @@ const ProfileHeader: FC = () => {
 
   return (
     <View style={UserAccountMainStyles.headerContainer}>
-      <TouchableOpacity
-        style={UserAccountMainStyles.settingsIconContainer}
-        onPress={() => navigate(routes.ACCOUNTS_SETTINGS)}
-      >
-        <MaterialIcons
-          name="settings"
-          style={UserAccountMainStyles.commonIconHeader}
-        />
-      </TouchableOpacity>
+      <View style={UserAccountMainStyles.iconContainer}>
+        <TouchableOpacity onPress={() => navigate(routes.ACCOUNTS_SETTINGS)}>
+          <MaterialIcons
+            name="settings"
+            style={UserAccountMainStyles.commonIconHeader}
+          />
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={UserAccountMainStyles.messageIconContainer}
-        onPress={() => navigate(routes.PRODUCT_DETAILS)}
-      >
-        <MaterialIcons
-          name="chat"
-          style={UserAccountMainStyles.commonIconHeader}
-        />
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => 0}>
+          <MaterialIcons
+            name="chat"
+            style={UserAccountMainStyles.commonIconHeader}
+          />
+        </TouchableOpacity>
+      </View>
 
       <ListAvatar {...buyerProps} />
 

@@ -17,7 +17,8 @@
   },
   "lint-staged": {
     "./src/**/**/*.{ts,js,jsx,tsx}": [
-      "yarn format"
+      "yarn format",
+      "yarn lint"
     ]
   },
   "dependencies": {

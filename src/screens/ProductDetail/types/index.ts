@@ -4,4 +4,8 @@
  *
  */
 
-export type PropsType = {};
+import { Product } from "@app/redux/api-models/common";
+
+export type ProductDetailParams = {
+  Item: Product;
+};

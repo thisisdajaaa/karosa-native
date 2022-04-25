@@ -12,6 +12,14 @@ const ProductReviewsStyles = StyleSheet.create({
     ...theme.textBold,
     fontWeight: "700",
   },
+  listHeader: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    padding: 14,
+    backgroundColor: theme.colors.white,
+    borderBottomWidth: 1,
+    borderBottomColor: theme.colors.light10,
+  },
 });
 
 export const FilterChipStyles = (selected: boolean) =>

@@ -1,24 +1,25 @@
 /**
  *
- * ProductDetail
+ * ProductHeader
  * @format
  *
  */
 
 import React, { FC, useRef, useState } from "react";
-
 import { Image, View } from "react-native";
-import { CarouselData } from "@app/atoms/Banner/types";
-import { DIMENS, theme } from "@app/styles";
 import Carousel, { Pagination } from "react-native-snap-carousel";
-import Header from "@app/components/molecules/Header";
+import { DIMENS, theme } from "@app/styles";
+import type { CarouselData } from "@app/atoms/Banner/types";
+import Header from "@app/molecules/Header";
 import Icon from "@app/atoms/Icon";
 import Text from "@app/atoms/Text";
 import Rating from "@app/atoms/Rating";
+
 import type { ProductHeaderProps } from "./types";
+import { ProductHeaderStyles } from "./styles";
 
 const ProductHeader: FC<ProductHeaderProps> = (props) => {
-  const { onBack } = props;
+  const { onBack, name } = props;
 
   const [index, setIndex] = useState<number>(0);
 
@@ -40,51 +41,37 @@ const ProductHeader: FC<ProductHeaderProps> = (props) => {
     return (
       <Image
         source={{ uri: item.item.source }}
-        style={{
-          width: DIMENS.screenWidth,
-          height: 320,
-          resizeMode: "cover",
-        }}
+        style={ProductHeaderStyles.image}
       />
     );
   };
 
   return (
     <>
-      <View style={{ position: "relative", overflow: "hidden" }}>
+      <View style={ProductHeaderStyles.container}>
         <Header
           barStyle="light-content"
-          containerStyle={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            backgroundColor: "transparent",
-            zIndex: 1,
-          }}
+          containerStyle={ProductHeaderStyles.header}
           leftComponent={{
             icon: "arrow-back",
             color: theme.colors.white,
             onPress: onBack,
           }}
           rightComponent={
-            <View
-              style={{
-                flexDirection: "row",
-              }}
-            >
+            <View style={ProductHeaderStyles.flexRow}>
               <Icon
                 group="products"
                 name="whiteBasket"
                 height={24}
                 width={24}
-                extraStyle={{ marginRight: 16 }}
+                extraStyle={ProductHeaderStyles.icon}
               />
               <Icon
                 group="products"
                 name="share"
                 height={24}
                 width={24}
-                extraStyle={{ marginRight: 16 }}
+                extraStyle={ProductHeaderStyles.icon}
               />
               <Icon group="common" name="more" height={24} width={24} />
             </View>
@@ -101,82 +88,33 @@ const ProductHeader: FC<ProductHeaderProps> = (props) => {
           bounces={false}
           onSnapToItem={(value) => setIndex(value)}
         />
-        <View
-          style={{
-            position: "absolute",
-            flexDirection: "column-reverse",
-            height: "100%",
-            alignSelf: "center",
-          }}
-        >
+        <View style={ProductHeaderStyles.paginationContainer}>
           <Pagination
             dotsLength={carouselList.length}
             activeDotIndex={index}
-            dotStyle={{
-              width: 10,
-              height: 10,
-              borderRadius: 5,
-              marginHorizontal: 0,
-              backgroundColor: theme.colors.white,
-            }}
+            dotStyle={ProductHeaderStyles.paginationDot}
             inactiveDotOpacity={0.4}
             inactiveDotScale={0.4}
           />
         </View>
       </View>
 
-      <View style={{ backgroundColor: theme.colors.white, padding: 16 }}>
+      <View style={ProductHeaderStyles.infoContainer}>
         <Text
-          text="Mangosteen Product Name sample text characters multiple lines lines"
-          textStyle={{ ...theme.textTitle, fontWeight: "500" }}
+          text={name}
+          textStyle={ProductHeaderStyles.txtName}
           numberOfLines={3}
         />
 
-        <View
-          style={{
-            flexDirection: "row",
-            marginTop: 24,
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Text
-            text="P299"
-            textStyle={{
-              ...theme.textTitle,
-              fontWeight: "500",
-              color: theme.colors.primary,
-            }}
-          />
-          <Text
-            text="183 sold"
-            textStyle={{
-              ...theme.textRegular,
-              fontWeight: "400",
-              color: theme.colors.dark30,
-            }}
-          />
+        <View style={ProductHeaderStyles.priceContainer}>
+          <Text text="P299" textStyle={ProductHeaderStyles.txtPrice} />
+          <Text text="183 sold" textStyle={ProductHeaderStyles.txtSold} />
         </View>
 
-        <View
-          style={{
-            flexDirection: "row",
-            marginTop: 20,
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <View style={ProductHeaderStyles.bottomContainer}>
+          <View style={ProductHeaderStyles.ratingsContainer}>
             <Rating ratingCount={5} readonly imageSize={20} startingValue={5} />
-            <Text
-              text="4.7"
-              textStyle={{
-                ...theme.textRegular,
-                marginLeft: 8,
-                fontWeight: "400",
-                color: theme.colors.dark30,
-              }}
-            />
+            <Text text="4.7" textStyle={ProductHeaderStyles.txtRating} />
           </View>
 
           <Icon

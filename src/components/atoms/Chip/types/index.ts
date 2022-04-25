@@ -12,4 +12,5 @@ export type PropsType = {
   onPress?(): void;
   iconName?: string;
   iconGroup?: string;
+  width?: number;
 };

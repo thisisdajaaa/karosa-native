@@ -17,4 +17,5 @@ export type PropsType = {
   onButtonClick?(): void;
   rating?: number;
   location?: string;
+  onPress?: () => void;
 };

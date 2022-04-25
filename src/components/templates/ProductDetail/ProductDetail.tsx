@@ -17,24 +17,28 @@ import {
 } from "react-native";
 import Animated from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { ENUM } from "@app/constants";
+import RBSheet from "react-native-raw-bottom-sheet";
+import { COMMON, ENUM } from "@app/constants";
 import { useScrollSync } from "@app/hooks";
 import { theme } from "@app/styles";
 import { HeaderConfig, ScrollPair } from "@app/utils";
-import ProductHeader from "./ProductHeader";
+import ProductVariant from "@app/screens/ProductVariant";
+import ProductCard from "@app/organisms/ProductCard";
 import Text from "@app/atoms/Text";
-import Header from "@app/components/molecules/Header";
+import Header from "@app/molecules/Header";
 import Icon from "@app/atoms/Icon";
+
+import type { PropsType } from "./types";
+import { productList } from "./config";
+import { ProductDetailStyles } from "./styles";
+import ProductHeader from "./ProductHeader";
 import ProductActions from "./ProductActions";
 import ProductInformation from "./ProductInformation";
 import ProductRatings from "./ProductRatings";
-import { productList } from "./config";
-import ProductCard from "@app/components/organisms/ProductCard";
 import ProductFooter from "./ProductFooter";
-import type { PropsType } from "./types";
 
 const ProductDetailTemplate: FC<PropsType> = (props) => {
-  const { onBack, onReviews } = props;
+  const { onBack, onReviews, routeParams, onRecommended } = props;
 
   const { top, bottom } = useSafeAreaInsets();
 
@@ -45,6 +49,8 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
     useDerivedValue,
     useSharedValue,
   } = Animated;
+
+  const productVariantRef = useRef<RBSheet>(null);
 
   const keyExtractor = useCallback((_, index) => index.toString(), []);
 
@@ -172,92 +178,97 @@ const ProductDetailTemplate: FC<PropsType> = (props) => {
   );
 
   return (
-    <View style={{ flex: 1 }}>
-      <Animated.View onLayout={handleHeaderLayout} style={headerContainerStyle}>
-        <ProductHeader onBack={onBack} />
-      </Animated.View>
-      <Animated.View style={collapsedOverlayStyle}>
-        <Header
-          containerStyle={{ backgroundColor: theme.colors.transparent }}
-          barStyle="light-content"
-          leftComponent={{
-            icon: "arrow-back",
-            color: theme.colors.primary,
-            onPress: onBack,
-          }}
-          rightComponent={
-            <View
-              style={{
-                flexDirection: "row",
-              }}
-            >
-              <Icon
-                group="products"
-                name="greenBasket"
-                height={24}
-                width={24}
-                extraStyle={{ marginRight: 16 }}
-              />
-              <Icon
-                group="products"
-                name="greenShare"
-                height={24}
-                width={24}
-                extraStyle={{ marginRight: 16 }}
-              />
-              <Icon group="products" name="greenMore" height={24} width={24} />
-            </View>
-          }
-        />
-      </Animated.View>
-
-      <Animated.ScrollView onScroll={detailScrollHandler} {...sharedProps}>
-        <ProductActions />
-
-        <ProductInformation />
-
-        <ProductRatings onReviews={onReviews} />
-
-        <View
-          style={{
-            backgroundColor: theme.colors.white,
-            marginVertical: 12,
-            padding: 14,
-          }}
+    <>
+      <View style={ProductDetailStyles.container}>
+        <Animated.View
+          onLayout={handleHeaderLayout}
+          style={headerContainerStyle}
         >
-          <Text
-            text="Variations"
-            textStyle={{ ...theme.textSemiBold, marginBottom: 16 }}
-          />
-
-          <FlatList
-            numColumns={1}
-            data={productList}
-            horizontal={true}
-            keyExtractor={keyExtractor}
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ marginBottom: 24, paddingHorizontal: 4 }}
-            renderItem={({ item }) => (
-              <View style={{ marginRight: 8 }}>
-                <ProductCard
-                  name={item.name}
-                  image="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
-                  location="Cebu"
-                  currentPrice="50"
-                  wholesale
-                  discount="30"
-                  variation={3}
+          <ProductHeader onBack={onBack} name={routeParams?.name} />
+        </Animated.View>
+        <Animated.View style={collapsedOverlayStyle}>
+          <Header
+            containerStyle={ProductDetailStyles.header}
+            barStyle="dark-content"
+            hasBottomDivider
+            leftComponent={{
+              icon: "arrow-back",
+              color: theme.colors.primary,
+              onPress: onBack,
+            }}
+            rightComponent={
+              <View style={ProductDetailStyles.flexRow}>
+                <Icon
+                  group="products"
+                  name="greenBasket"
+                  height={24}
+                  width={24}
+                  extraStyle={ProductDetailStyles.iconMargin}
+                />
+                <Icon
+                  group="products"
+                  name="greenShare"
+                  height={24}
+                  width={24}
+                  extraStyle={ProductDetailStyles.iconMargin}
+                />
+                <Icon
+                  group="products"
+                  name="greenMore"
+                  height={24}
+                  width={24}
                 />
               </View>
-            )}
+            }
           />
-        </View>
+        </Animated.View>
 
-        <View style={{ height: 50 }} />
-      </Animated.ScrollView>
+        <Animated.ScrollView onScroll={detailScrollHandler} {...sharedProps}>
+          <ProductActions
+            onVariations={() => productVariantRef.current?.open()}
+          />
 
-      <ProductFooter />
-    </View>
+          <ProductInformation />
+
+          <ProductRatings onReviews={onReviews} />
+
+          <View style={ProductDetailStyles.recommendationsContainer}>
+            <Text
+              text="You May Also Like"
+              textStyle={ProductDetailStyles.txtRecommendations}
+            />
+
+            <FlatList
+              data={productList}
+              horizontal
+              keyExtractor={keyExtractor}
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={ProductDetailStyles.productListContainer}
+              renderItem={({ item }) => (
+                <View style={ProductDetailStyles.itemContainer}>
+                  <ProductCard
+                    name={item.name}
+                    image="https://res.cloudinary.com/dyfla7mxr/image/upload/v1614606614/karosa/hinata_dm5sdk.png"
+                    location="Cebu"
+                    currentPrice="50"
+                    wholesale
+                    discount="30"
+                    variation={COMMON.VARIATION.THREE}
+                    onPress={() => onRecommended(item)}
+                  />
+                </View>
+              )}
+            />
+          </View>
+
+          <View style={ProductDetailStyles.spacer} />
+        </Animated.ScrollView>
+
+        <ProductFooter />
+      </View>
+
+      <ProductVariant sheetRef={productVariantRef} />
+    </>
   );
 };
 
