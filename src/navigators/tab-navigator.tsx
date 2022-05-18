@@ -3,7 +3,6 @@ import RBSheet from "react-native-raw-bottom-sheet";
 import { EventArg } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { FontAwesome, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useAuth, useMemoizedSelector, useUpdateEffect } from "@app/hooks";
 import { theme } from "@app/styles";
 import { selectors } from "@app/redux/auth";
@@ -14,6 +13,7 @@ import NotificationScreen from "@app/screens/Notification";
 import ProductListContent from "@app/templates/ProductList/MainContent";
 import HomeScreen from "@app/screens/Home";
 import routes from "@app/navigators/routes";
+import Icon from "@app/atoms/Icon/Icon";
 
 const TopTab = createMaterialTopTabNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -70,8 +70,8 @@ const TabNavigator: FC = () => {
           name={routes.HOME}
           component={HomeScreen}
           options={{
-            tabBarIcon: ({ color, size }) => (
-              <FontAwesome name="home" size={size} color={color} />
+            tabBarIcon: () => (
+              <Icon group="common" name="home" height={24} width={24} />
             ),
           }}
         />
@@ -79,8 +79,8 @@ const TabNavigator: FC = () => {
           name={routes.MY_BASKET}
           component={BasketScreen}
           options={{
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="md-basket" size={size} color={color} />
+            tabBarIcon: () => (
+              <Icon group="common" name="orders" height={24} width={24} />
             ),
           }}
         />
@@ -88,8 +88,13 @@ const TabNavigator: FC = () => {
           name={routes.NOTIFICATIONS}
           component={NotificationScreen}
           options={{
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="ios-notifications" size={size} color={color} />
+            tabBarIcon: () => (
+              <Icon
+                group="common"
+                name="notifications"
+                height={24}
+                width={24}
+              />
             ),
           }}
         />
@@ -97,8 +102,8 @@ const TabNavigator: FC = () => {
           name={routes.ACCOUNTS_MAIN}
           component={UserAccountMainScreen}
           options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialIcons name="person-outline" size={size} color={color} />
+            tabBarIcon: () => (
+              <Icon group="common" name="account" height={24} width={24} />
             ),
           }}
           listeners={{

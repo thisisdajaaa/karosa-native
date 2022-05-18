@@ -42,7 +42,7 @@ export default Object.freeze({
   SHIPPING_DETAILS: "Shipping Details",
   CHOOSE_CATEGORY: "Choose Category",
 
-  MY_BASKET: "My Basket",
+  MY_BASKET: "Orders",
   CHECKOUT: "Checkout",
   NOTIFICATIONS: "Notifications",
 });

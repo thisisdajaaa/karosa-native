@@ -33,6 +33,10 @@ import GrayAddress from "./gray-address.svg";
 import OutlineSetting from "./outline-settings.svg";
 import EmptyStar from "./empty-star.svg";
 import Star from "./star.svg";
+import Home from "./home.svg";
+import Orders from "./orders.svg";
+import Notifications from "./notifications.svg";
+import Account from "./account.svg";
 
 const CommonIcons = (
   name: string,
@@ -82,6 +86,10 @@ const CommonIcons = (
     grayAddress: (
       <GrayAddress style={extraStyle} height={height} width={width} />
     ),
+    home: <Home style={extraStyle} height={height} width={width} />,
+    orders: <Orders style={extraStyle} height={height} width={width} />,
+    notifications: <Notifications style={extraStyle} height={height} />,
+    account: <Account style={extraStyle} height={height} width={width} />,
   };
 
   return icons[name];
