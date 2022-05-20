@@ -33,6 +33,14 @@ import GrayAddress from "./gray-address.svg";
 import OutlineSetting from "./outline-settings.svg";
 import EmptyStar from "./empty-star.svg";
 import Star from "./star.svg";
+import Account from "./account.svg";
+import Account_Active from "./account_active.svg";
+import Home from "./home.svg";
+import Home_Active from "./home_active.svg";
+import Notifications from "./notifications.svg";
+import Notifications_Active from "./notifications_active.svg";
+import Orders from "./orders.svg";
+import Orders_Active from "./orders_active.svg";
 
 const CommonIcons = (
   name: string,
@@ -81,6 +89,24 @@ const CommonIcons = (
     ),
     grayAddress: (
       <GrayAddress style={extraStyle} height={height} width={width} />
+    ),
+    account: <Account style={extraStyle} height={height} width={width} />,
+    account_active: (
+      <Account_Active style={extraStyle} height={height} width={width} />
+    ),
+    home: <Home style={extraStyle} height={height} width={width} />,
+    home_active: (
+      <Home_Active style={extraStyle} height={height} width={width} />
+    ),
+    notifications: (
+      <Notifications style={extraStyle} height={height} width={width} />
+    ),
+    notifications_active: (
+      <Notifications_Active style={extraStyle} height={height} width={width} />
+    ),
+    orders: <Orders style={extraStyle} height={height} width={width} />,
+    orders_active: (
+      <Orders_Active style={extraStyle} height={height} width={width} />
     ),
   };
 
