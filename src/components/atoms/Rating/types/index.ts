@@ -4,6 +4,8 @@
  *
  */
 
+import { ReactNode } from "react";
+
 export type PropsType = {
   ratingCount?: number;
   imageSize?: number;
@@ -14,4 +16,6 @@ export type PropsType = {
   showRating?: boolean;
   onFinishRating?(rating: number): void;
   onStartRating?(): void;
+  ratingImage?: ReactNode;
+  type?: string;
 };

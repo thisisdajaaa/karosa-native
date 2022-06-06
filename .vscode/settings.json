@@ -10,6 +10,7 @@
   "path-intellisense.mappings": {
     "@app/assets": "${workspaceRoot}/src/assets",
     "@app/atoms": "${workspaceRoot}/src/components/atoms",
+    "@app/ci": "${workspaceRoot}/.ci",
     "@app/constants": "${workspaceRoot}/src/constants",
     "@app/components": "${workspaceRoot}/src/components",
     "@app/config": "${workspaceRoot}/src/config",

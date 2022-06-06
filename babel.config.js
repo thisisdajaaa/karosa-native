@@ -17,6 +17,7 @@ module.exports = function (api) {
           alias: {
             "@app/assets": "./src/assets",
             "@app/atoms": "./src/components/atoms",
+            "@app/ci": "./.ci",
             "@app/constants": "./src/constants",
             "@app/components": "./src/components",
             "@app/config": "./src/config",

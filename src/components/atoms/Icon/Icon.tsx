@@ -5,7 +5,8 @@
  *
  */
 
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
+import { View } from "react-native";
 import Icons from "@app/assets/icons";
 
 import type { PropsType } from "./types";
@@ -21,7 +22,7 @@ const Icon: FC<PropsType> = (props) => {
     height ? height : ZERO
   );
 
-  return <Fragment>{icon}</Fragment>;
+  return <View>{icon}</View>;
 };
 
 export default Icon;

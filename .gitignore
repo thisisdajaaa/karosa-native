@@ -79,3 +79,6 @@ buck-out/
 
 # flow
 reports/
+
+# Unit test coverage
+coverage

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimeRange Component should match snapshot 1`] = `
+<View
+  testID="wrapper"
+>
+  <View
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "flexDirection": "row",
+        },
+        undefined,
+      ]
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      keyboardType="numeric"
+      onChangeText={[Function]}
+      options={
+        Object {
+          "format": "HH:mm",
+        }
+      }
+      placeholder="HH:mm"
+      placeholderTextColor="#0AA351"
+      rejectResponderTermination={true}
+      returnKeyType="done"
+      type="datetime"
+      underlineColorAndroid="transparent"
+      value="12:00"
+    />
+    <Text
+      style={
+        Object {
+          "color": "#1C1C1C",
+          "fontFamily": "SFProText-Regular",
+          "fontSize": 16,
+          "fontWeight": "400",
+          "lineHeight": 18.75,
+          "marginHorizontal": 8,
+        }
+      }
+    >
+      -
+    </Text>
+    <TextInput
+      allowFontScaling={true}
+      keyboardType="numeric"
+      onChangeText={[Function]}
+      options={
+        Object {
+          "format": "HH:mm",
+        }
+      }
+      placeholder="HH:mm"
+      placeholderTextColor="#0AA351"
+      rejectResponderTermination={true}
+      returnKeyType="done"
+      type="datetime"
+      underlineColorAndroid="transparent"
+      value="12:01"
+    />
+  </View>
+</View>
+`;

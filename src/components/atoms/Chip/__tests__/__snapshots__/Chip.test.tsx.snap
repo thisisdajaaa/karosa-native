@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chip Component should match snapshot 1`] = `
+<View
+  testID="wrapper"
+>
+  <View
+    style={
+      Array [
+        Object {
+          "borderRadius": 3,
+          "overflow": "hidden",
+        },
+        Object {
+          "borderRadius": 3,
+        },
+        undefined,
+        false,
+      ]
+    }
+  >
+    <View
+      accessibilityRole="button"
+      accessibilityState={
+        Object {
+          "busy": false,
+          "disabled": false,
+        }
+      }
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#61D49726",
+          "borderColor": "#0AA351",
+          "borderRadius": 3,
+          "borderWidth": 0.5,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginRight": 8,
+          "marginTop": 8,
+          "padding": 8,
+          "width": undefined,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#0AA351",
+            "fontSize": 14,
+            "fontWeight": "700",
+            "paddingHorizontal": 2,
+            "paddingVertical": 1,
+            "textAlign": "center",
+          }
+        }
+      >
+        test
+      </Text>
+    </View>
+  </View>
+</View>
+`;

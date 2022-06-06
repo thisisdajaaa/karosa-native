@@ -14,6 +14,7 @@ import { RATING_COUNT } from "./config";
 const Rating: FC<PropsType> = (props) => {
   const {
     ratingCount = RATING_COUNT,
+    type = "star",
     fractions,
     imageSize,
     minValue,
@@ -22,11 +23,12 @@ const Rating: FC<PropsType> = (props) => {
     readonly,
     showRating,
     startingValue,
+    ratingImage,
   } = props;
 
   return (
     <RnRating
-      type="star"
+      type={type}
       ratingCount={ratingCount}
       readonly={readonly}
       imageSize={imageSize}
@@ -36,6 +38,7 @@ const Rating: FC<PropsType> = (props) => {
       fractions={fractions}
       showRating={showRating}
       minValue={minValue}
+      ratingImage={ratingImage}
     />
   );
 };

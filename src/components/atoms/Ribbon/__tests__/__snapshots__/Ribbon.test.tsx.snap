@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ribbon Component should match snapshot 1`] = `
+<View
+  testID="wrapper"
+>
+  <View>
+    <View>
+      <SvgMock
+        height={37}
+        width={30}
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "bottom": 2,
+          "position": "absolute",
+          "right": -2,
+          "textAlign": "center",
+          "top": 2,
+          "width": 67.5,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#fff",
+            "fontFamily": "SFProText-Bold",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "lineHeight": 14.06,
+            "textAlign": "center",
+          }
+        }
+      >
+        
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#fff",
+            "fontFamily": "SFProText-Bold",
+            "fontSize": 12,
+            "fontWeight": "700",
+            "lineHeight": 14.06,
+            "textAlign": "center",
+          }
+        }
+      >
+        
+      </Text>
+    </View>
+  </View>
+</View>
+`;
