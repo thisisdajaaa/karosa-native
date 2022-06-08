@@ -10,11 +10,11 @@ import { View } from "react-native";
 import Text from "@app/atoms/Text";
 import Rating from "@app/atoms/Rating";
 import Image from "@app/atoms/Image";
-import type { PropsType } from "./types";
-
-import ReviewsStyles from "./styles";
 import ExpandableText from "@app/molecules/ExpandableText";
 import ImageOverlayReviews from "@app/organisms/ImageOverlayReviews";
+
+import type { PropsType } from "./types";
+import ReviewsStyles from "./styles";
 
 const Reviews: FC<PropsType> = (props) => {
   const {
@@ -26,6 +26,8 @@ const Reviews: FC<PropsType> = (props) => {
     overlay,
     username,
     hasBottomDivider,
+    ratingImage,
+    ratingType,
   } = props;
 
   return (
@@ -53,6 +55,8 @@ const Reviews: FC<PropsType> = (props) => {
             readonly
             imageSize={10}
             startingValue={rate}
+            ratingImage={ratingImage}
+            type={ratingType}
           />
         </View>
 

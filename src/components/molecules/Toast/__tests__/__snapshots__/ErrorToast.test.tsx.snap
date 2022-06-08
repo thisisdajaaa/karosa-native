@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorToast Component should match snapshot 1`] = `
+<View
+  testID="wrapper"
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "rgba(64, 64, 64, 0.87)",
+        "borderRadius": 10,
+        "elevation": 2,
+        "flex": 1,
+        "flexDirection": "column",
+        "height": 72,
+        "justifyContent": "center",
+        "opacity": 0.95,
+        "shadowOffset": Object {
+          "height": 0,
+          "width": 0,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 6,
+        "width": "80%",
+      }
+    }
+  >
+    <View>
+      <SvgMock
+        height={32}
+        width={32}
+      />
+    </View>
+    <View />
+  </View>
+</View>
+`;

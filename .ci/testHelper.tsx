@@ -6,6 +6,7 @@ import {
   fireEvent,
   act,
 } from "@testing-library/react-native";
+import { Formik, FormikValues } from "formik";
 
 export { fireEvent, act };
 
@@ -27,4 +28,17 @@ export const renderWithWrapper = (
   const renderApi = render(children, options);
   const wrapper = renderApi.queryByTestId(wrapperTestID || "wrapper");
   return { wrapper, ...renderApi };
+};
+
+export const renderWithFormikWrapper = <T extends FormikValues>(
+  initialValues: T,
+  children: React.ReactElement<any, string | JSXElementConstructor<any>>
+) => {
+  return renderWithWrapper(
+    <Formik
+      initialValues={initialValues}
+      onSubmit={() => console.log("submit")}
+      component={() => children}
+    />
+  );
 };
