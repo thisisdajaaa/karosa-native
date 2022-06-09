@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Datepicker Component should match snapshot 1`] = `
+<View
+  testID="wrapper"
+>
+  <TextInput
+    allowFontScaling={true}
+    keyboardType="numeric"
+    onChangeText={[Function]}
+    options={
+      Object {
+        "format": "YYYY/MM/DD",
+      }
+    }
+    placeholder="YYYY/MM/DD"
+    rejectResponderTermination={true}
+    returnKeyType="done"
+    type="datetime"
+    underlineColorAndroid="transparent"
+    value="2022/06/07"
+  />
+</View>
+`;

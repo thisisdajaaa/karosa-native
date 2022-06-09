@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImagePicker variation one Component should match snapshot 1`] = `
+<View
+  testID="wrapper"
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#F2F3F7",
+          "borderColor": "#BDBDBD",
+          "borderRadius": 5,
+          "height": 160.07999999999998,
+          "justifyContent": "center",
+          "overflow": "hidden",
+          "width": 165,
+        }
+      }
+    >
+      <View>
+        <SvgMock
+          height={28}
+          width={28}
+        />
+      </View>
+      <Text
+        style={
+          Object {
+            "color": "#000",
+            "fontFamily": "SFProText-Regular",
+            "fontSize": 10,
+            "fontWeight": "300",
+            "lineHeight": 12,
+            "textAlign": "center",
+          }
+        }
+      >
+        Add Photo
+      </Text>
+    </View>
+  </View>
+</View>
+`;

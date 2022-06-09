@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio Component should match snapshot 1`] = `
+<View
+  testID="wrapper"
+>
+  <View
+    pointerEvents="none"
+  >
+    <View
+      onMoveShouldSetResponder={[Function]}
+      onMoveShouldSetResponderCapture={[Function]}
+      onResponderEnd={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderReject={[Function]}
+      onResponderRelease={[Function]}
+      onResponderStart={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      onStartShouldSetResponderCapture={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <View
+        onLayout={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "bottom": 0,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#f1c40f",
+              "height": 10,
+              "width": 50,
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "backgroundColor": "white",
+              "height": 10,
+              "width": 0,
+            }
+          }
+        />
+      </View>
+      <View>
+        <Image
+          source={
+            Object {
+              "source": Object {
+                "uri": "https://i.imgur.com/0y8Ftya.jpg",
+              },
+            }
+          }
+          style={
+            Object {
+              "height": 10,
+              "tintColor": undefined,
+              "width": 10,
+            }
+          }
+        />
+      </View>
+      <View>
+        <Image
+          source={
+            Object {
+              "source": Object {
+                "uri": "https://i.imgur.com/0y8Ftya.jpg",
+              },
+            }
+          }
+          style={
+            Object {
+              "height": 10,
+              "tintColor": undefined,
+              "width": 10,
+            }
+          }
+        />
+      </View>
+      <View>
+        <Image
+          source={
+            Object {
+              "source": Object {
+                "uri": "https://i.imgur.com/0y8Ftya.jpg",
+              },
+            }
+          }
+          style={
+            Object {
+              "height": 10,
+              "tintColor": undefined,
+              "width": 10,
+            }
+          }
+        />
+      </View>
+      <View>
+        <Image
+          source={
+            Object {
+              "source": Object {
+                "uri": "https://i.imgur.com/0y8Ftya.jpg",
+              },
+            }
+          }
+          style={
+            Object {
+              "height": 10,
+              "tintColor": undefined,
+              "width": 10,
+            }
+          }
+        />
+      </View>
+      <View>
+        <Image
+          source={
+            Object {
+              "source": Object {
+                "uri": "https://i.imgur.com/0y8Ftya.jpg",
+              },
+            }
+          }
+          style={
+            Object {
+              "height": 10,
+              "tintColor": undefined,
+              "width": 10,
+            }
+          }
+        />
+      </View>
+    </View>
+  </View>
+</View>
+`;

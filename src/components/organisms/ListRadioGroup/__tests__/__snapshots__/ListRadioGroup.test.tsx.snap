@@ -1,0 +1,369 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListRadioGroup Component should match snapshot 1`] = `
+<View
+  testID="wrapper"
+>
+  <View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderColor": "#bcbbc1",
+          "flexDirection": "row",
+          "padding": 14,
+        }
+      }
+      testID="padView"
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "flex-start",
+              "flex": 1,
+              "justifyContent": "center",
+            },
+            Object {
+              "alignItems": "center",
+              "flexDirection": "column",
+              "justifyContent": "center",
+            },
+          ]
+        }
+        theme={
+          Object {
+            "colors": Object {
+              "black": "#242424",
+              "disabled": "hsl(208, 8%, 90%)",
+              "divider": "#bcbbc1",
+              "error": "#ff190c",
+              "grey0": "#393e42",
+              "grey1": "#43484d",
+              "grey2": "#5e6977",
+              "grey3": "#86939e",
+              "grey4": "#bdc6cf",
+              "grey5": "#e1e8ee",
+              "greyOutline": "#bbb",
+              "platform": Object {
+                "android": Object {
+                  "error": "#f44336",
+                  "grey": "rgba(0, 0, 0, 0.54)",
+                  "primary": "#2196f3",
+                  "searchBg": "#dcdce1",
+                  "secondary": "#9C27B0",
+                  "success": "#4caf50",
+                  "warning": "#ffeb3b",
+                },
+                "default": Object {
+                  "error": "#ff3b30",
+                  "grey": "#7d7d7d",
+                  "primary": "#007aff",
+                  "searchBg": "#dcdce1",
+                  "secondary": "#5856d6",
+                  "success": "#4cd964",
+                  "warning": "#ffcc00",
+                },
+                "ios": Object {
+                  "error": "#ff3b30",
+                  "grey": "#7d7d7d",
+                  "primary": "#007aff",
+                  "searchBg": "#dcdce1",
+                  "secondary": "#5856d6",
+                  "success": "#4cd964",
+                  "warning": "#ffcc00",
+                },
+                "web": Object {
+                  "error": "#ff190c",
+                  "grey": "#393e42",
+                  "primary": "#2089dc",
+                  "searchBg": "#303337",
+                  "secondary": "#ca71eb",
+                  "success": "#52c41a",
+                  "warning": "#faad14",
+                },
+              },
+              "primary": "#2089dc",
+              "searchBg": "#303337",
+              "secondary": "#ca71eb",
+              "success": "#52c41a",
+              "warning": "#faad14",
+              "white": "#ffffff",
+            },
+          }
+        }
+      >
+        <View
+          style={
+            Object {
+              "width": "95%",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderBottomWidth": 0.5,
+                "borderColor": "#bcbbc1",
+                "flexDirection": "row",
+                "padding": 14,
+              }
+            }
+            testID="padView"
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "left": "-5.5%",
+                  "position": "relative",
+                }
+              }
+            >
+              <View
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+                testID="checkbox"
+              >
+                <View>
+                  <SvgMock
+                    height={24}
+                    width={24}
+                  />
+                </View>
+                <Text
+                  style={
+                    Object {
+                      "color": "#242424",
+                      "fontFamily": "SFProText-Regular",
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "lineHeight": 18.75,
+                      "marginLeft": 8,
+                    }
+                  }
+                  testID="checkboxTitle"
+                >
+                  Lalamove
+                </Text>
+              </View>
+              <View
+                style={
+                  Object {
+                    "left": "70.5%",
+                    "position": "relative",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "color": "#1C1C1C",
+                      "fontFamily": "SFProText-Semibold",
+                      "fontSize": 16,
+                      "fontWeight": "500",
+                      "lineHeight": 18.75,
+                    }
+                  }
+                >
+                  P50
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "width": "95%",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderBottomWidth": 0.5,
+                "borderColor": "#bcbbc1",
+                "flexDirection": "row",
+                "padding": 14,
+              }
+            }
+            testID="padView"
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "left": "-5.5%",
+                  "position": "relative",
+                }
+              }
+            >
+              <View
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+                testID="checkbox"
+              >
+                <View>
+                  <SvgMock
+                    height={24}
+                    width={24}
+                  />
+                </View>
+                <Text
+                  style={
+                    Object {
+                      "color": "#242424",
+                      "fontFamily": "SFProText-Regular",
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "lineHeight": 18.75,
+                      "marginLeft": 8,
+                    }
+                  }
+                  testID="checkboxTitle"
+                >
+                  Seller own Courier
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "width": "95%",
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#ffffff",
+                "borderBottomWidth": 0.5,
+                "borderColor": "#bcbbc1",
+                "flexDirection": "row",
+                "padding": 14,
+              }
+            }
+            testID="padView"
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flex": 1,
+                  "flexDirection": "row",
+                  "height": 30,
+                  "justifyContent": "space-between",
+                  "left": "-5.5%",
+                  "position": "relative",
+                }
+              }
+            >
+              <View
+                accessibilityRole="checkbox"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+                testID="checkbox"
+              >
+                <View>
+                  <SvgMock
+                    height={24}
+                    width={24}
+                  />
+                </View>
+                <Text
+                  style={
+                    Object {
+                      "color": "#242424",
+                      "fontFamily": "SFProText-Regular",
+                      "fontSize": 16,
+                      "fontWeight": "400",
+                      "lineHeight": 18.75,
+                      "marginLeft": 8,
+                    }
+                  }
+                  testID="checkboxTitle"
+                >
+                  Pick Up by Buyer
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

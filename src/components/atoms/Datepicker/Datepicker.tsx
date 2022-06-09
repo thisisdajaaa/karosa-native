@@ -7,9 +7,9 @@
 
 import React, { FC } from "react";
 import { TextInputMask } from "react-native-masked-text";
-import { DATE_FORMAT } from "./config";
 
 import type { PropsType } from "./types";
+import { DATE_FORMAT } from "./config";
 
 const Datepicker: FC<PropsType> = (props) => {
   const { value, onChange, placeholderColor, style } = props;

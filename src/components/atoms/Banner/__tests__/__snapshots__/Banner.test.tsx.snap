@@ -1,0 +1,355 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Banner Component should match snapshot 1`] = `
+<View
+  testID="wrapper"
+>
+  <View
+    style={
+      Object {
+        "overflow": "hidden",
+        "position": "relative",
+      }
+    }
+  >
+    <RCTScrollView
+      activeAnimationOptions={null}
+      activeAnimationType="timing"
+      activeSlideAlignment="center"
+      activeSlideOffset={20}
+      apparitionDelay={0}
+      automaticallyAdjustContentInsets={false}
+      autoplay={false}
+      autoplayDelay={1000}
+      autoplayInterval={3000}
+      callbackOffsetMargin={5}
+      containerCustomStyle={Object {}}
+      contentContainerCustomStyle={Object {}}
+      contentContainerStyle={
+        Array [
+          Object {
+            "paddingLeft": 0,
+            "paddingRight": 0,
+          },
+          Object {},
+        ]
+      }
+      data={
+        Array [
+          Object {
+            "source": "https://picsum.photos/200/300",
+          },
+          Object {
+            "source": "https://picsum.photos/200/300",
+          },
+          Object {
+            "source": "https://picsum.photos/200/300",
+          },
+        ]
+      }
+      decelerationRate="fast"
+      directionalLockEnabled={true}
+      enableMomentum={false}
+      enableSnap={true}
+      firstItem={0}
+      forwardedRef={[Function]}
+      hasParallaxImages={false}
+      horizontal={true}
+      inactiveSlideOpacity={0.7}
+      inactiveSlideScale={0.9}
+      inactiveSlideShift={0}
+      inverted={false}
+      itemWidth={675}
+      layout="stack"
+      layoutCardOffset={0}
+      lockScrollTimeoutDuration={1000}
+      lockScrollWhileSnapping={false}
+      loop={false}
+      loopClonesPerSide={3}
+      onLayout={[Function]}
+      onResponderRelease={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      onSnapToItem={[Function]}
+      onStartShouldSetResponderCapture={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+      overScrollMode="never"
+      pinchGestureEnabled={false}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEnabled={true}
+      scrollEventThrottle={1}
+      scrollsToTop={false}
+      shouldOptimizeUpdates={true}
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}
+      slideStyle={Object {}}
+      sliderWidth={675}
+      style={
+        Object {
+          "flexDirection": "row",
+          "opacity": 0,
+          "width": 675,
+        }
+      }
+      swipeThreshold={20}
+      useScrollView={false}
+      vertical={false}
+    >
+      <View>
+        <View
+          pointerEvents="box-none"
+          style={
+            Object {
+              "opacity": 1,
+              "transform": Array [
+                Object {
+                  "scale": 1,
+                },
+                Object {
+                  "translateX": 0,
+                },
+              ],
+              "width": 675,
+              "zIndex": 3,
+            }
+          }
+        >
+          <View>
+            <Image
+              resizeMode="cover"
+              source={
+                Object {
+                  "uri": "https://picsum.photos/200/300",
+                }
+              }
+              style={
+                Object {
+                  "borderRadius": 10,
+                  "height": 180,
+                  "width": "100%",
+                }
+              }
+            />
+          </View>
+        </View>
+        <View
+          pointerEvents="box-none"
+          style={
+            Object {
+              "opacity": 0.75,
+              "transform": Array [
+                Object {
+                  "scale": 0.9,
+                },
+                Object {
+                  "translateX": -716,
+                },
+              ],
+              "width": 675,
+              "zIndex": 2,
+            }
+          }
+        >
+          <View>
+            <Image
+              resizeMode="cover"
+              source={
+                Object {
+                  "uri": "https://picsum.photos/200/300",
+                }
+              }
+              style={
+                Object {
+                  "borderRadius": 10,
+                  "height": 180,
+                  "width": "100%",
+                }
+              }
+            />
+          </View>
+        </View>
+        <View
+          pointerEvents="box-none"
+          style={
+            Object {
+              "opacity": 0.5,
+              "transform": Array [
+                Object {
+                  "scale": 0.8,
+                },
+                Object {
+                  "translateX": -1620,
+                },
+              ],
+              "width": 675,
+              "zIndex": 1,
+            }
+          }
+        >
+          <View>
+            <Image
+              resizeMode="cover"
+              source={
+                Object {
+                  "uri": "https://picsum.photos/200/300",
+                }
+              }
+              style={
+                Object {
+                  "borderRadius": 10,
+                  "height": 180,
+                  "width": "100%",
+                }
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+    <View
+      style={
+        Object {
+          "alignSelf": "center",
+          "flexDirection": "column-reverse",
+          "height": "100%",
+          "position": "absolute",
+        }
+      }
+    >
+      <View
+        accessible={false}
+        pointerEvents="box-none"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "paddingHorizontal": 20,
+              "paddingVertical": 30,
+            },
+            Object {
+              "flexDirection": "row",
+            },
+            Object {},
+          ]
+        }
+      >
+        <View
+          accessible={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "marginHorizontal": 8,
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 0,
+                "opacity": 0.4,
+                "transform": Array [
+                  Object {
+                    "scale": 0.6,
+                  },
+                ],
+                "width": 10,
+              }
+            }
+          />
+        </View>
+        <View
+          accessible={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "marginHorizontal": 8,
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 0,
+                "opacity": 0.4,
+                "transform": Array [
+                  Object {
+                    "scale": 0.6,
+                  },
+                ],
+                "width": 10,
+              }
+            }
+          />
+        </View>
+        <View
+          accessible={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "justifyContent": "center",
+              "marginHorizontal": 8,
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "borderRadius": 5,
+                "height": 10,
+                "marginHorizontal": 0,
+                "opacity": 0.4,
+                "transform": Array [
+                  Object {
+                    "scale": 0.6,
+                  },
+                ],
+                "width": 10,
+              }
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

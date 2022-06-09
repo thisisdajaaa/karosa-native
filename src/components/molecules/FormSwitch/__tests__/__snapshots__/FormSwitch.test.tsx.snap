@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormSwitch Component should match snapshot 1`] = `
+<View
+  testID="wrapper"
+>
+  <RCTSwitch
+    accessibilityRole="switch"
+    onChange={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onTintColor="#0AA351"
+    style={
+      Object {
+        "height": 31,
+        "width": 51,
+      }
+    }
+    tintColor="#BDBDBD"
+    value={false}
+  />
+</View>
+`;

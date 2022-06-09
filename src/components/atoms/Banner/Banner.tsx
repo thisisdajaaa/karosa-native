@@ -7,19 +7,20 @@
 
 import React, { FC, useState, useRef } from "react";
 import { Image, View } from "react-native";
-import { DIMENS } from "@app/styles";
 import Carousel, { Pagination } from "react-native-snap-carousel";
+import { DIMENS } from "@app/styles";
+
+import type { PropsType, CarouselData } from "./types";
 import {
   INACTIVEDOTOPACITY,
   INACTIVESCALEDOT,
   LAYOUTCARDOFFSET,
 } from "./config";
-
-import type { PropsType, CarouselData } from "./types";
 import BannerStyles from "./styles";
 
 const Banner: FC<PropsType> = (props) => {
   const { carouselData } = props;
+
   const SLIDER_WIDTH = DIMENS.screenWidth * 0.9;
 
   const renderImage = (item: { item: CarouselData }) => {
@@ -34,7 +35,7 @@ const Banner: FC<PropsType> = (props) => {
     );
   };
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState<number>(0);
   const carouselRef = useRef<Carousel<CarouselData>>(null);
 
   return (

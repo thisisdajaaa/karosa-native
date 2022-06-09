@@ -4,6 +4,7 @@
  *
  */
 
+import { ReactNode } from "react";
 import { OverlayPropsType } from "@app/organisms/ImageOverlayReviews/types";
 
 export type PropsType = {
@@ -15,4 +16,6 @@ export type PropsType = {
   variation: string;
   overlay?: OverlayPropsType[];
   hasBottomDivider?: boolean;
+  ratingImage?: ReactNode;
+  ratingType?: string;
 };

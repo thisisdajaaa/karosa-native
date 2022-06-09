@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icons Component should match snapshot 1`] = `
+<View
+  testID="wrapper"
+>
+  <View>
+    <SvgMock
+      height={20}
+      style={Object {}}
+      width={20}
+    />
+  </View>
+</View>
+`;

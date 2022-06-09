@@ -4,6 +4,8 @@
  *
  */
 
+import { ReactNode } from "react";
+
 export type PropsType = {
   variation: number;
   discount?: string;
@@ -18,4 +20,6 @@ export type PropsType = {
   rating?: number;
   location?: string;
   onPress?: () => void;
+  ratingImage?: ReactNode;
+  ratingType?: string;
 };

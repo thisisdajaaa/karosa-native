@@ -7,7 +7,7 @@
 export type PropsType = {
   image: string;
   productName: string;
-  hasBottomDivder?: boolean;
+  hasBottomDivider?: boolean;
   price: string;
   wholesale?: boolean;
   discount?: string;
