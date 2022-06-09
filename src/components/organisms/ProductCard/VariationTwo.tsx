@@ -30,6 +30,8 @@ const VariationTwo: FC<PropsType> = (props) => {
     discount,
     previousPrice,
     onPress,
+    ratingImage,
+    ratingType,
   } = props;
 
   return (
@@ -79,6 +81,8 @@ const VariationTwo: FC<PropsType> = (props) => {
             readonly
             imageSize={IMAGE_SIZE}
             startingValue={rating}
+            ratingImage={ratingImage}
+            type={ratingType}
           />
           <View style={ProductCardStyles.floatRight}>
             <Text textStyle={ProductCardStyles.txtSold} text={`${sold} sold`} />

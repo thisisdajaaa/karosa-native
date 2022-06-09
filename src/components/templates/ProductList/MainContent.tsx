@@ -87,7 +87,7 @@ const MainContent: FC = () => {
                 stock={30}
                 rating={4.5}
                 sold={12}
-                hasBottomDivder
+                hasBottomDivider
                 onDiscontinue={() => 0}
                 onBoost={() => 0}
                 onEdit={() => 0}

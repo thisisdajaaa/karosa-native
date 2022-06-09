@@ -1,0 +1,476 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCard variation two Component should match snapshot 1`] = `
+<View
+  testID="wrapper"
+>
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "borderColor": "#e1e8ee",
+        "borderRadius": 3,
+        "borderWidth": 1,
+        "margin": 0,
+        "marginBottom": 0,
+        "padding": 0,
+        "position": "relative",
+        "shadowColor": "#000",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 1,
+        },
+        "shadowOpacity": 0.03,
+        "shadowRadius": 1,
+        "width": 337.5,
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "transparent",
+        }
+      }
+    >
+      <View
+        accessibilityIgnoresInvertColors={true}
+        style={
+          Object {
+            "backgroundColor": "transparent",
+            "overflow": "hidden",
+            "position": "relative",
+          }
+        }
+      >
+        <Image
+          onLoad={[Function]}
+          resizeMode="cover"
+          source={
+            Object {
+              "uri": undefined,
+            }
+          }
+          style={
+            Object {
+              "aspectRatio": 1.1,
+              "bottom": 0,
+              "height": undefined,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+              "width": "100%",
+            }
+          }
+          testID="RNE__Image"
+          theme={
+            Object {
+              "colors": Object {
+                "black": "#242424",
+                "disabled": "hsl(208, 8%, 90%)",
+                "divider": "#bcbbc1",
+                "error": "#ff190c",
+                "grey0": "#393e42",
+                "grey1": "#43484d",
+                "grey2": "#5e6977",
+                "grey3": "#86939e",
+                "grey4": "#bdc6cf",
+                "grey5": "#e1e8ee",
+                "greyOutline": "#bbb",
+                "platform": Object {
+                  "android": Object {
+                    "error": "#f44336",
+                    "grey": "rgba(0, 0, 0, 0.54)",
+                    "primary": "#2196f3",
+                    "searchBg": "#dcdce1",
+                    "secondary": "#9C27B0",
+                    "success": "#4caf50",
+                    "warning": "#ffeb3b",
+                  },
+                  "default": Object {
+                    "error": "#ff3b30",
+                    "grey": "#7d7d7d",
+                    "primary": "#007aff",
+                    "searchBg": "#dcdce1",
+                    "secondary": "#5856d6",
+                    "success": "#4cd964",
+                    "warning": "#ffcc00",
+                  },
+                  "ios": Object {
+                    "error": "#ff3b30",
+                    "grey": "#7d7d7d",
+                    "primary": "#007aff",
+                    "searchBg": "#dcdce1",
+                    "secondary": "#5856d6",
+                    "success": "#4cd964",
+                    "warning": "#ffcc00",
+                  },
+                  "web": Object {
+                    "error": "#ff190c",
+                    "grey": "#393e42",
+                    "primary": "#2089dc",
+                    "searchBg": "#303337",
+                    "secondary": "#ca71eb",
+                    "success": "#52c41a",
+                    "warning": "#faad14",
+                  },
+                },
+                "primary": "#2089dc",
+                "searchBg": "#303337",
+                "secondary": "#ca71eb",
+                "success": "#52c41a",
+                "warning": "#faad14",
+                "white": "#ffffff",
+              },
+            }
+          }
+          transition={true}
+          transitionDuration={360}
+        />
+        <View
+          accessibilityElementsHidden={true}
+          importantForAccessibility="no-hide-descendants"
+          pointerEvents="none"
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "opacity": 1,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "aspectRatio": 1.1,
+                "backgroundColor": "#bdbdbd",
+                "height": undefined,
+                "justifyContent": "center",
+                "width": "100%",
+              }
+            }
+            testID="RNE__Image__placeholder"
+          >
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "transparent",
+                  "flex": 1,
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <ActivityIndicator
+                animating={true}
+                color="#1C1C1C"
+                hidesWhenStopped={true}
+                size="small"
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "height": 50,
+                "width": 50,
+              },
+              Object {
+                "aspectRatio": 1.1,
+                "height": undefined,
+                "width": "100%",
+              },
+            ]
+          }
+          testID="RNE__Image__children__container"
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "paddingLeft": 8,
+            "paddingRight": 8,
+            "paddingTop": 12,
+          }
+        }
+      >
+        <Text
+          numberOfLines={2}
+          style={
+            Object {
+              "color": "#1C1C1C",
+              "fontFamily": "SFProText-Regular",
+              "fontSize": 16,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "lineHeight": 18.75,
+            }
+          }
+        >
+          test
+        </Text>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginVertical": 8,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#1C1C1C",
+                "fontFamily": "SFProText-Bold",
+                "fontSize": 16,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "lineHeight": 19,
+              }
+            }
+          >
+            Pundefined
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginVertical": 8,
+            }
+          }
+        >
+          <View
+            pointerEvents="none"
+          >
+            <View
+              onMoveShouldSetResponder={[Function]}
+              onMoveShouldSetResponderCapture={[Function]}
+              onResponderEnd={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderReject={[Function]}
+              onResponderRelease={[Function]}
+              onResponderStart={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              onStartShouldSetResponderCapture={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                }
+              }
+            >
+              <View
+                onLayout={[Function]}
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "bottom": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#f1c40f",
+                      "height": 15,
+                      "width": 37.5,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "white",
+                      "height": 15,
+                      "width": 37.5,
+                    }
+                  }
+                />
+              </View>
+              <View>
+                <Image
+                  source={
+                    Object {
+                      "source": Object {
+                        "uri": "https://i.imgur.com/0y8Ftya.jpg",
+                      },
+                    }
+                  }
+                  style={
+                    Object {
+                      "height": 15,
+                      "tintColor": undefined,
+                      "width": 15,
+                    }
+                  }
+                />
+              </View>
+              <View>
+                <Image
+                  source={
+                    Object {
+                      "source": Object {
+                        "uri": "https://i.imgur.com/0y8Ftya.jpg",
+                      },
+                    }
+                  }
+                  style={
+                    Object {
+                      "height": 15,
+                      "tintColor": undefined,
+                      "width": 15,
+                    }
+                  }
+                />
+              </View>
+              <View>
+                <Image
+                  source={
+                    Object {
+                      "source": Object {
+                        "uri": "https://i.imgur.com/0y8Ftya.jpg",
+                      },
+                    }
+                  }
+                  style={
+                    Object {
+                      "height": 15,
+                      "tintColor": undefined,
+                      "width": 15,
+                    }
+                  }
+                />
+              </View>
+              <View>
+                <Image
+                  source={
+                    Object {
+                      "source": Object {
+                        "uri": "https://i.imgur.com/0y8Ftya.jpg",
+                      },
+                    }
+                  }
+                  style={
+                    Object {
+                      "height": 15,
+                      "tintColor": undefined,
+                      "width": 15,
+                    }
+                  }
+                />
+              </View>
+              <View>
+                <Image
+                  source={
+                    Object {
+                      "source": Object {
+                        "uri": "https://i.imgur.com/0y8Ftya.jpg",
+                      },
+                    }
+                  }
+                  style={
+                    Object {
+                      "height": 15,
+                      "tintColor": undefined,
+                      "width": 15,
+                    }
+                  }
+                />
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "alignSelf": "center",
+                "marginLeft": "auto",
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#1C1C1C",
+                  "fontFamily": "SFProText-Regular",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "300",
+                  "lineHeight": 14.06,
+                }
+              }
+            >
+              undefined sold
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "flexDirection": "row",
+              "marginVertical": 4,
+            }
+          }
+        >
+          <Text
+            style={
+              Object {
+                "color": "#4F4F4F",
+                "fontFamily": "SFProText-Regular",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "300",
+                "lineHeight": 14.06,
+              }
+            }
+          >
+            
+          </Text>
+          <View
+            style={
+              Object {
+                "alignSelf": "center",
+                "marginLeft": "auto",
+              }
+            }
+          >
+            <View>
+              <SvgMock
+                height={12}
+                width={13}
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

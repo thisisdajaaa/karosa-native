@@ -27,6 +27,8 @@ const ProductCard: FC<PropsType> = (props) => {
     wholesale,
     discount,
     onPress,
+    ratingImage,
+    ratingType,
   } = props;
 
   switch (variation) {
@@ -59,6 +61,8 @@ const ProductCard: FC<PropsType> = (props) => {
           discount={discount}
           variation={variation}
           onPress={onPress}
+          ratingImage={ratingImage}
+          ratingType={ratingType}
         />
       );
     case 3:

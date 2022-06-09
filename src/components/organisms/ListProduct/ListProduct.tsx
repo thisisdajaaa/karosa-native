@@ -31,11 +31,11 @@ const ListProduct: FC<PropsType> = (props) => {
     onDiscontinue,
     onEdit,
     onBoost,
-    hasBottomDivder,
+    hasBottomDivider,
   } = props;
 
   return (
-    <ListItem bottomDivider={hasBottomDivder}>
+    <ListItem bottomDivider={hasBottomDivider}>
       <ListItem.Content style={ListProductStyles.container}>
         <ListItem.Content style={ListProductStyles.subContainerOne}>
           <Image
